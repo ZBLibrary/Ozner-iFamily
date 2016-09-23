@@ -7,18 +7,29 @@
 //
 
 import UIKit
-
+var appDelegate: AppDelegate {
+    return UIApplication.shared.delegate as! AppDelegate
+}
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
-
+    var window: UIWindow? = {
+        return UIWindow(frame: UIScreen.main.bounds)
+    }()
+    //主视图控制器
+    var mainTabBarController: MainTabBarController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print("是第一次打开app？:"+LoginManager.isFristOpenApp.description)
+        print("当前app:"+LoginManager.currentApp.rawValue)
+        //print("当前登陆方式:"+LoginManager.currentLoginType.rawValue)
+        print("当前语言环境是中文简体？:"+LoginManager.isChinese_Simplified.description)//
+        mainTabBarController=MainTabBarController()
+        window?.rootViewController = mainTabBarController
+        window!.makeKeyAndVisible()
         return true
     }
-
+   
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
