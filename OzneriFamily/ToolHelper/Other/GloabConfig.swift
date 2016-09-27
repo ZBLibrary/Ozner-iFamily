@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 //登陆控制类
 enum OznerLoginType:String{
     case ByPhoneNumber="ByPhoneNumber"
@@ -50,5 +50,13 @@ class LoginManager:NSObject{
         return OznerAppType(rawValue: name)!
     }()
 }
+//默认尺寸
+let height_tabBar = 64
+let height_navBar = 64
+let height_statusBar = 20
+let height_screen = UIScreen.main.bounds.size.height
+let weight_screen = UIScreen.main.bounds.size.width
+
+
 
 

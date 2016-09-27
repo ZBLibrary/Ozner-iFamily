@@ -10,9 +10,21 @@ import UIKit
 
 class LeftMenuController: UIViewController {
 
+    var mainViewController: UIViewController!
+    //无设备时添加按钮和显示界面
+    //添加设备
+    @IBAction func AddDeviceClick(_ sender: UIButton) {
+        self.slideMenuController()?.closeLeft()
+    }
+    @IBOutlet var noDeviceViewContainer: UIView!
+    //有设备设备表
+    @IBOutlet var tableContainer: UIView!//tableView的容器
+    @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableContainer.isHidden=true
+        self.tableView.delegate=self
+        self.tableView.dataSource=self
         // Do any additional setup after loading the view.
     }
 
@@ -32,4 +44,26 @@ class LeftMenuController: UIViewController {
     }
     */
 
+}
+
+extension LeftMenuController:UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
+extension LeftMenuController:UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
 }

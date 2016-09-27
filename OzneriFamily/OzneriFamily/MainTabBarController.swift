@@ -23,11 +23,21 @@ class MainTabBarController: UITabBarController {
     
 
     func loadTabBar() {
-        let c1=UIStoryboard(name: "MyDevices", bundle: nil).instantiateInitialViewController() as! MyDevicesController
-        c1.tabBarItem.title="我的设备"
-        c1.tabBarItem.image=UIImage(named: "bar_normal_0")
-        c1.tabBarItem.selectedImage=UIImage(named: "bar_select_0")
-        let nav1=UINavigationController(rootViewController: c1)
+        let mainViewController = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
+        let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController
+        
+        leftViewController.mainViewController=mainViewController
+        let nvc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        
+        
+        let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
+        slideMenuController.delegate = mainViewController
+        
+        slideMenuController.tabBarItem.title="我的设备"
+        slideMenuController.tabBarItem.image=UIImage(named: "bar_normal_0")
+        slideMenuController.tabBarItem.selectedImage=UIImage(named: "bar_select_0")
+        
+        
         
         let c2=WebShopController()
         c2.tabBarItem.title="商城"
@@ -46,10 +56,23 @@ class MainTabBarController: UITabBarController {
         c4.tabBarItem.selectedImage=UIImage(named: "bar_select_3")
         let nav4=UINavigationController(rootViewController: c4)
         
-        self.viewControllers=[nav1,c2,c3,nav4]
+        self.viewControllers=[slideMenuController,c2,c3,nav4]
+        
+        
     }
     // MARK: - Navigation
-
+    
+    override func viewWillLayoutSubviews() {
+        let height:CGFloat = CGFloat(LoginManager.isChinese_Simplified ? height_tabBar:0)
+        
+        var tabFrame = self.tabBar.frame
+        tabFrame.size.height = height
+        tabFrame.origin.y = self.view.frame.size.height - height
+        self.tabBar.frame = tabFrame
+        if height==0 {
+            self.tabBar.isHidden=true
+        }
+    }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
