@@ -19,6 +19,16 @@ class MyDevicesController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    @IBAction func addDeviceClick(_ sender: AnyObject) {
+        let addDeviceNav=UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNav") as! UINavigationController
+        //let rootController = addDeviceNav.viewControllers[0] as! SelectDeviceTableController
+        //rootController.delegate=self
+        weak var weakSelf=self
+        self.present(addDeviceNav, animated: false) {
+            weakSelf?.closeLeft()
+        }
+        
+    }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -45,7 +55,6 @@ class MyDevicesController: UIViewController {
     */
 
 }
-
 extension MyDevicesController : SlideMenuControllerDelegate {
     
     func leftWillOpen() {

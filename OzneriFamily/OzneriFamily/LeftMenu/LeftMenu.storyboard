@@ -149,9 +149,65 @@
             </objects>
             <point key="canvasLocation" x="-1399.2" y="44.527736131934034"/>
         </scene>
+        <!--选择设备-->
+        <scene sceneID="hgc-yG-rVO">
+            <objects>
+                <tableViewController hidesBottomBarWhenPushed="YES" id="2mp-a1-EtH" customClass="SelectDeviceTableController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oO6-0V-GqE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.68360894920000004" green="0.87675398589999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectCellID" id="txL-YU-Yan">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="txL-YU-Yan" id="n5r-jj-jbp">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2mp-a1-EtH" id="2SU-zj-zMz"/>
+                            <outlet property="delegate" destination="2mp-a1-EtH" id="J7m-1q-A9K"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="选择设备" id="MRI-Av-y0l">
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="wHs-hm-n0w">
+                            <connections>
+                                <action selector="backClick:" destination="2mp-a1-EtH" id="8Sb-M9-7oQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SIG-SI-pcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-358" y="705"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rkx-zM-n4h">
+            <objects>
+                <navigationController storyboardIdentifier="LeftMenuNav" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ZSQ-wJ-Jrq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b1j-a6-wZb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2mp-a1-EtH" kind="relationship" relationship="rootViewController" id="lLA-eT-ytU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="saj-ZW-KBk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1199.2" y="728.18590704647681"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icon_add_device_btn" width="86" height="86"/>
+        <image name="icon_back" width="10" height="21"/>
         <image name="icon_buble_add_device" width="113" height="110"/>
         <image name="icon_no_device_logo" width="255" height="255"/>
     </resources>

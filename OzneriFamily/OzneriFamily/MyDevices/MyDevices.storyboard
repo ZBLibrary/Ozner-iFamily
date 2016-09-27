@@ -48,14 +48,29 @@
                                     <constraint firstAttribute="height" constant="44" id="zWE-s1-yx0"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8O-IK-nkz">
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.4431372549" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Zm9-Tz-Ryp"/>
+                                    <constraint firstAttribute="width" constant="80" id="czy-Jc-yjg"/>
+                                </constraints>
+                                <state key="normal" title="添加新设备">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addDeviceClick:" destination="ckL-4d-ktC" eventType="touchUpInside" id="d9S-Ob-xOx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="d8O-IK-nkz" secondAttribute="bottom" constant="30" id="9rM-ac-yUH"/>
                             <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="DOi-Yu-rVo" secondAttribute="bottom" id="AyK-Lo-9la"/>
                             <constraint firstItem="Sgw-je-ShT" firstAttribute="top" secondItem="oIP-dQ-VF9" secondAttribute="bottom" id="IjQ-ME-TfS"/>
                             <constraint firstItem="DOi-Yu-rVo" firstAttribute="top" secondItem="zJ2-FC-Lhq" secondAttribute="top" id="cq4-Tb-3yC"/>
                             <constraint firstAttribute="trailing" secondItem="DOi-Yu-rVo" secondAttribute="trailing" id="n2c-gh-Aoo"/>
                             <constraint firstAttribute="trailing" secondItem="Sgw-je-ShT" secondAttribute="trailing" id="pQE-Gs-6Ie"/>
+                            <constraint firstItem="d8O-IK-nkz" firstAttribute="centerX" secondItem="zJ2-FC-Lhq" secondAttribute="centerX" id="qXo-jG-N2K"/>
                             <constraint firstItem="Sgw-je-ShT" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="uQw-XS-WPe"/>
                             <constraint firstItem="DOi-Yu-rVo" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="wRX-Qz-ebK"/>
                         </constraints>

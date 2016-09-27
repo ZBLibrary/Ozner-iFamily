@@ -7,14 +7,26 @@
 //
 
 import UIKit
-
+enum OznerLeftMenu: Int {
+    case main = 0
+    case addDevice
+}
+//protocol OznerLeftMenuProtocol : class {
+//    func changeViewController(_ menu: OznerLeftMenu)
+//}
 class LeftMenuController: UIViewController {
 
-    var mainViewController: UIViewController!
+    
+    var mainViewController: MyDevicesController!
     //无设备时添加按钮和显示界面
     //添加设备
     @IBAction func AddDeviceClick(_ sender: UIButton) {
-        self.slideMenuController()?.closeLeft()
+        let addDeviceNav=UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNav") as! UINavigationController
+        //let rootController = addDeviceNav.viewControllers[0] as! SelectDeviceTableController
+        weak var weakSelf=self
+        self.present(addDeviceNav, animated: false) {
+            weakSelf?.closeLeft()
+        }
     }
     @IBOutlet var noDeviceViewContainer: UIView!
     //有设备设备表
@@ -25,6 +37,7 @@ class LeftMenuController: UIViewController {
         tableContainer.isHidden=true
         self.tableView.delegate=self
         self.tableView.dataSource=self
+       
         // Do any additional setup after loading the view.
     }
 

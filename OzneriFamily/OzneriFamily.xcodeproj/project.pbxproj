@@ -33,6 +33,7 @@
 		8DAE80631D9A0CB200A9946F /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8DAE805F1D9A0CB200A9946F /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8DAE806B1D9A600900A9946F /* LeftMenuDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80691D9A600900A9946F /* LeftMenuDeviceCell.swift */; };
 		8DAE806C1D9A600900A9946F /* LeftMenuDeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DAE806A1D9A600900A9946F /* LeftMenuDeviceCell.xib */; };
+		8DAE80721D9A85EC00A9946F /* SelectDeviceTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80711D9A85EC00A9946F /* SelectDeviceTableController.swift */; };
 		8DF78D611D94DBEB002C4202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DF78D601D94DBEB002C4202 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +106,7 @@
 		8DAE805F1D9A0CB200A9946F /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		8DAE80691D9A600900A9946F /* LeftMenuDeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuDeviceCell.swift; sourceTree = "<group>"; };
 		8DAE806A1D9A600900A9946F /* LeftMenuDeviceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuDeviceCell.xib; sourceTree = "<group>"; };
+		8DAE80711D9A85EC00A9946F /* SelectDeviceTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDeviceTableController.swift; sourceTree = "<group>"; };
 		8DF78D601D94DBEB002C4202 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C704BF1A0D2ADD5B7874B6A /* Pods-OzneriFamily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.debug.xcconfig"; sourceTree = "<group>"; };
 		DBB08E966F838D15B4582606 /* Pods-OzneriFamily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.release.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.release.xcconfig"; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				8DAE80521D9A097800A9946F /* Source */,
 				8D92F66E1D95346E0068A40A /* LeftMenuController.swift */,
 				8D92F6701D9534890068A40A /* LeftMenu.storyboard */,
+				8DAE80711D9A85EC00A9946F /* SelectDeviceTableController.swift */,
 			);
 			path = LeftMenu;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				8D92F6561D94FA700068A40A /* WebShopController.swift in Sources */,
 				8D1EF3881D93DE050009D034 /* AppDelegate.swift in Sources */,
 				8D2666E61D98F08C0028CB33 /* NetworkManager.swift in Sources */,
+				8DAE80721D9A85EC00A9946F /* SelectDeviceTableController.swift in Sources */,
 				8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */,
 				8D92F65C1D94FAE40068A40A /* CounselingController.swift in Sources */,
 				8D92F6541D94F9670068A40A /* MyCenterController.swift in Sources */,

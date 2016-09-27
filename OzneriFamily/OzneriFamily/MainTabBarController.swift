@@ -24,9 +24,11 @@ class MainTabBarController: UITabBarController {
 
     func loadTabBar() {
         let mainViewController = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
-        let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController
         
+        let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController 
         leftViewController.mainViewController=mainViewController
+
+        //mainViewController.leftMenuController=leftViewController
         let nvc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateInitialViewController() as! UINavigationController
         
         
