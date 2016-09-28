@@ -8,15 +8,66 @@
 
 import UIKit
 
-class CounselingController: UIViewController {
+class CounselingController: ZHCMessagesViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        initNavarionBar()
-        
+        initNavarionBar()        
 
+    }
+    
+    // MARK: - ZHCMessagesTableViewDataSource
+    
+    override func senderDisplayName() -> String {
+        return "Jobs"
+    }
+    
+    override func senderId() -> String {
+        return "707-8956784-57"
+    }
+    
+//    override func tableView(_ tableView: ZHCMessagesTableView, messageDataForCellAt indexPath: IndexPath) -> ZHCMessageData {
+//        
+//        return ZHCMessageData.self as! ZHCMessageData
+//    }
+//    
+    override func tableView(_ tableView: ZHCMessagesTableView, didDeleteMessageAt indexPath: IndexPath) {
+        
+        //删除聊天记录
+        
+    }
+    
+   
+    
+    override func tableView(_ tableView: ZHCMessagesTableView, didTapAvatarImageView avatarImageView: UIImageView, at indexPath: IndexPath) {
+        
+        
+    }
+    
+    
+    // MARK: - ZHCMessagesMoreViewDataSource
+    override func messagesMoreViewTitles(_ moreView: ZHCMessagesMoreView) -> [Any] {
+        
+        return ["相机","照片"]
+    }
+    
+    override func messagesMoreViewImgNames(_ moreView: ZHCMessagesMoreView) -> [Any] {
+        
+        return ["chat_bar_icons_camera","chat_bar_icons_pic"]
+    }
+    
+    override func messagesMoreView(_ moreView: ZHCMessagesMoreView, selectedMoreViewItemWith index: Int) {
+        
+        switch index {
+        case 0:
+            print("相机")
+        case 1:
+            print("照片")
+        default:
+            break
+        }
+        
     }
     
     private func initNavarionBar() {
@@ -46,16 +97,8 @@ class CounselingController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
+
