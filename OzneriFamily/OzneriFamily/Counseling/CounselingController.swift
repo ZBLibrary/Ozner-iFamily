@@ -12,9 +12,34 @@ class CounselingController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        initNavarionBar()
+        
 
-        self.view.backgroundColor=UIColor.blue
-        // Do any additional setup after loading the view.
+    }
+    
+    private func initNavarionBar() {
+        
+        self.title = "咨询"
+        self.view.backgroundColor = UIColor.white
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"CallPhoneImage"), style: UIBarButtonItemStyle.done, target: self, action: #selector(CounselingController.phoneCallAction))
+        
+    }
+    
+    func phoneCallAction() {
+        
+        //直接拨打
+//        UIApplication.shared.openURL(URL(string: "tel:4008202667")!)
+        
+        let callWebView = UIWebView()
+        
+        callWebView.loadRequest(URLRequest(url: URL(string: "tel:4008202667")!))
+        
+        view.addSubview(callWebView)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
