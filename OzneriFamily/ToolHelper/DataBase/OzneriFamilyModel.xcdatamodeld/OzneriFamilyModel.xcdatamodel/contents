@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="BaseDataObject" syncable="YES">
+    <entity name="BaseDataObject" representedClassName=".BaseDataObject" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="User" parentEntity="BaseDataObject" syncable="YES">
+    <entity name="User" representedClassName=".User" parentEntity="BaseDataObject" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="headimage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="usertoken" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BaseDataObject" positionX="-45" positionY="0" width="128" height="60"/>
-        <element name="User" positionX="-18" positionY="120" width="128" height="105"/>
+        <element name="BaseDataObject" positionX="-45" positionY="0" width="128" height="58"/>
+        <element name="User" positionX="-18" positionY="120" width="128" height="118"/>
     </elements>
 </model>

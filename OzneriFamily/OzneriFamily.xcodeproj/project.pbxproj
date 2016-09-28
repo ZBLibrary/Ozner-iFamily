@@ -12,7 +12,6 @@
 		8D1EF39F1D93DE050009D034 /* OzneriFamilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF39E1D93DE050009D034 /* OzneriFamilyTests.swift */; };
 		8D1EF3AA1D93DE050009D034 /* OzneriFamilyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3A91D93DE050009D034 /* OzneriFamilyUITests.swift */; };
 		8D1EF3C51D93F01F0009D034 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */; };
-		8D2666E61D98F08C0028CB33 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2666E51D98F08C0028CB33 /* NetworkManager.swift */; };
 		8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F64F1D94F6850068A40A /* LanguageHelper.swift */; };
 		8D92F6521D94F8480068A40A /* MyCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F6511D94F8480068A40A /* MyCenter.storyboard */; };
 		8D92F6541D94F9670068A40A /* MyCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F6531D94F9670068A40A /* MyCenterController.swift */; };
@@ -35,6 +34,13 @@
 		8DAE806C1D9A600900A9946F /* LeftMenuDeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DAE806A1D9A600900A9946F /* LeftMenuDeviceCell.xib */; };
 		8DAE80721D9A85EC00A9946F /* SelectDeviceTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80711D9A85EC00A9946F /* SelectDeviceTableController.swift */; };
 		8DAE80831D9B6DD400A9946F /* OzneriFamilyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80811D9B6DD400A9946F /* OzneriFamilyModel.xcdatamodeld */; };
+		8DAE80861D9B915A00A9946F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80841D9B915A00A9946F /* NetworkManager.swift */; };
+		8DAE80871D9B915A00A9946F /* NetworkConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DAE80851D9B915A00A9946F /* NetworkConfig.plist */; };
+		8DAE80891D9B992B00A9946F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80881D9B992B00A9946F /* CoreDataManager.swift */; };
+		8DAE80911D9B9A3E00A9946F /* BaseDataObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE808F1D9B9A3E00A9946F /* BaseDataObject+CoreDataClass.swift */; };
+		8DAE80921D9B9A3E00A9946F /* BaseDataObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80901D9B9A3E00A9946F /* BaseDataObject+CoreDataProperties.swift */; };
+		8DAE80951D9BC51D00A9946F /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80931D9BC51D00A9946F /* User+CoreDataClass.swift */; };
+		8DAE80961D9BC51D00A9946F /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80941D9BC51D00A9946F /* User+CoreDataProperties.swift */; };
 		8DF78D611D94DBEB002C4202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DF78D601D94DBEB002C4202 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -83,7 +89,6 @@
 		8D1EF3AB1D93DE050009D034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1EF3B71D93DED50009D034 /* OzneriFamily-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OzneriFamily-Bridging-Header.h"; sourceTree = "<group>"; };
 		8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		8D2666E51D98F08C0028CB33 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8D92F64F1D94F6850068A40A /* LanguageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
 		8D92F6511D94F8480068A40A /* MyCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyCenter.storyboard; sourceTree = "<group>"; };
 		8D92F6531D94F9670068A40A /* MyCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCenterController.swift; sourceTree = "<group>"; };
@@ -109,6 +114,13 @@
 		8DAE806A1D9A600900A9946F /* LeftMenuDeviceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuDeviceCell.xib; sourceTree = "<group>"; };
 		8DAE80711D9A85EC00A9946F /* SelectDeviceTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDeviceTableController.swift; sourceTree = "<group>"; };
 		8DAE80821D9B6DD400A9946F /* OzneriFamilyModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OzneriFamilyModel.xcdatamodel; sourceTree = "<group>"; };
+		8DAE80841D9B915A00A9946F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		8DAE80851D9B915A00A9946F /* NetworkConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NetworkConfig.plist; sourceTree = "<group>"; };
+		8DAE80881D9B992B00A9946F /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		8DAE808F1D9B9A3E00A9946F /* BaseDataObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseDataObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8DAE80901D9B9A3E00A9946F /* BaseDataObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseDataObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8DAE80931D9BC51D00A9946F /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8DAE80941D9BC51D00A9946F /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8DF78D601D94DBEB002C4202 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C704BF1A0D2ADD5B7874B6A /* Pods-OzneriFamily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.debug.xcconfig"; sourceTree = "<group>"; };
 		DBB08E966F838D15B4582606 /* Pods-OzneriFamily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.release.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +174,8 @@
 		8D10ECED1D98BC5B001BAC77 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				8DAE808E1D9B9A3E00A9946F /* Model */,
+				8DAE80881D9B992B00A9946F /* CoreDataManager.swift */,
 				8DAE80811D9B6DD400A9946F /* OzneriFamilyModel.xcdatamodeld */,
 			);
 			path = DataBase;
@@ -170,7 +184,8 @@
 		8D10ECEE1D98BC5B001BAC77 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				8D2666E51D98F08C0028CB33 /* NetworkManager.swift */,
+				8DAE80841D9B915A00A9946F /* NetworkManager.swift */,
+				8DAE80851D9B915A00A9946F /* NetworkConfig.plist */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -353,6 +368,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8DAE808E1D9B9A3E00A9946F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8DAE80931D9BC51D00A9946F /* User+CoreDataClass.swift */,
+				8DAE80941D9BC51D00A9946F /* User+CoreDataProperties.swift */,
+				8DAE808F1D9B9A3E00A9946F /* BaseDataObject+CoreDataClass.swift */,
+				8DAE80901D9B9A3E00A9946F /* BaseDataObject+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -471,6 +497,7 @@
 			files = (
 				8DF78D611D94DBEB002C4202 /* Assets.xcassets in Resources */,
 				8D92F6611D95252E0068A40A /* Localizable.strings in Resources */,
+				8DAE80871D9B915A00A9946F /* NetworkConfig.plist in Resources */,
 				8D92F65A1D94FAC70068A40A /* MyDevices.storyboard in Resources */,
 				8D92F6521D94F8480068A40A /* MyCenter.storyboard in Resources */,
 				8D92F6711D9534890068A40A /* LeftMenu.storyboard in Resources */,
@@ -549,17 +576,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DAE80891D9B992B00A9946F /* CoreDataManager.swift in Sources */,
+				8DAE80911D9B9A3E00A9946F /* BaseDataObject+CoreDataClass.swift in Sources */,
 				8D92F6561D94FA700068A40A /* WebShopController.swift in Sources */,
 				8D1EF3881D93DE050009D034 /* AppDelegate.swift in Sources */,
-				8D2666E61D98F08C0028CB33 /* NetworkManager.swift in Sources */,
 				8DAE80721D9A85EC00A9946F /* SelectDeviceTableController.swift in Sources */,
 				8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */,
 				8D92F65C1D94FAE40068A40A /* CounselingController.swift in Sources */,
 				8D92F6541D94F9670068A40A /* MyCenterController.swift in Sources */,
 				8DAE80571D9A097800A9946F /* SlideMenuController.swift in Sources */,
+				8DAE80861D9B915A00A9946F /* NetworkManager.swift in Sources */,
+				8DAE80961D9BC51D00A9946F /* User+CoreDataProperties.swift in Sources */,
+				8DAE80921D9B9A3E00A9946F /* BaseDataObject+CoreDataProperties.swift in Sources */,
 				8D1EF3C51D93F01F0009D034 /* MainTabBarController.swift in Sources */,
 				8D92F6581D94FAB00068A40A /* MyDevicesController.swift in Sources */,
 				8D92F65E1D9510450068A40A /* GloabConfig.swift in Sources */,
+				8DAE80951D9BC51D00A9946F /* User+CoreDataClass.swift in Sources */,
 				8D92F66F1D95346E0068A40A /* LeftMenuController.swift in Sources */,
 				8DAE80831D9B6DD400A9946F /* OzneriFamilyModel.xcdatamodeld in Sources */,
 				8DAE806B1D9A600900A9946F /* LeftMenuDeviceCell.swift in Sources */,
