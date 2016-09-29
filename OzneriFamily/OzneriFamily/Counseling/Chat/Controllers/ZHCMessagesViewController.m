@@ -525,7 +525,10 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     
     ZHCMessagesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.delegate = tableView;
-    [cell applyLayoutAttributes];
+        ZHCMessage *message = (ZHCMessage *)[tableView.dataSource tableView:tableView messageDataForCellAtIndexPath:indexPath];
+        CGSize size = [self.bubbleSizeCalculator messageBubbleSizeForMessageData:message atIndexPath:indexPath withTableView:tableView];
+
+    [cell applyLayoutAttributes:size.width];
     if (!isMediaMessage) {
         cell.textView.text = [messagecell text];
         NSParameterAssert(cell.textView.text != nil);
@@ -580,6 +583,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     }else{
         cell.messageBubbleTopLabel.textInsets = UIEdgeInsetsMake(0.0f, bubbleTopLableInset, 0.0f, 0.0f);
     }
+
     cell.textView.dataDetectorTypes = UIDataDetectorTypeAll;
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor whiteColor];

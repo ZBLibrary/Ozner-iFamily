@@ -160,7 +160,7 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
 }
 
 #pragma mark - Update All Constraints
--(void)applyLayoutAttributes
+-(void)applyLayoutAttributes:(CGFloat)width
 {
    
     NSAssert(self.delegate != nil, @"cellDelegate Can not is nill");
@@ -181,10 +181,13 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     
     
     [self zhc_updateConstraint:self.avatarContainerViewHorizontallyWithSuperViewConstraint withConstant:attributes.messageAvatarHorizontallySpaceWithSuperView];
-    [self zhc_updateConstraint:self.messageBubbleContainerWidth withConstant:attributes.messageBubbleContainerViewWidth];
+    //调整图片的宽度
+    [self zhc_updateConstraint:self.messageBubbleContainerWidth withConstant:width + 5];
     [self zhc_updateConstraint:self.messageBubbleContainerSpaceWithAvatarView withConstant:attributes.messageBubbleSpaceWithAvatar];
-    
+
+    //cell文字的内侧距离
     [self zhc_updateConstraint:self.textViewAvatarHorizontalSpaceConstraint withConstant:attributes.textViewTextFrameInsets.right];
+
     [self zhc_updateConstraint:self.textViewTopVerticalSpaceConstraint withConstant:attributes.textViewTextFrameInsets.top];
     [self zhc_updateConstraint:self.textViewBottomVerticalSpaceConstraint withConstant:attributes.textViewTextFrameInsets.bottom];
     [self zhc_updateConstraint:self.textViewMarginHorizontalSpaceConstraint withConstant:attributes.textViewTextFrameInsets.left];
@@ -414,6 +417,7 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
 
 - (void)zhc_updateConstraint:(NSLayoutConstraint *)constraint withConstant:(CGFloat)constant
 {
+    NSLog(@"%f",constant);
     if (constraint.constant == constant) {
         return;
     }

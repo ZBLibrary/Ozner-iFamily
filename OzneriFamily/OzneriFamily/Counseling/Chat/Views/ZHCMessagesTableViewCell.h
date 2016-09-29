@@ -208,7 +208,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Update layout
  */
--(void)applyLayoutAttributes;
+-(void)applyLayoutAttributes:(CGFloat)width;
 
 
 /**

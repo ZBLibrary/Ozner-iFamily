@@ -96,6 +96,9 @@
        
       CGRect stringRect = [[messageData text]boundingRectWithSize:CGSizeMake(maxTextViewWidth, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{ NSFontAttributeName : attributes.messageBubbleFont } context:nil];
         
+//        CGRect stringRect2 = [[messageData text]boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin) attributes:@{ NSFontAttributeName : attributes.messageBubbleFont } context:nil];
+        NSLog(@"%f,%f",stringRect.size.width,stringRect.size.height);
+        
 //        ZHCMessagesTableViewCell *cell = [tableView messageTableViewDequeueReusableCellWithIndexPath:indexPath];
 //        cell.textView.font = attributes.messageBubbleFont;
 //        CGSize stringSize = [cell.textView sizeThatFits:CGSizeMake(maxTextViewWidth, CGFLOAT_MAX)];
