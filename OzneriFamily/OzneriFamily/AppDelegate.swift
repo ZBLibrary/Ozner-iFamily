@@ -16,24 +16,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? = {
         return UIWindow(frame: UIScreen.main.bounds)
     }()
+    lazy var loginViewController: LoginViewController = {
+        
+        return    UIStoryboard(name: "Login+Register+Guiding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+    }()
     //主视图控制器
     var mainTabBarController: MainTabBarController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        print("是第一次打开app？:"+LoginManager.isFristOpenApp.description)
-        print("当前app:"+LoginManager.currentApp.rawValue)
-        //print("当前登陆方式:"+LoginManager.currentLoginType.rawValue)
-        print("当前语言环境是中文简体？:"+LoginManager.isChinese_Simplified.description)//
-        mainTabBarController=MainTabBarController()
-        window?.rootViewController = mainTabBarController
+        
+        window?.rootViewController = LoginManager.isFristOpenApp ? JCRootViewController(last: loginViewController):loginViewController
         window!.makeKeyAndVisible()
         return true
     }
     //退出登录
     func LoginOut()
     {
-        
+        if appDelegate.mainTabBarController != nil{
+            
+            appDelegate.mainTabBarController?.dismiss(animated: true, completion: nil)
+            appDelegate.mainTabBarController = nil
+        }
         //清理用户文件
+        NetworkManager.clearCookies()
+        CoreDataManager.defaultManager = nil
+        
     }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

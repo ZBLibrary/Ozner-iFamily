@@ -81,7 +81,9 @@ class NetworkManager:NSObject{
                                            failure: ((Error) -> Void)?) -> URLSessionDataTask? {
         // 添加固定参数token
         let tmpParameters = NSMutableDictionary(dictionary: POSTParameters ?? NSDictionary())
-        //tmpParameters.setObject(userToken, forKey: "UserToken")
+        if userToken != nil {
+            tmpParameters.setValue(userToken, forKey: "usertoken")
+        }
         return manager.post(RootAdress+SubAddress[key]!, parameters: tmpParameters, constructingBodyWith: block, progress: progress, success: { (operation, data) in
             self.handleSuccess(operation: operation, data: data as! Data, success: success, failure: failure)
             }) { (operation, error) in
@@ -122,6 +124,23 @@ class NetworkManager:NSObject{
         manager.responseSerializer = AFHTTPResponseSerializer()
         return manager
         }()
+    /**
+     清理cookies和当前用户信息
+     */
+    class func clearCookies() {
+        let storage = HTTPCookieStorage.shared//as! [NSHTTPCookie]
+        for cookie in (storage.cookies)! {
+            storage.deleteCookie(cookie)
+        }
+        UserDefaults.standard.removeObject(forKey: UserDefaultsUserTokenKey)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsUserIDKey)
+        UserDefaults.standard.synchronize()
+        URLCache.shared.removeAllCachedResponses()
+    }
+    var userToken:String?{
+        return UserDefaults.standard.object(forKey: UserDefaultsUserTokenKey) as! String?
+    
+    }
     /**
      获取错误的中文描述
      

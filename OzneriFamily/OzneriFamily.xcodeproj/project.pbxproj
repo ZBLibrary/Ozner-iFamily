@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */; };
+		8D117C111D9CDEE30024187E /* Login+Register+Guiding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D117C101D9CDEE30024187E /* Login+Register+Guiding.storyboard */; };
+		8D117C221D9CFB0D0024187E /* JCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D117C1F1D9CFB0D0024187E /* JCRootViewController.m */; };
+		8D117C231D9CFB0D0024187E /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D117C211D9CFB0D0024187E /* ModelController.m */; };
+		8D117C271D9D06730024187E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D117C261D9D06730024187E /* LoginViewController.swift */; };
 		8D1EF3881D93DE050009D034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3871D93DE050009D034 /* AppDelegate.swift */; };
 		8D1EF39F1D93DE050009D034 /* OzneriFamilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF39E1D93DE050009D034 /* OzneriFamilyTests.swift */; };
 		8D1EF3AA1D93DE050009D034 /* OzneriFamilyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3A91D93DE050009D034 /* OzneriFamilyUITests.swift */; };
@@ -78,9 +82,15 @@
 
 /* Begin PBXFileReference section */
 		3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OzneriFamily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D117C101D9CDEE30024187E /* Login+Register+Guiding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Login+Register+Guiding.storyboard"; sourceTree = "<group>"; };
+		8D117C1E1D9CFB0D0024187E /* JCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCRootViewController.h; sourceTree = "<group>"; };
+		8D117C1F1D9CFB0D0024187E /* JCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCRootViewController.m; sourceTree = "<group>"; };
+		8D117C201D9CFB0D0024187E /* ModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelController.h; sourceTree = "<group>"; };
+		8D117C211D9CFB0D0024187E /* ModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelController.m; sourceTree = "<group>"; };
+		8D117C261D9D06730024187E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8D1EF3841D93DE050009D034 /* OzneriFamily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OzneriFamily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1EF3871D93DE050009D034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8D1EF3951D93DE050009D034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D1EF3951D93DE050009D034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = OzneriFamily/Info.plist; sourceTree = "<group>"; };
 		8D1EF39A1D93DE050009D034 /* OzneriFamilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OzneriFamilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1EF39E1D93DE050009D034 /* OzneriFamilyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzneriFamilyTests.swift; sourceTree = "<group>"; };
 		8D1EF3A01D93DE050009D034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -190,6 +200,35 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		8D117C0F1D9CDEB00024187E /* Login+Register+Guiding */ = {
+			isa = PBXGroup;
+			children = (
+				8D117C101D9CDEE30024187E /* Login+Register+Guiding.storyboard */,
+				8D117C261D9D06730024187E /* LoginViewController.swift */,
+				8D117C1D1D9CFB020024187E /* Guiding */,
+				8D117C161D9CE58A0024187E /* View */,
+			);
+			path = "Login+Register+Guiding";
+			sourceTree = "<group>";
+		};
+		8D117C161D9CE58A0024187E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8D117C1D1D9CFB020024187E /* Guiding */ = {
+			isa = PBXGroup;
+			children = (
+				8D117C1E1D9CFB0D0024187E /* JCRootViewController.h */,
+				8D117C1F1D9CFB0D0024187E /* JCRootViewController.m */,
+				8D117C201D9CFB0D0024187E /* ModelController.h */,
+				8D117C211D9CFB0D0024187E /* ModelController.m */,
+			);
+			path = Guiding;
+			sourceTree = "<group>";
+		};
 		8D1EF37B1D93DE050009D034 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +237,7 @@
 				8D1EF3B71D93DED50009D034 /* OzneriFamily-Bridging-Header.h */,
 				8D1EF3BB1D93DFE30009D034 /* ToolHelper */,
 				8D1EF3861D93DE050009D034 /* OzneriFamily */,
+				8D1EF3951D93DE050009D034 /* Info.plist */,
 				8D1EF39D1D93DE050009D034 /* OzneriFamilyTests */,
 				8D1EF3A81D93DE050009D034 /* OzneriFamilyUITests */,
 				8D1EF3851D93DE050009D034 /* Products */,
@@ -221,9 +261,8 @@
 			children = (
 				8D1EF3871D93DE050009D034 /* AppDelegate.swift */,
 				8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */,
-				8D1EF3951D93DE050009D034 /* Info.plist */,
+				8D117C0F1D9CDEB00024187E /* Login+Register+Guiding */,
 				8D92F66D1D9534400068A40A /* LeftMenu */,
-				8D1EF3BD1D93E1670009D034 /* Login+Register+Guiding */,
 				8D1EF3C21D93E3F20009D034 /* MyDevices */,
 				8D1EF3C31D93E3F20009D034 /* WebShop */,
 				8D1EF3C01D93E3F20009D034 /* Counseling */,
@@ -267,13 +306,6 @@
 				8DF78D601D94DBEB002C4202 /* Assets.xcassets */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		8D1EF3BD1D93E1670009D034 /* Login+Register+Guiding */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Login+Register+Guiding";
 			sourceTree = "<group>";
 		};
 		8D1EF3C01D93E3F20009D034 /* Counseling */ = {
@@ -504,6 +536,7 @@
 				8D92F6681D9526460068A40A /* InfoPlist.strings in Resources */,
 				8DAE80561D9A097800A9946F /* Info.plist in Resources */,
 				8DAE806C1D9A600900A9946F /* LeftMenuDeviceCell.xib in Resources */,
+				8D117C111D9CDEE30024187E /* Login+Register+Guiding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,11 +612,14 @@
 				8DAE80891D9B992B00A9946F /* CoreDataManager.swift in Sources */,
 				8DAE80911D9B9A3E00A9946F /* BaseDataObject+CoreDataClass.swift in Sources */,
 				8D92F6561D94FA700068A40A /* WebShopController.swift in Sources */,
+				8D117C221D9CFB0D0024187E /* JCRootViewController.m in Sources */,
 				8D1EF3881D93DE050009D034 /* AppDelegate.swift in Sources */,
+				8D117C231D9CFB0D0024187E /* ModelController.m in Sources */,
 				8DAE80721D9A85EC00A9946F /* SelectDeviceTableController.swift in Sources */,
 				8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */,
 				8D92F65C1D94FAE40068A40A /* CounselingController.swift in Sources */,
 				8D92F6541D94F9670068A40A /* MyCenterController.swift in Sources */,
+				8D117C271D9D06730024187E /* LoginViewController.swift in Sources */,
 				8DAE80571D9A097800A9946F /* SlideMenuController.swift in Sources */,
 				8DAE80861D9B915A00A9946F /* NetworkManager.swift in Sources */,
 				8DAE80961D9BC51D00A9946F /* User+CoreDataProperties.swift in Sources */,

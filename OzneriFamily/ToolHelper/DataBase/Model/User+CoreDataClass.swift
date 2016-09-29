@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-
+//import SwiftyJSON
 let UserDefaultsUserTokenKey = "usertoken"
 let UserDefaultsUserIDKey = "userid"
 let CurrentUserDidChangeNotificationName = "CurrentUserDidChangeNotificationName"
@@ -22,24 +22,19 @@ public class User: BaseDataObject {
             }
         }
     }
-    //检查是否自动登录
+    //检查是否需要自动登录
     class func loginWithLocalUserInfo(success: ((User) -> Void)?, failure: ((NSError) -> Void)?) {
         
         let UserToken = UserDefaults.standard.object(forKey: UserDefaultsUserTokenKey) as? NSString
         let UserID = UserDefaults.standard.object(forKey: UserDefaultsUserIDKey) as? NSString
         var error: NSError? = nil
         if UserToken == nil || UserID==nil  {
-            let userInfo = [
-                NSLocalizedDescriptionKey: "本地usertoken或UserID不存在不存在",
-                NSLocalizedFailureReasonErrorKey: ""
-            ]
-            failure?(NSError(
-                domain: (NetworkManager.defaultManager?.RootAdress)!,
-                code: (NetworkManager.defaultManager?.TokenFailed)!,
-                userInfo: userInfo))
+            
+            failure?(NSError())
             
         } else {
             if let user = CoreDataManager.defaultManager.fetch(entityName: "User", ID: UserID!, error: &error) as? User {
+                User.currentUser=user
                 success?(user)
             } else {
                 let userInfo: NSMutableDictionary = [
@@ -58,41 +53,31 @@ public class User: BaseDataObject {
             }
         }
     }
-//    //登录
-//    class func loginWithPhone(phone: String, password: String, success: ((User) -> Void)?, failure: ((NSError) -> Void)?) {
-//        NetworkManager.clearCookies()
-//        NetworkManager.defaultManager!.POST("AppLogin",
-//                                            parameters: [
-//                                                "phone": phone,
-//                                                "password": password
-//            ],
-//                                            success: {
-//                                                data in
-//                                                let defaults = NSUserDefaults.standardUserDefaults()
-//                                                defaults.setObject(data["msg"].stringValue, forKey: UserDefaultsUserTokenKey)
-//                                                defaults.setObject(data["data"].stringValue, forKey: UserDefaultsUserIDKey)
-//                                                //保存账号密码
-//                                                NSUserDefaults.standardUserDefaults().setValue(phone, forKey: "UserName")
-//                                                NSUserDefaults.standardUserDefaults().setValue(password, forKey: "PassWord")
-//                                                
-//                                                let user = User.cachedObjectWithID(data["data"].stringValue)
-//                                                user.id =  data["data"].stringValue//userId
-//                                                user.usertoken = data["msg"].stringValue//usertoken
-//                                                
-//                                                
-//                                                defaults.synchronize()
-//                                                loginWithLocalUserInfo(success: success, failure: failure)
-//                                                
-//            },
-//                                            failure: failure)
-//    }
-    class func phoneLogin(phone:String,code:String,success:(()->Void),failure:((Error?)->Void)){
-        let phoneID = UIDevice.current.identifierForVendor?.uuidString
-        let phoneName = UIDevice.current.name
-        self.fetchData(key: "Login", parameters: ["UserName":phone,"PassWord":code,"miei":phoneID,"devicename":phoneName], success: { (json) in
-            
-            }) { (error) in
-                
-        }
+    //手机登录
+    class func loginWithPhone(phone: String, phonecode: String, success: ((User) -> Void)?, failure: ((Error) -> Void)?) {
+        NetworkManager.clearCookies()
+        self.fetchData(key: "Login",
+                       parameters: [
+                        "UserName": phone,
+                        "PassWord": phonecode,
+                        "miei": UIDevice.current.identifierForVendor?.uuidString,
+                        "devicename": UIDevice.current.name
+            ],
+                       success: {
+                        data in
+                        let defaults = UserDefaults.standard
+                        defaults.set(data["usertoken"].stringValue, forKey: UserDefaultsUserTokenKey)
+                        defaults.set(data["userid"].stringValue, forKey: UserDefaultsUserIDKey)
+                        
+                        let user = User.cachedObjectWithID(ID: data["data"].stringValue as NSString)
+                        user.phone = phone
+                        user.id =  data["userid"].stringValue
+                        user.usertoken = data["usertoken"].stringValue     
+                        defaults.synchronize()
+                        loginWithLocalUserInfo(success: success, failure: failure)
+                        
+            },
+                       failure: failure)
     }
+    
 }
