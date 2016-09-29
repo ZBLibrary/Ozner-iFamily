@@ -81,6 +81,10 @@
 		B714DFF21D9CA73B00D5AAC3 /* ZHCMessagesMediaViewBubbleImageMasker.m in Sources */ = {isa = PBXBuildFile; fileRef = B714DFEA1D9CA73B00D5AAC3 /* ZHCMessagesMediaViewBubbleImageMasker.m */; };
 		B714DFF31D9CA73B00D5AAC3 /* ZHCMessagesTimestampFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B714DFEC1D9CA73B00D5AAC3 /* ZHCMessagesTimestampFormatter.m */; };
 		B714DFF41D9CA73B00D5AAC3 /* ZHCMessagesToolbarButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B714DFEE1D9CA73B00D5AAC3 /* ZHCMessagesToolbarButtonFactory.m */; };
+		B714DFF81D9CAF7900D5AAC3 /* GYModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B714DFF71D9CAF7900D5AAC3 /* GYModelData.swift */; };
+		B714DFFD1D9CB13700D5AAC3 /* ZHCModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = B714DFFA1D9CB13700D5AAC3 /* ZHCModelData.m */; };
+		B714DFFE1D9CB13700D5AAC3 /* ZHUseFDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B714DFFC1D9CB13700D5AAC3 /* ZHUseFDModel.m */; };
+		B714E0001D9CD50700D5AAC3 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = B714DFFF1D9CD50700D5AAC3 /* data.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -250,6 +254,12 @@
 		B714DFEC1D9CA73B00D5AAC3 /* ZHCMessagesTimestampFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesTimestampFormatter.m; sourceTree = "<group>"; };
 		B714DFED1D9CA73B00D5AAC3 /* ZHCMessagesToolbarButtonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesToolbarButtonFactory.h; sourceTree = "<group>"; };
 		B714DFEE1D9CA73B00D5AAC3 /* ZHCMessagesToolbarButtonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesToolbarButtonFactory.m; sourceTree = "<group>"; };
+		B714DFF71D9CAF7900D5AAC3 /* GYModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYModelData.swift; sourceTree = "<group>"; };
+		B714DFF91D9CB13700D5AAC3 /* ZHCModelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCModelData.h; sourceTree = "<group>"; };
+		B714DFFA1D9CB13700D5AAC3 /* ZHCModelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCModelData.m; sourceTree = "<group>"; };
+		B714DFFB1D9CB13700D5AAC3 /* ZHUseFDModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHUseFDModel.h; sourceTree = "<group>"; };
+		B714DFFC1D9CB13700D5AAC3 /* ZHUseFDModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHUseFDModel.m; sourceTree = "<group>"; };
+		B714DFFF1D9CD50700D5AAC3 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		DBB08E966F838D15B4582606 /* Pods-OzneriFamily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.release.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -671,6 +681,12 @@
 		B714DFF51D9CA88200D5AAC3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B714DFFF1D9CD50700D5AAC3 /* data.json */,
+				B714DFF91D9CB13700D5AAC3 /* ZHCModelData.h */,
+				B714DFFA1D9CB13700D5AAC3 /* ZHCModelData.m */,
+				B714DFFB1D9CB13700D5AAC3 /* ZHUseFDModel.h */,
+				B714DFFC1D9CB13700D5AAC3 /* ZHUseFDModel.m */,
+				B714DFF71D9CAF7900D5AAC3 /* GYModelData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -799,6 +815,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DF78D611D94DBEB002C4202 /* Assets.xcassets in Resources */,
+				B714E0001D9CD50700D5AAC3 /* data.json in Resources */,
 				8D92F6611D95252E0068A40A /* Localizable.strings in Resources */,
 				8D92F65A1D94FAC70068A40A /* MyDevices.storyboard in Resources */,
 				B714DFB31D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellOutcoming.xib in Resources */,
@@ -900,6 +917,7 @@
 				B714DFAE1D9CA6FA00D5AAC3 /* ZHCMessagesTableView.m in Sources */,
 				B714DFB21D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellOutcoming.m in Sources */,
 				B714DF5F1D9BA9EE00D5AAC3 /* UIView+ZHCMessages.m in Sources */,
+				B714DFF81D9CAF7900D5AAC3 /* GYModelData.swift in Sources */,
 				8D92F6541D94F9670068A40A /* MyCenterController.swift in Sources */,
 				B714DFAB1D9CA6FA00D5AAC3 /* ZHCMessagesMediaPlaceholderView.m in Sources */,
 				B714DFE21D9CA72B00D5AAC3 /* ZHCMessagesTableviewLayoutAttributes.m in Sources */,
@@ -923,6 +941,7 @@
 				B714DFD21D9CA71F00D5AAC3 /* ZHCAudioMediaItem.m in Sources */,
 				B714DFD41D9CA71F00D5AAC3 /* ZHCMediaItem.m in Sources */,
 				B714DFA51D9CA6FA00D5AAC3 /* ZHCMessagesAudioProgressHUD.m in Sources */,
+				B714DFFD1D9CB13700D5AAC3 /* ZHCModelData.m in Sources */,
 				8D92F66F1D95346E0068A40A /* LeftMenuController.swift in Sources */,
 				B714DF601D9BA9EE00D5AAC3 /* ZHCMessagesViewController.m in Sources */,
 				B714DFF31D9CA73B00D5AAC3 /* ZHCMessagesTimestampFormatter.m in Sources */,
@@ -937,6 +956,7 @@
 				B714DFAF1D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCell.m in Sources */,
 				B714DFD31D9CA71F00D5AAC3 /* ZHCLocationMediaItem.m in Sources */,
 				8DAE806B1D9A600900A9946F /* LeftMenuDeviceCell.swift in Sources */,
+				B714DFFE1D9CB13700D5AAC3 /* ZHUseFDModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

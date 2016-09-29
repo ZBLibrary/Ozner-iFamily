@@ -1164,8 +1164,9 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
                      animations:^{
                          //适配咨询的tabbar
                          [self zhc_updateInputViewBottomConstraint:size.height - 64];
+                         //弹出键盘时适配tableView
                          [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-                                                  bottomValue:self.inputMessageBarView.preferredDefaultHeight+size.height];
+                                                  bottomValue:self.inputMessageBarView.preferredDefaultHeight+size.height - 64];
                            [self.view layoutIfNeeded];
                          
                      }

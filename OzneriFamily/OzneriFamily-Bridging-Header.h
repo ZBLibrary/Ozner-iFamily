@@ -6,3 +6,4 @@
 
 #import "ZHCMessagesViewController.h"
 //#import "OzneriFamily-Swift.h"
+#import "ZHCPhotoMediaItem.h"

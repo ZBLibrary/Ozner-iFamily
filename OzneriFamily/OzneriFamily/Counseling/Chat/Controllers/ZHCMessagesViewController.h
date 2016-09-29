@@ -16,7 +16,9 @@
 #import "ZHCMessagesInputToolbar.h"
 #import "ZHCMessagesMoreView.h"
 #import "ZHCMessagesEmojiView.h"
-
+#import "ZHCMessagesBubbleImage.h"
+#import "ZHCModelData.h"
+#import "ZHUseFDModel.h"
 
 
 
