@@ -74,7 +74,7 @@ class CounselingController: ZHCMessagesViewController {
         
         self.title = "咨询"
         self.view.backgroundColor = UIColor.white
-        
+        navigationController?.toolbar.barTintColor = UIColor.white
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"CallPhoneImage"), style: UIBarButtonItemStyle.done, target: self, action: #selector(CounselingController.phoneCallAction))
         
     }

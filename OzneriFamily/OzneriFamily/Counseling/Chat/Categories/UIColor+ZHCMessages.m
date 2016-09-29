@@ -35,10 +35,11 @@
 
 + (UIColor *)zhc_messagesBubbleLightGrayColor
 {
-    return [UIColor colorWithHue:240.0f / 360.0f
-                      saturation:0.02f
-                      brightness:0.92f
-                           alpha:1.0f];
+//    return [UIColor colorWithHue:240.0f / 360.0f
+//                      saturation:0.02f
+//                      brightness:0.92f
+//                           alpha:1.0f];
+    return [UIColor whiteColor];
 }
 
 #pragma mark - Utilities

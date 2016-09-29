@@ -46,6 +46,7 @@
  */
 #ifndef kZHCTopLineBackGroudColor
 #define kZHCTopLineBackGroudColor [UIColor colorWithRed:228.0/255 green:228.0/255 blue:228.0/255 alpha:1.0]
+//#define kZHCTopLineBackGroudColor [UIColor whiteColor]
 #endif
 
 
