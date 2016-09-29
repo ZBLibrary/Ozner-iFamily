@@ -70,7 +70,6 @@ class CounselingController: ZHCMessagesViewController {
     }
     
     //头像
-    
     override func tableView(_ tableView: ZHCMessagesTableView, avatarImageDataForCellAt indexPath: IndexPath) -> ZHCMessageAvatarImageDataSource? {
         
         let message = demoData?.messages.object(at: indexPath.row) as! ZHCMessage
@@ -223,15 +222,20 @@ class CounselingController: ZHCMessagesViewController {
         
         
         if  message.isMediaMessage {
+            if message.senderId == self.senderId() {
             cell.textView?.textColor = UIColor.black
+            }
+           
         } else {
             cell.textView?.textColor = UIColor.white
         }
+                
         
         //,NSUnderlineStyle.patternSolid
-        cell.textView?.linkTextAttributes = [NSForegroundColorAttributeName:cell.textView?.textColor,
-                                             NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle
-                                                ]
+        //此方法设置颜色没成功
+//        cell.textView?.linkTextAttributes = [NSForegroundColorAttributeName:UIColor.red,
+//                                             NSUnderlineStyleAttributeName: [NSUnderlineStyle.patternSolid,NSUnderlineStyle.styleSingle
+//                                                ]]
         
         
     }
@@ -300,7 +304,7 @@ class CounselingController: ZHCMessagesViewController {
         
         self.title = "咨询"
         self.view.backgroundColor = UIColor.white
-        navigationController?.toolbar.barTintColor = UIColor.white
+//        navigationController?.toolbar.barTintColor = UIColor.white
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"CallPhoneImage"), style: UIBarButtonItemStyle.done, target: self, action: #selector(CounselingController.phoneCallAction))
         
     }
