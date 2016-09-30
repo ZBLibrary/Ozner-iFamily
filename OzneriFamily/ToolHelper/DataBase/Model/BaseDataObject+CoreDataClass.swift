@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 import SwiftyJSON
-
+import SVProgressHUD
 public class BaseDataObject: NSManagedObject {
 
     private class func cast<T>(object: NSManagedObject, type: T.Type) -> T {
@@ -39,8 +39,35 @@ public class BaseDataObject: NSManagedObject {
     }
 }
 extension BaseDataObject{
-    class func fetchData(key: String, parameters: NSDictionary?, success: ((JSON)->Void)?, failure: ((Error)->Void)?){
-        _=NetworkManager.defaultManager?.POST(key: key, parameters: parameters, success: success, failure: failure)
+    class func fetchData(key: String, parameters: NSDictionary?, success: @escaping ((JSON)->Void), failure: @escaping ((Error)->Void)){     
+        _=NetworkManager.defaultManager?.POST(key: key, parameters: parameters
+            , success: { (json) in
+                success(json)
+            }, failure: { (error) in
+                failure(error)
+        })
+    }
+    class func fetchDataWithProgress(key: String, parameters: NSDictionary?, success: @escaping ((JSON)->Void), failure: @escaping ((Error)->Void)){
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+        SVProgressHUD.showProgress(0)
+        _=NetworkManager.defaultManager?.POST(key: key, parameters: parameters, progress: { (progress) in
+            //Update the progress view
+            DispatchQueue.main.async(execute: {
+                if Float(progress.fractionCompleted)<1{
+                    SVProgressHUD.showProgress(Float(progress.fractionCompleted))
+                }else{
+                    SVProgressHUD.dismiss()
+                }
+            })
+
+            }, success: { (json) in
+                
+                success(json)
+            }, failure: { (error) in
+                failure(error)
+        })
     }
     //传图片可以在这里扩展
     //带进度的也可以在此扩展

@@ -13,13 +13,13 @@ import AFNetworking
 /// 网络访问类封装
 class NetworkManager:NSObject{
     required init?(NetworkConfig: NSDictionary) {
-        self.NetworkConfig = NetworkConfig
+        self.NetworkConfig = JSON(NetworkConfig)
         super.init()
-        if NetworkConfig["RootAdress"] as? String == nil
-            || NetworkConfig["SubAdress"] as? [String: String] == nil
-             {
+        if self.NetworkConfig["RootAddress"].stringValue == ""
+        {
             return nil
         }
+       
     }
     static var defaultManager = NetworkManager(NetworkConfig: NSDictionary(contentsOfFile: Bundle.main.path(forResource: "NetworkConfig", ofType: "plist")!)!)
     
@@ -84,7 +84,7 @@ class NetworkManager:NSObject{
         if userToken != nil {
             tmpParameters.setValue(userToken, forKey: "usertoken")
         }
-        return manager.post(RootAdress+SubAddress[key]!, parameters: tmpParameters, constructingBodyWith: block, progress: progress, success: { (operation, data) in
+        return manager.post(RootAdress+(SubAddress![key]?.stringValue)!, parameters: tmpParameters, constructingBodyWith: block, progress: progress, success: { (operation, data) in
             self.handleSuccess(operation: operation, data: data as! Data, success: success, failure: failure)
             }) { (operation, error) in
                 failure?(error)
@@ -119,7 +119,7 @@ class NetworkManager:NSObject{
     }
     private lazy var manager: AFHTTPSessionManager = {
         [weak self] in
-        assert(self?.RootAdress != nil, "RootAdress不能为nil")
+        assert(self?.RootAdress != nil, "RootAddress不能为nil")
         let manager = AFHTTPSessionManager(baseURL: NSURL(string: (self?.RootAdress)!) as URL?)
         manager.responseSerializer = AFHTTPResponseSerializer()
         return manager
@@ -151,34 +151,35 @@ class NetworkManager:NSObject{
     private func getErrorState(state:Int)->String
     {
         var errorState=""
-        if (self.ErrorCode.allKeys as! [String]).contains("\(state)")
-        {
-            errorState=self.ErrorCode["\(state)"] as! String
+        for (key,value) in ErrorCode! {
+            if key == "\(state)" {
+                errorState=value.stringValue
+            }
         }
+
         return errorState
     }
 
     
-    private let NetworkConfig: NSDictionary
+    private let NetworkConfig: JSON
     /// 根地址
     var RootAdress: String {
-        return NetworkConfig["RootAdress"] as! String
+        return NetworkConfig["RootAddress"].stringValue
     }
     /// 后缀路径地址
-    private var SubAddress: [String: String] {
-        return NetworkConfig["SubAddress"] as! [String: String]
+    private var SubAddress: [String: JSON]? {
+        return NetworkConfig["SubAddress"].dictionary
     }
     
     /// 错误编码列表
-    private var ErrorCode: NSDictionary {
-        return NetworkConfig["ErrorCode"] as! NSDictionary
-    }
+    private var ErrorCode: [String: JSON]? {
+        return NetworkConfig["ErrorCode"].dictionary    }
     var TokenFailed: Int {
-        return NetworkConfig["TokenFailed"] as! Int
+        return NetworkConfig["TokenFailed"].intValue
     }
     //URL，静态链接网址
-    var URL: NSDictionary {
-        return NetworkConfig["URL"] as! NSDictionary
+    var URL: [String: JSON]? {
+        return NetworkConfig["URL"].dictionary
     }
     
     

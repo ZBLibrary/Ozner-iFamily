@@ -16,6 +16,15 @@
 		8D1EF39F1D93DE050009D034 /* OzneriFamilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF39E1D93DE050009D034 /* OzneriFamilyTests.swift */; };
 		8D1EF3AA1D93DE050009D034 /* OzneriFamilyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3A91D93DE050009D034 /* OzneriFamilyUITests.swift */; };
 		8D1EF3C51D93F01F0009D034 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */; };
+		8D5ABB171D9E30B6008524A7 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */; };
+		8D5ABB181D9E30B6008524A7 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8D5ABB1C1D9E44B8008524A7 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB1A1D9E44B8008524A7 /* libBPush.a */; };
+		8D5ABB1E1D9E49F4008524A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB1D1D9E49F4008524A7 /* Foundation.framework */; };
+		8D5ABB201D9E4A02008524A7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB1F1D9E4A02008524A7 /* CoreTelephony.framework */; };
+		8D5ABB221D9E4A13008524A7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB211D9E4A13008524A7 /* libz.tbd */; };
+		8D5ABB241D9E4A1C008524A7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB231D9E4A1C008524A7 /* SystemConfiguration.framework */; };
+		8D5ABB261D9E4A23008524A7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB251D9E4A23008524A7 /* CoreLocation.framework */; };
+		8D5ABB281D9E4A48008524A7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB271D9E4A48008524A7 /* AdSupport.framework */; };
 		8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F64F1D94F6850068A40A /* LanguageHelper.swift */; };
 		8D92F6521D94F8480068A40A /* MyCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F6511D94F8480068A40A /* MyCenter.storyboard */; };
 		8D92F6541D94F9670068A40A /* MyCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F6531D94F9670068A40A /* MyCenterController.swift */; };
@@ -72,6 +81,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				8D5ABB181D9E30B6008524A7 /* SVProgressHUD.framework in Embed Frameworks */,
 				8DAE80631D9A0CB200A9946F /* SwiftyJSON.framework in Embed Frameworks */,
 				8DAE80611D9A0CB200A9946F /* AFNetworking.framework in Embed Frameworks */,
 			);
@@ -99,6 +109,16 @@
 		8D1EF3AB1D93DE050009D034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1EF3B71D93DED50009D034 /* OzneriFamily-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OzneriFamily-Bridging-Header.h"; sourceTree = "<group>"; };
 		8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
+		8D5ABB1A1D9E44B8008524A7 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
+		8D5ABB1B1D9E44B8008524A7 /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
+		8D5ABB1D1D9E49F4008524A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8D5ABB1F1D9E4A02008524A7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8D5ABB211D9E4A13008524A7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		8D5ABB231D9E4A1C008524A7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8D5ABB251D9E4A23008524A7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8D5ABB271D9E4A48008524A7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		8D5ABB291D9E632E008524A7 /* OzneriFamily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OzneriFamily.entitlements; sourceTree = "<group>"; };
 		8D92F64F1D94F6850068A40A /* LanguageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
 		8D92F6511D94F8480068A40A /* MyCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyCenter.storyboard; sourceTree = "<group>"; };
 		8D92F6531D94F9670068A40A /* MyCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCenterController.swift; sourceTree = "<group>"; };
@@ -141,8 +161,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D5ABB281D9E4A48008524A7 /* AdSupport.framework in Frameworks */,
+				8D5ABB261D9E4A23008524A7 /* CoreLocation.framework in Frameworks */,
+				8D5ABB241D9E4A1C008524A7 /* SystemConfiguration.framework in Frameworks */,
+				8D5ABB221D9E4A13008524A7 /* libz.tbd in Frameworks */,
+				8D5ABB201D9E4A02008524A7 /* CoreTelephony.framework in Frameworks */,
+				8D5ABB1E1D9E49F4008524A7 /* Foundation.framework in Frameworks */,
 				7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */,
+				8D5ABB1C1D9E44B8008524A7 /* libBPush.a in Frameworks */,
 				8DAE80601D9A0CB200A9946F /* AFNetworking.framework in Frameworks */,
+				8D5ABB171D9E30B6008524A7 /* SVProgressHUD.framework in Frameworks */,
 				8DAE80621D9A0CB200A9946F /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +204,12 @@
 		2DE76852156050BD045D7EB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D5ABB271D9E4A48008524A7 /* AdSupport.framework */,
+				8D5ABB251D9E4A23008524A7 /* CoreLocation.framework */,
+				8D5ABB231D9E4A1C008524A7 /* SystemConfiguration.framework */,
+				8D5ABB211D9E4A13008524A7 /* libz.tbd */,
+				8D5ABB1F1D9E4A02008524A7 /* CoreTelephony.framework */,
+				8D5ABB1D1D9E49F4008524A7 /* Foundation.framework */,
 				3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */,
 			);
 			name = Frameworks;
@@ -232,6 +266,7 @@
 		8D1EF37B1D93DE050009D034 = {
 			isa = PBXGroup;
 			children = (
+				8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */,
 				8DAE805E1D9A0CB200A9946F /* AFNetworking.framework */,
 				8DAE805F1D9A0CB200A9946F /* SwiftyJSON.framework */,
 				8D1EF3B71D93DED50009D034 /* OzneriFamily-Bridging-Header.h */,
@@ -259,6 +294,7 @@
 		8D1EF3861D93DE050009D034 /* OzneriFamily */ = {
 			isa = PBXGroup;
 			children = (
+				8D5ABB291D9E632E008524A7 /* OzneriFamily.entitlements */,
 				8D1EF3871D93DE050009D034 /* AppDelegate.swift */,
 				8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */,
 				8D117C0F1D9CDEB00024187E /* Login+Register+Guiding */,
@@ -293,6 +329,7 @@
 		8D1EF3BB1D93DFE30009D034 /* ToolHelper */ = {
 			isa = PBXGroup;
 			children = (
+				8D5ABB191D9E448A008524A7 /* BaiDuPush */,
 				8D10ECED1D98BC5B001BAC77 /* DataBase */,
 				8D10ECEE1D98BC5B001BAC77 /* Networking */,
 				8D92F64E1D94F64F0068A40A /* Other */,
@@ -342,6 +379,15 @@
 				8D92F6551D94FA700068A40A /* WebShopController.swift */,
 			);
 			path = WebShop;
+			sourceTree = "<group>";
+		};
+		8D5ABB191D9E448A008524A7 /* BaiDuPush */ = {
+			isa = PBXGroup;
+			children = (
+				8D5ABB1A1D9E44B8008524A7 /* libBPush.a */,
+				8D5ABB1B1D9E44B8008524A7 /* BPush.h */,
+			);
+			path = BaiDuPush;
 			sourceTree = "<group>";
 		};
 		8D92F5F81D94F5C00068A40A /* Controller */ = {
@@ -486,6 +532,11 @@
 						DevelopmentTeam = UZZG6NM74T;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					8D1EF3991D93DE050009D034 = {
 						CreatedOnToolsVersion = 8.0;
@@ -791,6 +842,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				DEVELOPMENT_TEAM = UZZG6NM74T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -799,7 +851,11 @@
 				INFOPLIST_FILE = OzneriFamily/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ozner.OzneriFamily;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ToolHelper/BaiDuPush",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -814,6 +870,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				DEVELOPMENT_TEAM = UZZG6NM74T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -822,7 +879,11 @@
 				INFOPLIST_FILE = OzneriFamily/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ozner.OzneriFamily;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ToolHelper/BaiDuPush",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

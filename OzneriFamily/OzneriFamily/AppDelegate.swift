@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
 }
@@ -24,10 +25,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var mainTabBarController: MainTabBarController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //百度推送
+        var myTypes=UIUserNotificationType()
+        myTypes.insert(UIUserNotificationType.sound)
+        myTypes.insert(UIUserNotificationType.badge)
+        myTypes.insert(UIUserNotificationType.alert)
+        let userSetting = UIUserNotificationSettings(types:myTypes, categories:nil)
+        UIApplication.shared.registerUserNotificationSettings(userSetting)
+        BPush.registerChannel(launchOptions, apiKey: "7nGBGzSxkIgjpEHHusrgdobS", pushMode: BPushMode.production, withFirstAction: nil, withSecondAction: nil, withCategory: nil, useBehaviorTextInput: false, isDebug: false)
+        //微信
         
         window?.rootViewController = LoginManager.isFristOpenApp ? JCRootViewController(last: loginViewController):loginViewController
         window!.makeKeyAndVisible()
         return true
+    }
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        application.registerForRemoteNotifications()
+    }
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        BPush.registerDeviceToken(deviceToken)// 必须
+        BPush.bindChannel(completeHandler: { (result, error) -> Void in
+            if ((result) != nil) {
+    
+                BPush.setTag("Mytag", withCompleteHandler: nil)
+            }
+        })
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        BPush.handleNotification(userInfo)
+        //completionHandler(UIBackgroundFetchResult.newData)
+        
+    }
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(error)
     }
     //退出登录
     func LoginOut()
@@ -62,6 +92,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        if UserDefaults.standard.value(forKey: UserDefaultsUserIDKey) != nil {
+            
+            CoreDataManager.defaultManager.saveChanges()
+        }
     }
 
 

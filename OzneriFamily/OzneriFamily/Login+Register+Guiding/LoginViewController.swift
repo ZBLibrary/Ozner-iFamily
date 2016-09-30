@@ -19,7 +19,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet var YZMTextLabel: UILabel!
     @IBAction func getYZMclick(_ sender: AnyObject) {
-        
+        weak var weakSelf=self
+        User.GetPhoneCode(phone: phoneTextField.text!, success: {
+            weakSelf?.errorLabel.text="获取成功，1分钟之内没收到，继续尝试"
+            }) { (error) in
+                weakSelf?.errorLabel.text=error.localizedDescription
+        }
     }
 
     
@@ -53,22 +58,20 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet var TishiLabel: UILabel!
     @IBOutlet var getYYbutton: UIButton!
     @IBAction func getYYbuttonclick(_ sender: UIButton) {
-        
+        weak var weakSelf=self
+        User.GetVoicePhoneCode(phone: phoneTextField.text!, success: {
+            weakSelf?.errorLabel.text="获取成功，1分钟之内没收到，继续尝试"
+        }) { (error) in
+            weakSelf?.errorLabel.text=error.localizedDescription
+        }
     }
     func presentMainViewController() {
-        //MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        //User.GetCurrentUserInfo({ [weak self](user) in
-           // MBProgressHUD.hideHUDForView(self!.view, animated: true)
-            //User.currentUser=user
-            appDelegate.mainTabBarController = MainTabBarController()
-            appDelegate.mainTabBarController?.modalTransitionStyle = .crossDissolve
-            self.present(appDelegate.mainTabBarController!, animated: true, completion: nil)
-//        }) { [weak self](error) in
-//            MBProgressHUD.hideHUDForView(self!.view, animated: true)
-//            let alertView=SCLAlertView()
-//            alertView.addButton("ok", action: {})
-//            alertView.showError("错误提示", subTitle: error.localizedDescription)
-//        }
+        BPush.bindChannel { (result, error) in
+            User.UpdateUserInfo()
+        }
+        appDelegate.mainTabBarController = MainTabBarController()
+        appDelegate.mainTabBarController?.modalTransitionStyle = .crossDissolve
+        self.present(appDelegate.mainTabBarController!, animated: true, completion: nil)
     }
 
     var firstAppear = true
@@ -81,7 +84,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                     [weak self] user in
                     self?.presentMainViewController()
                 },
-                failure: nil)
+                failure: {error in})
         }
         
     }
@@ -95,17 +98,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         phoneTextField.placeholder=loadLanguage("请输入手机号")
         YZMTextField.placeholder=loadLanguage("输入验证码")
         TishiLabel.text=loadLanguage("未收到短信验证码？")
-        //set_islogin(false)
-        
-        //YZMbutton.layer.borderColor=color_main.cgColor
-        //getYYbutton.layer.borderColor=color_main.cgColor
-        errorLabel.text=""
         phoneTextField.delegate=self
         YZMTextField.delegate=self
-       
 
- 
-        
     }
 
     override func didReceiveMemoryWarning() {
