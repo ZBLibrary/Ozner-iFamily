@@ -20,6 +20,7 @@
 #import "ZHCModelData.h"
 #import "ZHUseFDModel.h"
 #import "BDImagePicker.h"
+#import "UUImageAvatarBrowser.h"
 
 
 NS_ASSUME_NONNULL_BEGIN

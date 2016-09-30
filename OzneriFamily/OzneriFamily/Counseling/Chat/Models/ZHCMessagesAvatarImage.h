@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ZHCMessageAvatarImageDataSource.h"
 
-@interface ZHCMessagesAvatarImage : NSObject<NSCopying>
+//遵循此协议，可接受ZHCMessagesAvatarImage -> id <ZHCMessageAvatarImageDataSource>的类型
+@interface ZHCMessagesAvatarImage : NSObject<NSCopying,ZHCMessageAvatarImageDataSource>
 /**
  *  The avatar image for a regular display state.
  */

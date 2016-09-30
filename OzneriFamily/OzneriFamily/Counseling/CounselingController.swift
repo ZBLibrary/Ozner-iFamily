@@ -8,7 +8,6 @@
 
 import UIKit
 import AFNetworking
-import SwiftyJSON
 
 class CounselingController: ZHCMessagesViewController {
 
@@ -28,13 +27,7 @@ class CounselingController: ZHCMessagesViewController {
         
         demoData = ZHCModelData()
         
-        let json = JSON(["name":"Jack", "age": 25])
-        if let name = json["name"].string {
-            //Do something you want
-            print(name)
-        } else {
-            print(json["address"].error) // "Dictionary["address"] does not exist"
-        }
+        
     }
     
     // MARK: - ZHCMessagesTableViewDataSource
@@ -90,8 +83,9 @@ class CounselingController: ZHCMessagesViewController {
         
         let ava = (self.demoData?.avatars as! [String:ZHCMessagesAvatarImage])[message.senderId]
         
+//        return ZHCMessagesAvatarImage(avatarImage: UIImage(named:"demo_avatar_jobs"), highlightedImage: UIImage(named:"demo_avatar_jobs"), placeholderImage: UIImage(named:"demo_avatar_jobs")!) /
+        return ava
         
-        return nil
         
     }
   
@@ -196,7 +190,10 @@ class CounselingController: ZHCMessagesViewController {
         print("didTapMessageBubbleAtIndexPath:\(indexPath.row)")
         
         let currentMessage = demoData?.messages.object(at: indexPath.item) as! ZHCMessage
-   
+
+        if currentMessage.isMediaMessage {
+            UUImageAvatarBrowser.show((currentMessage.media as! ZHCPhotoMediaItem).image)
+        }
         
     }
     
@@ -228,6 +225,7 @@ class CounselingController: ZHCMessagesViewController {
         
         self.configureCell(cell: cell, indexPath: indexPath)
         
+//        cell.backgroundColor =  UIColor.init(colorLiteralRed: 240/255.0, green: 247/255.0, blue: 254/255.0, alpha: 1.0)
         return cell
     }
     

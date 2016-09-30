@@ -15,14 +15,20 @@
                       saturation:0.68f
                       brightness:0.84f
                            alpha:1.0f];
+//    return [UIColor colorWithRed:195/255.0 green:231/255.0 blue:252/255.0 alpha:1.0];
+//    return [UIColor whiteColor];
+
 }
 
 + (UIColor *)zhc_messagesBubbleBlueColor
 {
-    return [UIColor colorWithHue:210.0f / 360.0f
-                      saturation:0.94f
-                      brightness:1.0f
-                           alpha:1.0f];
+//    return [UIColor colorWithHue:210.0f / 360.0f
+//                      saturation:0.94f
+//                      brightness:1.0f
+//                           alpha:1.0f];
+    
+    return [UIColor colorWithRed:160/255.0 green:231/255.0 blue:100/255.0 alpha:1.0];
+
 }
 
 + (UIColor *)zhc_messagesBubbleRedColor

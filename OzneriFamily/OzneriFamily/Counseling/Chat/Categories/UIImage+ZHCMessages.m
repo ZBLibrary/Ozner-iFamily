@@ -44,6 +44,11 @@
 
 + (UIImage *)zhc_bubbleImageFromBundleWithName:(NSString *)name
 {
+    
+//    if ([name isEqualToString:@"bubble_min"]) {
+//        return [UIImage imageNamed:@"bubble_min"];
+//    }
+    
     NSBundle *bundle = [NSBundle zhc_getmessagesAssetBundle];
     NSAssert(bundle != Nil, @"MessagesBundle Can Not is Nil");
     NSString *path = [bundle pathForResource:name ofType:@"png" inDirectory:@"Images"];
