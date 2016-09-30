@@ -84,7 +84,6 @@
      CGSize finalSize = CGSizeZero;
     if ([messageData isMediaMessage]) {
         finalSize = [[messageData media] mediaViewDisplaySize];
-        NSLog(@"mediaSize:width:%f---height:%f",finalSize.width,finalSize.height);
     }else{
         ZHCMessagesTableviewLayoutAttributes *attributes = tableView.tableViewLayout;
         

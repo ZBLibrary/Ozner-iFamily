@@ -85,6 +85,7 @@
 		B714DFFD1D9CB13700D5AAC3 /* ZHCModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = B714DFFA1D9CB13700D5AAC3 /* ZHCModelData.m */; };
 		B714DFFE1D9CB13700D5AAC3 /* ZHUseFDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B714DFFC1D9CB13700D5AAC3 /* ZHUseFDModel.m */; };
 		B714E0001D9CD50700D5AAC3 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = B714DFFF1D9CD50700D5AAC3 /* data.json */; };
+		B7725CFF1D9DF8FF0047AC6F /* BDImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B7725CFE1D9DF8FF0047AC6F /* BDImagePicker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -260,6 +261,8 @@
 		B714DFFB1D9CB13700D5AAC3 /* ZHUseFDModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHUseFDModel.h; sourceTree = "<group>"; };
 		B714DFFC1D9CB13700D5AAC3 /* ZHUseFDModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHUseFDModel.m; sourceTree = "<group>"; };
 		B714DFFF1D9CD50700D5AAC3 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		B7725CFD1D9DF8FF0047AC6F /* BDImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImagePicker.h; sourceTree = "<group>"; };
+		B7725CFE1D9DF8FF0047AC6F /* BDImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImagePicker.m; sourceTree = "<group>"; };
 		DBB08E966F838D15B4582606 /* Pods-OzneriFamily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.release.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -507,6 +510,7 @@
 		B714DEEF1D9BA9EE00D5AAC3 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				B7725CFC1D9DF8F20047AC6F /* Carmer */,
 				B714DEF01D9BA9EE00D5AAC3 /* Assets */,
 				B714DEF21D9BA9EE00D5AAC3 /* Categories */,
 				B714DF011D9BA9EE00D5AAC3 /* Common */,
@@ -696,6 +700,15 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B7725CFC1D9DF8F20047AC6F /* Carmer */ = {
+			isa = PBXGroup;
+			children = (
+				B7725CFD1D9DF8FF0047AC6F /* BDImagePicker.h */,
+				B7725CFE1D9DF8FF0047AC6F /* BDImagePicker.m */,
+			);
+			path = Carmer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -935,6 +948,7 @@
 				8D92F6581D94FAB00068A40A /* MyDevicesController.swift in Sources */,
 				B714DFA61D9CA6FA00D5AAC3 /* ZHCMessagesCellTextView.m in Sources */,
 				8D92F65E1D9510450068A40A /* GloabConfig.swift in Sources */,
+				B7725CFF1D9DF8FF0047AC6F /* BDImagePicker.m in Sources */,
 				B714DFB01D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellIncoming.m in Sources */,
 				B714DFBB1D9CA71100D5AAC3 /* ZHCMessagesVoiceRecorder.m in Sources */,
 				B714DFAA1D9CA6FA00D5AAC3 /* ZHCMessagesLabel.m in Sources */,

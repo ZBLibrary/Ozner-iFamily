@@ -19,7 +19,7 @@
 #import "ZHCMessagesBubbleImage.h"
 #import "ZHCModelData.h"
 #import "ZHUseFDModel.h"
-
+#import "BDImagePicker.h"
 
 
 NS_ASSUME_NONNULL_BEGIN

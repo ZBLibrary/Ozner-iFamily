@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import AFNetworking
+import SwiftyJSON
 
 class CounselingController: ZHCMessagesViewController {
 
-    var demoData: ZHCModelData?
+    var demoData: ZHCModelData? {
+        
+        didSet{
+            messageTableView?.reloadData()
+        }
+        
+    }
     
     
     override func viewDidLoad() {
@@ -19,8 +27,14 @@ class CounselingController: ZHCMessagesViewController {
         initNavarionBar()
         
         demoData = ZHCModelData()
-       
         
+        let json = JSON(["name":"Jack", "age": 25])
+        if let name = json["name"].string {
+            //Do something you want
+            print(name)
+        } else {
+            print(json["address"].error) // "Dictionary["address"] does not exist"
+        }
     }
     
     // MARK: - ZHCMessagesTableViewDataSource
@@ -181,6 +195,9 @@ class CounselingController: ZHCMessagesViewController {
         super.tableView(tableView, didTapMessageBubbleAt: indexPath)
         print("didTapMessageBubbleAtIndexPath:\(indexPath.row)")
         
+        let currentMessage = demoData?.messages.object(at: indexPath.item) as! ZHCMessage
+   
+        
     }
     
     override func tableView(_ tableView: ZHCMessagesTableView, didTapCellAt indexPath: IndexPath, touchLocation: CGPoint) {
@@ -274,18 +291,47 @@ class CounselingController: ZHCMessagesViewController {
     // MARK: - ZHCMessagesMoreViewDelegate
     override func messagesMoreView(_ moreView: ZHCMessagesMoreView, selectedMoreViewItemWith index: Int) {
         
+        weak var weakSelf = self
         switch index {
         case 0:
-            print("相机")
+            BDImagePicker.show(from: self, allowsEditing: true, finishAction: { (image) in
+                guard image != nil else {
+                    return
+                }
+               weakSelf?.addPhotoImageToMessage(image: image!)
+             
+                }, andCamer: true)
         case 1:
-            print("照片")
+            BDImagePicker.show(from: self, allowsEditing: true, finishAction: { (image) in
+                guard image != nil else {
+                    return
+                }
+                weakSelf?.addPhotoImageToMessage(image: image!)
+               
+                
+                }, andCamer: false)
         default:
             break
         }
         
     }
     
-    
+    // MARK: -添加图片到聊天记录
+ 
+    func addPhotoImageToMessage(image: UIImage) {
+        
+        let photoItem = ZHCPhotoMediaItem(image: image)
+        
+        //收图片 false
+        //发图片true
+        photoItem.appliesMediaViewMaskAsOutgoing = false
+        let message = ZHCMessage(senderId: kZHCDemoAvatarIdCook, displayName: kZHCDemoAvatarDisplayNameCook, media: photoItem)
+        
+        demoData?.messages.add(message)        
+        messageTableView?.reloadData()
+        finishSendingMessage()
+        
+    }
     
     // MARK: - ZHCMessagesMoreViewDataSource
     override func messagesMoreViewTitles(_ moreView: ZHCMessagesMoreView) -> [Any] {
