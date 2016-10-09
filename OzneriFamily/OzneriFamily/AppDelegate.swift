@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import SwiftyJSON
+
+
 var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
 }
@@ -26,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //百度推送
+        
         var myTypes=UIUserNotificationType()
         myTypes.insert(UIUserNotificationType.sound)
         myTypes.insert(UIUserNotificationType.badge)
@@ -46,7 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BPush.registerDeviceToken(deviceToken)// 必须
         BPush.bindChannel(completeHandler: { (result, error) -> Void in
             if ((result) != nil) {
-    
                 BPush.setTag("Mytag", withCompleteHandler: nil)
             }
         })

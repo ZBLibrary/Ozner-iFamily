@@ -72,11 +72,11 @@ class LoginManager:NSObject{
     }
 }
 //默认尺寸
-let height_tabBar = 64
-let height_navBar = 64
-let height_statusBar = 20
-let height_screen = UIScreen.main.bounds.size.height
-let width_screen = UIScreen.main.bounds.size.width
+let height_tabBar:CGFloat = 64
+let height_navBar:CGFloat = 64
+let height_statusBar:CGFloat = 20
+let height_screen:CGFloat = UIScreen.main.bounds.size.height
+let width_screen:CGFloat = UIScreen.main.bounds.size.width
 
 
 
