@@ -1,19 +1,80 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="LeftMenuDeviceCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="LeftMenuDeviceCell" customModule="OzneriFamily" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="43"/>
+                <frame key="frameInset" width="375" height="89"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xz8-mC-xo1">
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="device_cup_normal_state" translatesAutoresizingMaskIntoConstraints="NO" id="REd-wA-EWX"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KH4-pQ-O8y">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客厅净水器" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBe-iq-Hgk">
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <color key="textColor" red="0.36039793491363525" green="0.47621613740921021" blue="0.6051291823387146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的家庭" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIt-dE-VP1">
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="device_icon_wifi" translatesAutoresizingMaskIntoConstraints="NO" id="RRr-6M-nM5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已连接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqI-3h-3ns">
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                                        <color key="textColor" red="0.18986842036247253" green="0.6528928279876709" blue="0.96039098501205444" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="CqI-3h-3ns" firstAttribute="centerY" secondItem="RRr-6M-nM5" secondAttribute="centerY" id="6pI-Sv-qjg"/>
+                                    <constraint firstItem="RRr-6M-nM5" firstAttribute="leading" secondItem="KH4-pQ-O8y" secondAttribute="leading" id="N8b-1x-wSi"/>
+                                    <constraint firstItem="vBe-iq-Hgk" firstAttribute="centerY" secondItem="KH4-pQ-O8y" secondAttribute="centerY" id="Tdg-WU-PUt"/>
+                                    <constraint firstItem="vBe-iq-Hgk" firstAttribute="top" secondItem="RRr-6M-nM5" secondAttribute="bottom" constant="2" id="Y6i-Mb-EzU"/>
+                                    <constraint firstItem="CqI-3h-3ns" firstAttribute="leading" secondItem="RRr-6M-nM5" secondAttribute="trailing" constant="5" id="ZCa-mX-5Wr"/>
+                                    <constraint firstItem="NIt-dE-VP1" firstAttribute="leading" secondItem="KH4-pQ-O8y" secondAttribute="leading" id="hd4-De-qn9"/>
+                                    <constraint firstItem="NIt-dE-VP1" firstAttribute="top" secondItem="vBe-iq-Hgk" secondAttribute="bottom" constant="1" id="qWn-tz-c8r"/>
+                                    <constraint firstItem="vBe-iq-Hgk" firstAttribute="leading" secondItem="KH4-pQ-O8y" secondAttribute="leading" id="ujE-ba-YbR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.88106220960617065" green="0.92110651731491089" blue="0.9585917592048645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KH4-pQ-O8y" firstAttribute="leading" secondItem="REd-wA-EWX" secondAttribute="trailing" constant="15" id="DMD-8l-xiM"/>
+                            <constraint firstItem="REd-wA-EWX" firstAttribute="centerY" secondItem="Xz8-mC-xo1" secondAttribute="centerY" id="Ufy-NP-Lo8"/>
+                            <constraint firstAttribute="bottom" secondItem="KH4-pQ-O8y" secondAttribute="bottom" id="bCp-Hz-tKb"/>
+                            <constraint firstAttribute="trailing" secondItem="REd-wA-EWX" secondAttribute="trailing" multiplier="298:80" id="qq5-jP-roI"/>
+                            <constraint firstAttribute="trailing" secondItem="KH4-pQ-O8y" secondAttribute="trailing" id="uAQ-LQ-alP"/>
+                            <constraint firstItem="KH4-pQ-O8y" firstAttribute="top" secondItem="Xz8-mC-xo1" secondAttribute="top" id="z15-nf-taj"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Xz8-mC-xo1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4ve-xJ-HBe"/>
+                    <constraint firstAttribute="bottom" secondItem="Xz8-mC-xo1" secondAttribute="bottom" id="Zuy-db-wdL"/>
+                    <constraint firstAttribute="trailing" secondItem="Xz8-mC-xo1" secondAttribute="trailing" id="q3Z-oc-2Oa"/>
+                    <constraint firstItem="Xz8-mC-xo1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uNM-IU-Foh"/>
+                </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.88106220960617065" green="0.92110651731491089" blue="0.9585917592048645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <point key="canvasLocation" x="24.5" y="52"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="device_cup_normal_state" width="53" height="53"/>
+        <image name="device_icon_wifi" width="15" height="11"/>
+    </resources>
 </document>

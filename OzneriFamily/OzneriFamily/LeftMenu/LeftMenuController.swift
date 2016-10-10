@@ -34,10 +34,12 @@ class LeftMenuController: UIViewController {
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableContainer.isHidden=true
+        //tableContainer.isHidden=true
         self.tableView.delegate=self
         self.tableView.dataSource=self
-       
+        
+        self.tableView.rowHeight=90*height_screen/667
+        self.tableView.register(UINib(nibName: "LeftMenuDeviceCell", bundle: nil), forCellReuseIdentifier: "LeftMenuDeviceCell")
         // Do any additional setup after loading the view.
     }
 
@@ -73,7 +75,8 @@ extension LeftMenuController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell=tableView.dequeueReusableCell(withIdentifier: "LeftMenuDeviceCell") as! LeftMenuDeviceCell
+        return cell
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true

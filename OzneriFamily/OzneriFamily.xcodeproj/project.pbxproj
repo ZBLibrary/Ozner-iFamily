@@ -12,6 +12,10 @@
 		8D117C221D9CFB0D0024187E /* JCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D117C1F1D9CFB0D0024187E /* JCRootViewController.m */; };
 		8D117C231D9CFB0D0024187E /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D117C211D9CFB0D0024187E /* ModelController.m */; };
 		8D117C271D9D06730024187E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D117C261D9D06730024187E /* LoginViewController.swift */; };
+		8D12AAC51DAB7350003A09E6 /* PairingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AAC41DAB7350003A09E6 /* PairingController.swift */; };
+		8D12AAC71DAB7386003A09E6 /* PairSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AAC61DAB7386003A09E6 /* PairSuccessController.swift */; };
+		8D12AAC91DAB739F003A09E6 /* PairFailedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AAC81DAB739F003A09E6 /* PairFailedController.swift */; };
+		8D12AACB1DAB9A89003A09E6 /* WifiPairingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AACA1DAB9A89003A09E6 /* WifiPairingController.swift */; };
 		8D1C66BD1DAA3B62008C639F /* AirPurifierManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66141DAA3B62008C639F /* AirPurifierManager.m */; };
 		8D1C66BE1DAA3B62008C639F /* AirPurifier_Bluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66171DAA3B62008C639F /* AirPurifier_Bluetooth.m */; };
 		8D1C66BF1DAA3B62008C639F /* BluetoothAirPurifierFilterStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66191DAA3B62008C639F /* BluetoothAirPurifierFilterStatus.m */; };
@@ -87,6 +91,8 @@
 		8D1C67051DAA3B62008C639F /* ConfigurationDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66B81DAA3B62008C639F /* ConfigurationDevice.m */; };
 		8D1C67061DAA3B62008C639F /* EasyLinkSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66BA1DAA3B62008C639F /* EasyLinkSender.m */; };
 		8D1C67071DAA3B62008C639F /* HttpServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66BC1DAA3B62008C639F /* HttpServer.m */; };
+		8D1C670A1DAA4052008C639F /* SelectDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */; };
+		8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C67091DAA4052008C639F /* SelectDeviceCell.xib */; };
 		8D1EF3881D93DE050009D034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3871D93DE050009D034 /* AppDelegate.swift */; };
 		8D1EF39F1D93DE050009D034 /* OzneriFamilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF39E1D93DE050009D034 /* OzneriFamilyTests.swift */; };
 		8D1EF3AA1D93DE050009D034 /* OzneriFamilyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3A91D93DE050009D034 /* OzneriFamilyUITests.swift */; };
@@ -176,6 +182,10 @@
 		8D117C201D9CFB0D0024187E /* ModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelController.h; sourceTree = "<group>"; };
 		8D117C211D9CFB0D0024187E /* ModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelController.m; sourceTree = "<group>"; };
 		8D117C261D9D06730024187E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8D12AAC41DAB7350003A09E6 /* PairingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairingController.swift; sourceTree = "<group>"; };
+		8D12AAC61DAB7386003A09E6 /* PairSuccessController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairSuccessController.swift; sourceTree = "<group>"; };
+		8D12AAC81DAB739F003A09E6 /* PairFailedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairFailedController.swift; sourceTree = "<group>"; };
+		8D12AACA1DAB9A89003A09E6 /* WifiPairingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiPairingController.swift; sourceTree = "<group>"; };
 		8D1C66131DAA3B62008C639F /* AirPurifierManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPurifierManager.h; sourceTree = "<group>"; };
 		8D1C66141DAA3B62008C639F /* AirPurifierManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirPurifierManager.m; sourceTree = "<group>"; };
 		8D1C66161DAA3B62008C639F /* AirPurifier_Bluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPurifier_Bluetooth.h; sourceTree = "<group>"; };
@@ -332,6 +342,8 @@
 		8D1C66BA1DAA3B62008C639F /* EasyLinkSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyLinkSender.m; sourceTree = "<group>"; };
 		8D1C66BB1DAA3B62008C639F /* HttpServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpServer.h; sourceTree = "<group>"; };
 		8D1C66BC1DAA3B62008C639F /* HttpServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpServer.m; sourceTree = "<group>"; };
+		8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDeviceCell.swift; sourceTree = "<group>"; };
+		8D1C67091DAA4052008C639F /* SelectDeviceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectDeviceCell.xib; sourceTree = "<group>"; };
 		8D1EF3841D93DE050009D034 /* OzneriFamily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OzneriFamily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1EF3871D93DE050009D034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D1EF39A1D93DE050009D034 /* OzneriFamilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OzneriFamilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -933,6 +945,10 @@
 				8D92F66E1D95346E0068A40A /* LeftMenuController.swift */,
 				8D92F6701D9534890068A40A /* LeftMenu.storyboard */,
 				8DAE80711D9A85EC00A9946F /* SelectDeviceTableController.swift */,
+				8D12AAC41DAB7350003A09E6 /* PairingController.swift */,
+				8D12AAC61DAB7386003A09E6 /* PairSuccessController.swift */,
+				8D12AAC81DAB739F003A09E6 /* PairFailedController.swift */,
+				8D12AACA1DAB9A89003A09E6 /* WifiPairingController.swift */,
 			);
 			path = LeftMenu;
 			sourceTree = "<group>";
@@ -952,6 +968,8 @@
 			children = (
 				8DAE80691D9A600900A9946F /* LeftMenuDeviceCell.swift */,
 				8DAE806A1D9A600900A9946F /* LeftMenuDeviceCell.xib */,
+				8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */,
+				8D1C67091DAA4052008C639F /* SelectDeviceCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1107,6 +1125,7 @@
 				8DAE80871D9B915A00A9946F /* NetworkConfig.plist in Resources */,
 				8D92F65A1D94FAC70068A40A /* MyDevices.storyboard in Resources */,
 				8D92F6521D94F8480068A40A /* MyCenter.storyboard in Resources */,
+				8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */,
 				8D92F6711D9534890068A40A /* LeftMenu.storyboard in Resources */,
 				8D92F6681D9526460068A40A /* InfoPlist.strings in Resources */,
 				8DAE80561D9A097800A9946F /* Info.plist in Resources */,
@@ -1227,6 +1246,7 @@
 				8D1C66E41DAA3B62008C639F /* TapRawRecord.m in Sources */,
 				8D1C66F51DAA3B62008C639F /* net_mosq.c in Sources */,
 				8DAE80571D9A097800A9946F /* SlideMenuController.swift in Sources */,
+				8D12AAC51DAB7350003A09E6 /* PairingController.swift in Sources */,
 				8D1C66F41DAA3B62008C639F /* mosquitto.c in Sources */,
 				8D1C66F11DAA3B62008C639F /* logging_mosq.c in Sources */,
 				8D1C66C21DAA3B62008C639F /* AirPurifier_MxChip.m in Sources */,
@@ -1244,6 +1264,7 @@
 				8D1C66CC1DAA3B62008C639F /* ScanData.m in Sources */,
 				8D1C66CE1DAA3B62008C639F /* CupDBRecord.m in Sources */,
 				8D1C66F91DAA3B62008C639F /* send_client_mosq.c in Sources */,
+				8D1C670A1DAA4052008C639F /* SelectDeviceCell.swift in Sources */,
 				8D1C66FA1DAA3B62008C639F /* send_mosq.c in Sources */,
 				8D1C66C31DAA3B62008C639F /* AirPurifierInfo.m in Sources */,
 				8D1C66D81DAA3B62008C639F /* BaseDeviceManager.m in Sources */,
@@ -1254,6 +1275,7 @@
 				8D92F6581D94FAB00068A40A /* MyDevicesController.swift in Sources */,
 				8D1C66EF1DAA3B62008C639F /* WaterReplenishmentMeterMgr.m in Sources */,
 				8D1C67021DAA3B62008C639F /* MXChipIO.m in Sources */,
+				8D12AAC71DAB7386003A09E6 /* PairSuccessController.swift in Sources */,
 				8D1C66CA1DAA3B62008C639F /* BluetoothSynchronizedObject.m in Sources */,
 				8D1C66CB1DAA3B62008C639F /* FirmwareTools.m in Sources */,
 				8D1C66D31DAA3B62008C639F /* CupRecord.m in Sources */,
@@ -1261,10 +1283,12 @@
 				8D92F65E1D9510450068A40A /* GloabConfig.swift in Sources */,
 				8D1C66E31DAA3B62008C639F /* TapManager.m in Sources */,
 				8DAE80951D9BC51D00A9946F /* User+CoreDataClass.swift in Sources */,
+				8D12AACB1DAB9A89003A09E6 /* WifiPairingController.swift in Sources */,
 				8D1C66D11DAA3B62008C639F /* CupManager.m in Sources */,
 				8D1C67061DAA3B62008C639F /* EasyLinkSender.m in Sources */,
 				8D1C66FC1DAA3B62008C639F /* time_mosq.c in Sources */,
 				8D1C66C71DAA3B62008C639F /* PowerTimer.m in Sources */,
+				8D12AAC91DAB739F003A09E6 /* PairFailedController.swift in Sources */,
 				8D1C66DC1DAA3B62008C639F /* IOManagerList.m in Sources */,
 				8D1C66F31DAA3B62008C639F /* messages_mosq.c in Sources */,
 				8D92F66F1D95346E0068A40A /* LeftMenuController.swift in Sources */,

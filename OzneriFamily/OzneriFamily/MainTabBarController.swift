@@ -32,8 +32,9 @@ class MainTabBarController: UITabBarController {
         //mainViewController.leftMenuController=leftViewController
         let nvc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateInitialViewController() as! UINavigationController
         
-        
+        SlideMenuOptions.leftViewWidth=298*width_screen/375
         let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
+        
         slideMenuController.delegate = mainViewController
         
         slideMenuController.tabBarItem.title="我的设备"

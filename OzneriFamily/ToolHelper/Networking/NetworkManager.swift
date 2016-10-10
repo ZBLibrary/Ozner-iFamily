@@ -100,7 +100,7 @@ class NetworkManager:NSObject{
         case state>=0:
             success?(jsonData)
             CoreDataManager.defaultManager.saveChanges()
-        case state == (NetworkConfig["TokenFailed"] as AnyObject).integerValue:
+        case state == TokenFailed:
             appDelegate.LoginOut()//token失效，返回到登录界面重新登录
         default:
             var userInfo = [
