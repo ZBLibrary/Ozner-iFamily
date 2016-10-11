@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="26" id="KGk-i7-Jjw" customClass="MyInfoCell" customModule="OzneriFamily" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="318" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="318" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My_share" translatesAutoresizingMaskIntoConstraints="NO" id="Ebj-N5-jo1">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="XXM-04-9gU"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My_toright_icon" translatesAutoresizingMaskIntoConstraints="NO" id="97i-yN-fTy">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="IDR-CK-Guv"/>
+                            <constraint firstAttribute="height" constant="16" id="iN5-Ko-9II"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的订单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYq-nG-wgV">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZH-1A-eeP">
+                        <color key="backgroundColor" red="0.92941176469999998" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="hSB-if-UJT"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Ebj-N5-jo1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="4Ym-iV-kC6"/>
+                    <constraint firstItem="Ebj-N5-jo1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="6pX-ha-4bh"/>
+                    <constraint firstItem="MYq-nG-wgV" firstAttribute="centerY" secondItem="Ebj-N5-jo1" secondAttribute="centerY" id="85N-Kd-nb1"/>
+                    <constraint firstItem="Ebj-N5-jo1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="NwS-TD-VVh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="kZH-1A-eeP" secondAttribute="trailing" id="WqA-Cu-UZy"/>
+                    <constraint firstItem="kZH-1A-eeP" firstAttribute="leading" secondItem="MYq-nG-wgV" secondAttribute="leading" id="cvu-HB-ufi"/>
+                    <constraint firstItem="MYq-nG-wgV" firstAttribute="leading" secondItem="Ebj-N5-jo1" secondAttribute="trailing" constant="8" id="f0C-fy-McH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="97i-yN-fTy" secondAttribute="trailing" constant="8" id="n9x-3a-TtY"/>
+                    <constraint firstItem="kZH-1A-eeP" firstAttribute="bottom" secondItem="Ebj-N5-jo1" secondAttribute="bottom" constant="13" id="qB2-zr-yrb"/>
+                    <constraint firstItem="97i-yN-fTy" firstAttribute="top" secondItem="Ebj-N5-jo1" secondAttribute="top" id="uuS-SH-4au"/>
+                    <constraint firstItem="97i-yN-fTy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ytI-Gh-bfV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="iconImage" destination="Ebj-N5-jo1" id="RpT-Ho-utt"/>
+                <outlet property="iconNameLb" destination="MYq-nG-wgV" id="892-7A-YXh"/>
+            </connections>
+            <point key="canvasLocation" x="-7" y="43"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="My_share" width="16" height="16"/>
+        <image name="My_toright_icon" width="10" height="13"/>
+    </resources>
+</document>
