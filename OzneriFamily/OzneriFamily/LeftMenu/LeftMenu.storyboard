@@ -163,7 +163,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9OJ-w5-NpA" id="4Sb-Dz-LdH">
-                                    <frame key="frameInset" width="375" height="89"/>
+                                    <frame key="frameInset" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWh-ro-DsT">
@@ -282,7 +282,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="正在配对" id="2uV-Ci-CBi">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="icon_back" id="PYV-Tz-EYM">
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="PYV-Tz-EYM">
                             <connections>
                                 <action selector="backClick:" destination="csj-M4-v5c" id="ayZ-mQ-Acg"/>
                             </connections>
@@ -313,7 +313,33 @@
                     <view key="view" contentMode="scaleToFill" id="McK-C4-yAs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icon_peidui_select_bigair" translatesAutoresizingMaskIntoConstraints="NO" id="uVz-5q-5T3">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uVz-5q-5T3" secondAttribute="height" id="B68-vV-mPx"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UY3-P4-EzN">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已搜索到的设备" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcn-r8-kAf">
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.50128602980000003" green="0.81346648929999998" blue="0.97630530599999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uVz-5q-5T3" firstAttribute="width" secondItem="McK-C4-yAs" secondAttribute="width" multiplier="130:375" id="7MF-7O-TX7"/>
+                            <constraint firstItem="UY3-P4-EzN" firstAttribute="width" secondItem="McK-C4-yAs" secondAttribute="width" multiplier="316:375" id="F11-Kv-yQP"/>
+                            <constraint firstItem="uVz-5q-5T3" firstAttribute="centerX" secondItem="McK-C4-yAs" secondAttribute="centerX" id="O18-zY-DaX"/>
+                            <constraint firstItem="UY3-P4-EzN" firstAttribute="centerX" secondItem="McK-C4-yAs" secondAttribute="centerX" id="RsU-JQ-2oo"/>
+                            <constraint firstItem="12C-5D-JjF" firstAttribute="top" secondItem="uVz-5q-5T3" secondAttribute="bottom" multiplier="667:316" id="Wcy-NB-Ooo"/>
+                            <constraint firstItem="12C-5D-JjF" firstAttribute="top" secondItem="UY3-P4-EzN" secondAttribute="bottom" constant="146" id="XL9-jl-VkS"/>
+                            <constraint firstItem="Tcn-r8-kAf" firstAttribute="centerX" secondItem="McK-C4-yAs" secondAttribute="centerX" id="kku-9n-WXC"/>
+                            <constraint firstItem="UY3-P4-EzN" firstAttribute="height" secondItem="McK-C4-yAs" secondAttribute="height" multiplier="80:667" id="uiL-7Z-zmA"/>
+                            <constraint firstItem="UY3-P4-EzN" firstAttribute="top" secondItem="Tcn-r8-kAf" secondAttribute="bottom" constant="10" id="vsL-V0-uek"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="配对成功" id="7lp-ay-pTi">
                         <barButtonItem key="leftBarButtonItem" image="icon_back" id="8cm-dL-LDL">
@@ -325,7 +351,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewY-kn-Phw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2138" y="1572"/>
+            <point key="canvasLocation" x="2136.8000000000002" y="1571.9640179910045"/>
         </scene>
         <!--Wifi配对-->
         <scene sceneID="itB-PK-8wB">
@@ -698,6 +724,7 @@
         <image name="icon_luyouqi" width="84" height="77"/>
         <image name="icon_mima" width="18" height="11"/>
         <image name="icon_no_device_logo" width="255" height="255"/>
+        <image name="icon_peidui_select_bigair" width="132" height="131"/>
         <image name="icon_peidui_watting" width="83" height="63"/>
         <image name="icon_yun" width="74" height="47"/>
         <image name="jingshuiqi_wifi" width="130" height="130"/>
@@ -708,7 +735,7 @@
         <image name="select_device_3" width="9" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qdq-gX-CEZ"/>
-        <segue reference="9J8-o2-sth"/>
+        <segue reference="Mnx-mC-lsK"/>
+        <segue reference="kf8-29-h3U"/>
     </inferredMetricsTieBreakers>
 </document>
