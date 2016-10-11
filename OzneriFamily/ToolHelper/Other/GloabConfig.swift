@@ -26,7 +26,9 @@ class LoginManager:NSObject{
             UserDefaults.standard.set(newValue, forKey: "IsFristOpenApp")
         }
         get{
-            return  UserDefaults.standard.object(forKey: "IsFristOpenApp") == nil ? true:false
+            let tmpValue=UserDefaults.standard.object(forKey: "IsFristOpenApp")
+            UserDefaults.standard.set(false, forKey: "IsFristOpenApp")
+            return  tmpValue == nil ? true:false
         }
     }
     //当前登陆方式
@@ -49,13 +51,32 @@ class LoginManager:NSObject{
         let name = info?["CFBundleDisplayName"] as! String
         return OznerAppType(rawValue: name)!
     }()
+    class func checkTel(_ str:NSString)->Bool
+    {
+        if (str.length != 11) {
+            
+            return false
+        }
+        
+        
+        let regex = "^\\d{11}$"
+        let pred = NSPredicate(format: "SELF MATCHES %@",regex)
+        
+        let isMatch = pred.evaluate(with: str)
+        if (!isMatch) {
+            return false
+        }
+        
+        return true
+        
+    }
 }
 //默认尺寸
-let height_tabBar = 64
-let height_navBar = 64
-let height_statusBar = 20
-let height_screen = UIScreen.main.bounds.size.height
-let weight_screen = UIScreen.main.bounds.size.width
+let height_tabBar:CGFloat = 64
+let height_navBar:CGFloat = 64
+let height_statusBar:CGFloat = 20
+let height_screen:CGFloat = UIScreen.main.bounds.size.height
+let width_screen:CGFloat = UIScreen.main.bounds.size.width
 
 
 

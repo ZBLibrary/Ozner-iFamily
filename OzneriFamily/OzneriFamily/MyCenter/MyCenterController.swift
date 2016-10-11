@@ -31,11 +31,11 @@ class MyCenterController: UIViewController {
         
         let infoHeadView = UINib.init(nibName: "MyInfoHeadView", bundle: nil).instantiate(withOwner: self, options: nil).first as! MyInfoHeadView
         
-        infoHeadView.frame = CGRect(x: 0, y: 0, width: weight_screen, height: 280)
+        infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: 280)
         
         headView = infoHeadView
         
-        tableView = UITableView(frame: CGRect(x: 0, y: -20, width: weight_screen, height: height_screen + 20))
+        tableView = UITableView(frame: CGRect(x: 0, y: -20, width: width_screen, height: height_screen + 20))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableHeaderView = headView
