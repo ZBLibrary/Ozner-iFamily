@@ -53,6 +53,8 @@ class MainTabBarController: UITabBarController {
         c3.tabBarItem.image=UIImage(named: "bar_normal_2")
         c3.tabBarItem.selectedImage=UIImage(named: "bar_select_2")
         
+        let nav3 = UINavigationController(rootViewController: c3)
+        
         
         let c4=UIStoryboard(name: "MyCenter", bundle: nil).instantiateInitialViewController() as!MyCenterController
         c4.tabBarItem.title="我"
@@ -60,7 +62,7 @@ class MainTabBarController: UITabBarController {
         c4.tabBarItem.selectedImage=UIImage(named: "bar_select_3")
         let nav4=UINavigationController(rootViewController: c4)
         
-        self.viewControllers=[slideMenuController,c2,c3,nav4]
+        self.viewControllers=[slideMenuController,c2,nav3,nav4]
         
         
     }
