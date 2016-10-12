@@ -21,6 +21,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="mydevice_bg" translatesAutoresizingMaskIntoConstraints="NO" id="DOi-Yu-rVo"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCG-qZ-itE">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sgw-je-ShT">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL5-Vx-AzM">
@@ -57,6 +60,9 @@
                                             <constraint firstAttribute="width" secondItem="SJ5-9h-y8D" secondAttribute="height" multiplier="37:30" id="smo-pb-bmc"/>
                                         </constraints>
                                         <state key="normal" image="DeviceSetting"/>
+                                        <connections>
+                                            <action selector="toDeviceSettingClick:" destination="ckL-4d-ktC" eventType="touchUpInside" id="gPs-fw-WyW"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vjQ-dy-J3T">
                                         <subviews>
@@ -134,6 +140,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lB7-oh-d8a" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="0ks-cR-Idz"/>
+                            <constraint firstItem="tCG-qZ-itE" firstAttribute="top" secondItem="zJ2-FC-Lhq" secondAttribute="top" id="5ZD-jX-wmk"/>
                             <constraint firstItem="lB7-oh-d8a" firstAttribute="height" secondItem="DOi-Yu-rVo" secondAttribute="height" multiplier="65:667" id="9ZV-Cn-Lky"/>
                             <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="DOi-Yu-rVo" secondAttribute="bottom" id="AyK-Lo-9la"/>
                             <constraint firstItem="Sgw-je-ShT" firstAttribute="top" secondItem="oIP-dQ-VF9" secondAttribute="bottom" id="IjQ-ME-TfS"/>
@@ -141,15 +148,24 @@
                             <constraint firstItem="DOi-Yu-rVo" firstAttribute="top" secondItem="zJ2-FC-Lhq" secondAttribute="top" id="cq4-Tb-3yC"/>
                             <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="lB7-oh-d8a" secondAttribute="bottom" constant="200" id="hD5-Kj-HDm"/>
                             <constraint firstItem="cvC-av-l96" firstAttribute="top" secondItem="Sgw-je-ShT" secondAttribute="bottom" id="iRR-Vh-H4d"/>
+                            <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="tCG-qZ-itE" secondAttribute="bottom" id="jmQ-nd-mFC"/>
+                            <constraint firstAttribute="trailing" secondItem="tCG-qZ-itE" secondAttribute="trailing" id="lNk-8B-a2m"/>
                             <constraint firstAttribute="trailing" secondItem="DOi-Yu-rVo" secondAttribute="trailing" id="n2c-gh-Aoo"/>
                             <constraint firstItem="cvC-av-l96" firstAttribute="centerX" secondItem="zJ2-FC-Lhq" secondAttribute="centerX" id="p8g-sQ-3oH"/>
                             <constraint firstAttribute="trailing" secondItem="Sgw-je-ShT" secondAttribute="trailing" id="pQE-Gs-6Ie"/>
                             <constraint firstItem="Sgw-je-ShT" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="uQw-XS-WPe"/>
                             <constraint firstItem="DOi-Yu-rVo" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="wRX-Qz-ebK"/>
+                            <constraint firstItem="tCG-qZ-itE" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="xd4-pq-2n1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VZ5-Gy-EUM"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="centerViewContainer" destination="lB7-oh-d8a" id="mZ6-Ji-0bS"/>
+                        <outlet property="deviceConnectStateLabel" destination="cvC-av-l96" id="yxI-Uu-ywU"/>
+                        <outlet property="deviceNameLabel" destination="EGq-1s-VFZ" id="9Ca-ec-69y"/>
+                        <outlet property="deviceViewContainer" destination="tCG-qZ-itE" id="kbg-kX-1nW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6B-00-A3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

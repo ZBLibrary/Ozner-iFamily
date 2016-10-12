@@ -10,25 +10,31 @@ import UIKit
 
 class MyDevicesController: UIViewController {
 
-    
-    @IBAction func leftMenuClick(_ sender: UIButton) {
+    @IBOutlet var deviceNameLabel: UILabel!//设备名称
+    @IBOutlet var deviceConnectStateLabel: UILabel!//设备连接状态
+    @IBOutlet var deviceViewContainer: UIView!//自定义视图容器
+    @IBOutlet var centerViewContainer: UIView!//中部视图容器（包括电量，滤芯状态，设置，）
+    @IBAction func toDeviceSettingClick(_ sender: AnyObject) {//点击设置按钮事件
+        
+    }
+    @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮
         self.toggleLeft()
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
-    @IBAction func addDeviceClick(_ sender: AnyObject) {
-        let addDeviceNav=UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNav") as! UINavigationController
-        //let rootController = addDeviceNav.viewControllers[0] as! SelectDeviceTableController
-        //rootController.delegate=self
-        weak var weakSelf=self
-        self.present(addDeviceNav, animated: false) {
-            weakSelf?.closeLeft()
-        }
-        
-    }
+//    @IBAction func addDeviceClick(_ sender: AnyObject) {
+//        let addDeviceNav=UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNav") as! UINavigationController
+//        weak var weakSelf=self
+//        self.present(addDeviceNav, animated: false) {
+//            weakSelf?.closeLeft()
+//        }
+//        
+//    }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -55,6 +61,7 @@ class MyDevicesController: UIViewController {
     */
 
 }
+//侧滑控制器代理方法
 extension MyDevicesController : SlideMenuControllerDelegate {
     
     func leftWillOpen() {
