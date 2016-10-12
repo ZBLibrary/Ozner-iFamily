@@ -12,6 +12,7 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        OznerManager.instance().setOwner(User.currentUser?.phone ?? User.currentUser?.email)
         loadTabBar()
         
         // Do any additional setup after loading the view.
@@ -24,6 +25,7 @@ class MainTabBarController: UITabBarController {
     
 
     func loadTabBar() {
+        
         let mainViewController = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
         
         let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController 
@@ -78,6 +80,9 @@ class MainTabBarController: UITabBarController {
         if height==0 {
             self.tabBar.isHidden=true
         }
+        self.tabBar.backgroundColor=UIColor.white
+        self.tabBar.barTintColor=UIColor.white
+        
     }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -57,6 +57,7 @@ class SelectDeviceTableController: UITableViewController {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectdevice", for: indexPath) as! SelectDeviceCell
+        
         let deviceType = [OznerDeviceType.Cup,.Tap,.TDSPan,.Water_Wifi,.Air_Blue,.Air_Wifi,.WaterReplenish][indexPath.row]
         
         cell.setDeviceType(deviceType: deviceType)//deviceType=

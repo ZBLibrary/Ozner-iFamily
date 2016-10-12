@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */; };
+		8D109F201DAD081400458171 /* CALayer+Expand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D109F1F1DAD081400458171 /* CALayer+Expand.swift */; };
+		8D109F221DAE1E6700458171 /* UIColor+Expand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D109F211DAE1E6700458171 /* UIColor+Expand.swift */; };
 		8D117C111D9CDEE30024187E /* Login+Register+Guiding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D117C101D9CDEE30024187E /* Login+Register+Guiding.storyboard */; };
 		8D117C221D9CFB0D0024187E /* JCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D117C1F1D9CFB0D0024187E /* JCRootViewController.m */; };
 		8D117C231D9CFB0D0024187E /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D117C211D9CFB0D0024187E /* ModelController.m */; };
@@ -118,6 +120,13 @@
 		8D92F6681D9526460068A40A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F66A1D9526460068A40A /* InfoPlist.strings */; };
 		8D92F66F1D95346E0068A40A /* LeftMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F66E1D95346E0068A40A /* LeftMenuController.swift */; };
 		8D92F6711D9534890068A40A /* LeftMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F6701D9534890068A40A /* LeftMenu.storyboard */; };
+		8D9951381DACE4540050FB19 /* DeviceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9951371DACE4540050FB19 /* DeviceViewContainer.swift */; };
+		8D99513A1DACE6200050FB19 /* NoDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9951391DACE6200050FB19 /* NoDeviceView.swift */; };
+		8D99513C1DACE68C0050FB19 /* CupMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D99513B1DACE68C0050FB19 /* CupMainView.swift */; };
+		8D99513E1DACE69A0050FB19 /* TapMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D99513D1DACE69A0050FB19 /* TapMainView.swift */; };
+		8D9951401DACE6C20050FB19 /* NoDeviceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D99513F1DACE6C20050FB19 /* NoDeviceView.xib */; };
+		8D9951421DACE6CF0050FB19 /* CupMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9951411DACE6CF0050FB19 /* CupMainView.xib */; };
+		8D9951441DACE6DA0050FB19 /* TapMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9951431DACE6DA0050FB19 /* TapMainView.xib */; };
 		8DAE80561D9A097800A9946F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DAE80531D9A097800A9946F /* Info.plist */; };
 		8DAE80571D9A097800A9946F /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80541D9A097800A9946F /* SlideMenuController.swift */; };
 		8DAE80601D9A0CB200A9946F /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DAE805E1D9A0CB200A9946F /* AFNetworking.framework */; };
@@ -231,6 +240,8 @@
 
 /* Begin PBXFileReference section */
 		3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OzneriFamily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D109F1F1DAD081400458171 /* CALayer+Expand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Expand.swift"; sourceTree = "<group>"; };
+		8D109F211DAE1E6700458171 /* UIColor+Expand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Expand.swift"; sourceTree = "<group>"; };
 		8D117C101D9CDEE30024187E /* Login+Register+Guiding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Login+Register+Guiding.storyboard"; sourceTree = "<group>"; };
 		8D117C1E1D9CFB0D0024187E /* JCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCRootViewController.h; sourceTree = "<group>"; };
 		8D117C1F1D9CFB0D0024187E /* JCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCRootViewController.m; sourceTree = "<group>"; };
@@ -435,6 +446,13 @@
 		8D92F66C1D9526490068A40A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		8D92F66E1D95346E0068A40A /* LeftMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuController.swift; sourceTree = "<group>"; };
 		8D92F6701D9534890068A40A /* LeftMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LeftMenu.storyboard; sourceTree = "<group>"; };
+		8D9951371DACE4540050FB19 /* DeviceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceViewContainer.swift; sourceTree = "<group>"; };
+		8D9951391DACE6200050FB19 /* NoDeviceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDeviceView.swift; sourceTree = "<group>"; };
+		8D99513B1DACE68C0050FB19 /* CupMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupMainView.swift; sourceTree = "<group>"; };
+		8D99513D1DACE69A0050FB19 /* TapMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapMainView.swift; sourceTree = "<group>"; };
+		8D99513F1DACE6C20050FB19 /* NoDeviceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoDeviceView.xib; sourceTree = "<group>"; };
+		8D9951411DACE6CF0050FB19 /* CupMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupMainView.xib; sourceTree = "<group>"; };
+		8D9951431DACE6DA0050FB19 /* TapMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TapMainView.xib; sourceTree = "<group>"; };
 		8DAE80531D9A097800A9946F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DAE80541D9A097800A9946F /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		8DAE80551D9A097800A9946F /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuControllerSwift.h; sourceTree = "<group>"; };
@@ -682,13 +700,13 @@
 		8D1C66111DAA3B62008C639F /* OznerLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				8D1C66641DAA3B62008C639F /* OznerManager.h */,
+				8D1C66651DAA3B62008C639F /* OznerManager.m */,
 				8D1C66121DAA3B62008C639F /* AirPurifier */,
 				8D1C662C1DAA3B62008C639F /* Bluetooth */,
 				8D1C66371DAA3B62008C639F /* Cup */,
 				8D1C664C1DAA3B62008C639F /* Device */,
 				8D1C665F1DAA3B62008C639F /* Helper */,
-				8D1C66641DAA3B62008C639F /* OznerManager.h */,
-				8D1C66651DAA3B62008C639F /* OznerManager.m */,
 				8D1C66661DAA3B62008C639F /* Tap */,
 				8D1C66771DAA3B62008C639F /* WaterPurifier */,
 				8D1C66821DAA3B62008C639F /* WaterReplenishmentMeter */,
@@ -1072,6 +1090,9 @@
 			children = (
 				8D92F6571D94FAB00068A40A /* MyDevicesController.swift */,
 				8D92F6591D94FAC70068A40A /* MyDevices.storyboard */,
+				8D9951371DACE4540050FB19 /* DeviceViewContainer.swift */,
+				8D9951351DACE2E80050FB19 /* Controller */,
+				8D9951361DACE2E80050FB19 /* View */,
 			);
 			path = MyDevices;
 			sourceTree = "<group>";
@@ -1096,10 +1117,12 @@
 		8D92F64E1D94F64F0068A40A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				8D109F1F1DAD081400458171 /* CALayer+Expand.swift */,
 				8D92F64F1D94F6850068A40A /* LanguageHelper.swift */,
 				8D92F65D1D9510450068A40A /* GloabConfig.swift */,
 				8D92F6631D95252E0068A40A /* Localizable.strings */,
 				8D92F66A1D9526460068A40A /* InfoPlist.strings */,
+				8D109F211DAE1E6700458171 /* UIColor+Expand.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -1118,6 +1141,26 @@
 				8D12AACA1DAB9A89003A09E6 /* WifiPairingController.swift */,
 			);
 			path = LeftMenu;
+			sourceTree = "<group>";
+		};
+		8D9951351DACE2E80050FB19 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8D9951361DACE2E80050FB19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8D9951391DACE6200050FB19 /* NoDeviceView.swift */,
+				8D99513B1DACE68C0050FB19 /* CupMainView.swift */,
+				8D99513D1DACE69A0050FB19 /* TapMainView.swift */,
+				8D99513F1DACE6C20050FB19 /* NoDeviceView.xib */,
+				8D9951411DACE6CF0050FB19 /* CupMainView.xib */,
+				8D9951431DACE6DA0050FB19 /* TapMainView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8DAE80521D9A097800A9946F /* Source */ = {
@@ -1497,12 +1540,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D9951441DACE6DA0050FB19 /* TapMainView.xib in Resources */,
 				8DF78D611D94DBEB002C4202 /* Assets.xcassets in Resources */,
 				B714E0001D9CD50700D5AAC3 /* data.json in Resources */,
 				8D92F6611D95252E0068A40A /* Localizable.strings in Resources */,
 				8DAE80871D9B915A00A9946F /* NetworkConfig.plist in Resources */,
 				8D92F65A1D94FAC70068A40A /* MyDevices.storyboard in Resources */,
 				B714DFB31D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellOutcoming.xib in Resources */,
+				8D9951421DACE6CF0050FB19 /* CupMainView.xib in Resources */,
 				8D92F6521D94F8480068A40A /* MyCenter.storyboard in Resources */,
 				B714DFB51D9CA6FA00D5AAC3 /* ZHCMessagesToolbarContentView.xib in Resources */,
 				8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */,
@@ -1513,6 +1558,7 @@
 				8DAE80561D9A097800A9946F /* Info.plist in Resources */,
 				B714DFB11D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellIncoming.xib in Resources */,
 				B7E4E6BD1DACCF1B00B82774 /* MyInfoCell.xib in Resources */,
+				8D9951401DACE6C20050FB19 /* NoDeviceView.xib in Resources */,
 				8DEB83B21DA896700088794A /* Info.plist in Resources */,
 				8DAE806C1D9A600900A9946F /* LeftMenuDeviceCell.xib in Resources */,
 				B714DF581D9BA9EE00D5AAC3 /* ZHCMessagesAssets.bundle in Resources */,
@@ -1617,6 +1663,7 @@
 				8D1C66D21DAA3B62008C639F /* CupRawRecord.m in Sources */,
 				8D1C66E21DAA3B62008C639F /* TapFirmware.m in Sources */,
 				8D1C66C41DAA3B62008C639F /* MxChipAirPurifierFilterStatus.m in Sources */,
+				8D99513C1DACE68C0050FB19 /* CupMainView.swift in Sources */,
 				8D1C66F61DAA3B62008C639F /* read_handle.c in Sources */,
 				8D1C66D51DAA3B62008C639F /* CupSensor.m in Sources */,
 				8DAE80721D9A85EC00A9946F /* SelectDeviceTableController.swift in Sources */,
@@ -1647,6 +1694,7 @@
 				B714DFD51D9CA71F00D5AAC3 /* ZHCMessage.m in Sources */,
 				8D1C66D61DAA3B62008C639F /* CupSettings.m in Sources */,
 				8D1C67001DAA3B62008C639F /* MQTTKit.m in Sources */,
+				8D109F201DAD081400458171 /* CALayer+Expand.swift in Sources */,
 				8D1C66FE1DAA3B62008C639F /* util_mosq.c in Sources */,
 				8D117C271D9D06730024187E /* LoginViewController.swift in Sources */,
 				8D1C66E41DAA3B62008C639F /* TapRawRecord.m in Sources */,
@@ -1689,6 +1737,7 @@
 				8D12AAC71DAB7386003A09E6 /* PairSuccessController.swift in Sources */,
 				8D1C66CA1DAA3B62008C639F /* BluetoothSynchronizedObject.m in Sources */,
 				8D1C66CB1DAA3B62008C639F /* FirmwareTools.m in Sources */,
+				8D99513E1DACE69A0050FB19 /* TapMainView.swift in Sources */,
 				8D1C66D31DAA3B62008C639F /* CupRecord.m in Sources */,
 				8D1C66E11DAA3B62008C639F /* Tap.m in Sources */,
 				8D92F65E1D9510450068A40A /* GloabConfig.swift in Sources */,
@@ -1703,6 +1752,7 @@
 				8D1C66E31DAA3B62008C639F /* TapManager.m in Sources */,
 				8DAE80951D9BC51D00A9946F /* User+CoreDataClass.swift in Sources */,
 				8D12AACB1DAB9A89003A09E6 /* WifiPairingController.swift in Sources */,
+				8D9951381DACE4540050FB19 /* DeviceViewContainer.swift in Sources */,
 				8D1C66D11DAA3B62008C639F /* CupManager.m in Sources */,
 				8D1C67061DAA3B62008C639F /* EasyLinkSender.m in Sources */,
 				8D1C66FC1DAA3B62008C639F /* time_mosq.c in Sources */,
@@ -1720,11 +1770,13 @@
 				B714DFD81D9CA71F00D5AAC3 /* ZHCPhotoMediaItem.m in Sources */,
 				B714DFF01D9CA73B00D5AAC3 /* ZHCMessagesBubbleImageFactory.m in Sources */,
 				B714DFBA1D9CA71100D5AAC3 /* ZHCMessagesAudioPlayer.m in Sources */,
+				8D99513A1DACE6200050FB19 /* NoDeviceView.swift in Sources */,
 				B714DFEF1D9CA73B00D5AAC3 /* ZHCMessagesAvatarImageFactory.m in Sources */,
 				B714DFAF1D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCell.m in Sources */,
 				B714DFD31D9CA71F00D5AAC3 /* ZHCLocationMediaItem.m in Sources */,
 				8D1C66BF1DAA3B62008C639F /* BluetoothAirPurifierFilterStatus.m in Sources */,
 				8D1C66C01DAA3B62008C639F /* BluetoothAirPurifierSensor.m in Sources */,
+				8D109F221DAE1E6700458171 /* UIColor+Expand.swift in Sources */,
 				8D1C66CF1DAA3B62008C639F /* CupFirmware.m in Sources */,
 				8D1C66C81DAA3B62008C639F /* BluetoothIO.m in Sources */,
 				8D1C66D71DAA3B62008C639F /* BaseDeviceIO.m in Sources */,

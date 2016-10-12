@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +19,11 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xz8-mC-xo1">
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="device_cup_normal_state" translatesAutoresizingMaskIntoConstraints="NO" id="REd-wA-EWX"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="device_wat" translatesAutoresizingMaskIntoConstraints="NO" id="REd-wA-EWX">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="REd-wA-EWX" secondAttribute="height" multiplier="1:1" id="TpA-iT-GtW"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KH4-pQ-O8y">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客厅净水器" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBe-iq-Hgk">
@@ -53,6 +58,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.88106220960617065" green="0.92110651731491089" blue="0.9585917592048645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="REd-wA-EWX" firstAttribute="height" secondItem="Xz8-mC-xo1" secondAttribute="height" multiplier="52:90" id="35u-l3-wS7"/>
                             <constraint firstItem="KH4-pQ-O8y" firstAttribute="leading" secondItem="REd-wA-EWX" secondAttribute="trailing" constant="15" id="DMD-8l-xiM"/>
                             <constraint firstItem="REd-wA-EWX" firstAttribute="centerY" secondItem="Xz8-mC-xo1" secondAttribute="centerY" id="Ufy-NP-Lo8"/>
                             <constraint firstAttribute="bottom" secondItem="KH4-pQ-O8y" secondAttribute="bottom" id="bCp-Hz-tKb"/>
@@ -70,11 +76,19 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.88106220960617065" green="0.92110651731491089" blue="0.9585917592048645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="24.5" y="52"/>
+            <connections>
+                <outlet property="bgView" destination="Xz8-mC-xo1" id="lUT-fg-bqn"/>
+                <outlet property="connectImg" destination="RRr-6M-nM5" id="egZ-9i-kIC"/>
+                <outlet property="connectLabel" destination="CqI-3h-3ns" id="fU6-wx-bGh"/>
+                <outlet property="deviceAdressLabel" destination="NIt-dE-VP1" id="zhj-XQ-vkz"/>
+                <outlet property="deviceImg" destination="REd-wA-EWX" id="iIC-4l-xTO"/>
+                <outlet property="deviceName" destination="vBe-iq-Hgk" id="hyh-aR-06X"/>
+            </connections>
+            <point key="canvasLocation" x="-308" y="69"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="device_cup_normal_state" width="53" height="53"/>
         <image name="device_icon_wifi" width="15" height="11"/>
+        <image name="device_wat" width="77" height="107"/>
     </resources>
 </document>

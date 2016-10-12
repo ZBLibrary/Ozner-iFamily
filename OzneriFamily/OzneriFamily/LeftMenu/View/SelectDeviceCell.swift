@@ -9,14 +9,14 @@
 import UIKit
 //wifi产品一定要带WIFI字母
 enum OznerDeviceType:String {
-    case Cup="Cup"
-    case Tap="Tap"
-    case TDSPan="TDSPan"
-    case Water_Wifi="Water_Wifi"
-    case Air_Blue="Air_Blue"
-    case Air_Wifi="Air_Wifi"
+    case Cup="CP001"
+    case Tap="SC001"
+    case TDSPan="SCP001"//有问题，待测
+    case Water_Wifi="MXCHIP_HAOZE_Water"
+    case Air_Blue="FLT001"
+    case Air_Wifi="FOG_HAOZE_AIR"
  
-    case WaterReplenish="WaterReplenish"
+    case WaterReplenish="BSY001"
     //case Water_Wifi_Ayla="Water_Wifi_Ayla"
     //case Air_Wifi_Ayla="Air_Wifi_Ayla"
     func Name()->String {
@@ -34,18 +34,22 @@ class SelectDeviceCell: UITableViewCell {
     @IBOutlet var typeImg: UIImageView!
     @IBOutlet var typeState: UILabel!
     func setDeviceType(deviceType:OznerDeviceType)  {
-        typeImg.image =
-            deviceType.rawValue.contains("Wifi") ? UIImage(named: "select_device_4"):UIImage(named: "select_device_3")
-        typeState.text = deviceType.rawValue.contains("Wifi") ? "Wifi连接":"蓝牙连接"
+        
+        switch deviceType {
+        case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish://蓝牙
+            typeImg.image=UIImage(named: "select_device_3")
+            typeState.text = "蓝牙连接"
+            break
+        default://Wifi
+            typeImg.image=UIImage(named: "select_device_4")
+            typeState.text = "Wifi连接"
+            break
+        }
+
         deviceImg.image=UIImage(named: ["select_device_0","select_device_1","TDSPAN_ICON","select_device_2","select_device_3zb","select_device_4zb","WaterReplenish1_1"][deviceType.hashValue])
         deviceName.text=deviceType.Name()
     }
-//    var deviceType = OznerDeviceType.Cup{
-//        didSet{
-//            
-//            
-//        }
-//    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

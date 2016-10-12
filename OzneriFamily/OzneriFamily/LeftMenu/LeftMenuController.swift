@@ -11,13 +11,15 @@ enum OznerLeftMenu: Int {
     case main = 0
     case addDevice
 }
-//protocol OznerLeftMenuProtocol : class {
-//    func changeViewController(_ menu: OznerLeftMenu)
-//}
+
+var CurrentSelectDeviceID:String?//全局变量，个人中心中可以改变
 class LeftMenuController: UIViewController {
 
     
-    var mainViewController: MyDevicesController!
+    var mainViewController: MyDevicesController!//设备视图控制器
+    var deviceArray:NSArray!//设备数组
+    var currentSelectCellIndex:Int=0//当前选中Cell Index
+    
     //无设备时添加按钮和显示界面
     //添加设备
     @IBAction func AddDeviceClick(_ sender: UIButton) {
@@ -34,20 +36,27 @@ class LeftMenuController: UIViewController {
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableContainer.isHidden=true
+        deviceArray=NSArray()
         self.tableView.delegate=self
         self.tableView.dataSource=self
-        
         self.tableView.rowHeight=90*height_screen/667
         self.tableView.register(UINib(nibName: "LeftMenuDeviceCell", bundle: nil), forCellReuseIdentifier: "LeftMenuDeviceCell")
         // Do any additional setup after loading the view.
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        deviceArray=OznerManager.instance().getDevices() as NSArray!
+        tableContainer.isHidden = deviceArray.count==0
+        for i in 0..<deviceArray.count {
+            currentSelectCellIndex=(deviceArray[i] as! OznerDevice).identifier==CurrentSelectDeviceID ? 0:i
+        }
+        self.tableView.reloadData()
+    }
 
     /*
     // MARK: - Navigation
@@ -63,7 +72,11 @@ class LeftMenuController: UIViewController {
 
 extension LeftMenuController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let tmpDevice = deviceArray[indexPath.row] as! OznerDevice
+        CurrentSelectDeviceID = tmpDevice.identifier
+        currentSelectCellIndex = indexPath.row
+        self.mainViewController.deviceViewContainer.SetDeviceView(device: tmpDevice)
+        self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
     }
 }
 extension LeftMenuController:UITableViewDataSource{
@@ -71,11 +84,14 @@ extension LeftMenuController:UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return deviceArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "LeftMenuDeviceCell") as! LeftMenuDeviceCell
+        cell.device = deviceArray[indexPath.row] as! OznerDevice
+        cell.setSelected(indexPath.row==currentSelectCellIndex, animated: true)
+        cell.selectionStyle=UITableViewCellSelectionStyle.none
         return cell
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
