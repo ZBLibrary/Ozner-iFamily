@@ -7,85 +7,168 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DD2A3CC68A021D8BAEF7B46EBC5C801 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		19D228ED87FF16C882731F1ED7992B4E /* DateTools-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9B2D9BD69F3E129C05C113B73E6789 /* DateTools-dummy.m */; };
-		2446523B6E52ADD5D9A578E6709A0795 /* Pods-OzneriFamily-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A44232F314701888F5083D97305F1541 /* Pods-OzneriFamily-dummy.m */; };
-		2DAF4E8CD18ED10B30CCFB8FF1984A46 /* DateTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CE6989DAE042427A19A9207AD56A5B9 /* DateTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4159C0A759E6090F2C58FCB2492DFB05 /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 017659F041FE4410B20A74B54D0256A4 /* DTTimePeriod.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		66D6CA16EF2371E39FAB73473A89D8C1 /* NSDate+DateTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A1D7E9326F3D0951BB8A9DEBD6FC070 /* NSDate+DateTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6F00A3D837A718CBC5D7C7157CCF71A2 /* DTTimePeriodGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = C7A8AC568435FCB73E8A942DA50B7ADC /* DTTimePeriodGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		729719BE516B8080199215BB6A52117A /* DateTools-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1371AC8E69789A9278F9F94E5FC7ED66 /* DateTools-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7902018FD0635F9A5E4C13BFD67E3750 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0E0AAAD8D81461FD00033F6ABE6F29CF /* DateTools.bundle */; };
-		7A3C7A5DAEB1C695F060F0248053A1A6 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6E4DD3EC150C59B4ED6B47C2BFD9F7 /* NSDate+DateTools.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		801E845E678344633F3972FA4FC16B7C /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C1055D00661F59B73DB8069DDF7289 /* DTTimePeriodChain.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		9BC7910A61F45206D435065CD0F23BA0 /* DTTimePeriod.h in Headers */ = {isa = PBXBuildFile; fileRef = 53FF24B388C732F8D98604A27B71C452 /* DTTimePeriod.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A4A5DE1784D58F0D9AC336BE0A4936C4 /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 997E50EB140883E449E3D792D13AA788 /* DTConstants.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		AFF4480B4B63FA58209AEC8052207A92 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = E417C8F30F6475B24AE7B0AC9DDB843C /* DTTimePeriodCollection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		B4137B6F5B1EF819B8DF88A194F598ED /* DTError.h in Headers */ = {isa = PBXBuildFile; fileRef = C508B5676986E983C704885755ADA1EB /* DTError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C16E0F1A698E02F1D49D4593A71BE38F /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = C4ABF965C2D30A45F059C8B90526A9B5 /* DTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CC1CD7BAF05F362DECAA5698D1100896 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB46875B98797A42FD0A53EC46FBF6 /* DTError.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CF9DFD0458CD150513A9807A7FE8573E /* Pods-OzneriFamily-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 754E65361E1A4C86838164A3C8F240B9 /* Pods-OzneriFamily-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD710EA2C8E2D3E0917519775D1F571C /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DDF38A68A33413FC096CB68F7640FCA /* DTTimePeriodGroup.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		008D334FD9E2AB8340BD606500335094 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297726AE6ACD7D5EF3C5F5647401D090 /* DesignableLabel.swift */; };
+		0587EB6914316E000D0AF7388383E527 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1E04325A8646D2E3C4906189A54D5B /* DesignableView.swift */; };
+		08B74CF852BB1513B89667BFD7768F55 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA65A281F2AFBAED5E0052AFC98812 /* UnwindSegue.swift */; };
+		10B82702633CB685117F051C14445DD6 /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FCA54C7B1557DC10EC52B1629D70CC /* DesignableImageView.swift */; };
+		19D228ED87FF16C882731F1ED7992B4E /* DateTools-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A42A3F91C864D296ED7DE6E2FA40E /* DateTools-dummy.m */; };
+		19F60BFE91DB5A8AC85BB3FF0B8AF052 /* Spring-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CF747795DEEBB8A2641A0F05518942F /* Spring-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DFB076838FA54DAFD5921C1EB912B0D /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B48BEA13B8FB92B32C81816F3A66A6 /* AsyncImageView.swift */; };
+		22BD49C9E352C8E0545BE765D932011F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD2F4C78023D3550C530AFEE2A70B4F /* ImageLoader.swift */; };
+		2390F47C6B3021F9F644BDD398B0EF08 /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9252EFDF32D255A39D25496C353B7F /* DesignableTextView.swift */; };
+		24A8F1BFAEA6F192C0ED2CE55DB10B2D /* Spring-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 33043286592CB105308C39224C3EFB25 /* Spring-dummy.m */; };
+		2DAF4E8CD18ED10B30CCFB8FF1984A46 /* DateTools.h in Headers */ = {isa = PBXBuildFile; fileRef = C4062E9A1B717C2B0E5F406BD239BC2C /* DateTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32547B54858F1E8CEF1327C0D9AF2D14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9A565D8FE02878561AB594872B7FAA /* Images.xcassets */; };
+		4159C0A759E6090F2C58FCB2492DFB05 /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BED871D0065982E4C932E566542CC30 /* DTTimePeriod.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		42E4CCE6C52431473307FC49B26E175A /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4786E0358A06786214935A064D87E67 /* Spring.swift */; };
+		4C0384D95AAB4FBE55B2B4EDFC643D6A /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E5BDF526B4A301FA49FA3DEFDA5536 /* DesignableButton.swift */; };
+		4F10537AF8B187B2624117A77B97A89C /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7271DFC52FB7F8A02DCCE8973BF2E1FD /* Misc.swift */; };
+		514C1B879E3BF1A1C16DB0C72484F1B1 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44986B22F0AB4B6CBCAA6EE91253E7C2 /* TransitionManager.swift */; };
+		53387AC7488ECB7F79C6BE1D0FF39B36 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B609235F37910C124D572E356D67DF /* SpringTextField.swift */; };
+		552783716A94ACC1801760A5F296F3B5 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA06A2B52280E0093623E8663A2C3914 /* BlurView.swift */; };
+		63AAD2DB39179AD9526661E1EAB9FC67 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A31C83E6633C365702AFA8C2E32C0 /* AsyncButton.swift */; };
+		66D6CA16EF2371E39FAB73473A89D8C1 /* NSDate+DateTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 21D8EAB2E68713C2350E8628E1320EB5 /* NSDate+DateTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A12F14C5CF91062556EC2C2A4AF50BD /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CB265FC40521CF28F105862F2B9B39 /* SpringAnimation.swift */; };
+		6F00A3D837A718CBC5D7C7157CCF71A2 /* DTTimePeriodGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 08CFE76BAA8583D119DDB996109F4495 /* DTTimePeriodGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		729719BE516B8080199215BB6A52117A /* DateTools-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1143498D218B9BF75A1AE0F104A3EC5C /* DateTools-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7902018FD0635F9A5E4C13BFD67E3750 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC4DC1445B96FCE896DEA7DE0BB35DD2 /* DateTools.bundle */; };
+		7A3C7A5DAEB1C695F060F0248053A1A6 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E6C5951258668D533A495ABEAABEE /* NSDate+DateTools.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		801E845E678344633F3972FA4FC16B7C /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = AB32318242B8A6085A55FAA6913C4589 /* DTTimePeriodChain.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		81A3410165F8F2E35AC354EDF727373E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		8F515BB8F6ED0185A1D2F1CB06A1DD68 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505996FBE75271E1E2FBF1A866154A15 /* DesignableTabBarController.swift */; };
+		8F836A2CA3CB0C448D0FDA22CD189E4C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F878A4C2A73D96CC68AA3DCCB8A8542 /* LoadingView.swift */; };
+		91A68945AD635163DF2BDA7B2F501B65 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4F527A31C3521271B21923D5DB307 /* KeyboardLayoutConstraint.swift */; };
+		9BC7910A61F45206D435065CD0F23BA0 /* DTTimePeriod.h in Headers */ = {isa = PBXBuildFile; fileRef = AD137DF98272B218672733A1FA43CDF1 /* DTTimePeriod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C72CEC6C1AA1E39554D312ACEE67009 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A64140C1AA4A26C50704E67314DF077D /* LoadingView.xib */; };
+		A4A5DE1784D58F0D9AC336BE0A4936C4 /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A4527EC623C203FE2C356FE81A78E622 /* DTConstants.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		AA566C52B3C53504DEEE8AC9D1629E00 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E7A60EDF383773CBEBF50E25A3D0C4 /* SpringTextView.swift */; };
+		AE5AA55AA6291F7E948BBB0D400E5F88 /* Pods-OzneriFamily-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A44232F314701888F5083D97305F1541 /* Pods-OzneriFamily-dummy.m */; };
+		AFF4480B4B63FA58209AEC8052207A92 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBD883C14AFE906D1BC90573EEB701 /* DTTimePeriodCollection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B2886E5C6DD3B16BB2BD8DADE1AA5580 /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6BC0CAA6277F7C684E25A0EB095927 /* SpringButton.swift */; };
+		B4137B6F5B1EF819B8DF88A194F598ED /* DTError.h in Headers */ = {isa = PBXBuildFile; fileRef = FCBE22AF1C637B0E8FC9C7266E2F1D82 /* DTError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD179188CEDC416970B8EF234E166D3B /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1BC12CFF6683B38B28A82B702D5BD0 /* SpringView.swift */; };
+		BDBABD3235E3A43879D49C16132BC9A6 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DCC8595B435924A009080C0CA2E767 /* DesignableTextField.swift */; };
+		BDF4E39BAC883A5CF3866B81E35E2378 /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1BA2CCC3FEF745F30951EC2EB03AA2 /* SpringImageView.swift */; };
+		BEA73AA085F3E8C657AD34ED59406120 /* Pods-OzneriFamily-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 754E65361E1A4C86838164A3C8F240B9 /* Pods-OzneriFamily-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF54F1836F166B9E918242E8A934DC63 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC0B52698BA3A329951679178296C6 /* SoundPlayer.swift */; };
+		C16E0F1A698E02F1D49D4593A71BE38F /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 02FADD27D2869154F9540BA7133418A7 /* DTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C908B26853896C568AA564C3D4614EBF /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E329A1E8A620D52840AF54E6DF134 /* AutoTextView.swift */; };
+		CC1CD7BAF05F362DECAA5698D1100896 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AA7BA572FE48FE8F3202FB0CBD326 /* DTError.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		CCE1EC0A7E35A0E868F87E830A25A962 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD498890014CA41447BE133A97D7681 /* TransitionZoom.swift */; };
+		DD710EA2C8E2D3E0917519775D1F571C /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FF556781D800BEA30CFC10F61AC5C772 /* DTTimePeriodGroup.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		E3C1314B3E825850525C07406FC2F45D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		EE13D588E52431089F7406353C90A144 /* DTTimePeriodChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 294557A0DF92EFDC78EF6FAEB3F961D2 /* DTTimePeriodChain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F423AB12C14DA731C42897A3D929D2B8 /* DTTimePeriodCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = E731F9D106FE6057CFB1F22CE7DFB8BA /* DTTimePeriodCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E79415003EACBD451620205D9BC33C26 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B913E5993278476E3B98DB31142F81F1 /* SpringLabel.swift */; };
+		EE13D588E52431089F7406353C90A144 /* DTTimePeriodChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C541CC630CC09FEFB950B9D03B317B5 /* DTTimePeriodChain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F423AB12C14DA731C42897A3D929D2B8 /* DTTimePeriodCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D2033B0A64506729FA83C4DCC8F4821 /* DTTimePeriodCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F4D32CCE2B64E3410F97F523DAE22DFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4DCD3A9953BB4F4A8B2157BE6113FE4D /* PBXContainerItemProxy */ = {
+		5111752AB0ACF79BBE036D2E2FE3A290 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = AFEDA8059B169E4068B6DCC4D2F0B0E9;
 			remoteInfo = DateTools;
 		};
+		EE7D87055807E76F74A2B8D2F7193EDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DC21B668FEB29115DAE88E6E7EA11F24;
+			remoteInfo = Spring;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		017659F041FE4410B20A74B54D0256A4 /* DTTimePeriod.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriod.m; path = DateTools/DTTimePeriod.m; sourceTree = "<group>"; };
-		0A1D7E9326F3D0951BB8A9DEBD6FC070 /* NSDate+DateTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDate+DateTools.h"; path = "DateTools/NSDate+DateTools.h"; sourceTree = "<group>"; };
-		0E0AAAD8D81461FD00033F6ABE6F29CF /* DateTools.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = DateTools/DateTools.bundle; sourceTree = "<group>"; };
-		1371AC8E69789A9278F9F94E5FC7ED66 /* DateTools-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DateTools-umbrella.h"; sourceTree = "<group>"; };
+		02FADD27D2869154F9540BA7133418A7 /* DTConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTConstants.h; path = DateTools/DTConstants.h; sourceTree = "<group>"; };
+		08CFE76BAA8583D119DDB996109F4495 /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodGroup.h; path = DateTools/DTTimePeriodGroup.h; sourceTree = "<group>"; };
+		0A2E6C5951258668D533A495ABEAABEE /* NSDate+DateTools.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDate+DateTools.m"; path = "DateTools/NSDate+DateTools.m"; sourceTree = "<group>"; };
+		0BED871D0065982E4C932E566542CC30 /* DTTimePeriod.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriod.m; path = DateTools/DTTimePeriod.m; sourceTree = "<group>"; };
+		0C541CC630CC09FEFB950B9D03B317B5 /* DTTimePeriodChain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodChain.h; path = DateTools/DTTimePeriodChain.h; sourceTree = "<group>"; };
+		1143498D218B9BF75A1AE0F104A3EC5C /* DateTools-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DateTools-umbrella.h"; sourceTree = "<group>"; };
+		1264C35956179CC7D9B3361AA66E48A6 /* DateTools.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DateTools.xcconfig; sourceTree = "<group>"; };
 		153FC700D650434DF292E2259A9081CC /* Pods-OzneriFamily-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OzneriFamily-acknowledgements.plist"; sourceTree = "<group>"; };
-		1A8ACEEE7FDDE27D540C2258E914DF13 /* DateTools-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DateTools-prefix.pch"; sourceTree = "<group>"; };
-		1D6E4DD3EC150C59B4ED6B47C2BFD9F7 /* NSDate+DateTools.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDate+DateTools.m"; path = "DateTools/NSDate+DateTools.m"; sourceTree = "<group>"; };
-		294557A0DF92EFDC78EF6FAEB3F961D2 /* DTTimePeriodChain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodChain.h; path = DateTools/DTTimePeriodChain.h; sourceTree = "<group>"; };
+		15FE958620A3C0D59FAEEF017A0B4E9B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D2033B0A64506729FA83C4DCC8F4821 /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodCollection.h; path = DateTools/DTTimePeriodCollection.h; sourceTree = "<group>"; };
+		21D8EAB2E68713C2350E8628E1320EB5 /* NSDate+DateTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDate+DateTools.h"; path = "DateTools/NSDate+DateTools.h"; sourceTree = "<group>"; };
+		297726AE6ACD7D5EF3C5F5647401D090 /* DesignableLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableLabel.swift; path = Spring/DesignableLabel.swift; sourceTree = "<group>"; };
+		33043286592CB105308C39224C3EFB25 /* Spring-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Spring-dummy.m"; sourceTree = "<group>"; };
 		368A7D39A0CE266E5C97893C81074AEA /* Pods-OzneriFamily.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-OzneriFamily.modulemap"; sourceTree = "<group>"; };
-		53FF24B388C732F8D98604A27B71C452 /* DTTimePeriod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriod.h; path = DateTools/DTTimePeriod.h; sourceTree = "<group>"; };
+		3DB065F460CBCA43CF2FFD739F5AF802 /* DateTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F6BC0CAA6277F7C684E25A0EB095927 /* SpringButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringButton.swift; path = Spring/SpringButton.swift; sourceTree = "<group>"; };
+		3F878A4C2A73D96CC68AA3DCCB8A8542 /* LoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = Spring/LoadingView.swift; sourceTree = "<group>"; };
+		41B609235F37910C124D572E356D67DF /* SpringTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringTextField.swift; path = Spring/SpringTextField.swift; sourceTree = "<group>"; };
+		44986B22F0AB4B6CBCAA6EE91253E7C2 /* TransitionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionManager.swift; path = Spring/TransitionManager.swift; sourceTree = "<group>"; };
+		47DCC8595B435924A009080C0CA2E767 /* DesignableTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTextField.swift; path = Spring/DesignableTextField.swift; sourceTree = "<group>"; };
+		4ACBD883C14AFE906D1BC90573EEB701 /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodCollection.m; path = DateTools/DTTimePeriodCollection.m; sourceTree = "<group>"; };
+		505996FBE75271E1E2FBF1A866154A15 /* DesignableTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTabBarController.swift; path = Spring/DesignableTabBarController.swift; sourceTree = "<group>"; };
 		58447FA9F2A3AA284A5993B0FE125FB9 /* Pods-OzneriFamily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OzneriFamily.debug.xcconfig"; sourceTree = "<group>"; };
-		5DDF38A68A33413FC096CB68F7640FCA /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodGroup.m; path = DateTools/DTTimePeriodGroup.m; sourceTree = "<group>"; };
-		6FFB46875B98797A42FD0A53EC46FBF6 /* DTError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTError.m; path = DateTools/DTError.m; sourceTree = "<group>"; };
+		603F6E2B20D1357FA65831684A368E23 /* Spring.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Spring.modulemap; sourceTree = "<group>"; };
+		607E329A1E8A620D52840AF54E6DF134 /* AutoTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutoTextView.swift; path = Spring/AutoTextView.swift; sourceTree = "<group>"; };
+		6BA2D14CFB04734C44A609A25B337ADC /* Spring.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Spring.xcconfig; sourceTree = "<group>"; };
+		6BD4F527A31C3521271B21923D5DB307 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardLayoutConstraint.swift; path = Spring/KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		711A31C83E6633C365702AFA8C2E32C0 /* AsyncButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncButton.swift; path = Spring/AsyncButton.swift; sourceTree = "<group>"; };
+		71E675841738A99E307CEBA488E9219B /* Pods_OzneriFamily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OzneriFamily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7271DFC52FB7F8A02DCCE8973BF2E1FD /* Misc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Misc.swift; path = Spring/Misc.swift; sourceTree = "<group>"; };
 		754E65361E1A4C86838164A3C8F240B9 /* Pods-OzneriFamily-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OzneriFamily-umbrella.h"; sourceTree = "<group>"; };
-		8CE6989DAE042427A19A9207AD56A5B9 /* DateTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DateTools.h; path = DateTools/DateTools.h; sourceTree = "<group>"; };
+		7CDA65A281F2AFBAED5E0052AFC98812 /* UnwindSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UnwindSegue.swift; path = Spring/UnwindSegue.swift; sourceTree = "<group>"; };
+		7D1BA2CCC3FEF745F30951EC2EB03AA2 /* SpringImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringImageView.swift; path = Spring/SpringImageView.swift; sourceTree = "<group>"; };
+		8A1BC12CFF6683B38B28A82B702D5BD0 /* SpringView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringView.swift; path = Spring/SpringView.swift; sourceTree = "<group>"; };
+		91E5BDF526B4A301FA49FA3DEFDA5536 /* DesignableButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableButton.swift; path = Spring/DesignableButton.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		997E50EB140883E449E3D792D13AA788 /* DTConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTConstants.m; path = DateTools/DTConstants.m; sourceTree = "<group>"; };
+		97FCA54C7B1557DC10EC52B1629D70CC /* DesignableImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableImageView.swift; path = Spring/DesignableImageView.swift; sourceTree = "<group>"; };
+		9CF747795DEEBB8A2641A0F05518942F /* Spring-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Spring-umbrella.h"; sourceTree = "<group>"; };
+		9ED0EE216F0E8BBFB37AF719D1786D31 /* DateTools.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = DateTools.modulemap; sourceTree = "<group>"; };
+		A1E7A60EDF383773CBEBF50E25A3D0C4 /* SpringTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringTextView.swift; path = Spring/SpringTextView.swift; sourceTree = "<group>"; };
 		A44232F314701888F5083D97305F1541 /* Pods-OzneriFamily-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OzneriFamily-dummy.m"; sourceTree = "<group>"; };
-		AC4AB15A8C7A447A104F2201EFF7BCA6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B03436D1A44486CED066DA6664E3C86D /* DateTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD576D38721105603655E92860D543F7 /* DateTools.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DateTools.xcconfig; sourceTree = "<group>"; };
-		C4ABF965C2D30A45F059C8B90526A9B5 /* DTConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTConstants.h; path = DateTools/DTConstants.h; sourceTree = "<group>"; };
-		C508B5676986E983C704885755ADA1EB /* DTError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTError.h; path = DateTools/DTError.h; sourceTree = "<group>"; };
-		C7A8AC568435FCB73E8A942DA50B7ADC /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodGroup.h; path = DateTools/DTTimePeriodGroup.h; sourceTree = "<group>"; };
+		A4527EC623C203FE2C356FE81A78E622 /* DTConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTConstants.m; path = DateTools/DTConstants.m; sourceTree = "<group>"; };
+		A64140C1AA4A26C50704E67314DF077D /* LoadingView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = LoadingView.xib; path = Spring/LoadingView.xib; sourceTree = "<group>"; };
+		AA06A2B52280E0093623E8663A2C3914 /* BlurView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlurView.swift; path = Spring/BlurView.swift; sourceTree = "<group>"; };
+		AB32318242B8A6085A55FAA6913C4589 /* DTTimePeriodChain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodChain.m; path = DateTools/DTTimePeriodChain.m; sourceTree = "<group>"; };
+		AD137DF98272B218672733A1FA43CDF1 /* DTTimePeriod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriod.h; path = DateTools/DTTimePeriod.h; sourceTree = "<group>"; };
+		B913E5993278476E3B98DB31142F81F1 /* SpringLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringLabel.swift; path = Spring/SpringLabel.swift; sourceTree = "<group>"; };
+		B9AC0B52698BA3A329951679178296C6 /* SoundPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SoundPlayer.swift; path = Spring/SoundPlayer.swift; sourceTree = "<group>"; };
+		BA9A565D8FE02878561AB594872B7FAA /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SpringApp/Images.xcassets; sourceTree = "<group>"; };
+		BC43E963C50AF210EE9C1D642DA66252 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4062E9A1B717C2B0E5F406BD239BC2C /* DateTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DateTools.h; path = DateTools/DateTools.h; sourceTree = "<group>"; };
+		C4B48BEA13B8FB92B32C81816F3A66A6 /* AsyncImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncImageView.swift; path = Spring/AsyncImageView.swift; sourceTree = "<group>"; };
+		C59A42A3F91C864D296ED7DE6E2FA40E /* DateTools-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DateTools-dummy.m"; sourceTree = "<group>"; };
+		C7F82A64B24BB6014FE8CE23785381EC /* Spring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Spring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8341C29881CE8F5B4756642C1CE88CC /* Pods-OzneriFamily-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OzneriFamily-resources.sh"; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CFFD125C1ACD555C3CDBEC3C0362D46D /* DateTools.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = DateTools.modulemap; sourceTree = "<group>"; };
-		D8C1055D00661F59B73DB8069DDF7289 /* DTTimePeriodChain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodChain.m; path = DateTools/DTTimePeriodChain.m; sourceTree = "<group>"; };
-		DB9B2D9BD69F3E129C05C113B73E6789 /* DateTools-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DateTools-dummy.m"; sourceTree = "<group>"; };
+		D6E3B63996453FECE81516EDCF992C37 /* DateTools-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DateTools-prefix.pch"; sourceTree = "<group>"; };
+		D98AA7BA572FE48FE8F3202FB0CBD326 /* DTError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTError.m; path = DateTools/DTError.m; sourceTree = "<group>"; };
+		D9CB265FC40521CF28F105862F2B9B39 /* SpringAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringAnimation.swift; path = Spring/SpringAnimation.swift; sourceTree = "<group>"; };
+		DB1E04325A8646D2E3C4906189A54D5B /* DesignableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableView.swift; path = Spring/DesignableView.swift; sourceTree = "<group>"; };
+		DBD2F4C78023D3550C530AFEE2A70B4F /* ImageLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = Spring/ImageLoader.swift; sourceTree = "<group>"; };
 		E310D3DAF455B6D687AD7399D681FE35 /* Pods-OzneriFamily-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OzneriFamily-frameworks.sh"; sourceTree = "<group>"; };
-		E417C8F30F6475B24AE7B0AC9DDB843C /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodCollection.m; path = DateTools/DTTimePeriodCollection.m; sourceTree = "<group>"; };
-		E731F9D106FE6057CFB1F22CE7DFB8BA /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodCollection.h; path = DateTools/DTTimePeriodCollection.h; sourceTree = "<group>"; };
+		E4786E0358A06786214935A064D87E67 /* Spring.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Spring.swift; path = Spring/Spring.swift; sourceTree = "<group>"; };
 		E9A9B5F43ED9C99798D8984BBA9BCFEE /* Pods-OzneriFamily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OzneriFamily.release.xcconfig"; sourceTree = "<group>"; };
 		EB81AE152705FA6B7DD70314636E3414 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC4DC1445B96FCE896DEA7DE0BB35DD2 /* DateTools.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = DateTools/DateTools.bundle; sourceTree = "<group>"; };
+		EDD498890014CA41447BE133A97D7681 /* TransitionZoom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionZoom.swift; path = Spring/TransitionZoom.swift; sourceTree = "<group>"; };
+		EF9252EFDF32D255A39D25496C353B7F /* DesignableTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTextView.swift; path = Spring/DesignableTextView.swift; sourceTree = "<group>"; };
 		F1ED4A3C87529BF8362E9052159E3D60 /* Pods-OzneriFamily-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OzneriFamily-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F6D0B22FEC56F056FA554E20E06B9CE4 /* Pods_OzneriFamily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OzneriFamily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCBE22AF1C637B0E8FC9C7266E2F1D82 /* DTError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTError.h; path = DateTools/DTError.h; sourceTree = "<group>"; };
+		FD1F3098910A747C8B6DDBE33F777ACC /* Spring-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Spring-prefix.pch"; sourceTree = "<group>"; };
+		FF556781D800BEA30CFC10F61AC5C772 /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodGroup.m; path = DateTools/DTTimePeriodGroup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		236B5475A47F6CCB4794FCA0E99E912E /* Frameworks */ = {
+		62AAF0A3D5FC6842F3E094F58D3A8DFD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DD2A3CC68A021D8BAEF7B46EBC5C801 /* Foundation.framework in Frameworks */,
+				F4D32CCE2B64E3410F97F523DAE22DFF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		849027D7654E9F47DE25A0E9128B476D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81A3410165F8F2E35AC354EDF727373E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,18 +183,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A07EAD0FF432F81D39BCC6FDBA74D81 /* Resources */ = {
+		215984CE037938A5A685CB460266F34A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0E0AAAD8D81461FD00033F6ABE6F29CF /* DateTools.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		3DB2A91B186E0D57CE2DE484CD1AB3E7 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8D35308E9D4E87851388A2DD9AD058A2 /* DateTools */,
+				B7C8779D6609DA4040902A463C2F0933 /* DateTools */,
+				BBED4D463755E7E8A6DD7E4B8E2C719C /* Spring */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -124,39 +200,97 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		6CCD3BF09D1F7142F5273D7EC93CA1A2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9ED0EE216F0E8BBFB37AF719D1786D31 /* DateTools.modulemap */,
+				1264C35956179CC7D9B3361AA66E48A6 /* DateTools.xcconfig */,
+				C59A42A3F91C864D296ED7DE6E2FA40E /* DateTools-dummy.m */,
+				D6E3B63996453FECE81516EDCF992C37 /* DateTools-prefix.pch */,
+				1143498D218B9BF75A1AE0F104A3EC5C /* DateTools-umbrella.h */,
+				15FE958620A3C0D59FAEEF017A0B4E9B /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/DateTools";
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				3DB2A91B186E0D57CE2DE484CD1AB3E7 /* Pods */,
-				BC75593A1941BF634E0DCEB695A93F44 /* Products */,
+				215984CE037938A5A685CB460266F34A /* Pods */,
+				FB1E4EC5AA59FDE4D2A8E93C71919FB8 /* Products */,
 				D198B0DF565C5D89AF0105D641E09196 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8D35308E9D4E87851388A2DD9AD058A2 /* DateTools */ = {
+		AC316B7F789A08EA39BE59138CFBF072 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8CE6989DAE042427A19A9207AD56A5B9 /* DateTools.h */,
-				C4ABF965C2D30A45F059C8B90526A9B5 /* DTConstants.h */,
-				997E50EB140883E449E3D792D13AA788 /* DTConstants.m */,
-				C508B5676986E983C704885755ADA1EB /* DTError.h */,
-				6FFB46875B98797A42FD0A53EC46FBF6 /* DTError.m */,
-				53FF24B388C732F8D98604A27B71C452 /* DTTimePeriod.h */,
-				017659F041FE4410B20A74B54D0256A4 /* DTTimePeriod.m */,
-				294557A0DF92EFDC78EF6FAEB3F961D2 /* DTTimePeriodChain.h */,
-				D8C1055D00661F59B73DB8069DDF7289 /* DTTimePeriodChain.m */,
-				E731F9D106FE6057CFB1F22CE7DFB8BA /* DTTimePeriodCollection.h */,
-				E417C8F30F6475B24AE7B0AC9DDB843C /* DTTimePeriodCollection.m */,
-				C7A8AC568435FCB73E8A942DA50B7ADC /* DTTimePeriodGroup.h */,
-				5DDF38A68A33413FC096CB68F7640FCA /* DTTimePeriodGroup.m */,
-				0A1D7E9326F3D0951BB8A9DEBD6FC070 /* NSDate+DateTools.h */,
-				1D6E4DD3EC150C59B4ED6B47C2BFD9F7 /* NSDate+DateTools.m */,
-				2A07EAD0FF432F81D39BCC6FDBA74D81 /* Resources */,
-				C6DED0DE6F6A0186DA9B6141A1250B04 /* Support Files */,
+				EC4DC1445B96FCE896DEA7DE0BB35DD2 /* DateTools.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B7C8779D6609DA4040902A463C2F0933 /* DateTools */ = {
+			isa = PBXGroup;
+			children = (
+				C4062E9A1B717C2B0E5F406BD239BC2C /* DateTools.h */,
+				02FADD27D2869154F9540BA7133418A7 /* DTConstants.h */,
+				A4527EC623C203FE2C356FE81A78E622 /* DTConstants.m */,
+				FCBE22AF1C637B0E8FC9C7266E2F1D82 /* DTError.h */,
+				D98AA7BA572FE48FE8F3202FB0CBD326 /* DTError.m */,
+				AD137DF98272B218672733A1FA43CDF1 /* DTTimePeriod.h */,
+				0BED871D0065982E4C932E566542CC30 /* DTTimePeriod.m */,
+				0C541CC630CC09FEFB950B9D03B317B5 /* DTTimePeriodChain.h */,
+				AB32318242B8A6085A55FAA6913C4589 /* DTTimePeriodChain.m */,
+				1D2033B0A64506729FA83C4DCC8F4821 /* DTTimePeriodCollection.h */,
+				4ACBD883C14AFE906D1BC90573EEB701 /* DTTimePeriodCollection.m */,
+				08CFE76BAA8583D119DDB996109F4495 /* DTTimePeriodGroup.h */,
+				FF556781D800BEA30CFC10F61AC5C772 /* DTTimePeriodGroup.m */,
+				21D8EAB2E68713C2350E8628E1320EB5 /* NSDate+DateTools.h */,
+				0A2E6C5951258668D533A495ABEAABEE /* NSDate+DateTools.m */,
+				AC316B7F789A08EA39BE59138CFBF072 /* Resources */,
+				6CCD3BF09D1F7142F5273D7EC93CA1A2 /* Support Files */,
 			);
 			path = DateTools;
+			sourceTree = "<group>";
+		};
+		BBED4D463755E7E8A6DD7E4B8E2C719C /* Spring */ = {
+			isa = PBXGroup;
+			children = (
+				711A31C83E6633C365702AFA8C2E32C0 /* AsyncButton.swift */,
+				C4B48BEA13B8FB92B32C81816F3A66A6 /* AsyncImageView.swift */,
+				607E329A1E8A620D52840AF54E6DF134 /* AutoTextView.swift */,
+				AA06A2B52280E0093623E8663A2C3914 /* BlurView.swift */,
+				91E5BDF526B4A301FA49FA3DEFDA5536 /* DesignableButton.swift */,
+				97FCA54C7B1557DC10EC52B1629D70CC /* DesignableImageView.swift */,
+				297726AE6ACD7D5EF3C5F5647401D090 /* DesignableLabel.swift */,
+				505996FBE75271E1E2FBF1A866154A15 /* DesignableTabBarController.swift */,
+				47DCC8595B435924A009080C0CA2E767 /* DesignableTextField.swift */,
+				EF9252EFDF32D255A39D25496C353B7F /* DesignableTextView.swift */,
+				DB1E04325A8646D2E3C4906189A54D5B /* DesignableView.swift */,
+				DBD2F4C78023D3550C530AFEE2A70B4F /* ImageLoader.swift */,
+				6BD4F527A31C3521271B21923D5DB307 /* KeyboardLayoutConstraint.swift */,
+				3F878A4C2A73D96CC68AA3DCCB8A8542 /* LoadingView.swift */,
+				7271DFC52FB7F8A02DCCE8973BF2E1FD /* Misc.swift */,
+				B9AC0B52698BA3A329951679178296C6 /* SoundPlayer.swift */,
+				E4786E0358A06786214935A064D87E67 /* Spring.swift */,
+				D9CB265FC40521CF28F105862F2B9B39 /* SpringAnimation.swift */,
+				3F6BC0CAA6277F7C684E25A0EB095927 /* SpringButton.swift */,
+				7D1BA2CCC3FEF745F30951EC2EB03AA2 /* SpringImageView.swift */,
+				B913E5993278476E3B98DB31142F81F1 /* SpringLabel.swift */,
+				41B609235F37910C124D572E356D67DF /* SpringTextField.swift */,
+				A1E7A60EDF383773CBEBF50E25A3D0C4 /* SpringTextView.swift */,
+				8A1BC12CFF6683B38B28A82B702D5BD0 /* SpringView.swift */,
+				44986B22F0AB4B6CBCAA6EE91253E7C2 /* TransitionManager.swift */,
+				EDD498890014CA41447BE133A97D7681 /* TransitionZoom.swift */,
+				7CDA65A281F2AFBAED5E0052AFC98812 /* UnwindSegue.swift */,
+				E012764405D299D7B8C4CEED23A7A5AF /* Resources */,
+				F3A68EF7D33F7E35DA2456119DA06030 /* Support Files */,
+			);
+			path = Spring;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -165,29 +299,6 @@
 				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BC75593A1941BF634E0DCEB695A93F44 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B03436D1A44486CED066DA6664E3C86D /* DateTools.framework */,
-				F6D0B22FEC56F056FA554E20E06B9CE4 /* Pods_OzneriFamily.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		C6DED0DE6F6A0186DA9B6141A1250B04 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				CFFD125C1ACD555C3CDBEC3C0362D46D /* DateTools.modulemap */,
-				BD576D38721105603655E92860D543F7 /* DateTools.xcconfig */,
-				DB9B2D9BD69F3E129C05C113B73E6789 /* DateTools-dummy.m */,
-				1A8ACEEE7FDDE27D540C2258E914DF13 /* DateTools-prefix.pch */,
-				1371AC8E69789A9278F9F94E5FC7ED66 /* DateTools-umbrella.h */,
-				AC4AB15A8C7A447A104F2201EFF7BCA6 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/DateTools";
 			sourceTree = "<group>";
 		};
 		D198B0DF565C5D89AF0105D641E09196 /* Targets Support Files */ = {
@@ -216,14 +327,47 @@
 			path = "Target Support Files/Pods-OzneriFamily";
 			sourceTree = "<group>";
 		};
+		E012764405D299D7B8C4CEED23A7A5AF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BA9A565D8FE02878561AB594872B7FAA /* Images.xcassets */,
+				A64140C1AA4A26C50704E67314DF077D /* LoadingView.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F3A68EF7D33F7E35DA2456119DA06030 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC43E963C50AF210EE9C1D642DA66252 /* Info.plist */,
+				603F6E2B20D1357FA65831684A368E23 /* Spring.modulemap */,
+				6BA2D14CFB04734C44A609A25B337ADC /* Spring.xcconfig */,
+				33043286592CB105308C39224C3EFB25 /* Spring-dummy.m */,
+				FD1F3098910A747C8B6DDBE33F777ACC /* Spring-prefix.pch */,
+				9CF747795DEEBB8A2641A0F05518942F /* Spring-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Spring";
+			sourceTree = "<group>";
+		};
+		FB1E4EC5AA59FDE4D2A8E93C71919FB8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DB065F460CBCA43CF2FFD739F5AF802 /* DateTools.framework */,
+				71E675841738A99E307CEBA488E9219B /* Pods_OzneriFamily.framework */,
+				C7F82A64B24BB6014FE8CE23785381EC /* Spring.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		5BC9F7A258F7EDE2939395130239BE3D /* Headers */ = {
+		AC881A5B19AE175B85F2B0F422AEF4B7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF9DFD0458CD150513A9807A7FE8573E /* Pods-OzneriFamily-umbrella.h in Headers */,
+				BEA73AA085F3E8C657AD34ED59406120 /* Pods-OzneriFamily-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,27 +387,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D6CA1C168B1B7D36C713A7040859B3EC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19F60BFE91DB5A8AC85BB3FF0B8AF052 /* Spring-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2266A1905328F3FDDC88204A7200164D /* Pods-OzneriFamily */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0939223C6B671281635C35F994E057FC /* Build configuration list for PBXNativeTarget "Pods-OzneriFamily" */;
-			buildPhases = (
-				352E1AEC58B4D6AE79E13F6F76502737 /* Sources */,
-				236B5475A47F6CCB4794FCA0E99E912E /* Frameworks */,
-				5BC9F7A258F7EDE2939395130239BE3D /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				78A0E0AA3FA9EB0B7A47B5C2D5031280 /* PBXTargetDependency */,
-			);
-			name = "Pods-OzneriFamily";
-			productName = "Pods-OzneriFamily";
-			productReference = F6D0B22FEC56F056FA554E20E06B9CE4 /* Pods_OzneriFamily.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		AFEDA8059B169E4068B6DCC4D2F0B0E9 /* DateTools */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B43E01F5BF2588222B5923C17216C970 /* Build configuration list for PBXNativeTarget "DateTools" */;
@@ -279,7 +413,44 @@
 			);
 			name = DateTools;
 			productName = DateTools;
-			productReference = B03436D1A44486CED066DA6664E3C86D /* DateTools.framework */;
+			productReference = 3DB065F460CBCA43CF2FFD739F5AF802 /* DateTools.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DC21B668FEB29115DAE88E6E7EA11F24 /* Spring */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CFE1BECA810CD6356B23DD87184EAEC /* Build configuration list for PBXNativeTarget "Spring" */;
+			buildPhases = (
+				F2CFEB2F3B2BF8D912E80B93BDB7D0D3 /* Sources */,
+				849027D7654E9F47DE25A0E9128B476D /* Frameworks */,
+				46D7982EE54A5C8997FE12597FCA3FC4 /* Resources */,
+				D6CA1C168B1B7D36C713A7040859B3EC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Spring;
+			productName = Spring;
+			productReference = C7F82A64B24BB6014FE8CE23785381EC /* Spring.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F0DF5FD5CFC92D4DFEFCA6F15554FD88 /* Pods-OzneriFamily */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A37FC5408FC57188465204BF20845D2E /* Build configuration list for PBXNativeTarget "Pods-OzneriFamily" */;
+			buildPhases = (
+				D8138BAA30EDA7F3D8B49D14D5B75187 /* Sources */,
+				62AAF0A3D5FC6842F3E094F58D3A8DFD /* Frameworks */,
+				AC881A5B19AE175B85F2B0F422AEF4B7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB29B65E66BD5A9598BC15D36299EB8A /* PBXTargetDependency */,
+				690CDB8B7F252A036358BF465CDE2A1E /* PBXTargetDependency */,
+			);
+			name = "Pods-OzneriFamily";
+			productName = "Pods-OzneriFamily";
+			productReference = 71E675841738A99E307CEBA488E9219B /* Pods_OzneriFamily.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -299,12 +470,13 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = BC75593A1941BF634E0DCEB695A93F44 /* Products */;
+			productRefGroup = FB1E4EC5AA59FDE4D2A8E93C71919FB8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				AFEDA8059B169E4068B6DCC4D2F0B0E9 /* DateTools */,
-				2266A1905328F3FDDC88204A7200164D /* Pods-OzneriFamily */,
+				F0DF5FD5CFC92D4DFEFCA6F15554FD88 /* Pods-OzneriFamily */,
+				DC21B668FEB29115DAE88E6E7EA11F24 /* Spring */,
 			);
 		};
 /* End PBXProject section */
@@ -315,6 +487,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7902018FD0635F9A5E4C13BFD67E3750 /* DateTools.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46D7982EE54A5C8997FE12597FCA3FC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32547B54858F1E8CEF1327C0D9AF2D14 /* Images.xcassets in Resources */,
+				9C72CEC6C1AA1E39554D312ACEE67009 /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,22 +517,63 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		352E1AEC58B4D6AE79E13F6F76502737 /* Sources */ = {
+		D8138BAA30EDA7F3D8B49D14D5B75187 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2446523B6E52ADD5D9A578E6709A0795 /* Pods-OzneriFamily-dummy.m in Sources */,
+				AE5AA55AA6291F7E948BBB0D400E5F88 /* Pods-OzneriFamily-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2CFEB2F3B2BF8D912E80B93BDB7D0D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63AAD2DB39179AD9526661E1EAB9FC67 /* AsyncButton.swift in Sources */,
+				1DFB076838FA54DAFD5921C1EB912B0D /* AsyncImageView.swift in Sources */,
+				C908B26853896C568AA564C3D4614EBF /* AutoTextView.swift in Sources */,
+				552783716A94ACC1801760A5F296F3B5 /* BlurView.swift in Sources */,
+				4C0384D95AAB4FBE55B2B4EDFC643D6A /* DesignableButton.swift in Sources */,
+				10B82702633CB685117F051C14445DD6 /* DesignableImageView.swift in Sources */,
+				008D334FD9E2AB8340BD606500335094 /* DesignableLabel.swift in Sources */,
+				8F515BB8F6ED0185A1D2F1CB06A1DD68 /* DesignableTabBarController.swift in Sources */,
+				BDBABD3235E3A43879D49C16132BC9A6 /* DesignableTextField.swift in Sources */,
+				2390F47C6B3021F9F644BDD398B0EF08 /* DesignableTextView.swift in Sources */,
+				0587EB6914316E000D0AF7388383E527 /* DesignableView.swift in Sources */,
+				22BD49C9E352C8E0545BE765D932011F /* ImageLoader.swift in Sources */,
+				91A68945AD635163DF2BDA7B2F501B65 /* KeyboardLayoutConstraint.swift in Sources */,
+				8F836A2CA3CB0C448D0FDA22CD189E4C /* LoadingView.swift in Sources */,
+				4F10537AF8B187B2624117A77B97A89C /* Misc.swift in Sources */,
+				BF54F1836F166B9E918242E8A934DC63 /* SoundPlayer.swift in Sources */,
+				24A8F1BFAEA6F192C0ED2CE55DB10B2D /* Spring-dummy.m in Sources */,
+				42E4CCE6C52431473307FC49B26E175A /* Spring.swift in Sources */,
+				6A12F14C5CF91062556EC2C2A4AF50BD /* SpringAnimation.swift in Sources */,
+				B2886E5C6DD3B16BB2BD8DADE1AA5580 /* SpringButton.swift in Sources */,
+				BDF4E39BAC883A5CF3866B81E35E2378 /* SpringImageView.swift in Sources */,
+				E79415003EACBD451620205D9BC33C26 /* SpringLabel.swift in Sources */,
+				53387AC7488ECB7F79C6BE1D0FF39B36 /* SpringTextField.swift in Sources */,
+				AA566C52B3C53504DEEE8AC9D1629E00 /* SpringTextView.swift in Sources */,
+				BD179188CEDC416970B8EF234E166D3B /* SpringView.swift in Sources */,
+				514C1B879E3BF1A1C16DB0C72484F1B1 /* TransitionManager.swift in Sources */,
+				CCE1EC0A7E35A0E868F87E830A25A962 /* TransitionZoom.swift in Sources */,
+				08B74CF852BB1513B89667BFD7768F55 /* UnwindSegue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		78A0E0AA3FA9EB0B7A47B5C2D5031280 /* PBXTargetDependency */ = {
+		690CDB8B7F252A036358BF465CDE2A1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Spring;
+			target = DC21B668FEB29115DAE88E6E7EA11F24 /* Spring */;
+			targetProxy = EE7D87055807E76F74A2B8D2F7193EDC /* PBXContainerItemProxy */;
+		};
+		AB29B65E66BD5A9598BC15D36299EB8A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DateTools;
 			target = AFEDA8059B169E4068B6DCC4D2F0B0E9 /* DateTools */;
-			targetProxy = 4DCD3A9953BB4F4A8B2157BE6113FE4D /* PBXContainerItemProxy */;
+			targetProxy = 5111752AB0ACF79BBE036D2E2FE3A290 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -440,9 +662,41 @@
 			};
 			name = Release;
 		};
+		4CED409F3474963CD8360F5B9311B41C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BA2D14CFB04734C44A609A25B337ADC /* Spring.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Spring/Spring-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Spring/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Spring/Spring.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Spring;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		558294D200844DA401FDAEF99697C63C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD576D38721105603655E92860D543F7 /* DateTools.xcconfig */;
+			baseConfigurationReference = 1264C35956179CC7D9B3361AA66E48A6 /* DateTools.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -472,7 +726,7 @@
 			};
 			name = Release;
 		};
-		A2F0F56D9F99A4393536F0549D1B8236 /* Debug */ = {
+		66F3738154BC3644D77749A11E698AD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 58447FA9F2A3AA284A5993B0FE125FB9 /* Pods-OzneriFamily.debug.xcconfig */;
 			buildSettings = {
@@ -501,13 +755,47 @@
 				PRODUCT_NAME = Pods_OzneriFamily;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		B3DB23B4FD22C9D156FB6633EE31F2E9 /* Release */ = {
+		72C086D82CFCDD231BCC4F38A5E324AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BA2D14CFB04734C44A609A25B337ADC /* Spring.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Spring/Spring-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Spring/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Spring/Spring.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Spring;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7EE4B76E1DBA78828A318439A2CEB770 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E9A9B5F43ED9C99798D8984BBA9BCFEE /* Pods-OzneriFamily.release.xcconfig */;
 			buildSettings = {
@@ -544,7 +832,7 @@
 		};
 		C476C0B5796DB77E29336D22FFA84AAB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD576D38721105603655E92860D543F7 /* DateTools.xcconfig */;
+			baseConfigurationReference = 1264C35956179CC7D9B3361AA66E48A6 /* DateTools.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -577,20 +865,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0939223C6B671281635C35F994E057FC /* Build configuration list for PBXNativeTarget "Pods-OzneriFamily" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A2F0F56D9F99A4393536F0549D1B8236 /* Debug */,
-				B3DB23B4FD22C9D156FB6633EE31F2E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				015A368F878AC3E2CEAE21DDE8026304 /* Debug */,
 				44CDBB6D11DE06DB64D6268622BDC47E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CFE1BECA810CD6356B23DD87184EAEC /* Build configuration list for PBXNativeTarget "Spring" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72C086D82CFCDD231BCC4F38A5E324AB /* Debug */,
+				4CED409F3474963CD8360F5B9311B41C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A37FC5408FC57188465204BF20845D2E /* Build configuration list for PBXNativeTarget "Pods-OzneriFamily" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66F3738154BC3644D77749A11E698AD6 /* Debug */,
+				7EE4B76E1DBA78828A318439A2CEB770 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

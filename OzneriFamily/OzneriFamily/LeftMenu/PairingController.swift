@@ -47,10 +47,10 @@ class PairingController: UIViewController {
                 let deviceState = PairImagsAndState(imageName: "icon_peidui_jingshuiqi_watting", typeStateText: "正在进行Wifi配对", deviceStateText: "请同时按下净水器加热与制冷两个按钮")
                 setUpState(state: deviceState)
             case OznerDeviceType.Air_Blue.rawValue:
-                let deviceState = PairImagsAndState(imageName: "My_kongjing_small_gray", typeStateText: "", deviceStateText: "正在进行蓝牙配对")
+                let deviceState = PairImagsAndState(imageName: "icon_smallair_peidui_waiting", typeStateText: "", deviceStateText: "正在进行蓝牙配对")
                 setUpState(state: deviceState)
             case OznerDeviceType.Air_Wifi.rawValue:
-                let deviceState = PairImagsAndState(imageName: "My_kongjing_big_gray", typeStateText: "正在进行Wifi配对", deviceStateText: "同时按下电源和风速键,WiFi指示灯闪烁。")
+                let deviceState = PairImagsAndState(imageName: "icon_bigair_peidui_waiting", typeStateText: "正在进行Wifi配对", deviceStateText: "同时按下电源和风速键,WiFi指示灯闪烁。")
                 setUpState(state: deviceState)
             case OznerDeviceType.WaterReplenish.rawValue:
                 let deviceState = PairImagsAndState(imageName: "WaterReplenish3", typeStateText: "待定", deviceStateText: "待定")
@@ -81,7 +81,7 @@ class PairingController: UIViewController {
     
     func success()  {
         
-//        self.performSegue(withIdentifier: "showsuccess", sender: nil)
+        self.performSegue(withIdentifier: "showsuccess", sender: nil)
 //        animalImg.layer.removeAnimation(forKey: "rotationAnimation")
     }
     
