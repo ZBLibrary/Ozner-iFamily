@@ -13,6 +13,10 @@ class PairSuccessController: UIViewController {
     @IBAction func backClick(_ sender: AnyObject) {
         _=self.navigationController?.popToRootViewController(animated: true)
     }
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,4 +39,23 @@ class PairSuccessController: UIViewController {
     }
     */
 
+}
+
+extension PairSuccessController: UICollectionViewDelegate,UICollectionViewDataSource {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pairsuccessCellID", for: indexPath) as! SuccessPairCell
+        cell.backgroundColor = UIColor.red
+        return cell
+        
+        
+    }
+    
+    
 }

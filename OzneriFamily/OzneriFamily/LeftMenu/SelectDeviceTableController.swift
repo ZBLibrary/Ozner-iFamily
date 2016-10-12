@@ -10,6 +10,7 @@ import UIKit
 
 class SelectDeviceTableController: UITableViewController {
 
+    var deviceType:OznerDeviceType?
     //var delegate: OznerLeftMenuProtocol?
     @IBAction func backClick(_ sender: UIBarButtonItem) {
        self.dismiss(animated: false, completion: nil)
@@ -66,13 +67,19 @@ class SelectDeviceTableController: UITableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        deviceType = [OznerDeviceType.Cup,.Tap,.TDSPan,.Water_Wifi,.Air_Blue,.Air_Wifi,.WaterReplenish][indexPath.row]
+//        let destainController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "PairingControllerID") as! PairingController
+//        destainController.deviceTypeValue = deviceType!.rawValue
+//        print(destainController.deviceTypeValue)
+        self.performSegue(withIdentifier: "pushPairID", sender: nil)
+
+    }
     /*
-    // Override to support conditional editing of the table view.
+     Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+         Return false if you do not want the specified item to be editable.
         return true
     }
     */
@@ -111,6 +118,10 @@ class SelectDeviceTableController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+//        
+        let pair = segue.destination as! PairingController
+        
+        pair.deviceTypeValue = self.deviceType!
     }
     
 

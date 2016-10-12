@@ -188,6 +188,8 @@
 		B714DFFD1D9CB13700D5AAC3 /* ZHCModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = B714DFFA1D9CB13700D5AAC3 /* ZHCModelData.m */; };
 		B714DFFE1D9CB13700D5AAC3 /* ZHUseFDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B714DFFC1D9CB13700D5AAC3 /* ZHUseFDModel.m */; };
 		B714E0001D9CD50700D5AAC3 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = B714DFFF1D9CD50700D5AAC3 /* data.json */; };
+		B727C35D1DACE90000FE990F /* SuccessPairCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B727C35B1DACE90000FE990F /* SuccessPairCell.swift */; };
+		B727C35E1DACE90000FE990F /* SuccessPairCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B727C35C1DACE90000FE990F /* SuccessPairCell.xib */; };
 		B7725CFF1D9DF8FF0047AC6F /* BDImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B7725CFE1D9DF8FF0047AC6F /* BDImagePicker.m */; };
 		B779687E1D9E4B4C0046AD66 /* UUImageAvatarBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = B779687D1D9E4B4C0046AD66 /* UUImageAvatarBrowser.m */; };
 		B7E4E6B81DACCC2D00B82774 /* MyInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E4E6B41DACCC2D00B82774 /* MyInfoCell.swift */; };
@@ -557,6 +559,8 @@
 		B714DFFB1D9CB13700D5AAC3 /* ZHUseFDModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHUseFDModel.h; sourceTree = "<group>"; };
 		B714DFFC1D9CB13700D5AAC3 /* ZHUseFDModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHUseFDModel.m; sourceTree = "<group>"; };
 		B714DFFF1D9CD50700D5AAC3 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		B727C35B1DACE90000FE990F /* SuccessPairCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessPairCell.swift; sourceTree = "<group>"; };
+		B727C35C1DACE90000FE990F /* SuccessPairCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuccessPairCell.xib; sourceTree = "<group>"; };
 		B7725CFD1D9DF8FF0047AC6F /* BDImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImagePicker.h; sourceTree = "<group>"; };
 		B7725CFE1D9DF8FF0047AC6F /* BDImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImagePicker.m; sourceTree = "<group>"; };
 		B779687C1D9E4B4C0046AD66 /* UUImageAvatarBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUImageAvatarBrowser.h; sourceTree = "<group>"; };
@@ -1137,6 +1141,8 @@
 				8DAE806A1D9A600900A9946F /* LeftMenuDeviceCell.xib */,
 				8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */,
 				8D1C67091DAA4052008C639F /* SelectDeviceCell.xib */,
+				B727C35B1DACE90000FE990F /* SuccessPairCell.swift */,
+				B727C35C1DACE90000FE990F /* SuccessPairCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1503,6 +1509,7 @@
 				8DAE80871D9B915A00A9946F /* NetworkConfig.plist in Resources */,
 				8D92F65A1D94FAC70068A40A /* MyDevices.storyboard in Resources */,
 				B714DFB31D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellOutcoming.xib in Resources */,
+				B727C35E1DACE90000FE990F /* SuccessPairCell.xib in Resources */,
 				8D92F6521D94F8480068A40A /* MyCenter.storyboard in Resources */,
 				B714DFB51D9CA6FA00D5AAC3 /* ZHCMessagesToolbarContentView.xib in Resources */,
 				8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */,
@@ -1712,6 +1719,7 @@
 				8D1C66F31DAA3B62008C639F /* messages_mosq.c in Sources */,
 				8D92F66F1D95346E0068A40A /* LeftMenuController.swift in Sources */,
 				B714DF601D9BA9EE00D5AAC3 /* ZHCMessagesViewController.m in Sources */,
+				B727C35D1DACE90000FE990F /* SuccessPairCell.swift in Sources */,
 				B714DFF31D9CA73B00D5AAC3 /* ZHCMessagesTimestampFormatter.m in Sources */,
 				B714DF5C1D9BA9EE00D5AAC3 /* NSString+ZHCMessages.m in Sources */,
 				B714DFAC1D9CA6FA00D5AAC3 /* ZHCMessagesMoreItem.m in Sources */,

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iE5-ne-iDo">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iE5-ne-iDo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -163,7 +163,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9OJ-w5-NpA" id="4Sb-Dz-LdH">
-                                    <frame key="frameInset" width="375" height="89.5"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWh-ro-DsT">
@@ -222,7 +222,6 @@
                                     <outlet property="deviceName" destination="MtZ-FS-xgO" id="koJ-Ay-j9u"/>
                                     <outlet property="typeImg" destination="9ot-ly-wFB" id="5Tg-9d-nQn"/>
                                     <outlet property="typeState" destination="lYq-S3-5Pe" id="EdG-Ir-gIv"/>
-                                    <segue destination="csj-M4-v5c" kind="show" identifier="showpair" id="9Vs-D5-ojt"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -239,15 +238,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="csj-M4-v5c" kind="push" identifier="pushPairID" id="yT7-Wl-kpZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SIG-SI-pcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-358" y="705"/>
+            <point key="canvasLocation" x="-266" y="705"/>
         </scene>
         <!--正在配对-->
         <scene sceneID="gNq-9H-au5">
             <objects>
-                <viewController id="csj-M4-v5c" customClass="PairingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PairingControllerID" id="csj-M4-v5c" customClass="PairingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="koV-x0-2Ez"/>
                         <viewControllerLayoutGuide type="bottom" id="BYo-AZ-0Xe"/>
@@ -320,7 +322,63 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UY3-P4-EzN">
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZS1-Os-aaj">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fgN-LR-yG8">
+                                            <size key="itemSize" width="80" height="80"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AbS-1h-NYW" customClass="SuccessPairCell" customModule="OzneriFamily" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="-2" width="76" height="84"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="76" height="84"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_peidui_select_TDSPan" translatesAutoresizingMaskIntoConstraints="NO" id="mkp-mf-QCC">
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="mkp-mf-QCC" secondAttribute="height" multiplier="1:1" id="HUN-7d-ul4"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的水杯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13W-fq-gzU">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" red="0.93725490199999995" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </view>
+                                                <color key="backgroundColor" red="0.50196078430000002" green="0.81176470590000005" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="mkp-mf-QCC" firstAttribute="centerX" secondItem="AbS-1h-NYW" secondAttribute="centerX" id="25E-dB-1wU"/>
+                                                    <constraint firstItem="mkp-mf-QCC" firstAttribute="width" secondItem="AbS-1h-NYW" secondAttribute="width" multiplier="0.6" id="6ZP-q0-kUW"/>
+                                                    <constraint firstItem="13W-fq-gzU" firstAttribute="top" secondItem="mkp-mf-QCC" secondAttribute="bottom" constant="5" id="K7d-7Y-w8H"/>
+                                                    <constraint firstItem="mkp-mf-QCC" firstAttribute="top" secondItem="AbS-1h-NYW" secondAttribute="top" constant="8" id="gSY-6g-d9L"/>
+                                                    <constraint firstItem="13W-fq-gzU" firstAttribute="centerX" secondItem="AbS-1h-NYW" secondAttribute="centerX" id="yzb-RH-PCM"/>
+                                                </constraints>
+                                                <size key="customSize" width="76" height="84"/>
+                                                <connections>
+                                                    <outlet property="iconImage" destination="mkp-mf-QCC" id="xJv-ZA-TrC"/>
+                                                    <outlet property="nameLabel" destination="13W-fq-gzU" id="T2b-m1-BHV"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="WzG-Ym-y9N" id="CWV-EG-NX8"/>
+                                            <outlet property="delegate" destination="WzG-Ym-y9N" id="qqN-MX-n4T"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ZS1-Os-aaj" secondAttribute="trailing" id="avZ-9T-jig"/>
+                                    <constraint firstItem="ZS1-Os-aaj" firstAttribute="top" secondItem="UY3-P4-EzN" secondAttribute="top" id="pk0-d6-TRj"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZS1-Os-aaj" secondAttribute="bottom" id="rHt-F9-zlk"/>
+                                    <constraint firstItem="ZS1-Os-aaj" firstAttribute="leading" secondItem="UY3-P4-EzN" secondAttribute="leading" id="trp-nL-Gvd"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已搜索到的设备" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcn-r8-kAf">
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
@@ -328,7 +386,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.50128602980000003" green="0.81346648929999998" blue="0.97630530599999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.50196078431372548" green="0.81176470588235294" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uVz-5q-5T3" firstAttribute="width" secondItem="McK-C4-yAs" secondAttribute="width" multiplier="130:375" id="7MF-7O-TX7"/>
                             <constraint firstItem="UY3-P4-EzN" firstAttribute="width" secondItem="McK-C4-yAs" secondAttribute="width" multiplier="316:375" id="F11-Kv-yQP"/>
@@ -348,6 +406,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="ZS1-Os-aaj" id="4EH-qT-5e7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewY-kn-Phw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -724,6 +785,7 @@
         <image name="icon_luyouqi" width="84" height="77"/>
         <image name="icon_mima" width="18" height="11"/>
         <image name="icon_no_device_logo" width="255" height="255"/>
+        <image name="icon_peidui_select_TDSPan" width="100" height="100"/>
         <image name="icon_peidui_select_bigair" width="132" height="131"/>
         <image name="icon_peidui_watting" width="83" height="63"/>
         <image name="icon_yun" width="74" height="47"/>
