@@ -16,7 +16,7 @@ var CurrentSelectDeviceID:String?//全局变量，个人中心中可以改变
 class LeftMenuController: UIViewController {
 
     
-    var mainViewController: MyDevicesController!//设备视图控制器
+    var mainViewController: UINavigationController!//设备视图控制器
     var deviceArray:NSArray!//设备数组
     var currentSelectCellIndex:Int=0//当前选中Cell Index
     

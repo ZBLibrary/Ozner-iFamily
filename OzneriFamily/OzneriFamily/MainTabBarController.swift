@@ -13,17 +13,18 @@ class MainTabBarController: RDVTabBarController {
     func loadTabBar() {
         OznerManager.instance().setOwner(User.currentUser?.phone ?? User.currentUser?.email)
         
-        let mainViewController = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
+        let c1 = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
+        
         
         let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController 
-        leftViewController.mainViewController=mainViewController
+        
 
         let nvc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateInitialViewController() as! UINavigationController
-        
+        leftViewController.mainViewController=nvc
         SlideMenuOptions.leftViewWidth=298*width_screen/375
         let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
         slideMenuController.automaticallyAdjustsScrollViewInsets = true
-        slideMenuController.delegate = mainViewController
+        slideMenuController.delegate = c1
         
         let c2=WebShopController()
       
@@ -34,6 +35,7 @@ class MainTabBarController: RDVTabBarController {
         
         self.viewControllers=[slideMenuController,c2,nav3,nav4]
         //设置tabbar
+        
         self.tabBar.isTranslucent=false
         self.tabBar.backgroundColor=UIColor.white
         var index=0
