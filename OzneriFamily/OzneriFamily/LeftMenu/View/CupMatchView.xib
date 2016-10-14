@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CupMatchView" customModule="OzneriFamily" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="373" height="219"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAk-lU-fSL">
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="5mo-RE-4HW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="完成">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <real key="value" value="17.5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer." value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVb-Zw-bJv">
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入智能杯名称" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Uz-fk-owN" userLabel="Weight">
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的水杯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDt-Qi-lGY">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="e0d-Em-D2N"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R6Y-sp-1Se">
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="qSO-Op-nma"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ApT-Dh-3cj">
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="SYo-66-tWy"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXG-p8-jtl" userLabel="pullButton">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="18" id="bWg-fb-n4G"/>
+                                <constraint firstAttribute="height" constant="19" id="jFe-M6-R5L"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="pull_down_row"/>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入体重" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6JH-DC-AAx">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="F2F-OZ-38k"/>
+                                <constraint firstAttribute="width" constant="70" id="IDp-7Y-bKq"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AcF-6J-SQL">
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="fsT-HZ-fcs"/>
+                                <constraint firstAttribute="width" constant="150" id="nOk-Kx-XgN"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Huc-8m-ul9">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="dKO-hj-iTE"/>
+                                <constraint firstAttribute="height" constant="21" id="qP4-gZ-f2t"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="填写体重获得更健康的饮水量建议" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJc-Iy-pVD">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="qAn-B8-bxx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="R6Y-sp-1Se" firstAttribute="top" secondItem="4Uz-fk-owN" secondAttribute="bottom" constant="5" id="0iI-zb-ZM2"/>
+                        <constraint firstItem="Huc-8m-ul9" firstAttribute="centerY" secondItem="6JH-DC-AAx" secondAttribute="centerY" id="1mP-8H-zEw"/>
+                        <constraint firstItem="4Uz-fk-owN" firstAttribute="top" secondItem="OVb-Zw-bJv" secondAttribute="top" constant="30" id="9S3-Vc-ERh"/>
+                        <constraint firstItem="ApT-Dh-3cj" firstAttribute="top" secondItem="DXG-p8-jtl" secondAttribute="bottom" constant="4" id="9a4-3s-VaG"/>
+                        <constraint firstItem="DXG-p8-jtl" firstAttribute="trailing" secondItem="ApT-Dh-3cj" secondAttribute="trailing" id="FTh-nv-PN3"/>
+                        <constraint firstItem="RJc-Iy-pVD" firstAttribute="centerX" secondItem="OVb-Zw-bJv" secondAttribute="centerX" id="FuC-1K-Llu"/>
+                        <constraint firstItem="dDt-Qi-lGY" firstAttribute="width" secondItem="4Uz-fk-owN" secondAttribute="width" id="Jml-NJ-y5G"/>
+                        <constraint firstItem="AcF-6J-SQL" firstAttribute="centerX" secondItem="OVb-Zw-bJv" secondAttribute="centerX" id="LXA-aP-RkR"/>
+                        <constraint firstItem="ApT-Dh-3cj" firstAttribute="top" secondItem="dDt-Qi-lGY" secondAttribute="bottom" constant="5" id="Mry-0Q-ggh"/>
+                        <constraint firstItem="ApT-Dh-3cj" firstAttribute="centerX" secondItem="dDt-Qi-lGY" secondAttribute="centerX" id="OHc-xF-GHY"/>
+                        <constraint firstAttribute="trailing" secondItem="dDt-Qi-lGY" secondAttribute="trailing" constant="20" id="PBg-uf-tJM"/>
+                        <constraint firstItem="6JH-DC-AAx" firstAttribute="centerX" secondItem="OVb-Zw-bJv" secondAttribute="centerX" id="UCh-QQ-Jr3"/>
+                        <constraint firstItem="ApT-Dh-3cj" firstAttribute="width" secondItem="dDt-Qi-lGY" secondAttribute="width" multiplier="0.7" id="b3x-fK-9s3"/>
+                        <constraint firstItem="4Uz-fk-owN" firstAttribute="leading" secondItem="OVb-Zw-bJv" secondAttribute="leading" constant="20" id="bxu-3I-UXY"/>
+                        <constraint firstItem="R6Y-sp-1Se" firstAttribute="width" secondItem="4Uz-fk-owN" secondAttribute="width" multiplier="0.7" id="geo-vw-Zkx"/>
+                        <constraint firstItem="Huc-8m-ul9" firstAttribute="leading" secondItem="6JH-DC-AAx" secondAttribute="trailing" constant="4" id="h8v-Qh-70l"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="135" id="hdJ-y5-y53"/>
+                        <constraint firstItem="RJc-Iy-pVD" firstAttribute="top" secondItem="AcF-6J-SQL" secondAttribute="bottom" constant="5" id="kAs-HE-lVE"/>
+                        <constraint firstItem="6JH-DC-AAx" firstAttribute="top" secondItem="ApT-Dh-3cj" secondAttribute="bottom" constant="16" id="oWB-hV-mRI"/>
+                        <constraint firstItem="R6Y-sp-1Se" firstAttribute="centerX" secondItem="4Uz-fk-owN" secondAttribute="centerX" id="tOP-tk-dJq"/>
+                        <constraint firstItem="dDt-Qi-lGY" firstAttribute="centerY" secondItem="4Uz-fk-owN" secondAttribute="centerY" id="uYE-fk-rMU"/>
+                        <constraint firstItem="4Uz-fk-owN" firstAttribute="width" secondItem="OVb-Zw-bJv" secondAttribute="width" multiplier="0.4" id="uwh-RS-dQb"/>
+                        <constraint firstItem="AcF-6J-SQL" firstAttribute="top" secondItem="6JH-DC-AAx" secondAttribute="bottom" constant="8" id="v0A-n2-dl5"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OVb-Zw-bJv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="41E-Zv-jCb"/>
+                <constraint firstAttribute="trailing" secondItem="OVb-Zw-bJv" secondAttribute="trailing" id="EU5-aM-1La"/>
+                <constraint firstItem="QAk-lU-fSL" firstAttribute="top" secondItem="OVb-Zw-bJv" secondAttribute="bottom" constant="20" id="K5V-ze-Zh4"/>
+                <constraint firstAttribute="trailing" secondItem="QAk-lU-fSL" secondAttribute="trailing" constant="20" id="NlJ-PE-FhH"/>
+                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="QAk-lU-fSL" secondAttribute="bottom" constant="20" id="NpT-ZY-1ez"/>
+                <constraint firstItem="OVb-Zw-bJv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ewD-Hr-vEx"/>
+                <constraint firstItem="QAk-lU-fSL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="hnM-Hf-cUm"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-371.5" y="-276.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pull_down_row" width="14" height="8"/>
+    </resources>
+</document>

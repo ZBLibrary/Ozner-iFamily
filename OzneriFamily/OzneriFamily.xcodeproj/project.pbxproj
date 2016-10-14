@@ -190,6 +190,13 @@
 		B714E0001D9CD50700D5AAC3 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = B714DFFF1D9CD50700D5AAC3 /* data.json */; };
 		B727C35D1DACE90000FE990F /* SuccessPairCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B727C35B1DACE90000FE990F /* SuccessPairCell.swift */; };
 		B727C35E1DACE90000FE990F /* SuccessPairCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B727C35C1DACE90000FE990F /* SuccessPairCell.xib */; };
+		B7567C9F1DB083A900AA7C91 /* DeviceMatchMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7567C9E1DB083A900AA7C91 /* DeviceMatchMainView.swift */; };
+		B7567CA11DB083F600AA7C91 /* DeviceMatchMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7567CA01DB083F600AA7C91 /* DeviceMatchMainView.xib */; };
+		B7567CA31DB0872800AA7C91 /* CupMatchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7567CA21DB0872800AA7C91 /* CupMatchView.xib */; };
+		B7567CA51DB0873B00AA7C91 /* CupMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7567CA41DB0873B00AA7C91 /* CupMatchView.swift */; };
+		B7567CA71DB0D91F00AA7C91 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */; };
+		B7567CA81DB0DAF400AA7C91 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */; };
+		B7567CA91DB0DAF400AA7C91 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7725CFF1D9DF8FF0047AC6F /* BDImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B7725CFE1D9DF8FF0047AC6F /* BDImagePicker.m */; };
 		B779687E1D9E4B4C0046AD66 /* UUImageAvatarBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = B779687D1D9E4B4C0046AD66 /* UUImageAvatarBrowser.m */; };
 		B7E4E6B81DACCC2D00B82774 /* MyInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E4E6B41DACCC2D00B82774 /* MyInfoCell.swift */; };
@@ -225,6 +232,7 @@
 				8D5ABB181D9E30B6008524A7 /* SVProgressHUD.framework in Embed Frameworks */,
 				8DAE80631D9A0CB200A9946F /* SwiftyJSON.framework in Embed Frameworks */,
 				8DAE80611D9A0CB200A9946F /* AFNetworking.framework in Embed Frameworks */,
+				B7567CA91DB0DAF400AA7C91 /* SnapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,6 +569,11 @@
 		B714DFFF1D9CD50700D5AAC3 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		B727C35B1DACE90000FE990F /* SuccessPairCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessPairCell.swift; sourceTree = "<group>"; };
 		B727C35C1DACE90000FE990F /* SuccessPairCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuccessPairCell.xib; sourceTree = "<group>"; };
+		B7567C9E1DB083A900AA7C91 /* DeviceMatchMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceMatchMainView.swift; sourceTree = "<group>"; };
+		B7567CA01DB083F600AA7C91 /* DeviceMatchMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceMatchMainView.xib; sourceTree = "<group>"; };
+		B7567CA21DB0872800AA7C91 /* CupMatchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupMatchView.xib; sourceTree = "<group>"; };
+		B7567CA41DB0873B00AA7C91 /* CupMatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupMatchView.swift; sourceTree = "<group>"; };
+		B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		B7725CFD1D9DF8FF0047AC6F /* BDImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImagePicker.h; sourceTree = "<group>"; };
 		B7725CFE1D9DF8FF0047AC6F /* BDImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImagePicker.m; sourceTree = "<group>"; };
 		B779687C1D9E4B4C0046AD66 /* UUImageAvatarBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUImageAvatarBrowser.h; sourceTree = "<group>"; };
@@ -580,11 +593,13 @@
 				8DEB84AF1DA897A00088794A /* libxml2.tbd in Frameworks */,
 				8DEB84AD1DA897930088794A /* libsqlite3.0.tbd in Frameworks */,
 				8D5ABB281D9E4A48008524A7 /* AdSupport.framework in Frameworks */,
+				B7567CA71DB0D91F00AA7C91 /* SnapKit.framework in Frameworks */,
 				8D5ABB261D9E4A23008524A7 /* CoreLocation.framework in Frameworks */,
 				8D5ABB241D9E4A1C008524A7 /* SystemConfiguration.framework in Frameworks */,
 				8D5ABB221D9E4A13008524A7 /* libz.tbd in Frameworks */,
 				8D5ABB201D9E4A02008524A7 /* CoreTelephony.framework in Frameworks */,
 				8D5ABB1E1D9E49F4008524A7 /* Foundation.framework in Frameworks */,
+				B7567CA81DB0DAF400AA7C91 /* SnapKit.framework in Frameworks */,
 				7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */,
 				8D5ABB1C1D9E44B8008524A7 /* libBPush.a in Frameworks */,
 				8DAE80601D9A0CB200A9946F /* AFNetworking.framework in Frameworks */,
@@ -969,6 +984,7 @@
 		8D1EF37B1D93DE050009D034 = {
 			isa = PBXGroup;
 			children = (
+				B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */,
 				8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */,
 				8DAE805E1D9A0CB200A9946F /* AFNetworking.framework */,
 				8DAE805F1D9A0CB200A9946F /* SwiftyJSON.framework */,
@@ -1143,6 +1159,10 @@
 				8D1C67091DAA4052008C639F /* SelectDeviceCell.xib */,
 				B727C35B1DACE90000FE990F /* SuccessPairCell.swift */,
 				B727C35C1DACE90000FE990F /* SuccessPairCell.xib */,
+				B7567C9E1DB083A900AA7C91 /* DeviceMatchMainView.swift */,
+				B7567CA01DB083F600AA7C91 /* DeviceMatchMainView.xib */,
+				B7567CA41DB0873B00AA7C91 /* CupMatchView.swift */,
+				B7567CA21DB0872800AA7C91 /* CupMatchView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1518,12 +1538,14 @@
 				B714DF611D9BA9EE00D5AAC3 /* ZHCMessagesViewController.xib in Resources */,
 				B7E4E6BB1DACCC2D00B82774 /* MyInfoHeadView.xib in Resources */,
 				8DAE80561D9A097800A9946F /* Info.plist in Resources */,
+				B7567CA11DB083F600AA7C91 /* DeviceMatchMainView.xib in Resources */,
 				B714DFB11D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellIncoming.xib in Resources */,
 				B7E4E6BD1DACCF1B00B82774 /* MyInfoCell.xib in Resources */,
 				8DEB83B21DA896700088794A /* Info.plist in Resources */,
 				8DAE806C1D9A600900A9946F /* LeftMenuDeviceCell.xib in Resources */,
 				B714DF581D9BA9EE00D5AAC3 /* ZHCMessagesAssets.bundle in Resources */,
 				8D117C111D9CDEE30024187E /* Login+Register+Guiding.storyboard in Resources */,
+				B7567CA31DB0872800AA7C91 /* CupMatchView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1636,6 +1658,7 @@
 				B714DF5D1D9BA9EE00D5AAC3 /* UIColor+ZHCMessages.m in Sources */,
 				B714DFF21D9CA73B00D5AAC3 /* ZHCMessagesMediaViewBubbleImageMasker.m in Sources */,
 				B714DFAE1D9CA6FA00D5AAC3 /* ZHCMessagesTableView.m in Sources */,
+				B7567C9F1DB083A900AA7C91 /* DeviceMatchMainView.swift in Sources */,
 				B714DFB21D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellOutcoming.m in Sources */,
 				B714DF5F1D9BA9EE00D5AAC3 /* UIView+ZHCMessages.m in Sources */,
 				B7E4E6B81DACCC2D00B82774 /* MyInfoCell.swift in Sources */,
@@ -1648,6 +1671,7 @@
 				B714DFE21D9CA72B00D5AAC3 /* ZHCMessagesTableviewLayoutAttributes.m in Sources */,
 				B714DFD61D9CA71F00D5AAC3 /* ZHCMessagesAvatarImage.m in Sources */,
 				B714DFAD1D9CA6FA00D5AAC3 /* ZHCMessagesMoreView.m in Sources */,
+				B7567CA51DB0873B00AA7C91 /* CupMatchView.swift in Sources */,
 				B714DFF11D9CA73B00D5AAC3 /* ZHCMessagesEmojiFactory.m in Sources */,
 				B714DFA71D9CA6FA00D5AAC3 /* ZHCMessagesComposerTextView.m in Sources */,
 				B714DFA81D9CA6FA00D5AAC3 /* ZHCMessagesEmojiView.m in Sources */,
@@ -1920,7 +1944,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ToolHelper/BaiDuPush",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1949,7 +1973,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ToolHelper/BaiDuPush",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

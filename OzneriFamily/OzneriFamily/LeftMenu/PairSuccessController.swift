@@ -8,7 +8,7 @@
 
 import UIKit
 import Spring
-
+import SnapKit
 class PairSuccessController: UIViewController {
 
     @IBAction func backClick(_ sender: AnyObject) {
@@ -29,31 +29,58 @@ class PairSuccessController: UIViewController {
     @IBOutlet weak var searchLb: UILabel!
     @IBOutlet weak var successImage: UIImageView!
     @IBOutlet weak var scrollerView: UIView!
+
+    var mainMatchView: DeviceMatchMainView!
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+        mainMatchView = UINib.init(nibName: "DeviceMatchMainView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! DeviceMatchMainView
+        
+        let cupView = UINib.init(nibName: "CupMatchView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! CupMatchView
+        cupView.frame = CGRect(x: 0, y: 18, width: width_screen, height: 200)
+        mainMatchView.addSubview(cupView)
+        view.addSubview(mainMatchView)
+        
+        mainMatchView.snp.makeConstraints { (make) in
+            make.top.equalTo(scrollerView.snp.bottom).offset(2)
+//            make.left.equalTo(view.snp.left).offset(0)
+            //不明白
+//            make.right.equalTo(view.snp.right).offset(40)
+            make.width.equalToSuperview()
+            make.bottom.equalTo(view.snp.bottom).offset(50)
+        }
+        
+        setUpUI()
+        
+    }
+
+    private func setUpUI() {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true
-        print(sanjiao_image.bounds)
         sanjiao_XLayout.constant += collectionFlowout.itemSize.width / 2 - 11.5
         
-        var successBounds = successImage.bounds
-        successBounds.origin.y -= 80
-        UIView.animate(withDuration: 1) {
-//            self.successImage.bounds = successBounds
-//            self.view.layoutIfNeeded()
-            self.successImage.transform = CGAffineTransform(translationX: 0, y: -100)
-            self.sanjiao_image.transform = CGAffineTransform(translationX: 0, y: -150)
-            self.scrollerView.transform = CGAffineTransform(translationX: 0, y: -150)
-            self.searchLb.transform = CGAffineTransform(translationX: 0, y: -150)
+        let animal = CABasicAnimation(keyPath: "transform.scale")
+        animal.fromValue = NSNumber(value: 1.0)
+        animal.toValue = NSNumber(value: 0.5)
+        animal.duration = 3.0
+        self.successImage.layer.add(animal, forKey: "transform.scale")
+        UIView.animate(withDuration: 2, animations: {
+            self.successImage.transform = CGAffineTransform(translationX: 0, y: -80)
+            self.sanjiao_image.transform = CGAffineTransform(translationX: 0, y: -100)
+            self.scrollerView.transform = CGAffineTransform(translationX: 0, y: -100)
+            self.searchLb.transform = CGAffineTransform(translationX: 0, y: -100)
+            self.mainMatchView.transform = CGAffineTransform(translationX: 0, y: -100)
+        }) { (_) in
+            
+            UIView.animate(withDuration: 1, animations: {
+                self.successImage.image = UIImage(named: "match_device_successed")
+                
+            })
+            
         }
-        
-        
-       
-    
     }
-
-
+    
     @IBAction func leftBtnAction(_ sender: AnyObject) {
         
         if sanjiao_XLayout.constant <= collectionFlowout.itemSize.width {
@@ -73,6 +100,7 @@ class PairSuccessController: UIViewController {
             })
         }
     }
+    
     //已适配
     @IBAction func rightBtnAction(_ sender: AnyObject) {
 
@@ -95,6 +123,12 @@ class PairSuccessController: UIViewController {
             })
         }
 
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+ 
+        
     }
     
     override func didReceiveMemoryWarning() {
