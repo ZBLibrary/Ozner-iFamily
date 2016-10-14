@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */; };
+		8D0F63D21DB09DE600FA38BF /* RDVTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0F63CD1DB09DE600FA38BF /* RDVTabBar.m */; };
+		8D0F63D31DB09DE600FA38BF /* RDVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0F63CF1DB09DE600FA38BF /* RDVTabBarController.m */; };
+		8D0F63D41DB09DE600FA38BF /* RDVTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0F63D11DB09DE600FA38BF /* RDVTabBarItem.m */; };
 		8D109F201DAD081400458171 /* CALayer+Expand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D109F1F1DAD081400458171 /* CALayer+Expand.swift */; };
 		8D109F221DAE1E6700458171 /* UIColor+Expand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D109F211DAE1E6700458171 /* UIColor+Expand.swift */; };
 		8D117C111D9CDEE30024187E /* Login+Register+Guiding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D117C101D9CDEE30024187E /* Login+Register+Guiding.storyboard */; };
@@ -99,6 +102,7 @@
 		8D1EF39F1D93DE050009D034 /* OzneriFamilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF39E1D93DE050009D034 /* OzneriFamilyTests.swift */; };
 		8D1EF3AA1D93DE050009D034 /* OzneriFamilyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3A91D93DE050009D034 /* OzneriFamilyUITests.swift */; };
 		8D1EF3C51D93F01F0009D034 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */; };
+		8D3DB3211DAF561C0071D80C /* CupSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DB3201DAF561C0071D80C /* CupSettingController.swift */; };
 		8D5ABB171D9E30B6008524A7 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */; };
 		8D5ABB181D9E30B6008524A7 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8D5ABB1C1D9E44B8008524A7 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB1A1D9E44B8008524A7 /* libBPush.a */; };
@@ -240,6 +244,12 @@
 
 /* Begin PBXFileReference section */
 		3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OzneriFamily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D0F63CC1DB09DE600FA38BF /* RDVTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBar.h; sourceTree = "<group>"; };
+		8D0F63CD1DB09DE600FA38BF /* RDVTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVTabBar.m; sourceTree = "<group>"; };
+		8D0F63CE1DB09DE600FA38BF /* RDVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBarController.h; sourceTree = "<group>"; };
+		8D0F63CF1DB09DE600FA38BF /* RDVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVTabBarController.m; sourceTree = "<group>"; };
+		8D0F63D01DB09DE600FA38BF /* RDVTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBarItem.h; sourceTree = "<group>"; };
+		8D0F63D11DB09DE600FA38BF /* RDVTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVTabBarItem.m; sourceTree = "<group>"; };
 		8D109F1F1DAD081400458171 /* CALayer+Expand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Expand.swift"; sourceTree = "<group>"; };
 		8D109F211DAE1E6700458171 /* UIColor+Expand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Expand.swift"; sourceTree = "<group>"; };
 		8D117C101D9CDEE30024187E /* Login+Register+Guiding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Login+Register+Guiding.storyboard"; sourceTree = "<group>"; };
@@ -420,6 +430,7 @@
 		8D1EF3AB1D93DE050009D034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1EF3B71D93DED50009D034 /* OzneriFamily-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OzneriFamily-Bridging-Header.h"; sourceTree = "<group>"; };
 		8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8D3DB3201DAF561C0071D80C /* CupSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupSettingController.swift; sourceTree = "<group>"; };
 		8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		8D5ABB1A1D9E44B8008524A7 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
 		8D5ABB1B1D9E44B8008524A7 /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
@@ -647,6 +658,19 @@
 				3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D0F63CB1DB09DE600FA38BF /* RDVTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				8D0F63CC1DB09DE600FA38BF /* RDVTabBar.h */,
+				8D0F63CD1DB09DE600FA38BF /* RDVTabBar.m */,
+				8D0F63CE1DB09DE600FA38BF /* RDVTabBarController.h */,
+				8D0F63CF1DB09DE600FA38BF /* RDVTabBarController.m */,
+				8D0F63D01DB09DE600FA38BF /* RDVTabBarItem.h */,
+				8D0F63D11DB09DE600FA38BF /* RDVTabBarItem.m */,
+			);
+			path = RDVTabBarController;
 			sourceTree = "<group>";
 		};
 		8D10ECED1D98BC5B001BAC77 /* DataBase */ = {
@@ -1046,6 +1070,7 @@
 		8D1EF3BB1D93DFE30009D034 /* ToolHelper */ = {
 			isa = PBXGroup;
 			children = (
+				8D0F63CB1DB09DE600FA38BF /* RDVTabBarController */,
 				8D1C66111DAA3B62008C639F /* OznerLibrary */,
 				8D5ABB191D9E448A008524A7 /* BaiDuPush */,
 				8D10ECED1D98BC5B001BAC77 /* DataBase */,
@@ -1146,6 +1171,7 @@
 		8D9951351DACE2E80050FB19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8D3DB3201DAF561C0071D80C /* CupSettingController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1657,6 +1683,7 @@
 				8D1EF3881D93DE050009D034 /* AppDelegate.swift in Sources */,
 				B714DF5B1D9BA9EE00D5AAC3 /* NSString+Emoji.m in Sources */,
 				8D1C66E01DAA3B62008C639F /* OznerManager.m in Sources */,
+				8D0F63D21DB09DE600FA38BF /* RDVTabBar.m in Sources */,
 				8D117C231D9CFB0D0024187E /* ModelController.m in Sources */,
 				8D1C66E81DAA3B62008C639F /* TapSettings.m in Sources */,
 				8D1C66DE1DAA3B62008C639F /* Helper.m in Sources */,
@@ -1742,6 +1769,8 @@
 				8D1C66E11DAA3B62008C639F /* Tap.m in Sources */,
 				8D92F65E1D9510450068A40A /* GloabConfig.swift in Sources */,
 				B7725CFF1D9DF8FF0047AC6F /* BDImagePicker.m in Sources */,
+				8D0F63D31DB09DE600FA38BF /* RDVTabBarController.m in Sources */,
+				8D3DB3211DAF561C0071D80C /* CupSettingController.swift in Sources */,
 				B714DFB01D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellIncoming.m in Sources */,
 				B714DFBB1D9CA71100D5AAC3 /* ZHCMessagesVoiceRecorder.m in Sources */,
 				B714DFAA1D9CA6FA00D5AAC3 /* ZHCMessagesLabel.m in Sources */,
@@ -1757,6 +1786,7 @@
 				8D1C67061DAA3B62008C639F /* EasyLinkSender.m in Sources */,
 				8D1C66FC1DAA3B62008C639F /* time_mosq.c in Sources */,
 				8D1C66C71DAA3B62008C639F /* PowerTimer.m in Sources */,
+				8D0F63D41DB09DE600FA38BF /* RDVTabBarItem.m in Sources */,
 				8D12AAC91DAB739F003A09E6 /* PairFailedController.swift in Sources */,
 				8D1C66DC1DAA3B62008C639F /* IOManagerList.m in Sources */,
 				8D1C66F31DAA3B62008C639F /* messages_mosq.c in Sources */,

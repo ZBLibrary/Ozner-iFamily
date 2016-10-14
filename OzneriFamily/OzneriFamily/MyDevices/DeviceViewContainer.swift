@@ -27,7 +27,27 @@ class DeviceViewContainer: UIView {
     */
     var currentDevice:OznerDevice?
     var delegate:DeviceViewContainerDelegate!
-    func SetDeviceView(device:OznerDevice?) {
+    func setDeviceView() {
+        var device:OznerDevice?
+        let deviceArr=OznerManager.instance().getDevices() as NSArray
+        if deviceArr.count==0 {
+            device=nil
+            CurrentSelectDeviceID=nil
+        }else{
+            device=deviceArr.object(at: 0) as? OznerDevice
+            if CurrentSelectDeviceID != nil {
+                for item in deviceArr {
+                    if (item as! OznerDevice).identifier==CurrentSelectDeviceID {
+                        device=item as? OznerDevice
+                        break
+                    }
+                }
+                
+            }
+            CurrentSelectDeviceID=device?.identifier
+        }
+  
+        
         for view in self.subviews {//移除视图
             view.removeFromSuperview()
         }
@@ -43,8 +63,7 @@ class DeviceViewContainer: UIView {
         }else{
             currentDevice=device
             currentDevice?.delegate=self
-            CurrentSelectDeviceID=currentDevice?.identifier
-            //
+            
             delegate.DeviceNameChange!(name: (currentDevice?.settings.name)!)
             switch  OznerDeviceType(rawValue: (currentDevice?.type)!)! {
             case .Cup:

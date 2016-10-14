@@ -52,10 +52,18 @@ class LeftMenuController: UIViewController {
         super.viewWillAppear(animated)
         deviceArray=OznerManager.instance().getDevices() as NSArray!
         tableContainer.isHidden = deviceArray.count==0
+        currentSelectCellIndex=0
         for i in 0..<deviceArray.count {
-            currentSelectCellIndex=(deviceArray[i] as! OznerDevice).identifier==CurrentSelectDeviceID ? 0:i
+            if (deviceArray[i] as! OznerDevice).identifier==CurrentSelectDeviceID
+            {
+                currentSelectCellIndex=i
+                break
+            }
         }
+        
         self.tableView.reloadData()
+        
+        self.tableView.selectRow(at: IndexPath(row: currentSelectCellIndex, section: 0), animated: false, scrollPosition: .none)
     }
 
     /*
@@ -75,7 +83,7 @@ extension LeftMenuController:UITableViewDelegate{
         let tmpDevice = deviceArray[indexPath.row] as! OznerDevice
         CurrentSelectDeviceID = tmpDevice.identifier
         currentSelectCellIndex = indexPath.row
-        self.mainViewController.deviceViewContainer.SetDeviceView(device: tmpDevice)
+
         self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
     }
 }
@@ -90,9 +98,8 @@ extension LeftMenuController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "LeftMenuDeviceCell") as! LeftMenuDeviceCell
         cell.device = deviceArray[indexPath.row] as! OznerDevice
-        cell.setSelected(indexPath.row==currentSelectCellIndex, animated: true)
         cell.selectionStyle=UITableViewCellSelectionStyle.none
-        return cell
+                return cell
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true

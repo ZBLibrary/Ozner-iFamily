@@ -114,6 +114,10 @@ OznerManager* oznerManager=nil;
 
 -(NSArray*)getDevices
 {
+    OznerDevice* dev1=[[OznerDevice alloc] init:@"id1" Type:@"CP001" Settings:@""];
+    OznerDevice* dev2=[[OznerDevice alloc] init:@"id2" Type:@"SC001" Settings:@""];
+    
+    return [NSArray arrayWithObjects:dev1,dev2, nil];
     @synchronized(devices) {
         return [NSArray arrayWithArray:[devices allValues]];
     }

@@ -51,8 +51,9 @@ class LeftMenuDeviceCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
  
         bgView.backgroundColor = selected ? UIColor(hexString: "#f3f8fb"):UIColor(hexString: "#e1ebf4")
-        connectLabel.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor.gray
-        deviceName.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor(hexString: "#c4d3e4")
+        connectLabel.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor(white: 0, alpha: 0.3)
+        deviceName.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor(hexString: "#6d85a0")
+        deviceAdressLabel.textColor=selected ? UIColor(hexString: "#39a7f2"):UIColor(white: 0, alpha: 0.3)
         let imgNameStr=imgArr[OznerDeviceType(rawValue: device.type)!]?[selected.hashValue]
         deviceImg.image=UIImage(named: imgNameStr as! String)
         // Configure the view for the selected state

@@ -2,7 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11201"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,7 +12,25 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CupMainView" customModule="OzneriFamily" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1u6-rW-pec">
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUA-VW-cNk">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="1u6-rW-pec" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1A7-kW-mzw"/>
+                <constraint firstAttribute="bottom" secondItem="BUA-VW-cNk" secondAttribute="bottom" id="CKq-B0-RzS"/>
+                <constraint firstAttribute="trailing" secondItem="1u6-rW-pec" secondAttribute="trailing" id="OA8-nz-1Mx"/>
+                <constraint firstItem="1u6-rW-pec" firstAttribute="height" secondItem="BUA-VW-cNk" secondAttribute="height" multiplier="443:160" id="du7-VN-qcH"/>
+                <constraint firstItem="BUA-VW-cNk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nTL-ND-z2p"/>
+                <constraint firstItem="1u6-rW-pec" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ogM-Gd-FRp"/>
+                <constraint firstItem="BUA-VW-cNk" firstAttribute="top" secondItem="1u6-rW-pec" secondAttribute="bottom" id="oie-Lj-oVG"/>
+                <constraint firstAttribute="trailing" secondItem="BUA-VW-cNk" secondAttribute="trailing" id="pS5-nE-Moo"/>
+            </constraints>
         </view>
     </objects>
 </document>

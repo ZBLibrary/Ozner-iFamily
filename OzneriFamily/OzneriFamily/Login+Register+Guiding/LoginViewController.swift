@@ -73,6 +73,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             User.UpdateUserInfo()
         }
         appDelegate.mainTabBarController = MainTabBarController()
+        appDelegate.mainTabBarController?.loadTabBar()
         appDelegate.mainTabBarController?.modalTransitionStyle = .crossDissolve
         self.present(appDelegate.mainTabBarController!, animated: true, completion: nil)
     }

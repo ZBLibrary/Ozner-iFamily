@@ -8,86 +8,47 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        OznerManager.instance().setOwner(User.currentUser?.phone ?? User.currentUser?.email)
-        loadTabBar()
-        
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+class MainTabBarController: RDVTabBarController {
 
     func loadTabBar() {
+        OznerManager.instance().setOwner(User.currentUser?.phone ?? User.currentUser?.email)
         
         let mainViewController = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
         
         let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController 
         leftViewController.mainViewController=mainViewController
 
-        //mainViewController.leftMenuController=leftViewController
         let nvc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateInitialViewController() as! UINavigationController
         
         SlideMenuOptions.leftViewWidth=298*width_screen/375
         let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
-        
+        slideMenuController.automaticallyAdjustsScrollViewInsets = true
         slideMenuController.delegate = mainViewController
         
-        slideMenuController.tabBarItem.title="我的设备"
-        slideMenuController.tabBarItem.image=UIImage(named: "bar_normal_0")
-        slideMenuController.tabBarItem.selectedImage=UIImage(named: "bar_select_0")
-        
-        
-        
         let c2=WebShopController()
-        c2.tabBarItem.title="商城"
-        c2.tabBarItem.image=UIImage(named: "bar_normal_1")
-        c2.tabBarItem.selectedImage=UIImage(named: "bar_select_1")
-        
-        let c3 = CounselingController()
-        c3.tabBarItem.title="咨询"
-        c3.tabBarItem.image=UIImage(named: "bar_normal_2")
-        c3.tabBarItem.selectedImage=UIImage(named: "bar_select_2")
-        
-        let nav3 = UINavigationController(rootViewController: c3)
-        
+      
+        let nav3 = UINavigationController(rootViewController: CounselingController())
         
         let c4=UIStoryboard(name: "MyCenter", bundle: nil).instantiateInitialViewController() as!MyCenterController
-        c4.tabBarItem.title="我"
-        c4.tabBarItem.image=UIImage(named: "bar_normal_3")
-        c4.tabBarItem.selectedImage=UIImage(named: "bar_select_3")
         let nav4=UINavigationController(rootViewController: c4)
         
         self.viewControllers=[slideMenuController,c2,nav3,nav4]
-        
-        
-    }
-    // MARK: - Navigation
-    
-    override func viewWillLayoutSubviews() {
-        let height:CGFloat = CGFloat(LoginManager.isChinese_Simplified ? height_tabBar:0)
-        
-        var tabFrame = self.tabBar.frame
-        tabFrame.size.height = height
-        tabFrame.origin.y = self.view.frame.size.height - height
-        self.tabBar.frame = tabFrame
-        if height==0 {
-            self.tabBar.isHidden=true
-        }
+        //设置tabbar
+        self.tabBar.isTranslucent=false
         self.tabBar.backgroundColor=UIColor.white
-        self.tabBar.barTintColor=UIColor.white
-        
+        var index=0
+        for item in (self.tabBar.items as! [RDVTabBarItem]){
+            item.title=["我的设备","商城","咨询","我"][index]
+            item.setBackgroundSelectedImage(UIImage(named: "bg_TabBar"), withUnselectedImage: UIImage(named: "bg_TabBar"))
+            item.setFinishedSelectedImage(UIImage(named: "bar_select_\(index)"), withFinishedUnselectedImage: UIImage(named: "bar_normal_\(index)"))
+            index+=1
+        }
+        CustomTabBarIsHidden = !LoginManager.isChinese_Simplified
+        setTabBarHidden(CustomTabBarIsHidden, animated: false)
     }
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private var CustomTabBarIsHidden:Bool!//系统tabbar是不是隐藏的
+    override func setTabBarHidden(_ hidden: Bool, animated: Bool) {
+        super.setTabBarHidden(CustomTabBarIsHidden||hidden, animated:animated)
     }
     
 

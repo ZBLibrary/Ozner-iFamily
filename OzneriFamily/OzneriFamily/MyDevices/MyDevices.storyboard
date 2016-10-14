@@ -11,7 +11,7 @@
         <!--My Devices Controller-->
         <scene sceneID="aRk-Uu-1a7">
             <objects>
-                <viewController storyboardIdentifier="MyDevicesController" hidesBottomBarWhenPushed="YES" id="ckL-4d-ktC" customClass="MyDevicesController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyDevicesController" id="ckL-4d-ktC" customClass="MyDevicesController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oIP-dQ-VF9"/>
                         <viewControllerLayoutGuide type="bottom" id="11q-D0-rCp"/>
@@ -159,7 +159,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VZ5-Gy-EUM"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="batteryImg" destination="k5L-Rz-s3e" id="Lqs-6Q-nw7"/>
                         <outlet property="batteryValueLabel" destination="KDP-F2-LHx" id="Nh2-Be-oGY"/>
@@ -173,16 +172,17 @@
                         <outlet property="filterStateLabel" destination="xrd-qM-dlz" id="lKl-bC-mdF"/>
                         <outlet property="filterValueLabel" destination="xrd-qM-dlz" id="LQn-dt-zxe"/>
                         <outlet property="filterViewContainer" destination="vjQ-dy-J3T" id="Bbd-tU-csk"/>
+                        <segue destination="XeD-QT-4f5" kind="show" identifier="showCupSetting" id="YHt-fn-kRb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6B-00-A3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1254" y="116"/>
         </scene>
-        <!--View Controller-->
+        <!--智能杯设置-->
         <scene sceneID="Ql6-vl-588">
             <objects>
-                <viewController id="XeD-QT-4f5" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="XeD-QT-4f5" customClass="CupSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CjB-Pg-1Me"/>
                         <viewControllerLayoutGuide type="bottom" id="bsH-DZ-hM2"/>
@@ -190,8 +190,20 @@
                     <view key="view" contentMode="scaleToFill" id="xZs-um-7So">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBu-U1-Vjj">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BBu-U1-Vjj" firstAttribute="leading" secondItem="xZs-um-7So" secondAttribute="leading" id="SvL-x2-Blf"/>
+                            <constraint firstItem="bsH-DZ-hM2" firstAttribute="top" secondItem="BBu-U1-Vjj" secondAttribute="bottom" id="VLy-jN-cWD"/>
+                            <constraint firstItem="BBu-U1-Vjj" firstAttribute="top" secondItem="CjB-Pg-1Me" secondAttribute="bottom" id="gCx-Mw-blU"/>
+                            <constraint firstAttribute="trailing" secondItem="BBu-U1-Vjj" secondAttribute="trailing" id="kbA-cy-9M9"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="智能杯设置" id="vzc-6q-nbu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8N-S5-dIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,7 +212,7 @@
         <!--Navigation Controller-->
         <scene sceneID="bmF-WC-HfH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CCQ-KV-qqu" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="CCQ-KV-qqu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fTB-oF-fo8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

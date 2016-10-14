@@ -23,9 +23,12 @@ class MyDevicesController: UIViewController {
     @IBOutlet var filterImg: UIImageView!
     @IBOutlet var filterValueLabel: UILabel!
     @IBOutlet var filterStateLabel: UILabel!
+    var dsdsasd = true
     
     @IBAction func toDeviceSettingClick(_ sender: AnyObject) {//点击设置按钮事件
-        self.performSegue(withIdentifier: "showSetting", sender: nil)
+        self.performSegue(withIdentifier: "showCupSetting", sender: nil)
+        
+        
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮
         self.toggleLeft()
@@ -34,18 +37,11 @@ class MyDevicesController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var curDevice:OznerDevice?
-        let deviceArr=OznerManager.instance().getDevices() as NSArray
-        if deviceArr.count>0
-        {
-             curDevice=deviceArr.object(at: 0) as? OznerDevice
-        }
         deviceViewContainer.delegate=self
-        deviceViewContainer.SetDeviceView(device: curDevice)
         // Do any additional setup after loading the view.
     }
 
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
     }
@@ -55,9 +51,12 @@ class MyDevicesController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        deviceViewContainer.setDeviceView()
         self.navigationController?.navigationBar.isHidden=true
+        appDelegate.mainTabBarController?.setTabBarHidden(false, animated: false)
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.addLeftGestures()
+        
     }
     
     /*
