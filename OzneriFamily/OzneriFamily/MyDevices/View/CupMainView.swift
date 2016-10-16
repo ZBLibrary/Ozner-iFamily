@@ -14,8 +14,8 @@ class CupMainView: UIView {
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
+    @IBOutlet var circleView: CupHeadCircleView!
     override func draw(_ rect: CGRect) {
-        
         
         // Drawing code
     }

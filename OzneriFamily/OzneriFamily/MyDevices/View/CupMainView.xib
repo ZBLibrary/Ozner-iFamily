@@ -16,7 +16,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1u6-rW-pec">
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-g1-Ecz">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-g1-Ecz" customClass="CupHeadCircleView" customModule="OzneriFamily" customModuleProvider="target">
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="击败了0%的用户" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wy8-m2-Egu">
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
@@ -81,9 +81,9 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="QwV-kr-rVN" firstAttribute="height" secondItem="H2w-g1-Ecz" secondAttribute="height" multiplier="80:155" id="IBQ-62-7BJ"/>
+                                <constraint firstItem="QwV-kr-rVN" firstAttribute="height" secondItem="H2w-g1-Ecz" secondAttribute="height" multiplier="70:155" id="IBQ-62-7BJ"/>
                                 <constraint firstAttribute="bottom" secondItem="Wy8-m2-Egu" secondAttribute="bottom" id="NLa-mE-P8D"/>
                                 <constraint firstItem="Iom-io-hJM" firstAttribute="height" secondItem="H2w-g1-Ecz" secondAttribute="height" multiplier="36:155" id="O1D-k0-Ki9"/>
                                 <constraint firstItem="Wy8-m2-Egu" firstAttribute="top" secondItem="QwV-kr-rVN" secondAttribute="bottom" id="OMB-By-p2v"/>
@@ -91,7 +91,7 @@
                                 <constraint firstItem="QwV-kr-rVN" firstAttribute="centerX" secondItem="H2w-g1-Ecz" secondAttribute="centerX" id="cGM-ct-HEK"/>
                                 <constraint firstItem="QwV-kr-rVN" firstAttribute="top" secondItem="Iom-io-hJM" secondAttribute="bottom" id="gCL-A4-uG6"/>
                                 <constraint firstItem="Iom-io-hJM" firstAttribute="centerX" secondItem="H2w-g1-Ecz" secondAttribute="centerX" id="maR-7h-Ffc"/>
-                                <constraint firstAttribute="width" secondItem="H2w-g1-Ecz" secondAttribute="height" multiplier="2" id="rZY-xQ-64a"/>
+                                <constraint firstAttribute="width" secondItem="H2w-g1-Ecz" secondAttribute="height" multiplier="2" constant="-20" id="rZY-xQ-64a"/>
                                 <constraint firstItem="Iom-io-hJM" firstAttribute="width" secondItem="H2w-g1-Ecz" secondAttribute="width" multiplier="120:310" id="uJg-37-Aq6"/>
                             </constraints>
                         </view>
@@ -273,6 +273,9 @@
                 <constraint firstItem="BUA-VW-cNk" firstAttribute="top" secondItem="1u6-rW-pec" secondAttribute="bottom" id="oie-Lj-oVG"/>
                 <constraint firstAttribute="trailing" secondItem="BUA-VW-cNk" secondAttribute="trailing" id="pS5-nE-Moo"/>
             </constraints>
+            <connections>
+                <outlet property="circleView" destination="H2w-g1-Ecz" id="2wo-2v-bIt"/>
+            </connections>
             <point key="canvasLocation" x="25.5" y="51.5"/>
         </view>
     </objects>

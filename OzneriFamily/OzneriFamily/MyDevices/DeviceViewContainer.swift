@@ -26,8 +26,9 @@ class DeviceViewContainer: UIView {
     }
     */
     var currentDevice:OznerDevice?
+    var currentDeviceView:UIView?
     var delegate:DeviceViewContainerDelegate!
-    func setDeviceView() {
+    func SetDeviceAndView() {
         var device:OznerDevice?
         let deviceArr=OznerManager.instance().getDevices() as NSArray
         if deviceArr.count==0 {
@@ -44,18 +45,42 @@ class DeviceViewContainer: UIView {
                 }
                 
             }
+            //是不是当前设备
             CurrentSelectDeviceID=device?.identifier
+            if currentDevice != nil {
+                if CurrentSelectDeviceID==currentDevice?.identifier {
+                    return
+                }
+            }
         }
   
-        
-        for view in self.subviews {//移除视图
+       //移除设备视图
+        for view in self.subviews {
             view.removeFromSuperview()
         }
+        
         //添加视图
-        var deviceView:UIView!
+        SelectWitchView(device: device)
+        
+    }
+    private let DeviceNibName:[OznerDeviceType:String]=[
+        OznerDeviceType.Cup:"CupMainView",
+        .Tap:"TapMainView",
+        .TDSPan:"TDSPanMainView",
+        .Water_Wifi:"WaterPurifierMainView",
+        .Air_Blue:"Air_BlueMainView",
+        .Air_Wifi:"Air_WifiMainView",
+        .WaterReplenish:"WaterReplenishMainView"
+    ]
+    private func SelectWitchView(device:OznerDevice?)  {
+        var deviceNibName =  "NoDeviceView"
+        if device != nil  {
+            deviceNibName=DeviceNibName[OznerDeviceType(rawValue: (device?.type)!)!]!
+        }
+        
+        currentDeviceView = Bundle.main.loadNibNamed(deviceNibName, owner: nil, options: nil)?.first as? UIView
         if device==nil {//无设备视图
-            deviceView = Bundle.main.loadNibNamed("NoDeviceView", owner: nil, options: nil)?.first as! NoDeviceView
-            (deviceView as! NoDeviceView).addDeviceClickBlock={self.delegate.AddNewDeviceClick!()}
+            (currentDeviceView as! NoDeviceView).addDeviceClickBlock={self.delegate.AddNewDeviceClick!()}
             delegate.DeviceNameChange!(name: "首页")
             delegate.DeviceConnectStateChange!(stateDes: "")
             delegate.WhitchCenterViewIsHiden!(MainIsHiden: true, BateryIsHiden: true, FilterIsHiden: true,BottomValue:0)
@@ -63,45 +88,48 @@ class DeviceViewContainer: UIView {
         }else{
             currentDevice=device
             currentDevice?.delegate=self
-            
             delegate.DeviceNameChange!(name: (currentDevice?.settings.name)!)
             switch  OznerDeviceType(rawValue: (currentDevice?.type)!)! {
             case .Cup:
-                deviceView = Bundle.main.loadNibNamed("CupMainView", owner: nil, options: nil)?.first as! CupMainView
                 delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:160*height_screen/667)
-                break
+                (currentDeviceView as! CupMainView).circleView.updateCircleView(angle: 0.7)
+                
             case .Tap:
-                deviceView = Bundle.main.loadNibNamed("TapMainView", owner: nil, options: nil)?.first as! TapMainView
                 delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: false, FilterIsHiden: false,BottomValue:211*height_screen/667)
-                break
+                
+                (currentDeviceView as! TapMainView).circleView.updateCircleView(angle: 0.7)
+                
             case .TDSPan:
                 delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:0)
-                break
+                
             case .Water_Wifi:
-                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*height_screen/667)
-                break
+                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*height_screen/667)
+                
+                (currentDeviceView as! WaterPurifierMainView).circleView.updateCircleView(angleBefore: 0.7, angleAfter: 0.5)
+                
             case .Air_Blue:
                 delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*height_screen/667)
-                break
+                
             case .Air_Wifi:
                 delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*height_screen/667)
-                break
+                
             case .WaterReplenish:
                 delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:200*height_screen/667)
-                break
-//            default:
-//                break
+                
             }
             
         }
-        deviceView.frame=self.frame
-        self.addSubview(deviceView)
+        currentDeviceView?.frame=self.frame
+        self.addSubview(currentDeviceView!)
     }
 }
+//OznerDeviceDelegate设备数据更新代理
 extension DeviceViewContainer:OznerDeviceDelegate{
+    //传感器数据变化
     func oznerDeviceSensorUpdate(_ device: OznerDevice!) {
         
     }
+    //连接状态变化
     func oznerDeviceStatusUpdate(_ device: OznerDevice!) {
         
     }

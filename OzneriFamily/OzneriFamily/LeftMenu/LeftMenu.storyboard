@@ -257,7 +257,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon_peidui_watting" translatesAutoresizingMaskIntoConstraints="NO" id="eyo-fe-55S"/>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon_circle_watting" translatesAutoresizingMaskIntoConstraints="NO" id="BYA-xU-asK"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon_circle_watting" translatesAutoresizingMaskIntoConstraints="NO" id="BYA-xU-asK">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="oznerRotateSpeed">
+                                        <integer key="value" value="180"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请将智能水杯倒置" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdQ-e9-m4v">
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -735,7 +741,7 @@
         <image name="select_device_3" width="9" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9J8-o2-sth"/>
-        <segue reference="Qdq-gX-CEZ"/>
+        <segue reference="Mnx-mC-lsK"/>
+        <segue reference="kf8-29-h3U"/>
     </inferredMetricsTieBreakers>
 </document>

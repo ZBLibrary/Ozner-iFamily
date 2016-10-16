@@ -51,7 +51,7 @@ class MyDevicesController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        deviceViewContainer.setDeviceView()
+        deviceViewContainer.SetDeviceAndView()
         self.navigationController?.navigationBar.isHidden=true
         appDelegate.mainTabBarController?.setTabBarHidden(false, animated: false)
         self.slideMenuController()?.removeLeftGestures()

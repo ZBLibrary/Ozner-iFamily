@@ -21,6 +21,14 @@
 		8D12AAC71DAB7386003A09E6 /* PairSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AAC61DAB7386003A09E6 /* PairSuccessController.swift */; };
 		8D12AAC91DAB739F003A09E6 /* PairFailedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AAC81DAB739F003A09E6 /* PairFailedController.swift */; };
 		8D12AACB1DAB9A89003A09E6 /* WifiPairingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AACA1DAB9A89003A09E6 /* WifiPairingController.swift */; };
+		8D1390D71DB33A1A001FFF5D /* TDSPanMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1390D61DB33A1A001FFF5D /* TDSPanMainView.swift */; };
+		8D1390D91DB33A33001FFF5D /* Air_BlueMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1390D81DB33A33001FFF5D /* Air_BlueMainView.swift */; };
+		8D1390DB1DB33A43001FFF5D /* Air_WifiMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1390DA1DB33A43001FFF5D /* Air_WifiMainView.swift */; };
+		8D1390DD1DB33A61001FFF5D /* WaterReplenishMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1390DC1DB33A61001FFF5D /* WaterReplenishMainView.swift */; };
+		8D1390DF1DB33A6E001FFF5D /* WaterReplenishMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1390DE1DB33A6E001FFF5D /* WaterReplenishMainView.xib */; };
+		8D1390E11DB33A7E001FFF5D /* Air_WifiMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1390E01DB33A7E001FFF5D /* Air_WifiMainView.xib */; };
+		8D1390E31DB33A9E001FFF5D /* Air_BlueMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1390E21DB33A9E001FFF5D /* Air_BlueMainView.xib */; };
+		8D1390E51DB33AAE001FFF5D /* TDSPanMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1390E41DB33AAE001FFF5D /* TDSPanMainView.xib */; };
 		8D1C66BD1DAA3B62008C639F /* AirPurifierManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66141DAA3B62008C639F /* AirPurifierManager.m */; };
 		8D1C66BE1DAA3B62008C639F /* AirPurifier_Bluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66171DAA3B62008C639F /* AirPurifier_Bluetooth.m */; };
 		8D1C66BF1DAA3B62008C639F /* BluetoothAirPurifierFilterStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66191DAA3B62008C639F /* BluetoothAirPurifierFilterStatus.m */; };
@@ -103,6 +111,8 @@
 		8D1EF3AA1D93DE050009D034 /* OzneriFamilyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3A91D93DE050009D034 /* OzneriFamilyUITests.swift */; };
 		8D1EF3C51D93F01F0009D034 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */; };
 		8D3DB3211DAF561C0071D80C /* CupSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DB3201DAF561C0071D80C /* CupSettingController.swift */; };
+		8D5045C61DB34AA000EAC3B3 /* UIImage+Expand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5045C51DB34AA000EAC3B3 /* UIImage+Expand.swift */; };
+		8D5045C81DB34AD700EAC3B3 /* Airgif_blue.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8D5045C71DB34AD700EAC3B3 /* Airgif_blue.gif */; };
 		8D5ABB171D9E30B6008524A7 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */; };
 		8D5ABB181D9E30B6008524A7 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8D5ABB1C1D9E44B8008524A7 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB1A1D9E44B8008524A7 /* libBPush.a */; };
@@ -112,6 +122,10 @@
 		8D5ABB241D9E4A1C008524A7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB231D9E4A1C008524A7 /* SystemConfiguration.framework */; };
 		8D5ABB261D9E4A23008524A7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB251D9E4A23008524A7 /* CoreLocation.framework */; };
 		8D5ABB281D9E4A48008524A7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB271D9E4A48008524A7 /* AdSupport.framework */; };
+		8D6D98FE1DB2092F0039365B /* CupHeadCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D98FD1DB2092F0039365B /* CupHeadCircleView.swift */; };
+		8D6D99001DB210870039365B /* WaterPurifierMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D98FF1DB210870039365B /* WaterPurifierMainView.swift */; };
+		8D6D99021DB210950039365B /* WaterPurifierMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D6D99011DB210950039365B /* WaterPurifierMainView.xib */; };
+		8D6D99041DB238B30039365B /* WaterPurifierHeadCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D99031DB238B30039365B /* WaterPurifierHeadCircleView.swift */; };
 		8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F64F1D94F6850068A40A /* LanguageHelper.swift */; };
 		8D92F6521D94F8480068A40A /* MyCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F6511D94F8480068A40A /* MyCenter.storyboard */; };
 		8D92F6541D94F9670068A40A /* MyCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F6531D94F9670068A40A /* MyCenterController.swift */; };
@@ -262,6 +276,14 @@
 		8D12AAC61DAB7386003A09E6 /* PairSuccessController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairSuccessController.swift; sourceTree = "<group>"; };
 		8D12AAC81DAB739F003A09E6 /* PairFailedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairFailedController.swift; sourceTree = "<group>"; };
 		8D12AACA1DAB9A89003A09E6 /* WifiPairingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiPairingController.swift; sourceTree = "<group>"; };
+		8D1390D61DB33A1A001FFF5D /* TDSPanMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDSPanMainView.swift; sourceTree = "<group>"; };
+		8D1390D81DB33A33001FFF5D /* Air_BlueMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Air_BlueMainView.swift; sourceTree = "<group>"; };
+		8D1390DA1DB33A43001FFF5D /* Air_WifiMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Air_WifiMainView.swift; sourceTree = "<group>"; };
+		8D1390DC1DB33A61001FFF5D /* WaterReplenishMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterReplenishMainView.swift; sourceTree = "<group>"; };
+		8D1390DE1DB33A6E001FFF5D /* WaterReplenishMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterReplenishMainView.xib; sourceTree = "<group>"; };
+		8D1390E01DB33A7E001FFF5D /* Air_WifiMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Air_WifiMainView.xib; sourceTree = "<group>"; };
+		8D1390E21DB33A9E001FFF5D /* Air_BlueMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Air_BlueMainView.xib; sourceTree = "<group>"; };
+		8D1390E41DB33AAE001FFF5D /* TDSPanMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDSPanMainView.xib; sourceTree = "<group>"; };
 		8D1C66131DAA3B62008C639F /* AirPurifierManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPurifierManager.h; sourceTree = "<group>"; };
 		8D1C66141DAA3B62008C639F /* AirPurifierManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirPurifierManager.m; sourceTree = "<group>"; };
 		8D1C66161DAA3B62008C639F /* AirPurifier_Bluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPurifier_Bluetooth.h; sourceTree = "<group>"; };
@@ -431,6 +453,8 @@
 		8D1EF3B71D93DED50009D034 /* OzneriFamily-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OzneriFamily-Bridging-Header.h"; sourceTree = "<group>"; };
 		8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8D3DB3201DAF561C0071D80C /* CupSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupSettingController.swift; sourceTree = "<group>"; };
+		8D5045C51DB34AA000EAC3B3 /* UIImage+Expand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Expand.swift"; sourceTree = "<group>"; };
+		8D5045C71DB34AD700EAC3B3 /* Airgif_blue.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Airgif_blue.gif; sourceTree = "<group>"; };
 		8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		8D5ABB1A1D9E44B8008524A7 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
 		8D5ABB1B1D9E44B8008524A7 /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
@@ -441,6 +465,10 @@
 		8D5ABB251D9E4A23008524A7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8D5ABB271D9E4A48008524A7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8D5ABB291D9E632E008524A7 /* OzneriFamily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OzneriFamily.entitlements; sourceTree = "<group>"; };
+		8D6D98FD1DB2092F0039365B /* CupHeadCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupHeadCircleView.swift; sourceTree = "<group>"; };
+		8D6D98FF1DB210870039365B /* WaterPurifierMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurifierMainView.swift; sourceTree = "<group>"; };
+		8D6D99011DB210950039365B /* WaterPurifierMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterPurifierMainView.xib; sourceTree = "<group>"; };
+		8D6D99031DB238B30039365B /* WaterPurifierHeadCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurifierHeadCircleView.swift; sourceTree = "<group>"; };
 		8D92F64F1D94F6850068A40A /* LanguageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
 		8D92F6511D94F8480068A40A /* MyCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyCenter.storyboard; sourceTree = "<group>"; };
 		8D92F6531D94F9670068A40A /* MyCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCenterController.swift; sourceTree = "<group>"; };
@@ -1083,6 +1111,7 @@
 		8D1EF3BC1D93E1670009D034 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8D5045C71DB34AD700EAC3B3 /* Airgif_blue.gif */,
 				8DF78D601D94DBEB002C4202 /* Assets.xcassets */,
 			);
 			path = Images;
@@ -1142,6 +1171,7 @@
 		8D92F64E1D94F64F0068A40A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				8D5045C51DB34AA000EAC3B3 /* UIImage+Expand.swift */,
 				8D109F1F1DAD081400458171 /* CALayer+Expand.swift */,
 				8D92F64F1D94F6850068A40A /* LanguageHelper.swift */,
 				8D92F65D1D9510450068A40A /* GloabConfig.swift */,
@@ -1179,12 +1209,24 @@
 		8D9951361DACE2E80050FB19 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8D6D98FD1DB2092F0039365B /* CupHeadCircleView.swift */,
 				8D9951391DACE6200050FB19 /* NoDeviceView.swift */,
-				8D99513B1DACE68C0050FB19 /* CupMainView.swift */,
-				8D99513D1DACE69A0050FB19 /* TapMainView.swift */,
 				8D99513F1DACE6C20050FB19 /* NoDeviceView.xib */,
+				8D99513B1DACE68C0050FB19 /* CupMainView.swift */,
 				8D9951411DACE6CF0050FB19 /* CupMainView.xib */,
+				8D99513D1DACE69A0050FB19 /* TapMainView.swift */,
 				8D9951431DACE6DA0050FB19 /* TapMainView.xib */,
+				8D1390D61DB33A1A001FFF5D /* TDSPanMainView.swift */,
+				8D1390E41DB33AAE001FFF5D /* TDSPanMainView.xib */,
+				8D6D98FF1DB210870039365B /* WaterPurifierMainView.swift */,
+				8D6D99011DB210950039365B /* WaterPurifierMainView.xib */,
+				8D6D99031DB238B30039365B /* WaterPurifierHeadCircleView.swift */,
+				8D1390D81DB33A33001FFF5D /* Air_BlueMainView.swift */,
+				8D1390E21DB33A9E001FFF5D /* Air_BlueMainView.xib */,
+				8D1390DA1DB33A43001FFF5D /* Air_WifiMainView.swift */,
+				8D1390E01DB33A7E001FFF5D /* Air_WifiMainView.xib */,
+				8D1390DC1DB33A61001FFF5D /* WaterReplenishMainView.swift */,
+				8D1390DE1DB33A6E001FFF5D /* WaterReplenishMainView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1567,6 +1609,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D9951441DACE6DA0050FB19 /* TapMainView.xib in Resources */,
+				8D1390E11DB33A7E001FFF5D /* Air_WifiMainView.xib in Resources */,
+				8D1390E31DB33A9E001FFF5D /* Air_BlueMainView.xib in Resources */,
 				8DF78D611D94DBEB002C4202 /* Assets.xcassets in Resources */,
 				B714E0001D9CD50700D5AAC3 /* data.json in Resources */,
 				8D92F6611D95252E0068A40A /* Localizable.strings in Resources */,
@@ -1577,6 +1621,7 @@
 				8D92F6521D94F8480068A40A /* MyCenter.storyboard in Resources */,
 				B714DFB51D9CA6FA00D5AAC3 /* ZHCMessagesToolbarContentView.xib in Resources */,
 				8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */,
+				8D1390E51DB33AAE001FFF5D /* TDSPanMainView.xib in Resources */,
 				8D92F6711D9534890068A40A /* LeftMenu.storyboard in Resources */,
 				8D92F6681D9526460068A40A /* InfoPlist.strings in Resources */,
 				B714DF611D9BA9EE00D5AAC3 /* ZHCMessagesViewController.xib in Resources */,
@@ -1585,8 +1630,11 @@
 				B714DFB11D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellIncoming.xib in Resources */,
 				B7E4E6BD1DACCF1B00B82774 /* MyInfoCell.xib in Resources */,
 				8D9951401DACE6C20050FB19 /* NoDeviceView.xib in Resources */,
+				8D6D99021DB210950039365B /* WaterPurifierMainView.xib in Resources */,
+				8D1390DF1DB33A6E001FFF5D /* WaterReplenishMainView.xib in Resources */,
 				8DEB83B21DA896700088794A /* Info.plist in Resources */,
 				8DAE806C1D9A600900A9946F /* LeftMenuDeviceCell.xib in Resources */,
+				8D5045C81DB34AD700EAC3B3 /* Airgif_blue.gif in Resources */,
 				B714DF581D9BA9EE00D5AAC3 /* ZHCMessagesAssets.bundle in Resources */,
 				8D117C111D9CDEE30024187E /* Login+Register+Guiding.storyboard in Resources */,
 			);
@@ -1684,6 +1732,7 @@
 				B714DF5B1D9BA9EE00D5AAC3 /* NSString+Emoji.m in Sources */,
 				8D1C66E01DAA3B62008C639F /* OznerManager.m in Sources */,
 				8D0F63D21DB09DE600FA38BF /* RDVTabBar.m in Sources */,
+				8D1390D71DB33A1A001FFF5D /* TDSPanMainView.swift in Sources */,
 				8D117C231D9CFB0D0024187E /* ModelController.m in Sources */,
 				8D1C66E81DAA3B62008C639F /* TapSettings.m in Sources */,
 				8D1C66DE1DAA3B62008C639F /* Helper.m in Sources */,
@@ -1704,6 +1753,9 @@
 				B714DFF21D9CA73B00D5AAC3 /* ZHCMessagesMediaViewBubbleImageMasker.m in Sources */,
 				B714DFAE1D9CA6FA00D5AAC3 /* ZHCMessagesTableView.m in Sources */,
 				B714DFB21D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellOutcoming.m in Sources */,
+				8D1390D91DB33A33001FFF5D /* Air_BlueMainView.swift in Sources */,
+				8D6D98FE1DB2092F0039365B /* CupHeadCircleView.swift in Sources */,
+				8D1390DB1DB33A43001FFF5D /* Air_WifiMainView.swift in Sources */,
 				B714DF5F1D9BA9EE00D5AAC3 /* UIView+ZHCMessages.m in Sources */,
 				B7E4E6B81DACCC2D00B82774 /* MyInfoCell.swift in Sources */,
 				B714DFF81D9CAF7900D5AAC3 /* GYModelData.swift in Sources */,
@@ -1711,6 +1763,7 @@
 				8D1C66EE1DAA3B62008C639F /* WaterReplenishmentMeter.m in Sources */,
 				8D1C66DB1DAA3B62008C639F /* IOManager.m in Sources */,
 				8D92F6541D94F9670068A40A /* MyCenterController.swift in Sources */,
+				8D5045C61DB34AA000EAC3B3 /* UIImage+Expand.swift in Sources */,
 				B714DFAB1D9CA6FA00D5AAC3 /* ZHCMessagesMediaPlaceholderView.m in Sources */,
 				B714DFE21D9CA72B00D5AAC3 /* ZHCMessagesTableviewLayoutAttributes.m in Sources */,
 				B714DFD61D9CA71F00D5AAC3 /* ZHCMessagesAvatarImage.m in Sources */,
@@ -1718,6 +1771,7 @@
 				B714DFF11D9CA73B00D5AAC3 /* ZHCMessagesEmojiFactory.m in Sources */,
 				B714DFA71D9CA6FA00D5AAC3 /* ZHCMessagesComposerTextView.m in Sources */,
 				B714DFA81D9CA6FA00D5AAC3 /* ZHCMessagesEmojiView.m in Sources */,
+				8D6D99041DB238B30039365B /* WaterPurifierHeadCircleView.swift in Sources */,
 				B714DFD51D9CA71F00D5AAC3 /* ZHCMessage.m in Sources */,
 				8D1C66D61DAA3B62008C639F /* CupSettings.m in Sources */,
 				8D1C67001DAA3B62008C639F /* MQTTKit.m in Sources */,
@@ -1775,6 +1829,7 @@
 				B714DFBB1D9CA71100D5AAC3 /* ZHCMessagesVoiceRecorder.m in Sources */,
 				B714DFAA1D9CA6FA00D5AAC3 /* ZHCMessagesLabel.m in Sources */,
 				B714DFD21D9CA71F00D5AAC3 /* ZHCAudioMediaItem.m in Sources */,
+				8D6D99001DB210870039365B /* WaterPurifierMainView.swift in Sources */,
 				B714DFD41D9CA71F00D5AAC3 /* ZHCMediaItem.m in Sources */,
 				B714DFA51D9CA6FA00D5AAC3 /* ZHCMessagesAudioProgressHUD.m in Sources */,
 				B714DFFD1D9CB13700D5AAC3 /* ZHCModelData.m in Sources */,
@@ -1813,6 +1868,7 @@
 				8DAE80831D9B6DD400A9946F /* OzneriFamilyModel.xcdatamodeld in Sources */,
 				8D1C66FB1DAA3B62008C639F /* thread_mosq.c in Sources */,
 				8D1C66D91DAA3B62008C639F /* BaseOznerObject.m in Sources */,
+				8D1390DD1DB33A61001FFF5D /* WaterReplenishMainView.swift in Sources */,
 				8D1C67051DAA3B62008C639F /* ConfigurationDevice.m in Sources */,
 				8D1C66ED1DAA3B62008C639F /* WaterPurifierStatus.m in Sources */,
 				8DAE806B1D9A600900A9946F /* LeftMenuDeviceCell.swift in Sources */,

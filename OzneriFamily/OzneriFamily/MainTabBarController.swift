@@ -18,7 +18,7 @@ class MainTabBarController: RDVTabBarController {
         
         let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController 
         
-
+        
         let nvc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateInitialViewController() as! UINavigationController
         leftViewController.mainViewController=nvc
         SlideMenuOptions.leftViewWidth=298*width_screen/375

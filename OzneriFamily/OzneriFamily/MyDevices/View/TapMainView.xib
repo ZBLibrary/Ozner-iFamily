@@ -25,7 +25,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ld-E8-rzw">
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -42,7 +42,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ms-g0-3SJ">
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bV-B6-NUP">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bV-B6-NUP" customClass="CupHeadCircleView" customModule="OzneriFamily" customModuleProvider="target">
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="击败了0%的用户" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTN-sg-UeU">
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
@@ -107,11 +107,11 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="Ify-1q-kKl" firstAttribute="centerX" secondItem="8bV-B6-NUP" secondAttribute="centerX" id="2Xc-UY-Z4g"/>
                                 <constraint firstAttribute="bottom" secondItem="JTN-sg-UeU" secondAttribute="bottom" id="79r-WA-0BN"/>
-                                <constraint firstItem="70g-x4-vOK" firstAttribute="height" secondItem="8bV-B6-NUP" secondAttribute="height" multiplier="80:155" id="DTK-T5-05g"/>
+                                <constraint firstItem="70g-x4-vOK" firstAttribute="height" secondItem="8bV-B6-NUP" secondAttribute="height" multiplier="70:155" id="DTK-T5-05g"/>
                                 <constraint firstItem="Ify-1q-kKl" firstAttribute="height" secondItem="8bV-B6-NUP" secondAttribute="height" multiplier="36:155" id="Qqw-lE-1JA"/>
                                 <constraint firstItem="Ify-1q-kKl" firstAttribute="width" secondItem="8bV-B6-NUP" secondAttribute="width" multiplier="120:310" id="U1m-ge-ynw"/>
                                 <constraint firstItem="70g-x4-vOK" firstAttribute="top" secondItem="Ify-1q-kKl" secondAttribute="bottom" id="aCg-u1-HDx"/>
@@ -123,7 +123,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="8bV-B6-NUP" firstAttribute="width" secondItem="8bV-B6-NUP" secondAttribute="height" multiplier="2" id="5eD-XT-H1u"/>
+                        <constraint firstItem="8bV-B6-NUP" firstAttribute="width" secondItem="8bV-B6-NUP" secondAttribute="height" multiplier="2" constant="-20" id="5eD-XT-H1u"/>
                         <constraint firstItem="8bV-B6-NUP" firstAttribute="centerX" secondItem="9Ms-g0-3SJ" secondAttribute="centerX" id="5mj-eM-E7R"/>
                         <constraint firstItem="8bV-B6-NUP" firstAttribute="width" secondItem="9Ms-g0-3SJ" secondAttribute="width" multiplier="310:375" id="tQT-Om-G93"/>
                         <constraint firstItem="8bV-B6-NUP" firstAttribute="centerY" secondItem="9Ms-g0-3SJ" secondAttribute="centerY" id="ufk-CF-LPN"/>
@@ -141,6 +141,9 @@
                 <constraint firstItem="iCP-Mx-dHQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fV9-ij-D56"/>
                 <constraint firstItem="9Ms-g0-3SJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rN0-yl-P5S"/>
             </constraints>
+            <connections>
+                <outlet property="circleView" destination="8bV-B6-NUP" id="v0D-Gy-L6S"/>
+            </connections>
         </view>
     </objects>
     <resources>
