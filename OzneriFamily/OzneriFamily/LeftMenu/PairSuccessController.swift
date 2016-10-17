@@ -68,6 +68,27 @@ class PairSuccessController: UIViewController {
 
         setUpUI()
         
+        getDatas()
+
+        switch (pairModel?.count)! {
+        case 0:
+            break
+        case 1:
+            collectionFlowout.itemSize = CGSize(width: width_screen - 88 - 20, height: 100)
+            
+            break
+        case 2:
+            collectionFlowout.itemSize = CGSize(width: (width_screen - 88 - 20 - 10)/2, height: 100)
+            break
+   
+        default:
+            collectionFlowout.itemSize = CGSize(width: (width_screen - 88 - 20 - 20)/3, height: 100)
+            break
+        }
+        
+    }
+
+    private func getDatas() {
         //模拟数据
         let model = PairModle()
         model.isHidden = false
@@ -83,24 +104,8 @@ class PairSuccessController: UIViewController {
         
         let model4 = PairModle()
         model4.isHidden = true
-        pairModel = [model,model1];
-        
-        switch (pairModel?.count)! {
-        case 1:
-            collectionFlowout.itemSize = CGSize(width: width_screen - 88 - 20, height: 100)
-            
-            break
-        case 2:
-            collectionFlowout.itemSize = CGSize(width: (width_screen - 88 - 20 - 10)/2, height: 100)
-            break
-   
-        default:
-            
-            break
-        }
-        
+        pairModel = [model,model1,model2,model3,model4];
     }
-
     private func setUpUI() {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
