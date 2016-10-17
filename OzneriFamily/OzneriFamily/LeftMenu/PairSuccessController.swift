@@ -9,6 +9,12 @@
 import UIKit
 import Spring
 import SnapKit
+
+class PairModle: NSObject {
+    var isHidden: Bool?
+}
+
+
 class PairSuccessController: UIViewController {
 
     @IBAction func backClick(_ sender: AnyObject) {
@@ -20,8 +26,7 @@ class PairSuccessController: UIViewController {
     
     @IBOutlet weak var collectionFlowout: UICollectionViewFlowLayout!
     
-    @IBOutlet weak var sanjiao_XLayout: NSLayoutConstraint!
-    @IBOutlet weak var sanjiao_image: UIImageView!
+
     
     @IBOutlet weak var viewScrollerLayout: NSLayoutConstraint!
     @IBOutlet weak var sucessImageLayout: NSLayoutConstraint!
@@ -29,45 +34,68 @@ class PairSuccessController: UIViewController {
     @IBOutlet weak var searchLb: UILabel!
     @IBOutlet weak var successImage: UIImageView!
     @IBOutlet weak var scrollerView: UIView!
-
-    var mainMatchView: DeviceMatchMainView!
+    
+    @IBOutlet weak var collViewAudio: NSLayoutConstraint!
+    //记录选择了第几个设备，默认第一个
+    var indexDevice: Int = 0
+    
+    //cell
+    var mainMatchView: CupMatchView!
+    var pairModel:[PairModle]?{
+        didSet{
+            collectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        mainMatchView = UINib.init(nibName: "DeviceMatchMainView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! DeviceMatchMainView
-        
-        let cupView = UINib.init(nibName: "CupMatchView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! CupMatchView
-        cupView.frame = CGRect(x: 0, y: 18, width: width_screen, height: 200)
-        mainMatchView.addSubview(cupView)
+    
+         mainMatchView = UINib.init(nibName: "CupMatchView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! CupMatchView
+
         view.addSubview(mainMatchView)
         
         mainMatchView.snp.makeConstraints { (make) in
-            make.top.equalTo(scrollerView.snp.bottom).offset(2)
-//            make.left.equalTo(view.snp.left).offset(0)
-            //不明白
-//            make.right.equalTo(view.snp.right).offset(40)
-            make.width.equalToSuperview()
-            make.bottom.equalTo(view.snp.bottom).offset(50)
+            make.top.equalTo(scrollerView.snp.bottom)
+            make.leading.equalTo(view.snp.leading)
+            make.trailing.equalTo(view.snp.trailing)
+            make.bottom.equalTo(view.snp.bottom).offset(70)
         }
         
         setUpUI()
+        
+        //模拟数据
+        let model = PairModle()
+        model.isHidden = false
+        
+        let model1 = PairModle()
+        model1.isHidden = true
+        
+        let model2 = PairModle()
+        model2.isHidden = true
+        
+        let model3 = PairModle()
+        model3.isHidden = true
+        
+        let model4 = PairModle()
+        model4.isHidden = true
+        pairModel = [model,model1,model2,model3,model4];
         
     }
 
     private func setUpUI() {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.isPagingEnabled = true
-        sanjiao_XLayout.constant += collectionFlowout.itemSize.width / 2 - 11.5
-        
+        collectionView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
         let animal = CABasicAnimation(keyPath: "transform.scale")
         animal.fromValue = NSNumber(value: 1.0)
         animal.toValue = NSNumber(value: 0.5)
         animal.duration = 3.0
+        collViewAudio.constant = 110/667
+
         self.successImage.layer.add(animal, forKey: "transform.scale")
         UIView.animate(withDuration: 2, animations: {
             self.successImage.transform = CGAffineTransform(translationX: 0, y: -80)
-            self.sanjiao_image.transform = CGAffineTransform(translationX: 0, y: -100)
             self.scrollerView.transform = CGAffineTransform(translationX: 0, y: -100)
             self.searchLb.transform = CGAffineTransform(translationX: 0, y: -100)
             self.mainMatchView.transform = CGAffineTransform(translationX: 0, y: -100)
@@ -83,45 +111,29 @@ class PairSuccessController: UIViewController {
     
     @IBAction func leftBtnAction(_ sender: AnyObject) {
         
-        if sanjiao_XLayout.constant <= collectionFlowout.itemSize.width {
-            
-            if collectionView.contentOffset.x <= self.collectionFlowout.itemSize.width {
-                return
-            }
-            
-            UIView.animate(withDuration: 0.5) {
-                self.collectionView.contentOffset.x -= self.collectionFlowout.itemSize.width + self.collectionFlowout.minimumInteritemSpacing
-            }
-
-        } else {
-            UIView.animate(withDuration: 0.5, animations: { 
-                self.sanjiao_XLayout.constant -= self.collectionFlowout.itemSize.width + self.collectionFlowout.minimumInteritemSpacing
-                
-            })
+        if indexDevice <= 0 {
+            return
         }
+        ((pairModel?[indexDevice])! as PairModle).isHidden = true
+        indexDevice -= 1
+        collectionView.scrollToItem(at: IndexPath(row: indexDevice, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
+        ((pairModel?[indexDevice])! as PairModle).isHidden = false
+        print(indexDevice)
+        collectionView.reloadData()
     }
     
     //已适配
     @IBAction func rightBtnAction(_ sender: AnyObject) {
-
-        if sanjiao_XLayout.constant >= collectionView.frame.size.width / 2 {
-            if (collectionView.contentOffset.x + collectionFlowout.itemSize.width + collectionFlowout.minimumInteritemSpacing) >= collectionView.contentSize.width - collectionView.frame.size.width
-            {
-                return
-            }
-            
-            UIView.animate(withDuration: 0.5) {
-                
-                self.collectionView.contentOffset.x += self.collectionFlowout.itemSize.width + self.collectionFlowout.minimumInteritemSpacing
-                
-            }
+        if indexDevice >= (pairModel?.count)! - 1 {
             return
-        } else {
-            UIView.animate(withDuration: 0.5, animations: { 
-                self.sanjiao_XLayout.constant += self.collectionFlowout.itemSize.width + self.collectionFlowout.minimumInteritemSpacing
-
-            })
         }
+        
+        collectionView.scrollToItem(at: IndexPath(row: indexDevice, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
+        ((pairModel?[indexDevice])! as PairModle).isHidden = true
+        indexDevice += 1
+        ((pairModel?[indexDevice])! as PairModle).isHidden = false
+        print(indexDevice)
+        collectionView.reloadData()
 
     }
     
@@ -145,26 +157,36 @@ extension PairSuccessController: UICollectionViewDelegate,UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return pairModel?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pairsuccessCellID", for: indexPath) as! SuccessPairCell
 
+        //默认锁定第一个
+        cell.finishImage.isHidden = ((pairModel?[indexPath.row])! as PairModle).isHidden!
+        
         return cell
         
         
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("scrollView.contentOffset.x:\(scrollView.contentOffset.x)")
+        if indexDevice == indexPath.row {
+            return
+        }
         
-        print("选择了第几个item:\((scrollView.contentOffset.x + collectionView.frame.size.width)/collectionFlowout.itemSize.width)")
+        ((pairModel?[indexDevice])! as PairModle).isHidden = true
         
+        ((pairModel?[indexPath.row])! as PairModle).isHidden = false
+        
+        indexDevice = indexPath.row
+        self.collectionView.reloadData()
         
     }
+
     
     
 }
