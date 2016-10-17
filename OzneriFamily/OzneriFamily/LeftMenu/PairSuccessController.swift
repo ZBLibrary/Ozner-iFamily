@@ -28,16 +28,15 @@ class PairSuccessController: UIViewController {
     
 
     
-    @IBOutlet weak var viewScrollerLayout: NSLayoutConstraint!
     @IBOutlet weak var sucessImageLayout: NSLayoutConstraint!
     
     @IBOutlet weak var searchLb: UILabel!
     @IBOutlet weak var successImage: UIImageView!
     @IBOutlet weak var scrollerView: UIView!
     
-    @IBOutlet weak var collViewAudio: NSLayoutConstraint!
     //记录选择了第几个设备，默认第一个
     var indexDevice: Int = 0
+    
     
     //cell
     var mainMatchView: CupMatchView!
@@ -53,14 +52,20 @@ class PairSuccessController: UIViewController {
          mainMatchView = UINib.init(nibName: "CupMatchView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! CupMatchView
 
         view.addSubview(mainMatchView)
-        
+
         mainMatchView.snp.makeConstraints { (make) in
             make.top.equalTo(scrollerView.snp.bottom)
             make.leading.equalTo(view.snp.leading)
             make.trailing.equalTo(view.snp.trailing)
-            make.bottom.equalTo(view.snp.bottom).offset(70)
+            if cureentIphoneType == EnumIphoneType.Ipone5
+            {
+            make.bottom.equalTo(view.snp.bottom).offset(150)
+            } else {
+            make.bottom.equalTo(view.snp.bottom).offset(80)
+            }
         }
         
+
         setUpUI()
         
         //模拟数据
@@ -78,7 +83,21 @@ class PairSuccessController: UIViewController {
         
         let model4 = PairModle()
         model4.isHidden = true
-        pairModel = [model,model1,model2,model3,model4];
+        pairModel = [model,model1];
+        
+        switch (pairModel?.count)! {
+        case 1:
+            collectionFlowout.itemSize = CGSize(width: width_screen - 88 - 20, height: 100)
+            
+            break
+        case 2:
+            collectionFlowout.itemSize = CGSize(width: (width_screen - 88 - 20 - 10)/2, height: 100)
+            break
+   
+        default:
+            
+            break
+        }
         
     }
 
@@ -91,14 +110,23 @@ class PairSuccessController: UIViewController {
         animal.fromValue = NSNumber(value: 1.0)
         animal.toValue = NSNumber(value: 0.5)
         animal.duration = 3.0
-        collViewAudio.constant = 110/667
 
         self.successImage.layer.add(animal, forKey: "transform.scale")
         UIView.animate(withDuration: 2, animations: {
             self.successImage.transform = CGAffineTransform(translationX: 0, y: -80)
+            if cureentIphoneType == EnumIphoneType.Ipone5
+            {
+            //5
+            self.scrollerView.transform = CGAffineTransform(translationX: 0, y: -150)
+            self.searchLb.transform = CGAffineTransform(translationX: 0, y: -150)
+            self.mainMatchView.transform = CGAffineTransform(translationX: 0, y: -150)
+            } else {
+            // 6
             self.scrollerView.transform = CGAffineTransform(translationX: 0, y: -100)
             self.searchLb.transform = CGAffineTransform(translationX: 0, y: -100)
             self.mainMatchView.transform = CGAffineTransform(translationX: 0, y: -100)
+
+            }
         }) { (_) in
             
             UIView.animate(withDuration: 1, animations: {

@@ -333,7 +333,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pairsuccessCellID" id="4ZJ-GO-zmu" customClass="SuccessPairCell" customModule="OzneriFamily" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-7" width="83" height="108"/>
+                                                <rect key="frame" x="0.0" y="-4" width="83" height="108"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="83" height="108"/>
@@ -341,7 +341,8 @@
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_peidui_select_TDSPan" translatesAutoresizingMaskIntoConstraints="NO" id="4Dk-bc-nxZ">
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="4Dk-bc-nxZ" secondAttribute="height" multiplier="1:1" id="YVq-wu-TEg"/>
+                                                                <constraint firstAttribute="width" constant="50" id="RXc-Ub-fRv"/>
+                                                                <constraint firstAttribute="height" constant="50" id="iwG-mh-Est"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的水杯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lct-P0-6HF">
@@ -362,7 +363,6 @@
                                                 </view>
                                                 <color key="backgroundColor" red="0.50196078430000002" green="0.81176470590000005" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="4Dk-bc-nxZ" firstAttribute="width" secondItem="4ZJ-GO-zmu" secondAttribute="width" multiplier="0.6" id="06k-Kw-hVP"/>
                                                     <constraint firstItem="4Dk-bc-nxZ" firstAttribute="centerX" secondItem="4ZJ-GO-zmu" secondAttribute="centerX" id="IpJ-C1-W2E"/>
                                                     <constraint firstItem="lct-P0-6HF" firstAttribute="centerX" secondItem="4ZJ-GO-zmu" secondAttribute="centerX" id="SNr-2a-Xtw"/>
                                                     <constraint firstItem="och-V7-pe8" firstAttribute="top" secondItem="lct-P0-6HF" secondAttribute="bottom" constant="2" id="ixc-I8-1tU"/>
@@ -384,12 +384,18 @@
                                         </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSM-5c-7Zd">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="mzk-KS-l37"/>
+                                        </constraints>
                                         <state key="normal" image="zuo1"/>
                                         <connections>
                                             <action selector="leftBtnAction:" destination="WzG-Ym-y9N" eventType="touchUpInside" id="j7j-59-ope"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60g-TR-cjJ">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="cfQ-C6-hs9"/>
+                                        </constraints>
                                         <state key="normal" image="you1"/>
                                         <connections>
                                             <action selector="rightBtnAction:" destination="WzG-Ym-y9N" eventType="touchUpInside" id="q6v-mC-VjL"/>
@@ -401,6 +407,7 @@
                                     <constraint firstItem="eSM-5c-7Zd" firstAttribute="leading" secondItem="UY3-P4-EzN" secondAttribute="leading" id="7K8-Yb-WXo"/>
                                     <constraint firstAttribute="trailing" secondItem="60g-TR-cjJ" secondAttribute="trailing" id="JtF-tz-iHi"/>
                                     <constraint firstItem="60g-TR-cjJ" firstAttribute="top" secondItem="UY3-P4-EzN" secondAttribute="top" constant="25" id="LlK-26-o5l"/>
+                                    <constraint firstAttribute="height" constant="100" id="M4f-nT-e3A"/>
                                     <constraint firstAttribute="trailing" secondItem="ZS1-Os-aaj" secondAttribute="trailing" constant="30" id="avZ-9T-jig"/>
                                     <constraint firstAttribute="bottom" secondItem="eSM-5c-7Zd" secondAttribute="bottom" constant="27" id="cvc-KP-Vv6"/>
                                     <constraint firstItem="ZS1-Os-aaj" firstAttribute="top" secondItem="UY3-P4-EzN" secondAttribute="top" id="pk0-d6-TRj"/>
@@ -424,16 +431,15 @@
                         <color key="backgroundColor" red="0.50196078431372548" green="0.81176470588235294" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uVz-5q-5T3" firstAttribute="width" secondItem="McK-C4-yAs" secondAttribute="width" multiplier="130:375" id="7MF-7O-TX7"/>
-                            <constraint firstItem="UY3-P4-EzN" firstAttribute="width" secondItem="McK-C4-yAs" secondAttribute="width" multiplier="316:375" id="F11-Kv-yQP"/>
                             <constraint firstItem="uVz-5q-5T3" firstAttribute="centerX" secondItem="McK-C4-yAs" secondAttribute="centerX" id="O18-zY-DaX"/>
                             <constraint firstAttribute="trailing" secondItem="Shh-8E-UgE" secondAttribute="trailing" id="Ott-8r-pDN"/>
-                            <constraint firstItem="UY3-P4-EzN" firstAttribute="centerX" secondItem="McK-C4-yAs" secondAttribute="centerX" id="RsU-JQ-2oo"/>
-                            <constraint firstItem="Shh-8E-UgE" firstAttribute="top" secondItem="UY3-P4-EzN" secondAttribute="bottom" id="S4V-jv-iph"/>
+                            <constraint firstItem="Shh-8E-UgE" firstAttribute="top" secondItem="UY3-P4-EzN" secondAttribute="bottom" id="Qh2-Nv-fPC"/>
                             <constraint firstItem="12C-5D-JjF" firstAttribute="top" secondItem="uVz-5q-5T3" secondAttribute="bottom" multiplier="667:316" id="Wcy-NB-Ooo"/>
-                            <constraint firstItem="12C-5D-JjF" firstAttribute="top" secondItem="UY3-P4-EzN" secondAttribute="bottom" constant="146" id="XL9-jl-VkS"/>
+                            <constraint firstItem="Shh-8E-UgE" firstAttribute="top" secondItem="McK-C4-yAs" secondAttribute="top" constant="521" id="dSf-eq-wKN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UY3-P4-EzN" secondAttribute="trailing" constant="14" id="gef-HM-QlY"/>
                             <constraint firstItem="12C-5D-JjF" firstAttribute="top" secondItem="Shh-8E-UgE" secondAttribute="bottom" id="hmD-KF-pae"/>
+                            <constraint firstItem="UY3-P4-EzN" firstAttribute="leading" secondItem="McK-C4-yAs" secondAttribute="leadingMargin" constant="14" id="ifD-MK-lXf"/>
                             <constraint firstItem="Tcn-r8-kAf" firstAttribute="centerX" secondItem="McK-C4-yAs" secondAttribute="centerX" id="kku-9n-WXC"/>
-                            <constraint firstItem="UY3-P4-EzN" firstAttribute="height" secondItem="McK-C4-yAs" secondAttribute="height" multiplier="95:667" id="uiL-7Z-zmA"/>
                             <constraint firstItem="UY3-P4-EzN" firstAttribute="top" secondItem="Tcn-r8-kAf" secondAttribute="bottom" constant="10" id="vsL-V0-uek"/>
                             <constraint firstItem="Shh-8E-UgE" firstAttribute="leading" secondItem="McK-C4-yAs" secondAttribute="leading" id="y78-6X-gLe"/>
                         </constraints>
@@ -446,14 +452,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collViewAudio" destination="uiL-7Z-zmA" id="HIP-cS-9Lr"/>
                         <outlet property="collectionFlowout" destination="fgN-LR-yG8" id="iTK-jB-vkN"/>
                         <outlet property="collectionView" destination="ZS1-Os-aaj" id="4EH-qT-5e7"/>
                         <outlet property="scrollerView" destination="UY3-P4-EzN" id="yTb-q4-euo"/>
                         <outlet property="searchLb" destination="Tcn-r8-kAf" id="oAq-kg-anP"/>
                         <outlet property="successImage" destination="uVz-5q-5T3" id="cXo-LC-VfP"/>
                         <outlet property="sucessImageLayout" destination="Wcy-NB-Ooo" id="eI1-3Q-RXH"/>
-                        <outlet property="viewScrollerLayout" destination="XL9-jl-VkS" id="sjr-Dn-beG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewY-kn-Phw" userLabel="First Responder" sceneMemberID="firstResponder"/>
