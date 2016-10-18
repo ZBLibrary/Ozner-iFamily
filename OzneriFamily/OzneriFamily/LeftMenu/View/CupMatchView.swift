@@ -9,7 +9,12 @@
 import UIKit
 
 class CupMatchView: UIView {
+    
+    
+    @IBOutlet weak var cupNameLb: UITextField!
+    @IBOutlet weak var sucessBtn: UIButton!
 
+    @IBOutlet weak var weightLb: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
         

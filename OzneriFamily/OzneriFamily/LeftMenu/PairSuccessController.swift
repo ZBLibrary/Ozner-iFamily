@@ -21,7 +21,6 @@ class PairSuccessController: UIViewController {
         _=self.navigationController?.popToRootViewController(animated: true)
     }
     
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var collectionFlowout: UICollectionViewFlowLayout!
@@ -30,16 +29,20 @@ class PairSuccessController: UIViewController {
     
     @IBOutlet weak var sucessImageLayout: NSLayoutConstraint!
     
+    @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var searchLb: UILabel!
+    
     @IBOutlet weak var successImage: UIImageView!
     @IBOutlet weak var scrollerView: UIView!
     
+    @IBOutlet weak var leftBtn: UIButton!
+    @IBOutlet weak var rightBtn: UIButton!
     //记录选择了第几个设备，默认第一个
     var indexDevice: Int = 0
     
-    
+    var  deviceTypeValue:OznerDeviceType!
     //cell
-    var mainMatchView: CupMatchView!
+    var mainMatchView: UIView!
     var pairModel:[PairModle]?{
         didSet{
             collectionView.reloadData()
@@ -48,23 +51,8 @@ class PairSuccessController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-         mainMatchView = UINib.init(nibName: "CupMatchView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! CupMatchView
-
-        view.addSubview(mainMatchView)
-
-        mainMatchView.snp.makeConstraints { (make) in
-            make.top.equalTo(scrollerView.snp.bottom)
-            make.leading.equalTo(view.snp.leading)
-            make.trailing.equalTo(view.snp.trailing)
-            if cureentIphoneType == EnumIphoneType.Ipone5
-            {
-            make.bottom.equalTo(view.snp.bottom).offset(150)
-            } else {
-            make.bottom.equalTo(view.snp.bottom).offset(80)
-            }
-        }
         
+        loadImageandLb()
 
         setUpUI()
         
@@ -74,6 +62,8 @@ class PairSuccessController: UIViewController {
         case 0:
             break
         case 1:
+            leftBtn.isHidden = true
+            rightBtn.isHidden = true
             collectionFlowout.itemSize = CGSize(width: width_screen - 88 - 20, height: 100)
             
             break
@@ -87,7 +77,71 @@ class PairSuccessController: UIViewController {
         }
         
     }
+    
+    private func loadImageandLb() {
+        
+        switch deviceTypeValue.rawValue {
+        case OznerDeviceType.Cup.rawValue:
+            mainMatchView = UINib.init(nibName: "CupMatchView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! CupMatchView
+            (mainMatchView as! CupMatchView).sucessBtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            break
+        case OznerDeviceType.Tap.rawValue:
+            mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
+            (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
+            (mainMatchView as! SmallAriClearView).nameLb.placeholder = "输入水探头名称"
+            (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            break
+        case OznerDeviceType.TDSPan.rawValue:
+            mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
+            (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
+            (mainMatchView as! SmallAriClearView).nameLb.placeholder = "输入检测笔名称"
+            (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            break
+        case OznerDeviceType.Water_Wifi.rawValue:
+            mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
+            (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
+            (mainMatchView as! SmallAriClearView).nameLb.placeholder = "立式空净名称"
+            (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            break
+        case OznerDeviceType.Air_Blue.rawValue:
+            //小空净
+            mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
+            (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+        case OznerDeviceType.Air_Wifi.rawValue:
+            mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
+            (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
+            (mainMatchView as! SmallAriClearView).nameLb.placeholder = "立式空净名称"
+            (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            break
+        case OznerDeviceType.WaterReplenish.rawValue:
+            mainMatchView = UINib.init(nibName: "WaterRefeishView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! WaterRefeishView
+            (mainMatchView as! WaterRefeishView).sucessAction.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            
+            break
+        default:
+            break
+        }
+        view.addSubview(mainMatchView)
+        mainMatchView.snp.makeConstraints { (make) in
+            make.top.equalTo(scrollerView.snp.bottom)
+            make.leading.equalTo(view.snp.leading)
+            make.trailing.equalTo(view.snp.trailing)
+            if cureentIphoneType == EnumIphoneType.Ipone5
+            {
+                make.bottom.equalTo(view.snp.bottom).offset(150)
+            } else if cureentIphoneType == EnumIphoneType.Iphone6 {
+                make.bottom.equalTo(view.snp.bottom).offset(80)
+            } else {
+                make.bottom.equalTo(view.snp.bottom).offset(1)
+            }
+        }
+    }
 
+
+    func sucessAction() {
+        print(#function)
+    }
+    
     private func getDatas() {
         //模拟数据
         let model = PairModle()
@@ -117,16 +171,20 @@ class PairSuccessController: UIViewController {
         animal.duration = 3.0
 
         self.successImage.layer.add(animal, forKey: "transform.scale")
-        UIView.animate(withDuration: 2, animations: {
-            self.successImage.transform = CGAffineTransform(translationX: 0, y: -80)
+        UIView.animate(withDuration: 0.5, animations: {
+            
             if cureentIphoneType == EnumIphoneType.Ipone5
             {
             //5
+            self.bgImageView.transform = CGAffineTransform(translationX: 0, y: -50)
+            self.successImage.transform = CGAffineTransform(translationX: 0, y: -50)
             self.scrollerView.transform = CGAffineTransform(translationX: 0, y: -150)
             self.searchLb.transform = CGAffineTransform(translationX: 0, y: -150)
             self.mainMatchView.transform = CGAffineTransform(translationX: 0, y: -150)
             } else {
             // 6
+            self.bgImageView.transform = CGAffineTransform(translationX: 0, y: -80)
+            self.successImage.transform = CGAffineTransform(translationX: 0, y: -80)
             self.scrollerView.transform = CGAffineTransform(translationX: 0, y: -100)
             self.searchLb.transform = CGAffineTransform(translationX: 0, y: -100)
             self.mainMatchView.transform = CGAffineTransform(translationX: 0, y: -100)
@@ -134,7 +192,7 @@ class PairSuccessController: UIViewController {
             }
         }) { (_) in
             
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.successImage.image = UIImage(named: "match_device_successed")
                 
             })

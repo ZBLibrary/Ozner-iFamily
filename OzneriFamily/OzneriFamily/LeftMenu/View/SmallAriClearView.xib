@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SmallAriClearView" customModule="OzneriFamily" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="279" height="205"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="台式空净名称" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rRi-SA-6l7">
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TR4-oh-LOq">
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="S89-tn-iWs"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客厅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9b-YC-daD">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="FUf-mw-0UY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpW-NY-NVU">
+                    <color key="backgroundColor" red="0.13725490200000001" green="0.43529411759999997" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="5DZ-5k-s3J"/>
+                    </constraints>
+                    <state key="normal" title="完成">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="rRi-SA-6l7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5jy-1a-ora"/>
+                <constraint firstAttribute="trailing" secondItem="bpW-NY-NVU" secondAttribute="trailing" constant="24" id="EWe-gb-IMy"/>
+                <constraint firstItem="rRi-SA-6l7" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="Mkq-Bm-08Z"/>
+                <constraint firstItem="y9b-YC-daD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SLy-3o-3lb"/>
+                <constraint firstItem="bpW-NY-NVU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="Xft-bu-dVk"/>
+                <constraint firstItem="bpW-NY-NVU" firstAttribute="top" secondItem="y9b-YC-daD" secondAttribute="bottom" constant="35" id="dab-PE-iGs"/>
+                <constraint firstItem="TR4-oh-LOq" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.6" id="enN-pM-HWr"/>
+                <constraint firstItem="y9b-YC-daD" firstAttribute="top" secondItem="TR4-oh-LOq" secondAttribute="bottom" constant="18" id="fxm-QX-kKa"/>
+                <constraint firstItem="TR4-oh-LOq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lcK-cx-l8X"/>
+                <constraint firstItem="rRi-SA-6l7" firstAttribute="top" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" priority="750" constant="50" id="nFt-cP-6Fz"/>
+                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="bpW-NY-NVU" secondAttribute="bottom" priority="250" constant="19" id="qgd-Sv-JRn"/>
+                <constraint firstItem="TR4-oh-LOq" firstAttribute="top" secondItem="rRi-SA-6l7" secondAttribute="bottom" constant="4" id="urV-57-xCz"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="nameLb" destination="rRi-SA-6l7" id="l7r-o0-Ccj"/>
+                <outlet property="placeLb" destination="y9b-YC-daD" id="enO-GX-CSv"/>
+                <outlet property="successbtn" destination="bpW-NY-NVU" id="Aar-xp-AdD"/>
+            </connections>
+            <point key="canvasLocation" x="-13.5" y="-173.5"/>
+        </view>
+    </objects>
+</document>

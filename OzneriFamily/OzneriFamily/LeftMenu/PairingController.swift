@@ -81,7 +81,16 @@ class PairingController: UIViewController {
     
     func success()  {
         
-        self.performSegue(withIdentifier: "showsuccess", sender: nil)
+        switch deviceTypeValue.rawValue {
+        case OznerDeviceType.Cup.rawValue,OznerDeviceType.Tap.rawValue,OznerDeviceType.TDSPan.rawValue,OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.WaterReplenish.rawValue:
+            self.performSegue(withIdentifier: "showsuccess", sender: nil)
+            break
+        case OznerDeviceType.Water_Wifi.rawValue,OznerDeviceType.Air_Wifi.rawValue:
+            self.performSegue(withIdentifier: "showWifiPair", sender: nil)
+            break
+        default:
+            break
+        }
 //        animalImg.layer.removeAnimation(forKey: "rotationAnimation")
     }
     
@@ -95,15 +104,25 @@ class PairingController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+   
+     //MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+     //In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+       
+        if segue.identifier == "showsuccess" {
+            let pair = segue.destination as! PairSuccessController
+            
+            pair.deviceTypeValue = self.deviceTypeValue
+        } else
+        {
+            let pair = segue.destination as! WifiPairingController
+            
+            pair.deviceTypeValue = self.deviceTypeValue
+        }
+        
     }
-    */
+ 
 
 }
 

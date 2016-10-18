@@ -197,6 +197,10 @@
 		B7567CA91DB0DAF400AA7C91 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7725CFF1D9DF8FF0047AC6F /* BDImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B7725CFE1D9DF8FF0047AC6F /* BDImagePicker.m */; };
 		B779687E1D9E4B4C0046AD66 /* UUImageAvatarBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = B779687D1D9E4B4C0046AD66 /* UUImageAvatarBrowser.m */; };
+		B79803DB1DB5B14A001EC5AA /* SmallAriClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79803DA1DB5B14A001EC5AA /* SmallAriClearView.swift */; };
+		B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */; };
+		B79803DF1DB5C41D001EC5AA /* WaterRefeishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */; };
+		B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */; };
 		B7E4E6B81DACCC2D00B82774 /* MyInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E4E6B41DACCC2D00B82774 /* MyInfoCell.swift */; };
 		B7E4E6BA1DACCC2D00B82774 /* MyInfoHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E4E6B61DACCC2D00B82774 /* MyInfoHeadView.swift */; };
 		B7E4E6BB1DACCC2D00B82774 /* MyInfoHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E4E6B71DACCC2D00B82774 /* MyInfoHeadView.xib */; };
@@ -574,6 +578,10 @@
 		B7725CFE1D9DF8FF0047AC6F /* BDImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImagePicker.m; sourceTree = "<group>"; };
 		B779687C1D9E4B4C0046AD66 /* UUImageAvatarBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUImageAvatarBrowser.h; sourceTree = "<group>"; };
 		B779687D1D9E4B4C0046AD66 /* UUImageAvatarBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUImageAvatarBrowser.m; sourceTree = "<group>"; };
+		B79803DA1DB5B14A001EC5AA /* SmallAriClearView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallAriClearView.swift; sourceTree = "<group>"; };
+		B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallAriClearView.xib; sourceTree = "<group>"; };
+		B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterRefeishView.swift; sourceTree = "<group>"; };
+		B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterRefeishView.xib; sourceTree = "<group>"; };
 		B7E4E6B41DACCC2D00B82774 /* MyInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoCell.swift; sourceTree = "<group>"; };
 		B7E4E6B61DACCC2D00B82774 /* MyInfoHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoHeadView.swift; sourceTree = "<group>"; };
 		B7E4E6B71DACCC2D00B82774 /* MyInfoHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyInfoHeadView.xib; sourceTree = "<group>"; };
@@ -1157,6 +1165,10 @@
 				B727C35C1DACE90000FE990F /* SuccessPairCell.xib */,
 				B7567CA41DB0873B00AA7C91 /* CupMatchView.swift */,
 				B7567CA21DB0872800AA7C91 /* CupMatchView.xib */,
+				B79803DA1DB5B14A001EC5AA /* SmallAriClearView.swift */,
+				B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */,
+				B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */,
+				B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1531,8 +1543,10 @@
 				8D92F6681D9526460068A40A /* InfoPlist.strings in Resources */,
 				B714DF611D9BA9EE00D5AAC3 /* ZHCMessagesViewController.xib in Resources */,
 				B7E4E6BB1DACCC2D00B82774 /* MyInfoHeadView.xib in Resources */,
+				B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */,
 				8DAE80561D9A097800A9946F /* Info.plist in Resources */,
 				B714DFB11D9CA6FA00D5AAC3 /* ZHCMessagesTableViewCellIncoming.xib in Resources */,
+				B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */,
 				B7E4E6BD1DACCF1B00B82774 /* MyInfoCell.xib in Resources */,
 				8DEB83B21DA896700088794A /* Info.plist in Resources */,
 				8DAE806C1D9A600900A9946F /* LeftMenuDeviceCell.xib in Resources */,
@@ -1628,6 +1642,7 @@
 				8D1C66F71DAA3B62008C639F /* read_handle_client.c in Sources */,
 				8D117C221D9CFB0D0024187E /* JCRootViewController.m in Sources */,
 				8D1C66E61DAA3B62008C639F /* TapRecordList.m in Sources */,
+				B79803DB1DB5B14A001EC5AA /* SmallAriClearView.swift in Sources */,
 				8D1C67031DAA3B62008C639F /* MXChipIOManager.m in Sources */,
 				8D1C66EA1DAA3B62008C639F /* WaterPurifierInfo.m in Sources */,
 				8D1EF3881D93DE050009D034 /* AppDelegate.swift in Sources */,
@@ -1642,6 +1657,7 @@
 				8D1C66F61DAA3B62008C639F /* read_handle.c in Sources */,
 				8D1C66D51DAA3B62008C639F /* CupSensor.m in Sources */,
 				8DAE80721D9A85EC00A9946F /* SelectDeviceTableController.swift in Sources */,
+				B79803DF1DB5C41D001EC5AA /* WaterRefeishView.swift in Sources */,
 				B714DFB41D9CA6FA00D5AAC3 /* ZHCMessagesToolbarContentView.m in Sources */,
 				B714DFE01D9CA72B00D5AAC3 /* ZHCAudioMediaViewAttributes.m in Sources */,
 				B714DFE11D9CA72B00D5AAC3 /* ZHCMessagesBubbleCalculator.m in Sources */,

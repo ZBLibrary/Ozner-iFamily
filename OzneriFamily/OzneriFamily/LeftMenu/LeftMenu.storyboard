@@ -316,10 +316,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CBe-Sg-tit">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="4MF-nc-WYZ"/>
+                                    <constraint firstAttribute="height" constant="130" id="bfn-VE-NQt"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="65"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icon_peidui_select_bigair" translatesAutoresizingMaskIntoConstraints="NO" id="uVz-5q-5T3">
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uVz-5q-5T3" secondAttribute="height" id="B68-vV-mPx"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UY3-P4-EzN">
                                 <subviews>
@@ -435,11 +451,13 @@
                             <constraint firstAttribute="trailing" secondItem="Shh-8E-UgE" secondAttribute="trailing" id="Ott-8r-pDN"/>
                             <constraint firstItem="Shh-8E-UgE" firstAttribute="top" secondItem="UY3-P4-EzN" secondAttribute="bottom" id="Qh2-Nv-fPC"/>
                             <constraint firstItem="12C-5D-JjF" firstAttribute="top" secondItem="uVz-5q-5T3" secondAttribute="bottom" multiplier="667:316" id="Wcy-NB-Ooo"/>
+                            <constraint firstItem="12C-5D-JjF" firstAttribute="top" secondItem="CBe-Sg-tit" secondAttribute="bottom" multiplier="667:316" id="aa8-dC-XyN"/>
                             <constraint firstItem="Shh-8E-UgE" firstAttribute="top" secondItem="McK-C4-yAs" secondAttribute="top" constant="521" id="dSf-eq-wKN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UY3-P4-EzN" secondAttribute="trailing" constant="14" id="gef-HM-QlY"/>
                             <constraint firstItem="12C-5D-JjF" firstAttribute="top" secondItem="Shh-8E-UgE" secondAttribute="bottom" id="hmD-KF-pae"/>
                             <constraint firstItem="UY3-P4-EzN" firstAttribute="leading" secondItem="McK-C4-yAs" secondAttribute="leadingMargin" constant="14" id="ifD-MK-lXf"/>
                             <constraint firstItem="Tcn-r8-kAf" firstAttribute="centerX" secondItem="McK-C4-yAs" secondAttribute="centerX" id="kku-9n-WXC"/>
+                            <constraint firstItem="CBe-Sg-tit" firstAttribute="centerX" secondItem="McK-C4-yAs" secondAttribute="centerX" id="lwq-6v-lIl"/>
                             <constraint firstItem="UY3-P4-EzN" firstAttribute="top" secondItem="Tcn-r8-kAf" secondAttribute="bottom" constant="10" id="vsL-V0-uek"/>
                             <constraint firstItem="Shh-8E-UgE" firstAttribute="leading" secondItem="McK-C4-yAs" secondAttribute="leading" id="y78-6X-gLe"/>
                         </constraints>
@@ -452,8 +470,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bgImageView" destination="CBe-Sg-tit" id="217-iG-1tT"/>
                         <outlet property="collectionFlowout" destination="fgN-LR-yG8" id="iTK-jB-vkN"/>
                         <outlet property="collectionView" destination="ZS1-Os-aaj" id="4EH-qT-5e7"/>
+                        <outlet property="leftBtn" destination="eSM-5c-7Zd" id="SBk-7t-OHO"/>
+                        <outlet property="rightBtn" destination="60g-TR-cjJ" id="960-Zh-1r8"/>
                         <outlet property="scrollerView" destination="UY3-P4-EzN" id="yTb-q4-euo"/>
                         <outlet property="searchLb" destination="Tcn-r8-kAf" id="oAq-kg-anP"/>
                         <outlet property="successImage" destination="uVz-5q-5T3" id="cXo-LC-VfP"/>
@@ -715,7 +736,7 @@
                         <outlet property="wifiPassWordText" destination="RJe-NL-PrA" id="wvR-rr-fhY"/>
                         <outlet property="wifiViewContainer" destination="pum-vW-IfG" id="5SG-4s-kZ5"/>
                         <segue destination="3ty-PT-Hn6" kind="show" identifier="showfailed" id="Qdq-gX-CEZ"/>
-                        <segue destination="WzG-Ym-y9N" kind="show" identifier="showsuccess" id="9J8-o2-sth"/>
+                        <segue destination="WzG-Ym-y9N" kind="show" identifier="showwifisuccess" id="9J8-o2-sth"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Jv-QI-lUX" userLabel="First Responder" sceneMemberID="firstResponder"/>
