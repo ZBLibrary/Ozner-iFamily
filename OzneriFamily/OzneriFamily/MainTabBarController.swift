@@ -37,7 +37,7 @@ class MainTabBarController: RDVTabBarController {
         
         self.viewControllers=[slideMenuController,c2,nav3,nav4]
         //设置tabbar
-        
+        //自定义
         self.tabBar.isTranslucent=false
         self.tabBar.backgroundColor=UIColor.white
         var index=0
