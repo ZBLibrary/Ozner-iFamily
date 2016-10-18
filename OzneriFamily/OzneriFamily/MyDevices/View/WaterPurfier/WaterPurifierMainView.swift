@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WaterPurifierMainView: UIView {
+class WaterPurifierMainView: OznerDeviceView {
 
     @IBOutlet var circleView: WaterPurifierHeadCircleView!
     /*

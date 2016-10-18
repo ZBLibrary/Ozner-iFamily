@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SkinHeadTableViewCell_EN: UITableViewCell {
+class SkinHeadTableViewCell: UITableViewCell {
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var skinLabel: UILabel!

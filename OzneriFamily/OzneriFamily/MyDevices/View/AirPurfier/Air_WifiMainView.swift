@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Air_WifiMainView: UIView {
+class Air_WifiMainView: OznerDeviceView {
 
     /*
     // Only override draw() if you perform custom drawing.

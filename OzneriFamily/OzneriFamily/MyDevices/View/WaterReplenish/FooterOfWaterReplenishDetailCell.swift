@@ -8,7 +8,7 @@
 
 import UIKit
 //key:"0",脸，key:"1",眼，key:"2",手，key:"3",颈
-class FooterOfWaterReplenishDetailCell_EN: UITableViewCell,HeadOfWaterReplenishDetailCell_ENDelegate {
+class FooterOfWaterReplenishDetailCell: UITableViewCell,HeadOfWaterReplenishDetailCell_ENDelegate {
 
     @IBOutlet weak var organLabel: UILabel!
     @IBOutlet weak var segmentControl: UISegmentedControl!

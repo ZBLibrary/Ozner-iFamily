@@ -82,6 +82,7 @@
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
                             <constraints>
                                 <constraint firstItem="QwV-kr-rVN" firstAttribute="height" secondItem="H2w-g1-Ecz" secondAttribute="height" multiplier="70:155" id="IBQ-62-7BJ"/>
                                 <constraint firstAttribute="bottom" secondItem="Wy8-m2-Egu" secondAttribute="bottom" id="NLa-mE-P8D"/>
@@ -94,6 +95,9 @@
                                 <constraint firstAttribute="width" secondItem="H2w-g1-Ecz" secondAttribute="height" multiplier="2" constant="-20" id="rZY-xQ-64a"/>
                                 <constraint firstItem="Iom-io-hJM" firstAttribute="width" secondItem="H2w-g1-Ecz" secondAttribute="width" multiplier="120:310" id="uJg-37-Aq6"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="bcf-UP-9PO" appends="YES" id="gpq-IV-HIH"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -144,6 +148,7 @@
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="Eed-YN-lXS" secondAttribute="trailing" id="1dT-N5-LAu"/>
                                                         <constraint firstItem="Eed-YN-lXS" firstAttribute="top" secondItem="vvK-Mj-6rw" secondAttribute="top" id="7mH-Fm-uDU"/>
@@ -158,6 +163,9 @@
                                                         <constraint firstItem="c4H-SQ-6WO" firstAttribute="top" secondItem="cuE-i6-rqk" secondAttribute="top" id="p07-fK-wKm"/>
                                                         <constraint firstItem="Eed-YN-lXS" firstAttribute="leading" secondItem="vvK-Mj-6rw" secondAttribute="trailing" constant="10" id="wGu-Qy-gHQ"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="cNX-Lk-SrZ" appends="YES" id="dFY-Ag-TQz"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -210,6 +218,7 @@
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="xg5-D9-rCI" firstAttribute="height" secondItem="9Yz-u8-GG3" secondAttribute="height" multiplier="14:72" id="1Qi-PE-5hK"/>
                                                 <constraint firstItem="oYV-h2-AiA" firstAttribute="leading" secondItem="9Yz-u8-GG3" secondAttribute="leading" id="2J1-7c-76z"/>
@@ -226,6 +235,9 @@
                                                 <constraint firstItem="tYr-jR-cCv" firstAttribute="leading" secondItem="oYV-h2-AiA" secondAttribute="trailing" constant="10" id="R5G-Mz-Ne1"/>
                                                 <constraint firstItem="oYV-h2-AiA" firstAttribute="height" secondItem="9Yz-u8-GG3" secondAttribute="height" multiplier="44:72" id="zU1-dt-QmL"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="Fkp-lM-wZ4" appends="YES" id="fds-9F-OED"/>
+                                            </connections>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -278,6 +290,21 @@
             </connections>
             <point key="canvasLocation" x="25.5" y="51.5"/>
         </view>
+        <tapGestureRecognizer id="bcf-UP-9PO" userLabel="cupHeadTap">
+            <connections>
+                <action selector="headCenterClick:" destination="iN0-l3-epB" id="Yvl-RK-bSi"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="cNX-Lk-SrZ" userLabel="drinkingTap">
+            <connections>
+                <action selector="drinkingClick:" destination="iN0-l3-epB" id="qf2-6w-jsV"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="Fkp-lM-wZ4" userLabel="temperatureTap">
+            <connections>
+                <action selector="temperatureClick:" destination="iN0-l3-epB" id="ZGD-Ak-Mub"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="baobiao" width="16" height="16"/>

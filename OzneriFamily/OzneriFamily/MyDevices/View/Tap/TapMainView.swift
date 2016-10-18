@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TapMainView: UIView {
+class TapMainView: OznerDeviceView {
 
     @IBOutlet var circleView: CupHeadCircleView!
     /*

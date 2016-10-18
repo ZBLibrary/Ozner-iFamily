@@ -25,7 +25,7 @@ class PairingController: UIViewController {
         super.viewDidLoad()
         print(deviceTypeValue)
         loadImageandLb()
-        loopImageAction()
+        
         let time=Timer(timeInterval: 20, target: self, selector: #selector(success), userInfo: nil, repeats: false)
         time.fire()
     }
@@ -69,15 +69,7 @@ class PairingController: UIViewController {
         deviceState.text = state.deviceStateText
     }
     
-    private func loopImageAction() {
-    
-        let rotation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotation.toValue = NSNumber(value: M_PI * 2.0)
-        rotation.duration = 1.0
-        rotation.repeatCount = MAXFLOAT
-        animalImg.layer.add(rotation, forKey: "rotationAnimation")
-        
-    }
+
     
     func success()  {
         

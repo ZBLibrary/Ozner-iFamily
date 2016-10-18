@@ -8,7 +8,7 @@
 
 import UIKit
 
-class  SkinFooterTableViewCell_EN: UITableViewCell {
+class  SkinFooterTableViewCell: UITableViewCell {
 
     //五个按钮背景view的宽度
     @IBOutlet weak var widthOfButtonBG1: NSLayoutConstraint!

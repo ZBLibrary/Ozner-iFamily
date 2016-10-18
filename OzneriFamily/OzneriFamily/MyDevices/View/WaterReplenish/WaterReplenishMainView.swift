@@ -19,16 +19,13 @@ enum BodyParts:String{
     case Hands="HandSkinValue"
     case Neck="NeckSkinValue"
 }//Face ，Eyes ,Hands, Neck
-class WaterReplenishMainView_EN: UIView,UIAlertViewDelegate {
+class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     //head视图控件
     
-    @IBOutlet weak var toLeftMenuButton: UIButton!
-    @IBOutlet weak var TitleOfReplensh: UILabel!
+
     @IBOutlet weak var ClickAlertLabel: UILabel!
     @IBOutlet weak var personBgImgView: UIImageView!
-    @IBOutlet weak var dianLiangImg: UIImageView!
-    @IBOutlet weak var dianLiangValueLabel: UILabel!
-    @IBOutlet weak var setButton: UIButton!
+
     //中部圆形视图
     @IBOutlet weak var centerCircleView: UIView!
     @IBOutlet weak var alertBeforeTest: UILabel!
@@ -330,19 +327,6 @@ class WaterReplenishMainView_EN: UIView,UIAlertViewDelegate {
         default:
             return
         }
-//        if ((WaterReplenishDevice?.status.testing) == true)&&(stateOfView==1||stateOfView==3)
-//        {
-//            stateOfView=2//检测中
-//            
-//        }else if stateOfView==2&&WaterReplenishDevice!.status.oil>0&&WaterReplenishDevice!.status.moisture>0
-//        {
-//            //检测完成
-//            stateOfView=3
-//        }
-//        else
-//        {
-//            return
-//        }
         setNeedsLayout()
         layoutIfNeeded()
     }
@@ -350,35 +334,11 @@ class WaterReplenishMainView_EN: UIView,UIAlertViewDelegate {
     func initView(_ currentDevice:OznerDevice)
     {
         WaterReplenishDevice=currentDevice as? WaterReplenishmentMeter
-        //设置电量
-        self.TitleOfReplensh.text = removeAdressOfDeviceName(WaterReplenishDevice!.settings.name)
-        var dianliang = Double((WaterReplenishDevice?.status.battery)!)
-        print(dianliang)
-        if(dianliang == 65535)
-        {
-            dianliang = 0
-        }
-        if(dianliang == 0)
-        {
-            dianLiangImg.image = UIImage(named: "dian_liang_0.png")
-        }
-        else if(dianliang <= 0.3)
-        {
-            dianLiangImg.image = UIImage(named: "dian_liang_30.png")
-        }
-        else if(dianliang <= 0.7)
-        {
-            dianLiangImg.image = UIImage(named: "dian_liang_70.png")
-        }
-        else
-        {
-            dianLiangImg.image = UIImage(named: "dian_liang_100.png")
-        }
-        dianliang = dianliang * 100
-        dianLiangValueLabel.text = String(Int(dianliang)) + "%"
+        
+        
         updateViewzb()
         getAllWeakAndMonthData()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateViewzb), name: NSNotification.Name(rawValue: "updateDeviceInfo"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(updateViewzb), name: NSNotification.Name(rawValue: "updateDeviceInfo"), object: nil)
     }
     
     

@@ -8,12 +8,13 @@
 
 import UIKit
 
-class NoDeviceView: UIView {
+class NoDeviceView: OznerDeviceView {
    
-    var addDeviceClickBlock:(()->Void)!
+    
     
     @IBAction func addDeviceClick(_ sender: AnyObject) {
-        addDeviceClickBlock()
+        let addDeviceNav=UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNav") as! UINavigationController
+        self.delegate.PresentModelController!(controller: addDeviceNav)
     }
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!

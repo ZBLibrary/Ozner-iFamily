@@ -17,7 +17,7 @@ struct HeadOfWaterReplenishStruct {
     var averageSkinValue:Double=0
     var checkTimes=0
 }
-class HeadOfWaterReplenishDetailCell_EN: UITableViewCell {
+class HeadOfWaterReplenishDetailCell: UITableViewCell {
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SkinCenterTableViewCell_EN: UITableViewCell {
+class SkinCenterTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timesOfTest: UILabel!
     @IBOutlet weak var stateOfTest: UILabel!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Air_BlueMainView: UIView {
+class Air_BlueMainView: OznerDeviceView {
 
     @IBOutlet var sliderTouchView: UIView!
     @IBOutlet var sliderImgWidth: NSLayoutConstraint!

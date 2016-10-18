@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TDSPanMainView: UIView {
+class TDSPanMainView: OznerDeviceView {
 
     /*
     // Only override draw() if you perform custom drawing.

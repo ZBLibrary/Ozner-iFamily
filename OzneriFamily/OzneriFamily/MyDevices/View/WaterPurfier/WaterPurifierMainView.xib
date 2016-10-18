@@ -170,6 +170,9 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                     <integer key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                                    <color key="value" red="0.70972543954849243" green="0.70984917879104614" blue="0.70971763134002686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </button>
@@ -244,6 +247,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="nr6-wU-yMr" firstAttribute="width" secondItem="NPO-OZ-3k6" secondAttribute="width" multiplier="60:306" id="0Kb-FB-s4p"/>
                                 <constraint firstAttribute="bottom" secondItem="KxI-zr-2gS" secondAttribute="bottom" id="Ca5-jN-N4F"/>
                                 <constraint firstItem="nr6-wU-yMr" firstAttribute="centerX" secondItem="NPO-OZ-3k6" secondAttribute="centerX" id="H8Y-0B-adD"/>
                                 <constraint firstItem="KxI-zr-2gS" firstAttribute="leading" secondItem="NPO-OZ-3k6" secondAttribute="leading" id="K8X-VB-pBA"/>
@@ -252,7 +256,6 @@
                                 <constraint firstAttribute="trailing" secondItem="G85-sM-Qoh" secondAttribute="trailing" id="S0d-0b-OS6"/>
                                 <constraint firstItem="G85-sM-Qoh" firstAttribute="width" secondItem="KxI-zr-2gS" secondAttribute="width" id="XCd-BZ-gx5"/>
                                 <constraint firstAttribute="bottom" secondItem="nr6-wU-yMr" secondAttribute="bottom" id="XfQ-56-RWN"/>
-                                <constraint firstItem="nr6-wU-yMr" firstAttribute="width" secondItem="NPO-OZ-3k6" secondAttribute="width" multiplier="60:306" id="eou-Di-RF6"/>
                                 <constraint firstAttribute="bottom" secondItem="G85-sM-Qoh" secondAttribute="bottom" id="jmA-jZ-qW5"/>
                                 <constraint firstItem="G85-sM-Qoh" firstAttribute="top" secondItem="NPO-OZ-3k6" secondAttribute="top" id="tXG-08-uNI"/>
                                 <constraint firstItem="nr6-wU-yMr" firstAttribute="top" secondItem="NPO-OZ-3k6" secondAttribute="top" id="zRw-8s-8pi"/>

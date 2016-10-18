@@ -72,10 +72,11 @@ class MyDevicesController: UIViewController {
 }
 //DeviceViewContainerDelegate代理方法
 extension MyDevicesController : DeviceViewContainerDelegate{
-    func AddNewDeviceClick() {
-        let addDeviceNav=UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNav") as! UINavigationController
+    
+    func PresentModelController(controller:UIViewController)//弹出模态视图
+    {
         weak var weakSelf=self
-        self.present(addDeviceNav, animated: false) {
+        self.present(controller, animated: false) {
             weakSelf?.closeLeft()
         }
     }
@@ -138,39 +139,11 @@ extension MyDevicesController : DeviceViewContainerDelegate{
         filterStateLabel.text = value<30 ? "请及时更换滤芯":"滤芯状态"
     }//0-100，<0表示无
     
+    //页面跳转
+    func DeviceViewPerformSegue(SegueID: String) {
+        self.performSegue(withIdentifier: SegueID, sender: nil)
+    }
 }
 //侧滑控制器代理方法
 extension MyDevicesController : SlideMenuControllerDelegate {
-    
-    func leftWillOpen() {
-        print("SlideMenuControllerDelegate: leftWillOpen")
-    }
-    
-    func leftDidOpen() {
-        print("SlideMenuControllerDelegate: leftDidOpen")
-    }
-    
-    func leftWillClose() {
-        print("SlideMenuControllerDelegate: leftWillClose")
-    }
-    
-    func leftDidClose() {
-        print("SlideMenuControllerDelegate: leftDidClose")
-    }
-    
-    func rightWillOpen() {
-        print("SlideMenuControllerDelegate: rightWillOpen")
-    }
-    
-    func rightDidOpen() {
-        print("SlideMenuControllerDelegate: rightDidOpen")
-    }
-    
-    func rightWillClose() {
-        print("SlideMenuControllerDelegate: rightWillClose")
-    }
-    
-    func rightDidClose() {
-        print("SlideMenuControllerDelegate: rightDidClose")
-    }
 }
