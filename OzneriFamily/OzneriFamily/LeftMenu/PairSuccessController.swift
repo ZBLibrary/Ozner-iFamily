@@ -140,6 +140,7 @@ class PairSuccessController: UIViewController {
 
     func sucessAction() {
         print(#function)
+        self.dismiss(animated: false, completion: {})
     }
     
     private func getDatas() {
@@ -168,10 +169,10 @@ class PairSuccessController: UIViewController {
         let animal = CABasicAnimation(keyPath: "transform.scale")
         animal.fromValue = NSNumber(value: 1.0)
         animal.toValue = NSNumber(value: 0.5)
-        animal.duration = 3.0
+        animal.duration = 2.0
 
         self.successImage.layer.add(animal, forKey: "transform.scale")
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 1.0, animations: {
             
             if cureentIphoneType == EnumIphoneType.Ipone5
             {
