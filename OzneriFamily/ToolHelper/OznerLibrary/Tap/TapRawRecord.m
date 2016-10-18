@@ -7,16 +7,17 @@
 //
 
 #import "TapRawRecord.h"
+#import "OznerHeader.h"
 @implementation TapRawRecord
-typedef struct _RecordTime
-{
-    UInt8 year;
-    UInt8 month;
-    UInt8 day;
-    UInt8 hour;
-    UInt8 min;
-    UInt8 sec;
-}*lpRecordTime,TRecordTime;
+//typedef struct _RecordTime
+//{
+//    UInt8 year;
+//    UInt8 month;
+//    UInt8 day;
+//    UInt8 hour;
+//    UInt8 min;
+//    UInt8 sec;
+//}*lpRecordTime,TRecordTime;
 typedef struct _RawRecord
 {
     TRecordTime time;

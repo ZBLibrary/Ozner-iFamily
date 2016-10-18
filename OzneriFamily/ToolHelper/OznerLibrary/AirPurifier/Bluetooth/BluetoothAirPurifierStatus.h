@@ -9,15 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "../../Device/BaseOznerObject.h"
 #import "BluetoothAirPurifierFilterStatus.h"
-typedef struct _RecordTime
-{
-    UInt8 year;
-    UInt8 month;
-    UInt8 day;
-    UInt8 hour;
-    UInt8 min;
-    UInt8 sec;
-}*lpRecordTime,TRecordTime;
+#import "OznerHeader.h"
+//typedef struct _RecordTime
+//{
+//    UInt8 year;
+//    UInt8 month;
+//    UInt8 day;
+//    UInt8 hour;
+//    UInt8 min;
+//    UInt8 sec;
+//}*lpRecordTime,TRecordTime;
 typedef void (^SendHandler)(Byte opCode,NSData* data,OperateCallback cb);
 
 @interface BluetoothAirPurifierStatus : NSObject

@@ -48,9 +48,9 @@ enum ConnectStatus {Connecting,Disconnect,Connected};
 @property (readonly) enum ConnectStatus status;
 
 /*!
- function lastRecvPacket
- discussion 获取最后一次和设备交互时收到的数据包
- result null没有数据
+ @function lastRecvPacket
+ @discussion 获取最后一次和设备交互时收到的数据包
+ @result null没有数据
  */
 -(NSData*)lastRecvPacket;
 

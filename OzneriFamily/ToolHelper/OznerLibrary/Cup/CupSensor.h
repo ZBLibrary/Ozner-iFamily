@@ -17,9 +17,9 @@
 -(void)load:(BytePtr)bytes;
 -(void)reset;
 /*!
- function powerPer
- discussion 获取当前电量百分比
- result 返回TAP_SENSOR_ERROR没获取到数据
+ @function powerPer
+ @discussion 获取当前电量百分比
+ @result 返回TAP_SENSOR_ERROR没获取到数据
  */
 -(float)powerPer;
 @property (readonly) int Battery;

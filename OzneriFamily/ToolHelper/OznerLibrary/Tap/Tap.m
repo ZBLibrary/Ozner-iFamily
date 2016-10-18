@@ -10,7 +10,7 @@
 #import "TapRawRecord.h"
 #import "TapManager.h"
 #import "../Device/OznerDevice.hpp"
-
+#import "OznerHeader.h"
 @implementation Tap
 #define opCode_SetDetectTime  0x10
 #define opCode_ReadSensor  0x12
@@ -22,15 +22,15 @@
 #define opCode_UpdateTime  0xF0
 #define opCode_Foreground 0x21
 
-typedef struct _RecordTime
-{
-    UInt8 year;
-    UInt8 month;
-    UInt8 day;
-    UInt8 hour;
-    UInt8 min;
-    UInt8 sec;
-}*lpRecordTime,TRecordTime;
+//typedef struct _RecordTime
+//{
+//    UInt8 year;
+//    UInt8 month;
+//    UInt8 day;
+//    UInt8 hour;
+//    UInt8 min;
+//    UInt8 sec;
+//}*lpRecordTime,TRecordTime;
 
 -(instancetype)init:(NSString *)identifier Type:(NSString *)type Settings:(NSString *)json
 {
