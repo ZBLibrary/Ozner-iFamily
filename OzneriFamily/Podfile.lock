@@ -1,12 +1,25 @@
 PODS:
   - DateTools (1.7.0)
+  - Spring (1.0.3)
 
 DEPENDENCIES:
   - DateTools
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
+
+EXTERNAL SOURCES:
+  Spring:
+    :branch: swift3
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: 3a9227c6e9157e7b47f5ac1ee5abab2a56b50002
+    :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
 
-PODFILE CHECKSUM: 9d5146faf78fda22b36d9b118ffed04a00b96d56
+PODFILE CHECKSUM: d9b1a3b9364ec3e0b8d4b7860ec52eb2cf8c7046
 
 COCOAPODS: 1.1.0.beta.2

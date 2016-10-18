@@ -57,6 +57,7 @@ class LeftMenuDeviceCell: UITableViewCell {
         let imgNameStr=imgArr[OznerDeviceType(rawValue: device.type)!]?[selected.hashValue]
         deviceImg.image=UIImage(named: imgNameStr as! String)
         // Configure the view for the selected state
+        
     }
     
 }

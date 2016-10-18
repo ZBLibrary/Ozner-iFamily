@@ -31,6 +31,7 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
         wifiViewContainer.isHidden=true
         starAnimal()
         //开始配对
+        self.performSegue(withIdentifier: "showwifisuccess", sender: nil)
     }
     
     //正在进行配对时的动画点
@@ -40,6 +41,7 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
     @IBOutlet var dotImg4: UIImageView!
     @IBOutlet var dotImg5: UIImageView!
     private var myTimer:Timer?
+    var deviceTypeValue:OznerDeviceType!
     override func viewDidLoad() {
         super.viewDidLoad()
         wifiNameText.delegate=self
@@ -72,14 +74,20 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+     
+        if segue.identifier == "showwifisuccess" {
+            let pair = segue.destination as! PairSuccessController
+            
+            pair.deviceTypeValue = self.deviceTypeValue
+        }
+       
+        
     }
-    */
+ 
 
 }
