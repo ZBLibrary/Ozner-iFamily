@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SelectDeviceTableController: UITableViewController {
 
     var deviceType:OznerDeviceType?

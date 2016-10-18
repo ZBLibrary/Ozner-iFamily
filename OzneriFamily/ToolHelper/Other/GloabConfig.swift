@@ -19,6 +19,14 @@ enum OznerAppType:String
     case OzneriFamily="浩泽净水家"
     case YiQuan="伊泉净品"
 }
+
+//手机型号 忽略4
+enum EnumIphoneType {
+    case Iphone4
+    case Ipone5
+    case Iphone6
+    case Iphone6p
+}
 class LoginManager:NSObject{
     //是否是第一次登陆
     class var isFristOpenApp:Bool{
@@ -70,6 +78,19 @@ class LoginManager:NSObject{
         return true
         
     }
+    
+    class func currenIphoneType() -> EnumIphoneType{
+        switch width_screen {
+        case 320:
+            return EnumIphoneType.Ipone5
+        case 375:
+            return EnumIphoneType.Iphone6
+        case 414:
+            return EnumIphoneType.Iphone6p
+        default:
+            return EnumIphoneType.Iphone4
+        }
+    }
 }
 //默认尺寸
 let height_tabBar:CGFloat = 64
@@ -79,5 +100,7 @@ let height_screen:CGFloat = UIScreen.main.bounds.size.height
 let width_screen:CGFloat = UIScreen.main.bounds.size.width
 
 
+//当前设备型号
+let cureentIphoneType: EnumIphoneType = LoginManager.currenIphoneType()
 
 

@@ -47,10 +47,10 @@ class PairingController: UIViewController {
                 let deviceState = PairImagsAndState(imageName: "icon_peidui_jingshuiqi_watting", typeStateText: "正在进行Wifi配对", deviceStateText: "请同时按下净水器加热与制冷两个按钮")
                 setUpState(state: deviceState)
             case OznerDeviceType.Air_Blue.rawValue:
-                let deviceState = PairImagsAndState(imageName: "My_kongjing_small_gray", typeStateText: "", deviceStateText: "正在进行蓝牙配对")
+                let deviceState = PairImagsAndState(imageName: "icon_smallair_peidui_waiting", typeStateText: "", deviceStateText: "正在进行蓝牙配对")
                 setUpState(state: deviceState)
             case OznerDeviceType.Air_Wifi.rawValue:
-                let deviceState = PairImagsAndState(imageName: "My_kongjing_big_gray", typeStateText: "正在进行Wifi配对", deviceStateText: "同时按下电源和风速键,WiFi指示灯闪烁。")
+                let deviceState = PairImagsAndState(imageName: "icon_bigair_peidui_waiting", typeStateText: "正在进行Wifi配对", deviceStateText: "同时按下电源和风速键,WiFi指示灯闪烁。")
                 setUpState(state: deviceState)
             case OznerDeviceType.WaterReplenish.rawValue:
                 let deviceState = PairImagsAndState(imageName: "WaterReplenish3", typeStateText: "待定", deviceStateText: "待定")
@@ -81,7 +81,16 @@ class PairingController: UIViewController {
     
     func success()  {
         
-//        self.performSegue(withIdentifier: "showsuccess", sender: nil)
+        switch deviceTypeValue.rawValue {
+        case OznerDeviceType.Cup.rawValue,OznerDeviceType.Tap.rawValue,OznerDeviceType.TDSPan.rawValue,OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.WaterReplenish.rawValue:
+            self.performSegue(withIdentifier: "showsuccess", sender: nil)
+            break
+        case OznerDeviceType.Water_Wifi.rawValue,OznerDeviceType.Air_Wifi.rawValue:
+            self.performSegue(withIdentifier: "showWifiPair", sender: nil)
+            break
+        default:
+            break
+        }
 //        animalImg.layer.removeAnimation(forKey: "rotationAnimation")
     }
     
@@ -95,15 +104,25 @@ class PairingController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+   
+     //MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+     //In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+       
+        if segue.identifier == "showsuccess" {
+            let pair = segue.destination as! PairSuccessController
+            
+            pair.deviceTypeValue = self.deviceTypeValue
+        } else
+        {
+            let pair = segue.destination as! WifiPairingController
+            
+            pair.deviceTypeValue = self.deviceTypeValue
+        }
+        
     }
-    */
+ 
 
 }
 

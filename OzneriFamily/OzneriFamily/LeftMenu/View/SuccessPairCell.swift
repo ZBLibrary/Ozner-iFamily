@@ -14,9 +14,20 @@ class SuccessPairCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var finishImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
     }
 
+    func reloadUI() {
+//        print("进来了")
+        finishImage.isHidden = false
+    }
+    
+    func changFinsishImageHidde() {
+        finishImage.isHidden = !finishImage.isHidden
+    }
 }
