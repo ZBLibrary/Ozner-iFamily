@@ -15,7 +15,7 @@ class CupMainView: OznerDeviceView {
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     @IBAction func headCenterClick(_ sender: UITapGestureRecognizer) {
-        self.delegate.DeviceViewPerformSegue!(SegueID: "showCupSetting")
+        self.delegate.DeviceViewPerformSegue!(SegueID: "showCupTDSDetail")
     }
     @IBAction func drinkingClick(_ sender: AnyObject) {
         self.delegate.DeviceViewPerformSegue!(SegueID: "showCupDrinkingDetail")

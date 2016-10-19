@@ -1,14 +1,14 @@
 //
-//  CupSettingController.swift
+//  CupDrinkingController.swift
 //  OzneriFamily
 //
-//  Created by 赵兵 on 2016/10/13.
+//  Created by 赵兵 on 2016/10/19.
 //  Copyright © 2016年 net.ozner. All rights reserved.
 //
 
 import UIKit
 
-class CupSettingController: UIViewController {
+class CupDrinkingController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +21,11 @@ class CupSettingController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
+       self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.CupTDSDetail)
     }
-    
     /*
     // MARK: - Navigation
 

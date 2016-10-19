@@ -8,6 +8,12 @@
 
 import Foundation
 import UIKit
+//默认尺寸
+let height_tabBar:CGFloat = 64
+let height_navBar:CGFloat = 64
+let height_statusBar:CGFloat = 20
+let height_screen:CGFloat = UIScreen.main.bounds.size.height
+let width_screen:CGFloat = UIScreen.main.bounds.size.width
 //登陆控制类
 enum OznerLoginType:String{
     case ByPhoneNumber="ByPhoneNumber"
@@ -91,13 +97,9 @@ class LoginManager:NSObject{
             return EnumIphoneType.Iphone4
         }
     }
+    static var currentDeviceIdentifier:String?=nil//设置和获取当前设备的ID,nil表示无设备
 }
-//默认尺寸
-let height_tabBar:CGFloat = 64
-let height_navBar:CGFloat = 64
-let height_statusBar:CGFloat = 20
-let height_screen:CGFloat = UIScreen.main.bounds.size.height
-let width_screen:CGFloat = UIScreen.main.bounds.size.width
+
 
 
 //当前设备型号

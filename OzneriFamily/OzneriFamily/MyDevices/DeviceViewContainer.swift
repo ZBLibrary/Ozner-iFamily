@@ -39,12 +39,13 @@ class DeviceViewContainer: UIView {
         let deviceArr=OznerManager.instance().getDevices() as NSArray
         if deviceArr.count==0 {
             device=nil
-            CurrentSelectDeviceID=nil
+            LoginManager.currentDeviceIdentifier=nil
+        
         }else{
             device=deviceArr.object(at: 0) as? OznerDevice
-            if CurrentSelectDeviceID != nil {
+            if LoginManager.currentDeviceIdentifier != nil {
                 for item in deviceArr {
-                    if (item as! OznerDevice).identifier==CurrentSelectDeviceID {
+                    if (item as! OznerDevice).identifier==LoginManager.currentDeviceIdentifier {
                         device=item as? OznerDevice
                         break
                     }
@@ -52,9 +53,9 @@ class DeviceViewContainer: UIView {
                 
             }
             //是不是当前设备
-            CurrentSelectDeviceID=device?.identifier
+            LoginManager.currentDeviceIdentifier=device?.identifier
             if currentDevice != nil {
-                if CurrentSelectDeviceID==currentDevice?.identifier {
+                if LoginManager.currentDeviceIdentifier==currentDevice?.identifier {
                     return
                 }
             }

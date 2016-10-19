@@ -26,7 +26,17 @@ class MyDevicesController: UIViewController {
     var dsdsasd = true
     
     @IBAction func toDeviceSettingClick(_ sender: AnyObject) {//点击设置按钮事件
-        self.performSegue(withIdentifier: "showCupSetting", sender: nil)
+        self.performSegue(withIdentifier: "showTapSetting", sender: nil)
+//        let device=OznerManager.instance().getDevice(LoginManager.currentDeviceIdentifier)
+//        switch  OznerDeviceType(rawValue: (device?.type)!)! {
+//        case OznerDeviceType.Cup:
+//            self.performSegue(withIdentifier: "showCupSetting", sender: nil)
+//        case .Tap:
+//            self.performSegue(withIdentifier: "showTapSetting", sender: nil)
+//        default:
+//            self.performSegue(withIdentifier: "showCupSetting", sender: nil)
+        //}
+        
         
         
     }
@@ -38,6 +48,7 @@ class MyDevicesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceViewContainer.delegate=self
+        print(deviceNameLabel.font)
         // Do any additional setup after loading the view.
     }
 

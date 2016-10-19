@@ -12,7 +12,7 @@ enum OznerLeftMenu: Int {
     case addDevice
 }
 
-var CurrentSelectDeviceID:String?//全局变量，个人中心中可以改变
+//var CurrentSelectDeviceID:String?//全局变量，个人中心中可以改变
 class LeftMenuController: UIViewController {
 
     
@@ -54,7 +54,7 @@ class LeftMenuController: UIViewController {
         tableContainer.isHidden = deviceArray.count==0
         currentSelectCellIndex=0
         for i in 0..<deviceArray.count {
-            if (deviceArray[i] as! OznerDevice).identifier==CurrentSelectDeviceID
+            if (deviceArray[i] as! OznerDevice).identifier==LoginManager.currentDeviceIdentifier
             {
                 currentSelectCellIndex=i
                 break
@@ -81,7 +81,7 @@ class LeftMenuController: UIViewController {
 extension LeftMenuController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tmpDevice = deviceArray[indexPath.row] as! OznerDevice
-        CurrentSelectDeviceID = tmpDevice.identifier
+        LoginManager.currentDeviceIdentifier = tmpDevice.identifier
         currentSelectCellIndex = indexPath.row
 
         self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)

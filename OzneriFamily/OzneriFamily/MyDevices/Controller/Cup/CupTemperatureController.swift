@@ -1,14 +1,14 @@
 //
-//  CupSettingController.swift
+//  CupTemperatureController.swift
 //  OzneriFamily
 //
-//  Created by 赵兵 on 2016/10/13.
+//  Created by 赵兵 on 2016/10/19.
 //  Copyright © 2016年 net.ozner. All rights reserved.
 //
 
 import UIKit
 
-class CupSettingController: UIViewController {
+class CupTemperatureController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +23,9 @@ class CupSettingController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
+        self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.CupTDSDetail)
     }
-    
+
     /*
     // MARK: - Navigation
 
