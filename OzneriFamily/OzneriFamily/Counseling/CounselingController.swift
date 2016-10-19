@@ -19,7 +19,7 @@ class CounselingController: ZHCMessagesViewController {
         
     }
     
-    
+    var presentBool: Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,12 +27,11 @@ class CounselingController: ZHCMessagesViewController {
 
         demoData = ZHCModelData()
         
-      
-//        if (demoData?.messages.count)! >= 1 {
-//            messageTableView?.scrollToRow(at: IndexPath(row: (demoData?.messages.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
-//        }
-//     
-        
+//        messageTableView?.selectRow(at: NSIndexPath(row: (demoData?.messages.count)! - 1, section: 0) as IndexPath, animated: false, scrollPosition: UITableViewScrollPosition.bottom)
+        DispatchQueue.main.async {
+           self.scrollToBottom(animated: true)
+        }
+
     }
     
     // MARK: - ZHCMessagesTableViewDataSource
@@ -49,12 +48,7 @@ class CounselingController: ZHCMessagesViewController {
         
         return demoData?.messages[indexPath.row] as! ZHCMessage
     }
-    
-    
-    
-    
-    
-    
+
     override func tableView(_ tableView: ZHCMessagesTableView, didDeleteMessageAt indexPath: IndexPath) {
         
         //删除聊天记录

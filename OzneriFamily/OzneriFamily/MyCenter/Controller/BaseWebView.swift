@@ -1,28 +1,35 @@
 //
-//  WebShopController.swift
+//  BaseWebView.swift
 //  OzneriFamily
 //
-//  Created by 赵兵 on 2016/9/23.
+//  Created by zhuguangyang on 16/10/19.
 //  Copyright © 2016年 net.ozner. All rights reserved.
 //
 
 import UIKit
 
-class WebShopController: UIViewController {
+class BaseWebView: UIViewController {
 
+    var webViewType:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpUi()
+        
+    }
+    
+    func setUpUi() {
+        
+        self.title = webViewType
 
-        let webView = UIWebView(frame: self.view.bounds)
         
-        
-        view.addSubview(webView)
-        DispatchQueue.main.async {
-        webView.loadRequest(URLRequest(url: URL(string: "http://www.baidu.com/")!))
+    }
 
-        }
-        
-        // Do any additional setup after loading the view.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+
     }
     
     override func didReceiveMemoryWarning() {

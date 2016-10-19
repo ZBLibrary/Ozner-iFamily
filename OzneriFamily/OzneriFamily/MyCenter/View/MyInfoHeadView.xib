@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +15,51 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="00l-dN-9re">
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My_head_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Xhk-VB-vrc"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My_Unlogin_head" translatesAutoresizingMaskIntoConstraints="NO" id="7GK-H2-xD0"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIq-FW-1mD">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="rXt-Ln-2qc"/>
+                            </constraints>
+                            <state key="normal" title="点击登录">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="好小泽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGH-V9-fKl">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="KAe-tD-66C"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银卡代理会员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZZ-iE-Zck">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="WKO-wI-OAh"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" red="0.69411764705882351" green="0.92549019607843142" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Xhk-VB-vrc" firstAttribute="height" secondItem="00l-dN-9re" secondAttribute="height" multiplier="29:50" id="1kV-ON-vyq"/>
+                        <constraint firstItem="7GK-H2-xD0" firstAttribute="centerX" secondItem="00l-dN-9re" secondAttribute="centerX" id="8YI-cR-Grt"/>
+                        <constraint firstItem="PIq-FW-1mD" firstAttribute="top" secondItem="7GK-H2-xD0" secondAttribute="bottom" constant="8" id="DQQ-nd-Q1M"/>
+                        <constraint firstItem="Xhk-VB-vrc" firstAttribute="centerX" secondItem="00l-dN-9re" secondAttribute="centerX" id="G5C-xP-X9d"/>
+                        <constraint firstItem="WZZ-iE-Zck" firstAttribute="top" secondItem="RGH-V9-fKl" secondAttribute="bottom" constant="5" id="S3f-dc-Lgr"/>
+                        <constraint firstItem="Xhk-VB-vrc" firstAttribute="top" secondItem="00l-dN-9re" secondAttribute="top" constant="12" id="TQs-th-6dH"/>
+                        <constraint firstItem="7GK-H2-xD0" firstAttribute="top" secondItem="00l-dN-9re" secondAttribute="top" constant="20" id="Vb6-M4-gKD"/>
+                        <constraint firstItem="Xhk-VB-vrc" firstAttribute="width" secondItem="00l-dN-9re" secondAttribute="height" multiplier="29:50" id="WgY-sj-11B"/>
+                        <constraint firstItem="7GK-H2-xD0" firstAttribute="width" secondItem="00l-dN-9re" secondAttribute="height" multiplier="25:50" id="cLy-2v-Euk"/>
+                        <constraint firstItem="RGH-V9-fKl" firstAttribute="top" secondItem="7GK-H2-xD0" secondAttribute="bottom" constant="8" id="cl2-pL-JDw"/>
+                        <constraint firstItem="7GK-H2-xD0" firstAttribute="height" secondItem="00l-dN-9re" secondAttribute="height" multiplier="0.5" id="cnA-Ze-r50"/>
+                        <constraint firstItem="PIq-FW-1mD" firstAttribute="centerX" secondItem="00l-dN-9re" secondAttribute="centerX" id="hp4-4P-qM4"/>
+                        <constraint firstItem="RGH-V9-fKl" firstAttribute="centerX" secondItem="00l-dN-9re" secondAttribute="centerX" id="jqv-td-G5I"/>
+                        <constraint firstItem="WZZ-iE-Zck" firstAttribute="centerX" secondItem="00l-dN-9re" secondAttribute="centerX" id="pek-A3-LGW"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E7J-IG-DeB">
                     <subviews>
@@ -89,17 +134,18 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="MyIfoLb" destination="qh6-UE-bIG" id="9Se-i8-8jF"/>
+                <outlet property="iconImage" destination="7GK-H2-xD0" id="Si3-zW-mhP"/>
                 <outlet property="infoNumLb" destination="0OG-wf-OWz" id="hOj-fy-yBx"/>
+                <outlet property="leaveLb" destination="WZZ-iE-Zck" id="8m3-SB-sPq"/>
+                <outlet property="loginBtn" destination="PIq-FW-1mD" id="8aQ-0v-JbC"/>
                 <outlet property="moneyLb" destination="oPW-00-iTj" id="eBr-SE-0WJ"/>
+                <outlet property="nameLb" destination="RGH-V9-fKl" id="hbb-6v-QBm"/>
             </connections>
             <point key="canvasLocation" x="-7" y="-163.5"/>
         </view>
-        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q4y-ix-Z9q">
-            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-            <nil key="textColor"/>
-            <nil key="highlightedColor"/>
-        </label>
     </objects>
+    <resources>
+        <image name="My_Unlogin_head" width="75" height="75"/>
+        <image name="My_head_bg" width="85" height="85"/>
+    </resources>
 </document>

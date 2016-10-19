@@ -16,6 +16,8 @@ class MyCenterController: UIViewController {
     
     var dataArr: NSMutableArray?
     
+    var webViewType:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,11 +29,10 @@ class MyCenterController: UIViewController {
     
     func setupUI() {
         
-        navigationController?.navigationBar.isHidden = true
         
         let infoHeadView = UINib.init(nibName: "MyInfoHeadView", bundle: nil).instantiate(withOwner: self, options: nil).first as! MyInfoHeadView
         
-        infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (3/7))
+        infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (3.3/7))
         
         headView = infoHeadView
         
@@ -67,6 +68,24 @@ class MyCenterController: UIViewController {
         dataArr!.add(seven)
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "MyInfoSegueId" {
+            let pair = segue.destination as! BaseWebView
+            
+            pair.webViewType = self.webViewType!
+        }
+        
+       
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -95,9 +114,19 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let model = dataArr?[indexPath.row] as! MyInfoStrcut
+        
+        webViewType = model.nameLb
+
+        self.performSegue(withIdentifier: "MyInfoSegueId", sender: nil)
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return (height_screen - 64) * (4/7) / 7
+        return (height_screen - 64) * (3.7/7) / 7
     }
     
 }

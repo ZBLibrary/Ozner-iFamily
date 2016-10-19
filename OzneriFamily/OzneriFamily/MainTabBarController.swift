@@ -29,13 +29,13 @@ class MainTabBarController: RDVTabBarController {
         slideMenuController.delegate = c1
         
         let c2=WebShopController()
-      
+
         let nav3 = UINavigationController(rootViewController:CounselingController())
         
-        let c4=UIStoryboard(name: "MyCenter", bundle: nil).instantiateInitialViewController() as!MyCenterController
-        let nav4=UINavigationController(rootViewController: c4)
+        let c4=UIStoryboard(name: "MyCenter", bundle: nil).instantiateInitialViewController() as!UINavigationController
+//        let nav4=UINavigationController(rootViewController: c4)
         
-        self.viewControllers=[slideMenuController,c2,nav3,nav4]
+        self.viewControllers=[slideMenuController,c2,nav3,c4]
         //设置tabbar
         //自定义
         self.tabBar.isTranslucent=false

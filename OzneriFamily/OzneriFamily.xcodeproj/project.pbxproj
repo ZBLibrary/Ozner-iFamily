@@ -178,6 +178,7 @@
 		8DEB84AD1DA897930088794A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEB84AC1DA897930088794A /* libsqlite3.0.tbd */; };
 		8DEB84AF1DA897A00088794A /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEB84AE1DA897A00088794A /* libxml2.tbd */; };
 		8DF78D611D94DBEB002C4202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DF78D601D94DBEB002C4202 /* Assets.xcassets */; };
+		B71524381DB76A0F002076CF /* BaseWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71524371DB76A0F002076CF /* BaseWebView.swift */; };
 		B727C35D1DACE90000FE990F /* SuccessPairCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B727C35B1DACE90000FE990F /* SuccessPairCell.swift */; };
 		B727C35E1DACE90000FE990F /* SuccessPairCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B727C35C1DACE90000FE990F /* SuccessPairCell.xib */; };
 		B7567CA31DB0872800AA7C91 /* CupMatchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7567CA21DB0872800AA7C91 /* CupMatchView.xib */; };
@@ -552,6 +553,7 @@
 		8DEB84AE1DA897A00088794A /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		8DF78D601D94DBEB002C4202 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C704BF1A0D2ADD5B7874B6A /* Pods-OzneriFamily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.debug.xcconfig"; sourceTree = "<group>"; };
+		B71524371DB76A0F002076CF /* BaseWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebView.swift; sourceTree = "<group>"; };
 		B727C35B1DACE90000FE990F /* SuccessPairCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessPairCell.swift; sourceTree = "<group>"; };
 		B727C35C1DACE90000FE990F /* SuccessPairCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuccessPairCell.xib; sourceTree = "<group>"; };
 		B7567CA21DB0872800AA7C91 /* CupMatchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupMatchView.xib; sourceTree = "<group>"; };
@@ -909,9 +911,9 @@
 			isa = PBXGroup;
 			children = (
 				B77058AB1DB7390700061807 /* Chat */,
-				B77059191DB7390700061807 /* CounselingController.swift */,
 				B770591A1DB7390700061807 /* Model */,
 				B77059211DB7390700061807 /* View */,
+				B77059191DB7390700061807 /* CounselingController.swift */,
 			);
 			path = Counseling;
 			sourceTree = "<group>";
@@ -1388,6 +1390,7 @@
 		8DFC25901DA88D880096E21A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B71524371DB76A0F002076CF /* BaseWebView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1985,6 +1988,7 @@
 				8D12AAC91DAB739F003A09E6 /* PairFailedController.swift in Sources */,
 				8DC02F751DB5F03B007F57DB /* CupDBRecord.m in Sources */,
 				8DC02FA41DB5F03B007F57DB /* util_mosq.c in Sources */,
+				B71524381DB76A0F002076CF /* BaseWebView.swift in Sources */,
 				8DC02F971DB5F03B007F57DB /* logging_mosq.c in Sources */,
 				8D92F66F1D95346E0068A40A /* LeftMenuController.swift in Sources */,
 				8DC02F901DB5F03B007F57DB /* WaterPurifierInfo.m in Sources */,
