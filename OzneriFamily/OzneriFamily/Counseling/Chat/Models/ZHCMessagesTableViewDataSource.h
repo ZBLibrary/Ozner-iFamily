@@ -142,6 +142,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGFloat)tableView:(ZHCMessagesTableView *)tableView heightForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath;
 
 
+
 /**
  *  Asks the delegate for the height of the `cellBottomLabel` for the cell at the specified indexPath.
  *

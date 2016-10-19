@@ -30,7 +30,7 @@ class MainTabBarController: RDVTabBarController {
         
         let c2=WebShopController()
       
-        let nav3 = UINavigationController(rootViewController: CounselingController())
+        let nav3 = UINavigationController(rootViewController:CounselingController())
         
         let c4=UIStoryboard(name: "MyCenter", bundle: nil).instantiateInitialViewController() as!MyCenterController
         let nav4=UINavigationController(rootViewController: c4)

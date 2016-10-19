@@ -50,5 +50,4 @@
 #endif
 
 
-
 #endif /* ZHCMessagesCommonParameter_h */

@@ -24,9 +24,14 @@ class CounselingController: ZHCMessagesViewController {
         super.viewDidLoad()
         
         initNavarionBar()
-        
+
         demoData = ZHCModelData()
         
+      
+//        if (demoData?.messages.count)! >= 1 {
+//            messageTableView?.scrollToRow(at: IndexPath(row: (demoData?.messages.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
+//        }
+//     
         
     }
     
@@ -224,8 +229,9 @@ class CounselingController: ZHCMessagesViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! ZHCMessagesTableViewCell
         
         self.configureCell(cell: cell, indexPath: indexPath)
-        
+
 //        cell.backgroundColor =  UIColor.init(colorLiteralRed: 240/255.0, green: 247/255.0, blue: 254/255.0, alpha: 1.0)
+        
         return cell
     }
     
@@ -235,14 +241,14 @@ class CounselingController: ZHCMessagesViewController {
         
         let message = demoData?.messages.object(at: indexPath.row) as! ZHCMessage
         
-        
+        //设置字体的颜色
         if  message.isMediaMessage {
             if message.senderId == self.senderId() {
             cell.textView?.textColor = UIColor.black
             }
            
         } else {
-            cell.textView?.textColor = UIColor.white
+            cell.textView?.textColor = UIColor.black
         }
                 
         
@@ -261,7 +267,9 @@ class CounselingController: ZHCMessagesViewController {
         
         let message = ZHCMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
         
+        //在此发送数据到服务器 成功添加 否则不添加
         demoData?.messages.add(message)
+        
         
         self.finishSendingMessage(animated: true)
         

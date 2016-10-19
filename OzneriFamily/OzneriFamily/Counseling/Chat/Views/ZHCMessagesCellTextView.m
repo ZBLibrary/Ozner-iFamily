@@ -13,7 +13,7 @@
 {
     [super awakeFromNib];
     
-    self.textColor = [UIColor whiteColor];
+    self.textColor = [UIColor blackColor];
     self.editable = NO;
     self.selectable = YES;
     self.userInteractionEnabled = YES;
@@ -28,7 +28,8 @@
     self.scrollIndicatorInsets = UIEdgeInsetsZero;
     self.contentOffset = CGPointZero;
     self.textContainer.lineFragmentPadding = 0;
-    self.linkTextAttributes = @{ NSForegroundColorAttributeName : [UIColor whiteColor],
+    //识别链接和电话号码的颜色
+    self.linkTextAttributes = @{ NSForegroundColorAttributeName : [UIColor blueColor],
                                  NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };
 }
 
