@@ -13,7 +13,7 @@
 
 
 
-static NSString * const kZHCDemoAvatarDisplayNameCook = @"Tim Cook";
+static NSString * const kZHCDemoAvatarDisplayNameCook = @"小泽妹";
 static NSString * const kZHCDemoAvatarDisplayNameJobs = @"Jobs";
 
 static NSString * const kZHCDemoAvatarIdCook = @"468-768355-23123";

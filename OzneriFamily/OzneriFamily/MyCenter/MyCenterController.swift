@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebImage
 
 class MyCenterController: UIViewController {
 
@@ -16,9 +17,12 @@ class MyCenterController: UIViewController {
     
     var dataArr: NSMutableArray?
     
+    var webViewType:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         setupUI()
         
         setData()
@@ -27,12 +31,16 @@ class MyCenterController: UIViewController {
     
     func setupUI() {
         
-        navigationController?.navigationBar.isHidden = true
         
         let infoHeadView = UINib.init(nibName: "MyInfoHeadView", bundle: nil).instantiate(withOwner: self, options: nil).first as! MyInfoHeadView
         
-        infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (3/7))
+        infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (3.3/7))
         
+        infoHeadView.iconImage.layer.cornerRadius = 37.5
+        infoHeadView.iconImage.layer.masksToBounds = true
+        infoHeadView.iconImage.sd_setImage(with: URL(string: (User.currentUser?.headimage)!))
+        infoHeadView.nameLb.text = User.currentUser?.username
+        infoHeadView.leaveLb.text = User.currentUser?.score
         headView = infoHeadView
         
         tableView = UITableView(frame: CGRect(x: 0, y: -20, width: width_screen, height: (height_screen + 20 )))
@@ -42,6 +50,7 @@ class MyCenterController: UIViewController {
         
         tableView.separatorStyle = .none
         tableView.register(UINib.init(nibName: "MyInfoCell", bundle: nil), forCellReuseIdentifier: "cellID")
+        
         view.addSubview(tableView)
         
     }
@@ -67,6 +76,25 @@ class MyCenterController: UIViewController {
         dataArr!.add(seven)
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        appDelegate.mainTabBarController?.setTabBarHidden(false, animated: false)
+
+        navigationController?.navigationBar.isHidden = true
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "MyInfoSegueId" {
+            let pair = segue.destination as! BaseWebView
+            
+            pair.webViewType = self.webViewType!
+        }
+        
+       
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -95,9 +123,35 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let model = dataArr?[indexPath.row] as! MyInfoStrcut
+        
+        webViewType = model.nameLb
+        
+        
+        switch webViewType! {
+        case "我的订单","领红包","我的券","查看水质检测报告":
+            self.performSegue(withIdentifier: "MyInfoSegueId", sender: nil)
+            break
+        case "设置":
+            self.performSegue(withIdentifier: "settingSegueID", sender: nil)
+            break
+        case "我要提意见":
+            self.performSegue(withIdentifier: "sugesstsegueID", sender: nil)
+        case "我的好友":
+            self.performSegue(withIdentifier: "sugesstsegueID", sender: nil)
+        default:
+            break
+        }
+
+       
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return (height_screen - 64) * (4/7) / 7
+        return (height_screen - 64) * (3.7/7) / 7
     }
     
 }

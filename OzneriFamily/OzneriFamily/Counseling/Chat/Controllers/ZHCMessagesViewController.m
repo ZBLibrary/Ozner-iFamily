@@ -433,6 +433,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
         return;
     }
     NSInteger row = MAX(MIN(indexPath.row, numberOfItems - 1), 0);
+
     indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     //  workaround for really long messages not scrolling
     //  if last message is too long, use scroll position bottom for better appearance, else use top
@@ -444,8 +445,8 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     - CGRectGetHeight(self.inputMessageBarView.bounds);
      UITableViewScrollPosition scrollPosition = (cellHeight > maxHeightForVisibleMessage) ? UITableViewScrollPositionBottom : UITableViewScrollPositionTop;
 
-
     [self.messageTableView scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
+//    NSLog(@"%f",self.messageTableView.contentOffset.y);
 
 }
 
@@ -750,6 +751,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 {
      [self recoverMessageInputToolBar];
 }
+
 
 
 -(void)tableView:(ZHCMessagesTableView *)tableView performAction:(SEL)action forcellAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender

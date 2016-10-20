@@ -19,15 +19,19 @@ class CounselingController: ZHCMessagesViewController {
         
     }
     
-    
+    var presentBool: Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initNavarionBar()
-        
+
         demoData = ZHCModelData()
         
-        
+//        messageTableView?.selectRow(at: NSIndexPath(row: (demoData?.messages.count)! - 1, section: 0) as IndexPath, animated: false, scrollPosition: UITableViewScrollPosition.bottom)
+        DispatchQueue.main.async {
+           self.scrollToBottom(animated: true)
+        }
+
     }
     
     // MARK: - ZHCMessagesTableViewDataSource
@@ -44,12 +48,7 @@ class CounselingController: ZHCMessagesViewController {
         
         return demoData?.messages[indexPath.row] as! ZHCMessage
     }
-    
-    
-    
-    
-    
-    
+
     override func tableView(_ tableView: ZHCMessagesTableView, didDeleteMessageAt indexPath: IndexPath) {
         
         //删除聊天记录
@@ -224,8 +223,9 @@ class CounselingController: ZHCMessagesViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! ZHCMessagesTableViewCell
         
         self.configureCell(cell: cell, indexPath: indexPath)
-        
+
 //        cell.backgroundColor =  UIColor.init(colorLiteralRed: 240/255.0, green: 247/255.0, blue: 254/255.0, alpha: 1.0)
+        
         return cell
     }
     
@@ -235,14 +235,14 @@ class CounselingController: ZHCMessagesViewController {
         
         let message = demoData?.messages.object(at: indexPath.row) as! ZHCMessage
         
-        
+        //设置字体的颜色
         if  message.isMediaMessage {
             if message.senderId == self.senderId() {
             cell.textView?.textColor = UIColor.black
             }
            
         } else {
-            cell.textView?.textColor = UIColor.white
+            cell.textView?.textColor = UIColor.black
         }
                 
         
@@ -261,7 +261,9 @@ class CounselingController: ZHCMessagesViewController {
         
         let message = ZHCMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
         
+        //在此发送数据到服务器 成功添加 否则不添加
         demoData?.messages.add(message)
+        
         
         self.finishSendingMessage(animated: true)
         

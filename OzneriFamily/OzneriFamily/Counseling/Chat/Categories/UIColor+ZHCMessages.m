@@ -11,11 +11,11 @@
 @implementation UIColor (ZHCMessages)
 + (UIColor *)zhc_messagesBubbleGreenColor
 {
-    return [UIColor colorWithHue:130.0f / 360.0f
-                      saturation:0.68f
-                      brightness:0.84f
-                           alpha:1.0f];
-//    return [UIColor colorWithRed:195/255.0 green:231/255.0 blue:252/255.0 alpha:1.0];
+//    return [UIColor colorWithHue:130.0f / 360.0f
+//                      saturation:0.68f
+//                      brightness:0.84f
+//                           alpha:1.0f];
+    return [UIColor colorWithRed:225/255.0 green:235/255.0 blue:243/255.0 alpha:1.0];
 //    return [UIColor whiteColor];
 
 }
@@ -27,7 +27,7 @@
 //                      brightness:1.0f
 //                           alpha:1.0f];
     
-    return [UIColor colorWithRed:160/255.0 green:231/255.0 blue:100/255.0 alpha:1.0];
+    return [UIColor colorWithRed:197/255.0 green:231/255.0 blue:255/255.0 alpha:1.0];
 
 }
 
@@ -37,6 +37,7 @@
                       saturation:0.79f
                       brightness:1.0f
                            alpha:1.0f];
+//    return [UIColor whiteColor];
 }
 
 + (UIColor *)zhc_messagesBubbleLightGrayColor
@@ -45,7 +46,7 @@
                       saturation:0.02f
                       brightness:0.92f
                            alpha:1.0f];
-//    return [UIColor whiteColor];
+//    return [UIColor blackColor];
 }
 
 #pragma mark - Utilities
