@@ -26,6 +26,8 @@
 		8D12AAC71DAB7386003A09E6 /* PairSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AAC61DAB7386003A09E6 /* PairSuccessController.swift */; };
 		8D12AAC91DAB739F003A09E6 /* PairFailedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AAC81DAB739F003A09E6 /* PairFailedController.swift */; };
 		8D12AACB1DAB9A89003A09E6 /* WifiPairingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AACA1DAB9A89003A09E6 /* WifiPairingController.swift */; };
+		8D16BC4D1DB8718600CA3A49 /* SetDeviceNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D16BC4C1DB8718600CA3A49 /* SetDeviceNameController.swift */; };
+		8D16BC4F1DB8719F00CA3A49 /* AboutDeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D16BC4E1DB8719F00CA3A49 /* AboutDeviceController.swift */; };
 		8D1C66E01DAA3B62008C639F /* OznerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66651DAA3B62008C639F /* OznerManager.m */; };
 		8D1C670A1DAA4052008C639F /* SelectDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */; };
 		8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C67091DAA4052008C639F /* SelectDeviceCell.xib */; };
@@ -311,6 +313,8 @@
 		8D12AAC61DAB7386003A09E6 /* PairSuccessController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairSuccessController.swift; sourceTree = "<group>"; };
 		8D12AAC81DAB739F003A09E6 /* PairFailedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairFailedController.swift; sourceTree = "<group>"; };
 		8D12AACA1DAB9A89003A09E6 /* WifiPairingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiPairingController.swift; sourceTree = "<group>"; };
+		8D16BC4C1DB8718600CA3A49 /* SetDeviceNameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDeviceNameController.swift; sourceTree = "<group>"; };
+		8D16BC4E1DB8719F00CA3A49 /* AboutDeviceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutDeviceController.swift; sourceTree = "<group>"; };
 		8D1C66641DAA3B62008C639F /* OznerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OznerManager.h; sourceTree = "<group>"; };
 		8D1C66651DAA3B62008C639F /* OznerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OznerManager.m; sourceTree = "<group>"; };
 		8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDeviceCell.swift; sourceTree = "<group>"; };
@@ -1421,6 +1425,8 @@
 		8DC02FB41DB61F87007F57DB /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				8D16BC4C1DB8718600CA3A49 /* SetDeviceNameController.swift */,
+				8D16BC4E1DB8719F00CA3A49 /* AboutDeviceController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -1962,6 +1968,7 @@
 				B7E4E6B81DACCC2D00B82774 /* MyInfoCell.swift in Sources */,
 				8DC02F691DB5F03B007F57DB /* AirPurifier_MxChip.m in Sources */,
 				B714DFF81D9CAF7900D5AAC3 /* GYModelData.swift in Sources */,
+				8D16BC4D1DB8718600CA3A49 /* SetDeviceNameController.swift in Sources */,
 				8DC02F881DB5F03B007F57DB /* TapFirmware.m in Sources */,
 				8D92F6541D94F9670068A40A /* MyCenterController.swift in Sources */,
 				8D5045C61DB34AA000EAC3B3 /* UIImage+Expand.swift in Sources */,
@@ -2030,6 +2037,7 @@
 				8DC02E971DB5CEFE007F57DB /* FooterOfWaterReplenishDetailCell.swift in Sources */,
 				B714DFBB1D9CA71100D5AAC3 /* ZHCMessagesVoiceRecorder.m in Sources */,
 				B714DFAA1D9CA6FA00D5AAC3 /* ZHCMessagesLabel.m in Sources */,
+				8D16BC4F1DB8719F00CA3A49 /* AboutDeviceController.swift in Sources */,
 				B714DFD21D9CA71F00D5AAC3 /* ZHCAudioMediaItem.m in Sources */,
 				8DC02FAB1DB5F03B007F57DB /* ConfigurationDevice.m in Sources */,
 				B714DFD41D9CA71F00D5AAC3 /* ZHCMediaItem.m in Sources */,

@@ -26,7 +26,7 @@ class MyDevicesController: UIViewController {
     var dsdsasd = true
     
     @IBAction func toDeviceSettingClick(_ sender: AnyObject) {//点击设置按钮事件
-        self.performSegue(withIdentifier: "showTapSetting", sender: nil)
+        self.performSegue(withIdentifier: "showCupSetting", sender: nil)
 //        let device=OznerManager.instance().getDevice(LoginManager.currentDeviceIdentifier)
 //        switch  OznerDeviceType(rawValue: (device?.type)!)! {
 //        case OznerDeviceType.Cup:
