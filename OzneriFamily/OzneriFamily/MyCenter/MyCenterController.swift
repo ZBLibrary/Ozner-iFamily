@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import WebImage
 
 class MyCenterController: UIViewController {
 
@@ -22,6 +22,7 @@ class MyCenterController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         setupUI()
         
         setData()
@@ -35,6 +36,11 @@ class MyCenterController: UIViewController {
         
         infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (3.3/7))
         
+        infoHeadView.iconImage.layer.cornerRadius = 37.5
+        infoHeadView.iconImage.layer.masksToBounds = true
+        infoHeadView.iconImage.sd_setImage(with: URL(string: (User.currentUser?.headimage)!))
+        infoHeadView.nameLb.text = User.currentUser?.username
+        infoHeadView.leaveLb.text = User.currentUser?.score
         headView = infoHeadView
         
         tableView = UITableView(frame: CGRect(x: 0, y: -20, width: width_screen, height: (height_screen + 20 )))
@@ -44,6 +50,7 @@ class MyCenterController: UIViewController {
         
         tableView.separatorStyle = .none
         tableView.register(UINib.init(nibName: "MyInfoCell", bundle: nil), forCellReuseIdentifier: "cellID")
+        
         view.addSubview(tableView)
         
     }
