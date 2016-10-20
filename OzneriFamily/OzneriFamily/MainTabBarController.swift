@@ -32,7 +32,7 @@ class MainTabBarController: RDVTabBarController {
 
         let nav3 = UINavigationController(rootViewController:CounselingController())
         
-        let c4=UIStoryboard(name: "MyCenter", bundle: nil).instantiateInitialViewController() as!UINavigationController
+        let c4=UIStoryboard(name: "MainMyCenter", bundle: nil).instantiateInitialViewController() as!UINavigationController
 //        let nav4=UINavigationController(rootViewController: c4)
         
         self.viewControllers=[slideMenuController,c2,nav3,c4]

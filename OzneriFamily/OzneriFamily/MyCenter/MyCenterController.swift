@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class MyCenterController: UIViewController {
 
     var tableView: UITableView!
@@ -70,7 +71,8 @@ class MyCenterController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        appDelegate.mainTabBarController?.setTabBarHidden(false, animated: false)
+
         navigationController?.navigationBar.isHidden = true
         
     }
@@ -119,8 +121,24 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
         let model = dataArr?[indexPath.row] as! MyInfoStrcut
         
         webViewType = model.nameLb
+        
+        
+        switch webViewType! {
+        case "我的订单","领红包","我的券","查看水质检测报告":
+            self.performSegue(withIdentifier: "MyInfoSegueId", sender: nil)
+            break
+        case "设置":
+            self.performSegue(withIdentifier: "settingSegueID", sender: nil)
+            break
+        case "我要提意见":
+            self.performSegue(withIdentifier: "sugesstsegueID", sender: nil)
+        case "我的好友":
+            self.performSegue(withIdentifier: "sugesstsegueID", sender: nil)
+        default:
+            break
+        }
 
-        self.performSegue(withIdentifier: "MyInfoSegueId", sender: nil)
+       
         
     }
     
