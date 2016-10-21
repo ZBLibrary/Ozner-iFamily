@@ -25,7 +25,11 @@ class MyDevicesController: UIViewController {
     @IBOutlet var filterStateLabel: UILabel!
     var dsdsasd = true
     
+    @IBAction func lvXinClick(_ sender: AnyObject) {
+         self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
+    }
     @IBAction func toDeviceSettingClick(_ sender: AnyObject) {//点击设置按钮事件
+        
         self.performSegue(withIdentifier: "showCupSetting", sender: nil)
 //        let device=OznerManager.instance().getDevice(LoginManager.currentDeviceIdentifier)
 //        switch  OznerDeviceType(rawValue: (device?.type)!)! {
@@ -70,15 +74,16 @@ class MyDevicesController: UIViewController {
         
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+ 
 
 }
 //DeviceViewContainerDelegate代理方法
