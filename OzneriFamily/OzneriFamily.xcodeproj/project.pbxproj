@@ -262,6 +262,9 @@
 		B7EF06C81DB8A53A008BE7D4 /* GYModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF06901DB8A53A008BE7D4 /* GYModelData.swift */; };
 		B7EF06C91DB8A53A008BE7D4 /* ZHCModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = B7EF06921DB8A53A008BE7D4 /* ZHCModelData.m */; };
 		B7EF06CA1DB8A53A008BE7D4 /* ZHUseFDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7EF06941DB8A53A008BE7D4 /* ZHUseFDModel.m */; };
+		B7F9DC761DB8BB450017A3E9 /* MyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F9DC751DB8BB450017A3E9 /* MyFriendViewController.swift */; };
+		B7F9DC781DB8C1350017A3E9 /* MyFriendCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F9DC771DB8C1350017A3E9 /* MyFriendCenterView.swift */; };
+		B7F9DC7A1DB8C14B0017A3E9 /* MyFriendCenterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F9DC791DB8C14B0017A3E9 /* MyFriendCenterView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -702,6 +705,9 @@
 		B7EF06921DB8A53A008BE7D4 /* ZHCModelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCModelData.m; sourceTree = "<group>"; };
 		B7EF06931DB8A53A008BE7D4 /* ZHUseFDModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHUseFDModel.h; sourceTree = "<group>"; };
 		B7EF06941DB8A53A008BE7D4 /* ZHUseFDModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHUseFDModel.m; sourceTree = "<group>"; };
+		B7F9DC751DB8BB450017A3E9 /* MyFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendViewController.swift; sourceTree = "<group>"; };
+		B7F9DC771DB8C1350017A3E9 /* MyFriendCenterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendCenterView.swift; sourceTree = "<group>"; };
+		B7F9DC791DB8C14B0017A3E9 /* MyFriendCenterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyFriendCenterView.xib; sourceTree = "<group>"; };
 		DBB08E966F838D15B4582606 /* Pods-OzneriFamily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.release.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1472,6 +1478,7 @@
 				B7EF06031DB8A11F008BE7D4 /* MySetViewController.swift */,
 				B7EF06041DB8A11F008BE7D4 /* MySuggestViewController.swift */,
 				B7EF06051DB8A11F008BE7D4 /* SetMeterViewController.swift */,
+				B7F9DC751DB8BB450017A3E9 /* MyFriendViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1483,6 +1490,8 @@
 				B7EF060B1DB8A11F008BE7D4 /* MyInfoCell.xib */,
 				B7EF060C1DB8A11F008BE7D4 /* MyInfoHeadView.swift */,
 				B7EF060D1DB8A11F008BE7D4 /* MyInfoHeadView.xib */,
+				B7F9DC771DB8C1350017A3E9 /* MyFriendCenterView.swift */,
+				B7F9DC791DB8C14B0017A3E9 /* MyFriendCenterView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1835,6 +1844,7 @@
 				8DF78D611D94DBEB002C4202 /* Assets.xcassets in Resources */,
 				8D92F6611D95252E0068A40A /* Localizable.strings in Resources */,
 				B7EF06961DB8A53A008BE7D4 /* ZHCMessagesAssets.bundle in Resources */,
+				B7F9DC7A1DB8C14B0017A3E9 /* MyFriendCenterView.xib in Resources */,
 				8DAE80871D9B915A00A9946F /* NetworkConfig.plist in Resources */,
 				B7EF06C71DB8A53A008BE7D4 /* data.json in Resources */,
 				8DC02E9C1DB5CEFE007F57DB /* SkinCenterTableViewCell.xib in Resources */,
@@ -2018,6 +2028,7 @@
 				8D109F201DAD081400458171 /* CALayer+Expand.swift in Sources */,
 				B7EF06CA1DB8A53A008BE7D4 /* ZHUseFDModel.m in Sources */,
 				8D117C271D9D06730024187E /* LoginViewController.swift in Sources */,
+				B7F9DC781DB8C1350017A3E9 /* MyFriendCenterView.swift in Sources */,
 				8DC02E9B1DB5CEFE007F57DB /* SkinCenterTableViewCell.swift in Sources */,
 				8DAE80571D9A097800A9946F /* SlideMenuController.swift in Sources */,
 				8DC02F9D1DB5F03B007F57DB /* read_handle_client.c in Sources */,
@@ -2053,6 +2064,7 @@
 				B7EF069E1DB8A53A008BE7D4 /* UIImage+ZHCMessages.m in Sources */,
 				8D92F65E1D9510450068A40A /* LoginManager.swift in Sources */,
 				8D0F63D31DB09DE600FA38BF /* RDVTabBarController.m in Sources */,
+				B7F9DC761DB8BB450017A3E9 /* MyFriendViewController.swift in Sources */,
 				8DC02F6E1DB5F03B007F57DB /* PowerTimer.m in Sources */,
 				8DC02FA51DB5F03B007F57DB /* will_mosq.c in Sources */,
 				8DC02E991DB5CEFE007F57DB /* SkinHeadTableViewCell.swift in Sources */,

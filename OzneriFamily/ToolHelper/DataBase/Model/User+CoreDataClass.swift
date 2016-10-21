@@ -83,6 +83,7 @@ public class User: BaseDataObject {
                        success: {
                         data in
                         let defaults = UserDefaults.standard
+                        
                         defaults.set(data["usertoken"].stringValue, forKey: UserDefaultsUserTokenKey)
                         defaults.set(data["userid"].stringValue, forKey: UserDefaultsUserIDKey)
                         
@@ -100,6 +101,7 @@ public class User: BaseDataObject {
     class func GetUserInfo(){
         self.fetchData(key: "GetUserInfo", parameters: [:], success: { (json) in
             let userInfo=json["userinfo"].dictionary
+            
             User.currentUser?.username=userInfo?["Nickname"]?.stringValue
             User.currentUser?.score=userInfo?["Score"]?.stringValue
             User.currentUser?.headimage=userInfo?["Icon"]?.stringValue
@@ -116,5 +118,11 @@ public class User: BaseDataObject {
                 print("")
         }
     }
+    //获取用户头像 GetUserNickImage
+    class func GetUserAllInfo() {
+        
+    }
+    
+    
     
 }

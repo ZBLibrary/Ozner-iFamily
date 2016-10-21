@@ -29,6 +29,7 @@
                         <segue destination="Yyu-Gd-5Oh" kind="push" identifier="settingSegueID" id="RTk-xz-9va"/>
                         <segue destination="s9O-ge-P7q" kind="push" identifier="sugesstsegueID" id="KGg-yt-jGD"/>
                         <segue destination="ja8-vs-1im" kind="push" identifier="MyInfoSegueId" id="hjE-Fo-fjd"/>
+                        <segue destination="QFZ-q0-YUb" kind="push" identifier="MyFriendSegueID" id="UfZ-6y-b1Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROR-TA-e0s" sceneMemberID="firstResponder"/>
@@ -53,6 +54,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBH-1T-rfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-721" y="2328"/>
+        </scene>
+        <!--My Friend View Controller-->
+        <scene sceneID="VKg-Vv-4KE">
+            <objects>
+                <viewController id="QFZ-q0-YUb" customClass="MyFriendViewController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z5w-hd-5G5"/>
+                        <viewControllerLayoutGuide type="bottom" id="IJM-mY-vUw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A6X-Mj-lRK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZbN-RY-YCP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ufb-op-ujl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-42" y="2330"/>
         </scene>
         <!--已有设备-->
         <scene sceneID="QNJ-KF-5hP">

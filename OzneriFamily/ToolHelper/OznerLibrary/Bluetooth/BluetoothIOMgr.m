@@ -109,7 +109,7 @@
         }
         
     }
-    NSLog(@"found:%@",peripheral.name);
+//    NSLog(@"found:%@",peripheral.name);
     if (scanData==nil)
     {
         if ([advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey])
