@@ -38,9 +38,22 @@ class MyCenterController: UIViewController {
         
         infoHeadView.iconImage.layer.cornerRadius = 37.5
         infoHeadView.iconImage.layer.masksToBounds = true
+        
+        if User.currentUser?.headimage == "" || User.currentUser?.headimage == nil {
+            
+        } else {
         infoHeadView.iconImage.sd_setImage(with: URL(string: (User.currentUser?.headimage)!))
-        infoHeadView.nameLb.text = User.currentUser?.username
-        infoHeadView.leaveLb.text = User.currentUser?.score
+        }
+        infoHeadView.nameLb.text = (User.currentUser?.username)! == "" ? (User.currentUser?.phone)! : (User.currentUser?.username)!
+        //会员等级
+        if (User.currentUser?.gradename)! == "" {
+            infoHeadView.leaveLb.text = ""
+        } else {
+            let leaveStr = User.currentUser?.gradename?.replacingOccurrences(of: "会员", with: "代理会员")
+            infoHeadView.leaveLb.text = leaveStr
+            
+        }
+        infoHeadView.moneyLb.text = User.currentUser?.score
         headView = infoHeadView
         
         tableView = UITableView(frame: CGRect(x: 0, y: -20, width: width_screen, height: (height_screen + 20 )))
@@ -58,13 +71,13 @@ class MyCenterController: UIViewController {
     func setData() {
         dataArr = NSMutableArray(capacity: 7)
         
-        let one = MyInfoStrcut.init(imageName: "My_share", nameLb: "我的订单")
-        let two = MyInfoStrcut.init(imageName: "My_huiyuan", nameLb: "领红包")
-        let three = MyInfoStrcut.init(imageName: "My_zhongjiang", nameLb: "我的券")
-        let four = MyInfoStrcut.init(imageName: "My_friends", nameLb: "我的好友")
-        let five = MyInfoStrcut.init(imageName: "My_baogao", nameLb: "查看水质检测报告")
-        let six = MyInfoStrcut.init(imageName: "My_suggest", nameLb: "我要提意见")
-        let seven = MyInfoStrcut.init(imageName: "My_set", nameLb: "设置")
+        let one = MyInfoStrcut.init(imageName: "My_share", nameLb: loadLanguage("我的订单"))
+        let two = MyInfoStrcut.init(imageName: "My_huiyuan", nameLb: loadLanguage("领红包"))
+        let three = MyInfoStrcut.init(imageName: "My_zhongjiang", nameLb: loadLanguage("我的券"))
+        let four = MyInfoStrcut.init(imageName: "My_friends", nameLb: loadLanguage("我的好友"))
+        let five = MyInfoStrcut.init(imageName: "My_baogao", nameLb: loadLanguage("查看水质检测报告"))
+        let six = MyInfoStrcut.init(imageName: "My_suggest", nameLb: loadLanguage("我要提意见"))
+        let seven = MyInfoStrcut.init(imageName: "My_set", nameLb: loadLanguage("设置"))
         
         
         dataArr!.add(one)
@@ -140,7 +153,7 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
         case "我要提意见":
             self.performSegue(withIdentifier: "sugesstsegueID", sender: nil)
         case "我的好友":
-            self.performSegue(withIdentifier: "sugesstsegueID", sender: nil)
+            self.performSegue(withIdentifier: "MyFriendSegueID", sender: nil)
         default:
             break
         }
