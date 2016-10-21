@@ -7,36 +7,36 @@
 //
 
 import UIKit
-import SnapKit
+
+@objc protocol MyFriendCenterViewDelegate {
+    
+    @objc optional func btnClick()
+    
+}
+
 class MyFriendCenterView: UIView {
 
     @IBOutlet weak var myRank: UIButton!
     
     @IBOutlet weak var myFriend: UIButton!
     @IBOutlet weak var bootomView: UIView!
-    @IBOutlet weak var bootomView_Width: NSLayoutConstraint!
     
-    @IBOutlet weak var bootomView_Tralling: NSLayoutConstraint!
+    @IBOutlet weak var bootomView2: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         myRank.contentHorizontalAlignment = .right
         myFriend.contentHorizontalAlignment = .left
         myRank.setTitle(loadLanguage("我的排名"), for: UIControlState.normal)
-        myRank.setTitle(loadLanguage("我的好友"), for: UIControlState.selected)
-        bootomView_Width.constant = 10
-//        bootomView_Width.
-        bootomView.snp.makeConstraints { (make) in
-            
-            make.leading.equalTo(myFriend.snp.leading).offset(0)
-            
-        }
+        myRank.setTitle(loadLanguage("我的排名"), for: UIControlState.selected)
+        myFriend.setTitle(loadLanguage("我的好友"), for: UIControlState.normal)
+        myFriend.setTitle(loadLanguage("我的好友"), for: UIControlState.selected)
+        myRank.isSelected = true
+        bootomView2.isHidden = true
+        
+
     }
     
-    func cancluateWidth(str:String) -> CGFloat {
-        
-        
-        return 0
-    }
+ 
     
     /*
     // Only override draw() if you perform custom drawing.

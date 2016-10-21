@@ -33,30 +33,36 @@
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="3" id="GOu-oc-6aE"/>
-                        <constraint firstAttribute="width" constant="73" id="fRn-k1-vCN"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySD-sH-9a4">
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="7yJ-We-MdS"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="4CV-lK-l9O" secondAttribute="trailing" id="1wj-l8-cP3"/>
                 <constraint firstAttribute="bottom" secondItem="4CV-lK-l9O" secondAttribute="bottom" id="3SU-49-tdX"/>
                 <constraint firstItem="4CV-lK-l9O" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3ZK-Uj-vGM"/>
                 <constraint firstItem="JwU-Uc-kl0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3zI-6T-fl8"/>
                 <constraint firstAttribute="bottom" secondItem="551-iZ-Fyo" secondAttribute="bottom" constant="1" id="837-kY-68P"/>
                 <constraint firstAttribute="bottom" secondItem="JwU-Uc-kl0" secondAttribute="bottom" id="AML-44-gm8"/>
-                <constraint firstItem="JwU-Uc-kl0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="N9X-3y-czm"/>
-                <constraint firstItem="551-iZ-Fyo" firstAttribute="trailing" secondItem="JwU-Uc-kl0" secondAttribute="trailing" id="RDc-ar-nBe"/>
-                <constraint firstItem="JwU-Uc-kl0" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="RS8-r6-0rh"/>
-                <constraint firstItem="4CV-lK-l9O" firstAttribute="width" secondItem="JwU-Uc-kl0" secondAttribute="width" id="tTW-cW-PTe"/>
+                <constraint firstItem="JwU-Uc-kl0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.5" id="Ffq-JD-y61"/>
+                <constraint firstItem="ySD-sH-9a4" firstAttribute="centerX" secondItem="4CV-lK-l9O" secondAttribute="centerX" id="Gcf-M1-Eyc"/>
+                <constraint firstItem="ySD-sH-9a4" firstAttribute="width" secondItem="4CV-lK-l9O" secondAttribute="width" id="Pco-58-qYx"/>
+                <constraint firstItem="551-iZ-Fyo" firstAttribute="centerX" secondItem="JwU-Uc-kl0" secondAttribute="centerX" id="RZV-ti-4Aa"/>
+                <constraint firstItem="551-iZ-Fyo" firstAttribute="width" secondItem="JwU-Uc-kl0" secondAttribute="width" id="VVM-BO-NuI"/>
+                <constraint firstItem="4CV-lK-l9O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.5" id="VXg-WU-mn9"/>
+                <constraint firstAttribute="bottom" secondItem="ySD-sH-9a4" secondAttribute="bottom" constant="1" id="teg-d9-RTE"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bootomView" destination="551-iZ-Fyo" id="Ukb-P9-FdH"/>
-                <outlet property="bootomView_Tralling" destination="RDc-ar-nBe" id="WGF-dm-6lj"/>
-                <outlet property="bootomView_Width" destination="fRn-k1-vCN" id="bYH-KN-Rny"/>
+                <outlet property="bootomView2" destination="ySD-sH-9a4" id="UcI-rz-8En"/>
                 <outlet property="myFriend" destination="4CV-lK-l9O" id="Vqe-Nt-0Sv"/>
                 <outlet property="myRank" destination="JwU-Uc-kl0" id="GrI-Au-dNl"/>
             </connections>

@@ -8,9 +8,15 @@
 
 import UIKit
 
-class MyFriendViewController: UIViewController {
+class MyFriendViewController: UIViewController ,UIScrollViewDelegate{
 
     var centerView: MyFriendCenterView!
+    
+    var scrollerView:UIScrollView!
+    
+    var leftViewController: MyRankViewController!
+    var rightViewController: MyFriendsVC!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,9 +24,6 @@ class MyFriendViewController: UIViewController {
         setUpUI()
 
     }
-
-    
-    
     
     func setUpUI() {
         
@@ -35,19 +38,79 @@ class MyFriendViewController: UIViewController {
         
         //中间
         centerView = UINib.init(nibName: "MyFriendCenterView", bundle: nil).instantiate(withOwner: nil, options: nil).last as! MyFriendCenterView
-        centerView.backgroundColor = UIColor.red
+        centerView.backgroundColor = UIColor.clear
         centerView.frame = CGRect(x: 0, y: 0, width: width_screen, height: 40)
+        centerView.myRank.addTarget(self, action: #selector(MyFriendViewController.myRankAction), for: UIControlEvents.touchUpInside)
+        centerView.myFriend.addTarget(self, action: #selector(MyFriendViewController.myFriendAction), for: UIControlEvents.touchUpInside)
         self.navigationItem.titleView = centerView
         
+        scrollerView = UIScrollView(frame: CGRect(x: 0, y: 0, width: width_screen, height: height_screen))
+        
+        scrollerView.delegate = self
+        scrollerView.isPagingEnabled = true
+        scrollerView.showsHorizontalScrollIndicator = false
+        scrollerView.bounces = false
+        scrollerView.contentSize = CGSize(width: width_screen * 2, height: 0)
+        
+        self.view.addSubview(scrollerView)
+        
+        leftViewController = MyRankViewController()
+        leftViewController.view.frame = CGRect(x: 0, y: 0, width: scrollerView.frame.size.width, height: scrollerView.frame.size.height)
+        rightViewController = MyFriendsVC()
+        rightViewController.view.frame = CGRect(x: scrollerView.frame.size.width, y: 0, width:scrollerView.frame.size.width , height: scrollerView.frame.size.height)
+        self.addChildViewController(leftViewController)
+        self.addChildViewController(rightViewController)
+        
+        scrollerView.addSubview(leftViewController.view)
+        scrollerView.addSubview(rightViewController.view)
         
     }
     
+    func myRankAction() -> Void {
+        centerView.myRank.isSelected = true
+        centerView.bootomView.isHidden = false
+        centerView.myFriend.isSelected = false
+        centerView.bootomView2.isHidden = true
+        scrollerView.contentOffset = CGPoint(x: 0, y: -height_navBar)
+    }
+    
+    func myFriendAction() -> Void {
+        centerView.myRank.isSelected = false
+        centerView.bootomView.isHidden = true
+        centerView.myFriend.isSelected = true
+        centerView.bootomView2.isHidden = false
+        scrollerView.contentOffset = CGPoint(x: width_screen, y: -height_navBar)
+    }
+    
+
+    
     func addFriendAction() {
-        
+        self.performSegue(withIdentifier: "addFriendSeguerID", sender: nil)
     }
     
     func emalisAction() {
         
+    }
+    
+    //MARK: -scrollerViewDelegate
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let btnSeleted: Int = Int(scrollerView.contentOffset.x / width_screen)
+        
+        switch btnSeleted {
+        case 0:
+            centerView.myRank.isSelected = true
+            centerView.bootomView.isHidden = false
+            centerView.myFriend.isSelected = false
+            centerView.bootomView2.isHidden = true
+        case 1:
+            centerView.myRank.isSelected = false
+            centerView.bootomView.isHidden = true
+            centerView.myFriend.isSelected = true
+            centerView.bootomView2.isHidden = false
+        default:
+            break
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,6 +122,7 @@ class MyFriendViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = false
+        appDelegate.mainTabBarController?.setTabBarHidden(true, animated: false)
         
     }
 
