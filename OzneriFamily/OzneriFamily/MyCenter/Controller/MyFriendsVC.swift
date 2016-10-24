@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class FriendModel: NSObject {
     var nickName:String?
@@ -31,15 +32,19 @@ class MyFriendsVC: UIViewController {
     var chaArrs:[[ChatModel]]? = []
     
     var chatModelArr:[ChatModel]? = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         getDatas()
 
         setUI()
         
-        
+   
         
     }
     
@@ -92,28 +97,69 @@ class MyFriendsVC: UIViewController {
         
         bootomRecentView = UINib.init(nibName: "FriendRecentView", bundle: nil).instantiate(withOwner: nil, options: nil).last as! FriendRecentView
         bootomRecentView.frame = CGRect(x: 0, y: height_screen - 46 - height_navBar, width: width_screen, height: 46)
-        
+//        bootomRecentView.recentContentLb.delegate = self
         view.addSubview(bootomRecentView)
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
+    
+    //键盘的出现
+    func keyBoardWillShow(_ notification: Notification){
+        //获取userInfo
+        let kbInfo = notification.userInfo
+        //获取键盘的size
+        let kbRect = (kbInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        //键盘的y偏移量
+        let changeY = kbRect.origin.y - height_screen
+        print(changeY)
+        //键盘弹出的时间
+        let duration = kbInfo?[UIKeyboardAnimationDurationUserInfoKey] as! Double
+        
+        //界面偏移动画
+        UIView.animate(withDuration: duration) {
+            
+            self.bootomRecentView.transform = CGAffineTransform(translationX: 0, y: changeY)
+            
+        }
+    }
+    
+    //键盘的隐藏
+    func keyBoardWillHide(_ notification: Notification){
+        
+        let kbInfo = notification.userInfo
+
+        let duration = kbInfo?[UIKeyboardAnimationDurationUserInfoKey] as! Double
+        
+        UIView.animate(withDuration: duration) {
+            //还原位置
+            self.bootomRecentView.transform = CGAffineTransform.identity
+        }
+    }
+    
+
+    
+    deinit {
+        //移除通知
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
+
 
 extension MyFriendsVC: UITableViewDataSource,UITableViewDelegate {
     

@@ -17,6 +17,7 @@ class MyFriendViewController: UIViewController ,UIScrollViewDelegate{
     var leftViewController: MyRankViewController!
     var rightViewController: MyFriendsVC!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

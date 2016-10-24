@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class FriendRecentView: UIView {
 
     @IBOutlet weak var recentContentLb: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
+    
     
     
     override func awakeFromNib() {
@@ -21,7 +23,7 @@ class FriendRecentView: UIView {
         sendBtn.layer.masksToBounds = true
         sendBtn.layer.borderWidth = 1
         sendBtn.layer.borderColor = UIColor.lightGray.cgColor
-        
+        IQKeyboardManager.sharedManager().enable = true
     }
     
     /*
