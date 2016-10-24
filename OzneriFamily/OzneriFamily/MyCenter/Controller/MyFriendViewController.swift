@@ -91,6 +91,7 @@ class MyFriendViewController: UIViewController ,UIScrollViewDelegate{
     
     func emalisAction() {
         
+        self.performSegue(withIdentifier: "showYZNews", sender: nil)
     }
     
     //MARK: -scrollerViewDelegate
