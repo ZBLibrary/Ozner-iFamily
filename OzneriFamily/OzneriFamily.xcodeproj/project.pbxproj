@@ -198,6 +198,8 @@
 		B7567CA71DB0D91F00AA7C91 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */; };
 		B7567CA81DB0DAF400AA7C91 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */; };
 		B7567CA91DB0DAF400AA7C91 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B773CE191DBDCD3E004909EC /* FriendRecentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773CE181DBDCD3E004909EC /* FriendRecentView.swift */; };
+		B773CE1B1DBDCD52004909EC /* FriendRecentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B773CE1A1DBDCD52004909EC /* FriendRecentView.xib */; };
 		B79803DB1DB5B14A001EC5AA /* SmallAriClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79803DA1DB5B14A001EC5AA /* SmallAriClearView.swift */; };
 		B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */; };
 		B79803DF1DB5C41D001EC5AA /* WaterRefeishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */; };
@@ -598,6 +600,8 @@
 		B7567CA21DB0872800AA7C91 /* CupMatchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupMatchView.xib; sourceTree = "<group>"; };
 		B7567CA41DB0873B00AA7C91 /* CupMatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupMatchView.swift; sourceTree = "<group>"; };
 		B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		B773CE181DBDCD3E004909EC /* FriendRecentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRecentView.swift; sourceTree = "<group>"; };
+		B773CE1A1DBDCD52004909EC /* FriendRecentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendRecentView.xib; sourceTree = "<group>"; };
 		B79803DA1DB5B14A001EC5AA /* SmallAriClearView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallAriClearView.swift; sourceTree = "<group>"; };
 		B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallAriClearView.xib; sourceTree = "<group>"; };
 		B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterRefeishView.swift; sourceTree = "<group>"; };
@@ -1516,6 +1520,8 @@
 				B72846D51DB9FD79007AB296 /* MyFriendCell.xib */,
 				B70E55701DBA0CF100323C35 /* FriendChatCell.swift */,
 				B70E55711DBA0CF100323C35 /* FriendChatCell.xib */,
+				B773CE181DBDCD3E004909EC /* FriendRecentView.swift */,
+				B773CE1A1DBDCD52004909EC /* FriendRecentView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1889,6 +1895,7 @@
 				8DC02E811DB5CE91007F57DB /* TDSPanMainView.xib in Resources */,
 				8D92F6681D9526460068A40A /* InfoPlist.strings in Resources */,
 				B72846D31DB9E988007AB296 /* FriendZeroBgView.xib in Resources */,
+				B773CE1B1DBDCD52004909EC /* FriendRecentView.xib in Resources */,
 				B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */,
 				8DC02E941DB5CEFE007F57DB /* WaterReplenishMainView.xib in Resources */,
 				B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */,
@@ -2120,6 +2127,7 @@
 				8DAE80951D9BC51D00A9946F /* User+CoreDataClass.swift in Sources */,
 				B7EF06A71DB8A53A008BE7D4 /* ZHCMessagesToolbarButtonFactory.m in Sources */,
 				B7EF06C61DB8A53A008BE7D4 /* CounselingController.swift in Sources */,
+				B773CE191DBDCD3E004909EC /* FriendRecentView.swift in Sources */,
 				B7EF06AB1DB8A53A008BE7D4 /* ZHCAudioMediaItem.m in Sources */,
 				8DC02F7F1DB5F03B007F57DB /* BaseDeviceManager.m in Sources */,
 				8D12AACB1DAB9A89003A09E6 /* WifiPairingController.swift in Sources */,

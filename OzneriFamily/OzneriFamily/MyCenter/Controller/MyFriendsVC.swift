@@ -11,6 +11,9 @@ import UIKit
 class FriendModel: NSObject {
     var nickName:String?
     
+    //判断cell是否折叠
+    var isBool: Bool?
+    
 }
 
 class ChatModel: NSObject {
@@ -20,29 +23,22 @@ class ChatModel: NSObject {
 class MyFriendsVC: UIViewController {
 
     var tableView: UITableView!
-    
+
+    var bootomRecentView: FriendRecentView!
     //多少组
-    var dataArr:[FriendModel]?
+    var dataArr:[FriendModel]? = []
     
-    var chaArrs:[[ChatModel]]?{
-        
-        didSet{
-            tableView.reloadData()
-        }
-    }
+    var chaArrs:[[ChatModel]]? = []
     
-    var chatModelArr:[ChatModel]?
-    
-    //判断cell是否展开
-    var isBoolArr:[Bool]?
-    
-    
+    var chatModelArr:[ChatModel]? = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getDatas()
 
         setUI()
+        
         
         
     }
@@ -52,14 +48,13 @@ class MyFriendsVC: UIViewController {
             
             let model = FriendModel()
             model.nickName = "Giant\(i)"
+            model.isBool = true
             dataArr?.append(model)
-            let isboll = true
-            
-            isBoolArr?.append(isboll)
+        
         }
         
         let k = arc4random() % 4 + 2
-        for _ in 0..<dataArr!.count {
+        for _ in 0..<4 {
             for i in 0..<k {
                 
                 let chatModel = ChatModel()
@@ -70,7 +65,7 @@ class MyFriendsVC: UIViewController {
             chaArrs?.append(chatModelArr!)
             chatModelArr?.removeAll()
         }
-     
+        
         
         
     }
@@ -93,6 +88,13 @@ class MyFriendsVC: UIViewController {
         tableView.estimatedRowHeight = 100
         tableView.register(UINib.init(nibName: "FriendChatCell", bundle: nil), forCellReuseIdentifier: "FriendChatID")
         tableView.register(UINib.init(nibName: "MyFriendCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "FriendHeadID")
+        tableView.reloadData()
+        
+        bootomRecentView = UINib.init(nibName: "FriendRecentView", bundle: nil).instantiate(withOwner: nil, options: nil).last as! FriendRecentView
+        bootomRecentView.frame = CGRect(x: 0, y: height_screen - 46 - height_navBar, width: width_screen, height: 46)
+        
+        view.addSubview(bootomRecentView)
+        
         
     }
     
@@ -121,14 +123,17 @@ extension MyFriendsVC: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let isBool = (isBoolArr?[section])! as Bool
-        if isBool {
+
+        let friendMolde = (dataArr?[section])! as FriendModel
+        
+        if friendMolde.isBool! {
             return 0
         }
         
+        
         let model = (chaArrs?[section])! as [ChatModel]
         
-        return model.count
+        return model.count 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -143,8 +148,28 @@ extension MyFriendsVC: UITableViewDataSource,UITableViewDelegate {
         
         let headCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FriendHeadID") as! MyFriendCell
         
+        headCell.tag = 666 + section
         headCell.contentView.backgroundColor = UIColor.white
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapFold(_:)))
+    
+//        headCell.contentView.addGestureRecognizer(tap)
+        headCell.addGestureRecognizer(tap)
         return headCell
+        
+    }
+    
+    func tapFold(_ tap: UITapGestureRecognizer) {
+        
+        let tagIndex = (tap.view?.tag)! - 666
+        
+        let model = (dataArr?[tagIndex])! as FriendModel
+        model.isBool = !model.isBool!
+        
+        tableView.reloadSections(NSIndexSet.init(index: tagIndex) as IndexSet, with: UITableViewRowAnimation.automatic)
+        
+        
+        
         
     }
     
