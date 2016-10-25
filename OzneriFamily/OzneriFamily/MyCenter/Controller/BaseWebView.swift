@@ -28,8 +28,10 @@ class BaseWebView: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationController?.navigationBar.isHidden = false
-
+        appDelegate.mainTabBarController?.setTabBarHidden(true, animated: false)
+        
     }
     
     override func didReceiveMemoryWarning() {

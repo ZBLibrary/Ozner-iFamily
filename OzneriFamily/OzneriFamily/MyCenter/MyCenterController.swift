@@ -39,6 +39,10 @@ class MyCenterController: UIViewController {
         infoHeadView.iconImage.layer.cornerRadius = 37.5
         infoHeadView.iconImage.layer.masksToBounds = true
         
+        infoHeadView.myDeviceNumBtn.addTarget(self, action: #selector(MyCenterController.myDeviceNumBtnAction), for: UIControlEvents.touchUpInside)
+        
+        infoHeadView.myMoneyBtn.addTarget(self, action: #selector(MyCenterController.myMoneyBtnAction), for: UIControlEvents.touchUpInside)
+        
         if User.currentUser?.headimage == "" || User.currentUser?.headimage == nil {
             
         } else {
@@ -65,6 +69,17 @@ class MyCenterController: UIViewController {
         tableView.register(UINib.init(nibName: "MyInfoCell", bundle: nil), forCellReuseIdentifier: "cellID")
         
         view.addSubview(tableView)
+        
+    }
+    
+    func myDeviceNumBtnAction() {
+        
+        self.performSegue(withIdentifier: "equidDeviceNumberID", sender: nil)
+    }
+    
+    func myMoneyBtnAction() {
+        webViewType = "我的小金库"
+        self.performSegue(withIdentifier: "MyInfoSegueId", sender: nil)
         
     }
     

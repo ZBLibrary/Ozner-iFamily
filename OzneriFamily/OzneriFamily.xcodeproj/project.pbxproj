@@ -288,6 +288,9 @@
 		B7EF315B1DBF080B008BA60C /* MyLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF315A1DBF080B008BA60C /* MyLikeViewController.swift */; };
 		B7EF315E1DBF091A008BA60C /* ZanMeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF315C1DBF091A008BA60C /* ZanMeTableViewCell.swift */; };
 		B7EF315F1DBF091A008BA60C /* ZanMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7EF315D1DBF091A008BA60C /* ZanMeTableViewCell.xib */; };
+		B7EF31631DBF2247008BA60C /* EquidsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF31621DBF2247008BA60C /* EquidsCollectionViewController.swift */; };
+		B7EF31661DBF264A008BA60C /* EquidsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF31641DBF264A008BA60C /* EquidsCollectionViewCell.swift */; };
+		B7EF31671DBF264A008BA60C /* EquidsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7EF31651DBF264A008BA60C /* EquidsCollectionViewCell.xib */; };
 		B7F9DC761DB8BB450017A3E9 /* MyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F9DC751DB8BB450017A3E9 /* MyFriendViewController.swift */; };
 		B7F9DC781DB8C1350017A3E9 /* MyFriendCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F9DC771DB8C1350017A3E9 /* MyFriendCenterView.swift */; };
 		B7F9DC7A1DB8C14B0017A3E9 /* MyFriendCenterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F9DC791DB8C14B0017A3E9 /* MyFriendCenterView.xib */; };
@@ -757,6 +760,9 @@
 		B7EF315A1DBF080B008BA60C /* MyLikeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLikeViewController.swift; sourceTree = "<group>"; };
 		B7EF315C1DBF091A008BA60C /* ZanMeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZanMeTableViewCell.swift; sourceTree = "<group>"; };
 		B7EF315D1DBF091A008BA60C /* ZanMeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZanMeTableViewCell.xib; sourceTree = "<group>"; };
+		B7EF31621DBF2247008BA60C /* EquidsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquidsCollectionViewController.swift; sourceTree = "<group>"; };
+		B7EF31641DBF264A008BA60C /* EquidsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquidsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B7EF31651DBF264A008BA60C /* EquidsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquidsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B7F9DC751DB8BB450017A3E9 /* MyFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendViewController.swift; sourceTree = "<group>"; };
 		B7F9DC771DB8C1350017A3E9 /* MyFriendCenterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendCenterView.swift; sourceTree = "<group>"; };
 		B7F9DC791DB8C14B0017A3E9 /* MyFriendCenterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyFriendCenterView.xib; sourceTree = "<group>"; };
@@ -1537,6 +1543,7 @@
 				B7EF315A1DBF080B008BA60C /* MyLikeViewController.swift */,
 				B773CE261DBDE7CD004909EC /* VerfyViewController.swift */,
 				B773CE2E1DBDF0F5004909EC /* YZNewsTableViewController.swift */,
+				B7EF31621DBF2247008BA60C /* EquidsCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1544,6 +1551,8 @@
 		B7EF06091DB8A11F008BE7D4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B7EF31641DBF264A008BA60C /* EquidsCollectionViewCell.swift */,
+				B7EF31651DBF264A008BA60C /* EquidsCollectionViewCell.xib */,
 				B7EF315C1DBF091A008BA60C /* ZanMeTableViewCell.swift */,
 				B7EF315D1DBF091A008BA60C /* ZanMeTableViewCell.xib */,
 				B7EF31561DBF034A008BA60C /* My_Rank_TDSCell.swift */,
@@ -1935,6 +1944,7 @@
 				8DC02E9A1DB5CEFE007F57DB /* SkinHeadTableViewCell.xib in Resources */,
 				8DC02E7D1DB5CE91007F57DB /* NoDeviceView.xib in Resources */,
 				B773CE331DBDF3AC004909EC /* MyRankTableViewCell.xib in Resources */,
+				B7EF31671DBF264A008BA60C /* EquidsCollectionViewCell.xib in Resources */,
 				B7EF06C31DB8A53A008BE7D4 /* ZHCMessagesTableViewCellOutcoming.xib in Resources */,
 				B727C35E1DACE90000FE990F /* SuccessPairCell.xib in Resources */,
 				B7EF315F1DBF091A008BA60C /* ZanMeTableViewCell.xib in Resources */,
@@ -2101,6 +2111,7 @@
 				B7EF06161DB8A11F008BE7D4 /* MyInfoCell.swift in Sources */,
 				8DC02F731DB5F03B007F57DB /* ScanData.m in Sources */,
 				8DC02F831DB5F03B007F57DB /* IOManagerList.m in Sources */,
+				B7EF31661DBF264A008BA60C /* EquidsCollectionViewCell.swift in Sources */,
 				8DC02F9B1DB5F03B007F57DB /* net_mosq.c in Sources */,
 				B7EF06151DB8A11F008BE7D4 /* MyCenterController.swift in Sources */,
 				B7EF06B51DB8A53A008BE7D4 /* ZHCMessagesAudioProgressHUD.m in Sources */,
@@ -2223,6 +2234,7 @@
 				B7EF06A51DB8A53A008BE7D4 /* ZHCMessagesMediaViewBubbleImageMasker.m in Sources */,
 				8DC02F9F1DB5F03B007F57DB /* send_client_mosq.c in Sources */,
 				8DC02F9C1DB5F03B007F57DB /* read_handle.c in Sources */,
+				B7EF31631DBF2247008BA60C /* EquidsCollectionViewController.swift in Sources */,
 				8DC02F761DB5F03B007F57DB /* CupFirmware.m in Sources */,
 				8DC02FA31DB5F03B007F57DB /* tls_mosq.c in Sources */,
 				B773CE1D1DBDE2E8004909EC /* AddFriendsTableViewController.swift in Sources */,
