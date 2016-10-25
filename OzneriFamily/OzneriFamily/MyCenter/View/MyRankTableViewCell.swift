@@ -8,10 +8,19 @@
 
 import UIKit
 
+@objc protocol MyRankTableViewCellDelegate {
+    
+    @objc optional func pushToFriendRank(index: IndexPath)
+    
+    @objc optional func pushToFriendLike(index: IndexPath)
+    
+}
+
 class MyRankTableViewCell: UITableViewCell {
 
     @IBOutlet var LookZanMeButton: UIButton!
     
+    @IBOutlet var pushToTDSBtn: UIButton!
     @IBOutlet var ToTDSButton: UIButton!
     
     @IBOutlet var RankValue: UILabel!
@@ -28,9 +37,8 @@ class MyRankTableViewCell: UITableViewCell {
  
     @IBOutlet weak var todaytext: UILabel!
     
-    
-    
-    
+    var delegate: MyRankTableViewCellDelegate!
+    var indexPath:IndexPath!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,7 +52,24 @@ class MyRankTableViewCell: UITableViewCell {
         
     
     }
+    
+    //此处应换为model
+    func loadUI(index: IndexPath) {
+        
+        self.indexPath = index
+    }
+    
+    @IBAction func pushToFriendRank(_ sender: AnyObject) {
+        
+        delegate.pushToFriendRank!(index: indexPath)
+        
+    }
 
+    @IBAction func pushToLike(_ sender: AnyObject) {
+        
+        delegate.pushToFriendLike!(index: indexPath)
+        
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

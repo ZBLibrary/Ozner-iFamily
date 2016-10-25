@@ -56,6 +56,7 @@ class MyFriendViewController: UIViewController ,UIScrollViewDelegate{
         self.view.addSubview(scrollerView)
         
         leftViewController = MyRankViewController()
+        leftViewController.delegate = self
         leftViewController.view.frame = CGRect(x: 0, y: 0, width: scrollerView.frame.size.width, height: scrollerView.frame.size.height)
         rightViewController = MyFriendsVC()
         rightViewController.view.frame = CGRect(x: scrollerView.frame.size.width, y: 0, width:scrollerView.frame.size.width , height: scrollerView.frame.size.height)
@@ -138,4 +139,20 @@ class MyFriendViewController: UIViewController ,UIScrollViewDelegate{
     }
     */
 
+}
+
+extension MyFriendViewController: MyRankViewControllerDelegate {
+    
+    func pushToStoryBoardMyLike(index: IndexPath) {
+        
+        print(index.row)
+        self.performSegue(withIdentifier: "pushToRankID", sender: nil)
+        
+    }
+    
+    func pushToStoryBoardMyRank(index: IndexPath) {
+        print(index.row)
+        self.performSegue(withIdentifier: "pushToRankID", sender: nil)
+    }
+    
 }

@@ -71,17 +71,59 @@
                     <connections>
                         <segue destination="zt5-P1-exM" kind="push" identifier="addFriendSeguerID" id="6Zu-jL-dVZ"/>
                         <segue destination="jy0-rC-MW6" kind="push" identifier="showYZNews" id="cnv-84-z5y"/>
+                        <segue destination="uo5-rn-Ldf" kind="push" identifier="pushToRankID" id="5ET-3U-afM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufb-op-ujl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-42" y="2330"/>
         </scene>
+        <!--My Device Rank View Controller-->
+        <scene sceneID="ALi-Qo-TTq">
+            <objects>
+                <viewController id="uo5-rn-Ldf" customClass="MyDeviceRankViewController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f7b-lk-Q7G"/>
+                        <viewControllerLayoutGuide type="bottom" id="vk4-sZ-l2J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="umB-la-6Pi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="agh-gD-FhY"/>
+                    <connections>
+                        <segue destination="9Ya-1F-vec" kind="push" identifier="pushtoMyLikeID" id="DRe-m2-WVV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hME-Kb-ScN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1018" y="3083"/>
+        </scene>
+        <!--My Like View Controller-->
+        <scene sceneID="GWr-3v-7wl">
+            <objects>
+                <viewController id="9Ya-1F-vec" customClass="MyLikeViewController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="93r-Fz-jJQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="VUx-MV-RCt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kFE-hj-oNC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="08z-Oa-6xT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M8b-kF-5YL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1017" y="3781"/>
+        </scene>
         <!--已有设备-->
         <scene sceneID="QNJ-KF-5hP">
             <objects>
                 <collectionViewController title="我的设备" id="1y3-H2-zPX" userLabel="已有设备" customClass="EquidsCollectionViewController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="1nn-8x-ba4">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1nn-8x-ba4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.89411764709999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="393" height="199"/>
+                <frame key="frameInset" width="393" height="199.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpw-Zz-UWt">
@@ -124,8 +124,16 @@
                                     <constraint firstAttribute="height" constant="50" id="LcX-cG-xQF"/>
                                     <constraint firstAttribute="width" constant="60" id="M53-2D-Co8"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="pushToLike:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cTU-00-9yM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0J-4v-UJM"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMs-5O-hlT" userLabel="PushToFriendRank">
+                                <connections>
+                                    <action selector="pushToFriendRank:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9M0-02-U4X"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92549019607843142" green="0.94901960784313721" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -141,18 +149,22 @@
                             <constraint firstItem="7vd-xN-kgm" firstAttribute="centerY" secondItem="11r-M9-Ntu" secondAttribute="centerY" id="D1B-l9-gO1"/>
                             <constraint firstAttribute="trailing" secondItem="0P4-wT-RFT" secondAttribute="trailing" constant="25" id="DrY-U2-Oq0"/>
                             <constraint firstItem="11r-M9-Ntu" firstAttribute="top" secondItem="xpw-Zz-UWt" secondAttribute="top" constant="15" id="G0K-Va-YSO"/>
+                            <constraint firstItem="uMs-5O-hlT" firstAttribute="top" secondItem="7vd-xN-kgm" secondAttribute="bottom" constant="10" id="H60-Mi-HWk"/>
                             <constraint firstItem="Uly-Ot-lGu" firstAttribute="top" secondItem="5w6-2C-kAD" secondAttribute="top" id="HpV-K8-FUo"/>
                             <constraint firstItem="Uly-Ot-lGu" firstAttribute="bottom" secondItem="5w6-2C-kAD" secondAttribute="bottom" id="Iyj-5h-Otk"/>
                             <constraint firstItem="5w6-2C-kAD" firstAttribute="top" secondItem="11r-M9-Ntu" secondAttribute="bottom" constant="13" id="Klx-Lc-Vak"/>
+                            <constraint firstItem="0P4-wT-RFT" firstAttribute="top" secondItem="uMs-5O-hlT" secondAttribute="bottom" constant="17" id="P3K-Uj-5iQ"/>
                             <constraint firstItem="TVn-ZE-f8F" firstAttribute="leading" secondItem="m4q-ED-V6Y" secondAttribute="trailing" id="P6K-Ov-ux6"/>
                             <constraint firstItem="mpT-F1-QP5" firstAttribute="top" secondItem="5w6-2C-kAD" secondAttribute="bottom" constant="10" id="Rzp-lM-qKQ"/>
                             <constraint firstItem="p0J-4v-UJM" firstAttribute="top" secondItem="0P4-wT-RFT" secondAttribute="bottom" id="TG1-hr-QiW"/>
                             <constraint firstItem="p0J-4v-UJM" firstAttribute="leading" secondItem="xpw-Zz-UWt" secondAttribute="leading" id="UC4-gj-r9n"/>
+                            <constraint firstItem="uMs-5O-hlT" firstAttribute="leading" secondItem="mpT-F1-QP5" secondAttribute="trailing" id="UNc-9c-EKq"/>
                             <constraint firstItem="0P4-wT-RFT" firstAttribute="top" secondItem="G28-kK-69S" secondAttribute="bottom" constant="17" id="Vez-N7-nls"/>
                             <constraint firstItem="354-ia-IjJ" firstAttribute="height" secondItem="5w6-2C-kAD" secondAttribute="height" id="Wj8-PT-8kA"/>
                             <constraint firstItem="A2H-Se-5xK" firstAttribute="leading" secondItem="mpT-F1-QP5" secondAttribute="trailing" id="X4k-kp-ncU"/>
                             <constraint firstItem="354-ia-IjJ" firstAttribute="top" secondItem="5w6-2C-kAD" secondAttribute="top" id="Y1N-Fe-2o8"/>
                             <constraint firstItem="m4q-ED-V6Y" firstAttribute="top" secondItem="354-ia-IjJ" secondAttribute="bottom" constant="10" id="YN6-ad-dLh"/>
+                            <constraint firstItem="uMs-5O-hlT" firstAttribute="trailing" secondItem="G28-kK-69S" secondAttribute="leading" id="Z3g-1m-eK6"/>
                             <constraint firstAttribute="bottom" secondItem="yFr-Ai-pRD" secondAttribute="bottom" constant="15" id="ZGa-ex-Gcl"/>
                             <constraint firstItem="11r-M9-Ntu" firstAttribute="leading" secondItem="xpw-Zz-UWt" secondAttribute="leading" constant="25" id="Zvr-gt-XxX"/>
                             <constraint firstAttribute="trailing" secondItem="p0J-4v-UJM" secondAttribute="trailing" id="btF-97-KyQ"/>
@@ -190,6 +202,7 @@
                 <outlet property="RankValue" destination="5w6-2C-kAD" id="uGl-DN-zrE"/>
                 <outlet property="ToTDSButton" destination="p0J-4v-UJM" id="aii-Qj-wOk"/>
                 <outlet property="deviceImage" destination="11r-M9-Ntu" id="7ZK-7A-aVm"/>
+                <outlet property="pushToTDSBtn" destination="uMs-5O-hlT" id="u91-G1-fF8"/>
                 <outlet property="rankHead" destination="yFr-Ai-pRD" id="pyN-qR-9f3"/>
                 <outlet property="rankState" destination="Qkt-H4-ufU" id="kMm-cm-l22"/>
                 <outlet property="rankTitle" destination="7vd-xN-kgm" id="wtT-Rr-znH"/>
@@ -197,7 +210,7 @@
                 <outlet property="todaytext" destination="A2H-Se-5xK" id="n7m-g6-VAw"/>
                 <outlet property="zanCount" destination="354-ia-IjJ" id="Y1x-Gf-p6v"/>
             </connections>
-            <point key="canvasLocation" x="-205" y="102"/>
+            <point key="canvasLocation" x="-205.5" y="102"/>
         </tableViewCell>
     </objects>
     <resources>

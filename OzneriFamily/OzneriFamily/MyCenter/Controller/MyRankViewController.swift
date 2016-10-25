@@ -8,10 +8,19 @@
 
 import UIKit
 
+@objc protocol MyRankViewControllerDelegate{
+    
+    @objc func pushToStoryBoardMyRank(index: IndexPath)
+    
+    @objc func pushToStoryBoardMyLike(index: IndexPath)
+    
+}
+
 class MyRankViewController: UIViewController {
     
     var tableView: UITableView?
 
+    var delegate: MyRankViewControllerDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,6 +38,7 @@ class MyRankViewController: UIViewController {
         tableView?.register(UINib.init(nibName: "MyRankTableViewCell", bundle: nil), forCellReuseIdentifier: "MyRankTableViewCellID")
         
         view.addSubview(tableView!)
+        
         
     }
     
@@ -52,7 +62,7 @@ class MyRankViewController: UIViewController {
 }
 
     
-extension MyRankViewController : UITableViewDelegate, UITableViewDataSource {
+extension MyRankViewController : UITableViewDelegate, UITableViewDataSource ,MyRankTableViewCellDelegate{
         
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,6 +75,9 @@ extension MyRankViewController : UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyRankTableViewCellID", for: indexPath) as! MyRankTableViewCell
             cell.selectionStyle = .none
             
+            cell.loadUI(index: indexPath)
+            cell.delegate = self
+            
             return cell
             
             
@@ -75,5 +88,17 @@ extension MyRankViewController : UITableViewDelegate, UITableViewDataSource {
             return 200
         }
 
+    
+        func pushToFriendLike(index: IndexPath) {
+        
+            print("点击了\(index.row)点赞按钮")
+            self.delegate.pushToStoryBoardMyRank(index:index)
+        
+        }
+    
+        func pushToFriendRank(index: IndexPath) {
+            print("点击了\(index.row)排行榜按钮")
+            self.delegate.pushToStoryBoardMyLike(index: index)
+        }
 
 }
