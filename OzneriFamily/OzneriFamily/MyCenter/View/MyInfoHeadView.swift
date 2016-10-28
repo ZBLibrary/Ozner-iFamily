@@ -20,6 +20,7 @@ class MyInfoHeadView: UIView {
     @IBOutlet weak var infoNumLb: UILabel!
     @IBOutlet weak var moneyLb: UILabel!
     
+    @IBOutlet weak var hideView: UIView!
     @IBOutlet weak var myMoneyBtn: UIButton!
     @IBOutlet weak var myDeviceNumBtn: UIButton!
     override func awakeFromNib() {

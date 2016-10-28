@@ -10,7 +10,7 @@ import UIKit
 
 class EquidsCollectionViewController: UIViewController {
     
-    
+
     var colltionView: UICollectionView?
     var layout: UICollectionViewFlowLayout?
     override func viewDidLoad() {

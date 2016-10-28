@@ -108,7 +108,7 @@ class DeviceViewContainer: UIView {
                 //(currentDeviceView as! CupMainView).circleView.updateCircleView(angle: 0.7)
                 
             case .Tap:
-                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: false, FilterIsHiden: false,BottomValue:211*height_screen/667)
+                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: false, FilterIsHiden: false,BottomValue:200*height_screen/667)
                 
                 //(currentDeviceView as! TapMainView).circleView.updateCircleView(angle: 0.7)
                 

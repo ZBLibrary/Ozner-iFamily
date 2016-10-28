@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import IQKeyboardManagerSwift
 
 var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
@@ -22,11 +22,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return    UIStoryboard(name: "Login+Register+Guiding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
     }()
+    lazy var loginViewController_EN: RNEmailLoginViewController = {
+        
+        return RNEmailLoginViewController(nibName: "RNEmailLoginViewController", bundle: nil)
+    }()
     //主视图控制器
     var mainTabBarController: MainTabBarController?
+    lazy var mainEnglishVC: SlideMenuController = {
+        let c1 = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
+        let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController
+        let nvc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        leftViewController.mainViewController=nvc
+        SlideMenuOptions.leftViewWidth=298*width_screen/375
+        let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
+        slideMenuController.automaticallyAdjustsScrollViewInsets = true
+        slideMenuController.delegate = c1
+        return slideMenuController
+    }()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-     
+        
+        //开启IQKEyBoard
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
+        
         //百度推送
         ///
         var myTypes=UIUserNotificationType()
@@ -38,9 +57,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BPush.registerChannel(launchOptions, apiKey: "7nGBGzSxkIgjpEHHusrgdobS", pushMode: BPushMode.production, withFirstAction: nil, withSecondAction: nil, withCategory: nil, useBehaviorTextInput: false, isDebug: false)
         //微信
         
-        window?.rootViewController = LoginManager.isFristOpenApp ? JCRootViewController(last: loginViewController):loginViewController
+        
+            User.loginWithLocalUserInfo(
+                success: {
+                    [weak self] user in
+                    appDelegate.mainTabBarController = MainTabBarController()
+                    appDelegate.mainTabBarController?.loadTabBar()
+                    self?.window?.rootViewController = appDelegate.mainTabBarController
+                },
+                failure: {error in
+                window?.rootViewController = LoginManager.isFristOpenApp ? JCRootViewController(last: switchRootViewController()):switchRootViewController()
+ 
+            })
+        
         window!.makeKeyAndVisible()
         return true
+    }
+    
+    func switchRootViewController() -> UIViewController{
+        
+        if LoginManager.isChinese_Simplified {
+            return loginViewController
+        } else {
+            return loginViewController_EN
+        }
     }
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         application.registerForRemoteNotifications()
@@ -69,6 +109,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appDelegate.mainTabBarController?.dismiss(animated: true, completion: nil)
             appDelegate.mainTabBarController = nil
         }
+        
+        if LoginManager.isChinese_Simplified {
+            appDelegate.window?.rootViewController = appDelegate.loginViewController
+        } else {
+            appDelegate.window?.rootViewController = appDelegate.loginViewController_EN
+        }
+        
         //清理用户文件
         NetworkManager.clearCookies()
         CoreDataManager.defaultManager = nil

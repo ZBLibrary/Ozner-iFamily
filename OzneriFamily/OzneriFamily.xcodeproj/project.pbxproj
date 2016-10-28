@@ -215,6 +215,12 @@
 		B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */; };
 		B79803DF1DB5C41D001EC5AA /* WaterRefeishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */; };
 		B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */; };
+		B7CD2B4E1DC2DD58009554D1 /* RNEmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CD2B481DC2DD58009554D1 /* RNEmailLoginViewController.swift */; };
+		B7CD2B4F1DC2DD58009554D1 /* RNEmailLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7CD2B491DC2DD58009554D1 /* RNEmailLoginViewController.xib */; };
+		B7CD2B501DC2DD58009554D1 /* RNEmailRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CD2B4A1DC2DD58009554D1 /* RNEmailRegisterViewController.swift */; };
+		B7CD2B511DC2DD58009554D1 /* RNEmailRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7CD2B4B1DC2DD58009554D1 /* RNEmailRegisterViewController.xib */; };
+		B7CD2B521DC2DD58009554D1 /* RNModifyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CD2B4C1DC2DD58009554D1 /* RNModifyPasswordViewController.swift */; };
+		B7CD2B531DC2DD58009554D1 /* RNModifyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7CD2B4D1DC2DD58009554D1 /* RNModifyPasswordViewController.xib */; };
 		B7EF060E1DB8A11F008BE7D4 /* AboutUSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF06011DB8A11F008BE7D4 /* AboutUSViewController.swift */; };
 		B7EF060F1DB8A11F008BE7D4 /* BaseWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF06021DB8A11F008BE7D4 /* BaseWebView.swift */; };
 		B7EF06101DB8A11F008BE7D4 /* MySetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF06031DB8A11F008BE7D4 /* MySetViewController.swift */; };
@@ -636,6 +642,12 @@
 		B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallAriClearView.xib; sourceTree = "<group>"; };
 		B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterRefeishView.swift; sourceTree = "<group>"; };
 		B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterRefeishView.xib; sourceTree = "<group>"; };
+		B7CD2B481DC2DD58009554D1 /* RNEmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNEmailLoginViewController.swift; sourceTree = "<group>"; };
+		B7CD2B491DC2DD58009554D1 /* RNEmailLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RNEmailLoginViewController.xib; sourceTree = "<group>"; };
+		B7CD2B4A1DC2DD58009554D1 /* RNEmailRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNEmailRegisterViewController.swift; sourceTree = "<group>"; };
+		B7CD2B4B1DC2DD58009554D1 /* RNEmailRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RNEmailRegisterViewController.xib; sourceTree = "<group>"; };
+		B7CD2B4C1DC2DD58009554D1 /* RNModifyPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNModifyPasswordViewController.swift; sourceTree = "<group>"; };
+		B7CD2B4D1DC2DD58009554D1 /* RNModifyPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RNModifyPasswordViewController.xib; sourceTree = "<group>"; };
 		B7EF06011DB8A11F008BE7D4 /* AboutUSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUSViewController.swift; sourceTree = "<group>"; };
 		B7EF06021DB8A11F008BE7D4 /* BaseWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebView.swift; sourceTree = "<group>"; };
 		B7EF06031DB8A11F008BE7D4 /* MySetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySetViewController.swift; sourceTree = "<group>"; };
@@ -871,6 +883,7 @@
 		8D117C0F1D9CDEB00024187E /* Login+Register+Guiding */ = {
 			isa = PBXGroup;
 			children = (
+				B7CD2B471DC2DD58009554D1 /* NewLogin */,
 				8D117C101D9CDEE30024187E /* Login+Register+Guiding.storyboard */,
 				8D117C261D9D06730024187E /* LoginViewController.swift */,
 				8D117C1D1D9CFB020024187E /* Guiding */,
@@ -1516,6 +1529,19 @@
 			path = WaterReplenish;
 			sourceTree = "<group>";
 		};
+		B7CD2B471DC2DD58009554D1 /* NewLogin */ = {
+			isa = PBXGroup;
+			children = (
+				B7CD2B481DC2DD58009554D1 /* RNEmailLoginViewController.swift */,
+				B7CD2B491DC2DD58009554D1 /* RNEmailLoginViewController.xib */,
+				B7CD2B4A1DC2DD58009554D1 /* RNEmailRegisterViewController.swift */,
+				B7CD2B4B1DC2DD58009554D1 /* RNEmailRegisterViewController.xib */,
+				B7CD2B4C1DC2DD58009554D1 /* RNModifyPasswordViewController.swift */,
+				B7CD2B4D1DC2DD58009554D1 /* RNModifyPasswordViewController.xib */,
+			);
+			path = NewLogin;
+			sourceTree = "<group>";
+		};
 		B7EF05FF1DB8A11F008BE7D4 /* MyCenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1938,6 +1964,7 @@
 				B72846D71DB9FD79007AB296 /* MyFriendCell.xib in Resources */,
 				B7EF06A11DB8A53A008BE7D4 /* ZHCMessagesViewController.xib in Resources */,
 				8D92F65A1D94FAC70068A40A /* MyDevices.storyboard in Resources */,
+				B7CD2B531DC2DD58009554D1 /* RNModifyPasswordViewController.xib in Resources */,
 				8DC02E771DB5CE91007F57DB /* Air_WifiMainView.xib in Resources */,
 				8DC02E841DB5CE91007F57DB /* WaterPurifierMainView.xib in Resources */,
 				B7EF06191DB8A11F008BE7D4 /* MyInfoHeadView.xib in Resources */,
@@ -1952,6 +1979,7 @@
 				8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */,
 				B7EF06C51DB8A53A008BE7D4 /* ZHCMessagesToolbarContentView.xib in Resources */,
 				8D92F6711D9534890068A40A /* LeftMenu.storyboard in Resources */,
+				B7CD2B4F1DC2DD58009554D1 /* RNEmailLoginViewController.xib in Resources */,
 				B773CE211DBDE2F7004909EC /* AddFriendTableViewCell.xib in Resources */,
 				8DC02E811DB5CE91007F57DB /* TDSPanMainView.xib in Resources */,
 				8D92F6681D9526460068A40A /* InfoPlist.strings in Resources */,
@@ -1972,6 +2000,7 @@
 				B70E55731DBA0CF100323C35 /* FriendChatCell.xib in Resources */,
 				8D5045C81DB34AD700EAC3B3 /* Airgif_blue.gif in Resources */,
 				B7EF06C11DB8A53A008BE7D4 /* ZHCMessagesTableViewCellIncoming.xib in Resources */,
+				B7CD2B511DC2DD58009554D1 /* RNEmailRegisterViewController.xib in Resources */,
 				8D117C111D9CDEE30024187E /* Login+Register+Guiding.storyboard in Resources */,
 				B7567CA31DB0872800AA7C91 /* CupMatchView.xib in Resources */,
 			);
@@ -2088,6 +2117,7 @@
 				8DC02F8A1DB5F03B007F57DB /* TapRawRecord.m in Sources */,
 				8DC02F721DB5F03B007F57DB /* FirmwareTools.m in Sources */,
 				8D113DCB1DB77FB4008CE2C6 /* TapSettingController.swift in Sources */,
+				B7CD2B501DC2DD58009554D1 /* RNEmailRegisterViewController.swift in Sources */,
 				8DC02F681DB5F03B007F57DB /* BluetoothAirPurifierStatus.m in Sources */,
 				B7EF06B61DB8A53A008BE7D4 /* ZHCMessagesCellTextView.m in Sources */,
 				8DC02FBA1DB623BC007F57DB /* OznerDeviceView.swift in Sources */,
@@ -2126,6 +2156,7 @@
 				B7EF06AA1DB8A53A008BE7D4 /* ZHCMessagesTableviewLayoutAttributes.m in Sources */,
 				B7567CA51DB0873B00AA7C91 /* CupMatchView.swift in Sources */,
 				B7EF06181DB8A11F008BE7D4 /* MyInfoHeadView.swift in Sources */,
+				B7CD2B521DC2DD58009554D1 /* RNModifyPasswordViewController.swift in Sources */,
 				8DC02F8B1DB5F03B007F57DB /* TapRecord.m in Sources */,
 				B7EF06C21DB8A53A008BE7D4 /* ZHCMessagesTableViewCellOutcoming.m in Sources */,
 				8D109F201DAD081400458171 /* CALayer+Expand.swift in Sources */,
@@ -2252,6 +2283,7 @@
 				8DC02E761DB5CE91007F57DB /* Air_WifiMainView.swift in Sources */,
 				8DC02F641DB5F03B007F57DB /* AirPurifierManager.m in Sources */,
 				8D109F221DAE1E6700458171 /* UIColor+Expand.swift in Sources */,
+				B7CD2B4E1DC2DD58009554D1 /* RNEmailLoginViewController.swift in Sources */,
 				8DAE80831D9B6DD400A9946F /* OzneriFamilyModel.xcdatamodeld in Sources */,
 				B7EF06C91DB8A53A008BE7D4 /* ZHCModelData.m in Sources */,
 				8DC02F7D1DB5F03B007F57DB /* CupSettings.m in Sources */,

@@ -29,7 +29,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
     }
 
-    
 
     @IBOutlet var errorLabel: UILabel!
     
@@ -72,6 +71,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         BPush.bindChannel { (result, error) in
             User.UpdateUserInfo()
         }
+        LoginManager.currentLoginType = OznerLoginType.ByPhoneNumber
         appDelegate.mainTabBarController = MainTabBarController()
         appDelegate.mainTabBarController?.loadTabBar()
         appDelegate.mainTabBarController?.modalTransitionStyle = .crossDissolve
@@ -81,22 +81,23 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     var firstAppear = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if firstAppear {
-            firstAppear = false
-            User.loginWithLocalUserInfo(
-                success: {
-                    [weak self] user in
-                    self?.presentMainViewController()
-                },
-                failure: {error in})
-        }
+//        if firstAppear {
+//            firstAppear = false
+//            User.loginWithLocalUserInfo(
+//                success: {
+//                    [weak self] user in
+//                   
+//                    self?.presentMainViewController()
+//                },
+//                failure: {error in})
+//        }
         
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
        
-       loginButton.setTitle(loadLanguage("登录"), for: UIControlState())
+        loginButton.setTitle(loadLanguage("登录"), for: UIControlState())
         getYYbutton.setTitle(loadLanguage("获取语音验证码"), for: UIControlState())
         agreeButton.setTitle(loadLanguage("我已阅读并同意《浩泽净水家免责条款》"), for: UIControlState())
         phoneTextField.placeholder=loadLanguage("请输入手机号")
