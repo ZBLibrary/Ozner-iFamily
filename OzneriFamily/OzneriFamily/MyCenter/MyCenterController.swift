@@ -41,6 +41,9 @@ class MyCenterController: UIViewController {
             
         } else {
             infoHeadView.hideView.isHidden = true
+            var frame = infoHeadView.hideView.frame
+            frame.size.height = 0
+            infoHeadView.hideView.frame = frame
         }
         
         infoHeadView.iconImage.layer.cornerRadius = 37.5
@@ -130,8 +133,20 @@ class MyCenterController: UIViewController {
         super.viewWillAppear(animated)
         appDelegate.mainTabBarController?.setTabBarHidden(false, animated: false)
 
-        navigationController?.navigationBar.isHidden = true
+        switch LoginManager.currentLoginType {
+        case .ByPhoneNumber:
+            navigationController?.navigationBar.isHidden = true
+        case .ByEmail:
+            navigationController?.navigationBar.isHidden = false
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"fanhui"), style: UIBarButtonItemStyle.done, target: self, action: #selector(MyCenterController.backAction))
+        }
         
+    }
+    
+    func backAction() {
+        self.dismiss(animated: false) { 
+            
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -213,7 +228,7 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
         case .ByPhoneNumber:
             return (height_screen - 64) * (3.7/7) / 7
         case .ByEmail:
-            return 60
+            return 50
         }
         
     }

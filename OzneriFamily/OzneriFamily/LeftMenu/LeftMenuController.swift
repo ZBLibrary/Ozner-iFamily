@@ -16,6 +16,8 @@ enum OznerLeftMenu: Int {
 class LeftMenuController: UIViewController {
 
     
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var topViewConst: NSLayoutConstraint!
     var mainViewController: UINavigationController!//设备视图控制器
     var deviceArray:NSArray!//设备数组
     var currentSelectCellIndex:Int=0//当前选中Cell Index
@@ -42,7 +44,37 @@ class LeftMenuController: UIViewController {
         self.tableView.rowHeight=90*height_screen/667
         self.tableView.register(UINib(nibName: "LeftMenuDeviceCell", bundle: nil), forCellReuseIdentifier: "LeftMenuDeviceCell")
         // Do any additional setup after loading the view.
+        if LoginManager.currentLoginType == .ByEmail {
+             topViewConst.constant = 80
+            addMyInfoBtn()
+        }
+       
     }
+    
+    func addMyInfoBtn() {
+        
+        let btn = UIButton(frame:  CGRect(x: (SlideMenuOptions.leftViewWidth - 70) / 2, y: 18, width: 70, height: 70))
+        btn.setImage(UIImage(named:"My_Unlogin_head"), for: UIControlState.normal)
+        btn.titleEdgeInsets = UIEdgeInsetsMake(100, -75, 0, 0)
+        btn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        btn.setTitle("Ozner", for: UIControlState.normal)
+        btn.setTitleColor(UIColor.black, for: UIControlState.normal)
+        btn.addTarget(self, action: #selector(headAction), for: UIControlEvents.touchUpInside)
+        view.addSubview(btn)
+        
+        
+    }
+    
+    func headAction() {
+        let c4=UIStoryboard(name: "MainMyCenter", bundle: nil).instantiateInitialViewController() as!UINavigationController
+
+        weak var weakSelf = self
+        self.present(c4, animated: false) { 
+            weakSelf?.closeLeft()
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
