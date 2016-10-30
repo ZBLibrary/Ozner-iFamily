@@ -11,12 +11,27 @@ import Spring
 import SnapKit
 
 class PairModle: NSObject {
-    var isHidden: Bool?
+    var isHidden: Bool=true
 }
 
 
 class PairSuccessController: UIViewController {
 
+    //传入设备数组即可
+    var deviceArr = [OznerDevice](){
+        didSet{
+            CurrDeviceType=(deviceArr[0] as OznerDevice).type
+            
+            for _ in 0..<deviceArr.count {
+                pairModel.append(PairModle())
+            }
+            pairModel[0].isHidden=false
+            //collectionView.reloadData()
+        }
+    }
+    var settings:[String:String] = ["name":"","usingSite":"办公室","sex":"","weight":""]
+    
+    
     @IBAction func backClick(_ sender: AnyObject) {
         _=self.navigationController?.popToRootViewController(animated: true)
     }
@@ -40,49 +55,26 @@ class PairSuccessController: UIViewController {
     //记录选择了第几个设备，默认第一个
     var indexDevice: Int = 0
     
-    var  deviceTypeValue:OznerDeviceType!
-    //cell
-    var mainMatchView: UIView!
-    var pairModel:[PairModle]?{
-        didSet{
-            collectionView.reloadData()
-        }
-    }
+    var  CurrDeviceType:String!
+    
+    private var mainMatchView: UIView!
+    
+    var pairModel=[PairModle]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadImageandLb()
-
         setUpUI()
-        
-        getDatas()
-
-        switch (pairModel?.count)! {
-        case 0:
-            break
-        case 1:
-            leftBtn.isHidden = true
-            rightBtn.isHidden = true
-            collectionFlowout.itemSize = CGSize(width: width_screen - 88 - 20, height: 100)
-            
-            break
-        case 2:
-            collectionFlowout.itemSize = CGSize(width: (width_screen - 88 - 20 - 10)/2, height: 100)
-            break
-   
-        default:
-            collectionFlowout.itemSize = CGSize(width: (width_screen - 88 - 20 - 20)/3, height: 100)
-            break
-        }
-        
     }
     
     private func loadImageandLb() {
         
-        switch deviceTypeValue.rawValue {
+        switch CurrDeviceType {
         case OznerDeviceType.Cup.rawValue:
             mainMatchView = UINib.init(nibName: "CupMatchView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! CupMatchView
+            (mainMatchView as! CupMatchView).cupNameLb.delegate=self
+            (mainMatchView as! CupMatchView).weightLb.delegate=self
             (mainMatchView as! CupMatchView).sucessBtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             break
         case OznerDeviceType.Tap.rawValue:
@@ -90,32 +82,38 @@ class PairSuccessController: UIViewController {
             (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
             (mainMatchView as! SmallAriClearView).nameLb.placeholder = "输入水探头名称"
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            (mainMatchView as! SmallAriClearView).nameLb.delegate=self
             break
         case OznerDeviceType.TDSPan.rawValue:
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
             (mainMatchView as! SmallAriClearView).nameLb.placeholder = "输入检测笔名称"
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            (mainMatchView as! SmallAriClearView).nameLb.delegate=self
             break
         case OznerDeviceType.Water_Wifi.rawValue:
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
             (mainMatchView as! SmallAriClearView).nameLb.placeholder = "立式空净名称"
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            (mainMatchView as! SmallAriClearView).nameLb.delegate=self
             break
         case OznerDeviceType.Air_Blue.rawValue:
             //小空净
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            (mainMatchView as! SmallAriClearView).nameLb.delegate=self
         case OznerDeviceType.Air_Wifi.rawValue:
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
             (mainMatchView as! SmallAriClearView).nameLb.placeholder = "立式空净名称"
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            (mainMatchView as! SmallAriClearView).nameLb.delegate=self
             break
         case OznerDeviceType.WaterReplenish.rawValue:
             mainMatchView = UINib.init(nibName: "WaterRefeishView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! WaterRefeishView
             (mainMatchView as! WaterRefeishView).sucessAction.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            (mainMatchView as! WaterRefeishView).placeName.delegate=self
             
             break
         default:
@@ -139,27 +137,42 @@ class PairSuccessController: UIViewController {
 
 
     func sucessAction() {
-        print(#function)
+        if CheckInputText()==false {
+            _=SCLAlertView().showTitle("", subTitle: loadLanguage("信息不能为空"), duration: 2.0, completeText: loadLanguage("完成"), style: SCLAlertViewStyle.notice)
+            return
+        }
+   
+        for (key,value) in settings {
+            deviceArr[0].settings.put(key, value: value)
+        }
+        deviceArr[0].settings.name=settings["name"]
+        
+        OznerManager.instance().save(deviceArr[0])
+    
+        LoginManager.instance.currentDeviceIdentifier=deviceArr[0].identifier
         self.dismiss(animated: false, completion: {})
     }
-    
-    private func getDatas() {
-        //模拟数据
-        let model = PairModle()
-        model.isHidden = false
+    func CheckInputText()->Bool
+    {
+        var isSuccess = true
         
-        let model1 = PairModle()
-        model1.isHidden = true
-        
-        let model2 = PairModle()
-        model2.isHidden = true
-        
-        let model3 = PairModle()
-        model3.isHidden = true
-        
-        let model4 = PairModle()
-        model4.isHidden = true
-        pairModel = [model,model1,model2,model3,model4];
+        switch CurrDeviceType {
+        case OznerDeviceType.Cup.rawValue:
+            settings["name"]=(mainMatchView as! CupMatchView).cupNameLb.text!
+            settings["weight"]=(mainMatchView as! CupMatchView).weightLb.text!
+            isSuccess = settings["weight"]=="" ? false:isSuccess
+            
+        case OznerDeviceType.WaterReplenish.rawValue:
+            
+            settings["name"]=(mainMatchView as! WaterRefeishView).placeName.text!
+            settings["sex"]=(mainMatchView as! WaterRefeishView).segementSex.selectedSegmentIndex==0 ? "女":"男"
+            
+        default:
+            settings["name"]=(mainMatchView as! SmallAriClearView).nameLb.text!
+            
+        }
+        isSuccess = settings["name"]=="" ? false:isSuccess
+        return isSuccess
     }
     private func setUpUI() {
         collectionView.showsVerticalScrollIndicator = false
@@ -206,24 +219,24 @@ class PairSuccessController: UIViewController {
         if indexDevice <= 0 {
             return
         }
-        ((pairModel?[indexDevice])! as PairModle).isHidden = true
+        pairModel[indexDevice].isHidden = true
         indexDevice -= 1
         collectionView.scrollToItem(at: IndexPath(row: indexDevice, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
-        ((pairModel?[indexDevice])! as PairModle).isHidden = false
+        pairModel[indexDevice].isHidden = false
         print(indexDevice)
         collectionView.reloadData()
     }
     
     //已适配
     @IBAction func rightBtnAction(_ sender: AnyObject) {
-        if indexDevice >= (pairModel?.count)! - 1 {
+        if indexDevice >= pairModel.count - 1 {
             return
         }
         
         collectionView.scrollToItem(at: IndexPath(row: indexDevice, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
-        ((pairModel?[indexDevice])! as PairModle).isHidden = true
+        pairModel[indexDevice].isHidden = true
         indexDevice += 1
-        ((pairModel?[indexDevice])! as PairModle).isHidden = false
+        pairModel[indexDevice].isHidden = false
         print(indexDevice)
         collectionView.reloadData()
 
@@ -247,17 +260,34 @@ class PairSuccessController: UIViewController {
 
 extension PairSuccessController: UICollectionViewDelegate,UICollectionViewDataSource ,UIScrollViewDelegate{
     
-    
+    // MARK: UICollectionViewDelegate
+    //定义每个UICollectionViewCell 的大小
+    //override func collection
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        
+        let tmpInt = pairModel.count > 3 ? 3:pairModel.count
+        return CGSize(width: collectionView.bounds.size.width/CGFloat(tmpInt), height: collectionView.bounds.size.height)
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pairModel?.count ?? 0
+        return pairModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pairsuccessCellID", for: indexPath) as! SuccessPairCell
 
+        let iconImgName = [OznerDeviceType.Cup.rawValue:"icon_peidui_select_cup",
+                           OznerDeviceType.Tap.rawValue:"icon_peidui_select_tan_tou",
+                           OznerDeviceType.TDSPan.rawValue:"icon_peidui_select_TDSPan",
+                           OznerDeviceType.Water_Wifi.rawValue:"icon_peidui_select_jingshuiqi",
+                           OznerDeviceType.Air_Blue.rawValue:"icon_peidui_select_smallair",
+                           OznerDeviceType.Air_Wifi.rawValue:"icon_peidui_select_bigair",
+                           OznerDeviceType.WaterReplenish.rawValue:"WaterReplenish4"][CurrDeviceType]
+        cell.iconImage.image=UIImage(named: iconImgName!)
+        cell.nameLabel.text=OznerDeviceType(rawValue: CurrDeviceType)?.Name()
+        
         //默认锁定第一个
-        cell.finishImage.isHidden = ((pairModel?[indexPath.row])! as PairModle).isHidden!
+        cell.finishImage.isHidden = pairModel[indexPath.row].isHidden
         
         return cell
         
@@ -270,9 +300,9 @@ extension PairSuccessController: UICollectionViewDelegate,UICollectionViewDataSo
             return
         }
         
-        ((pairModel?[indexDevice])! as PairModle).isHidden = true
+        pairModel[indexDevice].isHidden = true
         
-        ((pairModel?[indexPath.row])! as PairModle).isHidden = false
+        pairModel[indexPath.row].isHidden = false
         
         indexDevice = indexPath.row
         self.collectionView.reloadData()
@@ -281,4 +311,11 @@ extension PairSuccessController: UICollectionViewDelegate,UICollectionViewDataSo
 
     
     
+}
+//UITextFieldDelegate
+extension PairSuccessController:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

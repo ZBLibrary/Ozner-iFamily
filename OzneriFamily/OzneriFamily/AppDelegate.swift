@@ -18,27 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? = {
         return UIWindow(frame: UIScreen.main.bounds)
     }()
-    lazy var loginViewController: LoginViewController = {
-        
-        return    UIStoryboard(name: "Login+Register+Guiding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-    }()
-    //主视图控制器
-    var mainTabBarController: MainTabBarController?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-     
+        
         //百度推送
-        ///
         var myTypes=UIUserNotificationType()
         myTypes.insert(UIUserNotificationType.sound)
         myTypes.insert(UIUserNotificationType.badge)
         myTypes.insert(UIUserNotificationType.alert)
         let userSetting = UIUserNotificationSettings(types:myTypes, categories:nil)
         UIApplication.shared.registerUserNotificationSettings(userSetting)
+        BPush.disableLbs()//禁用地理位置
         BPush.registerChannel(launchOptions, apiKey: "7nGBGzSxkIgjpEHHusrgdobS", pushMode: BPushMode.production, withFirstAction: nil, withSecondAction: nil, withCategory: nil, useBehaviorTextInput: false, isDebug: false)
         //微信
-        
-        window?.rootViewController = LoginManager.isFristOpenApp ? JCRootViewController(last: loginViewController):loginViewController
+        window?.rootViewController = LoginManager.instance.loginViewController
         window!.makeKeyAndVisible()
         return true
     }
@@ -61,19 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print(error)
     }
-    //退出登录
-    func LoginOut()
-    {
-        if appDelegate.mainTabBarController != nil{
-            
-            appDelegate.mainTabBarController?.dismiss(animated: true, completion: nil)
-            appDelegate.mainTabBarController = nil
-        }
-        //清理用户文件
-        NetworkManager.clearCookies()
-        CoreDataManager.defaultManager = nil
-        
-    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

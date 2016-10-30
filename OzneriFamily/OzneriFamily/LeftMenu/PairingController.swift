@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PairingController: UIViewController {
+class PairingController: UIViewController,OznerManagerDelegate {
 
     @IBOutlet var deviceImg: UIImageView!
     @IBOutlet var animalImg: UIImageView!
@@ -16,80 +16,103 @@ class PairingController: UIViewController {
     @IBOutlet var typeState: UILabel!
     
     
-    var deviceTypeValue: OznerDeviceType!
+    var currDeviceType: String!
     
     @IBAction func backClick(_ sender: AnyObject) {
         _=self.navigationController?.popToRootViewController(animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(deviceTypeValue)
         loadImageandLb()
-        
-        let time=Timer(timeInterval: 20, target: self, selector: #selector(success), userInfo: nil, repeats: false)
-        time.fire()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        animalImg.oznerRotateSpeed=180
+    }
+    
     private func loadImageandLb() {
-        
-        switch deviceTypeValue.rawValue {
-            case OznerDeviceType.Cup.rawValue:
-                let deviceState = PairImagsAndState(imageName: "icon_peidui_watting", typeStateText: "正在进行蓝牙配对", deviceStateText: "请将智能水杯倒置")
-                setUpState(state: deviceState)
-            break
-            case OznerDeviceType.Tap.rawValue:
-                let deviceState = PairImagsAndState(imageName: "icon_peidui_tantou_watting", typeStateText: "正在进行蓝牙配对", deviceStateText: "长按下start按钮")
-                setUpState(state: deviceState)
-            case OznerDeviceType.TDSPan.rawValue:
-                let deviceState = PairImagsAndState(imageName: "icon_peidui_TDSPAN_watting", typeStateText: "正在进行蓝牙配对", deviceStateText: "长按下start按钮")
-                setUpState(state: deviceState)
-            case OznerDeviceType.Water_Wifi.rawValue:
-                let deviceState = PairImagsAndState(imageName: "icon_peidui_jingshuiqi_watting", typeStateText: "正在进行Wifi配对", deviceStateText: "请同时按下净水器加热与制冷两个按钮")
-                setUpState(state: deviceState)
-            case OznerDeviceType.Air_Blue.rawValue:
-                let deviceState = PairImagsAndState(imageName: "icon_smallair_peidui_waiting", typeStateText: "", deviceStateText: "正在进行蓝牙配对")
-                setUpState(state: deviceState)
-            case OznerDeviceType.Air_Wifi.rawValue:
-                let deviceState = PairImagsAndState(imageName: "icon_bigair_peidui_waiting", typeStateText: "正在进行Wifi配对", deviceStateText: "同时按下电源和风速键,WiFi指示灯闪烁。")
-                setUpState(state: deviceState)
-            case OznerDeviceType.WaterReplenish.rawValue:
-                let deviceState = PairImagsAndState(imageName: "WaterReplenish3", typeStateText: "待定", deviceStateText: "待定")
-                setUpState(state: deviceState)
-                break
+        var deviceDes:PairImagsAndState
+        switch currDeviceType {
+        case OznerDeviceType.Cup.rawValue:
+            deviceDes = PairImagsAndState(imageName: "icon_peidui_watting", typeStateText: "正在进行蓝牙配对", deviceStateText: "请将智能水杯倒置")
+        case OznerDeviceType.Tap.rawValue:
+            deviceDes = PairImagsAndState(imageName: "icon_peidui_tantou_watting", typeStateText: "正在进行蓝牙配对", deviceStateText: "长按下start按钮")
+        case OznerDeviceType.TDSPan.rawValue:
+            deviceDes = PairImagsAndState(imageName: "icon_peidui_TDSPAN_watting", typeStateText: "正在进行蓝牙配对", deviceStateText: "长按下start按钮")
+        case OznerDeviceType.Water_Wifi.rawValue:
+            deviceDes = PairImagsAndState(imageName: "icon_peidui_jingshuiqi_watting", typeStateText: "正在进行Wifi配对", deviceStateText: "请同时按下净水器加热与制冷两个按钮")
+        case OznerDeviceType.Air_Blue.rawValue:
+            deviceDes = PairImagsAndState(imageName: "icon_smallair_peidui_waitting", typeStateText: "", deviceStateText: "正在进行蓝牙配对")
+        case OznerDeviceType.Air_Wifi.rawValue:
+            deviceDes = PairImagsAndState(imageName: "icon_bigair_peidui_waitting", typeStateText: "正在进行Wifi配对", deviceStateText: "同时按下电源和风速键,WiFi指示灯闪烁。")
+        case OznerDeviceType.WaterReplenish.rawValue:
+            deviceDes = PairImagsAndState(imageName: "WaterReplenish3", typeStateText: "", deviceStateText: "正在进行蓝牙配对")
         default:
+            deviceDes = PairImagsAndState(imageName: "", typeStateText: "", deviceStateText: "")
             break
         }
-        
+        deviceImg.image = UIImage(named: deviceDes.imageName)
+        typeState.text = deviceDes.typeStateText
+        deviceState.text = deviceDes.deviceStateText
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(selectPairType), userInfo: nil, repeats: false)//三秒动画，然后选择配对方式
     }
     
-    private func setUpState(state:PairImagsAndState) {
-        deviceImg.contentMode = .scaleAspectFit
-        deviceImg.image = UIImage(named: state.imageName)
-        typeState.text = state.typeStateText
-        deviceState.text = state.deviceStateText
-    }
     
 
     
-    func success()  {
+    @objc private func selectPairType()  {
         
-        switch deviceTypeValue.rawValue {
-        case OznerDeviceType.Cup.rawValue,OznerDeviceType.Tap.rawValue,OznerDeviceType.TDSPan.rawValue,OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.WaterReplenish.rawValue:
-            self.performSegue(withIdentifier: "showsuccess", sender: nil)
-            break
-        case OznerDeviceType.Water_Wifi.rawValue,OznerDeviceType.Air_Wifi.rawValue:
+        switch currDeviceType {
+        case OznerDeviceType.Cup.rawValue,OznerDeviceType.Tap.rawValue,OznerDeviceType.TDSPan.rawValue,OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.WaterReplenish.rawValue://蓝牙配对
+            StarBluePair()
+        case OznerDeviceType.Water_Wifi.rawValue,OznerDeviceType.Air_Wifi.rawValue://Wifi配对
             self.performSegue(withIdentifier: "showWifiPair", sender: nil)
             break
         default:
             break
         }
-//        animalImg.layer.removeAnimation(forKey: "rotationAnimation")
+    }
+    //每隔2秒搜寻下蓝牙设备，总共搜索不到30秒，搜到就就跳转到成功
+    var blueDevices=[OznerDevice]()
+    var blueTimer:Timer?
+    var remainTimer=0 //倒计时30秒
+    func StarBluePair() {
+       
+        remainTimer=30
+        blueDevices=[OznerDevice]()
+        blueTimer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(bluePairing), userInfo: nil, repeats: true)
+    }
+    @objc private func bluePairing() {
+        remainTimer-=2
+        let deviceArr=OznerManager.instance().getNotBindDevices()
+        for device in deviceArr! {
+            if (device as! OznerDevice).type==currDeviceType {
+                blueDevices.append(device as! OznerDevice)
+            }
+        }
+//        //测试
+//        if remainTimer==26 {
+//            for _ in 0..<6 {
+//                let tmpDev=OznerDevice("sad\(Int(arc4random()%100)+1)", type: currDeviceType, settings: "")
+//                blueDevices.append(tmpDev!)
+//            }
+//        }
+        if blueDevices.count>0 {
+            self.performSegue(withIdentifier: "showsuccess", sender: nil)
+        }
+        if remainTimer<0 {
+            self.performSegue(withIdentifier: "showfailed", sender: nil)
+        }
     }
     
     deinit {
         print("已销毁")
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        blueTimer?.invalidate()
+        blueTimer=nil
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -102,15 +125,20 @@ class PairingController: UIViewController {
      //In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
-        if segue.identifier == "showsuccess" {
+        switch (segue.identifier)! {
+        case "showsuccess":
             let pair = segue.destination as! PairSuccessController
+            pair.deviceArr = blueDevices
+        case "showfailed":
+            let pair = segue.destination as! PairFailedController
             
-            pair.deviceTypeValue = self.deviceTypeValue
-        } else
-        {
+            pair.isBlueToothDevice = true
+        case "showWifiPair":
             let pair = segue.destination as! WifiPairingController
             
-            pair.deviceTypeValue = self.deviceTypeValue
+            pair.currDeviceType = self.currDeviceType
+        default:
+            break
         }
         
     }

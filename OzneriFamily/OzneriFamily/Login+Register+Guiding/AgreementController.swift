@@ -1,24 +1,19 @@
 //
-//  PairFailedController.swift
+//  AgreementController.swift
 //  OzneriFamily
 //
-//  Created by 赵兵 on 2016/10/10.
+//  Created by 赵兵 on 2016/10/28.
 //  Copyright © 2016年 net.ozner. All rights reserved.
 //
 
 import UIKit
 
-class PairFailedController: UIViewController {
+class AgreementController: UIViewController {
 
-    var isBlueToothDevice:Bool!
-    @IBAction func backClick(_ sender: AnyObject) {
-        _=self.navigationController?.popToRootViewController(animated: true)
-    }
-    @IBOutlet var botoomState: UILabel!
-    
+    @IBOutlet var webView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        botoomState.text = isBlueToothDevice==true ? "您可以检查设备和手机蓝牙连接状态后再进行配对":"您可以检查设备和手机Wifi连接状态后再进行配对"
+        webView.loadRequest(URLRequest(url: URL(string: "http://cup.ozner.net/app/cn/mzsm.html")!))
         // Do any additional setup after loading the view.
     }
 
@@ -28,19 +23,14 @@ class PairFailedController: UIViewController {
     }
     
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if isBlueToothDevice==true {
-            let controller=segue.destination as! PairingController
-            controller.StarBluePair()
-        }else{
-        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    
+    */
 
 }

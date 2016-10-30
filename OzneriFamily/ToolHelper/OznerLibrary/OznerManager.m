@@ -114,16 +114,16 @@ OznerManager* oznerManager=nil;
 
 -(NSArray*)getDevices
 {
-    //临时测试用
-    OznerDevice* dev1=[[OznerDevice alloc] init:@"id1" Type:@"CP001" Settings:@""];
-    OznerDevice* dev2=[[OznerDevice alloc] init:@"id2" Type:@"SC001" Settings:@""];
-    OznerDevice* dev3=[[OznerDevice alloc] init:@"id3" Type:@"MXCHIP_HAOZE_Water" Settings:@""];
-    OznerDevice* dev4=[[OznerDevice alloc] init:@"id4" Type:@"SCP001" Settings:@""];
-    OznerDevice* dev5=[[OznerDevice alloc] init:@"id5" Type:@"FLT001" Settings:@""];
-    OznerDevice* dev6=[[OznerDevice alloc] init:@"id6" Type:@"FOG_HAOZE_AIR" Settings:@""];
-    OznerDevice* dev7=[[OznerDevice alloc] init:@"id7" Type:@"BSY001" Settings:@""];
-
-    return [NSArray arrayWithObjects:dev1,dev2,dev3,dev4,dev5,dev6,dev7, nil];
+//    //临时测试用
+//    OznerDevice* dev1=[[OznerDevice alloc] init:@"id1" Type:@"CP001" Settings:@""];
+//    OznerDevice* dev2=[[OznerDevice alloc] init:@"id2" Type:@"SC001" Settings:@""];
+//    OznerDevice* dev3=[[OznerDevice alloc] init:@"id3" Type:@"MXCHIP_HAOZE_Water" Settings:@""];
+//    OznerDevice* dev4=[[OznerDevice alloc] init:@"id4" Type:@"SCP001" Settings:@""];
+//    OznerDevice* dev5=[[OznerDevice alloc] init:@"id5" Type:@"FLT001" Settings:@""];
+//    OznerDevice* dev6=[[OznerDevice alloc] init:@"id6" Type:@"FOG_HAOZE_AIR" Settings:@""];
+//    OznerDevice* dev7=[[OznerDevice alloc] init:@"id7" Type:@"BSY001" Settings:@""];
+//
+//    return [NSArray arrayWithObjects:dev1,dev2,dev3,dev4,dev5,dev6,dev7, nil];
     @synchronized(devices) {
         return [NSArray arrayWithArray:[devices allValues]];
     }

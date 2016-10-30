@@ -78,7 +78,7 @@ class MyCenterController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        appDelegate.mainTabBarController?.setTabBarHidden(false, animated: false)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
 
         navigationController?.navigationBar.isHidden = true
         

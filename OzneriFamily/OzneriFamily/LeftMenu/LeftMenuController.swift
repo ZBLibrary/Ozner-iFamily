@@ -24,7 +24,6 @@ class LeftMenuController: UIViewController {
     //添加设备
     @IBAction func AddDeviceClick(_ sender: UIButton) {
         let addDeviceNav=UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNav") as! UINavigationController
-        //let rootController = addDeviceNav.viewControllers[0] as! SelectDeviceTableController
         weak var weakSelf=self
         self.present(addDeviceNav, animated: false) {
             weakSelf?.closeLeft()
@@ -54,7 +53,7 @@ class LeftMenuController: UIViewController {
         tableContainer.isHidden = deviceArray.count==0
         currentSelectCellIndex=0
         for i in 0..<deviceArray.count {
-            if (deviceArray[i] as! OznerDevice).identifier==LoginManager.currentDeviceIdentifier
+            if (deviceArray[i] as! OznerDevice).identifier==LoginManager.instance.currentDeviceIdentifier
             {
                 currentSelectCellIndex=i
                 break
@@ -81,7 +80,7 @@ class LeftMenuController: UIViewController {
 extension LeftMenuController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tmpDevice = deviceArray[indexPath.row] as! OznerDevice
-        LoginManager.currentDeviceIdentifier = tmpDevice.identifier
+        LoginManager.instance.currentDeviceIdentifier = tmpDevice.identifier
         currentSelectCellIndex = indexPath.row
 
         self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)

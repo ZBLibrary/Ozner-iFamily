@@ -39,13 +39,13 @@ class DeviceViewContainer: UIView {
         let deviceArr=OznerManager.instance().getDevices() as NSArray
         if deviceArr.count==0 {
             device=nil
-            LoginManager.currentDeviceIdentifier=nil
+            LoginManager.instance.currentDeviceIdentifier=nil
         
         }else{
             device=deviceArr.object(at: 0) as? OznerDevice
-            if LoginManager.currentDeviceIdentifier != nil {
+            if LoginManager.instance.currentDeviceIdentifier != nil {
                 for item in deviceArr {
-                    if (item as! OznerDevice).identifier==LoginManager.currentDeviceIdentifier {
+                    if (item as! OznerDevice).identifier==LoginManager.instance.currentDeviceIdentifier {
                         device=item as? OznerDevice
                         break
                     }
@@ -53,9 +53,9 @@ class DeviceViewContainer: UIView {
                 
             }
             //是不是当前设备
-            LoginManager.currentDeviceIdentifier=device?.identifier
+            LoginManager.instance.currentDeviceIdentifier=device?.identifier
             if currentDevice != nil {
-                if LoginManager.currentDeviceIdentifier==currentDevice?.identifier {
+                if LoginManager.instance.currentDeviceIdentifier==currentDevice?.identifier {
                     return
                 }
             }
@@ -104,11 +104,11 @@ class DeviceViewContainer: UIView {
         }else{//有设备时视图初始化
             switch  OznerDeviceType(rawValue: (currentDevice?.type)!)! {
             case .Cup:
-                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:160*height_screen/667)
+                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:160*k_height)
                 //(currentDeviceView as! CupMainView).circleView.updateCircleView(angle: 0.7)
                 
             case .Tap:
-                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: false, FilterIsHiden: false,BottomValue:211*height_screen/667)
+                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: false, FilterIsHiden: false,BottomValue:211*k_height)
                 
                 //(currentDeviceView as! TapMainView).circleView.updateCircleView(angle: 0.7)
                 
@@ -116,18 +116,18 @@ class DeviceViewContainer: UIView {
                 delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:0)
                 
             case .Water_Wifi:
-                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*height_screen/667)
+                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
                 
                 //(currentDeviceView as! WaterPurifierMainView).circleView.updateCircleView(angleBefore: 0.7, angleAfter: 0.5)
                 
             case .Air_Blue:
-                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*height_screen/667)
+                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
                 
             case .Air_Wifi:
-                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*height_screen/667)
+                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
                 
             case .WaterReplenish:
-                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:156*height_screen/667)
+                delegate.WhitchCenterViewIsHiden!(MainIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:156*k_height)
                 
             }
             

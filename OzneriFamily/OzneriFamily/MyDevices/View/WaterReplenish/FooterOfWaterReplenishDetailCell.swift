@@ -99,7 +99,7 @@ class FooterOfWaterReplenishDetailCell: UITableViewCell,HeadOfWaterReplenishDeta
         }
         let tmpWeek = weekArray.object(forKey: "\(currentOrgan)") ?? [AnyObject]()
         let tmpMonth = monthArray.object(forKey: "\(currentOrgan)") ?? [AnyObject]()
-        let tmpArr =  dateType==0 ? tmpWeek:tmpMonth
+        _ =  dateType==0 ? tmpWeek:tmpMonth
         
 //        let lineView=waterReplenishChartView_EN()
 //        lineView.drawLineView(Int32(dateType), dataArr: tmpArr as! [AnyObject])

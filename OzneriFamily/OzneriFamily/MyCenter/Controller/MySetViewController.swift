@@ -15,7 +15,7 @@ class MySetViewController: UIViewController {
     //退出登录
     @IBAction func logOutAction(_ sender: AnyObject) {
         
-        appDelegate.LoginOut()
+        LoginManager.instance.LoginOut()
         
     }
     
@@ -45,7 +45,7 @@ class MySetViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
-        appDelegate.mainTabBarController?.setTabBarHidden(true, animated: false)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(true, animated: false)
 
     }
     

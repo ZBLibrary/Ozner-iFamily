@@ -18,7 +18,7 @@ extension UINavigationController{
         self.navigationBar.isTranslucent=false
         //let tmpFont=UIFont.init(name: ".SFUIText-Light", size: 17)
         //self.navigationBar.titleTextAttributes = [NSFontAttributeName:tmpFont]
-        appDelegate.mainTabBarController?.setTabBarHidden(true, animated: false)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(true, animated: false)
         switch style {
         case .CupTDSDetail:
             self.navigationBar .setBackgroundImage(UIImage(named: "navBgOfCupTdsDetail"), for: UIBarMetrics.default)

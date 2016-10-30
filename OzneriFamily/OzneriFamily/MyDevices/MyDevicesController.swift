@@ -68,7 +68,7 @@ class MyDevicesController: UIViewController {
         super.viewWillAppear(animated)
         deviceViewContainer.SetDeviceAndView()
         self.navigationController?.navigationBar.isHidden=true
-        appDelegate.mainTabBarController?.setTabBarHidden(false, animated: false)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.addLeftGestures()
         

@@ -72,9 +72,6 @@ class SelectDeviceTableController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         deviceType = [OznerDeviceType.Cup,.Tap,.TDSPan,.Water_Wifi,.Air_Blue,.Air_Wifi,.WaterReplenish][indexPath.row]
-//        let destainController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "PairingControllerID") as! PairingController
-//        destainController.deviceTypeValue = deviceType!.rawValue
-//        print(destainController.deviceTypeValue)
         self.performSegue(withIdentifier: "pushPairID", sender: nil)
 
     }
@@ -123,7 +120,7 @@ class SelectDeviceTableController: UITableViewController {
 //        
         let pair = segue.destination as! PairingController
         
-        pair.deviceTypeValue = self.deviceType!
+        pair.currDeviceType = (self.deviceType?.rawValue)!
     }
     
 

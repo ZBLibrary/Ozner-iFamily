@@ -54,8 +54,8 @@
 @property (nonatomic, weak) id<OznerManagerDelegate> delegate;
 
 /*!
- @function setOwner
- @discussion 设置当前运行账号
+ function setOwner
+ discussion 设置当前运行账号
  */
 -(void)setOwner:(NSString*)owner;
 /*!

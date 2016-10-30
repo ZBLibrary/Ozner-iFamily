@@ -46,7 +46,7 @@ class MainTabBarController: RDVTabBarController {
             item.setFinishedSelectedImage(UIImage(named: "bar_select_\(index)"), withFinishedUnselectedImage: UIImage(named: "bar_normal_\(index)"))
             index+=1
         }
-        CustomTabBarIsHidden = !LoginManager.isChinese_Simplified
+        CustomTabBarIsHidden = !(LoginManager.instance.currentLoginType==OznerLoginType.ByPhoneNumber)
         setTabBarHidden(CustomTabBarIsHidden, animated: false)
     }
     private var CustomTabBarIsHidden:Bool!//系统tabbar是不是隐藏的

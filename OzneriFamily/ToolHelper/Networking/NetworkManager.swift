@@ -101,7 +101,7 @@ class NetworkManager:NSObject{
             success?(jsonData)
             CoreDataManager.defaultManager.saveChanges()
         case state == TokenFailed:
-            appDelegate.LoginOut()//token失效，返回到登录界面重新登录
+            LoginManager.instance.LoginOut()//token失效，返回到登录界面重新登录
         default:
             var userInfo = [
                 NSLocalizedDescriptionKey: getErrorState(state: state),

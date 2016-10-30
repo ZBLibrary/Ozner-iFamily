@@ -96,7 +96,7 @@ public class User: BaseDataObject {
             },
                        failure: failure)
     }
-    //获取用户信息
+    //获取用户信息1
     class func GetUserInfo(){
         self.fetchData(key: "GetUserInfo", parameters: [:], success: { (json) in
             let userInfo=json["userinfo"].dictionary
@@ -104,10 +104,44 @@ public class User: BaseDataObject {
             User.currentUser?.score=userInfo?["Score"]?.stringValue
             User.currentUser?.headimage=userInfo?["Icon"]?.stringValue
             User.currentUser?.gradename=userInfo?["GradeName"]?.stringValue
-            print(User.currentUser)
         }) { (error) in
         }
     }
+    //获取用户信息1
+//    class func GetUserInfo(){
+//        self.fetchData(key: "GetUserNickImage", parameters: ["jsonmobile":User.currentUser?.phone!], success: { (json) in
+//            let userInfo=json["data"].dictionary
+//            User.currentUser?.username=userInfo?["nickname"]?.stringValue
+//            User.currentUser?.score=userInfo?["Score"]?.stringValue
+//            User.currentUser?.headimage=userInfo?["headimg"]?.stringValue
+//            User.currentUser?.gradename=userInfo?["GradeName"]?.stringValue.replacingOccurrences(of: "会员", with: "代理会员")
+////            if (User.currentUser?.headimage?.characters.count)!<5 || !(User.currentUser?.headimage?.contains("http"))!
+////            {
+////                User.currentUser?.headimage=""
+////            }
+//            print(userInfo)
+//            print(userInfo)
+//        }) { (error) in
+//        }
+//    }
+//    //获取用户信息2   "15016161314,1561212311,123423342"
+//    class func GetUserNickImage(phones:String,success: @escaping (([User]) -> Void), failure: @escaping ((Error) -> Void)){
+//        self.fetchData(key: "GetUserNickImage", parameters: ["jsonmobile":phones], success: { (json) in
+//            var userArr=[User]()
+//            for userInfo in json.array!
+//            {
+//                let tmpUser=User()
+//                tmpUser.username=userInfo?["Nickname"]?.stringValue
+//                tmpUser.score=userInfo?["Score"]?.stringValue
+//                tmpUser.headimage=userInfo?["Icon"]?.stringValue
+//                tmpUser.gradename=userInfo?["GradeName"]?.stringValue
+//                userArr.append(tmpUser)
+//            }
+//            success(userArr)
+//            
+//        }) { (error) in
+//        }
+//    }
     //更新用户信息
     class func UpdateUserInfo(){
         self.fetchData(key: "UpdateUserInfo", parameters: ["device_id":BPush.getChannelId()], success: { (json) in
