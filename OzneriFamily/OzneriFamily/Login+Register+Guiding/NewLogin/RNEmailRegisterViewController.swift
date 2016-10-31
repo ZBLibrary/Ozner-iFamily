@@ -167,18 +167,21 @@ extension  RNEmailRegisterViewController: UITextFieldDelegate{
         guard !(emailTextField.text?.isEmpty)! else{
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  "Email cannot be empty")
+           _ = alertView.addButton("OK", action: {})
+           _ = alertView.showError("Error Tips", subTitle:  "Email cannot be empty")
+            
+//            let alertViewResponder: SCLAlertViewResponder = SCLAlertView().showError("Error Tips", subTitle: "Email cannot be empty")
+            
             
             return false
         }
         
         guard isValidateEmail(email: emailTextField.text!) else{
-            
+ 
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  "Email address format is not correct")
-            
+          _ =  alertView.addButton("OK", action: {})
+          _ =  alertView.showError("Error Tips", subTitle:  "Email address format is not correct")
+          
             return false
         }
         
@@ -191,8 +194,8 @@ extension  RNEmailRegisterViewController: UITextFieldDelegate{
         guard !(codeTextField.text?.isEmpty)! else{
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  " Security code cannot be empty")
+         _ =   alertView.addButton("OK", action: {})
+         _ =   alertView.showError("Error Tips", subTitle:  " Security code cannot be empty")
             
             return false
         }
@@ -200,8 +203,8 @@ extension  RNEmailRegisterViewController: UITextFieldDelegate{
         guard !(pswTextField.text?.isEmpty)! else{
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  "Password connot be empty")
+         _ =   alertView.addButton("OK", action: {})
+         _ =   alertView.showError("Error Tips", subTitle:  "Password connot be empty")
             
             return false
         }
@@ -209,8 +212,8 @@ extension  RNEmailRegisterViewController: UITextFieldDelegate{
         guard !(cPswTextField.text?.isEmpty)! else{
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle: "Confirm Password connot be empty")
+         _ =   alertView.addButton("OK", action: {})
+         _ =   alertView.showError("Error Tips", subTitle: "Confirm Password connot be empty")
             
             return false
         }
@@ -219,8 +222,8 @@ extension  RNEmailRegisterViewController: UITextFieldDelegate{
         guard (pswTextField.text! as NSString).isEqual(to: cPswTextField.text!) else {
          
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  "Two different passwords")
+         _ =   alertView.addButton("OK", action: {})
+         _ =   alertView.showError("Error Tips", subTitle:  "Two different passwords")
             
             return false
         }

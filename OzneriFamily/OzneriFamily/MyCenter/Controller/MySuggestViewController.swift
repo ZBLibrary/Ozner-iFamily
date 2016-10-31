@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class MySuggestViewController: UIViewController,UITextViewDelegate {
 
     @IBOutlet var messCount: UILabel!
@@ -56,53 +56,35 @@ class MySuggestViewController: UIViewController,UITextViewDelegate {
     }
     func sendsuggest(msg:String)
     {
-//        if msg==""
-//        {return}
+        if msg==""
+        {return}
 //        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 //        let manager = AFHTTPRequestOperationManager()
 //        let url = StarURL_New+"/OznerServer/SubmitOpinion"
-//        let params:NSDictionary = ["usertoken":get_UserToken(),"message":msg]
-//        manager.POST(url,
-//            parameters: params,
-//            success: { (operation: AFHTTPRequestOperation!,
-//                responseObject: AnyObject!) in
-//                MBProgressHUD.hideHUDForView(self.view, animated: true)
-//                print(responseObject)
-//                let isSuccess=responseObject.objectForKey("state") as! Int
-//                if isSuccess > 0
-//                {
-//                    let successalert = UIAlertView(title: "", message:loadLanguage("意见提交成功"), delegate: self, cancelButtonTitle: "ok")
-//                    successalert.show()
-//                    self.navigationController?.popViewControllerAnimated(true)
-//                }
-//                else
-//                {
-//                    let successalert = UIAlertView(title: "", message:loadLanguage("意见提交失败"), delegate: self, cancelButtonTitle: "ok")
-//                    successalert.show()
-//                }
-//                
-//            },
-//            failure: { (operation: AFHTTPRequestOperation!,
-//                error: NSError!) in
-//                MBProgressHUD.hideHUDForView(self.view, animated: true)
-//                
-//        })
-//        let werbservice = UserInfoActionWerbService()
-//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//        werbservice.submitOpition(msg, returnBlock:{ (state:StatusManager!) -> Void in
-//            MBProgressHUD.hideHUDForView(self.view, animated: true)
-//            if state.networkStatus == kSuccessStatus
-//            {
-//                let successalert = UIAlertView(title: "提示", message: "意见提交成功", delegate: self, cancelButtonTitle: "ok")
-//                successalert.show()
-//                self.navigationController?.popViewControllerAnimated(true)
-//            }
-//            else
-//            {
-//                let successalert = UIAlertView(title: "提示", message: "意见提交失败，请检查网络", delegate: self, cancelButtonTitle: "ok")
-//                successalert.show()
-//            }
-//        })
+        let params:NSDictionary = ["message":msg]
+        SVProgressHUD.show()
+        User.commitSugesstion(params, { (responseObject) in
+           
+            let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0
+            SVProgressHUD.dismiss()
+            if isSuccess > 0{
+                
+               let alertView=SCLAlertView()
+                _ = alertView.addButton(loadLanguage("确定"), action: {})
+               _ = alertView.showSuccess(loadLanguage("温馨提示"), subTitle: loadLanguage("意见已成功提交"))
+                
+            } else {
+                let alertView = SCLAlertView()
+                _ = alertView.addButton(loadLanguage("确定"), action: {})
+                _ = alertView.showError(loadLanguage("温馨提示"), subTitle: loadLanguage("意见提交失败"))
+            }
+            
+            }) { (error) in
+                SVProgressHUD.dismiss()
+                let alertView = SCLAlertView()
+                _ = alertView.addButton(loadLanguage("确定"), action: {})
+                _ = alertView.showError(loadLanguage("温馨提示"), subTitle: loadLanguage("意见提交失败"))
+            }
        
     }
     override func viewWillAppear(_ animated: Bool) {

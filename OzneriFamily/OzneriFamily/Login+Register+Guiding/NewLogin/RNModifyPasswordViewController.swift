@@ -158,8 +158,8 @@ extension  RNModifyPasswordViewController: UITextFieldDelegate{
         guard !(emailTextField.text?.isEmpty)! else{
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  "Email cannot be empty")
+         _ =   alertView.addButton("OK", action: {})
+         _ =   alertView.showError("Error Tips", subTitle:  "Email cannot be empty")
             
             return false
         }
@@ -167,8 +167,8 @@ extension  RNModifyPasswordViewController: UITextFieldDelegate{
         guard isValidateEmail(email: emailTextField.text!) else{
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  "Email address format is not correct")
+         _ =   alertView.addButton("OK", action: {})
+         _ =   alertView.showError("Error Tips", subTitle:  "Email address format is not correct")
             
             return false
         }
@@ -182,8 +182,8 @@ extension  RNModifyPasswordViewController: UITextFieldDelegate{
         guard !(codeTextField.text?.isEmpty)! else{
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  " Security code cannot be empty")
+         _ =   alertView.addButton("OK", action: {})
+         _ =   alertView.showError("Error Tips", subTitle:  " Security code cannot be empty")
             
             return false
         }
@@ -191,8 +191,8 @@ extension  RNModifyPasswordViewController: UITextFieldDelegate{
         guard !(pswTextField.text?.isEmpty)! else{
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  "New Password connot be empty")
+         _ =   alertView.addButton("OK", action: {})
+         _ =   alertView.showError("Error Tips", subTitle:  "New Password connot be empty")
             
             return false
         }
@@ -200,8 +200,8 @@ extension  RNModifyPasswordViewController: UITextFieldDelegate{
         guard !(cPswTextField.text?.isEmpty)! else{
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle: "Confirm Password connot be empty")
+          _ =  alertView.addButton("OK", action: {})
+          _ =  alertView.showError("Error Tips", subTitle: "Confirm Password connot be empty")
             
             return false
         }
@@ -210,8 +210,8 @@ extension  RNModifyPasswordViewController: UITextFieldDelegate{
         guard (pswTextField.text! as NSString).isEqual(to: cPswTextField.text!) else {
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  "Two different passwords")
+          _ =  alertView.addButton("OK", action: {})
+          _ =  alertView.showError("Error Tips", subTitle:  "Two different passwords")
             
             return false
         }
@@ -261,16 +261,16 @@ extension  RNModifyPasswordViewController: UITextFieldDelegate{
         
         User.ResetPasswordByEmail(params, { 
                                     let alertView=SCLAlertView()
-                                    alertView.addButton("OK", action: { [weak self] in
+                                  _ =  alertView.addButton("OK", action: { [weak self] in
             
                                         self!.dismiss(animated: false, completion: nil)
                                         })
-                                    alertView.showSuccess("Tips", subTitle: "Modify success, return to login")
+                                  _ =  alertView.showSuccess("Tips", subTitle: "Modify success, return to login")
             }) { (error) in
                 
                                         let alertView=SCLAlertView()
-                                        alertView.addButton("OK", action: {})
-                                        alertView.showError("Error Tips", subTitle: error.localizedDescription)
+                                   _ =     alertView.addButton("OK", action: {})
+                                    _ =    alertView.showError("Error Tips", subTitle: error.localizedDescription)
         }
         
     }
@@ -299,13 +299,13 @@ extension  RNModifyPasswordViewController{
             
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: { [weak self] in
+         _ =   alertView.addButton("OK", action: { [weak self] in
                 
                 self!.remainingSeconds = 60
                 self!.isCounting = true
                 
                 })
-            alertView.showSuccess("Tips", subTitle: "Get verification code is successful, open the mailbox access security code")
+         _ =   alertView.showSuccess("Tips", subTitle: "Get verification code is successful, open the mailbox access security code")
             
             
         }) { (error) in

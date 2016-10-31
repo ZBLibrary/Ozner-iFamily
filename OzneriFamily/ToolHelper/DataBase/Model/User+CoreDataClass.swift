@@ -8,10 +8,14 @@
 
 import Foundation
 import CoreData
-//import SwiftyJSON
+import SwiftyJSON
 let UserDefaultsUserTokenKey = "usertoken"
 let UserDefaultsUserIDKey = "userid"
 let CurrentUserDidChangeNotificationName = "CurrentUserDidChangeNotificationName"
+
+typealias successJsonBlock = (JSON) -> Void
+typealias successVoidBlock = ()->Void
+typealias failureBlock = (_ error:Error?)->Void
 
 public class User: BaseDataObject {
 
@@ -174,6 +178,19 @@ public class User: BaseDataObject {
         
     }
     
+    
+    //我
+    //提意见
+    class func commitSugesstion(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        
+        self.fetchData(key: "SubmitOpinion", parameters: params, success: { (data) in
+            
+            sucess(data)
+            }) { (error) in
+            faliure(error)
+        }
+        
+    }
     
     
 }

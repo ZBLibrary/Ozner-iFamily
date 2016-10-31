@@ -150,7 +150,7 @@ extension  RNEmailLoginViewController: UITextFieldDelegate{
             
             let alertView=SCLAlertView()
             
-            alertView.showError("Error Tips", subTitle:  "Email cannot be empty")
+          _ =  alertView.showError("Error Tips", subTitle:  "Email cannot be empty")
 //            alertView.addButton("OK", action: {})
 
             return false
@@ -160,7 +160,7 @@ extension  RNEmailLoginViewController: UITextFieldDelegate{
             
             let alertView=SCLAlertView()
 //            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  "Email address format is not correct")
+         _ =   alertView.showError("Error Tips", subTitle:  "Email address format is not correct")
         
             return false
         }
@@ -168,9 +168,8 @@ extension  RNEmailLoginViewController: UITextFieldDelegate{
         guard !(passwordTextfield.text?.isEmpty)! else{
             
             let alertView=SCLAlertView()
-            alertView.addButton("OK", action: {})
-            alertView.showError("Error Tips", subTitle:  "Password connot be empty")
-
+          _ =  alertView.addButton("OK", action: {})
+          _ =  alertView.showError("Error Tips", subTitle:  "Password connot be empty")
             
             return false
         }

@@ -119,7 +119,7 @@ class MyCenterController: UIViewController {
             
         case .ByEmail:
             dataArr = NSMutableArray(capacity: 3)
-             let one = MyInfoStrcut.init(imageName: "My_share", nameLb: loadLanguage("我的设备"))
+            let one = MyInfoStrcut.init(imageName: "My_share", nameLb: loadLanguage("我的设备"))
             let six = MyInfoStrcut.init(imageName: "My_suggest", nameLb: loadLanguage("我要提意见"))
             let seven = MyInfoStrcut.init(imageName: "My_set", nameLb: loadLanguage("设置"))
             dataArr!.add(one)
