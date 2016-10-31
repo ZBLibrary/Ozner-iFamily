@@ -58,11 +58,9 @@ class MySuggestViewController: UIViewController,UITextViewDelegate {
     {
         if msg==""
         {return}
-//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//        let manager = AFHTTPRequestOperationManager()
-//        let url = StarURL_New+"/OznerServer/SubmitOpinion"
         let params:NSDictionary = ["message":msg]
         SVProgressHUD.show()
+        weak var weakSelf = self
         User.commitSugesstion(params, { (responseObject) in
            
             let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0

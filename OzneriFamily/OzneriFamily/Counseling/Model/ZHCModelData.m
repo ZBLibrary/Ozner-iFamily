@@ -13,8 +13,8 @@
 #import "ZHCLocationMediaItem.h"
 #import "ZHCVideoMediaItem.h"
 #import "ZHCAudioMediaItem.h"
-
-
+#import "OzneriFamily-Swift.h"
+#import <WebImage/WebImage.h>
 
 @implementation ZHCModelData
 - (instancetype)init
@@ -24,7 +24,7 @@
         self.messages = [NSMutableArray new];
         [self loadMessages];
         
- //       [self addPhotoMediaMessage];
+//        [self addPhotoMediaMessage];
 //        [self addVideoMediaMessage];
 //        [self addAudioMediaMessage];
     }
@@ -41,12 +41,11 @@
      *  If you are not using avatars, ignore this.
      */
     ZHCMessagesAvatarImageFactory *avatarFactory = [[ZHCMessagesAvatarImageFactory alloc] initWithDiameter:kZHCMessagesTableViewCellAvatarSizeDefault];
-    ZHCMessagesAvatarImage *cookImage = [avatarFactory avatarImageWithImage:[UIImage imageNamed:@"HaoZeKeFuImage"]];
-    
-    ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:[UIImage imageNamed:@"demo_avatar_jobs"]];
-    
+    //拿到当前头像
+       ZHCMessagesAvatarImage *cookImage = [avatarFactory avatarImageWithImage:[UIImage imageNamed:@"HaoZeKeFuImage"]];
+    ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:[UIImage sd_imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:User.currentUser.headimage]]]];
     self.avatars = @{kZHCDemoAvatarIdCook : cookImage,
-                      kZHCDemoAvatarIdJobs : jobsImage};
+                             kZHCDemoAvatarIdJobs : jobsImage};
     
     
     self.users = @{ kZHCDemoAvatarIdJobs : kZHCDemoAvatarDisplayNameJobs,
@@ -92,6 +91,7 @@
     
 
 }
+
 
 
 -(void)addPhotoMediaMessage

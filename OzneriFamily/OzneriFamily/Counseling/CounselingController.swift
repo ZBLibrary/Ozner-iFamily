@@ -9,6 +9,23 @@
 import UIKit
 import AFNetworking
 
+let appid_News = "hzapi"
+let appsecret_News = "8af0134asdffe12"
+
+let appidandsecret = "&appid=hzapi&appsecret=8af0134asdffe12"
+
+let NEWS_URL = "http://dkf.ozner.net/api"
+
+let customerid_News = 0
+let ChannelID_News = 4
+let ct_id = 0
+
+var acsstoken_News = ""
+var sign_News = ""
+public enum ChatHttpMethod {
+    case GET
+    case POST
+}
 class CounselingController: ZHCMessagesViewController {
 
     var demoData: ZHCModelData? {
@@ -32,6 +49,7 @@ class CounselingController: ZHCMessagesViewController {
            self.scrollToBottom(animated: true)
         }
 
+        User.GetAccesstoken()
     }
     
     // MARK: - ZHCMessagesTableViewDataSource
@@ -81,7 +99,11 @@ class CounselingController: ZHCMessagesViewController {
         let message = demoData?.messages.object(at: indexPath.row) as! ZHCMessage
         
         let ava = (self.demoData?.avatars as! [String:ZHCMessagesAvatarImage])[message.senderId]
-        
+        if ava != nil {
+            return ava
+        } else {
+            return nil
+        }
 //        return ZHCMessagesAvatarImage(avatarImage: UIImage(named:"demo_avatar_jobs"), highlightedImage: UIImage(named:"demo_avatar_jobs"), placeholderImage: UIImage(named:"demo_avatar_jobs")!) /
         return ava
         

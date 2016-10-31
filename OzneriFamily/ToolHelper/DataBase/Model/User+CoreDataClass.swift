@@ -178,6 +178,75 @@ public class User: BaseDataObject {
         
     }
     
+    //咨询
+    //获取聊天Token
+    
+    class func GetAccesstoken() {
+        
+        var getpar:String = "appid=hzapi"
+        getpar = getpar + "&appsecret=8af0134asdffe12"
+        let sign_News = getpar.MD5
+        let urlStr = "http://dkf.ozner.net/api" + "/token.ashx"
+        
+        let params:NSDictionary = ["appid":"hzapi","appsecret":"8af0134asdffe12","sign":sign_News!]
+        
+        self.chatData(urlStr,method: .GET, parameters: params, success: { (json) in
+            acsstoken_News = json.dictionary?["result"]?.dictionaryValue["access_token"]?.stringValue ?? ""
+            self.GetUserInfoFunc()
+            }) { (error) in
+            print(error)
+        }
+        
+    }
+    //获取用户信息
+    class func GetUserInfoFunc() {
+        
+        let tmpPhone = User.currentUser?.phone
+        guard tmpPhone != nil else {
+            let alertView = SCLAlertView()
+            
+            _ = alertView.addButton(loadLanguage("确定"), action: {})
+            _ = alertView.showInfo(loadLanguage("温馨提示"), subTitle: loadLanguage("请登录"))
+            return
+        }
+        
+        sign_News = "access_token=" + acsstoken_News
+        sign_News += appidandsecret
+        
+        var urlStr = NEWS_URL + "/member.ashx?access_token="
+        urlStr += acsstoken_News + "&sign=" + sign_News.MD5
+        
+        let params:NSDictionary = ["mobile":tmpPhone!]
+        
+        let mansger = AFHTTPSessionManager()
+        mansger.requestSerializer = AFHTTPRequestSerializer.init()
+        
+        mansger.post(urlStr, parameters: params, constructingBodyWith: { (_) in
+            
+            }, progress: { (_) in
+                
+            }, success: { (task, data) in
+                print(data)
+            }) { (task, error) in
+                print(error)
+        }
+        
+        
+        self.chatData(urlStr,method:.POST,parameters: params, success: { (data) in
+            print(data)
+            }) { (error) in
+                print(error)
+        }
+        
+        
+    }
+    //获取历史信息接口
+    class  func GetHistoryRecord() {
+    
+    let getUrl = "http://dkf.ozner.net/api" + "/historyrecord.ashx?access_token=" + ""
+    
+    
+    }
     
     //我
     //提意见

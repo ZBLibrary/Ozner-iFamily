@@ -29,3 +29,4 @@
 #import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
 
+#import <CommonCrypto/CommonDigest.h>
