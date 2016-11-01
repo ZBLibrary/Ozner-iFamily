@@ -181,6 +181,22 @@ class NetworkManager:NSObject{
     var URL: [String: JSON]? {
         return NetworkConfig["URL"].dictionary
     }
-    
+   
+    func UrlNameWithRoot(_ UrlName:String)->String
+    {
+        var str = (URL!["UrlRoot"]?.stringValue)!
+        str+="?mobile="+(User.currentUser?.phone)!
+        str+="&UserTalkCode="+(User.currentUser?.usertoken!)!
+        str+="&Language=zh&Area=zh&goUrl="+(URL![UrlName]?.stringValue)!
+        return str
+    }
+    func UrlWithRoot(_ Url:String)->String
+    {
+        var str = (URL!["UrlRoot"]?.stringValue)!
+        str+="?mobile="+(User.currentUser?.phone)!
+        str+="&UserTalkCode="+(User.currentUser?.usertoken!)!
+        str+="&Language=zh&Area=zh&goUrl="+Url
+        return str
+    }
     
 }

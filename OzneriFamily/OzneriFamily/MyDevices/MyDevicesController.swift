@@ -7,13 +7,13 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class MyDevicesController: UIViewController {
 
     @IBOutlet var deviceNameLabel: UILabel!//设备名称
     @IBOutlet var deviceConnectStateLabel: UILabel!//设备连接状态
     @IBOutlet var deviceViewContainer: DeviceViewContainer!//自定义视图容器，加载设备自定义视图
-    @IBOutlet var centerViewContainer: UIView!//中部视图容器（包括电量，滤芯状态，设置）,主要用于centerViewContainer是否隐藏
+    //@IBOutlet var centerViewContainer: UIView!//中部视图容器（包括电量，滤芯状态，设置）,主要用于centerViewContainer是否隐藏
     @IBOutlet var bottomOfCenterViewContainer: NSLayoutConstraint!//调整centerViewContainer的距离底部位置
     @IBOutlet var batteryViewContainer: UIView!//电量容器,作用隐藏与否
     @IBOutlet var batteryImg: UIImageView!
@@ -23,26 +23,39 @@ class MyDevicesController: UIViewController {
     @IBOutlet var filterImg: UIImageView!
     @IBOutlet var filterValueLabel: UILabel!
     @IBOutlet var filterStateLabel: UILabel!
-    var dsdsasd = true
+    @IBOutlet var settingButton: UIButton!//设置
+    
     
     @IBAction func lvXinClick(_ sender: AnyObject) {
-         self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
+        let device=OznerManager.instance().getDevice(LoginManager.instance.currentDeviceIdentifier)
+        switch  (device?.type)! {
+        case OznerDeviceType.Tap.rawValue,OznerDeviceType.Water_Wifi.rawValue:
+           self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
+        case OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.Air_Wifi.rawValue:
+            self.performSegue(withIdentifier: "showAirLvXin", sender: nil)
+        default:
+            break
+        }
+
     }
     @IBAction func toDeviceSettingClick(_ sender: AnyObject) {//点击设置按钮事件
-        
-        self.performSegue(withIdentifier: "showCupSetting", sender: nil)
-//        let device=OznerManager.instance().getDevice(LoginManager.currentDeviceIdentifier)
-//        switch  OznerDeviceType(rawValue: (device?.type)!)! {
-//        case OznerDeviceType.Cup:
-//            self.performSegue(withIdentifier: "showCupSetting", sender: nil)
-//        case .Tap:
-//            self.performSegue(withIdentifier: "showTapSetting", sender: nil)
-//        default:
-//            self.performSegue(withIdentifier: "showCupSetting", sender: nil)
-        //}
-        
-        
-        
+        let device=OznerManager.instance().getDevice(LoginManager.instance.currentDeviceIdentifier)
+        switch  (device?.type)! {
+        case OznerDeviceType.Cup.rawValue:
+            self.performSegue(withIdentifier: "showCupSetting", sender: nil)
+        case OznerDeviceType.Tap.rawValue:
+            self.performSegue(withIdentifier: "showTapSetting", sender: nil)
+        case OznerDeviceType.TDSPan.rawValue:
+            self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
+        case OznerDeviceType.Water_Wifi.rawValue:
+            self.performSegue(withIdentifier: "showWaterPurfierSetting", sender: nil)
+        case OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.Air_Wifi.rawValue:
+            self.performSegue(withIdentifier: "showAirSetting", sender: nil)
+        case OznerDeviceType.WaterReplenish.rawValue:
+            self.performSegue(withIdentifier: "showWaterReplenishSetting", sender: nil)
+        default:
+            break
+        }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮
         self.toggleLeft()
@@ -52,7 +65,6 @@ class MyDevicesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceViewContainer.delegate=self
-        print(deviceNameLabel.font)
         // Do any additional setup after loading the view.
     }
 
@@ -79,7 +91,16 @@ class MyDevicesController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        switch segue.identifier! {
+        case "showBuyLvXin"://AboutDeviceController
+            let aboutVC = segue.destination as! AboutDeviceController
+            aboutVC.title=JSON(arrayLiteral: sender)["title"].stringValue
+            aboutVC.setLoadContent(content: JSON(arrayLiteral: sender)["url"].stringValue, isUrl: true)
+        case "showCupSetting","showTapSetting":
+            break
+        default:
+            break
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
@@ -102,8 +123,8 @@ extension MyDevicesController : DeviceViewContainerDelegate{
     func DeviceConnectStateChange(stateDes: String) {
         deviceConnectStateLabel.text=stateDes
     }
-    func WhitchCenterViewIsHiden(MainIsHiden:Bool,BateryIsHiden:Bool,FilterIsHiden:Bool,BottomValue:CGFloat){
-        centerViewContainer.isHidden=MainIsHiden
+    func WhitchCenterViewIsHiden(SettingIsHiden:Bool,BateryIsHiden:Bool,FilterIsHiden:Bool,BottomValue:CGFloat){
+        settingButton.isHidden=SettingIsHiden
         batteryViewContainer.isHidden=BateryIsHiden
         filterViewContainer.isHidden=FilterIsHiden
         bottomOfCenterViewContainer.constant=BottomValue
@@ -125,8 +146,9 @@ extension MyDevicesController : DeviceViewContainerDelegate{
             batteryValueLabel.text="\(value)%"
         case value>70:
             batteryImg.image=UIImage(named: "dian_liang_100")
-            batteryValueLabel.text="\(value)%"
+            batteryValueLabel.text="\(min(value, 100))%"
         default:
+            
             break
         }
     }
@@ -149,15 +171,15 @@ extension MyDevicesController : DeviceViewContainerDelegate{
             filterValueLabel.text="\(value)%"
         default:
             filterImg.image=UIImage(named: "airLvxinState4")
-            filterValueLabel.text="\(value)%"
+            filterValueLabel.text="\(min(value, 100))%"
             break
         }
         filterStateLabel.text = value<30 ? "请及时更换滤芯":"滤芯状态"
     }//0-100，<0表示无
     
     //页面跳转
-    func DeviceViewPerformSegue(SegueID: String) {
-        self.performSegue(withIdentifier: SegueID, sender: nil)
+    func DeviceViewPerformSegue(SegueID: String,sender: Any?) {
+        self.performSegue(withIdentifier: SegueID, sender: sender)
     }
 }
 //侧滑控制器代理方法

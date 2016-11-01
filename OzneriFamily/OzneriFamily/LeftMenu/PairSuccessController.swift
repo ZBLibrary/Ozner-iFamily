@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Spring
+//import Spring
 import SnapKit
 
 class PairModle: NSObject {

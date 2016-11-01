@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-//import SwiftyJSON
+import SwiftyJSON
 let UserDefaultsUserTokenKey = "usertoken"
 let UserDefaultsUserIDKey = "userid"
 let CurrentUserDidChangeNotificationName = "CurrentUserDidChangeNotificationName"
@@ -147,8 +147,65 @@ public class User: BaseDataObject {
         self.fetchData(key: "UpdateUserInfo", parameters: ["device_id":BPush.getChannelId()], success: { (json) in
             User.GetUserInfo()
             }) { (error) in
-                print("")
+                
         }
     }
+    
+    //---------------------------设备------------------------------
+    //下载探头滤芯数据
+    class func FilterService(deviceID:String,success: @escaping ((_ usedDay:Int,_ starDate:Date) -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "FilterService", parameters: ["mac":deviceID], success: { (json) in
+            let timeStr=json["modifytime"].string!
+            let date=NSDate(string: timeStr, formatString: "yyyy-MM-dd HH:mm:ss") as Date
+            success(json["useday"].int!, date)
+        }, failure: failure)
+        
+    }
+
+    //净水器设备型号及功能，连接地址下载
+    class func GetMachineType(deviceID:String,success: @escaping ((_ ScanEnable:Bool,_ CoolEnable:Bool,_ HotEnable:Bool,_ MachineType:String,_ BuyUrl:String,_ AlertDays:Int) -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "GetMachineType", parameters: ["type":deviceID], success: { (json) in
+            let tmpData=json["data"] as JSON
+            success(
+                tmpData["boolshow"].bool!,
+                (tmpData["Attr"].string?.contains("cool:true"))!,
+                (tmpData["Attr"].string?.contains("hot:true"))!,
+                tmpData["MachineType"].string!,
+                tmpData["buylinkurl"].string!,
+                tmpData["days"].int!)
+            }, failure: failure)
+        
+    }
+    //净水器获取滤芯服务时间
+    class func GetMachineLifeOutTime(deviceID:String,success: @escaping ((_ usedDays:Int,_ stopDate:Date) -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "GetMachineLifeOutTime", parameters: ["mac":deviceID], success: { (json) in
+            let endStr=json["time"].stringValue
+            let nowStr=json["nowtime"].stringValue
+            if endStr==""||nowStr==""
+            {
+               success(0, NSDate().addingYears(1))
+                return
+            }
+            let endDate=NSDate(string: endStr, formatString: "yyyy/MM/dd HH:mm:ss")
+            let nowDate=NSDate(string: nowStr, formatString: "yyyy/MM/dd HH:mm:ss")
+            let tmpUseDays=365-((endDate?.timeIntervalSince1970)!-(nowDate?.timeIntervalSince1970)!)/(24*3600.0)
+            success(min(365, Int(tmpUseDays)), endDate as! Date)
+            }, failure: failure)
+        
+    }
+    //上传饮水量获取排名
+    class func VolumeSensor(deviceID:String,type:String,volume:Int,success: @escaping ((_ rank:Int) -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "VolumeSensor", parameters: ["mac":deviceID,"type":type,"volume":volume], success: { (json) in
+            success(json["state"].int!)
+            }, failure: failure)
+        
+    }
+    ////上传TDS获取排名
+    class func TDSSensor(deviceID:String,type:String,tds:Int,beforetds:Int,success: @escaping ((_ rank:Int,_ total:Int) -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "TDSSensor", parameters: ["mac":deviceID,"type":type,"tds":tds,"beforetds":beforetds], success: { (json) in
+            success(json["rank"].int!,json["total"].int!)
+            }, failure: failure)
+    }
+    
     
 }

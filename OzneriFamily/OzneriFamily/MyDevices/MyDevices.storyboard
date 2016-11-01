@@ -135,7 +135,7 @@
                                     <constraint firstItem="SJ5-9h-y8D" firstAttribute="width" secondItem="lB7-oh-d8a" secondAttribute="width" multiplier="62:375" id="x6V-Y4-d3t"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备正在连接中...." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvC-av-l96">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备已断开" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvC-av-l96">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.23136687280000001" green="0.53873193259999996" blue="0.95808607339999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -168,27 +168,29 @@
                         <outlet property="batteryValueLabel" destination="KDP-F2-LHx" id="Nh2-Be-oGY"/>
                         <outlet property="batteryViewContainer" destination="er2-gy-r2M" id="mAz-Do-VbY"/>
                         <outlet property="bottomOfCenterViewContainer" destination="hD5-Kj-HDm" id="402-8r-bSh"/>
-                        <outlet property="centerViewContainer" destination="lB7-oh-d8a" id="mZ6-Ji-0bS"/>
                         <outlet property="deviceConnectStateLabel" destination="cvC-av-l96" id="yxI-Uu-ywU"/>
                         <outlet property="deviceNameLabel" destination="EGq-1s-VFZ" id="9Ca-ec-69y"/>
                         <outlet property="deviceViewContainer" destination="tCG-qZ-itE" id="kbg-kX-1nW"/>
                         <outlet property="filterImg" destination="jcz-yX-TEH" id="saz-Jk-LRm"/>
-                        <outlet property="filterStateLabel" destination="xrd-qM-dlz" id="lKl-bC-mdF"/>
+                        <outlet property="filterStateLabel" destination="y2f-WS-jBh" id="4Yb-v5-zHQ"/>
                         <outlet property="filterValueLabel" destination="xrd-qM-dlz" id="LQn-dt-zxe"/>
                         <outlet property="filterViewContainer" destination="vjQ-dy-J3T" id="Bbd-tU-csk"/>
+                        <outlet property="settingButton" destination="SJ5-9h-y8D" id="771-kX-IWm"/>
                         <segue destination="XeD-QT-4f5" kind="show" identifier="showCupSetting" id="YHt-fn-kRb"/>
                         <segue destination="tcJ-Yi-bA2" kind="show" identifier="showCupDrinkingDetail" id="3bk-8h-2Qn"/>
                         <segue destination="8od-ad-L3q" kind="show" identifier="showCupTemperatureDetail" id="3ox-Xd-rj0"/>
                         <segue destination="VQJ-Lp-BC3" kind="show" identifier="showCupTDSDetail" id="BLj-OK-FDS"/>
                         <segue destination="SrH-4Z-1Vu" kind="show" identifier="showTapSetting" id="7xs-gk-PDu"/>
-                        <segue destination="0RJ-al-8HV" kind="show" id="x9h-Ga-LMn"/>
-                        <segue destination="hfS-yf-OMy" kind="show" id="lSj-Lr-tUD"/>
-                        <segue destination="XBD-wp-tdL" kind="show" id="kFB-5V-fC8"/>
+                        <segue destination="0RJ-al-8HV" kind="show" identifier="showWaterPurfierSetting" id="x9h-Ga-LMn"/>
+                        <segue destination="hfS-yf-OMy" kind="show" identifier="showAirSetting" id="lSj-Lr-tUD"/>
+                        <segue destination="XBD-wp-tdL" kind="show" identifier="showWaterReplenishSetting" id="kFB-5V-fC8"/>
                         <segue destination="f3R-LE-xjw" kind="show" identifier="toTapLvXin" id="7tZ-V6-b8L"/>
                         <segue destination="ivk-xY-aWD" kind="show" id="mMJ-zI-BRW"/>
-                        <segue destination="3Ak-V9-a2E" kind="show" id="GyX-76-o2e"/>
+                        <segue destination="3Ak-V9-a2E" kind="show" identifier="showAirLvXin" id="GyX-76-o2e"/>
                         <segue destination="Xci-YO-YQk" kind="show" id="NG7-lv-jtC"/>
                         <segue destination="hqs-RD-39H" kind="show" id="dEd-DO-D7Q"/>
+                        <segue destination="aGC-dU-WII" kind="show" identifier="showBuyLvXin" id="BXe-Ml-x0S"/>
+                        <segue destination="1E5-IJ-tIV" kind="show" identifier="showTDSPanSetting" id="VMN-X8-q8u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6B-00-A3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3265,7 +3267,7 @@
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="iTK-2k-wvw"/>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7y-hY-ABm">
                                                         <connections>
-                                                            <segue destination="aGC-dU-WII" kind="show" id="KVk-yG-abz"/>
+                                                            <segue destination="aGC-dU-WII" kind="show" identifier="showAboutDevice" id="KVk-yG-abz"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -3967,7 +3969,7 @@
                                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="898-Si-ZIh"/>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jS-me-bJY">
                                                                 <connections>
-                                                                    <segue destination="aGC-dU-WII" kind="show" id="vlV-TW-9kk"/>
+                                                                    <segue destination="aGC-dU-WII" kind="show" identifier="showAboutDevice" id="vlV-TW-9kk"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -4097,7 +4099,7 @@
         <!--我的净水器-->
         <scene sceneID="W0i-cX-zbN">
             <objects>
-                <viewController id="0RJ-al-8HV" customClass="TapSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0RJ-al-8HV" customClass="WaterPurfierSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7yj-VV-ez3"/>
                         <viewControllerLayoutGuide type="bottom" id="61P-Eo-FGl"/>
@@ -4171,7 +4173,7 @@
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="quC-S7-Guz"/>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-2l-pTa">
                                                         <connections>
-                                                            <segue destination="aGC-dU-WII" kind="show" id="Jfc-pm-W4h"/>
+                                                            <segue destination="aGC-dU-WII" kind="show" identifier="showAboutDevice" id="Jfc-pm-W4h"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -4247,12 +4249,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cmr-Gn-vLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9119" y="1204"/>
+            <point key="canvasLocation" x="10166" y="1200"/>
         </scene>
         <!--我的空气净化器-->
         <scene sceneID="CiE-L0-bah">
             <objects>
-                <viewController id="hfS-yf-OMy" customClass="TapSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hfS-yf-OMy" customClass="AirPurfierSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JwI-0o-HT1"/>
                         <viewControllerLayoutGuide type="bottom" id="NqW-BV-Q9d"/>
@@ -4326,7 +4328,7 @@
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="E0Y-FA-lSi"/>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t24-52-aUf">
                                                         <connections>
-                                                            <segue destination="aGC-dU-WII" kind="show" id="tej-Ey-GIl"/>
+                                                            <segue destination="aGC-dU-WII" kind="show" identifier="showCommonQestion" id="tej-Ey-GIl"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -4435,7 +4437,7 @@
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="4Oi-D1-mBN"/>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ne-Nj-Dfl">
                                                         <connections>
-                                                            <segue destination="aGC-dU-WII" kind="show" id="8lo-Qp-M2M"/>
+                                                            <segue destination="aGC-dU-WII" kind="show" identifier="showAboutDevice" id="8lo-Qp-M2M"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -4498,7 +4500,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yE6-Aw-KYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9847" y="1204"/>
+            <point key="canvasLocation" x="10895" y="1200"/>
         </scene>
         <!--设置设备名称和属性-->
         <scene sceneID="nNC-aI-QP3">
@@ -4653,7 +4655,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nf2-pb-t4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9119" y="2791"/>
+            <point key="canvasLocation" x="12226" y="3329"/>
         </scene>
         <!--关于设备-->
         <scene sceneID="eI2-qa-orI">
@@ -4688,12 +4690,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4M4-Rs-oNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8279" y="2791"/>
+            <point key="canvasLocation" x="9393" y="3604"/>
         </scene>
         <!--我的补水仪-->
         <scene sceneID="2v4-wA-gA6">
             <objects>
-                <viewController id="XBD-wp-tdL" customClass="TapSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XBD-wp-tdL" customClass="WaterReplenishSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nzp-Xm-ZEQ"/>
                         <viewControllerLayoutGuide type="bottom" id="Iyo-VT-Mhv"/>
@@ -4848,7 +4850,7 @@
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="M2C-d2-pmG"/>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFQ-Wh-IgO">
                                                         <connections>
-                                                            <segue destination="aGC-dU-WII" kind="show" id="C5x-Zg-Kwq"/>
+                                                            <segue destination="aGC-dU-WII" kind="show" identifier="showBuyWater" id="C5x-Zg-Kwq"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -4875,7 +4877,7 @@
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="zIh-VR-Ioy"/>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7I-Ax-OKG">
                                                         <connections>
-                                                            <segue destination="aGC-dU-WII" kind="show" id="uTu-U7-iUE"/>
+                                                            <segue destination="aGC-dU-WII" kind="show" identifier="showAboutDevice" id="uTu-U7-iUE"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -5010,7 +5012,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PET-gP-87D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10590" y="1204"/>
+            <point key="canvasLocation" x="11638" y="1200"/>
         </scene>
         <!--滤芯状态-->
         <scene sceneID="Zu8-x8-wJA">
@@ -5626,6 +5628,161 @@
             </objects>
             <point key="canvasLocation" x="3191" y="1545"/>
         </scene>
+        <!--我的TDS笔-->
+        <scene sceneID="E6R-hy-nqx">
+            <objects>
+                <viewController id="1E5-IJ-tIV" customClass="TDSPanSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4pJ-zf-jSN"/>
+                        <viewControllerLayoutGuide type="bottom" id="1K6-2E-4hk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L6R-eX-cWl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7aq-1R-b70">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hpg-gj-OFc">
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KB8-nj-wbB">
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Jo-wv-CRR">
+                                                        <color key="backgroundColor" red="0.87821859120000001" green="0.8823509812" blue="0.88637506960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="4hV-72-DH5"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的TDS笔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrS-du-MmD">
+                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="6mE-Pk-NjY"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的TDS笔(办公室)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztd-Vq-E3k">
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="127" id="VoS-iI-6rx"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="VoS-iI-6rx"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKD-U8-j8M">
+                                                        <connections>
+                                                            <segue destination="GRq-nX-7ST" kind="show" id="Gyv-IX-20O"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="MrS-du-MmD" firstAttribute="leading" secondItem="KB8-nj-wbB" secondAttribute="leading" constant="15" id="AvX-L9-Z18"/>
+                                                    <constraint firstAttribute="bottom" secondItem="9Jo-wv-CRR" secondAttribute="bottom" id="IHv-wS-dNm"/>
+                                                    <constraint firstItem="ztd-Vq-E3k" firstAttribute="centerY" secondItem="KB8-nj-wbB" secondAttribute="centerY" id="KYe-UA-mkr"/>
+                                                    <constraint firstItem="MrS-du-MmD" firstAttribute="centerY" secondItem="KB8-nj-wbB" secondAttribute="centerY" id="Sgp-gL-nt2"/>
+                                                    <constraint firstItem="aKD-U8-j8M" firstAttribute="top" secondItem="KB8-nj-wbB" secondAttribute="top" id="bUU-5n-gL5"/>
+                                                    <constraint firstItem="9Jo-wv-CRR" firstAttribute="leading" secondItem="KB8-nj-wbB" secondAttribute="leading" id="bty-KA-aGT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9Jo-wv-CRR" secondAttribute="trailing" id="dEl-nB-7Sy"/>
+                                                    <constraint firstItem="aKD-U8-j8M" firstAttribute="leading" secondItem="KB8-nj-wbB" secondAttribute="leading" id="foo-8r-M7k"/>
+                                                    <constraint firstItem="6mE-Pk-NjY" firstAttribute="leading" secondItem="ztd-Vq-E3k" secondAttribute="trailing" constant="10" id="kj5-n5-OMh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="aKD-U8-j8M" secondAttribute="trailing" id="kvh-hC-psf"/>
+                                                    <constraint firstAttribute="trailing" secondItem="6mE-Pk-NjY" secondAttribute="trailing" constant="15" id="q4k-by-xeA"/>
+                                                    <constraint firstAttribute="height" constant="48" id="tAI-0Y-iOB"/>
+                                                    <constraint firstItem="9Jo-wv-CRR" firstAttribute="top" secondItem="aKD-U8-j8M" secondAttribute="bottom" id="tdw-pD-NqN"/>
+                                                    <constraint firstItem="6mE-Pk-NjY" firstAttribute="centerY" secondItem="KB8-nj-wbB" secondAttribute="centerY" id="xRf-7t-I5W"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKs-Nn-XOl">
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于TDS笔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOb-Ek-iGI">
+                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="mJ7-5h-P6g"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id0-n7-D4Y">
+                                                        <connections>
+                                                            <segue destination="aGC-dU-WII" kind="show" identifier="showAboutDevice" id="uGt-BJ-6eU"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="UOb-Ek-iGI" firstAttribute="centerY" secondItem="aKs-Nn-XOl" secondAttribute="centerY" id="8hX-dE-5IZ"/>
+                                                    <constraint firstItem="UOb-Ek-iGI" firstAttribute="leading" secondItem="aKs-Nn-XOl" secondAttribute="leading" constant="15" id="G0O-Yx-1FL"/>
+                                                    <constraint firstItem="id0-n7-D4Y" firstAttribute="leading" secondItem="aKs-Nn-XOl" secondAttribute="leading" id="Lxj-O1-Won"/>
+                                                    <constraint firstAttribute="height" constant="48" id="XZS-IG-Evg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="id0-n7-D4Y" secondAttribute="trailing" id="Ygx-a2-god"/>
+                                                    <constraint firstItem="mJ7-5h-P6g" firstAttribute="centerY" secondItem="aKs-Nn-XOl" secondAttribute="centerY" id="dNm-dq-zNa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="mJ7-5h-P6g" secondAttribute="trailing" constant="15" id="i7Z-01-eD1"/>
+                                                    <constraint firstAttribute="bottom" secondItem="id0-n7-D4Y" secondAttribute="bottom" id="sbV-KV-Svd"/>
+                                                    <constraint firstItem="id0-n7-D4Y" firstAttribute="top" secondItem="aKs-Nn-XOl" secondAttribute="top" id="xO1-73-YXX"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIv-dN-47f">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="N4A-6u-jVO"/>
+                                                    <constraint firstAttribute="width" constant="140" id="QUO-r8-4bp"/>
+                                                </constraints>
+                                                <state key="normal" title="删除此设备">
+                                                    <color key="titleColor" red="0.9425037503" green="0.38787820940000001" blue="0.37931457159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                                        <color key="value" red="0.9425037503" green="0.38787820940000001" blue="0.37931457159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.93706661459999996" green="0.93679302929999997" blue="0.96569913630000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="aKs-Nn-XOl" firstAttribute="top" secondItem="KB8-nj-wbB" secondAttribute="bottom" constant="15" id="J9x-lN-qQf"/>
+                                            <constraint firstAttribute="trailing" secondItem="KB8-nj-wbB" secondAttribute="trailing" id="U2X-Je-Dvp"/>
+                                            <constraint firstItem="KB8-nj-wbB" firstAttribute="leading" secondItem="Hpg-gj-OFc" secondAttribute="leading" id="VAv-10-yWe"/>
+                                            <constraint firstAttribute="trailing" secondItem="aKs-Nn-XOl" secondAttribute="trailing" id="aDJ-ZQ-fDB"/>
+                                            <constraint firstItem="kIv-dN-47f" firstAttribute="top" secondItem="aKs-Nn-XOl" secondAttribute="bottom" constant="25" id="aSO-nW-rQp"/>
+                                            <constraint firstItem="kIv-dN-47f" firstAttribute="centerX" secondItem="Hpg-gj-OFc" secondAttribute="centerX" id="dyx-2d-d9v"/>
+                                            <constraint firstItem="KB8-nj-wbB" firstAttribute="top" secondItem="Hpg-gj-OFc" secondAttribute="top" constant="15" id="ehb-M4-g6S"/>
+                                            <constraint firstAttribute="height" constant="400" id="oKD-Vn-vBS"/>
+                                            <constraint firstItem="aKs-Nn-XOl" firstAttribute="leading" secondItem="Hpg-gj-OFc" secondAttribute="leading" id="q1M-no-wWw"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Hpg-gj-OFc" secondAttribute="bottom" id="HMz-yJ-PNa"/>
+                                    <constraint firstItem="Hpg-gj-OFc" firstAttribute="centerX" secondItem="7aq-1R-b70" secondAttribute="centerX" id="Rhv-pF-XMV"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hpg-gj-OFc" secondAttribute="trailing" id="lJj-fe-vKo"/>
+                                    <constraint firstItem="Hpg-gj-OFc" firstAttribute="leading" secondItem="7aq-1R-b70" secondAttribute="leading" id="wc6-PO-V1D"/>
+                                    <constraint firstItem="Hpg-gj-OFc" firstAttribute="top" secondItem="7aq-1R-b70" secondAttribute="top" id="wnO-c7-Ynj"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93706661459999996" green="0.93679302929999997" blue="0.96569913630000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7aq-1R-b70" firstAttribute="top" secondItem="4pJ-zf-jSN" secondAttribute="bottom" id="3Sm-Or-PzX"/>
+                            <constraint firstItem="7aq-1R-b70" firstAttribute="leading" secondItem="L6R-eX-cWl" secondAttribute="leading" id="9Iz-Mv-Plv"/>
+                            <constraint firstItem="1K6-2E-4hk" firstAttribute="top" secondItem="7aq-1R-b70" secondAttribute="bottom" id="Wgs-Fu-cHY"/>
+                            <constraint firstAttribute="trailing" secondItem="7aq-1R-b70" secondAttribute="trailing" id="WsS-kX-vcA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="我的TDS笔" id="xo9-0U-NFa">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="OfQ-yD-ghF"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nkh-ZD-XJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9393" y="1201"/>
+        </scene>
     </scenes>
     <resources>
         <image name="DeviceSetting" width="20" height="20"/>
@@ -5670,7 +5827,7 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uTu-U7-iUE"/>
-        <segue reference="J5r-TH-hkc"/>
+        <segue reference="Gyv-IX-20O"/>
+        <segue reference="tej-Ey-GIl"/>
     </inferredMetricsTieBreakers>
 </document>

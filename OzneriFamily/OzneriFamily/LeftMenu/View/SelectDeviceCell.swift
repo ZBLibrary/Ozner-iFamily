@@ -22,6 +22,9 @@ enum OznerDeviceType:String {
     func Name()->String {
         return ["智能水杯","水探头","智能检测笔","净水器","台式空净","立式空净","补水仪"][self.hashValue]
     }
+    func Name_En()->String {
+        return ["Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish"][self.hashValue]
+    }
     
 }
 

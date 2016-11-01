@@ -84,10 +84,13 @@ class PairingController: UIViewController,OznerManagerDelegate {
     }
     @objc private func bluePairing() {
         remainTimer-=2
-        let deviceArr=OznerManager.instance().getNotBindDevices()
-        for device in deviceArr! {
-            if (device as! OznerDevice).type==currDeviceType {
-                blueDevices.append(device as! OznerDevice)
+        let deviceIOArr=OznerManager.instance().getNotBindDevices()
+        for io in deviceIOArr! {
+            if (io as! BaseDeviceIO).type==currDeviceType {
+                if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
+                    blueDevices.append(device)
+                }
+                
             }
         }
 //        //测试

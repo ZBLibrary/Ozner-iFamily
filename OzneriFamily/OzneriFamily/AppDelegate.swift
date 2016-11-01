@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import IQKeyboardManager
 
 var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        //输入框键盘库
+        IQKeyboardManager.shared().isEnabled=true
         //百度推送
         var myTypes=UIUserNotificationType()
         myTypes.insert(UIUserNotificationType.sound)

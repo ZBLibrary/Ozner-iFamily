@@ -26,14 +26,16 @@ class CupSettingController: UIViewController {
         self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier=="showAboutDevice" {
+            let VC=segue.destination as!  AboutDeviceController
+            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutCup"]?.stringValue)!, isUrl: true)
+        }
     }
-    */
+ 
 
 }
