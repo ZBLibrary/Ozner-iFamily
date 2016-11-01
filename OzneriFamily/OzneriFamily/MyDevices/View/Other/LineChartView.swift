@@ -10,37 +10,25 @@ import UIKit
 
 class LineChartView: UIView {
 
-    
-   
-    
-       override func draw(_ rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         super.draw(rect)
         if let subLayers = self.layer.sublayers  {
             for layer in subLayers {
                 layer.removeFromSuperlayer()
             }
         }
-        
         let widthOfSelf = rect.size.width
         let heightOfSelf = rect.size.height
-        
-        
-        //模拟数据
-        var pointsArr:[CGPoint]=[]
-        for i in 0...30 {
-            pointsArr.append(CGPoint(x: CGFloat(i)*widthOfSelf/30, y: CGFloat(arc4random()%30)*heightOfSelf/30))
-        }
-        
-       
+        let pointsArr:[Int:CGPoint]=getNeedData(width: widthOfSelf, height: heightOfSelf, arr: MonthData)
         
         ////折线图颜色填充
         let linePath=UIBezierPath()
         linePath.move(to: CGPoint(x: 0, y: heightOfSelf))
         for i in 0..<pointsArr.count {
-            linePath.addLine(to: pointsArr[i])
+            linePath.addLine(to: pointsArr[i]!)
         }
         linePath.addLine(to: CGPoint(x: widthOfSelf, y: heightOfSelf))
-      
+        
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bounds
         gradientLayer.colors = [
@@ -57,7 +45,7 @@ class LineChartView: UIView {
         gradientLayer.mask=shapeLayer
         self.layer.addSublayer(gradientLayer)
         
-
+        
         //背景线
         for i in 0...2 {
             let tmpLayer = CAShapeLayer()
@@ -85,8 +73,48 @@ class LineChartView: UIView {
         self.layer.addSublayer(shapeLayer2)
         
     }
-    func updateCircleView(){
-        self.setNeedsDisplay()
+ 
+    private func getNeedData(width:CGFloat,height:CGFloat,arr:NSArray)->[Int:CGPoint]{
+        let daysCount=NSDate().daysInMonth()
+        var pointsArr:[Int:CGPoint]=[:]
+        for i in 0..<daysCount {//初始化点
+            pointsArr[i]=CGPoint(x: CGFloat(i)*width/CGFloat(daysCount), y: height)
+            
+        }
+        for item in arr {
+            let indexOfDay=((item as! TapRecord).time as NSDate).day()-1
+            let point=getPointFromTDS(pointX: (pointsArr[indexOfDay]?.x)!, height: height, TDS: Int((item as! TapRecord).tds))
+            pointsArr[indexOfDay]=point
+        }
+        return pointsArr
+    }
+    func getPointFromTDS(pointX:CGFloat,height:CGFloat,TDS:Int) -> CGPoint {
+        var angle = CGFloat(0)
+        
+        switch true {
+        case TDS<=Int(tds_good):
+            angle=CGFloat(TDS)/CGFloat(tds_good*3)
+        case TDS>Int(tds_good)&&TDS<=Int(tds_bad):
+            angle=CGFloat(TDS-Int(tds_good))/CGFloat((tds_bad-tds_good)*3)+0.33
+        case TDS>Int(tds_bad)&&TDS<Int(tds_bad+50):
+            angle=CGFloat(TDS-Int(tds_bad))/CGFloat(50*3)+0.66
+        default:
+            angle=1.0
+            break
+        }
+        return CGPoint(x: pointX, y: (1-angle)*height)
+    }
+    //模拟数据
+    private var MonthData=NSArray()
+    
+    func updateCircleView(dataArr:NSArray){
+        
+        if MonthData != dataArr
+        {
+            MonthData=dataArr
+            self.setNeedsDisplay()
+        }
+        
     }
 
 }
