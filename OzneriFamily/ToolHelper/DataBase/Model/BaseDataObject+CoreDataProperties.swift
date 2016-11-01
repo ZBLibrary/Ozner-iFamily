@@ -1,9 +1,9 @@
 //
 //  BaseDataObject+CoreDataProperties.swift
-//  OzneriFamily
+//  
 //
-//  Created by 赵兵 on 2016/9/28.
-//  Copyright © 2016年 net.ozner. All rights reserved.
+//  Created by zhuguangyang on 16/10/31.
+//
 //
 
 import Foundation

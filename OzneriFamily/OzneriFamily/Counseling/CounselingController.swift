@@ -105,8 +105,6 @@ class CounselingController: ZHCMessagesViewController {
             return nil
         }
 //        return ZHCMessagesAvatarImage(avatarImage: UIImage(named:"demo_avatar_jobs"), highlightedImage: UIImage(named:"demo_avatar_jobs"), placeholderImage: UIImage(named:"demo_avatar_jobs")!) /
-        return ava
-        
         
     }
   
@@ -316,19 +314,19 @@ class CounselingController: ZHCMessagesViewController {
         weak var weakSelf = self
         switch index {
         case 0:
-            BDImagePicker.show(from: self, allowsEditing: true, finishAction: { (image) in
+            BDImagePicker.show(from: self, allowsEditing: true, finishAction: { (image,imageUrl) in
                 guard image != nil else {
                     return
                 }
-               weakSelf?.addPhotoImageToMessage(image: image!)
+                weakSelf?.addPhotoImageToMessage(image: image!,url:imageUrl!)
              
                 }, andCamer: true)
         case 1:
-            BDImagePicker.show(from: self, allowsEditing: true, finishAction: { (image) in
+            BDImagePicker.show(from: self, allowsEditing: true, finishAction: { (image,imageUrl) in
                 guard image != nil else {
                     return
                 }
-                weakSelf?.addPhotoImageToMessage(image: image!)
+                weakSelf?.addPhotoImageToMessage(image: image!,url:imageUrl!)
                
                 
                 }, andCamer: false)
@@ -340,14 +338,22 @@ class CounselingController: ZHCMessagesViewController {
     
     // MARK: -添加图片到聊天记录
  
-    func addPhotoImageToMessage(image: UIImage) {
+    func addPhotoImageToMessage(image: UIImage,url:String) {
         
         let photoItem = ZHCPhotoMediaItem(image: image)
         
         //收图片 false
         //发图片true
-        photoItem.appliesMediaViewMaskAsOutgoing = false
-        let message = ZHCMessage(senderId: kZHCDemoAvatarIdCook, displayName: kZHCDemoAvatarDisplayNameCook, media: photoItem)
+        photoItem.appliesMediaViewMaskAsOutgoing = true
+        let message = ZHCMessage(senderId: kZHCDemoAvatarIdJobs, displayName: kZHCDemoAvatarDisplayNameJobs, media: photoItem)
+        let conModel = ConsultModel.cachedObjectWithID(ID: senderId() as NSString)
+        conModel.content = url
+        conModel.type = "UIImage"
+        conModel.userId = senderId()
+        
+        conModel.didSave()
+        var dataARR:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
+        print(dataARR.count)
         
         demoData?.messages.add(message)        
         messageTableView?.reloadData()
