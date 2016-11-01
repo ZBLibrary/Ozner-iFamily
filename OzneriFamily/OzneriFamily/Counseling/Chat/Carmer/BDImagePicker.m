@@ -101,7 +101,7 @@ static BDImagePicker *bdImagePickerInstance = nil;
     if (image == nil) {
         image = info[UIImagePickerControllerOriginalImage];
     }
-    NSString *imageStr = info[UIImagePickerControllerMediaURL];
+    NSURL *imageStr = (info[UIImagePickerControllerReferenceURL]);
     
     if (_finishAction) {
         _finishAction(image,imageStr);

@@ -318,7 +318,7 @@ class CounselingController: ZHCMessagesViewController {
                 guard image != nil else {
                     return
                 }
-                weakSelf?.addPhotoImageToMessage(image: image!,url:imageUrl!)
+                weakSelf?.addPhotoImageToMessage(image: image!,url:imageUrl! as NSURL)
              
                 }, andCamer: true)
         case 1:
@@ -326,7 +326,7 @@ class CounselingController: ZHCMessagesViewController {
                 guard image != nil else {
                     return
                 }
-                weakSelf?.addPhotoImageToMessage(image: image!,url:imageUrl!)
+                weakSelf?.addPhotoImageToMessage(image: image!,url:imageUrl! as NSURL)
                
                 
                 }, andCamer: false)
@@ -338,7 +338,7 @@ class CounselingController: ZHCMessagesViewController {
     
     // MARK: -添加图片到聊天记录
  
-    func addPhotoImageToMessage(image: UIImage,url:String) {
+    func addPhotoImageToMessage(image: UIImage,url:NSURL) {
         
         let photoItem = ZHCPhotoMediaItem(image: image)
         
@@ -347,12 +347,12 @@ class CounselingController: ZHCMessagesViewController {
         photoItem.appliesMediaViewMaskAsOutgoing = true
         let message = ZHCMessage(senderId: kZHCDemoAvatarIdJobs, displayName: kZHCDemoAvatarDisplayNameJobs, media: photoItem)
         let conModel = ConsultModel.cachedObjectWithID(ID: senderId() as NSString)
-        conModel.content = url
+        conModel.content = url.absoluteString
         conModel.type = "UIImage"
         conModel.userId = senderId()
         
-        conModel.didSave()
-        var dataARR:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
+        CoreDataManager.defaultManager.saveChanges()
+        let dataARR:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
         print(dataARR.count)
         
         demoData?.messages.add(message)        
