@@ -260,6 +260,18 @@ public class User: BaseDataObject {
         }
         
     }
+    //获取用户的朋友列表
+    class func GetFriendList(_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "GetFriendList", parameters: [:], success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
     
     
 }

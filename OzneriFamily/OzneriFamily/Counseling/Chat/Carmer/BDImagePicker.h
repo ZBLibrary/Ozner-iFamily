@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^BDImagePickerFinishAction)(UIImage *image,NSURL *str);
+typedef void (^BDImagePickerFinishAction)(UIImage *image);
 
 @interface BDImagePicker : NSObject
 

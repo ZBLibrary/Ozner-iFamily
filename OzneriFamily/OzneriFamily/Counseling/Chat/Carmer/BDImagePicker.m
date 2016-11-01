@@ -101,10 +101,9 @@ static BDImagePicker *bdImagePickerInstance = nil;
     if (image == nil) {
         image = info[UIImagePickerControllerOriginalImage];
     }
-    NSURL *imageStr = (info[UIImagePickerControllerReferenceURL]);
     
     if (_finishAction) {
-        _finishAction(image,imageStr);
+        _finishAction(image);
     }
     
     [picker dismissViewControllerAnimated:YES completion:^{}];
@@ -114,7 +113,7 @@ static BDImagePicker *bdImagePickerInstance = nil;
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     if (_finishAction) {
-        _finishAction(nil,nil);
+        _finishAction(nil);
     }
     
     [picker dismissViewControllerAnimated:YES completion:^{}];

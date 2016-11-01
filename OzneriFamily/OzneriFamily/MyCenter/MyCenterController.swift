@@ -155,7 +155,7 @@ class MyCenterController: UIViewController {
         if segue.identifier == "MyInfoSegueId" {
             let pair = segue.destination as! BaseWebView
             
-            pair.webViewType = self.webViewType!
+            pair.webViewType = WeiXinUrlType(rawValue: self.webViewType!)
         }
         
        

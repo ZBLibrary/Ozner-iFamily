@@ -15,14 +15,26 @@
 #import "ZHCAudioMediaItem.h"
 #import "OzneriFamily-Swift.h"
 #import <WebImage/WebImage.h>
-
+#import "OzneriFamily-Swift.h"
 @implementation ZHCModelData
 - (instancetype)init
 {
     self = [super init];
     if (self) {
         self.messages = [NSMutableArray new];
-        [self loadMessages];
+       
+        
+        NSArray *modelArrs = [ConsultModel allCachedObjects];
+        
+        for (ConsultModel *molde in modelArrs) {
+            
+            if ([molde.type  isEqual: @"456"]) {
+                 [self loadMessages:molde];
+            } else {
+                [self addPhotoMediaMessage:molde];
+             }
+            
+        }
         
 //        [self addPhotoMediaMessage];
 //        [self addVideoMediaMessage];
@@ -31,7 +43,7 @@
     return self;
 }
 
--(void)loadMessages
+-(void)loadMessages:(ConsultModel *)model
 {
     /**
      *  Create avatar images once.
@@ -64,42 +76,60 @@
 
 
     
-    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"data" ofType:@"json"];
-    NSData *data = [[NSData alloc]initWithContentsOfFile:filePath];
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-    NSArray *array = [dic objectForKey:@"feed"];
-    NSMutableArray *muArray = [NSMutableArray array];
-    for (NSDictionary *dic in array) {
-        ZHUseFDModel *model = [[ZHUseFDModel alloc]initWithDictionary:dic];
-        [muArray addObject:model];
-    }
-    
-    for (NSUInteger i=0;i<muArray.count;i++) {
-        ZHUseFDModel *model = [muArray objectAtIndex:i];
-        NSString *avatarId = nil;
-        NSString *displayName = nil;
-        if (i%3== 0) {
-            avatarId = kZHCDemoAvatarIdCook;
-            displayName = kZHCDemoAvatarDisplayNameCook;
-        }else{
-            avatarId = kZHCDemoAvatarIdJobs;
-            displayName = kZHCDemoAvatarDisplayNameJobs;
-        }
-        ZHCMessage *message = [[ZHCMessage alloc]initWithSenderId:avatarId senderDisplayName:displayName date:[NSDate date] text:model.content];
+//    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"data" ofType:@"json"];
+//    NSData *data = [[NSData alloc]initWithContentsOfFile:filePath];
+//    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+//    NSArray *array = [dic objectForKey:@"feed"];
+//    NSMutableArray *muArray = [NSMutableArray array];
+//    for (NSDictionary *dic in array) {
+//        ZHUseFDModel *model = [[ZHUseFDModel alloc]initWithDictionary:dic];
+//        [muArray addObject:model];
+//    }
+//    
+//    for (NSUInteger i=0;i<muArray.count;i++) {
+//        ZHUseFDModel *model = [muArray objectAtIndex:i];
+//        NSString *avatarId = nil;
+//        NSString *displayName = nil;
+//        if (i%3== 0) {
+//            avatarId = kZHCDemoAvatarIdCook;
+//            displayName = kZHCDemoAvatarDisplayNameCook;
+//        }else{
+//            avatarId = kZHCDemoAvatarIdJobs;
+//            displayName = kZHCDemoAvatarDisplayNameJobs;
+//        }
+//        ZHCMessage *message = [[ZHCMessage alloc]initWithSenderId:avatarId senderDisplayName:displayName date:[NSDate date] text:model.content];
+//        [self.messages addObject:message];
+//    }
+   
+    if (model.userId == kZHCDemoAvatarIdJobs) {
+        ZHCMessage *message = [[ZHCMessage alloc] initWithSenderId:model.userId senderDisplayName:@"Jobs" date:[NSDate date] text:model.content];
+        [self.messages addObject:message];
+    } else {
+        ZHCMessage *message = [[ZHCMessage alloc] initWithSenderId:model.userId senderDisplayName:@"小泽妹" date:[NSDate date] text:model.content];
         [self.messages addObject:message];
     }
-    
 
+    
 }
 
 
 
--(void)addPhotoMediaMessage
+-(void)addPhotoMediaMessage:(ConsultModel *)model
 {
-    ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImage:[UIImage imageNamed:@"goldengate"]];
-    photoItem.appliesMediaViewMaskAsOutgoing = NO;
-    ZHCMessage *photoMessage = [ZHCMessage messageWithSenderId:kZHCDemoAvatarIdCook displayName:kZHCDemoAvatarDisplayNameCook media:photoItem];
-    [self.messages addObject:photoMessage];
+    ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImage:[UIImage imageWithData:    [[NSData alloc] initWithBase64EncodedString:model.content options:NSDataBase64DecodingIgnoreUnknownCharacters]]];
+    if (model.userId == kZHCDemoAvatarIdJobs) {
+        photoItem.appliesMediaViewMaskAsOutgoing = NO;
+        ZHCMessage *photoMessage = [ZHCMessage messageWithSenderId:model.userId displayName:@"Jobs" media:photoItem];
+        [self.messages addObject:photoMessage];
+    } else {
+        photoItem.appliesMediaViewMaskAsOutgoing = YES;
+        ZHCMessage *photoMessage = [ZHCMessage messageWithSenderId:model.userId displayName:@"小泽妹" media:photoItem];
+        [self.messages addObject:photoMessage];
+    }
+
+   
+
+    
 }
 
 - (void)addLocationMediaMessageCompletion:(ZHCLocationMediaItemCompletionBlock)completion

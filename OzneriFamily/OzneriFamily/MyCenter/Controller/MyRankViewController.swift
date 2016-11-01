@@ -25,6 +25,11 @@ class MyRankViewController: UIViewController {
         super.viewDidLoad()
 
         setUpUI()
+        User.GetFriendList({ (data) in
+            print(data)
+            }) { (error) in
+                print(error)
+        }
     }
 
     

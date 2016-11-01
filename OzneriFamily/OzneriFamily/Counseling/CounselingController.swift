@@ -26,6 +26,10 @@ public enum ChatHttpMethod {
     case GET
     case POST
 }
+public enum ChatType:String {
+    case IMAGE = "123"
+    case Content = "456"
+}
 class CounselingController: ZHCMessagesViewController {
 
     var demoData: ZHCModelData? {
@@ -281,6 +285,16 @@ class CounselingController: ZHCMessagesViewController {
         
         let message = ZHCMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
         
+        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+        
+        conModel.content =  text
+        conModel.type = ChatType.Content.rawValue
+        print(senderId)
+        conModel.userId = senderId
+        
+        CoreDataManager.defaultManager.saveChanges()
+
+        
         //在此发送数据到服务器 成功添加 否则不添加
         demoData?.messages.add(message)
         
@@ -314,19 +328,19 @@ class CounselingController: ZHCMessagesViewController {
         weak var weakSelf = self
         switch index {
         case 0:
-            BDImagePicker.show(from: self, allowsEditing: true, finishAction: { (image,imageUrl) in
+            BDImagePicker.show(from: self, allowsEditing: true, finishAction: { (image) in
                 guard image != nil else {
                     return
                 }
-                weakSelf?.addPhotoImageToMessage(image: image!,url:imageUrl! as NSURL)
+                weakSelf?.addPhotoImageToMessage(image: image!)
              
                 }, andCamer: true)
         case 1:
-            BDImagePicker.show(from: self, allowsEditing: true, finishAction: { (image,imageUrl) in
+            BDImagePicker.show(from: self, allowsEditing: true, finishAction: { (image) in
                 guard image != nil else {
                     return
                 }
-                weakSelf?.addPhotoImageToMessage(image: image!,url:imageUrl! as NSURL)
+                weakSelf?.addPhotoImageToMessage(image: image!)
                
                 
                 }, andCamer: false)
@@ -338,17 +352,20 @@ class CounselingController: ZHCMessagesViewController {
     
     // MARK: -添加图片到聊天记录
  
-    func addPhotoImageToMessage(image: UIImage,url:NSURL) {
+    func addPhotoImageToMessage(image: UIImage) {
         
         let photoItem = ZHCPhotoMediaItem(image: image)
         
         //收图片 false
         //发图片true
-        photoItem.appliesMediaViewMaskAsOutgoing = true
+//        photoItem.appliesMediaViewMaskAsOutgoing = true
         let message = ZHCMessage(senderId: kZHCDemoAvatarIdJobs, displayName: kZHCDemoAvatarDisplayNameJobs, media: photoItem)
-        let conModel = ConsultModel.cachedObjectWithID(ID: senderId() as NSString)
-        conModel.content = url.absoluteString
-        conModel.type = "UIImage"
+//        let conModel = ConsultModel.cachedObjectWithID(ID: senderId() as NSString)
+        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+ 
+        let data: Data = UIImageJPEGRepresentation(image, 1.0)!
+        conModel.content =  data.base64EncodedString()
+        conModel.type = ChatType.IMAGE.rawValue
         conModel.userId = senderId()
         
         CoreDataManager.defaultManager.saveChanges()
