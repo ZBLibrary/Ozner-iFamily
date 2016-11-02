@@ -284,6 +284,20 @@ public class User: BaseDataObject {
             
         }
     }
+    //留言
+    class func LeaveMessage(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "LeaveMessage", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+
+
     
     
 }

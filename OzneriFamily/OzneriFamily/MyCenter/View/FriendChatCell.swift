@@ -22,12 +22,15 @@ class FriendChatCell: UITableViewCell {
 
     func reloadUI(model:ChatModel) {
         chatLab.text = model.chatStr
-//        model.chatTime = "1464608313527"
-        print(model.chatTime)
+        
+        if model.chatTime! == "刚刚" {
+            timeLb.text = "刚刚"
+        } else {
+        
         model.chatTime = model.chatTime?.replacingOccurrences(of: "/Date(", with: "")
         model.chatTime = model.chatTime?.replacingOccurrences(of: ")/", with: "")
-        print(model.chatTime)
         timeLb.text = NSDate.dateWithStr(time: model.chatTime!).descDate
+        }
         
     }
     
