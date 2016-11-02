@@ -272,6 +272,18 @@ public class User: BaseDataObject {
             
         }
     }
+    //获取好友历史留言
+    class func GetHistoryMessage(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "GetHistoryMessage", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
     
     
 }

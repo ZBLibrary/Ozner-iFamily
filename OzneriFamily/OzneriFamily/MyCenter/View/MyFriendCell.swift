@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebImage
 
 class MyFriendCell: UITableViewHeaderFooterView {
 
@@ -22,5 +23,19 @@ class MyFriendCell: UITableViewHeaderFooterView {
         
     }
 
+    func reloadUI(model:FriendModel) {
+        
+        if model.iconImage != nil || model.iconImage != "" {
+            
+            iconImage.sd_setImage(with: URL(string: model.iconImage!))
+        } else {
+            iconImage.image = UIImage(named: "HaoZeKeFuImage")
+        }
+        
+        nickName.text = model.nickName ?? "浩小泽"
+        messageLb.text = model.chatNum! + "条留言"
+        
+    }
+    
 
 }

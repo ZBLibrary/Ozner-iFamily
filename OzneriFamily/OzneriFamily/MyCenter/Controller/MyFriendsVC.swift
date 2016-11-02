@@ -8,10 +8,14 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import SVProgressHUD
 
 class FriendModel: NSObject {
     var nickName:String?
-    
+    var iconImage:String?
+    var chatNum:String?
+    var chatFriendTel:String?
+    var friendID: String?
     //判断cell是否折叠
     var isBool: Bool?
     
@@ -19,6 +23,10 @@ class FriendModel: NSObject {
 
 class ChatModel: NSObject {
     var chatStr:String?
+    var chatTime:String?
+    var chatNickName:String?
+    
+    var chatSendId:String?
 }
 
 class MyFriendsVC: UIViewController {
@@ -29,10 +37,11 @@ class MyFriendsVC: UIViewController {
     //多少组
     var dataArr:[FriendModel]? = []
     
-    var chaArrs:[[ChatModel]]? = []
+    var chaArrs:NSMutableArray?
     
     var chatModelArr:[ChatModel]? = []
     
+    var currentSecion:Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,36 +51,46 @@ class MyFriendsVC: UIViewController {
         
         getDatas()
 
+        
         setUI()
+        
         
    
         
     }
     
     private  func getDatas() {
-        for i in 0..<4 {
+        SVProgressHUD.show()
+        weak var weakSelf = self
+        User.GetFriendList({ (responseObject) in
+            SVProgressHUD.dismiss()
+            let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0
             
-            let model = FriendModel()
-            model.nickName = "Giant\(i)"
-            model.isBool = true
-            dataArr?.append(model)
-        
-        }
-        
-        let k = arc4random() % 4 + 2
-        for _ in 0..<4 {
-            for i in 0..<k {
+            if isSuccess > 0 {
+                print(responseObject)
+                let modelArr = responseObject["friendlist"].array
                 
-                let chatModel = ChatModel()
-                chatModel.chatStr = "dwaidawdjwaid帅住户驻足+\(i)"
-                chatModelArr?.append(chatModel)
-                
+                for item in modelArr! {
+                    
+                    let model = FriendModel()
+                    model.nickName = item["Nickname"].stringValue
+                    model.iconImage = item["Icon"].stringValue
+                    model.isBool = true
+                    model.chatNum = item["MessageCount"].stringValue
+                    model.chatFriendTel = item["Mobile"].stringValue
+                    model.friendID = item["FriendUserid"].stringValue
+                    weakSelf?.dataArr?.append(model)
+                    
+                }
+                weakSelf?.chaArrs = NSMutableArray(capacity: (weakSelf?.dataArr?.count)!)
+                weakSelf?.tableView.reloadData()
+
             }
-            chaArrs?.append(chatModelArr!)
-            chatModelArr?.removeAll()
+        }) { (error) in
+            SVProgressHUD.dismiss()
+            print(error)
         }
-        
-        
+
         
     }
 
@@ -97,8 +116,15 @@ class MyFriendsVC: UIViewController {
         
         bootomRecentView = UINib.init(nibName: "FriendRecentView", bundle: nil).instantiate(withOwner: nil, options: nil).last as! FriendRecentView
         bootomRecentView.frame = CGRect(x: 0, y: height_screen - 46 - height_navBar, width: width_screen, height: 46)
-//        bootomRecentView.recentContentLb.delegate = self
+        bootomRecentView.sendBtn.addTarget(self, action: #selector(MyFriendsVC.sendMessageAction), for: UIControlEvents.touchUpInside)
+        bootomRecentView.isHidden = true
         view.addSubview(bootomRecentView)
+        
+        
+    }
+    
+    func sendMessageAction() {
+        
         
         
     }
@@ -176,17 +202,28 @@ extension MyFriendsVC: UITableViewDataSource,UITableViewDelegate {
             return 0
         }
         
+        guard friendMolde.chatNum != "0" else {
+            return 0
+        }
         
-        let model = (chaArrs?[section])! as [ChatModel]
+        if section == currentSecion {
+            return chatModelArr?.count ?? 0
+        } else {
+            return 0
+        }
+//        let model = (chaArrs?[section])! as! [ChatModel]
         
-        return model.count 
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendChatID", for: indexPath) as! FriendChatCell
+        let model = (chatModelArr?[indexPath.row])! as ChatModel
+        
         cell.selectionStyle = .none
-        cell.backgroundColor = UIColor.lightGray
+        cell.backgroundColor = UIColor(colorLiteralRed: 242/255.0, green: 244/255.0, blue: 244/255.0, alpha: 1.0)
+        cell.reloadUI(model: model)
         return cell
     }
     
@@ -198,9 +235,11 @@ extension MyFriendsVC: UITableViewDataSource,UITableViewDelegate {
         headCell.contentView.backgroundColor = UIColor.white
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapFold(_:)))
-    
+        let model = (dataArr?[section])! as FriendModel
+        
 //        headCell.contentView.addGestureRecognizer(tap)
         headCell.addGestureRecognizer(tap)
+        headCell.reloadUI(model: model)
         return headCell
         
     }
@@ -211,11 +250,56 @@ extension MyFriendsVC: UITableViewDataSource,UITableViewDelegate {
         
         let model = (dataArr?[tagIndex])! as FriendModel
         model.isBool = !model.isBool!
+        chatModelArr?.removeAll()
+        currentSecion = tagIndex
+        guard !model.isBool! else {
+            bootomRecentView.isHidden = true
+            tableView.reloadData()
+            return
+        }
+        bootomRecentView.isHidden = false
+        let group = DispatchGroup.init()
+        SVProgressHUD.show()
+        group.enter()
+        weak var weakSelf = self
+        print(model.friendID)
+        User.GetHistoryMessage(["otheruserid":model.friendID!], { (responseObject) in
+            print(responseObject)
+            
+            let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0
+            
+            if isSuccess > 0 {
+                
+                let modelArr = responseObject["data"].array
+               
+                for item in modelArr! {
+                    
+                    let model1 = ChatModel()
+                    model1.chatNickName = item["Nickname"].stringValue
+                    model1.chatTime = item["stime"].stringValue
+                    model1.chatSendId = item["senduserid"].stringValue
+                    if model1.chatSendId == model.friendID {
+                      model1.chatStr = "我:" + item["message"].stringValue
+                    } else {
+                        model1.chatStr = (model1.chatNickName ?? "") + "回复我" + ":" + item["message"].stringValue
+                    }
+                    
+                    weakSelf?.chatModelArr?.append(model1)
+                }
+            }
+            
+            SVProgressHUD.dismiss()
+            group.leave()
+            }) { (error) in
+                
+        }
         
-        tableView.reloadSections(NSIndexSet.init(index: tagIndex) as IndexSet, with: UITableViewRowAnimation.automatic)
-        
-        
-        
+        group.notify(queue: DispatchQueue.main) { 
+            
+//         weakSelf?.tableView.reloadSections(NSIndexSet.init(index: tagIndex) as IndexSet, with: UITableViewRowAnimation.automatic)
+            weakSelf?.tableView.reloadData()
+            
+        }
         
     }
     

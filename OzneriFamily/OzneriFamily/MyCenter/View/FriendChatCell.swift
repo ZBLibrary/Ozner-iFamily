@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DateTools
 
 class FriendChatCell: UITableViewCell {
 
@@ -19,6 +20,17 @@ class FriendChatCell: UITableViewCell {
         // Initialization code
     }
 
+    func reloadUI(model:ChatModel) {
+        chatLab.text = model.chatStr
+//        model.chatTime = "1464608313527"
+        print(model.chatTime)
+        model.chatTime = model.chatTime?.replacingOccurrences(of: "/Date(", with: "")
+        model.chatTime = model.chatTime?.replacingOccurrences(of: ")/", with: "")
+        print(model.chatTime)
+        timeLb.text = NSDate.dateWithStr(time: model.chatTime!).descDate
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
