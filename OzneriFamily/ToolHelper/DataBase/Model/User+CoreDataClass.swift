@@ -297,7 +297,56 @@ public class User: BaseDataObject {
         }
     }
 
+    //获取验证消息
+    class func  GetUserVerifMessage(_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "GetUserVerifMessage", parameters: [:], success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
 
+    //通过好友请求
+    class func AcceptUserVerif(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "AcceptUserVerif", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+    //搜索好友
+    class func SearchFriend(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "SearchFriend", parameters:params, success: { (data) in
+        
+        sucess(data)
+        
+        }) { (error) in
+        
+        faliure(error)
+        
+        }
+    }
+    //获取好友信息(头像，昵称等)
     
+    class func GetUserNickImage(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "GetUserNickImage", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+
     
 }

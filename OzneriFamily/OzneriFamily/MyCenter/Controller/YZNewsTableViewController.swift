@@ -8,15 +8,80 @@
 
 import UIKit
 
+enum VailedStated {
+    case Refused
+    case Agree
+    case Wait
+}
+
+class  YZNewsModel:NSObject {
+    
+    var vialID:String?
+    var iconImage:String?
+    var nickName:String?
+    var vivalMessage:String?
+    var vivalState:VailedStated?
+    
+}
+
 class YZNewsTableViewController: UIViewController {
 
     
     var tableView: UITableView?
     
+    var dataArr:[YZNewsModel]? = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setUpUI()
+        initData()
+        
+        
+    }
+    
+    func initData() {
+        
+        weak var weakSelf = self
+        User.GetUserVerifMessage({ (responseObject) in
+            
+            print(responseObject)
+            
+            let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0
+            
+            if isSuccess > 0 {
+                let arr = responseObject.dictionary?["msglist"]?.array
+                
+                for item in arr! {
+                    
+                    let model = YZNewsModel()
+                    model.vialID = item["ID"].stringValue
+                    model.iconImage = item["Icon"].stringValue
+                    model.nickName = item["Nickname"].stringValue
+                    model.vivalMessage = item["RequestContent"].stringValue
+                    switch item["Status"].intValue {
+                        case 0:
+                            //添加
+                            model.vivalState = VailedStated.Wait
+                        case 1:
+                            //已发送
+                            model.vivalState = VailedStated.Refused
+                        case 2:
+                            model.vivalState = VailedStated.Agree
+                        default:
+                            model.vivalState = VailedStated.Wait
+                            break
+                    }
+                    weakSelf?.dataArr?.append(model)
+                 
+                }
+                   weakSelf?.tableView?.reloadData()
+            }
+            
+            }) { (error) in
+                print(error)
+        }
+        
     }
     
     func setUpUI() {
@@ -57,13 +122,17 @@ extension YZNewsTableViewController : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return dataArr?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "YanZhengCellID", for: indexPath) as! YanZhengCell
         
+        cell.selectionStyle = .none
+        let model = (dataArr?[indexPath.row])! as YZNewsModel
+        
+        cell.reloadUI(model: model)
         
         return cell
         
