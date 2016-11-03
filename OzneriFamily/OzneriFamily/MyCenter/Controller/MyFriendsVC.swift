@@ -95,7 +95,7 @@ class MyFriendsVC: UIViewController {
 
     private  func setUI() {
         
-        tableView = UITableView(frame:  CGRect(x: 0, y: 0, width: width_screen, height: height_screen), style: UITableViewStyle.grouped)
+        tableView = UITableView(frame:  CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 60), style: UITableViewStyle.grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
@@ -148,12 +148,11 @@ class MyFriendsVC: UIViewController {
                 let model1 = ChatModel()
                 model1.chatNickName = model.nickName
                 model1.chatTime = "刚刚"
-                model1.chatStr = "我:" + self.bootomRecentView.recentContentLb.text!
+                model1.chatStr = "我:🐷" + self.bootomRecentView.recentContentLb.text!
                 model.chatNum = String(Int(model.chatNum!)! + 1)
                 weakSelf?.chatModelArr?.append(model1)
                 weakSelf?.bootomRecentView.recentContentLb.text = ""
                 weakSelf?.tableView.reloadData()
-                
             }
             
             }) { (error) in
@@ -312,9 +311,9 @@ extension MyFriendsVC: UITableViewDataSource,UITableViewDelegate {
                     model1.chatTime = item["stime"].stringValue
                     model1.chatSendId = item["senduserid"].stringValue
                     if model1.chatSendId != model.friendID {
-                      model1.chatStr = "我:" + item["message"].stringValue
+                      model1.chatStr = "我:🐷" + item["message"].stringValue
                     } else {
-                        model1.chatStr = (model1.chatNickName ?? "") + "回复我" + ":" + item["message"].stringValue
+                        model1.chatStr = (model1.chatNickName ?? "") + "回复我" + ":🐷" + item["message"].stringValue
                     }
                     
                     weakSelf?.chatModelArr?.append(model1)
