@@ -225,6 +225,8 @@
 		B7CD2B511DC2DD58009554D1 /* RNEmailRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7CD2B4B1DC2DD58009554D1 /* RNEmailRegisterViewController.xib */; };
 		B7CD2B521DC2DD58009554D1 /* RNModifyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CD2B4C1DC2DD58009554D1 /* RNModifyPasswordViewController.swift */; };
 		B7CD2B531DC2DD58009554D1 /* RNModifyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7CD2B4D1DC2DD58009554D1 /* RNModifyPasswordViewController.xib */; };
+		B7DE2B321DCB399D0028FAF4 /* ZGYTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DE2B311DCB399D0028FAF4 /* ZGYTableViewController.swift */; };
+		B7DE2B341DCB3F100028FAF4 /* SendYanZHViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DE2B331DCB3F100028FAF4 /* SendYanZHViewController.swift */; };
 		B7EF060E1DB8A11F008BE7D4 /* AboutUSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF06011DB8A11F008BE7D4 /* AboutUSViewController.swift */; };
 		B7EF060F1DB8A11F008BE7D4 /* BaseWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF06021DB8A11F008BE7D4 /* BaseWebView.swift */; };
 		B7EF06101DB8A11F008BE7D4 /* MySetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF06031DB8A11F008BE7D4 /* MySetViewController.swift */; };
@@ -656,6 +658,8 @@
 		B7CD2B4B1DC2DD58009554D1 /* RNEmailRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RNEmailRegisterViewController.xib; sourceTree = "<group>"; };
 		B7CD2B4C1DC2DD58009554D1 /* RNModifyPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNModifyPasswordViewController.swift; sourceTree = "<group>"; };
 		B7CD2B4D1DC2DD58009554D1 /* RNModifyPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RNModifyPasswordViewController.xib; sourceTree = "<group>"; };
+		B7DE2B311DCB399D0028FAF4 /* ZGYTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZGYTableViewController.swift; sourceTree = "<group>"; };
+		B7DE2B331DCB3F100028FAF4 /* SendYanZHViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendYanZHViewController.swift; sourceTree = "<group>"; };
 		B7EF06011DB8A11F008BE7D4 /* AboutUSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUSViewController.swift; sourceTree = "<group>"; };
 		B7EF06021DB8A11F008BE7D4 /* BaseWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebView.swift; sourceTree = "<group>"; };
 		B7EF06031DB8A11F008BE7D4 /* MySetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySetViewController.swift; sourceTree = "<group>"; };
@@ -1568,7 +1572,9 @@
 		B7EF06001DB8A11F008BE7D4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B7DE2B331DCB3F100028FAF4 /* SendYanZHViewController.swift */,
 				B773CE1C1DBDE2E8004909EC /* AddFriendsTableViewController.swift */,
+				B7DE2B311DCB399D0028FAF4 /* ZGYTableViewController.swift */,
 				B7EF06011DB8A11F008BE7D4 /* AboutUSViewController.swift */,
 				B7EF06021DB8A11F008BE7D4 /* BaseWebView.swift */,
 				B7EF06031DB8A11F008BE7D4 /* MySetViewController.swift */,
@@ -2125,6 +2131,7 @@
 				B773CE201DBDE2F7004909EC /* AddFriendTableViewCell.swift in Sources */,
 				8DAE80721D9A85EC00A9946F /* SelectDeviceTableController.swift in Sources */,
 				B75E872D1DC86A3600CD60C1 /* ConsultModel+CoreDataProperties.swift in Sources */,
+				B7DE2B341DCB3F100028FAF4 /* SendYanZHViewController.swift in Sources */,
 				B79803DF1DB5C41D001EC5AA /* WaterRefeishView.swift in Sources */,
 				8DC02F961DB5F03B007F57DB /* WaterReplenishmentMeterStatus.m in Sources */,
 				8DC02F781DB5F03B007F57DB /* CupManager.m in Sources */,
@@ -2269,6 +2276,7 @@
 				8DC02E831DB5CE91007F57DB /* WaterPurifierMainView.swift in Sources */,
 				B7EF06AE1DB8A53A008BE7D4 /* ZHCMessage.m in Sources */,
 				8D113DC91DB71981008CE2C6 /* UINavigationController+Expand.swift in Sources */,
+				B7DE2B321DCB399D0028FAF4 /* ZGYTableViewController.swift in Sources */,
 				B7EF31581DBF034A008BA60C /* My_Rank_TDSCell.swift in Sources */,
 				B727C35D1DACE90000FE990F /* SuccessPairCell.swift in Sources */,
 				B7EF06971DB8A53A008BE7D4 /* BDImagePicker.m in Sources */,

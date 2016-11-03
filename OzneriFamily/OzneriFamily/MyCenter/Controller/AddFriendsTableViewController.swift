@@ -9,16 +9,16 @@
 import UIKit
 import AddressBook
 import AddressBookUI
-import WebImage
-//添加好友
-struct myFriend {
-    var isExist=false
-    var Name=""
-    var imgUrl=""
-    var status = -10014  //－10014不是浩泽用户 0没关系 1"已发送" 2"已添加"
-    var phone=""
-    var messageCount=0
-}
+//import WebImage
+////添加好友
+//struct myFriend {
+//    var isExist=false
+//    var Name=""
+//    var imgUrl=""
+//    var status = -10014  //－10014不是浩泽用户 0没关系 1"已发送" 2"已添加"
+//    var phone=""
+//    var messageCount=0
+//}
 
 class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
 
@@ -37,6 +37,8 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
         tabelHeaderView.searchButton.addTarget(self, action: #selector(SearchPhone), for: .touchUpInside)
         tabelHeaderView.SearchTextFD.delegate=self
         self.tableView.tableHeaderView=tabelHeaderView
+//        tableView.delegate = self
+//        tableView.dataSource = self
 //        NotificationCenter.default.addObserver(self, selector: #selector(addfriendSuccess), name: NSNotification.Name(rawValue: "sendAddFriendMesSuccess"), object: nil)
         
     }
@@ -69,7 +71,7 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
 
      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if self.seachResult.isExist==false {
-            return 0
+            return 1
         } else {
         return 1
         }
@@ -78,10 +80,11 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
     }
      func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionview=UIView(frame: CGRect(x: 0, y: 0, width: width_screen, height: 49))
-        sectionview.backgroundColor=UIColor(red: 240/255, green: 241/255, blue: 242/255, alpha: 1)
+//        sectionview.backgroundColor=UIColor(red: 240/255, green: 241/255, blue: 242/255, alpha: 1)
+        sectionview.backgroundColor = UIColor.blue
         let sectionlabel=UILabel(frame: CGRect(x: 15, y: 24, width: 100, height: 12))
         sectionlabel.textAlignment=NSTextAlignment.left
-        sectionlabel.text=section==0 ? loadLanguage("搜索结果" ):loadLanguage("通讯录好友")
+        sectionlabel.text = loadLanguage("搜索结果" )
         sectionlabel.font=UIFont.systemFont(ofSize: 12)
         sectionlabel.textColor=UIColor(red: 135/255, green: 136/255, blue: 137/255, alpha: 1)
         sectionview.addSubview(sectionlabel)
@@ -92,7 +95,7 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
      func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section==0&&self.seachResult.isExist==false
         {
-            return 0
+            return 100
         }
         return 49
     }
@@ -212,7 +215,7 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
                 weakSelf?.seachResult.phone = (arr?["mobile"].stringValue)!
                 weakSelf?.tableView.reloadData()
             } else {
-                
+//                self.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
             }
             
             }) { (error) in

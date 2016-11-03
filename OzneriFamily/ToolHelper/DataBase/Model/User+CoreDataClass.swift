@@ -347,6 +347,18 @@ public class User: BaseDataObject {
             
         }
     }
+    
+    class func AddFriend(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "AddFriend", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
 
     
 }
