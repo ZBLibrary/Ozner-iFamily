@@ -54,7 +54,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
         deviceImg.image = UIImage(named: deviceDes.imageName)
         typeState.text = deviceDes.typeStateText
         deviceState.text = deviceDes.deviceStateText
-        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(selectPairType), userInfo: nil, repeats: false)//三秒动画，然后选择配对方式
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(selectPairType), userInfo: nil, repeats: false)//1秒动画，然后选择配对方式
     }
     
     
@@ -83,23 +83,18 @@ class PairingController: UIViewController,OznerManagerDelegate {
         blueTimer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(bluePairing), userInfo: nil, repeats: true)
     }
     @objc private func bluePairing() {
+        if blueTimer==nil {
+            return
+        }
         remainTimer-=2
         let deviceIOArr=OznerManager.instance().getNotBindDevices()
         for io in deviceIOArr! {
-            if (io as! BaseDeviceIO).type==currDeviceType {
+            if (io as! BaseDeviceIO).type==(currDeviceType==OznerDeviceType.TDSPan.rawValue ? OznerDeviceType.Tap.rawValue:currDeviceType) {
                 if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
                     blueDevices.append(device)
                 }
-                
             }
         }
-//        //测试
-//        if remainTimer==26 {
-//            for _ in 0..<6 {
-//                let tmpDev=OznerDevice("sad\(Int(arc4random()%100)+1)", type: currDeviceType, settings: "")
-//                blueDevices.append(tmpDev!)
-//            }
-//        }
         if blueDevices.count>0 {
             self.performSegue(withIdentifier: "showsuccess", sender: nil)
         }
@@ -132,6 +127,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
         case "showsuccess":
             let pair = segue.destination as! PairSuccessController
             pair.deviceArr = blueDevices
+            pair.CurrDeviceType=self.currDeviceType
         case "showfailed":
             let pair = segue.destination as! PairFailedController
             

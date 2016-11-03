@@ -8,8 +8,12 @@
 
 import UIKit
 
-class TDSPanSettingController: UIViewController {
+class TDSPanSettingController: DeviceSettingController {
 
+    @IBOutlet var nameAndAttrLabel: UILabel!
+    @IBAction func deleteClick(_ sender: AnyObject) {
+        super.deleteDevice()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +25,9 @@ class TDSPanSettingController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func nameChange(name:String,attr:String) {
+        nameAndAttrLabel.text="\(name)(\(attr))"
+    }
     
     // MARK: - Navigation
 

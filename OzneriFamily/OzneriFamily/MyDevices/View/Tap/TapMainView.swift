@@ -20,12 +20,16 @@ class TapMainView: OznerDeviceView {
     @IBOutlet var badOfMonthLabel: UILabel!
     @IBOutlet var chartView: LineChartView!
     @IBOutlet var lastDayOfMonth: UILabel!
+    @IBOutlet var footerContainerView: UIView!
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
         lastDayOfMonth.text="\(NSDate().daysInMonth())"
+        if self.currentDevice?.type==OznerDeviceType.TDSPan.rawValue {//隐藏尾部视图
+            footerContainerView.isHidden=true
+        }
     }
     
     private var TDS = 0{
@@ -68,7 +72,10 @@ class TapMainView: OznerDeviceView {
                     }, failure: { (error) in
                         print(error.localizedDescription)
                 })
-                SetTapMonthView()
+                
+                if self.currentDevice?.type != OznerDeviceType.TDSPan.rawValue {
+                    SetTapMonthView()
+                }
             }
         }
     }
@@ -77,6 +84,33 @@ class TapMainView: OznerDeviceView {
         let dateStarOfNow = NSDate(string: "\(nowDate.year())-\(nowDate.month())-01 00:00:01", formatString: "yyyy-MM-dd HH:mm:ss")
         let recordArr=(self.currentDevice as! Tap).recordList.getRecordsBy(dateStarOfNow as Date!) as NSArray
         chartView.updateCircleView(dataArr: recordArr)
+        SetBotoomText(recordArr: recordArr)
+    }
+    private func SetBotoomText(recordArr:NSArray)  {
+        if recordArr.count==0 {
+            goodOfMonthLabel.text="健康(0%)"
+            generalOfMonthLabel.text="一般(0%)"
+            badOfMonthLabel.text="较差(0%)"
+            return
+        }
+        var goodTDSCount = 0
+        var generalTDSCount = 0
+        var badTDSCount = 0
+        for item in recordArr {
+            goodTDSCount += (item as! TapRecord).tds<=tds_good ? 1:0
+            generalTDSCount += (item as! TapRecord).tds<=tds_bad ? 1:0
+            badTDSCount += (item as! TapRecord).tds>tds_bad ? 1:0
+        }
+        generalTDSCount=generalTDSCount-goodTDSCount
+        if badTDSCount==0 {
+            goodOfMonthLabel.text="健康(\(Int(100*goodTDSCount/recordArr.count))%)"
+            generalOfMonthLabel.text="一般(\(100-Int(100*goodTDSCount/recordArr.count))%)"
+            badOfMonthLabel.text="较差(0%)"
+        }else{
+            goodOfMonthLabel.text="健康(\(Int(100*goodTDSCount/recordArr.count))%)"
+            generalOfMonthLabel.text="一般(\(Int(100*generalTDSCount/recordArr.count))%)"
+            badOfMonthLabel.text="较差(\(100-Int(100*goodTDSCount/recordArr.count)-Int(100*generalTDSCount/recordArr.count))%)"
+        }
     }
     override func SensorUpdate(device: OznerDevice!) {
         self.currentDevice=device

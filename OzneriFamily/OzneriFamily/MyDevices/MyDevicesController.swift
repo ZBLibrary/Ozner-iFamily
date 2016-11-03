@@ -27,8 +27,8 @@ class MyDevicesController: UIViewController {
     
     
     @IBAction func lvXinClick(_ sender: AnyObject) {
-        let device=OznerManager.instance().getDevice(LoginManager.instance.currentDeviceIdentifier)
-        switch  (device?.type)! {
+        let device=LoginManager.instance.currentDevice
+        switch  (device.type)! {
         case OznerDeviceType.Tap.rawValue,OznerDeviceType.Water_Wifi.rawValue:
            self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
         case OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.Air_Wifi.rawValue:
@@ -39,8 +39,8 @@ class MyDevicesController: UIViewController {
 
     }
     @IBAction func toDeviceSettingClick(_ sender: AnyObject) {//点击设置按钮事件
-        let device=OznerManager.instance().getDevice(LoginManager.instance.currentDeviceIdentifier)
-        switch  (device?.type)! {
+        let device=LoginManager.instance.currentDevice
+        switch  (device.type)! {
         case OznerDeviceType.Cup.rawValue:
             self.performSegue(withIdentifier: "showCupSetting", sender: nil)
         case OznerDeviceType.Tap.rawValue:
@@ -154,10 +154,10 @@ extension MyDevicesController : DeviceViewContainerDelegate{
     }
     func FilterValueChange(value:Int){
         switch true {
-        case value<0:
+        case value==65535:
             filterImg.image=UIImage(named: "airLvxinState0")
             filterValueLabel.text="-"
-        case value==0:
+        case value<=0:
             filterImg.image=UIImage(named: "airLvxinState0")
             filterValueLabel.text="0%"
         case value>0&&value<=40:

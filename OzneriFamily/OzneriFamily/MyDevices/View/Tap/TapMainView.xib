@@ -335,7 +335,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQW-SV-PBx">
-                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                             <color key="textColor" red="0.22552007439999999" green="0.44347250459999998" blue="0.86721867320000001" alpha="0.7965724032" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
@@ -352,7 +352,7 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="WQW-SV-PBx" secondAttribute="bottom" id="7EN-TI-LJf"/>
                                         <constraint firstItem="Kkx-qP-rJF" firstAttribute="height" secondItem="WQW-SV-PBx" secondAttribute="height" id="Ae8-gj-0K0"/>
-                                        <constraint firstItem="WQW-SV-PBx" firstAttribute="leading" secondItem="Kkx-qP-rJF" secondAttribute="trailing" id="BIn-o9-oNi"/>
+                                        <constraint firstItem="WQW-SV-PBx" firstAttribute="leading" secondItem="Kkx-qP-rJF" secondAttribute="trailing" constant="8" id="BIn-o9-oNi"/>
                                         <constraint firstAttribute="bottom" secondItem="Kkx-qP-rJF" secondAttribute="bottom" id="Cu4-aI-rn0"/>
                                         <constraint firstItem="exT-nU-TIZ" firstAttribute="height" secondItem="Ify-1q-kKl" secondAttribute="height" multiplier="16:36" id="EpI-qB-wfI"/>
                                         <constraint firstItem="exT-nU-TIZ" firstAttribute="top" secondItem="Ify-1q-kKl" secondAttribute="top" id="IjX-vu-5M9"/>
@@ -401,6 +401,7 @@
                 <outlet property="badOfMonthLabel" destination="aPN-oH-hIf" id="aGu-Td-c1w"/>
                 <outlet property="chartView" destination="dlx-gT-P87" id="PQX-km-pVZ"/>
                 <outlet property="circleView" destination="8bV-B6-NUP" id="v0D-Gy-L6S"/>
+                <outlet property="footerContainerView" destination="iCP-Mx-dHQ" id="t8R-an-s3J"/>
                 <outlet property="generalOfMonthLabel" destination="p4w-kl-7zC" id="5et-Vl-5ug"/>
                 <outlet property="goodOfMonthLabel" destination="YIW-dQ-ijt" id="4GI-Ex-4tk"/>
                 <outlet property="lastDayOfMonth" destination="3Fl-g9-WRJ" id="9LT-4V-64O"/>

@@ -121,10 +121,16 @@ class LoginManager:NSObject{
             return EnumIphoneType.Iphone4
         }
     }
+    var currentDevice:OznerDevice{
+        return OznerManager.instance().getDevice(LoginManager.instance.currentDeviceIdentifier)
+    }
+    
     var currentDeviceIdentifier:String?=nil//设置和获取当前设备的ID,nil表示无设备
 }
 
-
+extension Tap{
+    
+}
 
 //当前设备型号
 let cureentIphoneType: EnumIphoneType = LoginManager.currenIphoneType()

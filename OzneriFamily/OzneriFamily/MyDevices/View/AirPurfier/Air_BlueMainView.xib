@@ -51,8 +51,8 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIS-YC-Len">
-                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="58"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIS-YC-Len">
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="35"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
@@ -353,7 +353,11 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebg-z5-gl4"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebg-z5-gl4">
+                            <connections>
+                                <action selector="seeOutdoorAirClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="ieG-hr-V3F"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -398,12 +402,21 @@
                 <constraint firstItem="D4v-Y4-Brm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="v1T-mv-gjJ"/>
             </constraints>
             <connections>
+                <outlet property="FLZLabel" destination="TOJ-Kx-SUE" id="Vk2-1Q-Ghb"/>
+                <outlet property="circleBGimg" destination="Kua-Ya-VHN" id="6LQ-ZB-YH2"/>
+                <outlet property="cityLabel" destination="eKE-TQ-qFf" id="y5r-QZ-2RR"/>
+                <outlet property="humidityValueLabel" destination="sP7-Tj-gFC" id="Bhb-G6-JQp"/>
+                <outlet property="outdoorPM25Label" destination="htN-rk-xJw" id="E0j-xd-Vhd"/>
+                <outlet property="pm25StateLabel" destination="X5Q-IP-5dd" id="UxT-Xl-XrX"/>
+                <outlet property="pm25ValueLabel" destination="jIS-YC-Len" id="Weu-PN-LXr"/>
+                <outlet property="pollutionLabel" destination="Imr-YP-VLR" id="Qok-lq-j26"/>
                 <outlet property="sliderImgWidth" destination="yzz-fG-2m4" id="F1F-bz-C6S"/>
                 <outlet property="sliderShowValueView" destination="ZI9-Eo-zdY" id="vzK-jF-BfM"/>
                 <outlet property="sliderShowValueViewToRight" destination="lGm-Jf-kR8" id="F2D-87-Mpi"/>
                 <outlet property="sliderTouchView" destination="9DA-1P-F0W" id="VsX-yW-u0m"/>
                 <outlet property="sliderValueLabel" destination="ds9-JZ-dfc" id="PCL-9R-Cfu"/>
                 <outlet property="sliderValueStateLabel" destination="olw-Sx-TYp" id="Hyf-Ue-hDo"/>
+                <outlet property="temperatureValueLabel" destination="Wp3-AK-IKv" id="jfg-b6-WSo"/>
             </connections>
             <point key="canvasLocation" x="25.5" y="51.5"/>
         </view>

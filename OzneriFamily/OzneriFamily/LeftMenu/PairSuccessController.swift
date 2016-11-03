@@ -20,16 +20,15 @@ class PairSuccessController: UIViewController {
     //传入设备数组即可
     var deviceArr = [OznerDevice](){
         didSet{
-            CurrDeviceType=(deviceArr[0] as OznerDevice).type
-            
             for _ in 0..<deviceArr.count {
                 pairModel.append(PairModle())
             }
             pairModel[0].isHidden=false
-            //collectionView.reloadData()
+
         }
     }
-    var settings:[String:String] = ["name":"","usingSite":"办公室","sex":"","weight":""]
+    var  CurrDeviceType:String!
+    var settings:[String:String] = ["name":"","usingSite":"办公室","sex":"","weight":"","IsTDSPan":"false"]
     
     
     @IBAction func backClick(_ sender: AnyObject) {
@@ -55,7 +54,7 @@ class PairSuccessController: UIViewController {
     //记录选择了第几个设备，默认第一个
     var indexDevice: Int = 0
     
-    var  CurrDeviceType:String!
+    
     
     private var mainMatchView: UIView!
     
@@ -76,46 +75,53 @@ class PairSuccessController: UIViewController {
             (mainMatchView as! CupMatchView).cupNameLb.delegate=self
             (mainMatchView as! CupMatchView).weightLb.delegate=self
             (mainMatchView as! CupMatchView).sucessBtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
-            break
+            successImage.image=UIImage(named: "icon_peidui_select_cup")
+          
         case OznerDeviceType.Tap.rawValue:
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
             (mainMatchView as! SmallAriClearView).nameLb.placeholder = "输入水探头名称"
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             (mainMatchView as! SmallAriClearView).nameLb.delegate=self
-            break
+            successImage.image=UIImage(named: "icon_peidui_select_tan_tou")
+ 
         case OznerDeviceType.TDSPan.rawValue:
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
             (mainMatchView as! SmallAriClearView).nameLb.placeholder = "输入检测笔名称"
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             (mainMatchView as! SmallAriClearView).nameLb.delegate=self
-            break
+            successImage.image=UIImage(named: "icon_peidui_select_TDSPan")
+   
         case OznerDeviceType.Water_Wifi.rawValue:
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
-            (mainMatchView as! SmallAriClearView).nameLb.placeholder = "立式空净名称"
+            (mainMatchView as! SmallAriClearView).nameLb.placeholder = "净水器名称"
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             (mainMatchView as! SmallAriClearView).nameLb.delegate=self
-            break
+            successImage.image=UIImage(named: "icon_peidui_select_jingshuiqi")
+      
         case OznerDeviceType.Air_Blue.rawValue:
             //小空净
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             (mainMatchView as! SmallAriClearView).nameLb.delegate=self
+            successImage.image=UIImage(named: "icon_peidui_select_smallAir")
+            
         case OznerDeviceType.Air_Wifi.rawValue:
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).placeLb.text = "办公室"
             (mainMatchView as! SmallAriClearView).nameLb.placeholder = "立式空净名称"
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             (mainMatchView as! SmallAriClearView).nameLb.delegate=self
-            break
+            successImage.image=UIImage(named: "icon_peidui_select_bigAir")
+            
         case OznerDeviceType.WaterReplenish.rawValue:
             mainMatchView = UINib.init(nibName: "WaterRefeishView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! WaterRefeishView
             (mainMatchView as! WaterRefeishView).sucessAction.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             (mainMatchView as! WaterRefeishView).placeName.delegate=self
+            successImage.image=UIImage(named: "WaterReplenish4")
             
-            break
         default:
             break
         }
@@ -138,7 +144,13 @@ class PairSuccessController: UIViewController {
 
     func sucessAction() {
         if CheckInputText()==false {
-            _=SCLAlertView().showTitle("", subTitle: loadLanguage("信息不能为空"), duration: 2.0, completeText: loadLanguage("完成"), style: SCLAlertViewStyle.notice)
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false,
+                dynamicAnimatorActive: true
+            )
+            let alert=SCLAlertView(appearance: appearance)
+            _=alert.addButton(loadLanguage("是")) { }
+            _=alert.showInfo("", subTitle: loadLanguage("信息不能为空"))
             return
         }
    
@@ -161,7 +173,9 @@ class PairSuccessController: UIViewController {
             settings["name"]=(mainMatchView as! CupMatchView).cupNameLb.text!
             settings["weight"]=(mainMatchView as! CupMatchView).weightLb.text!
             isSuccess = settings["weight"]=="" ? false:isSuccess
-            
+        case OznerDeviceType.TDSPan.rawValue:
+            settings["IsTDSPan"]="true"
+            settings["name"]=(mainMatchView as! SmallAriClearView).nameLb.text!
         case OznerDeviceType.WaterReplenish.rawValue:
             
             settings["name"]=(mainMatchView as! WaterRefeishView).placeName.text!

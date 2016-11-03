@@ -73,7 +73,7 @@ class DeviceViewContainer: UIView {
     private let DeviceNibName:[OznerDeviceType:String]=[
         OznerDeviceType.Cup:"CupMainView",
         .Tap:"TapMainView",
-        .TDSPan:"TDSPanMainView",
+        .TDSPan:"TapMainView",
         .Water_Wifi:"WaterPurifierMainView",
         .Air_Blue:"Air_BlueMainView",
         .Air_Wifi:"Air_WifiMainView",
@@ -102,6 +102,7 @@ class DeviceViewContainer: UIView {
             delegate.WhitchCenterViewIsHiden!(SettingIsHiden: true, BateryIsHiden: true, FilterIsHiden: true,BottomValue:0)
             
         }else{//有设备时视图初始化
+            currentDeviceView.currentDevice=device
             switch  OznerDeviceType(rawValue: (currentDevice?.type)!)! {
             case .Cup:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:160*k_height)
@@ -111,18 +112,16 @@ class DeviceViewContainer: UIView {
                 
             case .Tap:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: false,BottomValue:211*k_height)
-                
-//                (currentDeviceView as! TapMainView).circleView.updateCircleView(angle: 0.7)
                 //设置电池电量
                 let tmpDianLiang = (currentDevice as! Tap).sensor.powerPer()*100
                 delegate.BateryValueChange!(value: Int(tmpDianLiang))
                 //下载滤芯更新
-                
                 User.FilterService(deviceID: (currentDevice?.identifier)!, success: { (usedDay, _) in
                     let value=ceil(100.0*(30.0-Float(usedDay))/30.0)
                     weakSelf?.delegate.FilterValueChange!(value: Int(value))
                     }, failure: { (error) in
-                        
+                        print(error)
+                        print(error)
                 })
             case .TDSPan:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:0)
@@ -225,15 +224,21 @@ extension DeviceViewContainer{
                 weakSelf?.delegate.FilterValueChange!(value: Int(useValue))
                 if useValue<10//小于10%提醒及时更换滤芯
                 {
-                    let alertView=SCLAlertView()
-                    _=alertView.addButton(loadLanguage("现在去购买滤芯"), action: {
+                    let appearance = SCLAlertView.SCLAppearance(
+                        showCloseButton: false,
+                        dynamicAnimatorActive: true
+                    )
+                    let alert=SCLAlertView(appearance: appearance)
+                    _=alert.addButton(loadLanguage(loadLanguage("现在去购买滤芯"))) {
                         //跳到购买滤芯的页面
                         
                         weakSelf?.delegate.DeviceViewPerformSegue!(SegueID: "showBuyLvXin", sender: ["title":"净水器滤芯","url":NetworkManager.defaultManager?.UrlWithRoot(url!)])
-                        
-                    })
-                    _=alertView.addButton(loadLanguage("我知道了"), action:{})
-                    _=alertView.showNotice(loadLanguage("温馨提示"), subTitle: loadLanguage("你的滤芯即将到期，请及时更换滤芯，以免耽误您的使用"))
+                    }
+                    _=alert.addButton(loadLanguage("我知道了"), action:{})
+                    _=alert.showInfo("", subTitle: loadLanguage("你的滤芯即将到期，请及时更换滤芯，以免耽误您的使用"))
+                    
+                    
+                    
                 }
                 
                 

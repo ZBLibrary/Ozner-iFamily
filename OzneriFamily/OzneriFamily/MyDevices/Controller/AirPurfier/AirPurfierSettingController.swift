@@ -8,12 +8,14 @@
 
 import UIKit
 
-class AirPurfierSettingController: UIViewController {
+class AirPurfierSettingController: DeviceSettingController {
 
-    var currentDevice:OznerDevice!
+    @IBOutlet var nameAndAttrLabel: UILabel!
+    @IBAction func deleteClick(_ sender: AnyObject) {
+        super.deleteDevice()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentDevice=OznerManager.instance().getDevice(LoginManager.instance.currentDeviceIdentifier)
         // Do any additional setup after loading the view.
     }
 
@@ -22,7 +24,9 @@ class AirPurfierSettingController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func nameChange(name:String,attr:String) {
+        nameAndAttrLabel.text="\(name)(\(attr))"
+    }
    
     // MARK: - Navigation
 
@@ -30,12 +34,12 @@ class AirPurfierSettingController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="showAboutDevice" {
             let VC=segue.destination as!  AboutDeviceController
-            VC.setLoadContent(content: currentDevice.type==OznerDeviceType.Air_Blue.rawValue ? "airOperation_small":"airOperation_big", isUrl: false)
+            VC.setLoadContent(content: LoginManager.instance.currentDevice.type==OznerDeviceType.Air_Blue.rawValue ? "airOperation_small":"airOperation_big", isUrl: false)
             VC.title="空气净化器使用说明"
         }
         if segue.identifier=="showCommonQestion" {
             let VC=segue.destination as!  AboutDeviceController
-            VC.setLoadContent(content: currentDevice.type==OznerDeviceType.Air_Blue.rawValue ? "airProblem_small":"airProblem_big", isUrl: false)
+            VC.setLoadContent(content: LoginManager.instance.currentDevice.type==OznerDeviceType.Air_Blue.rawValue ? "airProblem_small":"airProblem_big", isUrl: false)
             VC.title="常见问题"
             
         }

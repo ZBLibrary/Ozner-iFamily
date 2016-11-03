@@ -205,7 +205,7 @@
         <!--智能补水仪详情-->
         <scene sceneID="q7t-V7-4ju">
             <objects>
-                <viewController id="Xci-YO-YQk" sceneMemberID="viewController">
+                <viewController id="Xci-YO-YQk" customClass="SkinDetailController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QHf-j5-Mmm"/>
                         <viewControllerLayoutGuide type="bottom" id="pko-aA-8a9"/>
@@ -806,7 +806,7 @@
         <!--肤质查询-->
         <scene sceneID="S48-bh-oDL">
             <objects>
-                <viewController id="hqs-RD-39H" sceneMemberID="viewController">
+                <viewController id="hqs-RD-39H" customClass="SkinQueryController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dXL-Lk-kmj"/>
                         <viewControllerLayoutGuide type="bottom" id="djY-Dd-pm9"/>
@@ -1066,7 +1066,7 @@
         <!--室内空气质量详情-->
         <scene sceneID="gZz-V1-Hjs">
             <objects>
-                <viewController id="3Ak-V9-a2E" sceneMemberID="viewController">
+                <viewController id="3Ak-V9-a2E" customClass="AirLvXinController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wud-4b-cP5"/>
                         <viewControllerLayoutGuide type="bottom" id="Vvv-VS-o05"/>
@@ -1109,10 +1109,6 @@
                                                     <constraint firstItem="u3s-N2-DPa" firstAttribute="centerY" secondItem="YAA-qd-r0b" secondAttribute="centerY" id="gmy-eq-lLc"/>
                                                     <constraint firstItem="5PA-vH-naK" firstAttribute="centerY" secondItem="YQL-69-4GE" secondAttribute="centerY" id="vSR-bR-kO4"/>
                                                 </constraints>
-                                                <connections>
-                                                    <outlet property="AirFine" destination="UVM-oh-s8l" id="vaE-G4-qf2"/>
-                                                    <outlet property="Pm2d5Value" destination="5PA-vH-naK" id="kmS-Re-lcW"/>
-                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1155,10 +1151,6 @@
                                                     <constraint firstItem="rSP-m4-AeV" firstAttribute="centerY" secondItem="npA-k0-fBT" secondAttribute="centerY" id="k3Y-dM-TAD"/>
                                                     <constraint firstAttribute="bottom" secondItem="jwv-bz-HPi" secondAttribute="bottom" id="t3W-kD-vcY"/>
                                                 </constraints>
-                                                <connections>
-                                                    <outlet property="AirFine" destination="jwv-bz-HPi" id="uCE-aA-cmK"/>
-                                                    <outlet property="Pm2d5Value" destination="rSP-m4-AeV" id="zk0-hb-Lfl"/>
-                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1185,7 +1177,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1i-ve-Sqb">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="320000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWy-7A-tC3">
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="35"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="33"/>
                                         <color key="textColor" red="0.0" green="0.30196078430000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1202,9 +1194,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="i4z-B6-9Y6" firstAttribute="bottom" secondItem="iWy-7A-tC3" secondAttribute="bottom" id="03w-8q-NXz"/>
+                                    <constraint firstItem="i4z-B6-9Y6" firstAttribute="bottom" secondItem="iWy-7A-tC3" secondAttribute="bottom" constant="-5" id="03w-8q-NXz"/>
                                     <constraint firstItem="CC1-mH-Zmv" firstAttribute="centerX" secondItem="y1i-ve-Sqb" secondAttribute="centerX" id="5yU-p8-LBE"/>
-                                    <constraint firstItem="iWy-7A-tC3" firstAttribute="height" secondItem="y1i-ve-Sqb" secondAttribute="height" multiplier="30:90" id="XBM-7v-qtj"/>
+                                    <constraint firstItem="iWy-7A-tC3" firstAttribute="height" secondItem="y1i-ve-Sqb" secondAttribute="height" multiplier="40:90" id="XBM-7v-qtj"/>
                                     <constraint firstItem="iWy-7A-tC3" firstAttribute="top" secondItem="CC1-mH-Zmv" secondAttribute="bottom" id="clc-O9-TAk"/>
                                     <constraint firstItem="iWy-7A-tC3" firstAttribute="centerX" secondItem="y1i-ve-Sqb" secondAttribute="centerX" id="hmY-mP-DUH"/>
                                     <constraint firstItem="CC1-mH-Zmv" firstAttribute="top" secondItem="y1i-ve-Sqb" secondAttribute="top" id="q32-Bz-LV9"/>
@@ -1433,7 +1425,7 @@
         <!--水质纯净值TDS-->
         <scene sceneID="4Yw-Qe-WCj">
             <objects>
-                <viewController id="ivk-xY-aWD" sceneMemberID="viewController">
+                <viewController id="ivk-xY-aWD" customClass="WaterPurfierTDSController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fS6-sG-I86"/>
                         <viewControllerLayoutGuide type="bottom" id="pJF-P3-7rD"/>
@@ -3084,7 +3076,7 @@
             </objects>
             <point key="canvasLocation" x="2367" y="1203"/>
         </scene>
-        <!--我的水探头-->
+        <!--设置-->
         <scene sceneID="Suy-EX-UDn">
             <objects>
                 <viewController id="SrH-4Z-1Vu" customClass="TapSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
@@ -3108,13 +3100,13 @@
                                                             <constraint firstAttribute="height" constant="1" id="aCH-8b-2ET"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的智能杯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjP-Lo-cXe">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的水探头" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjP-Lo-cXe">
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="Pjz-6x-zDA"/>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的水杯1(办公室)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOS-aR-GUC">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的探头1(办公室)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOS-aR-GUC">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="127" id="kva-IO-dTa"/>
                                                         </constraints>
@@ -3259,7 +3251,7 @@
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q5V-xA-hWU">
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于智能杯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQx-PF-tig">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于水探头" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQx-PF-tig">
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -3304,6 +3296,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="deleteDeviceClick:" destination="SrH-4Z-1Vu" eventType="touchUpInside" id="0OF-cW-O3w"/>
+                                                </connections>
                                             </button>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="setmystate5" translatesAutoresizingMaskIntoConstraints="NO" id="Lg6-CH-kio"/>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="滤芯不足十天会显示提醒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dC-58-lkl">
@@ -3352,15 +3347,18 @@
                             <constraint firstAttribute="trailing" secondItem="Yo2-PP-IO1" secondAttribute="trailing" id="xv4-44-DTL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="我的水探头" id="nXo-Zd-eC1">
+                    <navigationItem key="navigationItem" title="设置" id="nXo-Zd-eC1">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="u9v-8y-vYN"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameAndAttrLabel" destination="SOS-aR-GUC" id="hxW-h7-WWo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGc-Mb-mr6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8454" y="1204"/>
         </scene>
-        <!--我的水杯-->
+        <!--设置-->
         <scene sceneID="Ql6-vl-588">
             <objects>
                 <viewController id="XeD-QT-4f5" customClass="CupSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
@@ -3480,6 +3478,9 @@
                                                                         <color key="textColor" red="0.26274509800000001" green="0.50980392159999999" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="XeD-QT-4f5" id="hwW-6J-8Kj"/>
+                                                                        </connections>
                                                                     </textField>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3945,6 +3946,18 @@
                                                                     <segment title="饮水纯净指数 TDS"/>
                                                                 </segments>
                                                                 <color key="tintColor" red="0.2470588235" green="0.55294117649999996" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="15"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                        <integer key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                                                        <color key="value" red="0.23136687278747559" green="0.53873193264007568" blue="0.95808607339859009" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
                                                             </segmentedControl>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -4006,6 +4019,9 @@
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="deletClick:" destination="XeD-QT-4f5" eventType="touchUpInside" id="cgd-3L-lJg"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="饮水提醒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRx-cS-M33">
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
@@ -4068,11 +4084,16 @@
                             <constraint firstAttribute="trailing" secondItem="BBu-U1-Vjj" secondAttribute="trailing" id="kbA-cy-9M9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="我的水杯" id="vzc-6q-nbu">
+                    <navigationItem key="navigationItem" title="设置" id="vzc-6q-nbu">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="hqm-hQ-yi1"/>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1325"/>
+                    <connections>
+                        <outlet property="drinkingLabel" destination="Tgr-0G-RqI" id="NgA-TQ-giM"/>
+                        <outlet property="nameAndAttrLabel" destination="AYK-rb-OPu" id="hGQ-Sm-kLh"/>
+                        <outlet property="weightTF" destination="ncY-UA-n5v" id="vLd-tF-uEW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8N-S5-dIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4096,7 +4117,7 @@
             </objects>
             <point key="canvasLocation" x="5626" y="-158"/>
         </scene>
-        <!--我的净水器-->
+        <!--设置-->
         <scene sceneID="W0i-cX-zbN">
             <objects>
                 <viewController id="0RJ-al-8HV" customClass="WaterPurfierSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
@@ -4210,6 +4231,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="deleteClick:" destination="0RJ-al-8HV" eventType="touchUpInside" id="ATz-s6-rwb"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93706661459999996" green="0.93679302929999997" blue="0.96569913630000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4243,15 +4267,18 @@
                             <constraint firstAttribute="trailing" secondItem="lY7-I8-XRY" secondAttribute="trailing" id="maQ-Nd-KnQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="我的净水器" id="oUO-6B-IcQ">
+                    <navigationItem key="navigationItem" title="设置" id="oUO-6B-IcQ">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="mY5-NY-hjT"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameAndAttrLabel" destination="VhK-JP-755" id="yJl-AI-5Id"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cmr-Gn-vLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="10166" y="1200"/>
         </scene>
-        <!--我的空气净化器-->
+        <!--设置-->
         <scene sceneID="CiE-L0-bah">
             <objects>
                 <viewController id="hfS-yf-OMy" customClass="AirPurfierSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
@@ -4365,6 +4392,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="deleteClick:" destination="hfS-yf-OMy" eventType="touchUpInside" id="uIc-nY-Zls"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tdc-37-PKg">
                                                 <subviews>
@@ -4494,9 +4524,12 @@
                             <constraint firstItem="Rtm-Vo-A3u" firstAttribute="top" secondItem="JwI-0o-HT1" secondAttribute="bottom" id="qf7-lX-reM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="我的空气净化器" id="zQR-TD-o7G">
+                    <navigationItem key="navigationItem" title="设置" id="zQR-TD-o7G">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="Tn2-wJ-jgC"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameAndAttrLabel" destination="XcM-RU-FUf" id="boi-G6-4VC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yE6-Aw-KYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4533,6 +4566,9 @@
                                         <color key="textColor" red="0.31372549020000001" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="GRq-nX-7ST" id="hqe-4U-6UV"/>
+                                        </connections>
                                     </textField>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="reSeticon" translatesAutoresizingMaskIntoConstraints="NO" id="eJh-d7-aBI">
                                         <constraints>
@@ -4553,56 +4589,78 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="洗手间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDB-dM-8Ae">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNX-oz-3Ux">
+                                                <subviews>
+                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Set_gou" translatesAutoresizingMaskIntoConstraints="NO" id="8Lb-qq-pFX"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="厨房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lG-FU-vy6">
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="8Oq-tU-pfm"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                                        <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="8Oq-tU-pfm"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="zKk-VE-Krk"/>
+                                                    <constraint firstItem="2lG-FU-vy6" firstAttribute="leading" secondItem="hNX-oz-3Ux" secondAttribute="leading" constant="20" id="5Xd-Mi-XyV"/>
+                                                    <constraint firstItem="8Lb-qq-pFX" firstAttribute="centerY" secondItem="hNX-oz-3Ux" secondAttribute="centerY" id="VRC-SR-1uP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8Lb-qq-pFX" secondAttribute="trailing" constant="15" id="XIe-65-e5s"/>
+                                                    <constraint firstItem="2lG-FU-vy6" firstAttribute="centerY" secondItem="hNX-oz-3Ux" secondAttribute="centerY" id="kQQ-Dp-BPK"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                                                <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="厨房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2n-wj-7MR">
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="mky-kp-gpb" appends="YES" id="ORN-8V-QcP"/>
+                                                </connections>
+                                            </view>
+                                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uZ-Gb-EnJ">
+                                                <subviews>
+                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Set_gou" translatesAutoresizingMaskIntoConstraints="NO" id="w5M-9X-jYb"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="办公室" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFZ-6B-H9T">
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="xig-Ry-Bwf"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                                        <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="xig-Ry-Bwf"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="6Yr-ch-uzG"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="Q9X-LT-SlG"/>
+                                                    <constraint firstItem="w5M-9X-jYb" firstAttribute="centerY" secondItem="1uZ-Gb-EnJ" secondAttribute="centerY" id="GKE-4c-64o"/>
+                                                    <constraint firstItem="qFZ-6B-H9T" firstAttribute="centerY" secondItem="1uZ-Gb-EnJ" secondAttribute="centerY" id="Ndb-7A-YwK"/>
+                                                    <constraint firstItem="qFZ-6B-H9T" firstAttribute="leading" secondItem="1uZ-Gb-EnJ" secondAttribute="leading" constant="20" id="eCo-Bc-KOP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="w5M-9X-jYb" secondAttribute="trailing" constant="15" id="zVJ-sd-7Ft"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                                                <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="Q9X-LT-SlG"/>
-                                                    </mask>
-                                                </variation>
-                                            </label>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Set_gou" translatesAutoresizingMaskIntoConstraints="NO" id="3QG-yH-COU"/>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Set_gou" translatesAutoresizingMaskIntoConstraints="NO" id="wws-NU-crM"/>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07M-zh-CgQ"/>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ly6-Fs-1Bs"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="Jbj-Kt-PtO" appends="YES" id="06x-ap-Ss9"/>
+                                                </connections>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="07M-zh-CgQ" firstAttribute="top" secondItem="1g5-JM-YXY" secondAttribute="top" id="1Gi-Us-nQp"/>
-                                            <constraint firstItem="Ly6-Fs-1Bs" firstAttribute="leading" secondItem="1g5-JM-YXY" secondAttribute="leading" id="6W2-z7-el4"/>
-                                            <constraint firstItem="07M-zh-CgQ" firstAttribute="leading" secondItem="1g5-JM-YXY" secondAttribute="leading" id="9kX-Op-X8h"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ly6-Fs-1Bs" secondAttribute="bottom" id="I2b-cN-O38"/>
-                                            <constraint firstItem="JDB-dM-8Ae" firstAttribute="leading" secondItem="1g5-JM-YXY" secondAttribute="leading" constant="15" id="TLC-Np-vgh"/>
-                                            <constraint firstItem="3QG-yH-COU" firstAttribute="centerY" secondItem="JDB-dM-8Ae" secondAttribute="centerY" id="VTN-T9-SAW"/>
+                                            <constraint firstAttribute="bottom" secondItem="1uZ-Gb-EnJ" secondAttribute="bottom" id="3wJ-Ao-DFe"/>
+                                            <constraint firstItem="hNX-oz-3Ux" firstAttribute="top" secondItem="1g5-JM-YXY" secondAttribute="top" id="4RX-aI-8tY"/>
+                                            <constraint firstItem="1uZ-Gb-EnJ" firstAttribute="top" secondItem="uXU-kY-x8Q" secondAttribute="bottom" id="7Zx-kU-XR3"/>
+                                            <constraint firstItem="hNX-oz-3Ux" firstAttribute="leading" secondItem="1g5-JM-YXY" secondAttribute="leading" id="HOh-K8-OAG"/>
+                                            <constraint firstItem="uXU-kY-x8Q" firstAttribute="top" secondItem="hNX-oz-3Ux" secondAttribute="bottom" id="LWS-5B-35q"/>
                                             <constraint firstItem="uXU-kY-x8Q" firstAttribute="leading" secondItem="1g5-JM-YXY" secondAttribute="leading" constant="15" id="XwU-Yf-iSC"/>
-                                            <constraint firstAttribute="trailing" secondItem="07M-zh-CgQ" secondAttribute="trailing" id="Yac-Lp-BTk"/>
-                                            <constraint firstItem="Ly6-Fs-1Bs" firstAttribute="top" secondItem="uXU-kY-x8Q" secondAttribute="bottom" id="ZLV-Ug-8EU"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ly6-Fs-1Bs" secondAttribute="trailing" id="bDD-Bn-FGV"/>
-                                            <constraint firstItem="Z2n-wj-7MR" firstAttribute="top" secondItem="JDB-dM-8Ae" secondAttribute="bottom" id="bGd-Bg-DZU"/>
-                                            <constraint firstAttribute="trailing" secondItem="3QG-yH-COU" secondAttribute="trailing" constant="15" id="beu-IK-Cws"/>
-                                            <constraint firstAttribute="bottom" secondItem="Z2n-wj-7MR" secondAttribute="bottom" id="bgQ-4K-9Bu"/>
-                                            <constraint firstItem="Z2n-wj-7MR" firstAttribute="leading" secondItem="1g5-JM-YXY" secondAttribute="leading" constant="15" id="clU-bU-Qtc"/>
-                                            <constraint firstItem="uXU-kY-x8Q" firstAttribute="top" secondItem="JDB-dM-8Ae" secondAttribute="bottom" id="fuc-ud-S95"/>
+                                            <constraint firstItem="1uZ-Gb-EnJ" firstAttribute="leading" secondItem="1g5-JM-YXY" secondAttribute="leading" id="Ysy-BL-NTc"/>
+                                            <constraint firstAttribute="trailing" secondItem="1uZ-Gb-EnJ" secondAttribute="trailing" id="dj3-GU-pjH"/>
                                             <constraint firstAttribute="trailing" secondItem="uXU-kY-x8Q" secondAttribute="trailing" id="gLV-PU-2zi"/>
-                                            <constraint firstItem="wws-NU-crM" firstAttribute="centerY" secondItem="Z2n-wj-7MR" secondAttribute="centerY" id="hQX-EE-Pci"/>
-                                            <constraint firstItem="JDB-dM-8Ae" firstAttribute="top" secondItem="1g5-JM-YXY" secondAttribute="top" id="hTg-gp-w45"/>
-                                            <constraint firstAttribute="trailing" secondItem="wws-NU-crM" secondAttribute="trailing" constant="15" id="nHp-yz-Sf8"/>
-                                            <constraint firstItem="Z2n-wj-7MR" firstAttribute="top" secondItem="07M-zh-CgQ" secondAttribute="bottom" id="ohE-sp-oQH"/>
                                             <constraint firstItem="uXU-kY-x8Q" firstAttribute="centerY" secondItem="1g5-JM-YXY" secondAttribute="centerY" id="pdh-Jk-yiY"/>
+                                            <constraint firstAttribute="trailing" secondItem="hNX-oz-3Ux" secondAttribute="trailing" id="sxN-ec-ieC"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用地点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocS-cW-a0A">
@@ -4614,7 +4672,11 @@
                                         <color key="textColor" red="0.57647058819999997" green="0.58039215690000001" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOq-U7-ejz"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOq-U7-ejz">
+                                        <connections>
+                                            <action selector="writeNameClick:" destination="GRq-nX-7ST" eventType="touchUpInside" id="0YD-Dc-9Ol"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -4648,14 +4710,35 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EKc-t5-5pX">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="YDU-hP-MB8"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="YDU-hP-MB8">
+                            <connections>
+                                <action selector="SaveClick:" destination="GRq-nX-7ST" id="9mx-Ta-H77"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="attributeImg0" destination="8Lb-qq-pFX" id="1Wr-I2-ilg"/>
+                        <outlet property="attributeImg1" destination="w5M-9X-jYb" id="tQL-av-Vcf"/>
+                        <outlet property="attributeName0" destination="2lG-FU-vy6" id="ezT-td-zWw"/>
+                        <outlet property="attributeName1" destination="qFZ-6B-H9T" id="a5L-sF-w2B"/>
+                        <outlet property="nameTextFeild" destination="FSW-5f-gM9" id="me5-QH-8Or"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nf2-pb-t4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="mky-kp-gpb" userLabel="tapIndex0">
+                    <connections>
+                        <action selector="selectAttributeClick:" destination="GRq-nX-7ST" id="ZX1-oH-zIz"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Jbj-Kt-PtO" userLabel="tapIndex1">
+                    <connections>
+                        <action selector="selectAttributeClick:" destination="GRq-nX-7ST" id="yib-KZ-sw7"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="12226" y="3329"/>
+            <point key="canvasLocation" x="12224.799999999999" y="3328.785607196402"/>
         </scene>
         <!--关于设备-->
         <scene sceneID="eI2-qa-orI">
@@ -4692,7 +4775,7 @@
             </objects>
             <point key="canvasLocation" x="9393" y="3604"/>
         </scene>
-        <!--我的补水仪-->
+        <!--设置-->
         <scene sceneID="2v4-wA-gA6">
             <objects>
                 <viewController id="XBD-wp-tdL" customClass="WaterReplenishSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
@@ -4779,6 +4862,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="deleteClick:" destination="XBD-wp-tdL" eventType="touchUpInside" id="ioP-7y-2Zp"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYC-eo-F62">
                                                 <subviews>
@@ -5006,9 +5092,12 @@
                             <constraint firstItem="Ihe-MZ-WsE" firstAttribute="top" secondItem="Nzp-Xm-ZEQ" secondAttribute="bottom" id="gMo-PG-om2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="我的补水仪" id="eKL-DY-FgN">
+                    <navigationItem key="navigationItem" title="设置" id="eKL-DY-FgN">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="nDC-Qh-1Cv"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameAndAttrLabel" destination="rGc-63-Owk" id="U5b-6z-pTp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PET-gP-87D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5017,7 +5106,7 @@
         <!--滤芯状态-->
         <scene sceneID="Zu8-x8-wJA">
             <objects>
-                <viewController id="f3R-LE-xjw" customClass="CupSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f3R-LE-xjw" customClass="TapLvXinController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wq1-Q4-Hmf"/>
                         <viewControllerLayoutGuide type="bottom" id="vdY-Aq-QbD"/>
@@ -5628,7 +5717,7 @@
             </objects>
             <point key="canvasLocation" x="3191" y="1545"/>
         </scene>
-        <!--我的TDS笔-->
+        <!--设置-->
         <scene sceneID="E6R-hy-nqx">
             <objects>
                 <viewController id="1E5-IJ-tIV" customClass="TDSPanSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
@@ -5742,6 +5831,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="deleteClick:" destination="1E5-IJ-tIV" eventType="touchUpInside" id="6SZ-Lu-1I3"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93706661459999996" green="0.93679302929999997" blue="0.96569913630000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5775,9 +5867,12 @@
                             <constraint firstAttribute="trailing" secondItem="7aq-1R-b70" secondAttribute="trailing" id="WsS-kX-vcA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="我的TDS笔" id="xo9-0U-NFa">
+                    <navigationItem key="navigationItem" title="设置" id="xo9-0U-NFa">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="OfQ-yD-ghF"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameAndAttrLabel" destination="ztd-Vq-E3k" id="qwZ-TD-NHV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkh-ZD-XJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5827,7 +5922,7 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gyv-IX-20O"/>
-        <segue reference="tej-Ey-GIl"/>
+        <segue reference="uTu-U7-iUE"/>
+        <segue reference="aaL-mh-gXA"/>
     </inferredMetricsTieBreakers>
 </document>

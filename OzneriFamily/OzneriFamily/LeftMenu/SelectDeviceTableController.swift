@@ -11,8 +11,7 @@ import UIKit
 
 class SelectDeviceTableController: UITableViewController {
 
-    var deviceType:OznerDeviceType?
-    //var delegate: OznerLeftMenuProtocol?
+    
     @IBAction func backClick(_ sender: UIBarButtonItem) {
        self.dismiss(animated: false, completion: nil)
     }
@@ -60,9 +59,7 @@ class SelectDeviceTableController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectdevice", for: indexPath) as! SelectDeviceCell
         
-        let deviceType = [OznerDeviceType.Cup,.Tap,.TDSPan,.Water_Wifi,.Air_Blue,.Air_Wifi,.WaterReplenish][indexPath.row]
-        
-        cell.setDeviceType(deviceType: deviceType)//deviceType=
+        cell.setDeviceType(deviceType: [OznerDeviceType.Cup,.Tap,.TDSPan,.Water_Wifi,.Air_Blue,.Air_Wifi,.WaterReplenish][indexPath.row])//deviceType=
         cell.selectionStyle=UITableViewCellSelectionStyle.none
         // Configure the cell...
 
@@ -71,8 +68,8 @@ class SelectDeviceTableController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        deviceType = [OznerDeviceType.Cup,.Tap,.TDSPan,.Water_Wifi,.Air_Blue,.Air_Wifi,.WaterReplenish][indexPath.row]
-        self.performSegue(withIdentifier: "pushPairID", sender: nil)
+        //deviceType = [OznerDeviceType.Cup,.Tap,.TDSPan,.Water_Wifi,.Air_Blue,.Air_Wifi,.WaterReplenish][indexPath.row]
+        self.performSegue(withIdentifier: "pushPairID", sender: indexPath.row)
 
     }
     /*
@@ -114,13 +111,10 @@ class SelectDeviceTableController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-//        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {      
         let pair = segue.destination as! PairingController
-        
-        pair.currDeviceType = (self.deviceType?.rawValue)!
+        pair.currDeviceType = [OznerDeviceType.Cup,.Tap,.TDSPan,.Water_Wifi,.Air_Blue,.Air_Wifi,.WaterReplenish][sender as! Int].rawValue
+
     }
     
 

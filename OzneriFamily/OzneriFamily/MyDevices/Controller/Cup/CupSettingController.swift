@@ -8,23 +8,27 @@
 
 import UIKit
 
-class CupSettingController: UIViewController {
+class CupSettingController: DeviceSettingController {
 
+    @IBOutlet var nameAndAttrLabel: UILabel!
+    @IBOutlet var weightTF: UITextField!
+    @IBOutlet var drinkingLabel: UITextField!
+    @IBAction func deletClick(_ sender: AnyObject) {
+        super.deleteDevice()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
+    override func nameChange(name:String,attr:String) {
+        nameAndAttrLabel.text="\(name)(\(attr))"
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
-    }
     
     
     // MARK: - Navigation
