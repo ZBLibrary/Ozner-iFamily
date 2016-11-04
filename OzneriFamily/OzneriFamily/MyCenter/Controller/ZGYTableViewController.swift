@@ -189,13 +189,30 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
         let params:NSDictionary = ["jsonmobile":phonestr]
         
         weak var weakSelf = self
+        
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+        SVProgressHUD.setViewForExtension(self.view)
+        SVProgressHUD.show()
         User.GetUserNickImage(params, { (responseObject) in
-            
+            SVProgressHUD.dismiss()
             let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0
-            
+            print(responseObject)
+            //-10013
             if isSuccess > 0 {
                 
                 let arr = responseObject.dictionary?["data"]?.array?.first
+                
+                if arr?["Status"].intValue == -10013 {
+                    
+                    let alertView=SCLAlertView()
+                    _ = alertView.addButton(loadLanguage("确定"), action: {})
+                    _ = alertView.showSuccess(loadLanguage("温馨提示"), subTitle: loadLanguage("非浩泽用户!"))
+                    return
+                    
+                }
+                
                 weakSelf?.seachResult.imgUrl = (arr?["headimg"].stringValue)!
                 weakSelf?.seachResult.isExist = true
                 weakSelf?.seachResult.status = (arr?["Status"].intValue)!
@@ -207,7 +224,13 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
             }
             
         }) { (error) in
-            print(error)
+            SVProgressHUD.dismiss()
+            
+            
+            let alertView = SCLAlertView()
+            _ = alertView.addButton(loadLanguage("确定"), action: {})
+            _ = alertView.showError(loadLanguage("温馨提示"), subTitle:(error?.localizedDescription)!)
+
         }
         
         //        User.SearchFriend(params, { (responseObject) in

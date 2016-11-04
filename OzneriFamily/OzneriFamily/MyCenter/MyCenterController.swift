@@ -59,9 +59,9 @@ class MyCenterController: UIViewController {
         infoHeadView.iconImage.sd_setImage(with: URL(string: (User.currentUser?.headimage)!))
         }
         //TODO: -
-        infoHeadView.nameLb.text = (User.currentUser?.username)! == "" ? (User.currentUser?.phone) ?? "Ozner" : (User.currentUser?.username) ?? "Ozner"
+        infoHeadView.nameLb.text = User.currentUser?.username == "" ? (User.currentUser?.phone) ?? "Ozner" : (User.currentUser?.username) ?? "Ozner"
         //会员等级
-        if (User.currentUser?.gradename)! == "" {
+        if User.currentUser?.gradename == "" {
             infoHeadView.leaveLb.text = ""
         } else {
             let leaveStr = User.currentUser?.gradename?.replacingOccurrences(of: "会员", with: "代理会员")
@@ -89,7 +89,7 @@ class MyCenterController: UIViewController {
     }
     
     func myMoneyBtnAction() {
-        webViewType = "我的小金库"
+        webViewType = loadLanguage("我的小金库")
         self.performSegue(withIdentifier: "MyInfoSegueId", sender: nil)
         
     }
@@ -155,7 +155,7 @@ class MyCenterController: UIViewController {
         if segue.identifier == "MyInfoSegueId" {
             let pair = segue.destination as! BaseWebView
             
-            pair.webViewType = WeiXinUrlType(rawValue: self.webViewType!)
+            pair.webViewType = self.webViewType!
         }
         
        

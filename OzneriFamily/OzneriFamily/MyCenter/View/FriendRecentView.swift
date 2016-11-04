@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 
 class FriendRecentView: UIView {
 
+    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var recentContentLb: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
     
@@ -25,7 +26,7 @@ class FriendRecentView: UIView {
         sendBtn.layer.borderColor = UIColor.lightGray.cgColor
         IQKeyboardManager.sharedManager().enable = true
         
-        recentContentLb.text = loadLanguage("回复")
+        label.text = loadLanguage("回复")
         sendBtn.setTitle(loadLanguage("发送"), for: UIControlState.normal)
     }
     

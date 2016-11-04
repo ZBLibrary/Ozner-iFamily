@@ -65,7 +65,7 @@ class MyFriendViewController: UIViewController ,UIScrollViewDelegate{
         
         scrollerView.addSubview(leftViewController.view)
         scrollerView.addSubview(rightViewController.view)
-        
+        myFe()
     }
     
     func myRankAction() -> Void {
@@ -82,6 +82,14 @@ class MyFriendViewController: UIViewController ,UIScrollViewDelegate{
         centerView.myFriend.isSelected = true
         centerView.bootomView2.isHidden = false
         scrollerView.contentOffset = CGPoint(x: width_screen, y: -height_navBar)
+    }
+    
+    func myFe() {
+        centerView.myRank.isSelected = false
+        centerView.bootomView.isHidden = true
+        centerView.myFriend.isSelected = true
+        centerView.bootomView2.isHidden = false
+        scrollerView.contentOffset = CGPoint(x: width_screen, y: 0)
     }
     
 

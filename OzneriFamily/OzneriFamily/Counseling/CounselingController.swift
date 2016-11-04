@@ -381,7 +381,7 @@ class CounselingController: ZHCMessagesViewController {
     // MARK: - ZHCMessagesMoreViewDataSource
     override func messagesMoreViewTitles(_ moreView: ZHCMessagesMoreView) -> [Any] {
         
-        return ["相机","照片"]
+        return [loadLanguage("拍摄"),loadLanguage("照片")]
     }
     
     override func messagesMoreViewImgNames(_ moreView: ZHCMessagesMoreView) -> [Any] {
@@ -393,7 +393,7 @@ class CounselingController: ZHCMessagesViewController {
     
     private func initNavarionBar() {
         
-        self.title = "咨询"
+        self.title = loadLanguage("咨询")
         self.view.backgroundColor = UIColor.white
 //        navigationController?.toolbar.barTintColor = UIColor.white
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"CallPhoneImage"), style: UIBarButtonItemStyle.done, target: self, action: #selector(CounselingController.phoneCallAction))

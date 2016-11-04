@@ -22,7 +22,7 @@
 #import "UIColor+ZHCMessages.h"
 #import "UIView+ZHCMessages.h"
 
-
+#import "OzneriFamily-Swift.h"
 
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <objc/runtime.h>
@@ -153,8 +153,8 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
     self.inputViewHeightConstraint.constant = self.inputMessageBarView.preferredDefaultHeight;
     self.inputMessageBarView.delegate = self;
-
-    self.inputMessageBarView.contentView.textView.placeHolder = [NSBundle zhc_localizedStringForKey:@"新消息"];
+    
+    self.inputMessageBarView.contentView.textView.placeHolder = [NSBundle zhc_localizedStringForKey: @"新消息"];
     self.inputMessageBarView.contentView.textView.accessibilityLabel = [NSBundle zhc_localizedStringForKey:@"new_message"];
     self.inputMessageBarView.contentView.textView.delegate = self;
     self.automaticallyScrollsToMostRecentMessage = YES;

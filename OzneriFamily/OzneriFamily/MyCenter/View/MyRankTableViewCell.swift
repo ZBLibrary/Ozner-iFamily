@@ -49,7 +49,6 @@ class MyRankTableViewCell: UITableViewCell {
     PaimingLable.text = loadLanguage("排名");
     todaytext.text = loadLanguage( "您今日最佳");
     
-        
     
     }
     

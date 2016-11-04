@@ -19,6 +19,7 @@ class SetMeterViewController: UIViewController {
     }
    
     
+    @IBOutlet weak var saveBtn: UIBarButtonItem!
     @IBOutlet var DanWe1: UIImageView!
     @IBOutlet var DanWei2: UIImageView!
     @IBOutlet var DanWei3: UIImageView!
@@ -64,6 +65,7 @@ class SetMeterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        saveBtn.title = loadLanguage("保存")
        self.title=loadLanguage("计量单位")
       TemperatureLable.text=loadLanguage("温度")
       CelsiusLable.text=loadLanguage("摄氏度")
@@ -72,7 +74,7 @@ class SetMeterViewController: UIViewController {
       MLLable.text=loadLanguage("毫升")
       DLLable.text=loadLanguage("分升")
       OZLable.text=loadLanguage("盅司" )
-        
+
         DanWe1.isHidden=true
         DanWei2.isHidden=true
         DanWei3.isHidden=true

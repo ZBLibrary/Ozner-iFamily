@@ -201,8 +201,13 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
         let params:NSDictionary = ["jsonmobile":phonestr]
         
         weak var weakSelf = self
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+        SVProgressHUD.setViewForExtension(self.view)
+        SVProgressHUD.show()
         User.GetUserNickImage(params, { (responseObject) in
-            
+            SVProgressHUD.dismiss()
             let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0
             
             if isSuccess > 0 {
@@ -219,7 +224,11 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
             }
             
             }) { (error) in
-                print(error)
+                SVProgressHUD.dismiss()
+                
+                let alertView = SCLAlertView()
+                _ = alertView.addButton(loadLanguage("确定"), action: {})
+                _ = alertView.showError(loadLanguage("温馨提示"), subTitle:error?.localizedDescription == "" ? "加载失败" : (error?.localizedDescription)! )
         }
         
 //        User.SearchFriend(params, { (responseObject) in

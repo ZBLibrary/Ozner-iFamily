@@ -43,8 +43,12 @@ class YZNewsTableViewController: UIViewController {
     func initData() {
         
         weak var weakSelf = self
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+        SVProgressHUD.show()
         User.GetUserVerifMessage({ (responseObject) in
-            
+            SVProgressHUD.dismiss()
             print(responseObject)
             
             let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0
@@ -79,7 +83,11 @@ class YZNewsTableViewController: UIViewController {
             }
             
             }) { (error) in
-                print(error)
+                SVProgressHUD.dismiss()
+                
+                let alertView = SCLAlertView()
+                _ = alertView.addButton(loadLanguage("确定"), action: {})
+                _ = alertView.showError(loadLanguage("温馨提示"), subTitle:error?.localizedDescription == "" ? "加载失败" : (error?.localizedDescription)! )
         }
         
     }

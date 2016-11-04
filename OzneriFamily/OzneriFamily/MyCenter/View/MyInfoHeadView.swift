@@ -20,6 +20,7 @@ class MyInfoHeadView: UIView {
     @IBOutlet weak var infoNumLb: UILabel!
     @IBOutlet weak var moneyLb: UILabel!
     
+    @IBOutlet weak var MymoneyLb: UILabel!
     @IBOutlet weak var hideView: UIView!
     @IBOutlet weak var myMoneyBtn: UIButton!
     @IBOutlet weak var myDeviceNumBtn: UIButton!
@@ -27,7 +28,7 @@ class MyInfoHeadView: UIView {
         super.awakeFromNib()
         
         MyIfoLb.text = loadLanguage("我的设备")
-        moneyLb.text = loadLanguage("我的小金库")
+        MymoneyLb.text = loadLanguage("我的小金库")
         loginBtn.setTitle(loadLanguage("点击登录"), for: UIControlState.normal)
         loginBtn.setTitleColor(UIColor.black, for: UIControlState.normal)
         

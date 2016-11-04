@@ -11,7 +11,7 @@
 #import "ZHCMessagesCommonParameter.h"
 #import "UIView+ZHCMessages.h"
 #import "UIImage+ZHCMessages.h"
-
+#import "NSBundle+ZHCMessages.h"
 
 static const CGFloat EmojiWidth = 50;
 static const CGFloat EmojiHeight = 50;
@@ -217,8 +217,8 @@ static const CGFloat EmojiFontSize = 30;
         
         UIButton *sendButton = [[UIButton alloc] init];
         sendButton.translatesAutoresizingMaskIntoConstraints = NO;
-        sendButton.backgroundColor = [UIColor lightGrayColor];
-        [sendButton setTitle:@"发送" forState:UIControlStateNormal];
+        sendButton.backgroundColor = [UIColor blueColor];
+        [sendButton setTitle:[NSBundle zhc_localizedStringForKey: @"发送"] forState:UIControlStateNormal];
         [sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [sendButton addTarget:self action:@selector(sendAction:) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:sendButton];

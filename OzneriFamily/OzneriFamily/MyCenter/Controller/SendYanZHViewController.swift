@@ -64,9 +64,15 @@ class SendYanZHViewController: UIViewController,UITextFieldDelegate {
 
         let params:NSDictionary = ["content":messstring,"mobile":sendphone]
         
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+        SVProgressHUD.setViewForExtension(self.view)
+        SVProgressHUD.show()
+        
         User.AddFriend(params, { (data) in
             print(data)
-            
+            SVProgressHUD.dismiss()
             if (data.dictionary?["state"]?.intValue)! > 0 {
                 
                 let alert = SCLAlertView()
@@ -78,57 +84,15 @@ class SendYanZHViewController: UIViewController,UITextFieldDelegate {
             }
             
             }) { (error) in
+                SVProgressHUD.dismiss()
                 let alert = SCLAlertView()
                 _ = alert.addButton(loadLanguage("确定"), action: {
                     self.navigationController?.popViewController(animated: true)
                 })
                 _ = alert.showSuccess(loadLanguage( "温馨提示"), subTitle:loadLanguage("请求失败"))
+                
+                
         }
-//        manager.POST(url,
-//            parameters: params,
-//            success: { (operation: AFHTTPRequestOperation!,
-//                responseObject: AnyObject!) in
-//                print(responseObject)
-//                let isSuccess=responseObject.objectForKey("state") as! Int
-//                if isSuccess > 0
-//                {
-//                    let successalert = UIAlertView(title: "", message: "发送成功", delegate: self, cancelButtonTitle: "ok")
-//                    NSNotificationCenter.defaultCenter().postNotificationName("sendAddFriendMesSuccess", object: nil)
-//                    successalert.show()
-//                    self.navigationController?.popViewControllerAnimated(true)
-//                }
-//                else if isSuccess == -10017
-//                {
-//                    let successalert = UIAlertView(title: "", message: "对方不是浩泽用户", delegate: self, cancelButtonTitle: "ok")
-//                    successalert.show()
-//                }
-//                
-//            },
-//            failure: { (operation: AFHTTPRequestOperation!,
-//                error: NSError!) in
-//                
-//                //print("Error: " + error.localizedDescription)
-//                
-//        })
-//        let werbservice = UserInfoActionWerbService()
-//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//        werbservice.addFriend(sendphone, content: messstring, returnBlock:{ (state:StatusManager!) -> Void in
-//            MBProgressHUD.hideHUDForView(self.view, animated: true)
-//            if state.networkStatus == kSuccessStatus
-//            {
-//                let successalert = UIAlertView(title: "提示", message: "发送验证消息成功", delegate: self, cancelButtonTitle: "ok")
-//                successalert.show()
-//                self.navigationController?.popViewControllerAnimated(true)
-//                NSNotificationCenter.defaultCenter().postNotificationName("sendAddFriendMesSuccess", object: nil)
-//            }
-//            else
-//            {
-//                let successalert = UIAlertView(title: "提示", message: "添加失败，请检查网络", delegate: self, cancelButtonTitle: "ok")
-//                successalert.show()
-//            }
-//        })
-// 
-        
     }
 }
  

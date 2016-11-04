@@ -19,7 +19,7 @@ enum WeiXinUrlType:String {
 
 class BaseWebView: UIViewController {
 
-    var webViewType:WeiXinUrlType?
+    var webViewType:String?
     
     var mobile =  User.currentUser?.phone
     var UserTalkCode = User.currentUser?.usertoken
@@ -39,28 +39,30 @@ class BaseWebView: UIViewController {
     
     func setUpUi() {
         
-        self.title = webViewType?.rawValue
+        self.title = loadLanguage(webViewType!)
 
         switch webViewType! {
             //我的小金库
-        case .MyMony:
+        case loadLanguage("我的小金库"):
             tmpURL = GoUrlBefore(url: "http://www.oznerwater.com/lktnew/wapnew/Member/MyCoffers.aspx")
             //我的订单
-        case .ShareLika:
+        case loadLanguage("我的订单"):
             tmpURL = GoUrlBefore(url: "http://www.oznerwater.com/lktnew/wapnew/Orders/OrderList.aspx")
         //领红包
-        case .CallFriend:
+        case loadLanguage("领红包"):
             tmpURL = GoUrlBefore(url: "http://www.oznerwater.com/lktnew/wapnew/Member/GrapRedPackages.aspx")
             //我的券
-        case .AwardInfo:
+        case loadLanguage("我的券"):
             tmpURL = GoUrlBefore(url: "http://www.oznerwater.com/lktnew/wapnew/Member/AwardList.aspx")
             //查看水质检测报告
-        case .WaterReport:
+        case loadLanguage("查看水质检测报告"):
             tmpURL = "http://erweima.ozner.net:85/index.aspx?tel="+mobile!
+        default:
+            break
       
         }
         
-        webView = UIWebView(frame: self.view.bounds)
+        webView = UIWebView(frame: CGRect(x: 0, y: 64, width: width_screen, height: height_screen - 64))
         view.addSubview(webView)
         webView.scalesPageToFit = true
         webView.loadRequest(URLRequest(url: URL(string: tmpURL)!))

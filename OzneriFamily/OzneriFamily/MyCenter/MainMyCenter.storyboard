@@ -673,6 +673,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ov9-Wc-IFN">
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <connections>
                                                     <action selector="DanWeiClickWithSender:" destination="5ex-97-W3a" eventType="touchUpInside" id="135-ng-mZG"/>
                                                 </connections>
@@ -710,6 +711,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxI-Sn-PTb">
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <connections>
                                                     <action selector="DanWei2ClickWithSender:" destination="5ex-97-W3a" eventType="touchUpInside" id="LiM-rJ-nM9"/>
                                                 </connections>
@@ -773,6 +775,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5g-UA-OsD">
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <connections>
                                                     <action selector="DanWei3ClickWithSender:" destination="5ex-97-W3a" eventType="touchUpInside" id="m5h-9q-3ev"/>
                                                 </connections>
@@ -819,6 +822,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Va4-13-17h">
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <connections>
                                                     <action selector="DanWei4ClickWithSender:" destination="5ex-97-W3a" eventType="touchUpInside" id="mEu-Pv-3Hz"/>
                                                 </connections>
@@ -865,6 +869,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uf-O1-gFy">
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <connections>
                                                     <action selector="DanWei5ClickWithSender:" destination="5ex-97-W3a" eventType="touchUpInside" id="fRF-Qg-p1Z"/>
                                                 </connections>
@@ -978,6 +983,7 @@
                         <outlet property="OZLable" destination="yc0-tG-i38" id="gJw-G6-cPD"/>
                         <outlet property="TemperatureLable" destination="Wrz-9e-bje" id="yPn-l2-wto"/>
                         <outlet property="WaterLable" destination="FdU-Zt-taN" id="9Q2-eK-SJ3"/>
+                        <outlet property="saveBtn" destination="tiD-bR-ilp" id="aVJ-vy-znT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPI-nL-kyh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1154,6 +1160,7 @@
                     <connections>
                         <outlet property="HaozeLable" destination="dXo-OF-Hjc" id="VEa-ku-Nai"/>
                         <outlet property="ScoreLable" destination="0rF-EH-Nyr" id="TZl-9I-AsF"/>
+                        <outlet property="currenLb" destination="ZTm-00-QUR" id="qNa-jT-Lfs"/>
                         <outlet property="versionLb" destination="Kca-Fp-5tA" id="1Gk-dY-uke"/>
                     </connections>
                 </viewController>

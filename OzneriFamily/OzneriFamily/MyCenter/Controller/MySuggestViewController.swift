@@ -59,8 +59,12 @@ class MySuggestViewController: UIViewController,UITextViewDelegate {
         if msg==""
         {return}
         let params:NSDictionary = ["message":msg]
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+        SVProgressHUD.setViewForExtension(self.view)
         SVProgressHUD.show()
-        weak var weakSelf = self
+//        weak var weakSelf = self
         User.commitSugesstion(params, { (responseObject) in
            
             let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0

@@ -60,6 +60,9 @@ class MyFriendsVC: UIViewController {
     }
     
     private  func getDatas() {
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
         SVProgressHUD.show()
         weak var weakSelf = self
         User.GetFriendList({ (responseObject) in
@@ -88,6 +91,13 @@ class MyFriendsVC: UIViewController {
             }
         }) { (error) in
             SVProgressHUD.dismiss()
+            
+            
+            
+            let alertView = SCLAlertView()
+            _ = alertView.addButton(loadLanguage("确定"), action: {})
+            _ = alertView.showError(loadLanguage("温馨提示"), subTitle:error?.localizedDescription == "" ? "加载失败" : (error?.localizedDescription)! )
+            
         }
 
         
@@ -137,18 +147,23 @@ class MyFriendsVC: UIViewController {
         
         
         let params:NSDictionary = ["otheruserid":model.friendID!,"message":bootomRecentView.recentContentLb.text!]
+        
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+        SVProgressHUD.setViewForExtension(self.view)
+        SVProgressHUD.show()
         weak var weakSelf = self
         User.LeaveMessage(params, { (responseObject) in
-            
+            SVProgressHUD.dismiss()
             let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0
             
             if isSuccess > 0 {
                 
-                print(responseObject)
                 let model1 = ChatModel()
                 model1.chatNickName = model.nickName
-                model1.chatTime = "刚刚"
-                model1.chatStr = "我:🐷" + self.bootomRecentView.recentContentLb.text!
+                model1.chatTime = loadLanguage("刚刚")
+                model1.chatStr = loadLanguage("我") + ":🐷" + self.bootomRecentView.recentContentLb.text!
                 model.chatNum = String(Int(model.chatNum!)! + 1)
                 weakSelf?.chatModelArr?.append(model1)
                 weakSelf?.bootomRecentView.recentContentLb.text = ""
@@ -156,7 +171,11 @@ class MyFriendsVC: UIViewController {
             }
             
             }) { (error) in
-                print(error)
+                SVProgressHUD.dismiss()
+                let alertView = SCLAlertView()
+                _ = alertView.addButton(loadLanguage("确定"), action: {})
+                _ = alertView.showError(loadLanguage("温馨提示"), subTitle: loadLanguage("请求失败"))
+                
         }
         
     }
@@ -311,9 +330,9 @@ extension MyFriendsVC: UITableViewDataSource,UITableViewDelegate {
                     model1.chatTime = item["stime"].stringValue
                     model1.chatSendId = item["senduserid"].stringValue
                     if model1.chatSendId != model.friendID {
-                      model1.chatStr = "我:🐷" + item["message"].stringValue
+                      model1.chatStr = loadLanguage("我") + ":🐷" + item["message"].stringValue
                     } else {
-                        model1.chatStr = (model1.chatNickName ?? "") + "回复我" + ":🐷" + item["message"].stringValue
+                        model1.chatStr = (model1.chatNickName ?? "") + loadLanguage("回复我") + ":🐷" + item["message"].stringValue
                     }
                     
                     weakSelf?.chatModelArr?.append(model1)
@@ -324,6 +343,9 @@ extension MyFriendsVC: UITableViewDataSource,UITableViewDelegate {
             group.leave()
             }) { (error) in
                 
+                let alertView = SCLAlertView()
+                _ = alertView.addButton(loadLanguage("确定"), action: {})
+                _ = alertView.showError(loadLanguage("温馨提示"), subTitle:error?.localizedDescription == "" ? "加载失败" : (error?.localizedDescription)! )
         }
         
         group.notify(queue: DispatchQueue.main) { 
