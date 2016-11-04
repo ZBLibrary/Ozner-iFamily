@@ -19,6 +19,7 @@ class YanZhengCell: UITableViewCell {
     
     @IBOutlet var name: UILabel!
     
+    @IBOutlet weak var label: UILabel!
     //@IBOutlet weak var message: UILabel!
  
     
@@ -27,9 +28,9 @@ class YanZhengCell: UITableViewCell {
         super.awakeFromNib()
         AddButton.titleLabel?.text = loadLanguage("添加");
         
-  //message.text = loadLanguage("验证消息");
+        label.text = loadLanguage("验证消息");
         
-        YZmess.text = loadLanguage("我是你好友,加我,谢谢");
+//        YZmess.text = loadLanguage("我是你好友,加我,谢谢");
         
     }
     
@@ -74,7 +75,7 @@ class YanZhengCell: UITableViewCell {
             
                 if isSuccess > 0 {
                 
-                    weakSelf?.AddButton.setTitle("已添加", for: UIControlState.normal)
+                    weakSelf?.AddButton.setTitle(loadLanguage("已添加"), for: UIControlState.normal)
                     weakSelf?.AddButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
                     weakSelf?.AddButton.isEnabled = false
                     weakSelf?.AddButton.backgroundColor = UIColor.white

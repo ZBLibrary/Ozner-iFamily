@@ -14,16 +14,10 @@ class FriendSearch: UIView {
     @IBOutlet var SearchTextFD: UITextField!
     @IBOutlet var searchButton: UIButton!
     
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-   
-    //SearchTextFD.placeholder = loadLanguage("请输入手机号");
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-    
+        SearchTextFD.placeholder = loadLanguage("请输入手机号")
+        
     }
-    
-
 }

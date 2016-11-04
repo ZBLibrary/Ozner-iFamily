@@ -10,12 +10,22 @@ import UIKit
 
 class FriendZeroBgView: UIView {
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    
+    @IBOutlet weak var addFriendLabel: UILabel!
+    
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        addFriendLabel.text = loadLanguage("立即添加设备好友")
+        
+        label1.text = loadLanguage("立即邀请好友")
+        label2.text = loadLanguage("一起开启智能生活体验吧!")
+        
+        
     }
-    */
+    
 
 }

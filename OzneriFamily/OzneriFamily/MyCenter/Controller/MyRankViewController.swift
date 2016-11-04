@@ -25,7 +25,26 @@ class MyRankViewController: UIViewController {
         super.viewDidLoad()
 
         setUpUI()
+        
+//        getDatas()
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width_screen, height: 25))
+        label.text = loadLanguage("暂无排名")
+        label.textAlignment = .center
+//        label.center = (tableView?.center)!
+        tableView?.backgroundView = label
+        
       
+    }
+    
+    func getDatas() {
+        
+        User.VolumeFriendRank([:], { (data) in
+            
+            print(data)
+            }) { (error) in
+                print(error)
+        }
+        
     }
 
     
@@ -68,7 +87,7 @@ extension MyRankViewController : UITableViewDelegate, UITableViewDataSource ,MyR
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
-            return 5
+            return 0
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

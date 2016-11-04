@@ -32,8 +32,8 @@ class MyFriendCell: UITableViewHeaderFooterView {
             iconImage.image = UIImage(named: "HaoZeKeFuImage")
         }
         
-        nickName.text = model.nickName ?? "浩小泽"
-        messageLb.text = model.chatNum! + "条留言"
+        nickName.text = model.nickName ?? loadLanguage("浩小泽")
+        messageLb.text = model.chatNum! + loadLanguage("条留言")
         
     }
     

@@ -348,6 +348,7 @@ public class User: BaseDataObject {
         }
     }
     
+    //添加好友验证信息
     class func AddFriend(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
         self.fetchData(key: "AddFriend", parameters:params, success: { (data) in
             
@@ -359,6 +360,19 @@ public class User: BaseDataObject {
             
         }
     }
-
+    
+    //我的排行
+    //朋友圈内饮水量实时排行
+    class func VolumeFriendRank(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "VolumeFriendRank", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
     
 }

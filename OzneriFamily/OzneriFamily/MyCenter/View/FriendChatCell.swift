@@ -40,8 +40,8 @@ class FriendChatCell: UITableViewCell {
         chatLab.attributedText = text
         
         
-        if model.chatTime! == "刚刚" {
-            timeLb.text = "刚刚"
+        if model.chatTime! == loadLanguage("刚刚") {
+            timeLb.text = loadLanguage("刚刚")
         } else {
         
         model.chatTime = model.chatTime?.replacingOccurrences(of: "/Date(", with: "")

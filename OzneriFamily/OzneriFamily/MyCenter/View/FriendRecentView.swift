@@ -24,6 +24,9 @@ class FriendRecentView: UIView {
         sendBtn.layer.borderWidth = 1
         sendBtn.layer.borderColor = UIColor.lightGray.cgColor
         IQKeyboardManager.sharedManager().enable = true
+        
+        recentContentLb.text = loadLanguage("回复")
+        sendBtn.setTitle(loadLanguage("发送"), for: UIControlState.normal)
     }
     
     /*

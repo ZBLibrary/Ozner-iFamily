@@ -203,17 +203,17 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
         
         
         switch webViewType! {
-        case "我的订单","领红包","我的券","查看水质检测报告":
+        case loadLanguage("我的订单"),loadLanguage("领红包"),loadLanguage("我的券"),loadLanguage("查看水质检测报告"):
             self.performSegue(withIdentifier: "MyInfoSegueId", sender: nil)
             break
-        case "设置":
+        case loadLanguage("设置"):
             self.performSegue(withIdentifier: "settingSegueID", sender: nil)
             break
-        case "我要提意见":
+        case  loadLanguage("我要提意见"):
             self.performSegue(withIdentifier: "sugesstsegueID", sender: nil)
-        case "我的好友":
+        case loadLanguage("我的好友"):
             self.performSegue(withIdentifier: "MyFriendSegueID", sender: nil)
-        case "我的设备":
+        case loadLanguage("我的设备"):
             self.performSegue(withIdentifier: "equidDeviceNumberID", sender: nil)
         default:
             break

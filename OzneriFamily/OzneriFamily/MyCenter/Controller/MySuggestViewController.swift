@@ -28,7 +28,7 @@ class MySuggestViewController: UIViewController,UITextViewDelegate {
     @IBOutlet var OKButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        TiaShiButton.setTitle(loadLanguage("如果您在使用过程中，有任何问题或建议，请留下你宝贵的意见与建议，我们会努力解决您的问题。"), for: UIControlState.normal)
         OKButton.setTitle(loadLanguage("提交"), for: .normal)
         MessTV.delegate=self
         self.automaticallyAdjustsScrollViewInsets = false

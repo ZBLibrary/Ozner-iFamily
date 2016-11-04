@@ -20,12 +20,18 @@ class SendYanZHViewController: UIViewController,UITextFieldDelegate {
     }
     @IBOutlet var MessTF: UITextField!
     
+    @IBOutlet weak var left: UIBarButtonItem!
+    @IBOutlet weak var right: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MessTF.delegate=self
         MessTF.becomeFirstResponder()
-        // Do any additional setup after loading the view.
+        
+        left.title = loadLanguage("取消")
+        right.title = loadLanguage("发送")
+        
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -55,21 +61,28 @@ class SendYanZHViewController: UIViewController,UITextFieldDelegate {
 
     func SendMess(messstring:String)
     {
-//        /*
-//        usertoken
-//        //用户登录返回标识
-//        mobile
-//        //对方手机号
-//        content
-//         */
-//        let manager = AFHTTPRequestOperationManager()
-//        let url = StarURL_New+"/OznerServer/AddFriend"
+
         let params:NSDictionary = ["content":messstring,"mobile":sendphone]
         
         User.AddFriend(params, { (data) in
             print(data)
+            
+            if (data.dictionary?["state"]?.intValue)! > 0 {
+                
+                let alert = SCLAlertView()
+                _ = alert.addButton(loadLanguage("确定"), action: {
+                   self.navigationController?.popViewController(animated: true)
+                })
+                _ = alert.showSuccess(loadLanguage( "温馨提示"), subTitle:loadLanguage("发送好友请求成功"))
+                
+            }
+            
             }) { (error) in
-                print(error)
+                let alert = SCLAlertView()
+                _ = alert.addButton(loadLanguage("确定"), action: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+                _ = alert.showSuccess(loadLanguage( "温馨提示"), subTitle:loadLanguage("请求失败"))
         }
 //        manager.POST(url,
 //            parameters: params,

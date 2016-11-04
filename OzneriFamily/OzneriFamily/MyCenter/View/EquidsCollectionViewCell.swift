@@ -13,14 +13,15 @@ class EquidsCollectionViewCell: UICollectionViewCell {
     @IBOutlet var equipNameLabel: UILabel!
     @IBOutlet var equipImage: UIImageView!
     @IBOutlet var right_up: UIButton!
-    @IBOutlet var cellClick: UIButton!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
   
          equipNameLabel.text = loadLanguage("智能水杯");
-    
+         right_up.setTitle(loadLanguage("活动"), for: UIControlState.normal)
+        right_up.setTitleColor(UIColor.white, for: UIControlState.normal)
         
     
     
