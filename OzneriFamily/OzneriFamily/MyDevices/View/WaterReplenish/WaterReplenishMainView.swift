@@ -11,6 +11,12 @@ enum BodyParts:String{
     case Hands="HandSkinValue"
     case Neck="NeckSkinValue"
 }//Face ，Eyes ,Hands, Neck
+struct HeadOfWaterReplenishStruct {
+    var skinValueOfToday:Double=0
+    var lastSkinValue:Double=0
+    var averageSkinValue:Double=0
+    var checkTimes=0
+}
 class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     //head视图控件
    
@@ -56,7 +62,6 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
         if stateOfView>0//当前页是局部器官图二级界面
         {
             stateOfView=0
-            print("点击了返回区域")
         }
         else//当前页是主视图一级界面
         {
