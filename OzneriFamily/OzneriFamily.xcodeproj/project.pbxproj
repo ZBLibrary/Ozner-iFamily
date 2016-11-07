@@ -49,6 +49,8 @@
 		8D429A0B1DCA0DDB0083011C /* WaterPurfierTDSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A0A1DCA0DDB0083011C /* WaterPurfierTDSController.swift */; };
 		8D429A0D1DCA0E3B0083011C /* SkinQueryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A0C1DCA0E3B0083011C /* SkinQueryController.swift */; };
 		8D429A0F1DCA0E570083011C /* SkinDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A0E1DCA0E570083011C /* SkinDetailController.swift */; };
+		8D449BD01DCDFB58005998AA /* Air_Wifi_SpeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D449BCF1DCDFB58005998AA /* Air_Wifi_SpeedModel.swift */; };
+		8D449BD21DCDFB63005998AA /* Air_Wifi_SpeedModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D449BD11DCDFB63005998AA /* Air_Wifi_SpeedModel.xib */; };
 		8D5045C61DB34AA000EAC3B3 /* UIImage+Expand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5045C51DB34AA000EAC3B3 /* UIImage+Expand.swift */; };
 		8D5045C81DB34AD700EAC3B3 /* Airgif_blue.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8D5045C71DB34AD700EAC3B3 /* Airgif_blue.gif */; };
 		8D5ABB171D9E30B6008524A7 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */; };
@@ -363,6 +365,8 @@
 		8D429A0A1DCA0DDB0083011C /* WaterPurfierTDSController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurfierTDSController.swift; sourceTree = "<group>"; };
 		8D429A0C1DCA0E3B0083011C /* SkinQueryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinQueryController.swift; sourceTree = "<group>"; };
 		8D429A0E1DCA0E570083011C /* SkinDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinDetailController.swift; sourceTree = "<group>"; };
+		8D449BCF1DCDFB58005998AA /* Air_Wifi_SpeedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Air_Wifi_SpeedModel.swift; sourceTree = "<group>"; };
+		8D449BD11DCDFB63005998AA /* Air_Wifi_SpeedModel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Air_Wifi_SpeedModel.xib; sourceTree = "<group>"; };
 		8D5045C51DB34AA000EAC3B3 /* UIImage+Expand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Expand.swift"; sourceTree = "<group>"; };
 		8D5045C71DB34AD700EAC3B3 /* Airgif_blue.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Airgif_blue.gif; sourceTree = "<group>"; };
 		8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
@@ -1111,6 +1115,8 @@
 				8DC02E5D1DB5CE91007F57DB /* Air_BlueMainView.xib */,
 				8DC02E5E1DB5CE91007F57DB /* Air_WifiMainView.swift */,
 				8DC02E5F1DB5CE91007F57DB /* Air_WifiMainView.xib */,
+				8D449BCF1DCDFB58005998AA /* Air_Wifi_SpeedModel.swift */,
+				8D449BD11DCDFB63005998AA /* Air_Wifi_SpeedModel.xib */,
 			);
 			path = AirPurfier;
 			sourceTree = "<group>";
@@ -1909,6 +1915,7 @@
 				B7EF06C11DB8A53A008BE7D4 /* ZHCMessagesTableViewCellIncoming.xib in Resources */,
 				8D117C111D9CDEE30024187E /* Login+Register+Guiding.storyboard in Resources */,
 				B7567CA31DB0872800AA7C91 /* CupMatchView.xib in Resources */,
+				8D449BD21DCDFB63005998AA /* Air_Wifi_SpeedModel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2040,6 +2047,7 @@
 				8DC02FA11DB5F03B007F57DB /* thread_mosq.c in Sources */,
 				8DC02F671DB5F03B007F57DB /* BluetoothAirPurifierSensor.m in Sources */,
 				8D1761E31DC83387004A6B90 /* WaterPurfierSettingController.swift in Sources */,
+				8D449BD01DCDFB58005998AA /* Air_Wifi_SpeedModel.swift in Sources */,
 				8DC02F821DB5F03B007F57DB /* IOManager.m in Sources */,
 				8DC02F691DB5F03B007F57DB /* AirPurifier_MxChip.m in Sources */,
 				8D16BC4D1DB8718600CA3A49 /* SetDeviceNameController.swift in Sources */,

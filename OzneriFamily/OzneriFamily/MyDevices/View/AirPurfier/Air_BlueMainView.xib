@@ -27,6 +27,7 @@
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsT-Q9-LnY">
                             <subviews>
                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="GuangHuan" translatesAutoresizingMaskIntoConstraints="NO" id="ucX-Mu-Juo">
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="ucX-Mu-Juo" secondAttribute="height" multiplier="2:1" id="htF-hN-e4T"/>
                                     </constraints>
@@ -42,6 +43,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="guanghuanIn" translatesAutoresizingMaskIntoConstraints="NO" id="7wf-Ws-RZ0">
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="7wf-Ws-RZ0" secondAttribute="height" multiplier="1:1" id="FU3-aa-ywE"/>
                                     </constraints>
@@ -50,6 +52,9 @@
                                             <integer key="value" value="160"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="CMP-aG-dj7" appends="YES" id="GAc-fa-92Q"/>
+                                    </connections>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIS-YC-Len">
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="35"/>
@@ -420,6 +425,11 @@
             </connections>
             <point key="canvasLocation" x="25.5" y="51.5"/>
         </view>
+        <tapGestureRecognizer id="CMP-aG-dj7">
+            <connections>
+                <action selector="SeeLvXinClick:" destination="iN0-l3-epB" id="sn7-QC-nd3"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="Airgif_blue.gif" width="750" height="400"/>

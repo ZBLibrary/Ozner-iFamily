@@ -1,14 +1,6 @@
-//
-//  WaterReplenishMainView.swift
-//  OZner
-//
-//  Created by 赵兵 on 16/3/8.
-//  Copyright © 2016年 sunlinlin. All rights reserved.
-//
-
 import UIKit
 let kWidthOfWaterReplensh=width_screen/375
-let kHightOfWaterReplensh=(height_screen-65)/(667-65)
+let kHightOfWaterReplensh=(height_screen-64)/(667-64)
 enum SexType:String{
     case Man="男"
     case WoMan="女"
@@ -21,11 +13,10 @@ enum BodyParts:String{
 }//Face ，Eyes ,Hands, Neck
 class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     //head视图控件
-    
-
+   
     @IBOutlet weak var ClickAlertLabel: UILabel!
     @IBOutlet weak var personBgImgView: UIImageView!
-
+   
     //中部圆形视图
     @IBOutlet weak var centerCircleView: UIView!
     @IBOutlet weak var alertBeforeTest: UILabel!
@@ -35,10 +26,23 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     @IBOutlet weak var TestingIcon: UIImageView!
     //footer容器里的视图
     @IBOutlet weak var skinButton: UIButton!
+    @IBAction func skinButtonClick(_ sender: AnyObject) {
+        var skinTypeIndex = 0
+        skinTypeIndex = (skinButton.titleLabel?.text!.contains(loadLanguage("油性")))! ? 1:skinTypeIndex
+        skinTypeIndex = (skinButton.titleLabel?.text!.contains(loadLanguage("干性")))! ? 2:skinTypeIndex
+        var tmpTimes=0
+        if avgAndTimesArr.count>0 {
+            tmpTimes=(avgAndTimesArr["0"]?.checkTimes)!+(avgAndTimesArr["1"]?.checkTimes)!+(avgAndTimesArr["2"]?.checkTimes)!+(avgAndTimesArr["3"]?.checkTimes)!
+        }
+        self.delegate.DeviceViewPerformSegue!(SegueID: "showSeeSkin", sender: ["totalTimes":"\(tmpTimes)","currentSkinTypeIndex":"\(skinTypeIndex)"])
+    }
     @IBOutlet weak var resultOfFooterContainView: UIView!
     @IBOutlet weak var resultValueLabel: UILabel!
     @IBOutlet weak var resultStateLabel: UILabel!
-    @IBOutlet weak var toDetailButton: UIButton!
+   
+    @IBAction func toDetailClick(_ sender: AnyObject) {
+        self.delegate.DeviceViewPerformSegue!(SegueID: "showSkinDetail", sender: currentBodyPart)
+    }
     
     fileprivate let centerOfImg=CGPoint(x: width_screen/2, y: 446*kHightOfWaterReplensh/2)
     //数组以 脸 眼 手 颈 的顺序 半径30范围内
@@ -46,14 +50,13 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
         SexType.WoMan:[CGPoint(x: 142*kWidthOfWaterReplensh, y: 265*kHightOfWaterReplensh),CGPoint(x: 214*kWidthOfWaterReplensh, y: 243*kHightOfWaterReplensh),CGPoint(x: 142*kWidthOfWaterReplensh, y: 370*kHightOfWaterReplensh),CGPoint(x: 206*kWidthOfWaterReplensh, y: 328*kHightOfWaterReplensh)],
         SexType.Man:[CGPoint(x: 142*kWidthOfWaterReplensh, y: 262*kHightOfWaterReplensh),CGPoint(x: 214*kWidthOfWaterReplensh, y: 240*kHightOfWaterReplensh),CGPoint(x: 142*kWidthOfWaterReplensh, y: 370*kHightOfWaterReplensh),CGPoint(x: 206*kWidthOfWaterReplensh, y: 328*kHightOfWaterReplensh)]
     ]
-    //设备
-    fileprivate var WaterReplenishDevice:WaterReplenishmentMeter?
+    
     func personImgTapClick(_ sender: UITapGestureRecognizer) {
         let touchPoint=sender.location(in: personBgImgView)
         if stateOfView>0//当前页是局部器官图二级界面
         {
-                stateOfView=0
-                print("点击了返回区域")
+            stateOfView=0
+            print("点击了返回区域")
         }
         else//当前页是主视图一级界面
         {
@@ -98,17 +101,14 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
         
         centerCircleView.layer.cornerRadius=60.0*width_screen/375.0
         centerCircleView.layer.masksToBounds=true
-        skinButton.layer.cornerRadius=20
-        skinButton.layer.borderWidth=0.5
-        skinButton.layer.borderColor=UIColor(red: 91/255, green: 152/255, blue: 240/255, alpha: 1).cgColor
+        
         stateOfView=0
         //图片添加触摸事件
         let tapGesture=UITapGestureRecognizer(target: self, action: #selector(personImgTapClick))
         tapGesture.numberOfTapsRequired=1
         tapGesture.numberOfTouchesRequired=1
         personBgImgView.addGestureRecognizer(tapGesture)
-        setNeedsLayout()
-        layoutIfNeeded()
+        SetWaterReplenishView()
     }
     
     //0初始页面,1点击某个部位进入的页面,2检测中,3检测结果出来显示的页面
@@ -136,7 +136,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
                 
                 resultOfFooterContainView.isHidden=true
                 personBgImgView.image=UIImage(named: personImgArray[currentSex]![0])
-               
+                
             case 1:
                 alertBeforeTest.isHidden=false
                 centerCircleView.backgroundColor=color_blue
@@ -166,7 +166,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
                 }
             case 3:
                 resultValueContainView.isHidden=false
-                let testResult=getNeedOilAndWaterValue(WaterReplenishDevice!.status.oil,moisture: WaterReplenishDevice!.status.moisture)
+                let testResult=getNeedOilAndWaterValue((self.currentDevice as! WaterReplenishmentMeter).status.oil,moisture: (self.currentDevice as! WaterReplenishmentMeter).status.moisture)
                 valueOfTestLabel.text=testResult.moistureValue
                 stateOfTestLabel.text=WaterType[testResult.TypeIndex]
                 centerCircleView.backgroundColor=ColorType[testResult.TypeIndex]
@@ -175,10 +175,10 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
                     currentSkinTypeIndex=testResult.skinTypeIndex
                 }
                 uploadSKinData(testResult.oilValue, snumber: testResult.moistureValue)
-
+                
                 let tmpTimes=avgAndTimesArr["\(currentBodyPart.hashValue)"]?.checkTimes ?? 0
                 avgAndTimesArr["\(currentBodyPart.hashValue)"]?.checkTimes+=1
-               
+                
                 avgAndTimesArr["\(currentBodyPart.hashValue)"]?.lastSkinValue=Double(testResult.moistureValue as String)!
                 var tmpAvg=Double(testResult.moistureValue as String)!
                 
@@ -195,7 +195,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
             }
         }
     }
-
+    
     //水分类型描述
     fileprivate let WaterStateArr=[
         BodyParts.Face:[loadLanguage("脸颊两边皮肤干燥起皮,T区油腻毛孔粗大痘痘横行,脸部亟需补水哦"),loadLanguage("皮肤不油也不干,脸部缺水问题暂时得到缓解"),loadLanguage("脸部细腻红润有光泽,补水到位,面色也不一样哦")],
@@ -203,25 +203,24 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
         BodyParts.Hands:[loadLanguage("手部干燥细纹也跑出来啦,手指的肉刺也变多,需要赶快补充水分哦"),loadLanguage("手部现在的肌肤水份得到补充,果然光滑许多"),loadLanguage("手部润滑有弹性,喝饱水的肌肤果然让人爱不释手呢 ")],
         BodyParts.Neck:[loadLanguage("颈部组织薄弱，油脂分泌少，水分难以保持，皱纹容易产生，补水显得格外重要"),loadLanguage("颈部水份已达标，别让颈纹泄露了你的年龄"),loadLanguage("颈部现在很水润，但不要松懈哦")]
     ]
-
-
+    
+    
     fileprivate let SkinType=[loadLanguage("干性"),loadLanguage("中性"),loadLanguage("油性")]
     fileprivate let WaterType=[loadLanguage("干燥"),loadLanguage("正常"),loadLanguage("水润")]
     fileprivate let ColorType=[UIColor(red: 252/255, green: 128/255, blue: 65/255, alpha: 1),UIColor(red: 64/255, green: 125/255, blue: 250/255, alpha: 1),UIColor(red: 64/255, green: 125/255, blue: 250/255, alpha: 1)]
     
     //water,取值范围
     fileprivate let WaterTypeValue=[BodyParts.Face:[32,42],
-                           BodyParts.Eyes:[35,45],
-                           BodyParts.Hands:[30,38],
-                           BodyParts.Neck:[35,45]
+                                    BodyParts.Eyes:[35,45],
+                                    BodyParts.Hands:[30,38],
+                                    BodyParts.Neck:[35,45]
     ]
     fileprivate func getNeedOilAndWaterValue(_ oil:Float,moisture:Float)->(oilValue:String,moistureValue:String,TypeIndex:Int,skinTypeIndex:Int)
     {
         
-        var tmpOil=Int(oil)
-        tmpOil=tmpOil>=100 ? 99:tmpOil
-        var tmpmoisture=Int(moisture)
-        tmpmoisture=tmpmoisture>=100 ? 99:tmpmoisture
+        let tmpOil=Int(oil)>=100 ? 99:Int(oil)
+        
+        let tmpmoisture=Int(moisture)>=100 ? 99:Int(moisture)
         //肤质类型
         var tmpTypeindex=1
         
@@ -274,9 +273,9 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
                 }
                 
                 
-        })
+            })
     }
-
+    
     fileprivate let personImgArray=[
         SexType.WoMan:["womanOfReplensh1","womanOfReplensh2","womanOfReplensh3","womanOfReplensh4","womanOfReplensh5"],
         SexType.Man:["manOfReplensh1","manOfReplensh2","manOfReplensh3","manOfReplensh4","manOfReplensh5"]
@@ -291,7 +290,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     //更新性别
     func updateViewzb()
     {
-        currentSex=(WaterReplenishDevice?.settings.get("sex", default: loadLanguage("女")))! as! String==loadLanguage("女") ? SexType.WoMan:SexType.Man
+        currentSex=((self.currentDevice as! WaterReplenishmentMeter).settings.get("sex", default: loadLanguage("女")))! as! String==loadLanguage("女") ? SexType.WoMan:SexType.Man
         setNeedsLayout()
         layoutIfNeeded()
     }
@@ -300,28 +299,28 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     {
         switch stateOfView {
         case 1:
-            if WaterReplenishDevice?.status.testing==true {
+            if (self.currentDevice as! WaterReplenishmentMeter).status.testing==true {
                 stateOfView=2//检测中
             }
         case 2:
-            if WaterReplenishDevice?.status.testing==false {
+            if (self.currentDevice as! WaterReplenishmentMeter).status.testing==false {
                 let weakSelf=self
-                if WaterReplenishDevice!.status.oil==0 {
+                if (self.currentDevice as! WaterReplenishmentMeter).status.oil==0 {
                     let alertView=SCLAlertView()
                     _=alertView.showTitle("", subTitle: loadLanguage("您的检测时间未满5秒..."), duration: 2.0, completeText: loadLanguage("完成"), style: SCLAlertViewStyle.notice)
                     weakSelf.stateOfView=1
                     weakSelf.alertBeforeTest.text=loadLanguage("检测失败,请重试")
                 }
-                else if (WaterReplenishDevice!.status.oil < 0)||(WaterReplenishDevice!.status.moisture < 0){
+                else if ((self.currentDevice as! WaterReplenishmentMeter).status.oil < 0)||((self.currentDevice as! WaterReplenishmentMeter).status.moisture < 0){
                     weakSelf.alertBeforeTest.text=loadLanguage("水分太低")
                     weakSelf.stateOfView=1
                 }else{
                     stateOfView=3//检测完成
                 }
-    
+                
             }
         case 3:
-            if WaterReplenishDevice?.status.testing==true {
+            if (self.currentDevice as! WaterReplenishmentMeter).status.testing==true {
                 stateOfView=2//检测中
             }
         default:
@@ -331,14 +330,11 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
         layoutIfNeeded()
     }
     //初始化视图
-    func initView(_ currentDevice:OznerDevice)
+    func SetWaterReplenishView()
     {
-        WaterReplenishDevice=currentDevice as? WaterReplenishmentMeter
-        
-        
         updateViewzb()
         getAllWeakAndMonthData()
-        //NotificationCenter.default.addObserver(self, selector: #selector(updateViewzb), name: NSNotification.Name(rawValue: "updateDeviceInfo"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateViewzb), name: NSNotification.Name(rawValue: "updateDeviceInfo"), object: nil)
     }
     
     
@@ -346,13 +342,11 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     //上传检测数据
     fileprivate func uploadSKinData(_ ynumber:String,snumber:String)
     {
-//        let deviceService=DeviceWerbservice()
-//        deviceService.updateBuShuiYiNumber(WaterReplenishDevice?.identifier, ynumber: ynumber, snumber: snumber, action: currentBodyPart.rawValue, return: { (status) in
-//            if(status?.networkStatus == kSuccessStatus)
-//            {
-//                print("上传检测肤质成功")
-//            }
-//        })
+        User.UpdateBuShuiYiNumber(mac: (self.currentDevice?.identifier)!, ynumber: ynumber, snumber: snumber, action: currentBodyPart.rawValue, success: {
+            print("上传检测肤质成功")
+            }) { (error) in
+                
+        }
     }
     fileprivate func removeAdressOfDeviceName(_ tmpName:String)->String
     {
@@ -383,84 +377,79 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     var avgAndTimesArr=[String:HeadOfWaterReplenishStruct]()
     func getAllWeakAndMonthData()
     {
-        
         //下载周月数据
-//        MBProgressHUD.showAdded(to: self, animated: true)
-//        let deviceService=DeviceWerbservice()
-//        deviceService.getBuShuiFenBu(WaterReplenishDevice?.identifier, action: currentBodyPart.rawValue) { [weak self](dataArr1, Status) in
-//            MBProgressHUD.hide(for: self!, animated: true)
-//            if Status?.networkStatus==kSuccessStatus
-//            {
-//                let tmpKeyArr=["FaceSkinValue","EyesSkinValue","HandSkinValue","NeckSkinValue"]
-//                let dataArr = dataArr1 as AnyObject
-//                let tmpData=dataArr.object(forKey: "data")
-//                
-//                for i in 0...3
-//                {
-//                    
-//                    let tempBody=(tmpData as AnyObject).object(forKey: tmpKeyArr[i]) as AnyObject
-//                    
-//                    //月数据
-//                    var maxTimes=0
-//                    var todayValue:Double=0
-//                    var lastValue:Double=0
-//                    var totolValue:Double=0
-//                    var totolOilValue:Double=0
-//                    for item1 in (tempBody.object(forKey: "monty") as! NSArray)
-//                    {
-//                        let record=CupRecord()
-//                        
-//                        let item = item1 as AnyObject
-//                        
-//                        record.tds_Bad=(item.object(forKey: "ynumber") as! NSNumber).int32Value//油分
-//                        record.tds_Good=(item.object(forKey: "snumber") as! NSNumber).int32Value//水分
-//                        totolOilValue+=Double(record.tds_Bad)
-//                        totolValue+=Double(record.tds_Good)
-//                        
-//                        let dateStr=dateStampToString((item.object(forKey: "updatetime") as! String), format: "yyyy-MM-dd")
-//                        record.start=dateFromString(dateStr, format: "yyyy-MM-dd")
-//                        print(item.object(forKey: "updatetime"))
-//                        print(record.start)
-//                        if stringFromDate(record.start, format: "yyyy-MM-dd")==stringFromDate(Date(), format: "yyyy-MM-dd")
-//                        {
-//                            todayValue=Double(record.tds_Good)
-//                        }
-//                        maxTimes=max(maxTimes,(item as AnyObject).object(forKey: "times") as! Int)
-//                    }
-//                    
-//                    let tmpCount=(tempBody.object(forKey: "monty") as! NSArray).count
-//                    if tmpCount<=1
-//                    {
-//                        lastValue=todayValue
-//                    }
-//                    else{
-//                        let LastData=(tempBody.object(forKey: "monty") as AnyObject).object(at: tmpCount-2)
-//                        lastValue=(LastData as AnyObject).object(forKey: "snumber") as! Double
-//                    }
-//                    let tmpAveValue=tmpCount==0 ? 0:(totolValue/Double(tmpCount))
-//                    let tmpAveOilValue=tmpCount==0 ? 0:(totolOilValue/Double(tmpCount))
-//                    let tmpStru=HeadOfWaterReplenishStruct(skinValueOfToday: todayValue, lastSkinValue: lastValue, averageSkinValue:tmpAveValue, checkTimes: maxTimes)
-//                    self!.avgAndTimesArr["\(i)"]=tmpStru
-//                    
-//                    if i==0&&tmpAveOilValue>0
-//                    {
-//                        
-//                        if tmpAveOilValue<12
-//                        {
-//                            self!.currentSkinTypeIndex=0
-//                        }else if tmpAveOilValue<12
-//                        {
-//                            self!.currentSkinTypeIndex=2
-//                        }else
-//                        {
-//                            self!.currentSkinTypeIndex=1
-//                        }
-//                        
-//                        
-//                    }
-//                }
-//
-//            }
-//        }
+        User.GetBuShuiFenBu(mac: (self.currentDevice?.identifier)!, action: currentBodyPart.rawValue, success: { (json) in
+            let tmpKeyArr=["FaceSkinValue","EyesSkinValue","HandSkinValue","NeckSkinValue"]
+
+            for i in 0...3
+            {
+                
+                let tempBody=json[tmpKeyArr[i]]
+                //月数据
+                var maxTimes=0
+                var todayValue:Double=0
+                var lastValue:Double=0
+                var totolValue:Double=0
+                var totolOilValue:Double=0
+                for item in tempBody["monty"].arrayValue
+                {
+                    let record=CupRecord()
+                    
+                    
+                    record.tds_Bad=item["ynumber"].int32Value//油分
+                    record.tds_Good=item["snumber"].int32Value//水分
+                    totolOilValue+=Double(record.tds_Bad)
+                    totolValue+=Double(record.tds_Good)
+                    
+                    let dateStr=dateStampToString(item["updatetime"].stringValue, format: "yyyy-MM-dd")
+                    record.start=dateFromString(dateStr, format: "yyyy-MM-dd")
+    
+                    if stringFromDate(record.start, format: "yyyy-MM-dd")==stringFromDate(Date(), format: "yyyy-MM-dd")
+                    {
+                        todayValue=Double(record.tds_Good)
+                    }
+                    maxTimes=max(maxTimes,item["times"].intValue)
+                }
+                
+                let tmpCount=tempBody["monty"].arrayValue.count
+                if tmpCount<=1
+                {
+                    lastValue=todayValue
+                }
+                else{
+                    lastValue=tempBody["monty"][tmpCount-2]["snumber"].doubleValue
+                }
+                let tmpAveValue=tmpCount==0 ? 0:(totolValue/Double(tmpCount))
+                let tmpAveOilValue=tmpCount==0 ? 0:(totolOilValue/Double(tmpCount))
+                let tmpStru=HeadOfWaterReplenishStruct(skinValueOfToday: todayValue, lastSkinValue: lastValue, averageSkinValue:tmpAveValue, checkTimes: maxTimes)
+                self.avgAndTimesArr["\(i)"]=tmpStru
+                
+                if i==0&&tmpAveOilValue>0
+                {
+                    
+                    if tmpAveOilValue<12
+                    {
+                        self.currentSkinTypeIndex=0
+                    }else if tmpAveOilValue<12
+                    {
+                        self.currentSkinTypeIndex=2
+                    }else
+                    {
+                        self.currentSkinTypeIndex=1
+                    }
+                }
+            }
+            }, failure: { (error) in
+        })
     }
+    
+    override func SensorUpdate(device: OznerDevice!) {
+        //更新传感器视图
+        
+    }
+    override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
+        //更新连接状态视图
+        self.updateViewState()
+    }
+    
 }

@@ -107,6 +107,7 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
         if segue.identifier == "showsuccess" {
             let pair = segue.destination as! PairSuccessController
             pair.deviceArr = wifiDevices
+            pair.CurrDeviceType=currDeviceType
         }
         if segue.identifier == "showfailed" {
             let pair = segue.destination as! PairFailedController
@@ -133,7 +134,13 @@ extension WifiPairingController : MxChipPairDelegate{
     func mxChipComplete(_ io: MXChipIO!) {
         let tmpDevice=OznerManager.instance().getDeviceBy(io)
         wifiDevices.append(tmpDevice!)
-        self.performSegue(withIdentifier: "showsuccess", sender: nil)
+        if tmpDevice?.type == currDeviceType
+        {
+            self.performSegue(withIdentifier: "showsuccess", sender: nil)
+        }else{
+            self.performSegue(withIdentifier: "showfailed", sender: nil)
+        }
+        
     }
     
 }

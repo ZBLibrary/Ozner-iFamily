@@ -11,8 +11,16 @@ import UIKit
 class PairFailedController: UIViewController {
 
     var isBlueToothDevice:Bool!
-    @IBAction func backClick(_ sender: AnyObject) {
+    @IBAction func backClick(_ sender: AnyObject) {        
         _=self.navigationController?.popToRootViewController(animated: true)
+    }
+    @IBAction func rePairClick(_ sender: AnyObject) {
+        if isBlueToothDevice==true {
+            let vcs=self.navigationController?.viewControllers
+            let vc=vcs?[(vcs?.count)!-2] as! PairingController
+            vc.StarBluePair()
+        }
+        _=self.navigationController?.popViewController(animated: true)
     }
     @IBOutlet var botoomState: UILabel!
     
@@ -33,11 +41,7 @@ class PairFailedController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if isBlueToothDevice==true {
-            let controller=segue.destination as! PairingController
-            controller.StarBluePair()
-        }else{
-        }
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

@@ -10,6 +10,12 @@ import UIKit
 
 class CupSettingController: DeviceSettingController {
 
+    @IBAction func backClick(_ sender: AnyObject) {
+        self.back()
+    }
+    @IBAction func saveClick(_ sender: AnyObject) {
+        self.saveDevice()
+    }
     @IBOutlet var nameAndAttrLabel: UILabel!
     @IBOutlet var weightTF: UITextField!
     @IBOutlet var drinkingLabel: UITextField!
@@ -18,15 +24,18 @@ class CupSettingController: DeviceSettingController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameAndAttrLabel.text=self.getNameAndAttr()
         // Do any additional setup after loading the view.
     }
-    override func nameChange(name:String,attr:String) {
-        nameAndAttrLabel.text="\(name)(\(attr))"
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func nameChange(name:String,attr:String) {
+        super.nameChange(name: name, attr: attr)
+        nameAndAttrLabel.text="\(name)(\(attr))"
     }
     
     

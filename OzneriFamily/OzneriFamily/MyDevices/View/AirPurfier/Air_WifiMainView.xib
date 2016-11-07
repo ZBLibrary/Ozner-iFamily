@@ -27,6 +27,7 @@
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xg-Ch-w7z">
                             <subviews>
                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="GuangHuan" translatesAutoresizingMaskIntoConstraints="NO" id="gKs-sU-Tq9">
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="gKs-sU-Tq9" secondAttribute="height" multiplier="2:1" id="N5T-vg-vb8"/>
                                     </constraints>
@@ -42,6 +43,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="guanghuanIn" translatesAutoresizingMaskIntoConstraints="NO" id="5jX-2Y-ki8">
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="5jX-2Y-ki8" secondAttribute="height" multiplier="1:1" id="XQB-C9-6hz"/>
                                     </constraints>
@@ -50,6 +52,9 @@
                                             <integer key="value" value="160"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="0YJ-QJ-pRl" appends="YES" id="bl3-dJ-eeT"/>
+                                    </connections>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JK0-LC-3E8">
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="58"/>
@@ -244,7 +249,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddD-re-2ED">
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddD-re-2ED">
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ddD-re-2ED" secondAttribute="height" id="fhB-vZ-Wae"/>
                                                     </constraints>
@@ -254,7 +259,16 @@
                                                             <integer key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                                            <color key="value" red="0.62334269285202026" green="0.62743383646011353" blue="0.63150161504745483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="operatingButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="fCU-Hp-2Li"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -264,6 +278,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="ddD-re-2ED" secondAttribute="trailing" id="JeV-sM-utp"/>
                                                 <constraint firstItem="ddD-re-2ED" firstAttribute="leading" secondItem="PdV-S1-Sy7" secondAttribute="leading" id="fZg-gn-QEF"/>
                                                 <constraint firstItem="wmm-4Q-BL9" firstAttribute="top" secondItem="PdV-S1-Sy7" secondAttribute="top" id="pPJ-hQ-lYa"/>
+                                                <constraint firstAttribute="width" constant="60" id="sOA-uC-hNE"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qkv-JE-7gl">
@@ -283,7 +298,16 @@
                                                             <integer key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                                            <color key="value" red="0.62334269285202026" green="0.62743383646011353" blue="0.63150161504745483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="operatingButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="GcP-fu-j3g"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -302,7 +326,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gS-Wf-gbt">
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gS-Wf-gbt">
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="7gS-Wf-gbt" secondAttribute="height" id="OUB-fc-2Tt"/>
                                                     </constraints>
@@ -312,7 +336,16 @@
                                                             <integer key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                                            <color key="value" red="0.61942154169082642" green="0.62351208925247192" blue="0.62758046388626099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="operatingButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="vSi-xZ-Eoh"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -327,14 +360,13 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="sE5-1P-fht" secondAttribute="height" multiplier="306:97" id="4mR-aC-AUo"/>
                                         <constraint firstItem="Qkv-JE-7gl" firstAttribute="top" secondItem="sE5-1P-fht" secondAttribute="top" id="7Ob-MC-yNi"/>
                                         <constraint firstItem="9ax-Vn-0zg" firstAttribute="width" secondItem="Qkv-JE-7gl" secondAttribute="width" id="BWb-IJ-UQ5"/>
                                         <constraint firstAttribute="bottom" secondItem="Qkv-JE-7gl" secondAttribute="bottom" id="HCe-d4-yAc"/>
                                         <constraint firstItem="PdV-S1-Sy7" firstAttribute="top" secondItem="sE5-1P-fht" secondAttribute="top" id="MRO-V8-dkQ"/>
-                                        <constraint firstItem="PdV-S1-Sy7" firstAttribute="width" secondItem="sE5-1P-fht" secondAttribute="width" multiplier="60:306" id="RYm-iU-WsT"/>
                                         <constraint firstItem="PdV-S1-Sy7" firstAttribute="centerX" secondItem="sE5-1P-fht" secondAttribute="centerX" id="Yga-T9-qpl"/>
                                         <constraint firstAttribute="bottom" secondItem="PdV-S1-Sy7" secondAttribute="bottom" id="dmE-mN-fqR"/>
+                                        <constraint firstAttribute="height" constant="97" id="duC-a9-gY4"/>
                                         <constraint firstItem="Qkv-JE-7gl" firstAttribute="leading" secondItem="sE5-1P-fht" secondAttribute="leading" id="e2R-DI-9Ih"/>
                                         <constraint firstAttribute="trailing" secondItem="9ax-Vn-0zg" secondAttribute="trailing" id="fkb-IX-PK9"/>
                                         <constraint firstItem="PdV-S1-Sy7" firstAttribute="width" secondItem="Qkv-JE-7gl" secondAttribute="width" id="jBB-4j-fai"/>
@@ -345,8 +377,8 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="sE5-1P-fht" firstAttribute="height" secondItem="7Rd-XH-WBD" secondAttribute="height" multiplier="88:156" id="JMj-1m-Wzh"/>
                                 <constraint firstItem="sE5-1P-fht" firstAttribute="centerX" secondItem="7Rd-XH-WBD" secondAttribute="centerX" id="M8h-6d-bDI"/>
+                                <constraint firstItem="sE5-1P-fht" firstAttribute="width" secondItem="7Rd-XH-WBD" secondAttribute="width" multiplier="306:375" id="PA5-eK-k7l"/>
                                 <constraint firstItem="sE5-1P-fht" firstAttribute="centerY" secondItem="7Rd-XH-WBD" secondAttribute="centerY" id="SVs-Um-LMc"/>
                             </constraints>
                         </view>
@@ -381,7 +413,11 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0my-UW-bXk"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0my-UW-bXk">
+                            <connections>
+                                <action selector="seeOutdoorAirClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="MNf-wN-4Bt"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -425,8 +461,30 @@
                 <constraint firstItem="DpF-5S-Act" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="k9R-WA-zuC"/>
                 <constraint firstAttribute="bottom" secondItem="DpF-5S-Act" secondAttribute="bottom" id="uVu-bd-0B1"/>
             </constraints>
+            <connections>
+                <outlet property="PM25StateLabel" destination="YQM-fW-pLN" id="HFi-xm-0z2"/>
+                <outlet property="PM25ValueLabel" destination="JK0-LC-3E8" id="0ZL-1k-jMF"/>
+                <outlet property="VOCValueLabel" destination="soJ-uM-noq" id="vAV-DH-AYi"/>
+                <outlet property="circleBGimg" destination="gKs-sU-Tq9" id="NZH-Hr-nZQ"/>
+                <outlet property="cityLabel" destination="1au-5Y-0Ki" id="qxE-pB-Nv6"/>
+                <outlet property="humidityLabel" destination="hZv-u9-oGD" id="FED-TK-cgd"/>
+                <outlet property="lockButton" destination="7gS-Wf-gbt" id="qyd-rt-FXD"/>
+                <outlet property="lockStateLabel" destination="eIm-nO-Y4a" id="cjX-UW-YIb"/>
+                <outlet property="pm25Label_Out" destination="aCE-XQ-K2g" id="gWA-Bl-guR"/>
+                <outlet property="polutionLabel" destination="p1U-L6-Z5o" id="2Gp-Ul-Jf5"/>
+                <outlet property="powerButton" destination="783-8r-KMh" id="6Ap-rr-osT"/>
+                <outlet property="powerStateLabel" destination="cuG-CP-BTJ" id="0Y6-MW-RCf"/>
+                <outlet property="speedButton" destination="ddD-re-2ED" id="Hk7-ya-p3y"/>
+                <outlet property="speedStateLabel" destination="wmm-4Q-BL9" id="Mmt-PB-jIS"/>
+                <outlet property="temperatureLabel" destination="ZCr-UV-ND0" id="sUP-be-KOr"/>
+            </connections>
             <point key="canvasLocation" x="25.5" y="52.5"/>
         </view>
+        <tapGestureRecognizer id="0YJ-QJ-pRl">
+            <connections>
+                <action selector="seeLvXinClick:" destination="iN0-l3-epB" id="0sH-3D-Fz7"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="Airgif_blue.gif" width="750" height="400"/>

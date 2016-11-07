@@ -51,6 +51,10 @@ class AboutDeviceController: UIViewController {
         content += "</html>"
         return content
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
+    }
     /*
     // MARK: - Navigation
 

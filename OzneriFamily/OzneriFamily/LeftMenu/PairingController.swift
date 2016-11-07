@@ -83,7 +83,8 @@ class PairingController: UIViewController,OznerManagerDelegate {
         blueTimer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(bluePairing), userInfo: nil, repeats: true)
     }
     @objc private func bluePairing() {
-        if blueTimer==nil {
+        
+        if blueTimer==nil || remainTimer<0 {
             return
         }
         remainTimer-=2
@@ -97,10 +98,10 @@ class PairingController: UIViewController,OznerManagerDelegate {
         }
         if blueDevices.count>0 {
             self.performSegue(withIdentifier: "showsuccess", sender: nil)
-        }
-        if remainTimer<0 {
+        }else if remainTimer<0{
             self.performSegue(withIdentifier: "showfailed", sender: nil)
         }
+        
     }
     
     deinit {

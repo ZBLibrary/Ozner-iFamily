@@ -785,7 +785,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="whn-qb-xrW" kind="unwind" unwindAction="unwindToViewController:" id="Gqs-sN-0Jw"/>
+                                    <action selector="rePairClick:" destination="3ty-PT-Hn6" eventType="touchUpInside" id="YZV-3Z-DQb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -820,9 +820,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dml-Q9-h5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="whn-qb-xrW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="274" y="1837"/>
+            <point key="canvasLocation" x="575" y="1794"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rkx-zM-n4h">

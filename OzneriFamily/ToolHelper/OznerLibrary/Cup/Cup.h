@@ -47,7 +47,7 @@
  @property settings
  @discussion 水杯设置信息
  */
-@property (strong,readonly) CupSettings* settings;
+@property (strong) CupSettings* settings;
 
 @property (nonatomic, weak) id<CupDelegate> cupDelegate;
 

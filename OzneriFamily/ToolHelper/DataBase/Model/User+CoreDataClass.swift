@@ -165,14 +165,15 @@ public class User: BaseDataObject {
     //净水器设备型号及功能，连接地址下载
     class func GetMachineType(deviceID:String,success: @escaping ((_ ScanEnable:Bool,_ CoolEnable:Bool,_ HotEnable:Bool,_ MachineType:String,_ BuyUrl:String,_ AlertDays:Int) -> Void), failure: @escaping ((Error) -> Void)){
         self.fetchData(key: "GetMachineType", parameters: ["type":deviceID], success: { (json) in
-            let tmpData=json["data"] as JSON
+            let tmpData=json["data"].dictionary
+            
             success(
-                tmpData["boolshow"].bool!,
-                (tmpData["Attr"].string?.contains("cool:true"))!,
-                (tmpData["Attr"].string?.contains("hot:true"))!,
-                tmpData["MachineType"].string!,
-                tmpData["buylinkurl"].string!,
-                tmpData["days"].int!)
+                (tmpData?["boolshow"]?.intValue==1 ? true:false),
+                (tmpData?["Attr"]?.stringValue.contains("cool:true"))!,
+                (tmpData?["Attr"]?.stringValue.contains("hot:true"))!,
+                (tmpData?["MachineType"]?.stringValue)!,
+                (tmpData?["buylinkurl"]?.stringValue)!,
+                (tmpData?["days"]?.intValue)!)
             }, failure: failure)
         
     }
@@ -206,6 +207,23 @@ public class User: BaseDataObject {
             success(json["rank"].int!,json["total"].int!)
             }, failure: failure)
     }
-    
+    //更新补水仪的数值 Face ，Eyes ,Hands, Neck
+    class func UpdateBuShuiYiNumber(mac:String,ynumber:String,snumber:String,action:String,success: @escaping (() -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "UpdateBuShuiYiNumber", parameters: ["mac":mac,"ynumber":ynumber,"snumber":snumber,"action":action], success: { (json) in
+            success()
+            }, failure: failure)
+    }
+    //获取周月补水仪器数值分布
+    class func GetBuShuiFenBu(mac:String,action:String,success: @escaping ((_ dic:JSON) -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "GetBuShuiFenBu", parameters: ["mac":mac,"action":action], success: { (json) in
+            success(json["data"])
+            }, failure: failure)
+    }
+//    //获取补水仪检测次数
+//    class func GetTimesCountBuShui(mac:String,success: @escaping ((_ rank:Int,_ total:Int) -> Void), failure: @escaping ((Error) -> Void)){
+//        self.fetchData(key: "GetTimesCountBuShui", parameters: ["mac":mac], success: { (json) in
+//            success(json["rank"].int!,json["total"].int!)
+//            }, failure: failure)
+//    }
     
 }

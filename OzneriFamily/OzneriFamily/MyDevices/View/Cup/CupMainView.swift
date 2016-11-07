@@ -140,7 +140,6 @@ class CupMainView: OznerDeviceView {
         }
     }
     override func SensorUpdate(device: OznerDevice!) {
-        self.currentDevice=device
         //更新传感器视图
         TDS=Int((device as! Cup).sensor.tds)
         Temperature=Int((device as! Cup).sensor.temperature)
@@ -153,7 +152,6 @@ class CupMainView: OznerDeviceView {
 
     }
     override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
-        self.currentDevice=device
         //更新连接状态视图
     }
 

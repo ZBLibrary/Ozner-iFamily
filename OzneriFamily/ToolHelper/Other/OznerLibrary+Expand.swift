@@ -6,7 +6,7 @@
 //  Copyright © 2016年 net.ozner. All rights reserved.
 //
 
-import Foundation
+import UIKit
 //TDSPan type:SCP001
 //Tap type:SC001
 extension Tap{
@@ -19,3 +19,4 @@ extension Tap{
     }
     
 }
+

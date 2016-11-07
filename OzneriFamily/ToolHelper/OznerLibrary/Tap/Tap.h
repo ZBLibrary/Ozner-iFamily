@@ -47,7 +47,7 @@
  @discussion 设置信息
  */
 
-@property (strong,readonly) TapSettings* settings;
+@property (strong) TapSettings* settings;
 @property (nonatomic, weak) id<TapDelegate> tapDelegate;
 
 +(BOOL)isBindMode:(BluetoothIO*)io;

@@ -20,6 +20,11 @@ class Air_BlueMainView: OznerDeviceView {
     @IBOutlet var pollutionLabel: UILabel!
     @IBOutlet var outdoorPM25Label: UILabel!
     @IBOutlet var circleBGimg: UIImageView!
+    
+    @IBAction func SeeLvXinClick(_ sender: AnyObject) {
+        self.delegate.DeviceViewPerformSegue!(SegueID: "showAirLvXin", sender: nil)
+    }
+    
     @IBAction func seeOutdoorAirClick(_ sender: AnyObject) {
     }
     
@@ -147,7 +152,6 @@ class Air_BlueMainView: OznerDeviceView {
     }
 
     override func SensorUpdate(device: OznerDevice!) {
-        self.currentDevice=device
         //更新传感器视图
         if (self.currentDevice as! AirPurifier_Bluetooth).status.power==false
         {
@@ -176,7 +180,6 @@ class Air_BlueMainView: OznerDeviceView {
     }
     
     override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
-        self.currentDevice=device
         //更新连接状态视图
         connectChange=device.connectStatus()
     }

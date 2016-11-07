@@ -155,7 +155,9 @@ class PairSuccessController: UIViewController {
         }
    
         for (key,value) in settings {
-            deviceArr[0].settings.put(key, value: value)
+            if value != "" {
+                deviceArr[0].settings.put(key, value: value)
+            }
         }
         deviceArr[0].settings.name=settings["name"]
         

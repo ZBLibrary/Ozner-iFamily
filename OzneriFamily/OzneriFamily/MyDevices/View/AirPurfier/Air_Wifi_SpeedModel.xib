@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Air_Wifi_SpeedModel" customModule="OzneriFamily" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DjQ-Dr-Ac9">
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdG-c0-FWj">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="T5J-gL-BGO"/>
+                                <constraint firstAttribute="width" constant="60" id="lhU-dj-pex"/>
+                            </constraints>
+                            <state key="normal" image="air22013"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="30"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                    <color key="value" red="0.67823898792266846" green="0.68233907222747803" blue="0.68639743328094482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="PMb-PB-8Lt"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovM-F4-dcI">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="kA3-ng-Nwg"/>
+                                <constraint firstAttribute="width" constant="60" id="xKp-tt-PUc"/>
+                            </constraints>
+                            <state key="normal" image="air22014"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="30"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                    <color key="value" red="0.67039662599563599" green="0.67449545860290527" blue="0.67855513095855713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="TUk-xe-ukK"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMx-wH-vXs">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="PsK-Js-9jI"/>
+                                <constraint firstAttribute="width" constant="60" id="WT8-3Y-hBi"/>
+                            </constraints>
+                            <state key="normal" image="air22012"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="30"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                    <color key="value" red="0.0" green="0.47426909208297729" blue="0.92716950178146362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="u2t-WI-Ihh"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ovM-F4-dcI" firstAttribute="top" secondItem="DjQ-Dr-Ac9" secondAttribute="top" id="5KW-kn-Zq1"/>
+                        <constraint firstItem="kMx-wH-vXs" firstAttribute="centerX" secondItem="DjQ-Dr-Ac9" secondAttribute="centerX" id="Bx8-QT-je5"/>
+                        <constraint firstItem="gdG-c0-FWj" firstAttribute="leading" secondItem="DjQ-Dr-Ac9" secondAttribute="leading" id="ODX-Cf-d7W"/>
+                        <constraint firstAttribute="height" constant="148" id="SHe-EP-bx5"/>
+                        <constraint firstAttribute="width" constant="148" id="byy-r9-0xN"/>
+                        <constraint firstItem="gdG-c0-FWj" firstAttribute="top" secondItem="DjQ-Dr-Ac9" secondAttribute="top" id="dSG-rT-M7P"/>
+                        <constraint firstAttribute="bottom" secondItem="kMx-wH-vXs" secondAttribute="bottom" id="gEn-nk-0mx"/>
+                        <constraint firstAttribute="trailing" secondItem="ovM-F4-dcI" secondAttribute="trailing" id="sU0-QB-Pdn"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="DjQ-Dr-Ac9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="NkR-sZ-BLU"/>
+                <constraint firstAttribute="bottom" secondItem="DjQ-Dr-Ac9" secondAttribute="bottom" constant="100" id="Uqh-AM-7I0"/>
+            </constraints>
+            <connections>
+                <outlet property="bottomConstraint" destination="Uqh-AM-7I0" id="Hhe-yf-57k"/>
+                <outlet property="bottonButton" destination="kMx-wH-vXs" id="p5J-mw-whk"/>
+                <outlet property="leftButton" destination="gdG-c0-FWj" id="ZHL-Hl-FuN"/>
+                <outlet property="rightButton" destination="ovM-F4-dcI" id="f2B-F1-F80"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="air22012" width="43" height="30"/>
+        <image name="air22013" width="43" height="30"/>
+        <image name="air22014" width="43" height="30"/>
+    </resources>
+</document>

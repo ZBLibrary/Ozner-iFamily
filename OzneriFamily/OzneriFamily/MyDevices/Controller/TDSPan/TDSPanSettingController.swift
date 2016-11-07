@@ -10,13 +10,20 @@ import UIKit
 
 class TDSPanSettingController: DeviceSettingController {
 
+   
+    @IBAction func backClick(_ sender: AnyObject) {
+        super.back()
+    }
+    @IBAction func saveClick(_ sender: AnyObject) {
+        super.saveDevice()
+    }
     @IBOutlet var nameAndAttrLabel: UILabel!
     @IBAction func deleteClick(_ sender: AnyObject) {
         super.deleteDevice()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameAndAttrLabel.text=self.getNameAndAttr()
         // Do any additional setup after loading the view.
     }
 
@@ -26,6 +33,7 @@ class TDSPanSettingController: DeviceSettingController {
     }
     
     override func nameChange(name:String,attr:String) {
+        super.nameChange(name: name, attr: attr)
         nameAndAttrLabel.text="\(name)(\(attr))"
     }
     

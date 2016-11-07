@@ -94,8 +94,8 @@ class MyDevicesController: UIViewController {
         switch segue.identifier! {
         case "showBuyLvXin"://AboutDeviceController
             let aboutVC = segue.destination as! AboutDeviceController
-            aboutVC.title=JSON(arrayLiteral: sender)["title"].stringValue
-            aboutVC.setLoadContent(content: JSON(arrayLiteral: sender)["url"].stringValue, isUrl: true)
+            aboutVC.title=(sender as! NSDictionary).object(forKey: "title") as! String?
+            aboutVC.setLoadContent(content: ((sender as! NSDictionary).object(forKey: "url") as! String?)!, isUrl: true)
         case "showCupSetting","showTapSetting":
             break
         default:

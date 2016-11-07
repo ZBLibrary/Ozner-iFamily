@@ -42,8 +42,7 @@ class SetDeviceNameController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currSelectAttrIndex=0
-        nameTextFeild.text=LoginManager.instance.currentDevice.settings.name
+       
         var attri:[Int:String]!        
         switch LoginManager.instance.currentDevice.type {
         case OznerDeviceType.Cup.rawValue:
@@ -62,6 +61,9 @@ class SetDeviceNameController: UIViewController {
         }
         attributeName0.text=attri[0]
         attributeName1.text=attri[1]
+        
+        nameTextFeild.text = LoginManager.instance.currentDevice.settings.name
+        currSelectAttrIndex = (LoginManager.instance.currentDevice.settings.get("usingSite", default: "") as! String)==attri[1] ? 1:0
         // Do any additional setup after loading the view.
     }
 

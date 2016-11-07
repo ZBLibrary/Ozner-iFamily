@@ -26,3 +26,31 @@ struct MyRegex {
         }
     }
 }
+func dateStampToString(_ timeStamp:String,format:String)->NSString {
+    //print(timeStamp)
+    let i1 = timeStamp.unicodeScalars.index(after: timeStamp.unicodeScalars.index(of: "(")!)
+    let i2 = timeStamp.unicodeScalars.index(of: ")")!
+    
+    let substring = timeStamp.unicodeScalars[i1..<i2]
+    let tmpstr=String(describing: substring.description)
+    //有问题
+    let date:Date = Date(timeIntervalSince1970: Double(tmpstr)!/1000)
+    let dfmatter = DateFormatter()
+    dfmatter.dateFormat=format
+    
+    print(dfmatter.string(from: date))
+    return dfmatter.string(from: date) as NSString
+}
+func dateFromString(_ dateStr:NSString,format:String)->Date {
+    let dfmatter = DateFormatter()
+    dfmatter.dateFormat=format
+    var tmpDate=dfmatter.date(from: dateStr as String)!
+    tmpDate=Date(timeIntervalSince1970: tmpDate.timeIntervalSince1970+8*3600)
+    print(tmpDate)
+    return tmpDate
+}
+func stringFromDate(_ date:Date,format:String)->NSString {
+    let dfmatter = DateFormatter()
+    dfmatter.dateFormat=format
+    return dfmatter.string(from: date) as NSString
+}

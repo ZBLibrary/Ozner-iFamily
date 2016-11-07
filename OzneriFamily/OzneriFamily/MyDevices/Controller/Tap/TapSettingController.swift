@@ -10,26 +10,34 @@ import UIKit
 
 class TapSettingController: DeviceSettingController {
 
+    @IBAction func backClick(_ sender: AnyObject) {
+        self.back()
+    }
+    @IBAction func saveClick(_ sender: AnyObject) {
+        self.saveDevice()
+    }
     @IBOutlet var nameAndAttrLabel: UILabel!
     @IBAction func deleteDeviceClick(_ sender: AnyObject) {
         super.deleteDevice()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameAndAttrLabel.text=self.getNameAndAttr()
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    
     override func nameChange(name:String,attr:String) {
+        super.nameChange(name: name, attr: attr)
         nameAndAttrLabel.text="\(name)(\(attr))"
     }
+    
+
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -56,6 +56,7 @@ class DeviceViewContainer: UIView {
             LoginManager.instance.currentDeviceIdentifier=device?.identifier
             if currentDevice != nil {
                 if LoginManager.instance.currentDeviceIdentifier==currentDevice?.identifier {
+                    delegate.DeviceNameChange!(name: (currentDevice?.settings.name)!)
                     return
                 }
             }
@@ -142,8 +143,14 @@ class DeviceViewContainer: UIView {
             case .Air_Wifi:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
                 //设置滤芯
-                let lvXinValue=getAirLvXin(lastDate: (currentDevice as! AirPurifier_MxChip).status.filterStatus.lastTime, maxUseMonth: 12)
-                delegate.FilterValueChange!(value: lvXinValue)
+                if let filterStatus=(currentDevice as! AirPurifier_MxChip).status.filterStatus
+                {
+                    let lvxinValue=getAirLvXin(lastDate: filterStatus.lastTime, maxUseMonth: 12)
+                    delegate.FilterValueChange!(value: lvxinValue)
+                }else{
+                    delegate.FilterValueChange!(value: 65535)
+                }
+                
             case .WaterReplenish:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:156*k_height)
                 //设置电池电量
@@ -161,12 +168,14 @@ extension DeviceViewContainer:OznerDeviceDelegate{
     
     func oznerDeviceSensorUpdate(_ device: OznerDevice!) {
         if CheckIsCurrentDevice(device: device) == true {
+            currentDeviceView.currentDevice=device
             currentDeviceView.SensorUpdate(device: device)
         }
     }
     //连接状态变化
     func oznerDeviceStatusUpdate(_ device: OznerDevice!) {
         if CheckIsCurrentDevice(device: device) == true {
+            currentDeviceView.currentDevice=device
             //解析当前状态
             switch device.connectStatus() {
             case Connecting:

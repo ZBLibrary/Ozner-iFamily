@@ -187,8 +187,8 @@
                         <segue destination="f3R-LE-xjw" kind="show" identifier="toTapLvXin" id="7tZ-V6-b8L"/>
                         <segue destination="ivk-xY-aWD" kind="show" id="mMJ-zI-BRW"/>
                         <segue destination="3Ak-V9-a2E" kind="show" identifier="showAirLvXin" id="GyX-76-o2e"/>
-                        <segue destination="Xci-YO-YQk" kind="show" id="NG7-lv-jtC"/>
-                        <segue destination="hqs-RD-39H" kind="show" id="dEd-DO-D7Q"/>
+                        <segue destination="Xci-YO-YQk" kind="show" identifier="showSkinDetail" id="NG7-lv-jtC"/>
+                        <segue destination="hqs-RD-39H" kind="show" identifier="showSeeSkin" id="dEd-DO-D7Q"/>
                         <segue destination="aGC-dU-WII" kind="show" identifier="showBuyLvXin" id="BXe-Ml-x0S"/>
                         <segue destination="1E5-IJ-tIV" kind="show" identifier="showTDSPanSetting" id="VMN-X8-q8u"/>
                     </connections>
@@ -1079,7 +1079,7 @@
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfw-U6-jtK">
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQL-69-4GE" customClass="indoorHead_SmallXib_EN" customModule="OzneriFamily" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQL-69-4GE">
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOC为空气中挥发性有机化合物" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVM-oh-s8l">
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -1121,7 +1121,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emd-ac-0AR">
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npA-k0-fBT" customClass="indoorHead_SmallXib_EN" customModule="OzneriFamily" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npA-k0-fBT">
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM2.5为空气中细微颗粒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwv-bz-HPi">
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -3348,7 +3348,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="nXo-Zd-eC1">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="u9v-8y-vYN"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="wiP-hq-Bhk">
+                            <connections>
+                                <action selector="backClick:" destination="SrH-4Z-1Vu" id="cNt-s4-rUN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="u9v-8y-vYN">
+                            <connections>
+                                <action selector="saveClick:" destination="SrH-4Z-1Vu" id="8ye-8B-omh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nameAndAttrLabel" destination="SOS-aR-GUC" id="hxW-h7-WWo"/>
@@ -4085,7 +4094,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="vzc-6q-nbu">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="hqm-hQ-yi1"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="SiL-NY-JPg">
+                            <connections>
+                                <action selector="backClick:" destination="XeD-QT-4f5" id="Iw5-XV-cpj"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="hqm-hQ-yi1">
+                            <connections>
+                                <action selector="saveClick:" destination="XeD-QT-4f5" id="0WB-ym-PtK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1325"/>
@@ -4268,7 +4286,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="oUO-6B-IcQ">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="mY5-NY-hjT"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="5hl-5h-H3o">
+                            <connections>
+                                <action selector="backClick:" destination="0RJ-al-8HV" id="SWZ-sa-roG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="mY5-NY-hjT">
+                            <connections>
+                                <action selector="saveClick:" destination="0RJ-al-8HV" id="aqI-rO-84F"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nameAndAttrLabel" destination="VhK-JP-755" id="yJl-AI-5Id"/>
@@ -4525,7 +4552,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="zQR-TD-o7G">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="Tn2-wJ-jgC"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="CAa-AB-Nzk">
+                            <connections>
+                                <action selector="backClick:" destination="hfS-yf-OMy" id="qS4-xd-IqV"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="Tn2-wJ-jgC">
+                            <connections>
+                                <action selector="saveClick:" destination="hfS-yf-OMy" id="uqo-P9-j1Q"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nameAndAttrLabel" destination="XcM-RU-FUf" id="boi-G6-4VC"/>
@@ -5093,7 +5129,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="eKL-DY-FgN">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="nDC-Qh-1Cv"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="zzZ-ws-4Az">
+                            <connections>
+                                <action selector="backClick:" destination="XBD-wp-tdL" id="pQb-PR-iz6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="nDC-Qh-1Cv">
+                            <connections>
+                                <action selector="saveClick:" destination="XBD-wp-tdL" id="Qfa-4V-58z"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nameAndAttrLabel" destination="rGc-63-Owk" id="U5b-6z-pTp"/>
@@ -5868,7 +5913,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="xo9-0U-NFa">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="OfQ-yD-ghF"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="2M1-Sg-KAc">
+                            <connections>
+                                <action selector="backClick:" destination="1E5-IJ-tIV" id="h9q-za-PUA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="OfQ-yD-ghF">
+                            <connections>
+                                <action selector="saveClick:" destination="1E5-IJ-tIV" id="zvG-Hl-Ma0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nameAndAttrLabel" destination="ztd-Vq-E3k" id="qwZ-TD-NHV"/>
@@ -5900,6 +5954,7 @@
         <image name="device_share" width="18" height="21"/>
         <image name="device_zixun" width="23" height="18"/>
         <image name="dian_liang_30" width="20" height="10"/>
+        <image name="icon_back" width="10" height="21"/>
         <image name="icon_lvxin_more_1" width="125" height="86"/>
         <image name="icon_lvxin_more_2" width="125" height="86"/>
         <image name="icon_lvxin_more_3" width="125" height="86"/>
@@ -5922,7 +5977,7 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uTu-U7-iUE"/>
-        <segue reference="aaL-mh-gXA"/>
+        <segue reference="J5r-TH-hkc"/>
+        <segue reference="vlV-TW-9kk"/>
     </inferredMetricsTieBreakers>
 </document>

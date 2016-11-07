@@ -119,7 +119,7 @@
                                         <constraint firstAttribute="bottom" secondItem="Qir-sV-5Cw" secondAttribute="bottom" id="gwF-xE-mSP"/>
                                         <constraint firstAttribute="width" secondItem="c1X-iH-rL7" secondAttribute="height" multiplier="60:19" id="kD6-9p-cYu"/>
                                         <constraint firstItem="gF4-S5-XPr" firstAttribute="top" secondItem="c1X-iH-rL7" secondAttribute="top" id="paV-x4-Q0C"/>
-                                        <constraint firstItem="Qir-sV-5Cw" firstAttribute="leading" secondItem="idb-9n-xnR" secondAttribute="trailing" id="qM9-FY-ctg"/>
+                                        <constraint firstItem="Qir-sV-5Cw" firstAttribute="leading" secondItem="idb-9n-xnR" secondAttribute="trailing" constant="5" id="qM9-FY-ctg"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -161,26 +161,21 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVI-dV-52c">
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVI-dV-52c">
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="dVI-dV-52c" secondAttribute="height" id="cHG-ko-VU6"/>
                                             </constraints>
-                                            <state key="normal" image="1_03"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                    <integer key="value" value="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
-                                                    <color key="value" red="0.70972543954849243" green="0.70984917879104614" blue="0.70971763134002686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
+                                            <state key="normal" image="icon_jiare_normal"/>
+                                            <connections>
+                                                <action selector="operationButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="CeS-Yf-KKK"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="FXw-rO-8n6" firstAttribute="centerX" secondItem="nr6-wU-yMr" secondAttribute="centerX" id="72D-Uv-sAW"/>
                                         <constraint firstItem="dVI-dV-52c" firstAttribute="leading" secondItem="nr6-wU-yMr" secondAttribute="leading" id="DwI-wC-RNx"/>
+                                        <constraint firstAttribute="width" constant="60" id="MDF-Zu-0hW"/>
                                         <constraint firstAttribute="bottom" secondItem="dVI-dV-52c" secondAttribute="bottom" id="Y23-QG-Hyw"/>
                                         <constraint firstItem="FXw-rO-8n6" firstAttribute="top" secondItem="nr6-wU-yMr" secondAttribute="top" id="dM0-mO-IZh"/>
                                         <constraint firstAttribute="trailing" secondItem="dVI-dV-52c" secondAttribute="trailing" id="yA2-0a-e3x"/>
@@ -197,13 +192,10 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="fhe-WG-Za3" secondAttribute="height" id="GO9-8S-TrW"/>
                                             </constraints>
-                                            <state key="normal" image="1_08"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                    <integer key="value" value="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
+                                            <state key="normal" image="icon_power_normal"/>
+                                            <connections>
+                                                <action selector="operationButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ur5-YI-5Ew"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -222,17 +214,14 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhd-wG-8TV">
+                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhd-wG-8TV">
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="xhd-wG-8TV" secondAttribute="height" id="7KI-De-m4b"/>
                                             </constraints>
-                                            <state key="normal" image="1_05"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                    <integer key="value" value="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
+                                            <state key="normal" image="icon_zhileng_normal"/>
+                                            <connections>
+                                                <action selector="operationButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="VdA-SJ-MVY"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -247,7 +236,6 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="nr6-wU-yMr" firstAttribute="width" secondItem="NPO-OZ-3k6" secondAttribute="width" multiplier="60:306" id="0Kb-FB-s4p"/>
                                 <constraint firstAttribute="bottom" secondItem="KxI-zr-2gS" secondAttribute="bottom" id="Ca5-jN-N4F"/>
                                 <constraint firstItem="nr6-wU-yMr" firstAttribute="centerX" secondItem="NPO-OZ-3k6" secondAttribute="centerX" id="H8Y-0B-adD"/>
                                 <constraint firstItem="KxI-zr-2gS" firstAttribute="leading" secondItem="NPO-OZ-3k6" secondAttribute="leading" id="K8X-VB-pBA"/>
@@ -256,6 +244,7 @@
                                 <constraint firstAttribute="trailing" secondItem="G85-sM-Qoh" secondAttribute="trailing" id="S0d-0b-OS6"/>
                                 <constraint firstItem="G85-sM-Qoh" firstAttribute="width" secondItem="KxI-zr-2gS" secondAttribute="width" id="XCd-BZ-gx5"/>
                                 <constraint firstAttribute="bottom" secondItem="nr6-wU-yMr" secondAttribute="bottom" id="XfQ-56-RWN"/>
+                                <constraint firstAttribute="height" constant="97" id="dNx-3Y-l4D"/>
                                 <constraint firstAttribute="bottom" secondItem="G85-sM-Qoh" secondAttribute="bottom" id="jmA-jZ-qW5"/>
                                 <constraint firstItem="G85-sM-Qoh" firstAttribute="top" secondItem="NPO-OZ-3k6" secondAttribute="top" id="tXG-08-uNI"/>
                                 <constraint firstItem="nr6-wU-yMr" firstAttribute="top" secondItem="NPO-OZ-3k6" secondAttribute="top" id="zRw-8s-8pi"/>
@@ -265,7 +254,6 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="NPO-OZ-3k6" firstAttribute="centerX" secondItem="LSG-4S-hcX" secondAttribute="centerX" id="Ehw-4B-7VT"/>
-                        <constraint firstItem="NPO-OZ-3k6" firstAttribute="height" secondItem="LSG-4S-hcX" secondAttribute="height" multiplier="88:160" id="Np2-FL-CbD"/>
                         <constraint firstItem="NPO-OZ-3k6" firstAttribute="width" secondItem="LSG-4S-hcX" secondAttribute="width" multiplier="306:375" id="RBB-em-cNA"/>
                         <constraint firstItem="NPO-OZ-3k6" firstAttribute="centerY" secondItem="LSG-4S-hcX" secondAttribute="centerY" id="WQf-q4-dWo"/>
                     </constraints>
@@ -284,14 +272,24 @@
             </constraints>
             <connections>
                 <outlet property="circleView" destination="zbc-kP-Jm3" id="1Re-2y-1ZC"/>
+                <outlet property="coolButton" destination="xhd-wG-8TV" id="uHg-qw-4gC"/>
+                <outlet property="coolLabel" destination="RAx-bE-v06" id="i41-dI-5II"/>
+                <outlet property="hotButton" destination="dVI-dV-52c" id="h5p-1j-RVt"/>
+                <outlet property="hotLabel" destination="FXw-rO-8n6" id="pEj-tO-vuO"/>
+                <outlet property="powerButton" destination="fhe-WG-Za3" id="d8D-wB-NjM"/>
+                <outlet property="powerLabel" destination="zJv-F8-ZAx" id="u3b-Fj-PBB"/>
+                <outlet property="tdsImg" destination="idb-9n-xnR" id="Sky-pj-Rot"/>
+                <outlet property="tdsStateLabel" destination="Qir-sV-5Cw" id="sFZ-9E-UgS"/>
+                <outlet property="tdsValueLabel_AF" destination="zax-Xv-gcJ" id="78t-w2-Zph"/>
+                <outlet property="tdsValueLabel_BF" destination="byb-ZA-dhf" id="dd2-TZ-2e1"/>
             </connections>
             <point key="canvasLocation" x="-112.5" y="23.5"/>
         </view>
     </objects>
     <resources>
-        <image name="1_03" width="20" height="20"/>
-        <image name="1_05" width="20" height="21"/>
-        <image name="1_08" width="18" height="19"/>
         <image name="baobiao" width="16" height="16"/>
+        <image name="icon_jiare_normal" width="60" height="60"/>
+        <image name="icon_power_normal" width="60" height="60"/>
+        <image name="icon_zhileng_normal" width="60" height="60"/>
     </resources>
 </document>

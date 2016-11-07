@@ -10,10 +10,21 @@ import UIKit
 
 class DeviceSettingController: UIViewController {
 
+
+    var deviceSetting:DeviceSetting!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let device=LoginManager.instance.currentDevice
+        
+        
+        switch device.type {
+        case OznerDeviceType.Cup.rawValue:
+            deviceSetting=CupSettings(json: device.settings.toJSON())
+        case OznerDeviceType.Tap.rawValue,OznerDeviceType.TDSPan.rawValue:
+            deviceSetting=TapSettings(json: device.settings.toJSON())
+        default:
+            deviceSetting=DeviceSetting(json: device.settings.toJSON())
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +36,11 @@ class DeviceSettingController: UIViewController {
         self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
     }
     func nameChange(name:String,attr:String) {
-        print("=====\(name)=========\(attr)================success")
+        deviceSetting.name=name
+        deviceSetting.put("usingSite", value: attr)
+    }
+    func getNameAndAttr() -> String {
+        return deviceSetting.name+"("+(deviceSetting.get("usingSite", default: "办公室") as! String)+")"
     }
     func deleteDevice()
     {
@@ -34,18 +49,44 @@ class DeviceSettingController: UIViewController {
             dynamicAnimatorActive: true
         )
         let alert=SCLAlertView(appearance: appearance)
-        _=alert.addButton("否") {
-            print("否")
+        _=alert.addButton(loadLanguage("否")) {
         }
-        _=alert.addButton("是") {
+        _=alert.addButton(loadLanguage("是")) {
             let device=LoginManager.instance.currentDevice
             LoginManager.instance.currentDeviceIdentifier=nil
             OznerManager.instance().remove(device)
             _=self.navigationController?.popViewController(animated: true)
         }
+        _=alert.showInfo("", subTitle: loadLanguage("删除此设备"))
         
-        _=alert.showInfo("", subTitle: "删除此设备")
+    }
+    
+    func back() {
+        let device=LoginManager.instance.currentDevice
+        if deviceSetting.toJSON()==device.settings.toJSON()
+        {
+            _=self.navigationController?.popViewController(animated: true)
+        }else{
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false,
+                dynamicAnimatorActive: true
+            )
+            let alert=SCLAlertView(appearance: appearance)
+            _=alert.addButton("是") {
+                self.saveDevice()
+            }
+            _=alert.addButton("否") {
+                _=self.navigationController?.popViewController(animated: true)
+            }
+            _=alert.showInfo("", subTitle: loadLanguage("是否保存？"))
+        }
+    }
+    func saveDevice() {
         
+        let device=LoginManager.instance.currentDevice
+            device.settings=deviceSetting
+        OznerManager.instance().save(device)
+        _=self.navigationController?.popViewController(animated: true)
     }
     /*
     // MARK: - Navigation

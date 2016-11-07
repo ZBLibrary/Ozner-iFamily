@@ -28,7 +28,7 @@
 -(NSString *)getDefaultName;
 
 @property (nonatomic, weak) id<OznerDeviceDelegate> delegate;
-@property (readonly,strong) DeviceSetting* settings;
+@property (strong) DeviceSetting* settings;
 @property (readonly,copy)NSString* identifier;
 @property (readonly,copy)NSString* type;
 -(enum ConnectStatus) connectStatus;

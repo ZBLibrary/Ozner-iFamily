@@ -162,8 +162,12 @@ OznerManager* oznerManager=nil;
     NSString* sql=[NSString stringWithFormat:@"INSERT OR REPLACE INTO %@(identifier,Type,JSON) VALUES (?,?,?);",
                    [self getOwnerTableName]];
     NSString* json=[device.settings toJSON];
-    NSLog(@"json:%@",json);
-    [db ExecSQLNonQuery:sql params:[NSArray arrayWithObjects:device.identifier,device.type,json, nil]];
+    if ([device.type isEqualToString:@"SCP001"]) {
+        [db ExecSQLNonQuery:sql params:[NSArray arrayWithObjects:device.identifier,@"SC001",json, nil]];
+    }else{
+        [db ExecSQLNonQuery:sql params:[NSArray arrayWithObjects:device.identifier,device.type,json, nil]];
+    }
+    
     
     [device updateSettings:cb];
     @try {
