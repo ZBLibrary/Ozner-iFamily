@@ -193,7 +193,6 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-        SVProgressHUD.setViewForExtension(self.view)
         SVProgressHUD.show()
         User.GetUserNickImage(params, { (responseObject) in
             SVProgressHUD.dismiss()

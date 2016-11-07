@@ -67,7 +67,8 @@ class SendYanZHViewController: UIViewController,UITextFieldDelegate {
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-        SVProgressHUD.setViewForExtension(self.view)
+        
+//        SVProgressHUD.setViewForExtension(self.view)
         SVProgressHUD.show()
         
         User.AddFriend(params, { (data) in

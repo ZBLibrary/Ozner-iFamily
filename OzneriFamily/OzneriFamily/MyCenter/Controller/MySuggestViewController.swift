@@ -62,7 +62,7 @@ class MySuggestViewController: UIViewController,UITextViewDelegate {
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-        SVProgressHUD.setViewForExtension(self.view)
+//        SVProgressHUD.setViewForExtension(self.view)
         SVProgressHUD.show()
 //        weak var weakSelf = self
         User.commitSugesstion(params, { (responseObject) in
