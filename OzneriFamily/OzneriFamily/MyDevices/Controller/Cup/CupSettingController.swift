@@ -19,6 +19,17 @@ class CupSettingController: DeviceSettingController {
     @IBOutlet var nameAndAttrLabel: UILabel!
     @IBOutlet var weightTF: UITextField!
     @IBOutlet var drinkingLabel: UITextField!
+    
+    @IBAction func segmentClick(_ sender: UISegmentedControl) {
+        segLabel1.text = sender.selectedSegmentIndex==0 ? "25°C以下":"健康"
+        segLabel2.text = sender.selectedSegmentIndex==0 ? "25°C-50°C":"一般"
+        segLabel3.text = sender.selectedSegmentIndex==0 ? "50°C以上":"较差"
+    
+    }
+    @IBOutlet var segLabel1: UILabel!
+    @IBOutlet var segLabel2: UILabel!
+    @IBOutlet var segLabel3: UILabel!
+    
     @IBAction func deletClick(_ sender: AnyObject) {
         super.deleteDevice()
     }

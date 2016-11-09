@@ -36,11 +36,12 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
         var skinTypeIndex = 0
         skinTypeIndex = (skinButton.titleLabel?.text!.contains(loadLanguage("油性")))! ? 1:skinTypeIndex
         skinTypeIndex = (skinButton.titleLabel?.text!.contains(loadLanguage("干性")))! ? 2:skinTypeIndex
+        skinTypeIndex = (skinButton.titleLabel?.text!.contains(loadLanguage("中性")))! ? 3:skinTypeIndex
         var tmpTimes=0
         if avgAndTimesArr.count>0 {
-            tmpTimes=(avgAndTimesArr["0"]?.checkTimes)!+(avgAndTimesArr["1"]?.checkTimes)!+(avgAndTimesArr["2"]?.checkTimes)!+(avgAndTimesArr["3"]?.checkTimes)!
+            tmpTimes=(avgAndTimesArr[0]?.checkTimes)!+(avgAndTimesArr[1]?.checkTimes)!+(avgAndTimesArr[2]?.checkTimes)!+(avgAndTimesArr[3]?.checkTimes)!
         }
-        self.delegate.DeviceViewPerformSegue!(SegueID: "showSeeSkin", sender: ["totalTimes":"\(tmpTimes)","currentSkinTypeIndex":"\(skinTypeIndex)"])
+        self.delegate.DeviceViewPerformSegue!(SegueID: "showSeeSkin", sender: ["totalTimes":tmpTimes,"currentSkinTypeIndex":skinTypeIndex])
     }
     @IBOutlet weak var resultOfFooterContainView: UIView!
     @IBOutlet weak var resultValueLabel: UILabel!
@@ -150,7 +151,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
                 
                 if avgAndTimesArr.count>0
                 {
-                    let tmpStruct=avgAndTimesArr["\(currentBodyPart.hashValue)"]! as HeadOfWaterReplenishStruct
+                    let tmpStruct=avgAndTimesArr[currentBodyPart.hashValue]! as HeadOfWaterReplenishStruct
                     resultValueLabel.text = "\(loadLanguage("上一次检测")) \(Int(tmpStruct.lastSkinValue))%  |  \(loadLanguage("平均值")) \(Int(tmpStruct.averageSkinValue))%（\(tmpStruct.checkTimes)\(loadLanguage("次"))）"
                 }
             case 2:
@@ -166,7 +167,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
                 startAnimations(0)
                 if avgAndTimesArr.count>0
                 {
-                    let tmpStruct=avgAndTimesArr["\(currentBodyPart.hashValue)"]! as HeadOfWaterReplenishStruct
+                    let tmpStruct=avgAndTimesArr[currentBodyPart.hashValue]! as HeadOfWaterReplenishStruct
                     resultValueLabel.text = "\(loadLanguage("上一次检测")) \(Int(tmpStruct.lastSkinValue))%  |  \(loadLanguage("平均值")) \(Int(tmpStruct.averageSkinValue))%（\(tmpStruct.checkTimes)\(loadLanguage("次"))）"
                 }
             case 3:
@@ -181,18 +182,18 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
                 }
                 uploadSKinData(testResult.oilValue, snumber: testResult.moistureValue)
                 
-                let tmpTimes=avgAndTimesArr["\(currentBodyPart.hashValue)"]?.checkTimes ?? 0
-                avgAndTimesArr["\(currentBodyPart.hashValue)"]?.checkTimes+=1
+                let tmpTimes=avgAndTimesArr[currentBodyPart.hashValue]?.checkTimes ?? 0
+                avgAndTimesArr[currentBodyPart.hashValue]?.checkTimes+=1
                 
-                avgAndTimesArr["\(currentBodyPart.hashValue)"]?.lastSkinValue=Double(testResult.moistureValue as String)!
+                avgAndTimesArr[currentBodyPart.hashValue]?.lastSkinValue=Double(testResult.moistureValue as String)!
                 var tmpAvg=Double(testResult.moistureValue as String)!
                 
-                tmpAvg=tmpAvg+(avgAndTimesArr["\(currentBodyPart.hashValue)"]?.averageSkinValue ?? 0)!*Double(tmpTimes)
+                tmpAvg=tmpAvg+(avgAndTimesArr[currentBodyPart.hashValue]?.averageSkinValue ?? 0)!*Double(tmpTimes)
                 tmpAvg=tmpAvg/Double(tmpTimes+1)
-                avgAndTimesArr["\(currentBodyPart.hashValue)"]?.averageSkinValue=Double(String(format: "%.1f",tmpAvg))!
+                avgAndTimesArr[currentBodyPart.hashValue]?.averageSkinValue=Double(String(format: "%.1f",tmpAvg))!
                 if avgAndTimesArr.count>0
                 {
-                    let tmpStruct=avgAndTimesArr["\(currentBodyPart.hashValue)"]! as HeadOfWaterReplenishStruct
+                    let tmpStruct=avgAndTimesArr[currentBodyPart.hashValue]! as HeadOfWaterReplenishStruct
                     resultValueLabel.text = "\(loadLanguage("上一次检测")) \(Int(tmpStruct.lastSkinValue))%  |  \(loadLanguage("平均值")) \(Int(tmpStruct.averageSkinValue))%（\(tmpStruct.checkTimes)\(loadLanguage("次"))）"
                 }
             default:
@@ -215,7 +216,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     fileprivate let ColorType=[UIColor(red: 252/255, green: 128/255, blue: 65/255, alpha: 1),UIColor(red: 64/255, green: 125/255, blue: 250/255, alpha: 1),UIColor(red: 64/255, green: 125/255, blue: 250/255, alpha: 1)]
     
     //water,取值范围
-    fileprivate let WaterTypeValue=[BodyParts.Face:[32,42],
+    let WaterTypeValue=[BodyParts.Face:[32,42],
                                     BodyParts.Eyes:[35,45],
                                     BodyParts.Hands:[30,38],
                                     BodyParts.Neck:[35,45]
@@ -379,72 +380,15 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
         }
     }
     
-    var avgAndTimesArr=[String:HeadOfWaterReplenishStruct]()
+    var avgAndTimesArr=[Int:HeadOfWaterReplenishStruct]()
+    //下载周月数据
     func getAllWeakAndMonthData()
     {
-        //下载周月数据
-        User.GetBuShuiFenBu(mac: (self.currentDevice?.identifier)!, action: currentBodyPart.rawValue, success: { (json) in
-            let tmpKeyArr=["FaceSkinValue","EyesSkinValue","HandSkinValue","NeckSkinValue"]
-
-            for i in 0...3
-            {
-                
-                let tempBody=json[tmpKeyArr[i]]
-                //月数据
-                var maxTimes=0
-                var todayValue:Double=0
-                var lastValue:Double=0
-                var totolValue:Double=0
-                var totolOilValue:Double=0
-                for item in tempBody["monty"].arrayValue
-                {
-                    let record=CupRecord()
-                    
-                    
-                    record.tds_Bad=item["ynumber"].int32Value//油分
-                    record.tds_Good=item["snumber"].int32Value//水分
-                    totolOilValue+=Double(record.tds_Bad)
-                    totolValue+=Double(record.tds_Good)
-                    
-                    let dateStr=dateStampToString(item["updatetime"].stringValue, format: "yyyy-MM-dd")
-                    record.start=dateFromString(dateStr, format: "yyyy-MM-dd")
-    
-                    if stringFromDate(record.start, format: "yyyy-MM-dd")==stringFromDate(Date(), format: "yyyy-MM-dd")
-                    {
-                        todayValue=Double(record.tds_Good)
-                    }
-                    maxTimes=max(maxTimes,item["times"].intValue)
-                }
-                
-                let tmpCount=tempBody["monty"].arrayValue.count
-                if tmpCount<=1
-                {
-                    lastValue=todayValue
-                }
-                else{
-                    lastValue=tempBody["monty"][tmpCount-2]["snumber"].doubleValue
-                }
-                let tmpAveValue=tmpCount==0 ? 0:(totolValue/Double(tmpCount))
-                let tmpAveOilValue=tmpCount==0 ? 0:(totolOilValue/Double(tmpCount))
-                let tmpStru=HeadOfWaterReplenishStruct(skinValueOfToday: todayValue, lastSkinValue: lastValue, averageSkinValue:tmpAveValue, checkTimes: maxTimes)
-                self.avgAndTimesArr["\(i)"]=tmpStru
-                
-                if i==0&&tmpAveOilValue>0
-                {
-                    
-                    if tmpAveOilValue<12
-                    {
-                        self.currentSkinTypeIndex=0
-                    }else if tmpAveOilValue<12
-                    {
-                        self.currentSkinTypeIndex=2
-                    }else
-                    {
-                        self.currentSkinTypeIndex=1
-                    }
-                }
-            }
+        User.GetBuShuiFenBu(mac: (self.currentDevice?.identifier)!, action: currentBodyPart.rawValue, success: { (index, AvgAndTimes, _, _) in
+             self.avgAndTimesArr=AvgAndTimes
+            self.currentSkinTypeIndex=index
             }, failure: { (error) in
+            
         })
     }
     

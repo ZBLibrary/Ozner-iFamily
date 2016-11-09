@@ -98,6 +98,14 @@ class MyDevicesController: UIViewController {
             aboutVC.setLoadContent(content: ((sender as! NSDictionary).object(forKey: "url") as! String?)!, isUrl: true)
         case "showCupSetting","showTapSetting":
             break
+        case "showSeeSkin"://补水仪
+            let vc = segue.destination as! SkinQueryController
+            vc.currentSkinTypeIndex=(sender as! [String:Int])["currentSkinTypeIndex"]!
+            vc.totalTimes=(sender as! [String:Int])["totalTimes"]!
+        case "showSkinDetail"://补水仪
+            let vc = segue.destination as! SkinDetailController
+            vc.currentBody=sender as! BodyParts
+            break
         default:
             break
         }

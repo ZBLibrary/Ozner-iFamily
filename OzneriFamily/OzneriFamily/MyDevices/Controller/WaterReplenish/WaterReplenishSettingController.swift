@@ -44,6 +44,14 @@ class WaterReplenishSettingController: DeviceSettingController {
             let VC=segue.destination as!  AboutDeviceController
             VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutWaterReplenish"]?.stringValue)!, isUrl: true)
         }
+        if segue.identifier=="showSetTime" {
+            let VC=segue.destination as!  SetReplenishTimeController
+            VC.currSetting=self.deviceSetting
+        }
+        if segue.identifier=="showSetSex" {
+            let VC=segue.destination as!  ReplenishSexController
+            VC.currSetting=self.deviceSetting
+        }
     }
     
 

@@ -214,9 +214,67 @@ public class User: BaseDataObject {
             }, failure: failure)
     }
     //获取周月补水仪器数值分布
-    class func GetBuShuiFenBu(mac:String,action:String,success: @escaping ((_ dic:JSON) -> Void), failure: @escaping ((Error) -> Void)){
-        self.fetchData(key: "GetBuShuiFenBu", parameters: ["mac":mac,"action":action], success: { (json) in
-            success(json["data"])
+    class func GetBuShuiFenBu(mac:String,action:String,success: @escaping ((_ SkinTypeIndex:Int,_ AvgAndTimesArr:[Int:HeadOfWaterReplenishStruct],_ WeakData:[Int:[WaterReplenishDataStuct]],_ MonthData:[Int:[WaterReplenishDataStuct]]) -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "GetBuShuiFenBu", parameters: ["mac":mac,"action":action], success: { (data) in
+            let tmpKeyArr=["FaceSkinValue","EyesSkinValue","HandSkinValue","NeckSkinValue"]
+            var AvgAndTimesArr=[Int:HeadOfWaterReplenishStruct]()
+            var SkinTypeIndex = -1
+            var WeakData=[Int:[WaterReplenishDataStuct]]()
+            var MonthData=[Int:[WaterReplenishDataStuct]]()
+            for i in 0..<tmpKeyArr.count
+            {
+                let tempBody=data["data"][tmpKeyArr[i]]
+                //周数据
+                var tmpweakData=[WaterReplenishDataStuct]()
+                for item in tempBody["week"].arrayValue
+                {
+                    let dateStr=dateStampToString(item["updatetime"].stringValue, format: "yyyy-MM-dd")
+                    let date=dateFromString(dateStr, format: "yyyy-MM-dd")
+                    let tmpData1=WaterReplenishDataStuct(date: date as NSDate!, oil: item["ynumber"].double!, water: item["snumber"].double!)
+                    tmpweakData.append(tmpData1)
+                }
+                WeakData[i]=tmpweakData
+                //月数据
+                var maxTimes=0
+                var todayValue:Double=0
+                var totolValue:Double=0
+                var totolOilValue:Double=0
+                var tmpMonthData=[WaterReplenishDataStuct]()
+                for item in tempBody["monty"].array!
+                {
+                    let dateStr=dateStampToString(item["updatetime"].stringValue, format: "yyyy-MM-dd")
+                    let date=dateFromString(dateStr, format: "yyyy-MM-dd")
+                    let tmpData=WaterReplenishDataStuct(date: date as NSDate!, oil: item["ynumber"].double!, water: item["snumber"].double!)
+                    tmpMonthData.append(tmpData)
+                    
+                    totolOilValue+=tmpData.oil
+                    totolValue+=tmpData.water
+                    
+ 
+                    if tmpData.date.day() == NSDate().day()
+                    {
+                        todayValue=tmpData.water
+                    }
+                    maxTimes=max(maxTimes,item["times"].intValue)
+                }
+                MonthData[i]=tmpMonthData
+                let tmpCount=tempBody["monty"].arrayValue.count
+                
+                let lastValue = tmpCount<=1 ? todayValue:tempBody["monty"][tmpCount-2]["snumber"].doubleValue
+                
+                let tmpAveValue=tmpCount==0 ? 0:(totolValue/Double(tmpCount))
+
+                AvgAndTimesArr[i]=HeadOfWaterReplenishStruct(skinValueOfToday: todayValue, lastSkinValue: lastValue, averageSkinValue:tmpAveValue, checkTimes: maxTimes)
+                let tmpAveOilValue=tmpCount==0 ? 0:(totolOilValue/Double(tmpCount))
+                if i==0&&tmpAveOilValue>0
+                {
+                    SkinTypeIndex = tmpAveOilValue<12 ? 0:SkinTypeIndex
+                    SkinTypeIndex = tmpAveOilValue>=12&&tmpAveOilValue<20 ? 1:SkinTypeIndex
+                    SkinTypeIndex = tmpAveOilValue>=20 ? 2:SkinTypeIndex
+                }
+                
+            }
+            success(SkinTypeIndex, AvgAndTimesArr, WeakData, MonthData)
             }, failure: failure)
     }
 //    //获取补水仪检测次数

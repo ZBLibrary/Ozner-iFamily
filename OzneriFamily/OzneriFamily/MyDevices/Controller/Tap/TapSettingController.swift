@@ -17,15 +17,47 @@ class TapSettingController: DeviceSettingController {
         self.saveDevice()
     }
     @IBOutlet var nameAndAttrLabel: UILabel!
+    @IBOutlet var timeLabel1: UILabel!
+    @IBOutlet var timeLabel2: UILabel!
+    var currTimeLabel:UILabel!
+    
+    @IBAction func checkTimeClick(_ sender: UITapGestureRecognizer) {
+        UIApplication.shared.keyWindow?.addSubview(pickDateView)
+        currTimeLabel = [timeLabel1,timeLabel2][(sender.view?.tag)!]
+        pickDateView.datePicker.date = NSDate(string: currTimeLabel.text!, formatString: "hh:mm") as Date
+    }
     @IBAction func deleteDeviceClick(_ sender: AnyObject) {
         super.deleteDevice()
     }
+    var pickDateView:TapDatePickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        pickDateView=Bundle.main.loadNibNamed("TapDatePickerView", owner: nil, options: nil)?.last as! TapDatePickerView
+        pickDateView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
+        pickDateView.cancelButton.addTarget(self, action: #selector(pickerCancle), for: .touchUpInside)
+        pickDateView.OKButton.addTarget(self, action: #selector(pickerOK), for: .touchUpInside)
         nameAndAttrLabel.text=self.getNameAndAttr()
+        timeLabel1.text=self.deviceSetting.get("checktime1", default: "10:00") as? String
+        timeLabel2.text=self.deviceSetting.get("checktime2", default: "18:00") as? String
         // Do any additional setup after loading the view.
     }
     
+    func pickerCancle()  {
+        pickDateView.removeFromSuperview()
+    }
+    func pickerOK()  {
+        let date = pickDateView.datePicker.date as NSDate
+        
+        currTimeLabel.text=date.formattedDate(withFormat: "hh:mm")
+        self.deviceSetting.put(["checktime1","checktime2"][currTimeLabel.tag], value: currTimeLabel.text!)
+        
+        if currTimeLabel.tag==0 {
+            (self.deviceSetting as! TapSettings).detectTime1=TimeInterval(date.hour()*3600+date.minute()*60)
+        }else{
+            (self.deviceSetting as! TapSettings).detectTime2=TimeInterval(date.hour()*3600+date.minute()*60)
+        }
+        pickDateView.removeFromSuperview()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -10,6 +10,7 @@ import UIKit
 enum OznerNavBarStyle {
     case CupTDSDetail
     case DeviceSetting
+    case WaterReplenishSkin
 }
 extension UINavigationController{
     func SetCustomBarStyle(style:OznerNavBarStyle){
@@ -27,6 +28,9 @@ extension UINavigationController{
             self.navigationBar .setBackgroundImage(UIImage(named: "navBgOfSetting"), for: UIBarMetrics.default)
             self.navigationBar.shadowImage = UIImage(named: "bg_clear_black")
             
+        case .WaterReplenishSkin:
+            self.navigationBar .setBackgroundImage(UIImage(named: "navBgOfWaterReplenishSkin"), for: UIBarMetrics.default)
+            self.navigationBar.shadowImage = UIImage(named: "navBgOfWaterReplenishSkin")
         }
         
         
