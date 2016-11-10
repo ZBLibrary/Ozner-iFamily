@@ -26,8 +26,6 @@
 		<string>OznerDevice/TDSSensor</string>
 		<key>FilterService</key>
 		<string>OznerDevice/FilterService</string>
-		<key>RenewFilterTime</key>
-		<string>OznerDevice/RenewFilterTime</string>
 		<key>GetWeather</key>
 		<string>OznerServer/GetWeather</string>
 		<key>GetUserInfo</key>
@@ -78,13 +76,19 @@
 		<string>/OznerServer/GetBuShuiFenBu</string>
 		<key>GetTimesCountBuShui</key>
 		<string>/OznerDevice/GetTimesCountBuShui</string>
+		<key>RenewFilterTime</key>
+		<string>/OznerDevice/RenewFilterTime</string>
 	</dict>
 	<key>TokenFailed</key>
 	<string>-10006</string>
 	<key>ErrorCode</key>
 	<dict>
-		<key>0</key>
-		<string>该工程师没有加入任何团队</string>
+		<key>-10019</key>
+		<string>二维码无效</string>
+		<key>-10020</key>
+		<string>二维码已经使用过了</string>
+		<key>-10021</key>
+		<string>设备未绑定</string>
 	</dict>
 	<key>URL</key>
 	<dict>

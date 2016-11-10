@@ -122,7 +122,6 @@ class DeviceViewContainer: UIView {
                     weakSelf?.delegate.FilterValueChange!(value: Int(value))
                     }, failure: { (error) in
                         print(error)
-                        print(error)
                 })
             case .TDSPan:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:0)

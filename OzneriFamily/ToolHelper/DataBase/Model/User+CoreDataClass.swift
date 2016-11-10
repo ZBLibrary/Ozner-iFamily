@@ -277,11 +277,32 @@ public class User: BaseDataObject {
             success(SkinTypeIndex, AvgAndTimesArr, WeakData, MonthData)
             }, failure: failure)
     }
-//    //获取补水仪检测次数
-//    class func GetTimesCountBuShui(mac:String,success: @escaping ((_ rank:Int,_ total:Int) -> Void), failure: @escaping ((Error) -> Void)){
-//        self.fetchData(key: "GetTimesCountBuShui", parameters: ["mac":mac], success: { (json) in
-//            success(json["rank"].int!,json["total"].int!)
-//            }, failure: failure)
-//    }
+    //空气净化器获取室外空气数据
+    class func GetWeather(success: @escaping ((_ pollution:String,_ cityname:String,_ PM25:String,_ AQI:String,_ temperature:String,_ humidity:String,_ dataFrom:String) -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "GetWeather", parameters: nil, success: { (json) in
+            var dataFrom=json["weatherform"].stringValue
+            //解析json
+            let dataStr=json["data"].stringValue
+            let tmpData=dataStr.data(using: String.Encoding.utf8)
+            let jsonData=JSON(data: tmpData!)
+            let jsonDic=jsonData["HeWeather data service 3.0"][0].dictionaryValue
+            let tmpdic=jsonDic["aqi"]?["city"]
+            let pollution=tmpdic?["qlty"].stringValue//中度污染
+            let AQI=tmpdic?["aqi"].stringValue
+            let PM25=tmpdic?["pm25"].stringValue
+            let cityname=jsonDic["basic"]?["city"].stringValue//上海
+            let tmptime=jsonDic["basic"]?["update"]["loc"].stringValue//"2015-12-25 02:54"
+            dataFrom=dataFrom+"   "+tmptime!+"发布"
+            let humidity=jsonDic["now"]?["hum"].stringValue
+            let temperature=jsonDic["now"]?["tmp"].stringValue
+            success(pollution!,cityname!,PM25!,AQI!,temperature!,humidity!,dataFrom)
+            }, failure: failure)
+    }
+    //水探头净水器扫码换滤芯
+    class func RenewFilterTime(mac:String,type:String,code:String,success: @escaping (() -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "RenewFilterTime", parameters: ["mac":mac,"devicetype":type,"code":code], success: { (json) in
+            success()
+            }, failure: failure)
+    }
     
 }

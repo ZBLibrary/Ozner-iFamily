@@ -29,8 +29,15 @@ class MyDevicesController: UIViewController {
     @IBAction func lvXinClick(_ sender: AnyObject) {
         let device=LoginManager.instance.currentDevice
         switch  (device.type)! {
-        case OznerDeviceType.Tap.rawValue,OznerDeviceType.Water_Wifi.rawValue:
+        case OznerDeviceType.Tap.rawValue:
            self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
+        case OznerDeviceType.Water_Wifi.rawValue:
+            let tmpDeviceView = deviceViewContainer.currentDeviceView as! WaterPurifierMainView
+            let senderData=["buyLvXinUrl":tmpDeviceView.buyLvXinUrl,
+             "scanEnable":tmpDeviceView.scanEnable,
+             "lvXinStopDate":tmpDeviceView.lvXinStopDate,
+             "lvXinUsedDays":tmpDeviceView.lvXinUsedDays] as [String : Any]
+            self.performSegue(withIdentifier: "toTapLvXin", sender: senderData)
         case OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.Air_Wifi.rawValue:
             self.performSegue(withIdentifier: "showAirLvXin", sender: nil)
         default:
@@ -58,7 +65,7 @@ class MyDevicesController: UIViewController {
         }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮
-        self.toggleLeft()
+        self.toggleLeft()       
     }
     
     
@@ -106,6 +113,11 @@ class MyDevicesController: UIViewController {
             let vc = segue.destination as! SkinDetailController
             vc.currentBody=sender as! BodyParts
             break
+        case "toTapLvXin"://水机探头滤芯详情
+            let vc = segue.destination as! TapLvXinController
+            vc.waterPurfierData=sender as! [String : Any]?
+            break
+            
         default:
             break
         }

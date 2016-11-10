@@ -89,6 +89,7 @@ class SkinDetailController: UIViewController {
     @IBOutlet var weakLabel7: UILabel!
     //footer
     @IBAction func ConsultingClick(_ sender: AnyObject) {
+        LoginManager.instance.setTabbarSelected(index: 2)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

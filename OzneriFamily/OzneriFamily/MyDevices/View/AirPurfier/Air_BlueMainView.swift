@@ -26,6 +26,19 @@ class Air_BlueMainView: OznerDeviceView {
     }
     
     @IBAction func seeOutdoorAirClick(_ sender: AnyObject) {
+        weak var weakself=self
+        User.GetWeather(success: { (pollution, city, pm25, aqi, temp, himid, dataFrom) in
+            weakself?.cityLabel.text=city
+            weakself?.pollutionLabel.text=pollution
+            weakself?.outdoorPM25Label.text=pm25
+            
+            weakself?.outdoorAirView.updateView(city: city, pm25: pm25, AQI: aqi, temp: temp, himit: himid, from: dataFrom, callback: {
+                weakself?.outdoorAirView.removeFromSuperview()
+            })
+            weakself?.window?.addSubview((weakself?.outdoorAirView)!)
+            }, failure: { (error) in
+                
+        })
     }
     
     
@@ -35,7 +48,7 @@ class Air_BlueMainView: OznerDeviceView {
     @IBOutlet var sliderShowValueView: UIView!
     @IBOutlet var sliderValueLabel: UILabel!
     @IBOutlet var sliderValueStateLabel: UILabel!
-    
+    var outdoorAirView:AirOutdoorView!
     override func draw(_ rect: CGRect) {
         sliderShowValueView.layer.shadowColor=UIColor(red: 0, green: 104/255, blue: 246/255, alpha: 1).cgColor
         sliderShowValueView.layer.shadowOffset=CGSize(width: 0, height: 0)//阴影偏移量
@@ -49,7 +62,16 @@ class Air_BlueMainView: OznerDeviceView {
         var tmpValue=CGFloat((currentDevice as! AirPurifier_Bluetooth).status.rpm)/100
         tmpValue=34.5*width_screen/375+tmpValue*264*width_screen/375
         updateSpeed(touchX: tmpValue, isEnd: false)
-        // Drawing code
+        outdoorAirView=Bundle.main.loadNibNamed("AirOutdoorView", owner: nil, options: nil)?.first as! AirOutdoorView
+        outdoorAirView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
+        outdoorAirView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
+        User.GetWeather(success: { (pollution, city, pm25, _, _, _, _) in
+            self.cityLabel.text=city
+            self.pollutionLabel.text=pollution
+            self.outdoorPM25Label.text=pm25
+            }, failure: { (error) in
+                
+        })
     }
     
     func panImage(_ gesture:UIPanGestureRecognizer)

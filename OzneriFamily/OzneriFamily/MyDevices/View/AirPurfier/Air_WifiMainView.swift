@@ -31,11 +31,22 @@ class Air_WifiMainView: OznerDeviceView {
     @IBOutlet var lockStateLabel: UILabel!
     @IBOutlet var lockButton: UIButton!
     var speedModelView:Air_Wifi_SpeedModel!
-    
+    var outdoorAirView:AirOutdoorView!
     override func draw(_ rect: CGRect) {
         speedModelView=Bundle.main.loadNibNamed("Air_Wifi_SpeedModel", owner: nil, options: nil)?.first as! Air_Wifi_SpeedModel
         speedModelView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         speedModelView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
+        
+        outdoorAirView=Bundle.main.loadNibNamed("AirOutdoorView", owner: nil, options: nil)?.first as! AirOutdoorView
+        outdoorAirView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
+        outdoorAirView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
+        User.GetWeather(success: { (pollution, city, pm25, _, _, _, _) in
+            self.cityLabel.text=city
+            self.polutionLabel.text=pollution
+            self.pm25Label_Out.text=pm25
+            }, failure: { (error) in
+                
+        })
     }
     
     @IBAction func seeLvXinClick(_ sender: AnyObject) {
@@ -43,6 +54,19 @@ class Air_WifiMainView: OznerDeviceView {
     }
     //查看室外空气
     @IBAction func seeOutdoorAirClick(_ sender: AnyObject) {
+        weak var weakself=self
+        User.GetWeather(success: { (pollution, city, pm25, aqi, temp, himid, dataFrom) in
+            weakself?.cityLabel.text=city
+            weakself?.polutionLabel.text=pollution
+            weakself?.pm25Label_Out.text=pm25
+            
+            weakself?.outdoorAirView.updateView(city: city, pm25: pm25, AQI: aqi, temp: temp, himit: himid, from: dataFrom, callback: {
+                weakself?.outdoorAirView.removeFromSuperview()
+            })
+            weakself?.window?.addSubview((weakself?.outdoorAirView)!)
+            }, failure: { (error) in
+            
+        })
     }
     
     func setButtonEnable(timer:Timer) {
