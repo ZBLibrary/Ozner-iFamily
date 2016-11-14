@@ -304,5 +304,40 @@ public class User: BaseDataObject {
             success()
             }, failure: failure)
     }
+    //水机获取好友排名
+    class func TdsFriendRank(type:String,success: @escaping ((_ rank:Int) -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "TdsFriendRank", parameters: ["type":type], success: { (json) in
+            success(json["data"][0]["rank"].intValue)
+            }, failure: failure)
+    }
+    //获取水机周月TDS分布 oil<==>TDS_BF water<==>TDS_AF
+    class func GetDeviceTdsFenBu(mac:String,success: @escaping ((_ weakArr:[WaterReplenishDataStuct],_ monthArr:[WaterReplenishDataStuct]) -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "GetDeviceTdsFenBu", parameters: ["mac":mac], success: { (json) in
+            var WeakArray=[WaterReplenishDataStuct]()
+            var MonthArray=[WaterReplenishDataStuct]()
+            for item in json["week"].arrayValue
+            {
+                let tds1=item["beforetds"].intValue
+                let tds2=item["tds"].intValue
+                let dateStr=dateStampToString(item["stime"].stringValue, format: "yyyy-MM-dd")
+                let date=dateFromString(dateStr, format: "yyyy-MM-dd") as NSDate
+                
+                let tmpStruct=WaterReplenishDataStuct(date: date, oil: Double(max(tds1, tds2)), water: Double(min(tds1, tds2)))
+                WeakArray.append(tmpStruct)
+            }
+            for item in json["month"].arrayValue
+            {
+                let tds1=item["beforetds"].intValue
+                let tds2=item["tds"].intValue
+                let dateStr=dateStampToString(item["stime"].stringValue, format: "yyyy-MM-dd")
+                let date=dateFromString(dateStr, format: "yyyy-MM-dd") as NSDate
+                
+                let tmpStruct=WaterReplenishDataStuct(date: date, oil: Double(max(tds1, tds2)), water: Double(min(tds1, tds2)))
+                MonthArray.append(tmpStruct)
+            }
+            
+            success(WeakArray,MonthArray)
+            }, failure: failure)
+    }
     
 }

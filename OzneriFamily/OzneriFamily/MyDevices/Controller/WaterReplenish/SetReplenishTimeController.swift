@@ -44,6 +44,7 @@ class SetReplenishTimeController: UIViewController {
         timeLabel2.text = currSetting.get("checktime2", default: "14:30") as! String?
         timeLabel3.text = currSetting.get("checktime3", default: "21:00") as! String?
          datePicker.date=NSDate(string: timeLabel1.text!, formatString: "hh:mm") as Date
+        currTimeLabel=timeLabel1
         // Do any additional setup after loading the view.
     }
 

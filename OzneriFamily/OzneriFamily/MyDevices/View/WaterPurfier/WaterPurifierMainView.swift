@@ -31,6 +31,9 @@ class WaterPurifierMainView: OznerDeviceView {
     @IBOutlet var tdsStateLabel: UILabel!
     @IBOutlet var tdsValueLabel_BF: UILabel!
     @IBOutlet var tdsValueLabel_AF: UILabel!
+    @IBAction func toTDSDetailClick(_ sender: UITapGestureRecognizer) {
+        self.delegate.DeviceViewPerformSegue!(SegueID: "showWaterPurfierTDS", sender: nil)
+    }
     
     //footer
     @IBOutlet var powerLabel: UILabel!

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CupCustomPickerView" customModule="OzneriFamily" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLT-R0-0iH">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="170" id="1mj-Gk-O11"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="r1g-cB-wpY"/>
+                    </connections>
+                </pickerView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1x-u5-Pz2">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="M4z-bj-BYF"/>
+                        <constraint firstAttribute="width" constant="60" id="b9A-g1-Oms"/>
+                    </constraints>
+                    <state key="normal" title="确定"/>
+                    <connections>
+                        <action selector="OKClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="QUg-Mg-rRH"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGI-Vc-TWp">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="42S-NK-lut"/>
+                        <constraint firstAttribute="height" constant="40" id="IWJ-7k-aAd"/>
+                    </constraints>
+                    <state key="normal" title="取消"/>
+                    <connections>
+                        <action selector="cancelClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="L42-fz-IQs"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="OLT-R0-0iH" secondAttribute="trailing" id="1U9-Li-gLJ"/>
+                <constraint firstAttribute="trailing" secondItem="N1x-u5-Pz2" secondAttribute="trailing" id="4Ok-2q-W2N"/>
+                <constraint firstItem="OLT-R0-0iH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zn5-0e-ytb"/>
+                <constraint firstItem="OLT-R0-0iH" firstAttribute="top" secondItem="N1x-u5-Pz2" secondAttribute="bottom" id="cd9-HM-vrY"/>
+                <constraint firstItem="OLT-R0-0iH" firstAttribute="top" secondItem="rGI-Vc-TWp" secondAttribute="bottom" id="mbi-9S-CQJ"/>
+                <constraint firstItem="rGI-Vc-TWp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="txh-cS-Lfn"/>
+                <constraint firstAttribute="bottom" secondItem="OLT-R0-0iH" secondAttribute="bottom" id="zoy-XT-fD0"/>
+            </constraints>
+            <connections>
+                <outlet property="pickerView" destination="OLT-R0-0iH" id="oup-ON-PIU"/>
+            </connections>
+        </view>
+    </objects>
+</document>

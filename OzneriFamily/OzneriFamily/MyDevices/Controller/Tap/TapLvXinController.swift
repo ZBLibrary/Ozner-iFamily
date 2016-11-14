@@ -53,10 +53,10 @@ class TapLvXinController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let device=LoginManager.instance.currentDevice
-        heightImgConstrant.constant = device.type==OznerDeviceType.Air_Wifi.rawValue ? 0:width_screen*613/375
-        if device.type==OznerDeviceType.Air_Wifi.rawValue {
+        heightImgConstrant.constant = device.type==OznerDeviceType.Water_Wifi.rawValue ? 0:width_screen*613/375
+        if device.type==OznerDeviceType.Water_Wifi.rawValue {
             scanViewHeightConstraint.constant = (waterPurfierData?["scanEnable"] as! Bool) ? 118:0
-            self.setLvXin(usedDay: (waterPurfierData?["lvXinUsedDays"] as! Int), stopDate: (waterPurfierData?["lvXinStopDate"] as! NSDate) as NSDate, maxDays: 365)
+            self.setLvXin(stopDate: (waterPurfierData?["lvXinStopDate"] as! NSDate) as NSDate, maxDays: 365)
             buyWaterLvXinUrl=(waterPurfierData?["buyLvXinUrl"] as! String)
             if buyWaterLvXinUrl=="" {
                 buyWaterLvXinUrl=(NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail9"))!
@@ -65,25 +65,25 @@ class TapLvXinController: UIViewController {
             //下载滤芯更新
             buyWaterLvXinUrl=(NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail39"))!
             User.FilterService(deviceID: (LoginManager.instance?.currentDeviceIdentifier)!, success: { (usedDay, stopDate) in
-                self.setLvXin(usedDay: usedDay, stopDate: stopDate as NSDate, maxDays: 30)
+                self.setLvXin(stopDate: stopDate as NSDate, maxDays: 30)
                 }, failure: { (error) in
                     
             })
         }
         // Do any additional setup after loading the view.
     }
-    func setLvXin(usedDay:Int,stopDate:NSDate,maxDays:Int){
-        
-        var remindTime=CGFloat(maxDays-usedDay)/CGFloat(maxDays)
+    func setLvXin(stopDate:NSDate,maxDays:Int){
+        let starDate = stopDate.addingDays(-maxDays) as NSDate
+        var remindTime=CGFloat(stopDate.timeIntervalSince1970-NSDate().timeIntervalSince1970)/CGFloat(stopDate.timeIntervalSince1970-starDate.timeIntervalSince1970)
         remindTime=min(remindTime, 1)
         remindTime=max(remindTime, 0)
         lvxinDaysLabel.text="\(Int(CGFloat(maxDays)*remindTime))"
         lvxinValueLabel.text="\(Int(100*remindTime))"
         widthLXConstraint.constant=42+(width_screen-84)*(1-remindTime)
+        
+        
         nowDateLabel.text="\(NSDate().year())\n"+NSDate().formattedDate(withFormat: "MM-dd")
         stopDateLabel.text="\(stopDate.year())\n"+stopDate.formattedDate(withFormat: "MM-dd")
-        let starDate = stopDate.addingDays(-maxDays) as NSDate
-        
         starDateLabel.text="\(starDate.year())\n"+starDate.formattedDate(withFormat: "MM-dd")
     }
     override func didReceiveMemoryWarning() {

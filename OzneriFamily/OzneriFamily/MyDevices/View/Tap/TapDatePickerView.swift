@@ -22,7 +22,7 @@ class TapDatePickerView: UIView {
         datePicker.backgroundColor=UIColor.white
         cancelButton.setTitle(loadLanguage("取消"), for: UIControlState())
         OKButton.setTitle(loadLanguage("确定"), for: UIControlState())
-        //
+         
     }
     
 

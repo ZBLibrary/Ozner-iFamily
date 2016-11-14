@@ -124,6 +124,7 @@
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="zbc-kP-Jm3" secondAttribute="height" multiplier="2" constant="-20" id="EDK-jg-Hd1"/>
                                 <constraint firstItem="jfq-gS-Sqz" firstAttribute="height" secondItem="zbc-kP-Jm3" secondAttribute="height" multiplier="54:165" id="KpS-UH-S6x"/>
@@ -134,6 +135,9 @@
                                 <constraint firstItem="jfq-gS-Sqz" firstAttribute="centerX" secondItem="zbc-kP-Jm3" secondAttribute="centerX" id="rtz-9a-Bxw"/>
                                 <constraint firstAttribute="bottom" secondItem="jfq-gS-Sqz" secondAttribute="bottom" id="wGD-ZL-eoD"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="pM0-yD-T7h" appends="YES" id="nOh-sc-DYo"/>
+                            </connections>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经过净化后的水质健康，适合饮用" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7r-pB-6LP">
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
@@ -285,6 +289,11 @@
             </connections>
             <point key="canvasLocation" x="-112.5" y="23.5"/>
         </view>
+        <tapGestureRecognizer id="pM0-yD-T7h" userLabel="水质纯净值Tap">
+            <connections>
+                <action selector="toTDSDetailClick:" destination="iN0-l3-epB" id="Zqh-Nq-zwN"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="baobiao" width="16" height="16"/>
