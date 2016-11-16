@@ -40,7 +40,8 @@ class AirLvXinController: UIViewController {
             vocWidthConstraint.constant = -width_screen/2
             totalHeightConstraint.constant = -height_screen*90/667
             pm25ValueLabel.text="\(Int((device as! AirPurifier_Bluetooth).sensor.pm25))"
-            SetLvXin(lastDate: (device as! AirPurifier_Bluetooth).status.filterStatus.lastTime as NSDate?, maxUseMonth: 3)
+            print((device as! AirPurifier_Bluetooth).status.filterStatus.workTime)
+            SetLvXin(workTime: Int((device as! AirPurifier_Bluetooth).status.filterStatus.workTime), maxUseMM: 60000)
         }else{//立式空净
             reSetLvXinButton.isHidden=true
             vocWidthConstraint.constant = 0
@@ -51,10 +52,10 @@ class AirLvXinController: UIViewController {
             vocValueLabel.text=["优","良","一般","差","-"][Int(vocValue)]
             totalValueLabel.text="\((device as! AirPurifier_MxChip).sensor.totalClean/1000)"
             if let filter=(device as! AirPurifier_MxChip).status.filterStatus {
-                SetLvXin(lastDate: filter.lastTime as NSDate?, maxUseMonth: 12)
+                SetLvXin(workTime: Int(filter.workTime), maxUseMM: 129600)
             }
             else{
-                SetLvXin(lastDate: nil as NSDate?, maxUseMonth: 12)
+                SetLvXin(workTime: -1, maxUseMM: 129600)
             }
             
         }
@@ -62,24 +63,25 @@ class AirLvXinController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    func SetLvXin(lastDate:NSDate?,maxUseMonth:Int) {
-        if lastDate==nil {
-            starDateLabel.text=""
-            nowDateLabel.text=""
-            stopDateLabel.text=""
+    func SetLvXin(workTime:Int,maxUseMM:Int) {
+        starDateLabel.text=""
+        nowDateLabel.text=""
+        stopDateLabel.text=""
+        if workTime == -1 {
             lvxinValueLabel.text="--"
             imgWidthConstraint.constant=0
         }else{
-            let starDate = lastDate! 
-            let nowDate = NSDate()
-            let stopDate = (lastDate?.addingMonths(maxUseMonth))! as NSDate
+            //let starDate = lastDate!
+            //let nowDate = NSDate()
+            //let stopDate = (lastDate?.addingMonths(maxUseMonth))! as NSDate
             
             
-            starDateLabel.text="\(starDate.year())\n"+starDate.formattedDate(withFormat: "MM-dd")
-            nowDateLabel.text="\(nowDate.year())\n"+nowDate.formattedDate(withFormat: "MM-dd")
-            stopDateLabel.text="\(stopDate.year())\n"+stopDate.formattedDate(withFormat: "MM-dd")
+            //starDateLabel.text="\(starDate.year())\n"+starDate.formattedDate(withFormat: "MM-dd")
+            //nowDateLabel.text="\(nowDate.year())\n"+nowDate.formattedDate(withFormat: "MM-dd")
+            //stopDateLabel.text="\(stopDate.year())\n"+stopDate.formattedDate(withFormat: "MM-dd")
             
-            var lvxinValue = 1-CGFloat(nowDate.timeIntervalSince1970-starDate.timeIntervalSince1970)/CGFloat(stopDate.timeIntervalSince1970-starDate.timeIntervalSince1970)
+            //var lvxinValue = 1-CGFloat(nowDate.timeIntervalSince1970-starDate.timeIntervalSince1970)/CGFloat(stopDate.timeIntervalSince1970-starDate.timeIntervalSince1970)
+            var lvxinValue=1-CGFloat(workTime)/CGFloat(maxUseMM)
             lvxinValue=min(1, lvxinValue)
             lvxinValue=max(0, lvxinValue)
             lvxinValueLabel.text="\(Int(lvxinValue*100))"

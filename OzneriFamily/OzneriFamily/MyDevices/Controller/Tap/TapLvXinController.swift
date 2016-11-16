@@ -64,8 +64,8 @@ class TapLvXinController: UIViewController {
         }else{//探头
             //下载滤芯更新
             buyWaterLvXinUrl=(NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail39"))!
-            User.FilterService(deviceID: (LoginManager.instance?.currentDeviceIdentifier)!, success: { (usedDay, stopDate) in
-                self.setLvXin(stopDate: stopDate as NSDate, maxDays: 30)
+            User.FilterService(deviceID: (LoginManager.instance?.currentDeviceIdentifier)!, success: { (usedDay, starDate) in
+                self.setLvXin(stopDate: (starDate as NSDate).addingDays(30) as NSDate, maxDays: 30)
                 }, failure: { (error) in
                     
             })

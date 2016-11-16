@@ -43,21 +43,19 @@ class SetDeviceNameController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        var attri:[Int:String]!        
-        switch LoginManager.instance.currentDevice.type {
-        case OznerDeviceType.Cup.rawValue:
+        var attri:[Int:String]!
+        
+        switch OznerDeviceType.getType(type: LoginManager.instance.currentDevice.type){
+        case OznerDeviceType.Cup:
             attri=[0:"我的水杯",1:"家人水杯"]
-        case OznerDeviceType.Tap.rawValue,OznerDeviceType.TDSPan.rawValue:
+        case .Tap,.TDSPan:
             attri=[0:"洗手间",1:"厨房"]
-        case OznerDeviceType.Water_Wifi.rawValue:
+        case .Water_Wifi:
             attri=[0:"家",1:"办公室"]
-        case OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.Air_Wifi.rawValue:
+        case .Air_Blue,.Air_Wifi:
             attri=[0:"客厅",1:"卧室"]
-        case OznerDeviceType.WaterReplenish.rawValue:
+        case .WaterReplenish:
             attri=[0:"办公室",1:"家"]
-        default:
-            attri=[0:"",1:""]
-            break
         }
         attributeName0.text=attri[0]
         attributeName1.text=attri[1]

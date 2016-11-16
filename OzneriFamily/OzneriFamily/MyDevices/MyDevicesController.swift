@@ -28,17 +28,17 @@ class MyDevicesController: UIViewController {
     
     @IBAction func lvXinClick(_ sender: AnyObject) {
         let device=LoginManager.instance.currentDevice
-        switch  (device.type)! {
-        case OznerDeviceType.Tap.rawValue:
+        switch  OznerDeviceType.getType(type: device.type) {
+        case OznerDeviceType.Tap:
            self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
-        case OznerDeviceType.Water_Wifi.rawValue:
+        case .Water_Wifi:
             let tmpDeviceView = deviceViewContainer.currentDeviceView as! WaterPurifierMainView
             let senderData=["buyLvXinUrl":tmpDeviceView.buyLvXinUrl,
              "scanEnable":tmpDeviceView.scanEnable,
              "lvXinStopDate":tmpDeviceView.lvXinStopDate,
              "lvXinUsedDays":tmpDeviceView.lvXinUsedDays] as [String : Any]
             self.performSegue(withIdentifier: "toTapLvXin", sender: senderData)
-        case OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.Air_Wifi.rawValue:
+        case .Air_Blue,.Air_Wifi:
             self.performSegue(withIdentifier: "showAirLvXin", sender: nil)
         default:
             break
@@ -47,21 +47,20 @@ class MyDevicesController: UIViewController {
     }
     @IBAction func toDeviceSettingClick(_ sender: AnyObject) {//点击设置按钮事件
         let device=LoginManager.instance.currentDevice
-        switch  (device.type)! {
-        case OznerDeviceType.Cup.rawValue:
+        switch  OznerDeviceType.getType(type: device.type) {
+        case OznerDeviceType.Cup:
             self.performSegue(withIdentifier: "showCupSetting", sender: nil)
-        case OznerDeviceType.Tap.rawValue:
+        case .Tap:
             self.performSegue(withIdentifier: "showTapSetting", sender: nil)
-        case OznerDeviceType.TDSPan.rawValue:
+        case .TDSPan:
             self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
-        case OznerDeviceType.Water_Wifi.rawValue:
+        case .Water_Wifi:
             self.performSegue(withIdentifier: "showWaterPurfierSetting", sender: nil)
-        case OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.Air_Wifi.rawValue:
+        case .Air_Blue,OznerDeviceType.Air_Wifi:
             self.performSegue(withIdentifier: "showAirSetting", sender: nil)
-        case OznerDeviceType.WaterReplenish.rawValue:
+        case .WaterReplenish:
             self.performSegue(withIdentifier: "showWaterReplenishSetting", sender: nil)
-        default:
-            break
+       
         }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮
@@ -92,7 +91,10 @@ class MyDevicesController: UIViewController {
         self.slideMenuController()?.addLeftGestures()
         
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.slideMenuController()?.removeLeftGestures()
+    }
     
     // MARK: - Navigation
 

@@ -15,11 +15,12 @@
 #define UUID_CHAR_OUTPUT @"FFF1"
 #define UUID_DESC_CLINET_CFG @"2902"
 /*!
- + 独立处理扫码包方法
- + **/
+ 独立处理扫码包方法
+ **/
 @protocol ScanResponseParserDelegate <NSObject>
 -(ScanData*) parserScanData:(CBPeripheral *)peripheral data:(NSData*)data;
 @end
+
 @interface BluetoothIOMgr : IOManager<CBCentralManagerDelegate>
 {
     bool bleScaning;

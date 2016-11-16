@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CupTDSChartContainerView" customModule="OzneriFamily" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="254"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KL8-Gr-2gI">
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejm-ZO-0UL">
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水质纯净值分布" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTc-Es-T8Q">
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Bv-wu-6mT">
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="ebV-25-Nwf"/>
+                            </constraints>
+                            <segments>
+                                <segment title="日"/>
+                                <segment title="周"/>
+                                <segment title="月"/>
+                            </segments>
+                            <color key="tintColor" red="0.1843137255" green="0.4431372549" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <real key="value" value="12.5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                    <color key="value" red="0.23136687280000001" green="0.53873193259999996" blue="0.95808607339999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="segValueChange:" destination="iN0-l3-epB" eventType="valueChanged" id="4fr-N8-k08"/>
+                            </connections>
+                        </segmentedControl>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ejm-ZO-0UL" firstAttribute="height" secondItem="KL8-Gr-2gI" secondAttribute="height" multiplier="182:254" id="AFc-mD-FJ8"/>
+                        <constraint firstItem="ejm-ZO-0UL" firstAttribute="top" secondItem="9Bv-wu-6mT" secondAttribute="bottom" constant="1" id="AvV-iF-ylz"/>
+                        <constraint firstAttribute="trailing" secondItem="9Bv-wu-6mT" secondAttribute="trailing" constant="15" id="NKV-pk-EDo"/>
+                        <constraint firstAttribute="bottom" secondItem="ejm-ZO-0UL" secondAttribute="bottom" id="NlJ-XR-nLl"/>
+                        <constraint firstAttribute="trailing" secondItem="ejm-ZO-0UL" secondAttribute="trailing" id="V7o-9C-9Ya"/>
+                        <constraint firstItem="xTc-Es-T8Q" firstAttribute="top" secondItem="KL8-Gr-2gI" secondAttribute="top" id="VVC-hg-zfg"/>
+                        <constraint firstItem="xTc-Es-T8Q" firstAttribute="centerX" secondItem="KL8-Gr-2gI" secondAttribute="centerX" id="bob-x8-ZZX"/>
+                        <constraint firstItem="9Bv-wu-6mT" firstAttribute="leading" secondItem="KL8-Gr-2gI" secondAttribute="leading" constant="15" id="hUC-rE-Ich"/>
+                        <constraint firstItem="ejm-ZO-0UL" firstAttribute="leading" secondItem="KL8-Gr-2gI" secondAttribute="leading" id="qa6-16-qtC"/>
+                        <constraint firstItem="9Bv-wu-6mT" firstAttribute="top" secondItem="xTc-Es-T8Q" secondAttribute="bottom" id="qfr-rc-QbG"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="KL8-Gr-2gI" secondAttribute="trailing" id="2fp-Vf-Okg"/>
+                <constraint firstAttribute="bottom" secondItem="KL8-Gr-2gI" secondAttribute="bottom" id="KbY-zE-dNq"/>
+                <constraint firstItem="KL8-Gr-2gI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="caq-gi-aiw"/>
+                <constraint firstItem="KL8-Gr-2gI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cne-Qc-AwU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="chartContainerView" destination="ejm-ZO-0UL" id="hWB-m9-FBf"/>
+                <outlet property="segmentControl" destination="9Bv-wu-6mT" id="5jg-nB-F6Y"/>
+                <outlet property="titleLabel" destination="xTc-Es-T8Q" id="qAU-Gq-e4y"/>
+            </connections>
+        </view>
+    </objects>
+</document>

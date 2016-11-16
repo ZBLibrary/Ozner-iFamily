@@ -300,7 +300,7 @@ extension PairSuccessController: UICollectionViewDelegate,UICollectionViewDataSo
                            OznerDeviceType.Air_Wifi.rawValue:"icon_peidui_select_bigair",
                            OznerDeviceType.WaterReplenish.rawValue:"WaterReplenish4"][CurrDeviceType]
         cell.iconImage.image=UIImage(named: iconImgName!)
-        cell.nameLabel.text=OznerDeviceType(rawValue: CurrDeviceType)?.Name()
+        cell.nameLabel.text=OznerDeviceType.getType(type: CurrDeviceType).Name()
         
         //默认锁定第一个
         cell.finishImage.isHidden = pairModel[indexPath.row].isHidden

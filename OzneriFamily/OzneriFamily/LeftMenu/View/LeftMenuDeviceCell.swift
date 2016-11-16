@@ -17,7 +17,7 @@ class LeftMenuDeviceCell: UITableViewCell {
             connectLabel.text=["连接中","已断开","已连接"][Int(device.connectStatus().rawValue)]
             deviceName.text=device.settings.name
             deviceAdressLabel.text=device.settings.get(AttributeOfDevice, default: "我的家庭") as! String?
-            switch OznerDeviceType(rawValue: device.type)! {
+            switch OznerDeviceType.getType(type: (device?.type)!) {
             case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish:
                 connectImg.image=UIImage(named: "device_icon_blutooth")//蓝牙图标
                 break
@@ -54,7 +54,7 @@ class LeftMenuDeviceCell: UITableViewCell {
         connectLabel.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor(white: 0, alpha: 0.3)
         deviceName.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor(hexString: "#6d85a0")
         deviceAdressLabel.textColor=selected ? UIColor(hexString: "#39a7f2"):UIColor(white: 0, alpha: 0.3)
-        let imgNameStr=imgArr[OznerDeviceType(rawValue: device.type)!]?[selected.hashValue]
+        let imgNameStr=imgArr[OznerDeviceType.getType(type: (device?.type)!)]?[selected.hashValue]
         deviceImg.image=UIImage(named: imgNameStr as! String)
         // Configure the view for the selected state
         

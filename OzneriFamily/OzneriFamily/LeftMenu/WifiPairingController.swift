@@ -134,12 +134,13 @@ extension WifiPairingController : MxChipPairDelegate{
     func mxChipComplete(_ io: MXChipIO!) {
         let tmpDevice=OznerManager.instance().getDeviceBy(io)
         wifiDevices.append(tmpDevice!)
-        if tmpDevice?.type == currDeviceType
-        {
-            self.performSegue(withIdentifier: "showsuccess", sender: nil)
-        }else{
-            self.performSegue(withIdentifier: "showfailed", sender: nil)
-        }
+        self.performSegue(withIdentifier: "showsuccess", sender: nil)
+//        if tmpDevice?.type == currDeviceType
+//        {
+//            
+//        }else{
+//            self.performSegue(withIdentifier: "showfailed", sender: nil)
+//        }
         
     }
     

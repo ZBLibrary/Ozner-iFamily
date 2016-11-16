@@ -25,7 +25,14 @@ enum OznerDeviceType:String {
     func Name_En()->String {
         return ["Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish"][self.hashValue]
     }
-    
+    static func getType(type:String) -> OznerDeviceType {
+        switch type {
+        case "580c2783":
+           return OznerDeviceType.Air_Wifi
+        default:
+          return OznerDeviceType(rawValue: type)!
+        }
+    }
 }
 
 class SelectDeviceCell: UITableViewCell {

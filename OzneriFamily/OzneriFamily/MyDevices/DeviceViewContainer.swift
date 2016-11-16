@@ -86,7 +86,8 @@ class DeviceViewContainer: UIView {
         currentDevice=device
         var deviceNibName =  "NoDeviceView"
         if device != nil  {//有设备时视图初始化
-            deviceNibName=DeviceNibName[OznerDeviceType(rawValue: (device?.type)!)!]!
+            let tmpType=OznerDeviceType.getType(type: (device?.type)!)
+            deviceNibName=DeviceNibName[tmpType]!
             currentDevice?.delegate=self
             delegate.DeviceNameChange!(name: (currentDevice?.settings.name)!)
         }
@@ -104,7 +105,7 @@ class DeviceViewContainer: UIView {
             
         }else{//有设备时视图初始化
             currentDeviceView.currentDevice=device
-            switch  OznerDeviceType(rawValue: (currentDevice?.type)!)! {
+            switch  OznerDeviceType.getType(type: (currentDevice?.type)!) {
             case .Cup:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:160*k_height)
                 //设置电池电量
@@ -137,18 +138,12 @@ class DeviceViewContainer: UIView {
             case .Air_Blue:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
                 //设置滤芯
-                let lvXinValue=getAirLvXin(lastDate: (currentDevice as! AirPurifier_Bluetooth).status.filterStatus.lastTime, maxUseMonth: 3)
-                delegate.FilterValueChange!(value: lvXinValue)
+                setAirLvXin(workTime: Int((currentDevice as! AirPurifier_Bluetooth).status.filterStatus.workTime), maxTime: 60000)
+                
             case .Air_Wifi:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
                 //设置滤芯
-                if let filterStatus=(currentDevice as! AirPurifier_MxChip).status.filterStatus
-                {
-                    let lvxinValue=getAirLvXin(lastDate: filterStatus.lastTime, maxUseMonth: 12)
-                    delegate.FilterValueChange!(value: lvxinValue)
-                }else{
-                    delegate.FilterValueChange!(value: 65535)
-                }
+                setBigAirLvXin()
                 
             case .WaterReplenish:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:156*k_height)
@@ -201,23 +196,24 @@ extension DeviceViewContainer:OznerDeviceDelegate{
 //从后台上传下拉数据方法
 extension DeviceViewContainer{
 
+    //大空净设备滤芯
+    func setBigAirLvXin() {
+        //设置滤芯
+        if let filterStatus=(currentDevice as! AirPurifier_MxChip).status.filterStatus
+        {
+            setAirLvXin(workTime: Int(filterStatus.workTime), maxTime: 129600)
+            
+        }else{
+            //Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(setBigAirLvXin), userInfo: nil, repeats: false)
+        }
+    }
     
     //空净滤芯状态
-    func getAirLvXin(lastDate:Date?,maxUseMonth:Int) -> Int {
-        if lastDate==nil{
-            return -1
-        }
-        let nowTime=Date().timeIntervalSince1970
-        let lastTime = lastDate?.timeIntervalSince1970
-        let stopTime=(lastDate! as NSDate).addingMonths(maxUseMonth).timeIntervalSince1970
-        if stopTime-nowTime<0
-        {
-            return 0
-        }else{
-            let tmpValue = ceil((stopTime-nowTime)/(stopTime-lastTime!)*100)
-            return Int(tmpValue)
-        }
-       
+    func setAirLvXin(workTime:Int,maxTime:Int) {
+        var lvxinValue=1-CGFloat(workTime)/CGFloat(maxTime)
+        lvxinValue=min(1, lvxinValue)
+        lvxinValue=max(0, lvxinValue)
+        delegate.FilterValueChange!(value: Int(lvxinValue*100))
     }
     //设置净水器滤芯、型号、链接地址、是否提醒
     func SetWaterPurifer(devID:String){

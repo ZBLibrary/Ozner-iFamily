@@ -75,10 +75,10 @@ class PairingController: UIViewController,OznerManagerDelegate {
     //每隔2秒搜寻下蓝牙设备，总共搜索不到30秒，搜到就就跳转到成功
     var blueDevices=[OznerDevice]()
     var blueTimer:Timer?
-    var remainTimer=0 //倒计时30秒
+    var remainTimer=0 //倒计时60秒
     func StarBluePair() {
        
-        remainTimer=30
+        remainTimer=60
         blueDevices=[OznerDevice]()
         blueTimer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(bluePairing), userInfo: nil, repeats: true)
     }
@@ -90,9 +90,12 @@ class PairingController: UIViewController,OznerManagerDelegate {
         remainTimer-=2
         let deviceIOArr=OznerManager.instance().getNotBindDevices()
         for io in deviceIOArr! {
-            if (io as! BaseDeviceIO).type==(currDeviceType==OznerDeviceType.TDSPan.rawValue ? OznerDeviceType.Tap.rawValue:currDeviceType) {
-                if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
-                    blueDevices.append(device)
+            if OznerManager.instance().checkisBindMode(io as! BaseDeviceIO) == true
+            {
+                if (io as! BaseDeviceIO).type==(currDeviceType==OznerDeviceType.TDSPan.rawValue ? OznerDeviceType.Tap.rawValue:currDeviceType) {
+                    if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
+                        blueDevices.append(device)
+                    }
                 }
             }
         }

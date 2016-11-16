@@ -310,6 +310,12 @@ public class User: BaseDataObject {
             success(json["data"][0]["rank"].intValue)
             }, failure: failure)
     }
+    //水杯饮水量好友排名
+    class func VolumeFriendRank(success: @escaping ((_ rank:Int) -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "VolumeFriendRank", parameters: [:], success: { (json) in
+            success(json["data"][0]["rank"].intValue)
+            }, failure: failure)
+    }
     //获取水机周月TDS分布 oil<==>TDS_BF water<==>TDS_AF
     class func GetDeviceTdsFenBu(mac:String,success: @escaping ((_ weakArr:[WaterReplenishDataStuct],_ monthArr:[WaterReplenishDataStuct]) -> Void), failure: @escaping ((Error) -> Void)){
         self.fetchData(key: "GetDeviceTdsFenBu", parameters: ["mac":mac], success: { (json) in

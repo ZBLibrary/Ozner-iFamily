@@ -77,7 +77,6 @@ class CupMainView: OznerDeviceView {
                 User.TDSSensor(deviceID: (self.currentDevice?.identifier)!, type: (self.currentDevice?.type)!, tds: TDS, beforetds: 0, success: { (rank, total) in
                     let beat =  100*CGFloat(total-rank)/CGFloat(total)
                     weakself?.tdsBeatLabel.text=loadLanguage("击败了")+"\(Int(beat))%"+loadLanguage("的用户")
-                    print("tds download1")
                     }, failure: { (error) in
                     print(error.localizedDescription)
                 })
