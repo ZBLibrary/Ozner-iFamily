@@ -47,7 +47,7 @@ class CupDrinkingChartView: UIView {
             tmpLayer.fillColor = nil
             tmpLayer.lineWidth = 4
             tmpLayer.opacity = 1
-            tmpLayer.strokeColor = UIColor.blue.withAlphaComponent(0.8).cgColor
+            tmpLayer.strokeColor = UIColor(hexString: "#4990ef")!.cgColor
             self.layer.addSublayer(tmpLayer)
         }
         

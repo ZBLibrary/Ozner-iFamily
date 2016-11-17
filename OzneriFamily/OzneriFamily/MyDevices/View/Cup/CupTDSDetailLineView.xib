@@ -270,7 +270,7 @@
                                         <constraint firstItem="w0q-X3-TI7" firstAttribute="leading" secondItem="eQL-7k-Zcq" secondAttribute="leading" id="smg-OD-mrH"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ZD-Pb-zqe" customClass="LineChartView" customModule="OzneriFamily" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ZD-Pb-zqe">
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <gestureRecognizers/>
                                 </view>
@@ -318,6 +318,7 @@
                 <outlet property="leftLabel1" destination="LIQ-0d-tMk" id="aZC-rn-1Mq"/>
                 <outlet property="leftLabel2" destination="adU-1c-t7y" id="e8F-1B-0wm"/>
                 <outlet property="leftLabel3" destination="w0q-X3-TI7" id="mWs-Q8-yw8"/>
+                <outlet property="lineViewContainer" destination="2ZD-Pb-zqe" id="93D-C9-8Ba"/>
                 <outlet property="smallCircelLabel2" destination="uly-G8-Bks" id="dsX-2J-YJU"/>
                 <outlet property="smallCircelLabel3" destination="1O9-Py-sm5" id="AQc-9X-dSo"/>
                 <outlet property="xLabel1" destination="iIu-vd-kFK" id="5sk-7H-rrd"/>

@@ -75,9 +75,10 @@ class CupTDSDetailController: UIViewController {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        chartCont.InitSetView()
-        chartCont.volumes=device.volumes
-        chartCont.sensorType=0
+        chartCont.InitSetView(volumes: device.volumes, sensorType: 0)
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

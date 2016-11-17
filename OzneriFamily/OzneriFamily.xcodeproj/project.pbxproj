@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */; };
+		8D0D681B1DDD5AE90097038E /* CupTDSLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0D681A1DDD5AE90097038E /* CupTDSLineView.xib */; };
+		8D0D681D1DDD5AF50097038E /* CupTDSLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0D681C1DDD5AF50097038E /* CupTDSLineView.swift */; };
 		8D0E5E6E1DD09C0500AFAD23 /* ChartViewOfSkinDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E5E6D1DD09C0500AFAD23 /* ChartViewOfSkinDetail.swift */; };
 		8D0E5E701DD2DFA400AFAD23 /* SetReplenishTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E5E6F1DD2DFA400AFAD23 /* SetReplenishTimeController.swift */; };
 		8D0E5E721DD3353300AFAD23 /* ReplenishSexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E5E711DD3353300AFAD23 /* ReplenishSexController.swift */; };
@@ -340,6 +342,8 @@
 
 /* Begin PBXFileReference section */
 		3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OzneriFamily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D0D681A1DDD5AE90097038E /* CupTDSLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupTDSLineView.xib; sourceTree = "<group>"; };
+		8D0D681C1DDD5AF50097038E /* CupTDSLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupTDSLineView.swift; sourceTree = "<group>"; };
 		8D0E5E6D1DD09C0500AFAD23 /* ChartViewOfSkinDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewOfSkinDetail.swift; sourceTree = "<group>"; };
 		8D0E5E6F1DD2DFA400AFAD23 /* SetReplenishTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetReplenishTimeController.swift; sourceTree = "<group>"; };
 		8D0E5E711DD3353300AFAD23 /* ReplenishSexController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplenishSexController.swift; sourceTree = "<group>"; };
@@ -1244,6 +1248,8 @@
 				8D1397301DDC7818006FB239 /* CupTDSChartContainerView.xib */,
 				8D11A1821DDB33D0002F14D3 /* CupTDSDetailLineView.swift */,
 				8D11A1841DDB33DC002F14D3 /* CupTDSDetailLineView.xib */,
+				8D0D681C1DDD5AF50097038E /* CupTDSLineView.swift */,
+				8D0D681A1DDD5AE90097038E /* CupTDSLineView.xib */,
 				8D11A18A1DDB341A002F14D3 /* CupTDSDetailCilcleView.swift */,
 				8D11A1881DDB340B002F14D3 /* CupTDSDetailCilcleView.xib */,
 				8D11A18C1DDB383B002F14D3 /* CupTDSCircleView.swift */,
@@ -2023,6 +2029,7 @@
 				8DA417901DDC8E2B00EC7381 /* CupTDSCircleView.xib in Resources */,
 				8DC02E7D1DB5CE91007F57DB /* NoDeviceView.xib in Resources */,
 				B7EF06C31DB8A53A008BE7D4 /* ZHCMessagesTableViewCellOutcoming.xib in Resources */,
+				8D0D681B1DDD5AE90097038E /* CupTDSLineView.xib in Resources */,
 				B727C35E1DACE90000FE990F /* SuccessPairCell.xib in Resources */,
 				B7EF06131DB8A11F008BE7D4 /* MainMyCenter.storyboard in Resources */,
 				8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */,
@@ -2182,6 +2189,7 @@
 				8D429A0F1DCA0E570083011C /* SkinDetailController.swift in Sources */,
 				8D0E5E6E1DD09C0500AFAD23 /* ChartViewOfSkinDetail.swift in Sources */,
 				8D1C86AE1DD33BEF00B15221 /* TapDatePickerView.swift in Sources */,
+				8D0D681D1DDD5AF50097038E /* CupTDSLineView.swift in Sources */,
 				8DC02F9E1DB5F03B007F57DB /* read_handle_shared.c in Sources */,
 				8DC02E7B1DB5CE91007F57DB /* LineChartView.swift in Sources */,
 				8DC02F8F1DB5F03B007F57DB /* WaterPurifier.m in Sources */,

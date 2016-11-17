@@ -60,9 +60,8 @@ class CupTemperatureController: UIViewController {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        chartCont.InitSetView()
-        chartCont.volumes=device.volumes
-        chartCont.sensorType=1
+        chartCont.InitSetView(volumes: device.volumes, sensorType: 1)
+        
         // Do any additional setup after loading the view.
     }
 

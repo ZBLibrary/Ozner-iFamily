@@ -11,9 +11,7 @@ import SnapKit
 
 class CupTDSChartContainerView: UIView {
 
-    var volumes:CupRecordList!
-    
-    var sensorType = 0//0TDS,1温度
+   
     
     var lineView:CupTDSDetailLineView!
     var tdsCircleView:CupTDSDetailCilcleView!
@@ -24,7 +22,9 @@ class CupTDSChartContainerView: UIView {
         lineView.switchDate=segmentControl.selectedSegmentIndex
     }
     @IBOutlet var chartContainerView: UIView!
-    func InitSetView() {
+    //SensorType 0TDS,1温度
+    func InitSetView(volumes:CupRecordList,sensorType:Int) {
+       
         lineView=Bundle.main.loadNibNamed("CupTDSDetailLineView", owner: nil, options: nil)?.last as! CupTDSDetailLineView
         
         chartContainerView.addSubview(lineView)
@@ -37,9 +37,7 @@ class CupTDSChartContainerView: UIView {
         }
         let tap1=UITapGestureRecognizer(target: self, action: #selector(switchChartClick))
         lineView.addGestureRecognizer(tap1)
-        lineView.volumes=volumes
-        lineView.whitchType=sensorType
-        lineView.switchDate=0
+        lineView.setInitView(WhitchType: sensorType, Volumes: volumes)
         
         
         tdsCircleView=Bundle.main.loadNibNamed("CupTDSDetailCilcleView", owner: nil, options: nil)?.last as! CupTDSDetailCilcleView
@@ -74,6 +72,8 @@ class CupTDSChartContainerView: UIView {
     func switchChartClick() {
         lineView.isHidden = !lineView.isHidden
         tdsCircleView.isHidden = !tdsCircleView.isHidden
+        tdsCircleView.switchDate=segmentControl.selectedSegmentIndex
+        lineView.switchDate=segmentControl.selectedSegmentIndex
     }
     
     

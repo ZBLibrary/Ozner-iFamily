@@ -11,11 +11,6 @@ import UIKit
 class CupTDSCircleView: UIView {
 
     
-//    var type=1 //0 TDS，1 水温
-//    var state1=0
-//    var state2=0
-//    var state3=0
-    
     let colordefault=UIColor.init(red: 235/255, green: 242/255, blue: 248/255, alpha: 1)
     let color1=UIColor.init(red: 241/255, green: 102/255, blue: 102/255, alpha: 1)
     let color2=UIColor.init(red: 128/255, green: 94/255, blue: 230/255, alpha: 1)
@@ -28,9 +23,6 @@ class CupTDSCircleView: UIView {
   
     func UpdateCircle(type:Int,state1:Int,state2:Int,state3:Int)
     {
-//        for item in self.layer.sublayers! {
-//            item.removeFromSuperlayer()
-//        }
         for i in 1...6
         {
             var lineColor:UIColor!
