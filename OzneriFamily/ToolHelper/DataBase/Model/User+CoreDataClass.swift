@@ -13,6 +13,9 @@ let UserDefaultsUserTokenKey = "usertoken"
 let UserDefaultsUserIDKey = "userid"
 let CurrentUserDidChangeNotificationName = "CurrentUserDidChangeNotificationName"
 
+typealias successJsonBlock = (JSON) -> Void
+typealias successVoidBlock = ()->Void
+typealias failureBlock = (_ error:Error?)->Void
 public class User: BaseDataObject {
 
     static var currentUser: User? = nil {
@@ -146,7 +149,203 @@ public class User: BaseDataObject {
             failure(error)
         }
     }
+    //咨询朱广阳 star
+    //获取聊天Token
     
+    class func GetAccesstoken() {
+        
+        var getpar:String = "appid=hzapi"
+        getpar = getpar + "&appsecret=8af0134asdffe12"
+        let sign_News = getpar.MD5
+        let urlStr = "http://dkf.ozner.net/api" + "/token.ashx"
+        
+        let params:NSDictionary = ["appid":"hzapi","appsecret":"8af0134asdffe12","sign":sign_News!]
+        
+        self.chatData(urlStr,method: .GET, parameters: params, success: { (json) in
+            acsstoken_News = json.dictionary?["result"]?.dictionaryValue["access_token"]?.stringValue ?? ""
+            self.GetUserInfoFunc()
+        }) { (error) in
+            print(error)
+        }
+        
+    }
+    //获取用户信息
+    class func GetUserInfoFunc() {
+        
+        let tmpPhone = User.currentUser?.phone
+        guard tmpPhone != nil else {
+            let alertView = SCLAlertView()
+            
+            _ = alertView.addButton(loadLanguage("确定"), action: {})
+            _ = alertView.showInfo(loadLanguage("温馨提示"), subTitle: loadLanguage("请登录"))
+            return
+        }
+        
+        sign_News = "access_token=" + acsstoken_News
+        sign_News += appidandsecret
+        
+        var urlStr = NEWS_URL + "/member.ashx?access_token="
+        urlStr += acsstoken_News + "&sign=" + sign_News.MD5
+        
+        let params:NSDictionary = ["mobile":tmpPhone!]
+        
+        let mansger = AFHTTPSessionManager()
+        mansger.requestSerializer = AFHTTPRequestSerializer.init()
+        
+        mansger.post(urlStr, parameters: params, constructingBodyWith: { (_) in
+            
+            }, progress: { (_) in
+                
+            }, success: { (task, data) in
+                print(data)
+        }) { (task, error) in
+            print(error)
+        }
+        
+        
+        self.chatData(urlStr,method:.POST,parameters: params, success: { (data) in
+            print(data)
+        }) { (error) in
+            print(error)
+        }
+        
+        
+    }
+    //获取历史信息接口
+    class  func GetHistoryRecord() {
+        
+        let getUrl = "http://dkf.ozner.net/api" + "/historyrecord.ashx?access_token=" + ""
+        
+        
+    }
+    
+    //我
+    //提意见
+    class func commitSugesstion(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        
+        self.fetchData(key: "SubmitOpinion", parameters: params, success: { (data) in
+            
+            sucess(data)
+        }) { (error) in
+            faliure(error)
+        }
+        
+    }
+    //获取用户的朋友列表
+    class func GetFriendList(_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "GetFriendList", parameters: [:], success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+    //获取好友历史留言
+    class func GetHistoryMessage(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "GetHistoryMessage", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+    //留言
+    class func LeaveMessage(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "LeaveMessage", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+    
+    //获取验证消息
+    class func  GetUserVerifMessage(_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "GetUserVerifMessage", parameters: [:], success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+    
+    //通过好友请求
+    class func AcceptUserVerif(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "AcceptUserVerif", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+    //搜索好友
+    class func SearchFriend(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "SearchFriend", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+    //获取好友信息(头像，昵称等)
+    
+    class func GetUserNickImage(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "GetUserNickImage", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+    
+    //添加好友验证信息
+    class func AddFriend(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "AddFriend", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+    
+    //我的排行
+    //朋友圈内饮水量实时排行
+    class func VolumeFriendRank(_ params:NSDictionary,_ sucess: @escaping successJsonBlock,faliure:@escaping failureBlock) {
+        self.fetchData(key: "VolumeFriendRank", parameters:params, success: { (data) in
+            
+            sucess(data)
+            
+        }) { (error) in
+            
+            faliure(error)
+            
+        }
+    }
+    //朱广阳 end
     
     //获取用户信息1
     class func GetUserInfo(){

@@ -36,11 +36,37 @@ class MyCenterController: UIViewController {
         
         infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (3.3/7))
         
+        //
+        if LoginManager.instance.currentLoginType != .ByPhoneNumber {
+            infoHeadView.hideView.isHidden = true
+            var frame = infoHeadView.hideView.frame
+            frame.size.height = 0
+            infoHeadView.hideView.frame = frame
+        }
+        
         infoHeadView.iconImage.layer.cornerRadius = 37.5
         infoHeadView.iconImage.layer.masksToBounds = true
+        
+        infoHeadView.myDeviceNumBtn.addTarget(self, action: #selector(MyCenterController.myDeviceNumBtnAction), for: UIControlEvents.touchUpInside)
+        
+        infoHeadView.myMoneyBtn.addTarget(self, action: #selector(MyCenterController.myMoneyBtnAction), for: UIControlEvents.touchUpInside)
+        
+        if User.currentUser?.headimage == "" || User.currentUser?.headimage == nil {
+            infoHeadView.iconImage.image = UIImage(named:"My_Unlogin_head")
+        } else {
         infoHeadView.iconImage.sd_setImage(with: URL(string: (User.currentUser?.headimage)!))
-        infoHeadView.nameLb.text = User.currentUser?.username
-        infoHeadView.leaveLb.text = User.currentUser?.score
+        }
+        //TODO: -
+        infoHeadView.nameLb.text = User.currentUser?.username == "" ? (User.currentUser?.phone) ?? "Ozner" : (User.currentUser?.username) ?? "Ozner"
+        //会员等级
+        if User.currentUser?.gradename == "" {
+            infoHeadView.leaveLb.text = ""
+        } else {
+            let leaveStr = User.currentUser?.gradename?.replacingOccurrences(of: "会员", with: "代理会员")
+            infoHeadView.leaveLb.text = leaveStr
+            
+        }
+        infoHeadView.moneyLb.text = User.currentUser?.score
         headView = infoHeadView
         
         tableView = UITableView(frame: CGRect(x: 0, y: -20, width: width_screen, height: (height_screen + 20 )))
@@ -55,33 +81,71 @@ class MyCenterController: UIViewController {
         
     }
     
+    func myDeviceNumBtnAction() {
+        
+        self.performSegue(withIdentifier: "equidDeviceNumberID", sender: nil)
+    }
+    
+    func myMoneyBtnAction() {
+        webViewType = loadLanguage("我的小金库")
+        self.performSegue(withIdentifier: "MyInfoSegueId", sender: nil)
+        
+    }
+    
     func setData() {
-        dataArr = NSMutableArray(capacity: 7)
+        switch LoginManager.instance.currentLoginType! {
+        case .ByPhoneNumber:
+            
+            dataArr = NSMutableArray(capacity: 7)
+            
+            let one = MyInfoStrcut.init(imageName: "My_share", nameLb: loadLanguage("我的订单"))
+            let two = MyInfoStrcut.init(imageName: "My_huiyuan", nameLb: loadLanguage("领红包"))
+            let three = MyInfoStrcut.init(imageName: "My_zhongjiang", nameLb: loadLanguage("我的券"))
+            let four = MyInfoStrcut.init(imageName: "My_friends", nameLb: loadLanguage("我的好友"))
+            let five = MyInfoStrcut.init(imageName: "My_baogao", nameLb: loadLanguage("查看水质检测报告"))
+            let six = MyInfoStrcut.init(imageName: "My_suggest", nameLb: loadLanguage("我要提意见"))
+            let seven = MyInfoStrcut.init(imageName: "My_set", nameLb: loadLanguage("设置"))
+            
+            
+            dataArr!.add(one)
+            dataArr!.add(two)
+            dataArr!.add(three)
+            dataArr!.add(four)
+            dataArr!.add(five)
+            dataArr!.add(six)
+            dataArr!.add(seven)
+            
+        case .ByEmail:
+            dataArr = NSMutableArray(capacity: 3)
+            let one = MyInfoStrcut.init(imageName: "My_share", nameLb: loadLanguage("我的设备"))
+            let six = MyInfoStrcut.init(imageName: "My_suggest", nameLb: loadLanguage("我要提意见"))
+            let seven = MyInfoStrcut.init(imageName: "My_set", nameLb: loadLanguage("设置"))
+            dataArr!.add(one)
+            dataArr!.add(six)
+            dataArr!.add(seven)
+        }
+     
         
-        let one = MyInfoStrcut.init(imageName: "My_share", nameLb: "我的订单")
-        let two = MyInfoStrcut.init(imageName: "My_huiyuan", nameLb: "领红包")
-        let three = MyInfoStrcut.init(imageName: "My_zhongjiang", nameLb: "我的券")
-        let four = MyInfoStrcut.init(imageName: "My_friends", nameLb: "我的好友")
-        let five = MyInfoStrcut.init(imageName: "My_baogao", nameLb: "查看水质检测报告")
-        let six = MyInfoStrcut.init(imageName: "My_suggest", nameLb: "我要提意见")
-        let seven = MyInfoStrcut.init(imageName: "My_set", nameLb: "设置")
-        
-        
-        dataArr!.add(one)
-        dataArr!.add(two)
-        dataArr!.add(three)
-        dataArr!.add(four)
-        dataArr!.add(five)
-        dataArr!.add(six)
-        dataArr!.add(seven)
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
 
-        navigationController?.navigationBar.isHidden = true
+        switch LoginManager.instance.currentLoginType! {
+        case .ByPhoneNumber:
+            navigationController?.navigationBar.isHidden = true
+        case .ByEmail:
+            navigationController?.navigationBar.isHidden = false
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"fanhui"), style: UIBarButtonItemStyle.done, target: self, action: #selector(MyCenterController.backAction))
+        }
         
+    }
+    
+    func backAction() {
+        self.dismiss(animated: false) { 
+            
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -109,7 +173,13 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        
+        switch LoginManager.instance.currentLoginType! {
+        case .ByPhoneNumber:
+            return 7
+        case .ByEmail:
+            return 3
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,16 +201,18 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
         
         
         switch webViewType! {
-        case "我的订单","领红包","我的券","查看水质检测报告":
+        case loadLanguage("我的订单"),loadLanguage("领红包"),loadLanguage("我的券"),loadLanguage("查看水质检测报告"):
             self.performSegue(withIdentifier: "MyInfoSegueId", sender: nil)
             break
-        case "设置":
+        case loadLanguage("设置"):
             self.performSegue(withIdentifier: "settingSegueID", sender: nil)
             break
-        case "我要提意见":
+        case  loadLanguage("我要提意见"):
             self.performSegue(withIdentifier: "sugesstsegueID", sender: nil)
-        case "我的好友":
-            self.performSegue(withIdentifier: "sugesstsegueID", sender: nil)
+        case loadLanguage("我的好友"):
+            self.performSegue(withIdentifier: "MyFriendSegueID", sender: nil)
+        case loadLanguage("我的设备"):
+            self.performSegue(withIdentifier: "equidDeviceNumberID", sender: nil)
         default:
             break
         }
@@ -151,7 +223,13 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return (height_screen - 64) * (3.7/7) / 7
+        switch LoginManager.instance.currentLoginType! {
+        case .ByPhoneNumber:
+            return (height_screen - 64) * (3.7/7) / 7
+        case .ByEmail:
+            return 50
+        }
+        
     }
     
 }

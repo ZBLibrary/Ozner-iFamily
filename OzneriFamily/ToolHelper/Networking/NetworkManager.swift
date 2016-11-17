@@ -35,6 +35,11 @@ class NetworkManager:NSObject{
                        success: success,
                        failure: failure)
     }
+    func ChatPost(_ url:String,method:ChatHttpMethod,parameters: NSDictionary?,success:successJsonBlock?,failure:failureBlock?) -> URLSessionDataTask? {
+        
+        return request(url: url,method:method, POSTParameters: parameters, constructingBodyWithBlock: nil, progress: nil, success: success, failure: failure)
+        
+    }
     func POST(key: String,
               parameters: NSDictionary?,
               constructingBodyWithBlock block: ((AFMultipartFormData?) -> Void)?,
@@ -93,6 +98,40 @@ class NetworkManager:NSObject{
         
         
     }
+    private func request(url: String,method:ChatHttpMethod,
+                         
+                         POSTParameters: NSDictionary?,
+                         constructingBodyWithBlock block: ((AFMultipartFormData?) -> Void)?,
+                         progress:((Progress) -> Void)?,
+                         success: ((JSON) -> Void)?,
+                         failure: ((Error) -> Void)?) -> URLSessionDataTask? {
+        
+        
+        //        return manager.get(url, parameters: POSTParameters, progress: progress, success: { (operation, data) in
+        //            self.handleSuccess(operation: operation, data: data, success: success, failure: failure)
+        //            }, failure: { (operation, error) in
+        //                failure?(error)
+        //        })
+        //
+        switch method {
+        case .GET:
+            return manager.get(url, parameters: POSTParameters, progress: nil, success: { (operation, data) in
+                self.handleSuccess(operation: operation, data: data as! Data, success: success, failure: failure)
+                }, failure: { (operation, error) in
+                    failure?(error)
+            })
+        case .POST:
+            return manager.post(url, parameters: POSTParameters, constructingBodyWith: block, progress: progress, success: { (operation, data) in
+                self.handleSuccess(operation: operation, data: data as! Data, success: success, failure: failure)
+            }) { (operation, error) in
+                failure?(error)
+            }
+        }
+        
+        
+        
+    }
+
     private func handleSuccess(operation: URLSessionDataTask, data: Data, success: ((JSON) -> Void)?, failure: ((NSError) -> Void)?) {
         let jsonData:JSON = JSON(data: data)
         let state = jsonData["state"].intValue

@@ -71,4 +71,13 @@ extension BaseDataObject{
     }
     //传图片可以在这里扩展
     //带进度的也可以在此扩展
+    
+    //咨询
+    class func chatData(_ url:String,method:ChatHttpMethod,parameters:NSDictionary?,success:@escaping successJsonBlock,failure:@escaping failureBlock) {
+        _ = NetworkManager.defaultManager?.ChatPost(url,method:method, parameters: parameters, success: { (json) in
+            success(json)
+            }, failure: { (error) in
+                failure(error)
+        })
+    }
 }

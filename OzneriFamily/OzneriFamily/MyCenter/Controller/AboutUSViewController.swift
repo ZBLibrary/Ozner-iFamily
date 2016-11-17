@@ -13,11 +13,13 @@ class AboutUSViewController: UIViewController {
   
     @IBOutlet var ScoreLable: UILabel!
     
+    @IBOutlet weak var currenLb: UILabel!
 
     @IBOutlet weak var versionLb: UILabel!
     @IBOutlet var HaozeLable: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        currenLb.text = loadLanguage("当前版本")
      self.title=loadLanguage("关于浩泽净水家" )
         //UpdateLable.text=loadLanguage("检查更新版本" )
         ScoreLable.text=loadLanguage("评个分吧")

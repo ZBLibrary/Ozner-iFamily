@@ -11,20 +11,25 @@ import UIKit
 class MySetViewController: UIViewController {
 
 
+    @IBOutlet weak var logout: UIButton!
+    @IBOutlet weak var aboutOzne: UILabel!
+    @IBOutlet weak var calcuteNum: UILabel!
+    @IBOutlet weak var pushLb: UILabel!
     @IBOutlet weak var pushSwitch: UISwitch!
     //退出登录
     @IBAction func logOutAction(_ sender: AnyObject) {
         
         LoginManager.instance.LoginOut()
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = loadLanguage("设置")
-        
-        
+        pushLb.text = loadLanguage("允许推送消息")
+        calcuteNum.text = loadLanguage("计量单位")
+        aboutOzne.text = loadLanguage("关于浩泽净水家")
+        logout.setTitle(loadLanguage("退出登录"), for: UIControlState.normal)
     }
     
     //通知开关
@@ -45,8 +50,8 @@ class MySetViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+       
         LoginManager.instance.mainTabBarController?.setTabBarHidden(true, animated: false)
-
     }
     
   

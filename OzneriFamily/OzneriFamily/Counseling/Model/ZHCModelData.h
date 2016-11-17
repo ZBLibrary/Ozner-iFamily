@@ -32,7 +32,7 @@ static NSString * const kZHCDemoAvatarIdJobs = @"707-8956784-57";
 @property (strong, nonatomic) ZHCMessagesBubbleImage *incomingBubbleImageData;
 
 
-- (void)addPhotoMediaMessage;
+//- (void)addPhotoMediaMessage;
 - (void)addLocationMediaMessageCompletion:(ZHCLocationMediaItemCompletionBlock)completion;
 - (void)addVideoMediaMessage;
 - (void)addAudioMediaMessage;

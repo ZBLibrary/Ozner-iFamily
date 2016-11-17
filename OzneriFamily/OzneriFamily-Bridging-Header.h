@@ -9,7 +9,6 @@
 #import "JCRootViewController.h"//引导页
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "BPush.h"
-//#import "IQKeyboardManager/IQKeyboardManager.h"
 
 
 //OznerLibrary 浩泽库
@@ -36,3 +35,6 @@
 //Cup 去色版
 #import "YJHColorPickerHSWheel2.h"
 #import "YJHColorPickerHSWheel.h"
+
+
+#import <CommonCrypto/CommonDigest.h>

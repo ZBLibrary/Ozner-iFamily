@@ -103,14 +103,21 @@ class CoreDataManager: NSObject {
     func fetchAll(entityName: String, error: NSErrorPointer) -> [BaseDataObject] {
         let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest()
         let entity:NSEntityDescription? = NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext)
-        request.entity = entity
-        var results = NSArray()
-        do {
-            results = try managedObjectContext.fetch(request) as NSArray
-        } catch {
-            print("获取本地数据失败")
+        if entity == nil {
+             _=create(entityName: entityName)
+            return NSArray() as! [BaseDataObject]
         }
-        return (results as? [BaseDataObject])!
+        else{
+            request.entity = entity
+            var results = NSArray()
+            do {
+                results = try managedObjectContext.fetch(request) as NSArray
+            } catch {
+                print("获取本地数据失败")
+            }
+            return (results as? [BaseDataObject])!
+        }
+        
         
     }
     func autoGenerate(entityName: String, ID: NSString) -> BaseDataObject {

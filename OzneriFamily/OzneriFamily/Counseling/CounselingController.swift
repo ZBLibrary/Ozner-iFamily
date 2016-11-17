@@ -9,6 +9,27 @@
 import UIKit
 import AFNetworking
 
+let appid_News = "hzapi"
+let appsecret_News = "8af0134asdffe12"
+
+let appidandsecret = "&appid=hzapi&appsecret=8af0134asdffe12"
+
+let NEWS_URL = "http://dkf.ozner.net/api"
+
+let customerid_News = 0
+let ChannelID_News = 4
+let ct_id = 0
+
+var acsstoken_News = ""
+var sign_News = ""
+public enum ChatHttpMethod {
+    case GET
+    case POST
+}
+public enum ChatType:String {
+    case IMAGE = "123"
+    case Content = "456"
+}
 class CounselingController: ZHCMessagesViewController {
 
     var demoData: ZHCModelData? {
@@ -32,6 +53,7 @@ class CounselingController: ZHCMessagesViewController {
            self.scrollToBottom(animated: true)
         }
 
+        User.GetAccesstoken()
     }
     
     // MARK: - ZHCMessagesTableViewDataSource
@@ -80,11 +102,14 @@ class CounselingController: ZHCMessagesViewController {
         
         let message = demoData?.messages.object(at: indexPath.row) as! ZHCMessage
         
-        let ava = (self.demoData?.avatars as! [String:ZHCMessagesAvatarImage])[message.senderId]
-        
+//        let ava = (self.demoData?.avatars as! [String:ZHCMessagesAvatarImage])[message.senderId]
+//        if ava != nil {
+//            return ava
+//        } else {
+//            return nil
+//        }
+        return nil;
 //        return ZHCMessagesAvatarImage(avatarImage: UIImage(named:"demo_avatar_jobs"), highlightedImage: UIImage(named:"demo_avatar_jobs"), placeholderImage: UIImage(named:"demo_avatar_jobs")!) /
-        return ava
-        
         
     }
   
@@ -261,6 +286,17 @@ class CounselingController: ZHCMessagesViewController {
         
         let message = ZHCMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
         
+        //let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+        let messModel=ConsultModel.cachedObjectWithID(ID: "\(NSDate().timeIntervalSince1970)" as NSString)
+        messModel.content =  text
+        messModel.type = ChatType.Content.rawValue
+        //print(senderId)
+        messModel.userId = senderId
+        
+        
+        CoreDataManager.defaultManager.saveChanges()
+
+        
         //在此发送数据到服务器 成功添加 否则不添加
         demoData?.messages.add(message)
         
@@ -298,7 +334,7 @@ class CounselingController: ZHCMessagesViewController {
                 guard image != nil else {
                     return
                 }
-               weakSelf?.addPhotoImageToMessage(image: image!)
+                weakSelf?.addPhotoImageToMessage(image: image!)
              
                 }, andCamer: true)
         case 1:
@@ -324,8 +360,25 @@ class CounselingController: ZHCMessagesViewController {
         
         //收图片 false
         //发图片true
-        photoItem.appliesMediaViewMaskAsOutgoing = false
-        let message = ZHCMessage(senderId: kZHCDemoAvatarIdCook, displayName: kZHCDemoAvatarDisplayNameCook, media: photoItem)
+//        photoItem.appliesMediaViewMaskAsOutgoing = true
+        let message = ZHCMessage(senderId: kZHCDemoAvatarIdJobs, displayName: kZHCDemoAvatarDisplayNameJobs, media: photoItem)
+//        let conModel = ConsultModel.cachedObjectWithID(ID: senderId() as NSString)
+        //let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+ 
+        let data: Data = UIImageJPEGRepresentation(image, 1.0)!
+        //conModel.content =  data.base64EncodedString()
+        //conModel.type = ChatType.IMAGE.rawValue
+        //conModel.userId = senderId()
+        
+        CoreDataManager.defaultManager.saveChanges()
+        let messModel=ConsultModel.cachedObjectWithID(ID: "\(NSDate().timeIntervalSince1970)" as NSString)
+        messModel.content =  data.base64EncodedString()
+        messModel.type = ChatType.Content.rawValue
+        //print(senderId)
+        messModel.userId = senderId()
+        
+        let dataARR:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
+        print(dataARR.count)
         
         demoData?.messages.add(message)        
         messageTableView?.reloadData()
@@ -336,7 +389,7 @@ class CounselingController: ZHCMessagesViewController {
     // MARK: - ZHCMessagesMoreViewDataSource
     override func messagesMoreViewTitles(_ moreView: ZHCMessagesMoreView) -> [Any] {
         
-        return ["相机","照片"]
+        return [loadLanguage("拍摄"),loadLanguage("照片")]
     }
     
     override func messagesMoreViewImgNames(_ moreView: ZHCMessagesMoreView) -> [Any] {
@@ -348,7 +401,7 @@ class CounselingController: ZHCMessagesViewController {
     
     private func initNavarionBar() {
         
-        self.title = "咨询"
+        self.title = loadLanguage("咨询")
         self.view.backgroundColor = UIColor.white
 //        navigationController?.toolbar.barTintColor = UIColor.white
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"CallPhoneImage"), style: UIBarButtonItemStyle.done, target: self, action: #selector(CounselingController.phoneCallAction))

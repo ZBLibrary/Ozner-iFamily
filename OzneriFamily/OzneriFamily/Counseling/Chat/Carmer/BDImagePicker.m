@@ -97,6 +97,7 @@ static BDImagePicker *bdImagePickerInstance = nil;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = info[UIImagePickerControllerEditedImage];
+    
     if (image == nil) {
         image = info[UIImagePickerControllerOriginalImage];
     }

@@ -135,6 +135,7 @@ class LoginManager:NSObject{
             return EnumIphoneType.Iphone4
         }
     }
+    
     var currentDevice:OznerDevice{
         return OznerManager.instance().getDevice(LoginManager.instance.currentDeviceIdentifier)
     }
