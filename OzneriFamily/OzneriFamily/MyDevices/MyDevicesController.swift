@@ -134,6 +134,7 @@ extension MyDevicesController : DeviceViewContainerDelegate{
     
     func PresentModelController(controller:UIViewController)//弹出模态视图
     {
+        
         weak var weakSelf=self
         self.present(controller, animated: false) {
             weakSelf?.closeLeft()

@@ -96,6 +96,58 @@ public class User: BaseDataObject {
             },
                        failure: failure)
     }
+    //邮箱登录
+    class func loginWithEmail(_ params: NSDictionary,_ sucess:@escaping ((User) -> Void),failure: @escaping ((Error) ->Void)) {
+        NetworkManager.clearCookies()
+        self.fetchDataWithProgress(key: "MailLogin", parameters: params, success: { (data) in
+            let defaults = UserDefaults.standard
+            
+            defaults.set(data["usertoken"].stringValue, forKey: UserDefaultsUserTokenKey)
+            defaults.set(data["userid"].stringValue, forKey: UserDefaultsUserIDKey)
+            
+            let user = User.cachedObjectWithID(ID: data["userid"].stringValue as NSString)
+            user.phone = ""
+            user.email = params["username"] as? String
+            user.id =  data["userid"].stringValue
+            user.usertoken = data["usertoken"].stringValue
+            defaults.synchronize()
+            loginWithLocalUserInfo(success: sucess, failure: failure)
+            
+        }) { (error) in
+            
+            failure(error)
+        }
+        
+        
+    }
+    //邮箱注册
+    class func registerByEmail(_ params: NSDictionary,_ sucess: @escaping (() -> Void),failure:@escaping ((Error) ->Void) ) {
+        self.fetchDataWithProgress(key: "MailRegister", parameters: params, success: { (data) in
+            sucess()
+        }) { (error) in
+            failure(error)
+        }
+    }
+    //获取邮箱验证码
+    class func getEmailVaildCode(_ params: NSDictionary,_ sucess: @escaping (() -> Void),failure:@escaping ((Error) ->Void)) {
+        
+        self.fetchDataWithProgress(key: "GetEmailCode", parameters: params, success: { (data) in
+            sucess()
+        }) { (error) in
+            failure(error)
+        }
+        
+    }
+    //重置邮箱密码
+    class func ResetPasswordByEmail(_ params: NSDictionary,_ sucess: @escaping (() -> Void),failure:@escaping ((Error) ->Void) ) {
+        self.fetchDataWithProgress(key: "ResetPassword", parameters: params, success: { (data) in
+            sucess()
+        }) { (error) in
+            failure(error)
+        }
+    }
+    
+    
     //获取用户信息1
     class func GetUserInfo(){
         self.fetchData(key: "GetUserInfo", parameters: [:], success: { (json) in

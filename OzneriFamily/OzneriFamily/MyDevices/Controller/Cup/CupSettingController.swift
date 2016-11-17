@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import IQKeyboardManager
+import IQKeyboardManagerSwift
 class CupSettingController: DeviceSettingController {
 
     @IBAction func backClick(_ sender: AnyObject) {
@@ -91,7 +91,8 @@ class CupSettingController: DeviceSettingController {
             [todayStateButton1,todayStateButton2,todayStateButton3,todayStateButton4][i]?.setImage(UIImage(named: imgName!), for: .normal)
             [todayStateLabel1,todayStateLabel2,todayStateLabel3,todayStateLabel4][i]?.textColor = buttonStateIsOn ? selectcolor:normalcolor
         }
-        weightTF.addDoneOnKeyboard(withTarget: self, action: #selector(weightTFDone), titleText: "输入体重")
+        weightTF.addDoneOnKeyboardWithTarget(self, action:  #selector(weightTFDone))
+        
         let starTime=Int((self.deviceSetting as! CupSettings!).remindStart)
         let endTime=Int((self.deviceSetting as! CupSettings!).remindEnd)
         drinkRemaindTimeLabel.text="\(starTime/3600):\(starTime%3600/60)-\(endTime/3600):\(endTime%3600/60)"

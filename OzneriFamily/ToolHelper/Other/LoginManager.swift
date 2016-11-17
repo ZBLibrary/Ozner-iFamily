@@ -53,25 +53,39 @@ class LoginManager:NSObject{
             _instance = newValue
         }
     }
-    lazy var loginViewController: UIViewController = {
+    lazy var loginViewController_Phone: UIViewController = {
+        
         let tmpPhoneVC = UIStoryboard(name: "Login+Register+Guiding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         //判断手机登陆需不需要引导页
         let phoneVC=LoginManager.isFristOpenApp ? JCRootViewController(last: tmpPhoneVC):tmpPhoneVC
+        return    phoneVC
+    }()
+    lazy var loginViewController_Email: RNEmailLoginViewController = {
         
-        let emailVC = UIStoryboard(name: "Login+Register+Guiding", bundle: nil).instantiateViewController(withIdentifier: "EmailLoginController") as! EmailLoginController
-        var isPhoneLogin=LoginManager.instance.isChinese_Simplified
-        if LoginManager.instance.currentLoginType != nil
-        {
-            isPhoneLogin=LoginManager.instance.currentLoginType==OznerLoginType.ByPhoneNumber
+        return RNEmailLoginViewController(nibName: "RNEmailLoginViewController", bundle: nil)
+    }()
+    
+    var loginViewController: UIViewController {
+        set{
+        }
+        get{
+            var isPhoneLogin=LoginManager.instance.isChinese_Simplified
+            if LoginManager.instance.currentLoginType != nil
+            {
+                isPhoneLogin=LoginManager.instance.currentLoginType==OznerLoginType.ByPhoneNumber
+            }
+            return isPhoneLogin ? loginViewController_Phone:loginViewController_Email
         }
         
-        return isPhoneLogin ? phoneVC:emailVC
-    }()
+        
+    }
     //主视图控制器
     var mainTabBarController: MainTabBarController?
     //退出登录
     func LoginOut()
     {
+        LoginManager.instance.currentLoginType=nil
+        appDelegate.window?.rootViewController=loginViewController
         if mainTabBarController != nil{
             
             mainTabBarController?.dismiss(animated: true, completion: nil)
