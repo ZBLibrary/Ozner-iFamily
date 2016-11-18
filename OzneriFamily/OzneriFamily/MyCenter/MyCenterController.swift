@@ -143,9 +143,7 @@ class MyCenterController: UIViewController {
     }
     
     func backAction() {
-        self.dismiss(animated: false) { 
-            
-        }
+        LoginManager.instance.setTabbarSelected(index: 0)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
