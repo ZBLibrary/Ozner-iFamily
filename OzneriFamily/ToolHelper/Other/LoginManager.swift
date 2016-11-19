@@ -119,7 +119,7 @@ class LoginManager:NSObject{
     }
     //是不是中文简体
     lazy var isChinese_Simplified:Bool = {
-            return  NSLocalizedString("isChinese_Simplified", comment: "")=="true"
+            return  NSLocalizedString("isChinese_Simplified", comment: "false")=="true"
     }()
     
     

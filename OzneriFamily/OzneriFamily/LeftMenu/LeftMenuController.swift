@@ -20,7 +20,20 @@ class LeftMenuController: UIViewController {
     var deviceArray:NSArray!//设备数组
     var currentSelectCellIndex:Int=0//当前选中Cell Index
     
-    //无设备时添加按钮和显示界面
+    //无设备头像View
+    @IBOutlet var heightConstraintOfNoDevice: NSLayoutConstraint!
+    @IBOutlet var imgButtonOfNoDevice: UIButton!
+    @IBOutlet var nameLabelOfNoDevice: UILabel!
+    
+    //有设备头像View
+    @IBOutlet var ImgButtonOfHaveDevice: UIButton!
+    @IBOutlet var nameLabelOfHaveDevice: UILabel!
+    @IBOutlet var heightConstraintOfHaveDevice: NSLayoutConstraint!
+    
+    @IBAction func headImgClick(_ sender: UIButton) {
+        closeLeft()
+        LoginManager.instance.setTabbarSelected(index: 3)
+    }
     //添加设备
     @IBAction func AddDeviceClick(_ sender: UIButton) {
         let addDeviceNav=UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNav") as! UINavigationController
@@ -40,6 +53,22 @@ class LeftMenuController: UIViewController {
         self.tableView.dataSource=self
         self.tableView.rowHeight=90*height_screen/667
         self.tableView.register(UINib(nibName: "LeftMenuDeviceCell", bundle: nil), forCellReuseIdentifier: "LeftMenuDeviceCell")
+        if LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber
+        {
+            heightConstraintOfNoDevice.constant=50
+            heightConstraintOfHaveDevice.constant=50
+            imgButtonOfNoDevice.isHidden=true
+            ImgButtonOfHaveDevice.isHidden=true
+            nameLabelOfNoDevice.text=""
+            nameLabelOfHaveDevice.text=""
+        }else{
+            heightConstraintOfNoDevice.constant=110
+            heightConstraintOfHaveDevice.constant=110
+            imgButtonOfNoDevice.isHidden=false
+            ImgButtonOfHaveDevice.isHidden=false
+            nameLabelOfNoDevice.text=User.currentUser?.email
+            nameLabelOfHaveDevice.text=User.currentUser?.email
+        }
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {

@@ -151,6 +151,8 @@
 		8D1239A11DCB1681008D2974 /* OznerLibrary+Expand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1239A01DCB1681008D2974 /* OznerLibrary+Expand.swift */; };
 		8D123B521DD5EA2C00F424B3 /* CupCustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123B511DD5EA2C00F424B3 /* CupCustomPickerView.swift */; };
 		8D123B541DD5EA3B00F424B3 /* CupCustomPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D123B531DD5EA3B00F424B3 /* CupCustomPickerView.xib */; };
+		8D12687F1DDEE7EB0042DE3E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D1268811DDEE7EB0042DE3E /* InfoPlist.strings */; };
+		8D1268861DDEE8460042DE3E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D1268881DDEE8460042DE3E /* Localizable.strings */; };
 		8D129A201DD4B5080022F7EA /* LBXPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D129A191DD4B5080022F7EA /* LBXPermissions.swift */; };
 		8D129A211DD4B5080022F7EA /* LBXScanLineAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D129A1A1DD4B5080022F7EA /* LBXScanLineAnimation.swift */; };
 		8D129A221DD4B5080022F7EA /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D129A1B1DD4B5080022F7EA /* LBXScanNetAnimation.swift */; };
@@ -183,7 +185,6 @@
 		8D1761E71DC833C8004A6B90 /* WaterReplenishSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1761E61DC833C8004A6B90 /* WaterReplenishSettingController.swift */; };
 		8D1761EA1DC833F6004A6B90 /* TDSPanSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1761E91DC833F6004A6B90 /* TDSPanSettingController.swift */; };
 		8D17D40B1DC2EA0A002B0F89 /* AgreementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D17D40A1DC2EA0A002B0F89 /* AgreementController.swift */; };
-		8D17D40F1DC329CE002B0F89 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D17D4111DC329CE002B0F89 /* Localizable.strings */; };
 		8D1C66E01DAA3B62008C639F /* OznerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66651DAA3B62008C639F /* OznerManager.m */; };
 		8D1C670A1DAA4052008C639F /* SelectDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */; };
 		8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C67091DAA4052008C639F /* SelectDeviceCell.xib */; };
@@ -216,7 +217,6 @@
 		8D92F6581D94FAB00068A40A /* MyDevicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F6571D94FAB00068A40A /* MyDevicesController.swift */; };
 		8D92F65A1D94FAC70068A40A /* MyDevices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F6591D94FAC70068A40A /* MyDevices.storyboard */; };
 		8D92F65E1D9510450068A40A /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F65D1D9510450068A40A /* LoginManager.swift */; };
-		8D92F6681D9526460068A40A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F66A1D9526460068A40A /* InfoPlist.strings */; };
 		8D92F66F1D95346E0068A40A /* LeftMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F66E1D95346E0068A40A /* LeftMenuController.swift */; };
 		8D92F6711D9534890068A40A /* LeftMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F6701D9534890068A40A /* LeftMenu.storyboard */; };
 		8D9951381DACE4540050FB19 /* DeviceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9951371DACE4540050FB19 /* DeviceViewContainer.swift */; };
@@ -586,6 +586,14 @@
 		8D1239A01DCB1681008D2974 /* OznerLibrary+Expand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OznerLibrary+Expand.swift"; sourceTree = "<group>"; };
 		8D123B511DD5EA2C00F424B3 /* CupCustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupCustomPickerView.swift; sourceTree = "<group>"; };
 		8D123B531DD5EA3B00F424B3 /* CupCustomPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupCustomPickerView.xib; sourceTree = "<group>"; };
+		8D1268801DDEE7EB0042DE3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8D1268821DDEE7F20042DE3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8D1268831DDEE7FA0042DE3E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		8D1268871DDEE8460042DE3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8D1268891DDEE8480042DE3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8D12688A1DDEE8480042DE3E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		8D12688B1DDEFC3B0042DE3E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		8D12688C1DDEFC3B0042DE3E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8D129A191DD4B5080022F7EA /* LBXPermissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXPermissions.swift; sourceTree = "<group>"; };
 		8D129A1A1DD4B5080022F7EA /* LBXScanLineAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanLineAnimation.swift; sourceTree = "<group>"; };
 		8D129A1B1DD4B5080022F7EA /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
@@ -628,8 +636,6 @@
 		8D1761E61DC833C8004A6B90 /* WaterReplenishSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterReplenishSettingController.swift; sourceTree = "<group>"; };
 		8D1761E91DC833F6004A6B90 /* TDSPanSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDSPanSettingController.swift; sourceTree = "<group>"; };
 		8D17D40A1DC2EA0A002B0F89 /* AgreementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreementController.swift; sourceTree = "<group>"; };
-		8D17D4101DC329CE002B0F89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8D17D4121DC329D0002B0F89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8D1C66641DAA3B62008C639F /* OznerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OznerManager.h; sourceTree = "<group>"; };
 		8D1C66651DAA3B62008C639F /* OznerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OznerManager.m; sourceTree = "<group>"; };
 		8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDeviceCell.swift; sourceTree = "<group>"; };
@@ -669,8 +675,6 @@
 		8D92F6571D94FAB00068A40A /* MyDevicesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDevicesController.swift; sourceTree = "<group>"; };
 		8D92F6591D94FAC70068A40A /* MyDevices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyDevices.storyboard; sourceTree = "<group>"; };
 		8D92F65D1D9510450068A40A /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
-		8D92F66B1D9526470068A40A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8D92F66C1D9526490068A40A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		8D92F66E1D95346E0068A40A /* LeftMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuController.swift; sourceTree = "<group>"; };
 		8D92F6701D9534890068A40A /* LeftMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LeftMenu.storyboard; sourceTree = "<group>"; };
 		8D9951371DACE4540050FB19 /* DeviceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceViewContainer.swift; sourceTree = "<group>"; };
@@ -1469,20 +1473,20 @@
 		8D92F64E1D94F64F0068A40A /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				8D0D69531DDD9D040097038E /* NSDate+Category.swift */,
 				8D92F65D1D9510450068A40A /* LoginManager.swift */,
-				8D17D4111DC329CE002B0F89 /* Localizable.strings */,
+				8D0D69531DDD9D040097038E /* NSDate+Category.swift */,
 				8DC02EA51DB5D100007F57DB /* SCLAlertView.swift */,
 				8DC02EA61DB5D100007F57DB /* SCLExtensions.swift */,
 				8D5045C51DB34AA000EAC3B3 /* UIImage+Expand.swift */,
 				8D109F1F1DAD081400458171 /* CALayer+Expand.swift */,
 				8D92F64F1D94F6850068A40A /* LanguageHelper.swift */,
-				8D92F66A1D9526460068A40A /* InfoPlist.strings */,
 				8D109F211DAE1E6700458171 /* UIColor+Expand.swift */,
 				8D113DC81DB71981008CE2C6 /* UINavigationController+Expand.swift */,
 				8D108A8A1DC203A3006BDECD /* MyRegex.swift */,
 				8D1239A01DCB1681008D2974 /* OznerLibrary+Expand.swift */,
 				8D0D69511DDD9AE80097038E /* String+Expand.swift */,
+				8D1268811DDEE7EB0042DE3E /* InfoPlist.strings */,
+				8D1268881DDEE8460042DE3E /* Localizable.strings */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -2115,7 +2119,9 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				en,
 				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 8D1EF37B1D93DE050009D034;
 			productRefGroup = 8D1EF3851D93DE050009D034 /* Products */;
@@ -2156,7 +2162,6 @@
 				B727C35E1DACE90000FE990F /* SuccessPairCell.xib in Resources */,
 				8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */,
 				8D92F6711D9534890068A40A /* LeftMenu.storyboard in Resources */,
-				8D92F6681D9526460068A40A /* InfoPlist.strings in Resources */,
 				8D0D69321DDD99A10097038E /* AddFriendTableViewCell.xib in Resources */,
 				8D0D693C1DDD99A10097038E /* FriendZeroBgView.xib in Resources */,
 				8D123B541DD5EA3B00F424B3 /* CupCustomPickerView.xib in Resources */,
@@ -2164,13 +2169,13 @@
 				8D0D68EA1DDD99540097038E /* ZHCMessagesToolbarContentView.xib in Resources */,
 				B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */,
 				8D0F67C21DD4424F00D35CD1 /* AirOutdoorView.xib in Resources */,
-				8D17D40F1DC329CE002B0F89 /* Localizable.strings in Resources */,
 				8DC02E941DB5CEFE007F57DB /* WaterReplenishMainView.xib in Resources */,
 				B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */,
 				8DC02E7F1DB5CE91007F57DB /* TapMainView.xib in Resources */,
 				8D0D68C61DDD99540097038E /* ZHCMessagesViewController.xib in Resources */,
 				8D0D683F1DDD8A3B0097038E /* RNEmailRegisterViewController.xib in Resources */,
 				8D0D69441DDD99A10097038E /* MyInfoCell.xib in Resources */,
+				8D1268861DDEE8460042DE3E /* Localizable.strings in Resources */,
 				8DAE806C1D9A600900A9946F /* LeftMenuDeviceCell.xib in Resources */,
 				8DC02E751DB5CE91007F57DB /* Air_BlueMainView.xib in Resources */,
 				8D0D68BB1DDD99540097038E /* ZHCMessagesAssets.bundle in Resources */,
@@ -2179,6 +2184,7 @@
 				8D0D69361DDD99A10097038E /* FriendChatCell.xib in Resources */,
 				8D0D69421DDD99A10097038E /* MyFriendCenterView.xib in Resources */,
 				8D0D69381DDD99A10097038E /* FriendRecentView.xib in Resources */,
+				8D12687F1DDEE7EB0042DE3E /* InfoPlist.strings in Resources */,
 				8D5045C81DB34AD700EAC3B3 /* Airgif_blue.gif in Resources */,
 				8D0D694C1DDD99A10097038E /* ZanMeTableViewCell.xib in Resources */,
 				8D11A1891DDB340B002F14D3 /* CupTDSDetailCilcleView.xib in Resources */,
@@ -2558,22 +2564,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8D17D4111DC329CE002B0F89 /* Localizable.strings */ = {
+		8D1268811DDEE7EB0042DE3E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8D17D4101DC329CE002B0F89 /* Base */,
-				8D17D4121DC329D0002B0F89 /* zh-Hans */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		8D92F66A1D9526460068A40A /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8D92F66B1D9526470068A40A /* Base */,
-				8D92F66C1D9526490068A40A /* zh-Hans */,
+				8D1268801DDEE7EB0042DE3E /* Base */,
+				8D1268821DDEE7F20042DE3E /* en */,
+				8D1268831DDEE7FA0042DE3E /* zh-Hans */,
+				8D12688B1DDEFC3B0042DE3E /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8D1268881DDEE8460042DE3E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D1268871DDEE8460042DE3E /* Base */,
+				8D1268891DDEE8480042DE3E /* en */,
+				8D12688A1DDEE8480042DE3E /* zh-Hans */,
+				8D12688C1DDEFC3B0042DE3E /* zh-Hant */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
