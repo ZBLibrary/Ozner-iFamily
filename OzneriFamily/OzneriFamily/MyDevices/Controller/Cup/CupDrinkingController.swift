@@ -12,6 +12,14 @@ class CupDrinkingController: UIViewController {
 
     //header
     @IBAction func shareClick(_ sender: AnyObject) {
+        let randValue=Int(arc4random() % 30)
+        
+        var beat=(10000-rankValue)/100
+        beat=beat<0 ? randValue:beat
+        beat=beat>100 ? (70+randValue):beat
+        
+        let img=OznerShareManager.getshareImage(rankValue, type: 0, value: todayDrink, beat: beat, maxWater: drinkGoal)
+        OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title: "浩泽净水家", shareImg: img)
     }
     @IBOutlet var drinkValueLabel: UILabel!
     @IBOutlet var rankLabel: UILabel!
@@ -53,6 +61,8 @@ class CupDrinkingController: UIViewController {
     }
     var drinkGoal = 0
     var todayDrink=0
+    var rankValue = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let device = LoginManager.instance.currentDevice as! Cup
@@ -89,6 +99,7 @@ class CupDrinkingController: UIViewController {
         //TDS排名
         User.VolumeFriendRank(success: {
             rank in
+            self.rankValue=rank
             self.rankLabel.text = rank==0 ? "-":"\(rank)"
             }, failure: {
             (error) in

@@ -12,6 +12,8 @@ class CupTDSDetailController: UIViewController {
 
 
     @IBAction func shareClick(_ sender: UIBarButtonItem) {
+        let img = OznerShareManager.getshareImage(rankValue, type: 1, value: 1, beat: beatValue, maxWater: 0)
+        OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title: "浩泽净水家", shareImg: img)
     }
     @IBOutlet var tdsValueLabel: UILabel!
     @IBOutlet var rankLabel: UILabel!
@@ -27,23 +29,23 @@ class CupTDSDetailController: UIViewController {
     }
     var rankValue = 0 //排名
     var beatValue = 0 //打败了百分之多少的用户
-    
+    var tdsValue=Int32(0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let device = LoginManager.instance.currentDevice as! Cup
-        let tds=device.sensor.tds==65535 ? 0 :device.sensor.tds
-        tdsValueLabel.text = tds==0 ? "-":"\(tds)"
+        tdsValue=device.sensor.tds==65535 ? 0 :device.sensor.tds
+        tdsValueLabel.text = tdsValue==0 ? "-":"\(tdsValue)"
         switch true
         {
-        case tds>0&&tds<=tds_good:
+        case tdsValue>0&&tdsValue<=tds_good:
             tdsStateImg.image=UIImage(named: "waterState1")
             tdsStateLabel.text=loadLanguage("完美水质，体内每个细胞都说好！")
-        case tds_good<tds&&tds<=tds_bad:
+        case tds_good<tdsValue&&tdsValue<=tds_bad:
             tdsStateImg.image=UIImage(named: "waterState2")
             tdsStateLabel.text=loadLanguage("饮水安全需谨慎，你值得拥有更好的。")
-        case tds_bad<tds:
+        case tds_bad<tdsValue:
             tdsStateImg.image=UIImage(named: "waterState3")
             tdsStateLabel.text=loadLanguage("当前杂质较多，请放心给对手饮用")
         default:
@@ -52,7 +54,7 @@ class CupTDSDetailController: UIViewController {
         }
         //TDS排名
         
-        User.TDSSensor(deviceID: device.identifier, type: device.type, tds: Int(tds), beforetds: 0, success: { (rank, total) in
+        User.TDSSensor(deviceID: device.identifier, type: device.type, tds: Int(tdsValue), beforetds: 0, success: { (rank, total) in
             self.rankValue = rank
             self.beatValue = Int(100*CGFloat(total-rank)/CGFloat(total))
             self.rankLabel.text="\(rank)"

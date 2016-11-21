@@ -17,6 +17,18 @@ class WaterPurfierTDSController: UIViewController {
     @IBOutlet var tdsStateImg: UIImageView!
     @IBOutlet var tdsStateLabel: UILabel!
     @IBAction func shareClick(_ sender: AnyObject) {
+        let device=LoginManager.instance.currentDevice as! WaterPurifier
+        let tdsValue = min(device.sensor.tds1,device.sensor.tds2)
+        var rankValue=0
+        var beatValue=0
+        User.TDSSensor(deviceID: device.identifier, type: device.type, tds: Int(tdsValue), beforetds: 0, success: { (rank, total) in
+            rankValue = rank
+            beatValue = Int(100*CGFloat(total-rank)/CGFloat(total))
+            }, failure: { (error) in
+                
+        })
+        let img=OznerShareManager.getshareImage(rankValue, type: 1, value: Int(tdsValue), beat: beatValue, maxWater: 0)
+        OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title: "浩泽净水家", shareImg: img)
     }
     @IBAction func ConsultingClick(_ sender: AnyObject) {
         LoginManager.instance.setTabbarSelected(index: 2)
@@ -46,6 +58,7 @@ class WaterPurfierTDSController: UIViewController {
         LoginManager.instance.setTabbarSelected(index: 1)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let device = LoginManager.instance.currentDevice as! WaterPurifier
@@ -68,9 +81,6 @@ class WaterPurfierTDSController: UIViewController {
         })
     }
 
-    func fetchData() {
-        
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -13,7 +13,7 @@ var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
 }
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
 
     var window: UIWindow? = {
         return UIWindow(frame: UIScreen.main.bounds)
@@ -32,14 +32,72 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.registerUserNotificationSettings(userSetting)
         BPush.disableLbs()//禁用地理位置
         BPush.registerChannel(launchOptions, apiKey: "7nGBGzSxkIgjpEHHusrgdobS", pushMode: BPushMode.production, withFirstAction: nil, withSecondAction: nil, withCategory: nil, useBehaviorTextInput: false, isDebug: false)
-        //微信
+        //注册微信//
+        WXApi.registerApp("wx45a8cc642a2295b5", withDescription: "haoze")
+        
         window?.rootViewController = LoginManager.instance.loginViewController
         window!.makeKeyAndVisible()
         return true
     }
+    //微信 delegate---->
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        return  WXApi.handleOpen(url, delegate: self)
+    }
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        let isSuc = WXApi.handleOpen(url, delegate: self)
+        print("url \(url) isSuc \(isSuc == true ? 1 : 0)")
+        return  isSuc
+    }
+    
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         application.registerForRemoteNotifications()
     }
+    
+    func onReq(_ req: BaseReq!) {
+        
+        if(req.isKind(of: GetMessageFromWXReq.classForCoder()))
+        {
+            // 微信请求App提供内容， 需要app提供内容后使用sendRsp返回
+            let strTitle = loadLanguage("微信请求App提供内容")
+            let strMsg = loadLanguage("微信请求App提供内容，App要调用sendResp:GetMessageFromWXResp返回给微信")
+            
+            let alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "ok")
+            
+            alert.show()
+            
+        }
+        else if(req.isKind(of: ShowMessageFromWXReq.classForCoder()))
+        {
+            let temp = req as! ShowMessageFromWXReq
+            let msg:WXMediaMessage = temp.message
+            
+            //显示微信传过来的内容
+            let obj = msg.mediaObject as! WXAppExtendObject
+            
+            let strTitle = loadLanguage("微信请求App显示内容")
+            let strMsg = "\(loadLanguage("标题："))\(msg.title) \n \(loadLanguage("内容: "))：\(msg.title) \n \(loadLanguage("附带信息："))\(msg.description)\n \(loadLanguage("缩略图:"))\(msg.thumbData.count) bytes\n\n\(obj)"
+            
+            let alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "ok")
+            
+            alert.show()
+            
+        }
+        else if(req.isKind(of: LaunchFromWXReq.classForCoder()))
+        {
+            //从微信启动App
+            let strTitle = loadLanguage("从微信启动")
+            let strMsg = loadLanguage("这是从微信启动的消息")
+            
+            let alert = UIAlertView(title: strTitle, message: strMsg, delegate: self, cancelButtonTitle: "ok")
+            
+            alert.show()
+        }
+        
+    }
+    
+    //微信 delegate<--------
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         BPush.registerDeviceToken(deviceToken)// 必须
         BPush.bindChannel(completeHandler: { (result, error) -> Void in
