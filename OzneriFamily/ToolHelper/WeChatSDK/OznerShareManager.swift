@@ -73,9 +73,9 @@ class OznerShareManager: NSObject {
     
     class func getshareImage(_ rank:Int,type:Int,value:Int,beat:Int,maxWater:Int)->UIImage
     {
-        let shareView1=Bundle.main.loadNibNamed("ShareImageView", owner: nil, options: nil)?.last as! ShareImageView
+        let shareView=Bundle.main.loadNibNamed("ShareImageView", owner: nil, options: nil)?.last as! ShareImageView
+
         
-        let shareView=Bundle.main.loadNibNamed("OznerShareImageView", owner: nil, options: nil)?.last as! OznerShareImageView
         shareView.share_rank.text="\(loadLanguage("排名"))\(rank==0 ? 1:rank)"
         shareView.share_title.text=type==0 ? loadLanguage("当前饮水量为"):loadLanguage("当前水质纯净值为")
         shareView.share_value.text="\(value)"+(type==0 ? "ml":"")
@@ -83,17 +83,14 @@ class OznerShareManager: NSObject {
         if type==0&&maxWater>0
         {
             let water=Double(value)/Double(maxWater)>1 ? 1:Double(value)/Double(maxWater)
-            switch water
+            switch true
             {
-            case 0..<0.3333:
-                shareView.share_stateImage.image=UIImage(named: "share_Water1")
-                break
-            case 0.3333..<0.6666:
+            case water<0.3333:
+                shareView.share_stateImage.image=UIImage(named: "share_Water1")                
+            case 0.3333<=water&&water<0.6666:
                 shareView.share_stateImage.image=UIImage(named: "share_Water2")
-                break
-            case 0.6666...1:
+            case 0.6666<=water:
                 shareView.share_stateImage.image=UIImage(named: "share_Water3")
-                break
             default:
                 break
             }
@@ -129,9 +126,9 @@ class OznerShareManager: NSObject {
             shareView.share_OwnerImage.image=UIImage(named: "shareOwnerimg")
             shareView.share_OwnerName.text = "浩小泽"
         }
-        
-        UIGraphicsBeginImageContext(shareView1.bounds.size)
-        shareView1.layer.render(in: UIGraphicsGetCurrentContext()!)
+  
+        UIGraphicsBeginImageContext(shareView.bounds.size)
+        shareView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let viewImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return viewImage!

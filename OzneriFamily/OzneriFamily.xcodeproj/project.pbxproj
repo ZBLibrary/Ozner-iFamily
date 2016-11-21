@@ -218,8 +218,6 @@
 		8D7837051DE28DF200A3D9E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7837041DE28DF200A3D9E3 /* Security.framework */; };
 		8D7837071DE28E1500A3D9E3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7837061DE28E1500A3D9E3 /* CFNetwork.framework */; };
 		8D7837091DE292B000A3D9E3 /* OznerShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7837081DE292B000A3D9E3 /* OznerShareManager.swift */; };
-		8D78370C1DE2985A00A3D9E3 /* OznerShareImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D78370A1DE2985A00A3D9E3 /* OznerShareImageView.swift */; };
-		8D78370D1DE2985A00A3D9E3 /* OznerShareImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D78370B1DE2985A00A3D9E3 /* OznerShareImageView.xib */; };
 		8D7837121DE2CC2300A3D9E3 /* ShareImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D7837111DE2CC2300A3D9E3 /* ShareImageView.xib */; };
 		8D7837141DE2CEB600A3D9E3 /* ShareImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7837131DE2CEB600A3D9E3 /* ShareImageView.swift */; };
 		8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F64F1D94F6850068A40A /* LanguageHelper.swift */; };
@@ -687,8 +685,6 @@
 		8D7837041DE28DF200A3D9E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8D7837061DE28E1500A3D9E3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8D7837081DE292B000A3D9E3 /* OznerShareManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerShareManager.swift; sourceTree = "<group>"; };
-		8D78370A1DE2985A00A3D9E3 /* OznerShareImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerShareImageView.swift; sourceTree = "<group>"; };
-		8D78370B1DE2985A00A3D9E3 /* OznerShareImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OznerShareImageView.xib; sourceTree = "<group>"; };
 		8D7837111DE2CC2300A3D9E3 /* ShareImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareImageView.xib; sourceTree = "<group>"; };
 		8D7837131DE2CEB600A3D9E3 /* ShareImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareImageView.swift; sourceTree = "<group>"; };
 		8D92F64F1D94F6850068A40A /* LanguageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
@@ -1488,8 +1484,6 @@
 		8D7836FD1DE28B4600A3D9E3 /* WeChatSDK */ = {
 			isa = PBXGroup;
 			children = (
-				8D78370A1DE2985A00A3D9E3 /* OznerShareImageView.swift */,
-				8D78370B1DE2985A00A3D9E3 /* OznerShareImageView.xib */,
 				8D7836FE1DE28B5200A3D9E3 /* libWeChatSDK.a */,
 				8D7836FF1DE28B5200A3D9E3 /* WXApi.h */,
 				8D7837001DE28B5200A3D9E3 /* WXApiObject.h */,
@@ -2215,7 +2209,6 @@
 				8D0F67C21DD4424F00D35CD1 /* AirOutdoorView.xib in Resources */,
 				8DC02E941DB5CEFE007F57DB /* WaterReplenishMainView.xib in Resources */,
 				B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */,
-				8D78370D1DE2985A00A3D9E3 /* OznerShareImageView.xib in Resources */,
 				8DC02E7F1DB5CE91007F57DB /* TapMainView.xib in Resources */,
 				8D0D68C61DDD99540097038E /* ZHCMessagesViewController.xib in Resources */,
 				8D0D683F1DDD8A3B0097038E /* RNEmailRegisterViewController.xib in Resources */,
@@ -2460,7 +2453,6 @@
 				8D0D68C11DDD99540097038E /* NSString+ZHCMessages.m in Sources */,
 				8DAE80961D9BC51D00A9946F /* User+CoreDataProperties.swift in Sources */,
 				8D0D68D61DDD99540097038E /* ZHCPhotoMediaItem.m in Sources */,
-				8D78370C1DE2985A00A3D9E3 /* OznerShareImageView.swift in Sources */,
 				8D113DC31DB710C0008CE2C6 /* CupTDSDetailController.swift in Sources */,
 				8D0D68C21DDD99540097038E /* UIColor+ZHCMessages.m in Sources */,
 				8D1C670A1DAA4052008C639F /* SelectDeviceCell.swift in Sources */,
