@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
+import IQKeyboardManager
 class CupSettingController: DeviceSettingController {
 
     @IBAction func backClick(_ sender: AnyObject) {
@@ -91,7 +91,7 @@ class CupSettingController: DeviceSettingController {
             [todayStateButton1,todayStateButton2,todayStateButton3,todayStateButton4][i]?.setImage(UIImage(named: imgName!), for: .normal)
             [todayStateLabel1,todayStateLabel2,todayStateLabel3,todayStateLabel4][i]?.textColor = buttonStateIsOn ? selectcolor:normalcolor
         }
-        weightTF.addDoneOnKeyboardWithTarget(self, action:  #selector(weightTFDone))
+        weightTF.addDoneOnKeyboard(withTarget: self, action:  #selector(weightTFDone))
         
         let starTime=Int((self.deviceSetting as! CupSettings!).remindStart)
         let endTime=Int((self.deviceSetting as! CupSettings!).remindEnd)

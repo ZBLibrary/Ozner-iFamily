@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
+import IQKeyboardManager
 
 class RNModifyPasswordViewController: UIViewController {
     
@@ -92,7 +92,7 @@ class RNModifyPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     returnkeyHandler = IQKeyboardReturnKeyHandler(controller: self)
+//     returnkeyHandler = IQKeyboardReturnKeyHandler(controller: self)
 //        addDelegateForTextField()
 //        keyBoardObserve()
 //        addTap()

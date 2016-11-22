@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
+import IQKeyboardManager
 
 class RNEmailLoginViewController: UIViewController {
     
@@ -78,7 +78,7 @@ class RNEmailLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        returnkeyHandler =  IQKeyboardReturnKeyHandler(controller: self)
+//        returnkeyHandler =  IQKeyboardReturnKeyHandler(controller: self)
 
         phoneLoginButton.isHidden = true
 //        addDelegateForTextField()

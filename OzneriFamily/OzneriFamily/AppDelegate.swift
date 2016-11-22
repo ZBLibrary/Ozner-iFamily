@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
+import IQKeyboardManager
 
 var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //开启IQKEyBoard
-        IQKeyboardManager.sharedManager().enable = true
-        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared().isEnabled = true
+        IQKeyboardManager.shared().shouldResignOnTouchOutside = true
         //百度推送
         var myTypes=UIUserNotificationType()
         myTypes.insert(UIUserNotificationType.sound)

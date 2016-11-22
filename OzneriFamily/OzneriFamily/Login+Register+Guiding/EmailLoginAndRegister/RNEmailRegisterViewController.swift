@@ -12,7 +12,7 @@
  */
 
 import UIKit
-import IQKeyboardManagerSwift
+import IQKeyboardManager
 
 class RNEmailRegisterViewController: UIViewController {
     
@@ -95,7 +95,7 @@ class RNEmailRegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     returnkeyHandler =  IQKeyboardReturnKeyHandler(controller: self)
+//     returnkeyHandler =  IQKeyboardReturnKeyHandler(controller: self)
 //        self.navigationController?.interactivePopGestureRecognizer?.enabled = true
 //        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         

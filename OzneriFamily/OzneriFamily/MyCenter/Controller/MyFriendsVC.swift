@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
+import IQKeyboardManager
 import SVProgressHUD
 
 class FriendModel: NSObject {
