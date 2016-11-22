@@ -73,9 +73,9 @@ class OznerShareManager: NSObject {
     
     class func getshareImage(_ rank:Int,type:Int,value:Int,beat:Int,maxWater:Int)->UIImage
     {
-        let shareView=Bundle.main.loadNibNamed("ShareImageView", owner: nil, options: nil)?.last as! ShareImageView
+        let shareView = GYShareImage(frame: CGRect(x: 0, y: 0, width: width_screen, height: height_screen))
 
-        
+        shareView.backgroundColor = UIColor.white
         shareView.share_rank.text="\(loadLanguage("排名"))\(rank==0 ? 1:rank)"
         shareView.share_title.text=type==0 ? loadLanguage("当前饮水量为"):loadLanguage("当前水质纯净值为")
         shareView.share_value.text="\(value)"+(type==0 ? "ml":"")
