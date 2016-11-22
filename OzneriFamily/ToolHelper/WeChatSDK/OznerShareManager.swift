@@ -34,7 +34,7 @@ class OznerShareManager: NSObject {
             _=alertView.showTitle("", subTitle: "您还没有安装手机微信", duration: 2.0, completeText: "确定", style: SCLAlertViewStyle.notice)
         }
     }
-    class func ShareLinkToWeChat(sence:WXScene,url:String,title:String,titleImg:UIImage,shareImg:UIImage,LinkDes:String){
+    class func ShareLinkToWeChat(sence:WXScene,url:String,title:String,titleImg:UIImage,LinkDes:String){
         if WXApi.isWXAppInstalled()
         {
             //创建发送对象实例

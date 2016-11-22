@@ -18,7 +18,12 @@ class MyCenterController: UIViewController {
     var dataArr: NSMutableArray?
     
     var webViewType:String?
-    
+    lazy var shareView:ShareMoneyToWeChat = {
+        let tmpView=Bundle.main.loadNibNamed("ShareMoneyToWeChat", owner: self, options: nil)?.last as! ShareMoneyToWeChat
+        tmpView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
+        tmpView.backgroundColor=UIColor.black.withAlphaComponent(0.3)
+        return tmpView
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -199,12 +204,15 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
         
         
         switch webViewType! {
-        case loadLanguage("我的订单"),loadLanguage("领红包"),loadLanguage("我的券"),loadLanguage("查看水质检测报告"):
+        case loadLanguage("我的订单"),loadLanguage("我的券"),loadLanguage("查看水质检测报告"):
             self.performSegue(withIdentifier: "MyInfoSegueId", sender: nil)
-            break
+            
+        case loadLanguage("领红包"):
+            appDelegate.window?.addSubview(shareView)
+           
         case loadLanguage("设置"):
             self.performSegue(withIdentifier: "settingSegueID", sender: nil)
-            break
+            
         case  loadLanguage("我要提意见"):
             self.performSegue(withIdentifier: "sugesstsegueID", sender: nil)
         case loadLanguage("我的好友"):
