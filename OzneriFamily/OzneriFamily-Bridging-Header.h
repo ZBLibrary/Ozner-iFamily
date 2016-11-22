@@ -37,5 +37,5 @@
 #import "YJHColorPickerHSWheel2.h"
 #import "YJHColorPickerHSWheel.h"
 
-
+#import "WXApi.h"
 #import <CommonCrypto/CommonDigest.h>

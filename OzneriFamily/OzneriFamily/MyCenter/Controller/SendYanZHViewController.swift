@@ -12,7 +12,7 @@ class SendYanZHViewController: UIViewController,UITextFieldDelegate {
 
     var sendphone=""
     @IBAction func CancelClick(sender: AnyObject) {
-        navigationController?.popViewController(animated: true)
+        _=navigationController?.popViewController(animated: true)
     }
     @IBAction func SendClick(sender: AnyObject) {
         SendMess(messstring: MessTF.text!)
@@ -78,7 +78,7 @@ class SendYanZHViewController: UIViewController,UITextFieldDelegate {
                 
                 let alert = SCLAlertView()
                 _ = alert.addButton(loadLanguage("确定"), action: {
-                   self.navigationController?.popViewController(animated: true)
+                   _=self.navigationController?.popViewController(animated: true)
                 })
                 _ = alert.showSuccess(loadLanguage( "温馨提示"), subTitle:loadLanguage("发送好友请求成功"))
                 
@@ -88,7 +88,7 @@ class SendYanZHViewController: UIViewController,UITextFieldDelegate {
                 SVProgressHUD.dismiss()
                 let alert = SCLAlertView()
                 _ = alert.addButton(loadLanguage("确定"), action: {
-                    self.navigationController?.popViewController(animated: true)
+                    _=self.navigationController?.popViewController(animated: true)
                 })
                 _ = alert.showSuccess(loadLanguage( "温馨提示"), subTitle:loadLanguage("请求失败"))
                 

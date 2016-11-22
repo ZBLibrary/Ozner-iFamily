@@ -213,6 +213,13 @@
 		8D5ABB241D9E4A1C008524A7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB231D9E4A1C008524A7 /* SystemConfiguration.framework */; };
 		8D5ABB261D9E4A23008524A7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB251D9E4A23008524A7 /* CoreLocation.framework */; };
 		8D5ABB281D9E4A48008524A7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB271D9E4A48008524A7 /* AdSupport.framework */; };
+		8D7837011DE28B5200A3D9E3 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7836FE1DE28B5200A3D9E3 /* libWeChatSDK.a */; };
+		8D7837031DE28DD900A3D9E3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7837021DE28DD900A3D9E3 /* libc++.tbd */; };
+		8D7837051DE28DF200A3D9E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7837041DE28DF200A3D9E3 /* Security.framework */; };
+		8D7837071DE28E1500A3D9E3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7837061DE28E1500A3D9E3 /* CFNetwork.framework */; };
+		8D7837091DE292B000A3D9E3 /* OznerShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7837081DE292B000A3D9E3 /* OznerShareManager.swift */; };
+		8D7837121DE2CC2300A3D9E3 /* ShareImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D7837111DE2CC2300A3D9E3 /* ShareImageView.xib */; };
+		8D7837141DE2CEB600A3D9E3 /* ShareImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7837131DE2CEB600A3D9E3 /* ShareImageView.swift */; };
 		8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F64F1D94F6850068A40A /* LanguageHelper.swift */; };
 		8D92F6581D94FAB00068A40A /* MyDevicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F6571D94FAB00068A40A /* MyDevicesController.swift */; };
 		8D92F65A1D94FAC70068A40A /* MyDevices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F6591D94FAC70068A40A /* MyDevices.storyboard */; };
@@ -671,6 +678,15 @@
 		8D5ABB251D9E4A23008524A7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8D5ABB271D9E4A48008524A7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8D5ABB291D9E632E008524A7 /* OzneriFamily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OzneriFamily.entitlements; sourceTree = "<group>"; };
+		8D7836FE1DE28B5200A3D9E3 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		8D7836FF1DE28B5200A3D9E3 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		8D7837001DE28B5200A3D9E3 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		8D7837021DE28DD900A3D9E3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		8D7837041DE28DF200A3D9E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8D7837061DE28E1500A3D9E3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8D7837081DE292B000A3D9E3 /* OznerShareManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerShareManager.swift; sourceTree = "<group>"; };
+		8D7837111DE2CC2300A3D9E3 /* ShareImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareImageView.xib; sourceTree = "<group>"; };
+		8D7837131DE2CEB600A3D9E3 /* ShareImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareImageView.swift; sourceTree = "<group>"; };
 		8D92F64F1D94F6850068A40A /* LanguageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
 		8D92F6571D94FAB00068A40A /* MyDevicesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDevicesController.swift; sourceTree = "<group>"; };
 		8D92F6591D94FAC70068A40A /* MyDevices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyDevices.storyboard; sourceTree = "<group>"; };
@@ -893,15 +909,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D7837071DE28E1500A3D9E3 /* CFNetwork.framework in Frameworks */,
+				8D5ABB201D9E4A02008524A7 /* CoreTelephony.framework in Frameworks */,
+				8D7837051DE28DF200A3D9E3 /* Security.framework in Frameworks */,
+				8D7837031DE28DD900A3D9E3 /* libc++.tbd in Frameworks */,
 				8DEB84AF1DA897A00088794A /* libxml2.tbd in Frameworks */,
 				8DEB84AD1DA897930088794A /* libsqlite3.0.tbd in Frameworks */,
+				8D7837011DE28B5200A3D9E3 /* libWeChatSDK.a in Frameworks */,
 				8D5ABB281D9E4A48008524A7 /* AdSupport.framework in Frameworks */,
 				B7567CA71DB0D91F00AA7C91 /* SnapKit.framework in Frameworks */,
 				8D5ABB261D9E4A23008524A7 /* CoreLocation.framework in Frameworks */,
 				8D5ABB241D9E4A1C008524A7 /* SystemConfiguration.framework in Frameworks */,
 				B7EF061C1DB8A357008BE7D4 /* WebImage.framework in Frameworks */,
 				8D5ABB221D9E4A13008524A7 /* libz.tbd in Frameworks */,
-				8D5ABB201D9E4A02008524A7 /* CoreTelephony.framework in Frameworks */,
 				8D5ABB1E1D9E49F4008524A7 /* Foundation.framework in Frameworks */,
 				7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */,
 				8D5ABB1C1D9E44B8008524A7 /* libBPush.a in Frameworks */,
@@ -940,6 +960,9 @@
 		2DE76852156050BD045D7EB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D7837061DE28E1500A3D9E3 /* CFNetwork.framework */,
+				8D7837041DE28DF200A3D9E3 /* Security.framework */,
+				8D7837021DE28DD900A3D9E3 /* libc++.tbd */,
 				8DEB84AE1DA897A00088794A /* libxml2.tbd */,
 				8DEB84AC1DA897930088794A /* libsqlite3.0.tbd */,
 				8D5ABB271D9E4A48008524A7 /* AdSupport.framework */,
@@ -1408,6 +1431,7 @@
 		8D1EF3BB1D93DFE30009D034 /* ToolHelper */ = {
 			isa = PBXGroup;
 			children = (
+				8D7836FD1DE28B4600A3D9E3 /* WeChatSDK */,
 				8D129A171DD4B5080022F7EA /* SwiftScan */,
 				8D0F63CB1DB09DE600FA38BF /* RDVTabBarController */,
 				8D1C66111DAA3B62008C639F /* OznerLibrary */,
@@ -1455,6 +1479,19 @@
 				8D5ABB1B1D9E44B8008524A7 /* BPush.h */,
 			);
 			path = BaiDuPush;
+			sourceTree = "<group>";
+		};
+		8D7836FD1DE28B4600A3D9E3 /* WeChatSDK */ = {
+			isa = PBXGroup;
+			children = (
+				8D7836FE1DE28B5200A3D9E3 /* libWeChatSDK.a */,
+				8D7836FF1DE28B5200A3D9E3 /* WXApi.h */,
+				8D7837001DE28B5200A3D9E3 /* WXApiObject.h */,
+				8D7837081DE292B000A3D9E3 /* OznerShareManager.swift */,
+				8D7837111DE2CC2300A3D9E3 /* ShareImageView.xib */,
+				8D7837131DE2CEB600A3D9E3 /* ShareImageView.swift */,
+			);
+			path = WeChatSDK;
 			sourceTree = "<group>";
 		};
 		8D7FEF6A1DC5FC47005E9034 /* EmailLoginAndRegister */ = {
@@ -2152,6 +2189,7 @@
 				8DC02E771DB5CE91007F57DB /* Air_WifiMainView.xib in Resources */,
 				8DC02E841DB5CE91007F57DB /* WaterPurifierMainView.xib in Resources */,
 				8D0D68EB1DDD99540097038E /* data.json in Resources */,
+				8D7837121DE2CC2300A3D9E3 /* ShareImageView.xib in Resources */,
 				8D0D68411DDD8A3B0097038E /* RNModifyPasswordViewController.xib in Resources */,
 				8DA417901DDC8E2B00EC7381 /* CupTDSCircleView.xib in Resources */,
 				8D0D69401DDD99A10097038E /* MyFriendCell.xib in Resources */,
@@ -2400,6 +2438,7 @@
 				8D0D683E1DDD8A3B0097038E /* RNEmailRegisterViewController.swift in Sources */,
 				8D0D693D1DDD99A10097038E /* My_Rank_TDSCell.swift in Sources */,
 				8DC02F871DB5F03B007F57DB /* Tap.m in Sources */,
+				8D7837141DE2CEB600A3D9E3 /* ShareImageView.swift in Sources */,
 				8DC02F981DB5F03B007F57DB /* memory_mosq.c in Sources */,
 				8D14A9291DD967AA00920AE9 /* RO_WaterInfo.m in Sources */,
 				8D1239A11DCB1681008D2974 /* OznerLibrary+Expand.swift in Sources */,
@@ -2518,6 +2557,7 @@
 				8DC02FB81DB61F87007F57DB /* CupSettingController.swift in Sources */,
 				8DC02E761DB5CE91007F57DB /* Air_WifiMainView.swift in Sources */,
 				8DC02F641DB5F03B007F57DB /* AirPurifierManager.m in Sources */,
+				8D7837091DE292B000A3D9E3 /* OznerShareManager.swift in Sources */,
 				8D109F221DAE1E6700458171 /* UIColor+Expand.swift in Sources */,
 				8D0D69201DDD99A00097038E /* MyCenterController.swift in Sources */,
 				8DC02F7D1DB5F03B007F57DB /* CupSettings.m in Sources */,
@@ -2697,6 +2737,7 @@
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = UZZG6NM74T;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2710,6 +2751,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ToolHelper/BaiDuPush",
+					"$(PROJECT_DIR)/ToolHelper/WeChatSDK",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"DateTools\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2730,6 +2779,7 @@
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = UZZG6NM74T;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2743,6 +2793,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ToolHelper/BaiDuPush",
+					"$(PROJECT_DIR)/ToolHelper/WeChatSDK",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"DateTools\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
