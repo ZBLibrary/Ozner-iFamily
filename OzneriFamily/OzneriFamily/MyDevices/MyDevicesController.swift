@@ -104,7 +104,7 @@ class MyDevicesController: UIViewController {
         case "showBuyLvXin"://AboutDeviceController
             let aboutVC = segue.destination as! AboutDeviceController
             aboutVC.title=(sender as! NSDictionary).object(forKey: "title") as! String?
-            aboutVC.setLoadContent(content: ((sender as! NSDictionary).object(forKey: "url") as! String?)!, isUrl: true)
+            aboutVC.setLoadContent(content: ((sender as! NSDictionary).object(forKey: "url") as! String?)!, Type: 0)
         case "showCupSetting","showTapSetting":
             break
         case "showSeeSkin"://补水仪

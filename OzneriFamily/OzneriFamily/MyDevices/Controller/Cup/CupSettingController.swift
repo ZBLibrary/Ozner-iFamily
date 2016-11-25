@@ -138,7 +138,7 @@ class CupSettingController: DeviceSettingController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="showAboutDevice" {
             let VC=segue.destination as!  AboutDeviceController
-            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutCup"]?.stringValue)!, isUrl: true)
+            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutCup"]?.stringValue)!, Type: 0)
         }
         if segue.identifier=="showCupSetDrinkTime" {
             let VC=segue.destination as!  CupSetDrinkTimeController

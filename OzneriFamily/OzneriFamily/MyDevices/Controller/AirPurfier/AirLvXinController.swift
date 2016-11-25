@@ -118,8 +118,22 @@ class AirLvXinController: UIViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "showBuyAirLvXin" {
             let vc=segue.destination as! AboutDeviceController
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail64_1"))!, isUrl: true)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail64_1"))!, Type: 0)
             vc.title="购买空净滤芯"
+        }
+        if segue.identifier=="showWhatIsPM25"
+        {
+            let vc=segue.destination as! AboutDeviceController
+            
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是PM25"]?.stringValue)!, Type: 2)
+            vc.title="什么是PM25"
+        }
+        if segue.identifier=="showWhatIsVOC"
+        {
+            let vc=segue.destination as! AboutDeviceController
+            
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是VOC"]?.stringValue)!, Type: 2)
+            vc.title="什么是VOC"
         }
     }
     

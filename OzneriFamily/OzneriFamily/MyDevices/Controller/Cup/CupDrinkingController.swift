@@ -129,7 +129,7 @@ class CupDrinkingController: UIViewController {
         {
             let vc=segue.destination as! AboutDeviceController
             
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["jxszd"]?.stringValue)!, isUrl: true)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["jxszd"]?.stringValue)!, Type: 0)
             vc.title="健康水知道"
         }
         // Get the new view controller using segue.destinationViewController.

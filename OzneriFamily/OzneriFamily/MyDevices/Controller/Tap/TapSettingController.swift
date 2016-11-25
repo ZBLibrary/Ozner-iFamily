@@ -78,7 +78,7 @@ class TapSettingController: DeviceSettingController {
         // Pass the selected object to the new view controller.
         if segue.identifier=="showAboutDevice" {
             let VC=segue.destination as!  AboutDeviceController
-            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutTap"]?.stringValue)!, isUrl: true)
+            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutTap"]?.stringValue)!, Type: 0)
         }
     }
     

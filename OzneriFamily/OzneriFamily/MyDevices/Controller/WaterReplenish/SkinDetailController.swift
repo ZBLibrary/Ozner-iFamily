@@ -151,7 +151,21 @@ class SkinDetailController: UIViewController {
         if segue.identifier=="showBuyWater" {
             let vc = segue.destination as! AboutDeviceController
             vc.title="购买精华水"
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["buyEssenceWater"]?.stringValue)!, isUrl: true)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["buyEssenceWater"]?.stringValue)!, Type: 0)
+        }
+        if segue.identifier=="showWhatIsWater"
+        {
+            let vc=segue.destination as! AboutDeviceController
+            
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是水分"]?.stringValue)!, Type: 2)
+            vc.title="什么是水分"
+        }
+        if segue.identifier=="showWhatIsOil"
+        {
+            let vc=segue.destination as! AboutDeviceController
+            
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是油分"]?.stringValue)!, Type: 2)
+            vc.title="什么是油分"
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

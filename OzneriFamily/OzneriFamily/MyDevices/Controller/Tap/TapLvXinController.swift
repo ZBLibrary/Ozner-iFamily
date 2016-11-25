@@ -106,19 +106,19 @@ class TapLvXinController: UIViewController {
         switch (segue.identifier)! {
         case "showWaterPurfier":
             let vc=segue.destination as! AboutDeviceController
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail43"))!, isUrl: true)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail43"))!, Type: 0)
             vc.title="净水器"
         case "showTap":
             let vc=segue.destination as! AboutDeviceController
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail36"))!, isUrl: true)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail36"))!, Type: 0)
             vc.title="智能水探头"
         case "showCup":
             let vc=segue.destination as! AboutDeviceController
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail7"))!, isUrl: true)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail7"))!, Type: 0)
             vc.title="智能水杯"
         case "showBuyLvXin":
             let vc=segue.destination as! AboutDeviceController
-            vc.setLoadContent(content: buyWaterLvXinUrl, isUrl: true)
+            vc.setLoadContent(content: buyWaterLvXinUrl, Type: 0)
             vc.title="购买滤芯"
             
         default:

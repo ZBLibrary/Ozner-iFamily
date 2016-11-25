@@ -67,7 +67,7 @@ class SkinQueryController: UIViewController {
             let vc = segue.destination as! AboutDeviceController
             vc.title="购买精华水"
             
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["buyEssenceWater"]?.stringValue)!, isUrl: true)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["buyEssenceWater"]?.stringValue)!, Type: 0)
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

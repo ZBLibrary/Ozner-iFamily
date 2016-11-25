@@ -11,19 +11,26 @@ import UIKit
 class AboutDeviceController: UIViewController {
 
     @IBOutlet var webView: UIWebView!
-    private var IsUrl:Bool=true//url代表网址，false代表图片
+    private var type=0//0代表网址，1代表图片,2代表本地网页
     private var Content:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if IsUrl {
+        switch type {
+        case 0:
             webView.loadRequest(URLRequest(url: URL(string: Content)!))
-        }else{
+        case 1:
             webView.loadHTMLString(htmlForJPGImage(imageName: Content), baseURL: nil)
+        case 2:
+            webView.loadHTMLString(Content, baseURL: nil)
+        default:
+            break
         }
-        
+      
     }
-    func setLoadContent(content:String,isUrl:Bool){
-        IsUrl=isUrl
+    ////Type 0代表网址，1代表图片,2代表本地网页
+    func setLoadContent(content:String,Type:Int){
+        type=Type
         Content=content
     }
     override func didReceiveMemoryWarning() {

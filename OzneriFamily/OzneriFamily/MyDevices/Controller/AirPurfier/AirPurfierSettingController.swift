@@ -42,12 +42,12 @@ class AirPurfierSettingController: DeviceSettingController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="showAboutDevice" {
             let VC=segue.destination as!  AboutDeviceController
-            VC.setLoadContent(content: LoginManager.instance.currentDevice.type==OznerDeviceType.Air_Blue.rawValue ? "airOperation_small":"airOperation_big", isUrl: false)
+            VC.setLoadContent(content: LoginManager.instance.currentDevice.type==OznerDeviceType.Air_Blue.rawValue ? "airOperation_small":"airOperation_big", Type: 1)
             VC.title="空气净化器使用说明"
         }
         if segue.identifier=="showCommonQestion" {
             let VC=segue.destination as!  AboutDeviceController
-            VC.setLoadContent(content: LoginManager.instance.currentDevice.type==OznerDeviceType.Air_Blue.rawValue ? "airProblem_small":"airProblem_big", isUrl: false)
+            VC.setLoadContent(content: LoginManager.instance.currentDevice.type==OznerDeviceType.Air_Blue.rawValue ? "airProblem_small":"airProblem_big", Type: 1)
             VC.title="常见问题"
             
         }

@@ -42,7 +42,7 @@ class WaterPurfierSettingController: DeviceSettingController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="showAboutDevice" {
             let VC=segue.destination as!  AboutDeviceController
-            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutWaterPurifer"]?.stringValue)!, isUrl: true)
+            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutWaterPurifer"]?.stringValue)!, Type: 0)
         }
     }
     

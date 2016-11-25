@@ -45,7 +45,7 @@ class TDSPanSettingController: DeviceSettingController {
         // Pass the selected object to the new view controller.
         if segue.identifier=="showAboutDevice" {
             let VC=segue.destination as!  AboutDeviceController
-            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutTDSPan"]?.stringValue)!, isUrl: true)
+            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutTDSPan"]?.stringValue)!, Type: 0)
         }
     }
     

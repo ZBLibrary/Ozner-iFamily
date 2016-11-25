@@ -100,8 +100,15 @@ class WaterPurfierTDSController: UIViewController {
         if segue.identifier=="showHealthyKnow" {
             let vc = segue.destination as! AboutDeviceController
             
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL!["jxszd"]?.stringValue)!, isUrl: true)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL!["jxszd"]?.stringValue)!, Type: 0)
             vc.title="健康水知道"
+        }
+        if segue.identifier=="showWhatIsTDS"
+        {
+            let vc=segue.destination as! AboutDeviceController
+            
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是TDS"]?.stringValue)!, Type: 2)
+            vc.title="什么是TDS"
         }
     }
     
