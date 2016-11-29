@@ -18,7 +18,7 @@ class LeftMenuDeviceCell: UITableViewCell {
             deviceName.text=device.settings.name
             deviceAdressLabel.text=device.settings.get(AttributeOfDevice, default: "我的家庭") as! String?
             switch OznerDeviceType.getType(type: (device?.type)!) {
-            case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish:
+            case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish,.Water_Bluetooth:
                 connectImg.image=UIImage(named: "device_icon_blutooth")//蓝牙图标
                 break
             default:
@@ -45,7 +45,8 @@ class LeftMenuDeviceCell: UITableViewCell {
         OznerDeviceType.Water_Wifi:["device_jin_shui_qi_normal","device_jin_shui_qi_select"],
         OznerDeviceType.Air_Blue:["device_jin_smallair_normal","device_jin_smallair_select"],
         OznerDeviceType.Air_Wifi:["device_jin_bigair_normal","device_jin_bigair_select"],
-        OznerDeviceType.WaterReplenish:["WaterReplenish2","WaterReplenish1_2"]
+        OznerDeviceType.WaterReplenish:["WaterReplenish2","WaterReplenish1_2"],
+        OznerDeviceType.Water_Bluetooth:["device_jin_shui_qi_normal","device_jin_shui_qi_select"]
     ]
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

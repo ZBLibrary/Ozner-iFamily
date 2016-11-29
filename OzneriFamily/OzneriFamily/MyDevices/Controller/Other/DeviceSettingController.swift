@@ -17,10 +17,10 @@ class DeviceSettingController: UIViewController {
         let device=LoginManager.instance.currentDevice
         
         
-        switch device.type {
-        case OznerDeviceType.Cup.rawValue:
+        switch OznerDeviceType.getType(type: device.type) {
+        case OznerDeviceType.Cup:
             deviceSetting=CupSettings(json: device.settings.toJSON())
-        case OznerDeviceType.Tap.rawValue,OznerDeviceType.TDSPan.rawValue:
+        case OznerDeviceType.Tap,OznerDeviceType.TDSPan:
             deviceSetting=TapSettings(json: device.settings.toJSON())
         default:
             deviceSetting=DeviceSetting(json: device.settings.toJSON())

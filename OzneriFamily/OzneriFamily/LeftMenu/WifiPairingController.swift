@@ -45,7 +45,7 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
     @IBOutlet var dotImg4: UIImageView!
     @IBOutlet var dotImg5: UIImageView!
     private var myTimer:Timer?
-    var currDeviceType:String!
+    var currDeviceType=OznerDeviceType.Water_Wifi
     var mxChipPair:MXChipPair!
     
     override func viewDidLoad() {

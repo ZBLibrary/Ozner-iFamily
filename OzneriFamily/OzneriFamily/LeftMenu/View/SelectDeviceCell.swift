@@ -11,24 +11,28 @@ import UIKit
 enum OznerDeviceType:String {
     case Cup="CP001"
     case Tap="SC001"
-    case TDSPan="SCP001"//有问题，待测
+    case TDSPan="SCP001"
     case Water_Wifi="MXCHIP_HAOZE_Water"
     case Air_Blue="FLT001"
     case Air_Wifi="FOG_HAOZE_AIR"
  
     case WaterReplenish="BSY001"
+    case Water_Bluetooth="Ozner RO"
     //case Water_Wifi_Ayla="Water_Wifi_Ayla"
     //case Air_Wifi_Ayla="Air_Wifi_Ayla"
+  
     func Name()->String {
-        return ["智能水杯","水探头","智能检测笔","净水器","台式空净","立式空净","补水仪"][self.hashValue]
+        return ["智能水杯","水探头","智能检测笔","净水器","台式空净","立式空净","补水仪","净水器"][self.hashValue]
     }
     func Name_En()->String {
-        return ["Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish"][self.hashValue]
+        return ["Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish","WaterPurfier"][self.hashValue]
     }
     static func getType(type:String) -> OznerDeviceType {
         switch type {
         case "580c2783":
            return OznerDeviceType.Air_Wifi
+        case "16a21bd6":
+            return OznerDeviceType.Water_Wifi
         default:
           return OznerDeviceType(rawValue: type)!
         }
@@ -46,7 +50,7 @@ class SelectDeviceCell: UITableViewCell {
     func setDeviceType(deviceType:OznerDeviceType)  {
         
         switch deviceType {
-        case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish://蓝牙
+        case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish,.Water_Bluetooth://蓝牙
             typeImg.image=UIImage(named: "select_device_3")
             typeState.text = "蓝牙连接"
             break
@@ -56,7 +60,7 @@ class SelectDeviceCell: UITableViewCell {
             break
         }
 
-        deviceImg.image=UIImage(named: ["select_device_0","select_device_1","TDSPAN_ICON","select_device_2","select_device_3zb","select_device_4zb","WaterReplenish1_1"][deviceType.hashValue])
+        deviceImg.image=UIImage(named: ["select_device_0","select_device_1","TDSPAN_ICON","select_device_2","select_device_3zb","select_device_4zb","WaterReplenish1_1","select_device_2"][deviceType.hashValue])
         deviceName.text=deviceType.Name()
     }
 

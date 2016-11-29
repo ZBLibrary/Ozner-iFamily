@@ -27,7 +27,7 @@
 #import "WaterReplenishmentMeterMgr.h"
 #import "MXChipPair.h"
 #import "Helper.h"
-
+#import "ROWaterPurufier.h"
 
 //tabbarController
 #import "RDVTabBarController.h"

@@ -10,6 +10,9 @@ import UIKit
 
 class AgreementController: UIViewController {
 
+    @IBAction func backClick(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBOutlet var webView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -56,6 +56,8 @@ class SetDeviceNameController: UIViewController {
             attri=[0:"客厅",1:"卧室"]
         case .WaterReplenish:
             attri=[0:"办公室",1:"家"]
+        case .Water_Bluetooth:
+            attri=[0:"家",1:"办公室"]
         }
         attributeName0.text=attri[0]
         attributeName1.text=attri[1]

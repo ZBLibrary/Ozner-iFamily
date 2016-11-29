@@ -185,6 +185,8 @@
 		8D1761E71DC833C8004A6B90 /* WaterReplenishSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1761E61DC833C8004A6B90 /* WaterReplenishSettingController.swift */; };
 		8D1761EA1DC833F6004A6B90 /* TDSPanSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1761E91DC833F6004A6B90 /* TDSPanSettingController.swift */; };
 		8D17D40B1DC2EA0A002B0F89 /* AgreementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D17D40A1DC2EA0A002B0F89 /* AgreementController.swift */; };
+		8D184E891DED717D0008047E /* RoWaterPuefierLvXinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D184E871DED717D0008047E /* RoWaterPuefierLvXinController.swift */; };
+		8D184E8A1DED717D0008047E /* RoWaterPuefierLvXinController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D184E881DED717D0008047E /* RoWaterPuefierLvXinController.xib */; };
 		8D1C66E01DAA3B62008C639F /* OznerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66651DAA3B62008C639F /* OznerManager.m */; };
 		8D1C670A1DAA4052008C639F /* SelectDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */; };
 		8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C67091DAA4052008C639F /* SelectDeviceCell.xib */; };
@@ -646,6 +648,8 @@
 		8D1761E61DC833C8004A6B90 /* WaterReplenishSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterReplenishSettingController.swift; sourceTree = "<group>"; };
 		8D1761E91DC833F6004A6B90 /* TDSPanSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDSPanSettingController.swift; sourceTree = "<group>"; };
 		8D17D40A1DC2EA0A002B0F89 /* AgreementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreementController.swift; sourceTree = "<group>"; };
+		8D184E871DED717D0008047E /* RoWaterPuefierLvXinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoWaterPuefierLvXinController.swift; sourceTree = "<group>"; };
+		8D184E881DED717D0008047E /* RoWaterPuefierLvXinController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoWaterPuefierLvXinController.xib; sourceTree = "<group>"; };
 		8D1C66641DAA3B62008C639F /* OznerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OznerManager.h; sourceTree = "<group>"; };
 		8D1C66651DAA3B62008C639F /* OznerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OznerManager.m; sourceTree = "<group>"; };
 		8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDeviceCell.swift; sourceTree = "<group>"; };
@@ -2023,6 +2027,8 @@
 			children = (
 				8D1761E21DC83387004A6B90 /* WaterPurfierSettingController.swift */,
 				8D429A0A1DCA0DDB0083011C /* WaterPurfierTDSController.swift */,
+				8D184E871DED717D0008047E /* RoWaterPuefierLvXinController.swift */,
+				8D184E881DED717D0008047E /* RoWaterPuefierLvXinController.xib */,
 			);
 			path = WaterPurfier;
 			sourceTree = "<group>";
@@ -2229,6 +2235,7 @@
 				8D11A1851DDB33DC002F14D3 /* CupTDSDetailLineView.xib in Resources */,
 				8D0D693A1DDD99A10097038E /* FriendSearch.xib in Resources */,
 				8D0D69361DDD99A10097038E /* FriendChatCell.xib in Resources */,
+				8D184E8A1DED717D0008047E /* RoWaterPuefierLvXinController.xib in Resources */,
 				8D0D69421DDD99A10097038E /* MyFriendCenterView.xib in Resources */,
 				8D0D69381DDD99A10097038E /* FriendRecentView.xib in Resources */,
 				8D12687F1DDEE7EB0042DE3E /* InfoPlist.strings in Resources */,
@@ -2395,6 +2402,7 @@
 				8D0D681D1DDD5AF50097038E /* CupTDSLineView.swift in Sources */,
 				8DC02F9E1DB5F03B007F57DB /* read_handle_shared.c in Sources */,
 				8DC02E7B1DB5CE91007F57DB /* LineChartView.swift in Sources */,
+				8D184E891DED717D0008047E /* RoWaterPuefierLvXinController.swift in Sources */,
 				8D0D68C41DDD99540097038E /* UIView+ZHCMessages.m in Sources */,
 				8D0D693B1DDD99A10097038E /* FriendZeroBgView.swift in Sources */,
 				8DC02F8F1DB5F03B007F57DB /* WaterPurifier.m in Sources */,
@@ -2770,7 +2778,7 @@
 					"-framework",
 					"\"DateTools\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup1123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2810,7 +2818,7 @@
 					"-framework",
 					"\"DateTools\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup1123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

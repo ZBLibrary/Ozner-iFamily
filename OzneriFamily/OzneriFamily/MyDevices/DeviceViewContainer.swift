@@ -71,6 +71,24 @@ class DeviceViewContainer: UIView {
         SelectWitchView(device: device)
         
     }
+    //设置滤芯
+    var LvXinValue:Int = -1{
+        didSet{
+            if LvXinValue != oldValue {
+                delegate.FilterValueChange!(value: LvXinValue)
+            }
+            
+        }
+    }
+    //设置电量
+    var batteryValue:Int = -1{
+        didSet{
+            if batteryValue != oldValue {
+                delegate.BateryValueChange!(value: batteryValue)
+            }
+            
+        }
+    }
     private let DeviceNibName:[OznerDeviceType:String]=[
         OznerDeviceType.Cup:"CupMainView",
         .Tap:"TapMainView",
@@ -78,7 +96,8 @@ class DeviceViewContainer: UIView {
         .Water_Wifi:"WaterPurifierMainView",
         .Air_Blue:"Air_BlueMainView",
         .Air_Wifi:"Air_WifiMainView",
-        .WaterReplenish:"WaterReplenishMainView"
+        .WaterReplenish:"WaterReplenishMainView",
+        .Water_Bluetooth:"WaterPurifierMainView"
     ]
     private func SelectWitchView(device:OznerDevice?)  {
         
@@ -96,7 +115,7 @@ class DeviceViewContainer: UIView {
         currentDeviceView.delegate=self.delegate
         currentDeviceView?.frame=self.frame
         self.addSubview(currentDeviceView!)
-        weak var weakSelf=self
+        //weak var weakSelf=self
         if device==nil {
             //无设备时视图初始化
             delegate.DeviceNameChange!(name: "首页")
@@ -108,48 +127,32 @@ class DeviceViewContainer: UIView {
             switch  OznerDeviceType.getType(type: (currentDevice?.type)!) {
             case .Cup:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:160*k_height)
-                //设置电池电量
-                let tmpDianLiang = (currentDevice as! Cup).sensor.powerPer()*100
-                delegate.BateryValueChange!(value: Int(tmpDianLiang))
-                
             case .Tap:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: false,BottomValue:211*k_height)
-                //设置电池电量
-                let tmpDianLiang = (currentDevice as! Tap).sensor.powerPer()*100
-                delegate.BateryValueChange!(value: Int(tmpDianLiang))
                 //下载滤芯更新
                 User.FilterService(deviceID: (currentDevice?.identifier)!, success: { (usedDay, _) in
-                    let value=ceil(100.0*(30.0-Float(usedDay))/30.0)
-                    weakSelf?.delegate.FilterValueChange!(value: Int(value))
+                    self.LvXinValue=Int(ceil(100.0*(30.0-Float(usedDay))/30.0))
                     }, failure: { (error) in
                         print(error)
                 })
             case .TDSPan:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:0)
-                //设置电池电量
-                let tmpDianLiang = (currentDevice as! Tap).sensor.powerPer()*100
-                delegate.BateryValueChange!(value: Int(tmpDianLiang))
             case .Water_Wifi:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
-                
-//                (currentDeviceView as! WaterPurifierMainView).circleView.updateCircleView(angleBefore: 0.7, angleAfter: 0.5)
                 //设置滤芯及功能
                 SetWaterPurifer(devID: (currentDevice?.identifier)!)
             case .Air_Blue:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
-                //设置滤芯
-                setAirLvXin(workTime: Int((currentDevice as! AirPurifier_Bluetooth).status.filterStatus.workTime), maxTime: 60000)
-                
             case .Air_Wifi:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
-                //设置滤芯
-                setBigAirLvXin()
-                
             case .WaterReplenish:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:156*k_height)
-                //设置电池电量
-                let tmpDianLiang = (currentDevice as! WaterReplenishmentMeter).status.battery*100
-                delegate.BateryValueChange!(value: Int(tmpDianLiang))
+                
+            case .Water_Bluetooth:
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
+                //隐藏底部按钮
+                (currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
+                (currentDeviceView as! WaterPurifierMainView).footerContainer.isHidden=true
             }
             oznerDeviceStatusUpdate(currentDevice)//初始化设备状态
         }
@@ -164,6 +167,40 @@ extension DeviceViewContainer:OznerDeviceDelegate{
         if CheckIsCurrentDevice(device: device) == true {
             currentDeviceView.currentDevice=device
             currentDeviceView.SensorUpdate(device: device)
+            
+            //滤芯电量或电池电量
+            switch OznerDeviceType.getType(type: device.type) {
+            case .Cup:
+                batteryValue = Int((currentDevice as! Cup).sensor.powerPer()*100)
+            case .Tap:
+                batteryValue = Int((currentDevice as! Tap).sensor.powerPer()*100)
+            case .TDSPan:
+                batteryValue = Int((currentDevice as! Tap).sensor.powerPer()*100)
+            case .Air_Blue:
+                //设置滤芯
+                let workTime=Int((currentDevice as! AirPurifier_Bluetooth).status.filterStatus.workTime)
+                var lvxinValue=1-CGFloat(workTime)/CGFloat(60000)
+                lvxinValue=min(1, lvxinValue)
+                lvxinValue=max(0, lvxinValue)
+                self.LvXinValue=Int(lvxinValue*100)
+            case .Air_Wifi:
+                if let filterStatus=(currentDevice as! AirPurifier_MxChip).status.filterStatus
+                {
+                    let workTime=Int(filterStatus.workTime)
+                    var lvxinValue=1-CGFloat(workTime)/CGFloat(129600)
+                    lvxinValue=min(1, lvxinValue)
+                    lvxinValue=max(0, lvxinValue)
+                    self.LvXinValue=Int(lvxinValue*100)
+                }
+            case .Water_Wifi:
+                break
+            case .WaterReplenish:
+                batteryValue = Int((currentDevice as! WaterReplenishmentMeter).status.battery*100)
+            case .Water_Bluetooth:
+                let tmpDev=currentDevice as! ROWaterPurufier
+                let lvxinValue=min(tmpDev.filterInfo.filter_A_Percentage, tmpDev.filterInfo.filter_B_Percentage, tmpDev.filterInfo.filter_C_Percentage)
+                self.LvXinValue=Int(lvxinValue)
+            }
         }
     }
     //连接状态变化
@@ -196,25 +233,26 @@ extension DeviceViewContainer:OznerDeviceDelegate{
 //从后台上传下拉数据方法
 extension DeviceViewContainer{
 
-    //大空净设备滤芯
-    func setBigAirLvXin() {
-        //设置滤芯
-        if let filterStatus=(currentDevice as! AirPurifier_MxChip).status.filterStatus
-        {
-            setAirLvXin(workTime: Int(filterStatus.workTime), maxTime: 129600)
-            
-        }else{
-            //Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(setBigAirLvXin), userInfo: nil, repeats: false)
-        }
-    }
+//    //大空净设备滤芯
+//    func setBigAirLvXin() {
+//        //设置滤芯
+//        if let filterStatus=(currentDevice as! AirPurifier_MxChip).status.filterStatus
+//        {
+//            setAirLvXin(workTime: Int(filterStatus.workTime), maxTime: 129600)
+//            
+//        }else{
+//            Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(setBigAirLvXin), userInfo: nil, repeats: false)
+//        }
+//    }
     
-    //空净滤芯状态
-    func setAirLvXin(workTime:Int,maxTime:Int) {
-        var lvxinValue=1-CGFloat(workTime)/CGFloat(maxTime)
-        lvxinValue=min(1, lvxinValue)
-        lvxinValue=max(0, lvxinValue)
-        delegate.FilterValueChange!(value: Int(lvxinValue*100))
-    }
+    
+//    //空净滤芯状态
+//    func setAirLvXin(workTime:Int,maxTime:Int) {
+//        var lvxinValue=1-CGFloat(workTime)/CGFloat(maxTime)
+//        lvxinValue=min(1, lvxinValue)
+//        lvxinValue=max(0, lvxinValue)
+//        self.LvXinValue=Int(lvxinValue*100)
+//    }
     //设置净水器滤芯、型号、链接地址、是否提醒
     func SetWaterPurifer(devID:String){
         weak var weakSelf=self
@@ -225,7 +263,7 @@ extension DeviceViewContainer{
                 let useValue=ceil(Double(100*(365-usedDays)/365))
                 
                  (weakSelf?.currentDeviceView as! WaterPurifierMainView).setLvXinAndEnable(scan: scanEnable, cool: coolEnable, hot: hotEnable, buyLvXinUrl: url!, lvXinStopDate: stopDate as NSDate, lvXinUsedDays: Int(useValue))
-                weakSelf?.delegate.FilterValueChange!(value: Int(useValue))
+                self.LvXinValue=Int(useValue)
                 if useValue<10//小于10%提醒及时更换滤芯
                 {
                     let appearance = SCLAlertView.SCLAppearance(
@@ -235,23 +273,22 @@ extension DeviceViewContainer{
                     let alert=SCLAlertView(appearance: appearance)
                     _=alert.addButton(loadLanguage(loadLanguage("现在去购买滤芯"))) {
                         //跳到购买滤芯的页面
-                        
                         weakSelf?.delegate.DeviceViewPerformSegue!(SegueID: "showBuyLvXin", sender: ["title":"净水器滤芯","url":NetworkManager.defaultManager?.UrlWithRoot(url!)])
                     }
                     _=alert.addButton(loadLanguage("我知道了"), action:{})
                     _=alert.showInfo("", subTitle: loadLanguage("你的滤芯即将到期，请及时更换滤芯，以免耽误您的使用"))
-                    
-                    
-                    
                 }
-                
-                
                 }, failure: { (error) in
-                    weakSelf?.delegate.FilterValueChange!(value: -1)
+                    self.LvXinValue = -2
             })
-            
             }) { (error) in
-                weakSelf?.delegate.FilterValueChange!(value: -1)
+                self.LvXinValue = -2
         }
     }
+//    func SetRoWaterPuriferLvXin()  {
+//      
+//        let tmpDev=currentDevice as! ROWaterPurufier
+//        let lvxinValue=min(tmpDev.filterInfo.filter_A_Percentage, tmpDev.filterInfo.filter_B_Percentage, tmpDev.filterInfo.filter_C_Percentage)
+//        self.LvXinValue=Int(lvxinValue)
+//    }
 }

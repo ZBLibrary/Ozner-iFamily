@@ -16,7 +16,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
     @IBOutlet var typeState: UILabel!
     
     
-    var currDeviceType: String!
+    var currDeviceType=OznerDeviceType.Cup
     
     @IBAction func backClick(_ sender: AnyObject) {
         _=self.navigationController?.popToRootViewController(animated: true)
@@ -33,23 +33,23 @@ class PairingController: UIViewController,OznerManagerDelegate {
     private func loadImageandLb() {
         var deviceDes:PairImagsAndState
         switch currDeviceType {
-        case OznerDeviceType.Cup.rawValue:
+        case OznerDeviceType.Cup:
             deviceDes = PairImagsAndState(imageName: "icon_peidui_watting", typeStateText: "正在进行蓝牙配对", deviceStateText: "请将智能水杯倒置")
-        case OznerDeviceType.Tap.rawValue:
+        case OznerDeviceType.Tap:
             deviceDes = PairImagsAndState(imageName: "icon_peidui_tantou_watting", typeStateText: "正在进行蓝牙配对", deviceStateText: "长按下start按钮")
-        case OznerDeviceType.TDSPan.rawValue:
+        case OznerDeviceType.TDSPan:
             deviceDes = PairImagsAndState(imageName: "icon_peidui_TDSPAN_watting", typeStateText: "正在进行蓝牙配对", deviceStateText: "长按下start按钮")
-        case OznerDeviceType.Water_Wifi.rawValue:
+        case OznerDeviceType.Water_Wifi:
             deviceDes = PairImagsAndState(imageName: "icon_peidui_jingshuiqi_watting", typeStateText: "正在进行Wifi配对", deviceStateText: "请同时按下净水器加热与制冷两个按钮")
-        case OznerDeviceType.Air_Blue.rawValue:
+        case OznerDeviceType.Air_Blue:
             deviceDes = PairImagsAndState(imageName: "icon_smallair_peidui_waitting", typeStateText: "", deviceStateText: "正在进行蓝牙配对")
-        case OznerDeviceType.Air_Wifi.rawValue:
+        case OznerDeviceType.Air_Wifi:
             deviceDes = PairImagsAndState(imageName: "icon_bigair_peidui_waitting", typeStateText: "正在进行Wifi配对", deviceStateText: "同时按下电源和风速键,WiFi指示灯闪烁。")
-        case OznerDeviceType.WaterReplenish.rawValue:
+        case OznerDeviceType.WaterReplenish:
             deviceDes = PairImagsAndState(imageName: "WaterReplenish3", typeStateText: "", deviceStateText: "正在进行蓝牙配对")
-        default:
-            deviceDes = PairImagsAndState(imageName: "", typeStateText: "", deviceStateText: "")
-            break
+        case OznerDeviceType.Water_Bluetooth:
+            deviceDes = PairImagsAndState(imageName: "icon_peidui_jingshuiqi_watting", typeStateText: "", deviceStateText: "正在进行蓝牙配对")
+       
         }
         deviceImg.image = UIImage(named: deviceDes.imageName)
         typeState.text = deviceDes.typeStateText
@@ -63,12 +63,10 @@ class PairingController: UIViewController,OznerManagerDelegate {
     @objc private func selectPairType()  {
         
         switch currDeviceType {
-        case OznerDeviceType.Cup.rawValue,OznerDeviceType.Tap.rawValue,OznerDeviceType.TDSPan.rawValue,OznerDeviceType.Air_Blue.rawValue,OznerDeviceType.WaterReplenish.rawValue://蓝牙配对
+        case OznerDeviceType.Cup,OznerDeviceType.Tap,OznerDeviceType.TDSPan,OznerDeviceType.Air_Blue,OznerDeviceType.WaterReplenish,OznerDeviceType.Water_Bluetooth://蓝牙配对
             StarBluePair()
-        case OznerDeviceType.Water_Wifi.rawValue,OznerDeviceType.Air_Wifi.rawValue://Wifi配对
+        case OznerDeviceType.Water_Wifi,OznerDeviceType.Air_Wifi://Wifi配对
             self.performSegue(withIdentifier: "showWifiPair", sender: nil)
-            break
-        default:
             break
         }
     }
@@ -92,9 +90,19 @@ class PairingController: UIViewController,OznerManagerDelegate {
         for io in deviceIOArr! {
             if OznerManager.instance().checkisBindMode(io as! BaseDeviceIO) == true
             {
-                if (io as! BaseDeviceIO).type==(currDeviceType==OznerDeviceType.TDSPan.rawValue ? OznerDeviceType.Tap.rawValue:currDeviceType) {
-                    if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
-                        blueDevices.append(device)
+                let deviceType=OznerDeviceType.getType(type: (io as! BaseDeviceIO).type)
+                
+                if currDeviceType == OznerDeviceType.TDSPan  {
+                    if deviceType == OznerDeviceType.Tap  {
+                        if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
+                            blueDevices.append(device)
+                        }
+                    }
+                }else{
+                    if currDeviceType == deviceType  {
+                        if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
+                            blueDevices.append(device)
+                        }
                     }
                 }
             }

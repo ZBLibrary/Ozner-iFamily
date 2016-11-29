@@ -16,6 +16,8 @@ class WaterPurifierMainView: OznerDeviceView {
     var buyLvXinUrl = ""
     var lvXinStopDate = NSDate()
     var lvXinUsedDays = 0
+    var isBlueDevice = false
+    
     func setLvXinAndEnable(scan:Bool,cool:Bool,hot:Bool,buyLvXinUrl:String,lvXinStopDate:NSDate,lvXinUsedDays:Int){
         self.scanEnable=scan
         self.coolEnable=cool
@@ -32,10 +34,14 @@ class WaterPurifierMainView: OznerDeviceView {
     @IBOutlet var tdsValueLabel_BF: UILabel!
     @IBOutlet var tdsValueLabel_AF: UILabel!
     @IBAction func toTDSDetailClick(_ sender: UITapGestureRecognizer) {
-        self.delegate.DeviceViewPerformSegue!(SegueID: "showWaterPurfierTDS", sender: nil)
+        if isBlueDevice==false {
+            self.delegate.DeviceViewPerformSegue!(SegueID: "showWaterPurfierTDS", sender: nil)
+        }
+        
     }
     
     //footer
+    @IBOutlet var footerContainer: UIView!
     @IBOutlet var powerLabel: UILabel!
     @IBOutlet var powerButton: UIButton!
     @IBOutlet var hotLabel: UILabel!
@@ -172,12 +178,21 @@ class WaterPurifierMainView: OznerDeviceView {
     
     override func SensorUpdate(device: OznerDevice!) {
         //更新传感器视图
-        tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
-        operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+        if isBlueDevice {
+            tds=(Int((device as! ROWaterPurufier).waterInfo.tds1),Int((device as! ROWaterPurufier).waterInfo.tds2))
+        }else{
+            tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
+            operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+        }
+        
     }
     override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
         //更新连接状态视图
-        tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
-        operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+        if isBlueDevice {
+            tds=(Int((device as! ROWaterPurufier).waterInfo.tds1),Int((device as! ROWaterPurufier).waterInfo.tds2))
+        }else{
+            tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
+            operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+        }
     }
 }

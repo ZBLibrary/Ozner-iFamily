@@ -40,6 +40,9 @@ class MyDevicesController: UIViewController {
             self.performSegue(withIdentifier: "toTapLvXin", sender: senderData)
         case .Air_Blue,.Air_Wifi:
             self.performSegue(withIdentifier: "showAirLvXin", sender: nil)
+        case .Water_Bluetooth:
+            let vc = RoWaterPuefierLvXinController()
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
@@ -54,13 +57,12 @@ class MyDevicesController: UIViewController {
             self.performSegue(withIdentifier: "showTapSetting", sender: nil)
         case .TDSPan:
             self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
-        case .Water_Wifi:
+        case .Water_Wifi,.Water_Bluetooth:
             self.performSegue(withIdentifier: "showWaterPurfierSetting", sender: nil)
-        case .Air_Blue,OznerDeviceType.Air_Wifi:
+        case .Air_Blue,.Air_Wifi:
             self.performSegue(withIdentifier: "showAirSetting", sender: nil)
         case .WaterReplenish:
             self.performSegue(withIdentifier: "showWaterReplenishSetting", sender: nil)
-       
         }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮
