@@ -20,14 +20,35 @@ class EquidsCollectionViewCell: UICollectionViewCell {
         // Initialization code
   
          equipNameLabel.text = loadLanguage("智能水杯");
-         right_up.setTitle(loadLanguage("活动"), for: UIControlState.normal)
+         right_up.setTitle("", for: UIControlState.normal)
         right_up.setTitleColor(UIColor.white, for: UIControlState.normal)
         
     
     
     }
-    func update()
+    func update(device:OznerDevice!)
     {
-        
+        equipNameLabel.text = loadLanguage(OznerDeviceType.getType(type: device.type).Name())
+        var imgwhich=""
+        switch OznerDeviceType.getType(type: device.type) {
+        case OznerDeviceType.Cup:
+            imgwhich+="My_cup"
+        case .Tap:
+            imgwhich+="My_tantou"
+        case .TDSPan:
+            imgwhich+="My_tantou"
+        case .Water_Wifi:
+            imgwhich+="My_shuiji"
+        case .Air_Blue:
+            imgwhich+="My_kongjing_small"
+        case .Air_Wifi:
+            imgwhich+="My_kongjing_big"
+        case .WaterReplenish:
+            imgwhich+="My_bsy"
+        case .Water_Bluetooth:
+            imgwhich+="My_shuiji"
+
+        }
+        equipImage.image=UIImage(named: imgwhich)
     }
 }

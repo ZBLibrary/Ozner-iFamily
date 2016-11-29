@@ -13,9 +13,12 @@ class EquidsCollectionViewController: UIViewController {
 
     var colltionView: UICollectionView?
     var layout: UICollectionViewFlowLayout?
+    var deviceArrs:[OznerDevice]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        deviceArrs = OznerManager.instance().getDevices() as! [OznerDevice]!
+    
         self.title = "已有设备"
         
         layout = UICollectionViewFlowLayout()
@@ -69,17 +72,21 @@ extension EquidsCollectionViewController: UICollectionViewDelegate,UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 10
+        
+        return deviceArrs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = colltionView?.dequeueReusableCell(withReuseIdentifier: "EquidsCollectionViewCellID", for: indexPath) as! EquidsCollectionViewCell
-        
+        cell.update(device: deviceArrs[indexPath.row])
         return cell
         
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        LoginManager.instance.currentDeviceIdentifier=deviceArrs[indexPath.row].identifier
+        LoginManager.instance.setTabbarSelected(index: 0)
+    }
     
     
 }
