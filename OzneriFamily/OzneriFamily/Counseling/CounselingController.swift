@@ -18,7 +18,10 @@ let NEWS_URL = "http://dkf.ozner.net/api"
 
 let customerid_News = 0
 let ChannelID_News = 4
-let ct_id = 0
+let ct_id = 0 //咨询类别
+
+var deviceid_News = ""//百度推送设备号
+
 
 var acsstoken_News = ""
 var sign_News = ""

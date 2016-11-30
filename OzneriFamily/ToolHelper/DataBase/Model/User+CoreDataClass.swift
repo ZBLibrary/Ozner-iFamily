@@ -162,8 +162,10 @@ public class User: BaseDataObject {
         let params:NSDictionary = ["appid":"hzapi","appsecret":"8af0134asdffe12","sign":sign_News!]
         
         self.chatData(urlStr,method: .GET, parameters: params, success: { (json) in
+            print(json)
             acsstoken_News = json.dictionary?["result"]?.dictionaryValue["access_token"]?.stringValue ?? ""
             self.GetUserInfoFunc()
+            self.userChatLoginFunc()
         }) { (error) in
             print(error)
         }
@@ -180,7 +182,7 @@ public class User: BaseDataObject {
             _ = alertView.showInfo(loadLanguage("温馨提示"), subTitle: loadLanguage("请登录"))
             return
         }
-        
+        sign_News = ""
         sign_News = "access_token=" + acsstoken_News
         sign_News += appidandsecret
         
@@ -189,19 +191,19 @@ public class User: BaseDataObject {
         
         let params:NSDictionary = ["mobile":tmpPhone!]
         
-        let mansger = AFHTTPSessionManager()
-        mansger.requestSerializer = AFHTTPRequestSerializer.init()
+//        let mansger = AFHTTPSessionManager()
+//        mansger.requestSerializer = AFHTTPRequestSerializer.init()
         
-        mansger.post(urlStr, parameters: params, constructingBodyWith: { (_) in
-            
-            }, progress: { (_) in
-                
-            }, success: { (task, data) in
-                print(data)
-        }) { (task, error) in
-            print(error)
-        }
-        
+//        mansger.post(urlStr, parameters: params, constructingBodyWith: { (_) in
+//            
+//            }, progress: { (_) in
+//                
+//            }, success: { (task, data) in
+//                print(data)
+//        }) { (task, error) in
+//            print(error)
+//        }
+        print(urlStr)
         
         self.chatData(urlStr,method:.POST,parameters: params, success: { (data) in
             print(data)
@@ -218,6 +220,34 @@ public class User: BaseDataObject {
         
         
     }
+    
+    //咨询用户上线
+    class func userChatLoginFunc() {
+        deviceid_News = BPush.getChannelId()
+        
+        if deviceid_News == "" {
+            print("设备号为空:\(deviceid_News)")
+            return
+        }
+        sign_News = ""
+        sign_News = "access_token=" + acsstoken_News
+        sign_News += appidandsecret
+        
+        var urlStr = NEWS_URL + "/customerlogin.ashx?access_token="
+        urlStr += acsstoken_News + "&sign=" + sign_News.MD5
+        
+        let params:NSDictionary = ["customer_id":customerid_News as NSNumber,"device_id":deviceid_News,"channel_id": 5088918642936564194 as NSNumber,"ct_id":ct_id as NSNumber]
+
+        self.chatData(urlStr, method: .GET, parameters: params, success: { (data) in
+            print(data)
+            }) { (error) in
+                print(error)
+        }
+  
+        
+    }
+    
+    
     
     //我
     //提意见
