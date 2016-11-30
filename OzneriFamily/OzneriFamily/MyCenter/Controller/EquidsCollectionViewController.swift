@@ -24,7 +24,7 @@ class EquidsCollectionViewController: UIViewController {
         layout = UICollectionViewFlowLayout()
         colltionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout!)
         
-        colltionView?.backgroundColor = UIColor.init(colorLiteralRed: 227/225.0, green: 228/255.0, blue: 226/255.0, alpha: 1.0)
+        colltionView?.backgroundColor = UIColor(hexString: "#f0f1f2")
         colltionView?.delegate = self
         colltionView?.dataSource = self
         colltionView?.register(UINib.init(nibName: "EquidsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "EquidsCollectionViewCellID")
@@ -42,9 +42,7 @@ class EquidsCollectionViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBar.isHidden = false
-       
-        LoginManager.instance.mainTabBarController?.setTabBarHidden(true, animated: false)
+        navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
         
     }
     

@@ -21,10 +21,6 @@ class BaseWebView: UIViewController {
 
     var webViewType:String?
     
-    var mobile =  User.currentUser?.phone
-    var UserTalkCode = User.currentUser?.usertoken
-    var Language="zh"
-    var Area="zh"
     var button:UIButton!
     var tmpURL=""
 
@@ -44,43 +40,33 @@ class BaseWebView: UIViewController {
         switch webViewType! {
             //我的小金库
         case loadLanguage("我的小金库"):
-            tmpURL = GoUrlBefore(url: "http://www.oznerwater.com/lktnew/wapnew/Member/MyCoffers.aspx")
+            tmpURL = (NetworkManager.defaultManager?.UrlNameWithRoot("MyCoffers"))!
+            
             //我的订单
         case loadLanguage("我的订单"):
-            tmpURL = GoUrlBefore(url: "http://www.oznerwater.com/lktnew/wapnew/Orders/OrderList.aspx")
-        //领红包
-        case loadLanguage("领红包"):
-            tmpURL = GoUrlBefore(url: "http://www.oznerwater.com/lktnew/wapnew/Member/GrapRedPackages.aspx")
+            tmpURL = (NetworkManager.defaultManager?.UrlNameWithRoot("OrderList"))!//GoUrlBefore(url: "http://www.oznerwater.com/lktnew/wapnew/Orders/OrderList.aspx")
             //我的券
         case loadLanguage("我的券"):
-            tmpURL = GoUrlBefore(url: "http://www.oznerwater.com/lktnew/wapnew/Member/AwardList.aspx")
+            tmpURL = (NetworkManager.defaultManager?.UrlNameWithRoot("AwardList"))!
             //查看水质检测报告
         case loadLanguage("查看水质检测报告"):
-            tmpURL = "http://erweima.ozner.net:85/index.aspx?tel="+mobile!
+            tmpURL = "http://erweima.ozner.net:85/index.aspx?tel="+(User.currentUser?.phone!)!
         default:
             break
       
         }
         
-        webView = UIWebView(frame: CGRect(x: 0, y: 64, width: width_screen, height: height_screen - 64))
+        webView = UIWebView(frame: CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64))
         view.addSubview(webView)
         webView.scalesPageToFit = true
         webView.loadRequest(URLRequest(url: URL(string: tmpURL)!))
     }
 
     
-    func GoUrlBefore(url:String)->String
-    {
-        
-        return "http://www.oznerwater.com/lktnew/wap/app/Oauth2.aspx?mobile=" + mobile! + "&UserTalkCode=" + UserTalkCode! + "&Language=" + Language + "&Area=" + Area + "&goUrl=" + url
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBar.isHidden = false
-       
-        LoginManager.instance.mainTabBarController?.setTabBarHidden(true, animated: false)
+        navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
     }
     
     

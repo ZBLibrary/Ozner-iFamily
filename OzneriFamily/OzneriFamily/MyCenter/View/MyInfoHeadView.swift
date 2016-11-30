@@ -31,7 +31,8 @@ class MyInfoHeadView: UIView {
         MymoneyLb.text = loadLanguage("我的小金库")
         loginBtn.setTitle(loadLanguage("点击登录"), for: UIControlState.normal)
         loginBtn.setTitleColor(UIColor.black, for: UIControlState.normal)
-        
+        let devices=OznerManager.instance().getDevices()
+        infoNumLb.text="\(Int((devices?.count)!))" 
         
         
         
