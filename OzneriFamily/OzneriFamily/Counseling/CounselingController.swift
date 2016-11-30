@@ -55,10 +55,7 @@ class CounselingController: ZHCMessagesViewController {
 
         User.GetAccesstoken()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
-    }
+    
     // MARK: - ZHCMessagesTableViewDataSource
     
     override func senderDisplayName() -> String {
@@ -104,10 +101,16 @@ class CounselingController: ZHCMessagesViewController {
     override func tableView(_ tableView: ZHCMessagesTableView, avatarImageDataForCellAt indexPath: IndexPath) -> ZHCMessageAvatarImageDataSource? {
         
         
+        
         let message = demoData?.messages.object(at: indexPath.row) as! ZHCMessage
         
-        let ava = (self.demoData?.avatars as! [String:ZHCMessagesAvatarImage])[message.senderId]
-        return ava
+        let ava = (self.demoData?.avatars as? [String:ZHCMessagesAvatarImage])?[message.senderId]
+        if ava != nil {
+            return ava
+        } else {
+            return nil
+        }
+//        return ZHCMessagesAvatarImage(avatarImage: UIImage(named:"demo_avatar_jobs"), highlightedImage: UIImage(named:"demo_avatar_jobs"), placeholderImage: UIImage(named:"demo_avatar_jobs")!) /
         
     }
   
@@ -284,13 +287,12 @@ class CounselingController: ZHCMessagesViewController {
         
         let message = ZHCMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
         
-        //let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-        let messModel=ConsultModel.cachedObjectWithID(ID: "\(NSDate().timeIntervalSince1970)" as NSString)
-        messModel.content =  text
-        messModel.type = ChatType.Content.rawValue
-        //print(senderId)
-        messModel.userId = senderId
+        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
         
+        conModel.content =  text
+        conModel.type = ChatType.Content.rawValue
+        print(senderId)
+        conModel.userId = senderId
         
         CoreDataManager.defaultManager.saveChanges()
 
@@ -358,9 +360,10 @@ class CounselingController: ZHCMessagesViewController {
         
         //收图片 false
         //发图片true
-        photoItem.appliesMediaViewMaskAsOutgoing = true
+//        photoItem.appliesMediaViewMaskAsOutgoing = true
         let message = ZHCMessage(senderId: kZHCDemoAvatarIdJobs, displayName: kZHCDemoAvatarDisplayNameJobs, media: photoItem)
-        let conModel = ConsultModel.cachedObjectWithID(ID: "\(NSDate().timeIntervalSince1970)" as NSString)
+//        let conModel = ConsultModel.cachedObjectWithID(ID: senderId() as NSString)
+        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
  
         let data: Data = UIImageJPEGRepresentation(image, 1.0)!
         conModel.content =  data.base64EncodedString()
@@ -368,9 +371,10 @@ class CounselingController: ZHCMessagesViewController {
         conModel.userId = senderId()
         
         CoreDataManager.defaultManager.saveChanges()
-
-//        let dataARR:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
-        demoData?.messages.add(message)
+        let dataARR:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
+        print(dataARR.count)
+        
+        demoData?.messages.add(message)        
         messageTableView?.reloadData()
         finishSendingMessage()
         
