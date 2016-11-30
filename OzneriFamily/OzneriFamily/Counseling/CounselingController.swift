@@ -358,27 +358,19 @@ class CounselingController: ZHCMessagesViewController {
         
         //收图片 false
         //发图片true
-//        photoItem.appliesMediaViewMaskAsOutgoing = true
+        photoItem.appliesMediaViewMaskAsOutgoing = true
         let message = ZHCMessage(senderId: kZHCDemoAvatarIdJobs, displayName: kZHCDemoAvatarDisplayNameJobs, media: photoItem)
-//        let conModel = ConsultModel.cachedObjectWithID(ID: senderId() as NSString)
-        //let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+        let conModel = ConsultModel.cachedObjectWithID(ID: "\(NSDate().timeIntervalSince1970)" as NSString)
  
         let data: Data = UIImageJPEGRepresentation(image, 1.0)!
-        //conModel.content =  data.base64EncodedString()
-        //conModel.type = ChatType.IMAGE.rawValue
-        //conModel.userId = senderId()
+        conModel.content =  data.base64EncodedString()
+        conModel.type = ChatType.IMAGE.rawValue
+        conModel.userId = senderId()
         
         CoreDataManager.defaultManager.saveChanges()
-        let messModel=ConsultModel.cachedObjectWithID(ID: "\(NSDate().timeIntervalSince1970)" as NSString)
-        messModel.content =  data.base64EncodedString()
-        messModel.type = ChatType.Content.rawValue
-        //print(senderId)
-        messModel.userId = senderId()
-        
-        let dataARR:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
-        print(dataARR.count)
-        
-        demoData?.messages.add(message)        
+
+//        let dataARR:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
+        demoData?.messages.add(message)
         messageTableView?.reloadData()
         finishSendingMessage()
         
