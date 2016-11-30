@@ -16,9 +16,9 @@ let appidandsecret = "&appid=hzapi&appsecret=8af0134asdffe12"
 
 let NEWS_URL = "http://dkf.ozner.net/api"
 
-let customerid_News = 0
+var customerid_News = 0
 let ChannelID_News = 4
-let ct_id = 0 //咨询类别
+let ct_id = 1 //咨询类别
 
 var deviceid_News = ""//百度推送设备号
 
@@ -50,8 +50,8 @@ class CounselingController: ZHCMessagesViewController {
         initNavarionBar()
 
         demoData = ZHCModelData()
-        
-//        messageTableView?.selectRow(at: NSIndexPath(row: (demoData?.messages.count)! - 1, section: 0) as IndexPath, animated: false, scrollPosition: UITableViewScrollPosition.bottom)
+
+        //        messageTableView?.selectRow(at: NSIndexPath(row: (demoData?.messages.count)! - 1, section: 0) as IndexPath, animated: false, scrollPosition: UITableViewScrollPosition.bottom)
         DispatchQueue.main.async {
            self.scrollToBottom(animated: true)
         }
@@ -298,9 +298,32 @@ class CounselingController: ZHCMessagesViewController {
         conModel.userId = senderId
         
         CoreDataManager.defaultManager.saveChanges()
-
         
         //在此发送数据到服务器 成功添加 否则不添加
+        
+        
+        var urlStr = NEWS_URL + "/customermsg.ashx?access_token="
+        urlStr += acsstoken_News + "&sign=" + sign_News.MD5
+        
+        let params:NSDictionary = ["customer_id":customerid_News as NSNumber,"device_id":deviceid_News,"channel_id": ChannelID_News as NSNumber,"ct_id":ct_id as NSNumber]
+        
+        //        self.chatData(urlStr, method: .POST, parameters: params, success: { (data) in
+        //            print(data)
+        //            }) { (error) in
+        //                print(error)
+        //        }
+        let mansger = AFHTTPSessionManager()
+        mansger.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
+        
+        mansger.post(urlStr, parameters: params, success: { (_, json) in
+            print(json)
+            
+        }) { (_, error) in
+            print(error)
+        }
+        
+
+        
         demoData?.messages.add(message)
         
         

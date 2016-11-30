@@ -11,7 +11,7 @@ import CoreData
 import SwiftyJSON
 let UserDefaultsUserTokenKey = "usertoken"
 let UserDefaultsUserIDKey = "userid"
-let CurrentUserDidChangeNotificationName = "CurrentUserDidChangeNotificationName"
+let CurrentUserDidChangeNotificationName = "CurrentUserDidChangeNotificatiovarme"
 
 typealias successJsonBlock = (JSON) -> Void
 typealias successVoidBlock = ()->Void
@@ -165,7 +165,7 @@ public class User: BaseDataObject {
             print(json)
             acsstoken_News = json.dictionary?["result"]?.dictionaryValue["access_token"]?.stringValue ?? ""
             self.GetUserInfoFunc()
-            self.userChatLoginFunc()
+            
         }) { (error) in
             print(error)
         }
@@ -191,32 +191,34 @@ public class User: BaseDataObject {
         
         let params:NSDictionary = ["mobile":tmpPhone!]
         
-//        let mansger = AFHTTPSessionManager()
-//        mansger.requestSerializer = AFHTTPRequestSerializer.init()
+        let mansger = AFHTTPSessionManager()
+        mansger.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
         
-//        mansger.post(urlStr, parameters: params, constructingBodyWith: { (_) in
-//            
-//            }, progress: { (_) in
-//                
-//            }, success: { (task, data) in
-//                print(data)
-//        }) { (task, error) in
+        mansger.post(urlStr, parameters: params, success: { (_, json) in
+            
+            let customId = JSON(json)
+            let a = customId.dictionary?["result"]?.dictionary?["list"]?.array
+            
+            let b = a?[0].dictionary?["customer_id"]?.intValue
+            customerid_News = b! 
+            self.userChatLoginFunc()
+            
+            }) { (_, error) in
+                print(error)
+        }
+        
+//        self.chatData(urlStr,method:.POST,parameters: params, success: { (data) in
+//            print(data)
+//        }) { (error) in
 //            print(error)
 //        }
-        print(urlStr)
-        
-        self.chatData(urlStr,method:.POST,parameters: params, success: { (data) in
-            print(data)
-        }) { (error) in
-            print(error)
-        }
         
         
     }
     //获取历史信息接口
     class  func GetHistoryRecord() {
         
-        let getUrl = "http://dkf.ozner.net/api" + "/historyrecord.ashx?access_token=" + ""
+        _ = "http://dkf.ozner.net/api" + "/historyrecord.ashx?access_token=" + ""
         
         
     }
@@ -229,19 +231,25 @@ public class User: BaseDataObject {
             print("设备号为空:\(deviceid_News)")
             return
         }
-        sign_News = ""
-        sign_News = "access_token=" + acsstoken_News
-        sign_News += appidandsecret
         
         var urlStr = NEWS_URL + "/customerlogin.ashx?access_token="
         urlStr += acsstoken_News + "&sign=" + sign_News.MD5
         
-        let params:NSDictionary = ["customer_id":customerid_News as NSNumber,"device_id":deviceid_News,"channel_id": 5088918642936564194 as NSNumber,"ct_id":ct_id as NSNumber]
-
-        self.chatData(urlStr, method: .GET, parameters: params, success: { (data) in
-            print(data)
-            }) { (error) in
-                print(error)
+        let params:NSDictionary = ["customer_id":customerid_News as NSNumber,"device_id":deviceid_News,"channel_id": ChannelID_News as NSNumber,"ct_id":ct_id as NSNumber]
+        
+//        self.chatData(urlStr, method: .POST, parameters: params, success: { (data) in
+//            print(data)
+//            }) { (error) in
+//                print(error)
+//        }
+        let mansger = AFHTTPSessionManager()
+        mansger.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
+        
+        mansger.post(urlStr, parameters: params, success: { (_, json) in
+                print(json)
+            
+        }) { (_, error) in
+            print(error)
         }
   
         
