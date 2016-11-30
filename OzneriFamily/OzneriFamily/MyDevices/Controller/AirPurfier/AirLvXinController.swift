@@ -35,7 +35,7 @@ class AirLvXinController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let device=LoginManager.instance.currentDevice
-        if device.type==OznerDeviceType.Air_Blue.rawValue {//台式
+        if OznerDeviceType.getType(type: device.type)==OznerDeviceType.Air_Blue {//台式
             reSetLvXinButton.isHidden=false
             vocWidthConstraint.constant = -width_screen/2
             totalHeightConstraint.constant = -height_screen*90/667
