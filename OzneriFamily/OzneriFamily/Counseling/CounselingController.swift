@@ -103,16 +103,11 @@ class CounselingController: ZHCMessagesViewController {
     //头像
     override func tableView(_ tableView: ZHCMessagesTableView, avatarImageDataForCellAt indexPath: IndexPath) -> ZHCMessageAvatarImageDataSource? {
         
-        _ = demoData?.messages.object(at: indexPath.row) as! ZHCMessage
         
-//        let ava = (self.demoData?.avatars as! [String:ZHCMessagesAvatarImage])[message.senderId]
-//        if ava != nil {
-//            return ava
-//        } else {
-//            return nil
-//        }
-        return nil;
-//        return ZHCMessagesAvatarImage(avatarImage: UIImage(named:"demo_avatar_jobs"), highlightedImage: UIImage(named:"demo_avatar_jobs"), placeholderImage: UIImage(named:"demo_avatar_jobs")!) /
+        let message = demoData?.messages.object(at: indexPath.row) as! ZHCMessage
+        
+        let ava = (self.demoData?.avatars as! [String:ZHCMessagesAvatarImage])[message.senderId]
+        return ava
         
     }
   
