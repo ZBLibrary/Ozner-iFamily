@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import SwiftyJSON
 
 let appid_News = "hzapi"
 let appsecret_News = "8af0134asdffe12"
@@ -285,49 +286,36 @@ class CounselingController: ZHCMessagesViewController {
     }
     
     // MARK: - Messages view controller
-    
+    // 发送文字消息
     override func didPressSend(_ button: UIButton?, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
-        
-        let message = ZHCMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
-        
-        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-        
-        conModel.content =  text
-        conModel.type = ChatType.Content.rawValue
-        print(senderId)
-        conModel.userId = senderId
-        
-        CoreDataManager.defaultManager.saveChanges()
-        
+    
         //在此发送数据到服务器 成功添加 否则不添加
-        
-        
         var urlStr = NEWS_URL + "/customermsg.ashx?access_token="
         urlStr += acsstoken_News + "&sign=" + sign_News.MD5
         
-        let params:NSDictionary = ["customer_id":customerid_News as NSNumber,"device_id":deviceid_News,"channel_id": ChannelID_News as NSNumber,"ct_id":ct_id as NSNumber]
+        let params:NSDictionary = ["customer_id":customerid_News as NSNumber,"device_id":deviceid_News,"channel_id": ChannelID_News as NSNumber,"msg": text]
         
-        //        self.chatData(urlStr, method: .POST, parameters: params, success: { (data) in
-        //            print(data)
-        //            }) { (error) in
-        //                print(error)
-        //        }
         let mansger = AFHTTPSessionManager()
         mansger.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
         
         mansger.post(urlStr, parameters: params, success: { (_, json) in
             print(json)
+            let message = ZHCMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
+            
+            let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+            
+            conModel.content =  text
+            conModel.type = ChatType.Content.rawValue
+            print(senderId)
+            conModel.userId = senderId
+            
+            CoreDataManager.defaultManager.saveChanges()
+            self.demoData?.messages.add(message)
+            self.finishSendingMessage(animated: true)
             
         }) { (_, error) in
             print(error)
         }
-        
-
-        
-        demoData?.messages.add(message)
-        
-        
-        self.finishSendingMessage(animated: true)
         
     }
     
@@ -382,27 +370,67 @@ class CounselingController: ZHCMessagesViewController {
  
     func addPhotoImageToMessage(image: UIImage) {
         
-        let photoItem = ZHCPhotoMediaItem(image: image)
-        
-        //收图片 false
-        //发图片true
-//        photoItem.appliesMediaViewMaskAsOutgoing = true
-        let message = ZHCMessage(senderId: kZHCDemoAvatarIdJobs, displayName: kZHCDemoAvatarDisplayNameJobs, media: photoItem)
-//        let conModel = ConsultModel.cachedObjectWithID(ID: senderId() as NSString)
-        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
- 
         let data: Data = UIImageJPEGRepresentation(image, 1.0)!
-        conModel.content =  data.base64EncodedString()
-        conModel.type = ChatType.IMAGE.rawValue
-        conModel.userId = senderId()
+
+        var urlStr = NEWS_URL + "/uploadpic.ashx?access_token="
+        urlStr += acsstoken_News + "&sign=" + sign_News.MD5
         
-        CoreDataManager.defaultManager.saveChanges()
-        let dataARR:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
-        print(dataARR.count)
+        let mansger = AFHTTPSessionManager()
+        mansger.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
         
-        demoData?.messages.add(message)        
-        messageTableView?.reloadData()
-        finishSendingMessage()
+        mansger.post(urlStr, parameters: nil, constructingBodyWith: { (dataFormat) in
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyHHmmss"
+            let str = formatter.string(from: Date())
+            let fileName = str + ".jpg"
+            dataFormat.appendPart(withFileData: data, name: str, fileName: fileName, mimeType: "image/jpeg")
+            
+            }, success: { (_, json) in
+                print(json)
+                
+                let customId = JSON(json)
+                let imagURL = customId.dictionary?["result"]?.dictionary?["picpath"]?.stringValue
+                
+
+                var urlStr = NEWS_URL + "/customermsg.ashx?access_token="
+                urlStr += acsstoken_News + "&sign=" + sign_News.MD5
+                
+                let params:NSDictionary = ["customer_id":customerid_News as NSNumber,"device_id":deviceid_News,"channel_id": ChannelID_News as NSNumber,"msg":"<img height=\"260px\" src=\"" + imagURL! + "\"/>"]
+                
+                mansger.post(urlStr, parameters: params, success: { (_, json) in
+                    print(json)
+                    
+                    let photoItem = ZHCPhotoMediaItem(image: image)
+                    
+                    //收图片 false
+                    //发图片true
+                    //        photoItem.appliesMediaViewMaskAsOutgoing = true
+                    let message = ZHCMessage(senderId: kZHCDemoAvatarIdJobs, displayName: kZHCDemoAvatarDisplayNameJobs, media: photoItem)
+                    
+                    let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+                    
+                    conModel.content =  data.base64EncodedString()
+                    conModel.type = ChatType.IMAGE.rawValue
+                    conModel.userId = self.senderId()
+                    
+                    CoreDataManager.defaultManager.saveChanges()
+                    let dataARR:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
+                    print(dataARR.count)
+                    
+                    self.demoData?.messages.add(message)
+                    self.messageTableView?.reloadData()
+                    self.finishSendingMessage()
+
+               
+                }) { (_, error) in
+                    print(error)
+                }
+
+                
+            }) { (_, error) in
+                print(error)
+        }
         
     }
     
