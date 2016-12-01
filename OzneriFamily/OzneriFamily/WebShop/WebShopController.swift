@@ -49,7 +49,10 @@ class WebShopController: UIViewController {
         super.viewWillAppear(animated)
         LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
     }
-
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
     /*
     // MARK: - Navigation
 

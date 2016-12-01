@@ -39,19 +39,22 @@ class EquidsCollectionViewController: UIViewController {
     
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
-        
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(true, animated: false)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
+    }
     
     /*
     // MARK: - Navigation

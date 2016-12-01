@@ -146,7 +146,10 @@ class MyCenterController: UIViewController {
         }
         
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
     func backAction() {
         LoginManager.instance.setTabbarSelected(index: 0)
     }
