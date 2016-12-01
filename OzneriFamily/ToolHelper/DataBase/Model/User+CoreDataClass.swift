@@ -11,7 +11,7 @@ import CoreData
 import SwiftyJSON
 let UserDefaultsUserTokenKey = "usertoken"
 let UserDefaultsUserIDKey = "userid"
-let CurrentUserDidChangeNotificationName = "CurrentUserDidChangeNotificationName"
+let CurrentUserDidChangeNotificationName = "CurrentUserDidChangeNotificatiovarme"
 
 typealias successJsonBlock = (JSON) -> Void
 typealias successVoidBlock = ()->Void
@@ -162,8 +162,10 @@ public class User: BaseDataObject {
         let params:NSDictionary = ["appid":"hzapi","appsecret":"8af0134asdffe12","sign":sign_News!]
         
         self.chatData(urlStr,method: .GET, parameters: params, success: { (json) in
+            print(json)
             acsstoken_News = json.dictionary?["result"]?.dictionaryValue["access_token"]?.stringValue ?? ""
             self.GetUserInfoFunc()
+            
         }) { (error) in
             print(error)
         }
@@ -180,7 +182,7 @@ public class User: BaseDataObject {
             _ = alertView.showInfo(loadLanguage("温馨提示"), subTitle: loadLanguage("请登录"))
             return
         }
-        
+        sign_News = ""
         sign_News = "access_token=" + acsstoken_News
         sign_News += appidandsecret
         
@@ -190,34 +192,70 @@ public class User: BaseDataObject {
         let params:NSDictionary = ["mobile":tmpPhone!]
         
         let mansger = AFHTTPSessionManager()
-        mansger.requestSerializer = AFHTTPRequestSerializer.init()
+        mansger.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
         
-        mansger.post(urlStr, parameters: params, constructingBodyWith: { (_) in
+        mansger.post(urlStr, parameters: params, success: { (_, json) in
             
-            }, progress: { (_) in
-                
-            }, success: { (task, data) in
-                print(data)
-        }) { (task, error) in
-            print(error)
+            let customId = JSON(json)
+            let a = customId.dictionary?["result"]?.dictionary?["list"]?.array
+            
+            let b = a?[0].dictionary?["customer_id"]?.intValue
+            customerid_News = b! 
+            self.userChatLoginFunc()
+            
+            }) { (_, error) in
+                print(error)
         }
         
-        
-        self.chatData(urlStr,method:.POST,parameters: params, success: { (data) in
-            print(data)
-        }) { (error) in
-            print(error)
-        }
+//        self.chatData(urlStr,method:.POST,parameters: params, success: { (data) in
+//            print(data)
+//        }) { (error) in
+//            print(error)
+//        }
         
         
     }
     //获取历史信息接口
     class  func GetHistoryRecord() {
         
-        let getUrl = "http://dkf.ozner.net/api" + "/historyrecord.ashx?access_token=" + ""
+        _ = "http://dkf.ozner.net/api" + "/historyrecord.ashx?access_token=" + ""
         
         
     }
+    
+    //咨询用户上线
+    class func userChatLoginFunc() {
+        deviceid_News = BPush.getChannelId()
+        
+        if deviceid_News == "" {
+            print("设备号为空:\(deviceid_News)")
+            return
+        }
+        
+        var urlStr = NEWS_URL + "/customerlogin.ashx?access_token="
+        urlStr += acsstoken_News + "&sign=" + sign_News.MD5
+        
+        let params:NSDictionary = ["customer_id":customerid_News as NSNumber,"device_id":deviceid_News,"channel_id": ChannelID_News as NSNumber,"ct_id":ct_id as NSNumber]
+        
+//        self.chatData(urlStr, method: .POST, parameters: params, success: { (data) in
+//            print(data)
+//            }) { (error) in
+//                print(error)
+//        }
+        let mansger = AFHTTPSessionManager()
+        mansger.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
+        
+        mansger.post(urlStr, parameters: params, success: { (_, json) in
+                print(json)
+            
+        }) { (_, error) in
+            print(error)
+        }
+  
+        
+    }
+    
+    
     
     //我
     //提意见

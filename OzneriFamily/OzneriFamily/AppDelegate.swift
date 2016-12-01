@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         
         window?.rootViewController = LoginManager.instance.loginViewController
         window!.makeKeyAndVisible()
+        
         return true
     }
     //微信 delegate---->
@@ -53,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         application.registerForRemoteNotifications()
     }
+    
+  
     
     func onReq(_ req: BaseReq!) {
         
@@ -100,15 +103,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         BPush.registerDeviceToken(deviceToken)// 必须
+    
         BPush.bindChannel(completeHandler: { (result, error) -> Void in
             if ((result) != nil) {
                 BPush.setTag("Mytag", withCompleteHandler: nil)
             }
         })
     }
+    
+    
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         BPush.handleNotification(userInfo)
-        //completionHandler(UIBackgroundFetchResult.newData)
+        completionHandler(UIBackgroundFetchResult.newData)
+        print(userInfo)
+        
+        let WaterJson = userInfo as! [String: AnyObject]
+        
+        for (k,v) in WaterJson {
+            
+            if k == "data" {
+//                let msg = (v.isKind(of: NSNull())) ? "" : (v as! String)
+                let msg = "13"
+                
+                let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+                conModel.content =  msg
+                conModel.type = ChatType.Content.rawValue
+                conModel.userId = "468-768355-23123"
+                
+                CoreDataManager.defaultManager.saveChanges()
+                
+            }
+            
+        }
+        
+    }
+    
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
+        
+        print(userInfo)
+     
         
     }
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

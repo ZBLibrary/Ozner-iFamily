@@ -23,7 +23,7 @@
 
 - (instancetype)initWithSenderId:(NSString *)senderId
                senderDisplayName:(NSString *)senderDisplayName
-                            date:(NSDate *)date
+                            date:(nonnull NSDate *)date
                             text:(NSString *)text
 {
     NSParameterAssert(text != nil);
