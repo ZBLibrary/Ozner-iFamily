@@ -57,6 +57,14 @@ class CounselingController: ZHCMessagesViewController {
            self.scrollToBottom(animated: true)
         }
 
+        
+        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+        conModel.content =  "123"
+        conModel.type = ChatType.Content.rawValue
+        conModel.userId = "468-768355-23123"
+        
+        CoreDataManager.defaultManager.saveChanges()
+        
         User.GetAccesstoken()
     }
     

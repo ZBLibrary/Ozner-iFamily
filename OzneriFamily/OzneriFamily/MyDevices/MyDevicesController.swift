@@ -73,6 +73,7 @@ class MyDevicesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceViewContainer.delegate=self
+        view.frame = CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
         // Do any additional setup after loading the view.
     }
 
