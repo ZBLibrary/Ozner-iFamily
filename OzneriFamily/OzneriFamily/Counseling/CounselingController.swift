@@ -50,13 +50,6 @@ class CounselingController: ZHCMessagesViewController {
         
         initNavarionBar()
 
-        demoData = ZHCModelData()
-
-        //        messageTableView?.selectRow(at: NSIndexPath(row: (demoData?.messages.count)! - 1, section: 0) as IndexPath, animated: false, scrollPosition: UITableViewScrollPosition.bottom)
-        DispatchQueue.main.async {
-           self.scrollToBottom(animated: true)
-        }
-
         
         let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
         conModel.content =  "123"
@@ -64,6 +57,15 @@ class CounselingController: ZHCMessagesViewController {
         conModel.userId = "468-768355-23123"
         
         CoreDataManager.defaultManager.saveChanges()
+        
+        demoData = ZHCModelData()
+
+        //        messageTableView?.selectRow(at: NSIndexPath(row: (demoData?.messages.count)! - 1, section: 0) as IndexPath, animated: false, scrollPosition: UITableViewScrollPosition.bottom)
+        DispatchQueue.main.async {
+           self.scrollToBottom(animated: true)
+        }
+
+
         
         User.GetAccesstoken()
     }
@@ -109,7 +111,7 @@ class CounselingController: ZHCMessagesViewController {
         
     }
     
-    //头像
+    //MARK: -头像
     override func tableView(_ tableView: ZHCMessagesTableView, avatarImageDataForCellAt indexPath: IndexPath) -> ZHCMessageAvatarImageDataSource? {
         
         
@@ -308,21 +310,32 @@ class CounselingController: ZHCMessagesViewController {
         
         mansger.post(urlStr, parameters: params, success: { (_, json) in
             print(json)
-            let message = ZHCMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
             
-            let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+            let customId = JSON(json)
+            let imagURL = customId.dictionary?["msg"]?.stringValue
             
-            conModel.content =  text
-            conModel.type = ChatType.Content.rawValue
-            print(senderId)
-            conModel.userId = senderId
+            if imagURL == "success" {
+                
+                let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+                
+                conModel.content =  text
+                conModel.type = ChatType.Content.rawValue
+                print(senderId)
+                conModel.userId = senderId
+                
+                CoreDataManager.defaultManager.saveChanges()
+                self.demoData  = ZHCModelData()
+                self.finishSendingMessage(animated: true)
+                }
             
-            CoreDataManager.defaultManager.saveChanges()
-            self.demoData?.messages.add(message)
-            self.finishSendingMessage(animated: true)
             
         }) { (_, error) in
             print(error)
+            
+            let alertView = SCLAlertView()
+            _ = alertView.addButton("确定", action: {})
+            _ = alertView.showInfo("信息发送失败", subTitle: "请确保网络通畅并已关注浩泽微信公众号!")
+            
         }
         
     }
@@ -413,7 +426,7 @@ class CounselingController: ZHCMessagesViewController {
                     
                     //收图片 false
                     //发图片true
-                    //        photoItem.appliesMediaViewMaskAsOutgoing = true
+                    photoItem.appliesMediaViewMaskAsOutgoing = true
                     let message = ZHCMessage(senderId: kZHCDemoAvatarIdJobs, displayName: kZHCDemoAvatarDisplayNameJobs, media: photoItem)
                     
                     let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
@@ -425,9 +438,8 @@ class CounselingController: ZHCMessagesViewController {
                     CoreDataManager.defaultManager.saveChanges()
                     let dataARR:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
                     print(dataARR.count)
-                    
                     self.demoData?.messages.add(message)
-                    self.messageTableView?.reloadData()
+
                     self.finishSendingMessage()
 
                
@@ -475,6 +487,38 @@ class CounselingController: ZHCMessagesViewController {
         
         view.addSubview(callWebView)
         
+        
+    }
+    
+    func loadMessage(_ model:ConsultModel){
+        
+        let avatarFactory = ZHCMessagesAvatarImageFactory(diameter: 30)
+        
+        let cookImage = avatarFactory?.avatarImage(with: UIImage(named: "HaoZeKeFuImage"))
+        
+        let data = NSData(contentsOf: URL(string:(User.currentUser?.headimage)!)!)
+        
+        let jobsImage = avatarFactory?.avatarImage(with: UIImage.sd_image(with: data as Data!))
+        
+        self.demoData?.avatars = [kZHCDemoAvatarIdCook:cookImage,kZHCDemoAvatarIdJobs:jobsImage]
+        
+        self.demoData?.users = [kZHCDemoAvatarIdJobs:kZHCDemoAvatarIdJobs,
+                                kZHCDemoAvatarIdCook:kZHCDemoAvatarDisplayNameCook]
+        
+        let bubbleFactory = ZHCMessagesBubbleImageFactory()
+        
+        
+        self.demoData?.outgoingBubbleImageData = bubbleFactory?.outgoingMessagesBubbleImage(with: UIColor.zhc_messagesBubbleBlue())
+        self.demoData?.incomingBubbleImageData = bubbleFactory?.incomingMessagesBubbleImage(with: UIColor.zhc_messagesBubbleGreen())
+        
+        if model.userId == kZHCDemoAvatarIdJobs {
+            let message = ZHCMessage(senderId: model.userId!, displayName: "Jobs", text: model.content!)
+            
+            self.demoData?.messages.add(message)
+        } else {
+            let message = ZHCMessage(senderId: model.userId!, displayName: "小泽妹", text: model.content!)
+            self.demoData?.messages.add(message)
+        }
         
     }
 

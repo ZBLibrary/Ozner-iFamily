@@ -9,6 +9,7 @@
 #import "ZHCMediaItem.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+
 /**
  *  A completion handler block for a `ZHCLocationMediaItem`. See `setLocation: withCompletionHandler:`.
  */
