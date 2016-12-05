@@ -60,12 +60,11 @@ class CounselingController: ZHCMessagesViewController {
         
         demoData = ZHCModelData()
 
-        //        messageTableView?.selectRow(at: NSIndexPath(row: (demoData?.messages.count)! - 1, section: 0) as IndexPath, animated: false, scrollPosition: UITableViewScrollPosition.bottom)
         DispatchQueue.main.async {
-           self.scrollToBottom(animated: true)
+            
+            self.recoverMessageInputToolBar();
+            
         }
-
-
         
         User.GetAccesstoken()
     }
