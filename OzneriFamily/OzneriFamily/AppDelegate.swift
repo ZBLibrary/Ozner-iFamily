@@ -124,14 +124,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
             
             if k == "data" {
 //                let msg = (v.isKind(of: NSNull())) ? "" : (v as! String)
-                let msg = "13"
-                
-                let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-                conModel.content =  msg
-                conModel.type = ChatType.Content.rawValue
-                conModel.userId = "468-768355-23123"
-                
-                CoreDataManager.defaultManager.saveChanges()
+//                let msg = "13"
+//                
+//                let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+//                conModel.content =  msg
+//                conModel.type = ChatType.Content.rawValue
+//                conModel.userId = "468-768355-23123"
+//                
+//                CoreDataManager.defaultManager.saveChanges()
                 
             }
             
