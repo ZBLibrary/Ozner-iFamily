@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-extension ConsultModel {
+ extension ConsultModel {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ConsultModel> {
         return NSFetchRequest<ConsultModel>(entityName: "ConsultModel");

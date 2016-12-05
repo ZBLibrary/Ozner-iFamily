@@ -11,8 +11,6 @@
 #import "ZHCLocationMediaItem.h"
 @class ZHCPhotoMediaItem;
 
-
-
 static NSString * const kZHCDemoAvatarDisplayNameCook = @"小泽妹";
 static NSString * const kZHCDemoAvatarDisplayNameJobs = @"Jobs";
 
@@ -36,5 +34,6 @@ static NSString * const kZHCDemoAvatarIdJobs = @"707-8956784-57";
 - (void)addLocationMediaMessageCompletion:(ZHCLocationMediaItemCompletionBlock)completion;
 - (void)addVideoMediaMessage;
 - (void)addAudioMediaMessage;
+//- (void)loadMessages:(ConsultModel *)model;
 
 @end
