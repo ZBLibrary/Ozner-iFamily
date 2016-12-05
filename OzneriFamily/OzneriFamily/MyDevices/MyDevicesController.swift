@@ -94,6 +94,7 @@ class MyDevicesController: UIViewController {
         self.slideMenuController()?.addLeftGestures()
         
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.slideMenuController()?.removeLeftGestures()
