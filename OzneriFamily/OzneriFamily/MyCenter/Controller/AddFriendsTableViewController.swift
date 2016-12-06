@@ -37,8 +37,8 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
         tabelHeaderView.searchButton.addTarget(self, action: #selector(SearchPhone), for: .touchUpInside)
         tabelHeaderView.SearchTextFD.delegate=self
         self.tableView.tableHeaderView=tabelHeaderView
-//        tableView.delegate = self
-//        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
 //        NotificationCenter.default.addObserver(self, selector: #selector(addfriendSuccess), name: NSNotification.Name(rawValue: "sendAddFriendMesSuccess"), object: nil)
         
     }
