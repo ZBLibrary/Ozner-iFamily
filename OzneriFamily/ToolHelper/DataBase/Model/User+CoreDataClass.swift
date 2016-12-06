@@ -433,7 +433,7 @@ public class User: BaseDataObject {
 //    }
     //更新用户信息
     class func UpdateUserInfo(){
-        self.fetchData(key: "UpdateUserInfo", parameters: ["device_id":BPush.getChannelId()], success: { (json) in
+        self.fetchData(key: "UpdateUserInfo", parameters: ["channel_id":4,"device_id":BPush.getChannelId()], success: { (json) in
             User.GetUserInfo()
             }) { (error) in
                 
