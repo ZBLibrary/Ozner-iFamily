@@ -9,7 +9,7 @@
 import Foundation
 import AddressBook
 import AddressBookUI
-
+import Contacts
 class GYPersonModel: NSObject {
     
     var firstName: String = ""
@@ -47,100 +47,64 @@ class GYConactBook: NSObject {
     
     func getAllPerson() -> String? {
         
-//        let addressBookTemp = NSMutableArray()
-        let addressBooks = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
         
-        let staticid = ABAddressBookGetAuthorizationStatus()
-        
-        /**
-         *  拒绝授权
-         */
-        if staticid == ABAuthorizationStatus.denied {
-            return nil
-        }
-        
-        /// 发出通讯录的请求
-        let sema = DispatchSemaphore(value: 0)
-        
-        ABAddressBookRequestAccessWithCompletion(addressBooks, { (granted, error) in
+        if #available(iOS 9.0, *) {
+            let status = CNContactStore.authorizationStatus(for: .contacts)
+            let store = CNContactStore()
             
-            if (error != nil) {
+            if status == .notDetermined {
+                //
                 
-                return
-            }
-            
-            //判断是否授权
-            if granted {
-                
-                print("已授权")
-                sema.signal()
-                
-            } else {
-                print("未授权")
-            }
-            
-        })
-        
-        /**
-         *  一直等待
-         */
-        sema.wait()
-        
-        
-        let allPeople = ABAddressBookCopyArrayOfAllPeople(addressBooks).takeRetainedValue()
-        
-        //        let nPeople = ABAddressBookGetPersonCount(addressBooks) 
-        
-        var phoneString = ""
-        
-        for person: ABRecord in allPeople as Array {
-            
-//            let model = GYPersonModel()
-            
-            //转型错误 Could not cast value of type 'Swift.UnsafePointer<()>' (0x10274c028) to 'Swift.AnyObject' (0x10273c018).
-            //http://swifter.tips/unsafe/
-            // let person = CFArrayGetValueAtIndex(allPeople, i) as? ABRecordRef
-            //TODO:联系人名字
-//            if let abName = ABRecordCopyValue(person, kABPersonFirstNameProperty) {
-//                model.name1 = abName.takeRetainedValue() as? String ?? ""
-//            }
-//            
-//            //            if let abLastName = ABRecordCopyValue(person, kABPersonLastNameProperty){
-//            //            }
-//            
-//            if let abFullName = ABRecordCopyCompositeName(person) {
-//                model.name1 = abFullName.takeRetainedValue() as String ?? ""
-//            }
-            
-            let phoneValues:ABMutableMultiValue? =
-                ABRecordCopyValue(person, kABPersonPhoneProperty).takeRetainedValue()
-            
-            if phoneValues != nil {
-                for i in 0..<ABMultiValueGetCount(phoneValues) {
+                store.requestAccess(for: .contacts, completionHandler: { (isRight, error) in
                     
-                    if let value = ABMultiValueCopyValueAtIndex(phoneValues
-                        , i) {
-                        var phone = value.takeRetainedValue() as! String
-                        
-                        if phone == "<null>" || phone == "" {
-                            continue
-                        }
-                        
-                        phone = phone.replacingOccurrences(of: "+", with: "")
-                        phone = phone.replacingOccurrences(of: "-", with: "")
-                        
-                        phoneString = phoneString + "," + phone
-                        print(phoneString)
+                    if isRight {
+                        print("授权成功")
                     }
                     
-                }
+                })
                 
             }
             
+            guard status == .authorized else {
+                return ""
+            }
+            
+            
+            let keys = [CNContactFamilyNameKey,CNContactGivenNameKey,CNContactPhoneNumbersKey];
+            
+            let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
+            var phone = ""
+            var phoneString = ""
+            do {
+                try store.enumerateContacts(with: request, usingBlock: { (contact, stop) in
+                    
+                    //获取电话号码
+                    let phoneNumbers = contact.phoneNumbers
+                    
+                    for phoneNumber in phoneNumbers {
+                        
+                        print(phoneNumber.value.stringValue)
+                        
+                        phone = phoneNumber.value.stringValue.replacingOccurrences(of: "+", with: "")
+                        phone = phone.replacingOccurrences(of: "-", with: "")
+                        phoneString = phoneString + "," + phone
+                        
+                    }
+                })
+                return phoneString
+            } catch (let error) {
+                print(error)
+            }
+            
+            
+            
+        } else {
+            // Fallback on earlier versions
+            
+            
+            
         }
-        
-        return phoneString
-        
+        return "";
     }
     
     
