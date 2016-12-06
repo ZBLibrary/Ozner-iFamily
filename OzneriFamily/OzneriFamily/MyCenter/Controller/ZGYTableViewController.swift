@@ -10,19 +10,20 @@ import UIKit
 
 import WebImage
 //添加好友
-struct myFriend {
-    var isExist=false
-    var Name=""
-    var imgUrl=""
-    var status = -10014  //－10014不是浩泽用户 0没关系 1"已发送" 2"已添加"
-    var phone=""
-    var messageCount=0
-}
+//struct myFriend {
+//    var isExist=false
+//    var Name=""
+//    var imgUrl=""
+//    var status = -10014  //－10014不是浩泽用户 0没关系 1"已发送" 2"已添加"
+//    var phone=""
+//    var messageCount=0
+//}
 
 class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
 
     var sendPhone=""
-    var seachResult=myFriend( )
+    var seachResult=myFriend()
+    var bookPhone=[myFriend()]
     //NSMutableArray
     var tabelHeaderView:FriendSearch!
     override func viewDidLoad() {
@@ -38,7 +39,75 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
         self.tableView.tableHeaderView=tabelHeaderView
         self.tableView.backgroundColor = UIColor(red: 240/255, green: 241/255, blue: 242/255, alpha: 1)
         tableView.tableFooterView = UIView()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        NotificationCenter.default.addObserver(self, selector: #selector(addfriendSuccess), name: NSNotification.Name(rawValue: "sendAddFriendMesSuccess"), object: nil)
+        Tongxunlu()
     }
+    
+    func Tongxunlu()
+    {
+        let gyConact = GYConactBook()
+        
+        
+        let friends:String=gyConact.getAllPerson()!
+        
+        getTXFriends(TXLfriends: friends)
+        
+    }
+
+    func getTXFriends(TXLfriends:String){
+        if TXLfriends==""
+        {
+            return
+        }
+        /*   let werbservice = MyInfoWerbservice()
+         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+         
+         werbservice.getUserNickImage([TXLfriends], returnBlock: { [weak self](responseObject:NSMutableDictionary!,statusManager: StatusManager!) -> Void in
+         
+         if let strongSelf=self{
+         MBProgressHUD.hideHUDForView(strongSelf.view, animated: true)
+         if statusManager.networkStatus==kSuccessStatus
+         {
+         let state=responseObject.objectForKey("state") as! Int
+         if state>0
+         {
+         
+         let friends=responseObject.objectForKey("data") as! NSArray
+         for i in 0...(friends.count-1)
+         {
+         var friendtmp=myFriend()
+         friendtmp.isExist=true
+         friendtmp.status=friends[i].objectForKey("Status") as! Int
+         if (friendtmp.status+10013)==0
+         {
+         continue
+         }
+         if (friends[i].objectForKey("headimg") != nil) {
+         friendtmp.imgUrl=friends[i].objectForKey("headimg") as! String
+         } else {
+         friendtmp.imgUrl = ""
+         }
+         
+         friendtmp.Name=friends[i].objectForKey("nickname") as! String
+         friendtmp.phone=friends[i].objectForKey("mobile") as! String
+         
+         friendtmp.Name=friendtmp.Name.characters.count==0 ? friendtmp.phone: friendtmp.Name
+         
+         strongSelf.bookPhone.append(friendtmp)
+         }
+         strongSelf.tableView.reloadData()
+         }
+         
+         }
+         
+         }
+         })
+         */
+    }
+
 
     
     
@@ -69,11 +138,8 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if self.seachResult.isExist==false {
-            return 0
-        } else {
-            return 1
-        }
+      
+        return 2
 
     }
 
@@ -83,7 +149,7 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
         sectionview.backgroundColor=UIColor(red: 240/255, green: 241/255, blue: 242/255, alpha: 1)
         let sectionlabel=UILabel(frame: CGRect(x: 15, y: 24, width: 100, height: 12))
         sectionlabel.textAlignment=NSTextAlignment.left
-        sectionlabel.text = loadLanguage("搜索结果" )
+        sectionlabel.text=section==0 ? loadLanguage("搜索结果" ):loadLanguage("通讯录好友")
         sectionlabel.font=UIFont.systemFont(ofSize: 12)
         sectionlabel.textColor=UIColor(red: 135/255, green: 136/255, blue: 137/255, alpha: 1)
         sectionview.addSubview(sectionlabel)
@@ -100,16 +166,23 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.seachResult.isExist==false
+        if section==0&&self.seachResult.isExist==false
         {
             return 0
-        } else {
+        }
+        if section==0
+        {
             return 1
+        }
+        else
+        {
+            return bookPhone.count//通讯录好友数量
         }
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       /*
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddFriendTableViewCellid",for:indexPath as IndexPath) as! AddFriendTableViewCell
         
          cell.AddFriendButton.addTarget(self, action: #selector(toAddFriend), for: .touchUpInside)
@@ -150,7 +223,77 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
          cell.Name.text=seachResult.Name
          }
          
- 
+ */
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AddFriendTableViewCellid",for:indexPath as IndexPath) as! AddFriendTableViewCell
+        
+        cell.AddFriendButton.addTarget(self, action: #selector(toAddFriend), for: .touchUpInside)
+        // Configure the cell...
+        cell.selectionStyle=UITableViewCellSelectionStyle.none
+        cell.AddFriendButton.tag=indexPath.section+indexPath.row
+        if indexPath.section == 0{
+            if seachResult.isExist==true
+            {
+                switch (seachResult.status)
+                {
+                case 0:
+                    cell.AddFriendButton.isEnabled=true
+                    cell.AddFriendButton.setTitle(loadLanguage("添加"), for: .normal)
+                    break
+                case 1:
+                    cell.AddFriendButton.isEnabled=false
+                    cell.AddFriendButton.setTitle(loadLanguage("已发送"), for: .normal)
+                    cell.AddFriendButton.backgroundColor=UIColor.clear
+                    cell.AddFriendButton.setTitleColor(UIColor.gray, for: .normal)
+                    break
+                case 2:
+                    cell.AddFriendButton.isEnabled=false
+                    cell.AddFriendButton.setTitle(loadLanguage("已添加"), for: .normal)
+                    cell.AddFriendButton.backgroundColor=UIColor.clear
+                    cell.AddFriendButton.setTitleColor(UIColor.gray, for: .normal)
+                    break
+                default:
+                    break
+                    
+                }
+                if seachResult.imgUrl == "" {
+                    cell.headImage.image = UIImage(named: "DefaultHeadImage")
+                } else {
+                    cell.headImage.sd_setImage(with: URL(string:seachResult.imgUrl ))
+                }
+                
+                cell.Name.text=seachResult.Name
+            }
+        } else {
+            switch (bookPhone[indexPath.row].status)
+            {
+            case 0:
+                cell.AddFriendButton.isEnabled=true
+                cell.AddFriendButton.setTitle(loadLanguage("添加"), for: .normal)
+                break
+            case 1:
+                cell.AddFriendButton.isEnabled=false
+                cell.AddFriendButton.setTitle(loadLanguage("已发送"), for: .normal)
+                cell.AddFriendButton.backgroundColor=UIColor.clear
+                cell.AddFriendButton.setTitleColor(UIColor.gray, for: .normal)
+                break
+            case 2:
+                cell.AddFriendButton.isEnabled=false
+                cell.AddFriendButton.setTitle(loadLanguage("已添加"), for: .normal)
+                cell.AddFriendButton.backgroundColor=UIColor.clear
+                cell.AddFriendButton.setTitleColor(UIColor.gray, for: .normal)
+                break
+            default:
+                break
+                
+            }
+            
+            cell.headImage.image=bookPhone[indexPath.row].imgUrl=="" ? UIImage(named: "DefaultHeadImage") : UIImage(data: NSData(contentsOf: NSURL(string: bookPhone[indexPath.row].imgUrl)! as URL)! as Data)
+            cell.Name.text=bookPhone[indexPath.row].Name
+            
+        }
+
+        
         return cell
 
     }
@@ -161,6 +304,8 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
         if button.tag==0
         {
             sendPhone=seachResult.phone
+        } else{
+            sendPhone=bookPhone[button.tag-1].phone
         }
         self.performSegue(withIdentifier: "toAddFriendGYID", sender: nil)
     }

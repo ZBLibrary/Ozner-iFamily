@@ -11,20 +11,22 @@ import AddressBook
 import AddressBookUI
 //import WebImage
 ////添加好友
-//struct myFriend {
-//    var isExist=false
-//    var Name=""
-//    var imgUrl=""
-//    var status = -10014  //－10014不是浩泽用户 0没关系 1"已发送" 2"已添加"
-//    var phone=""
-//    var messageCount=0
-//}
+struct myFriend {
+    var isExist=false
+    var Name=""
+    var imgUrl=""
+    var status = -10014  //－10014不是浩泽用户 0没关系 1"已发送" 2"已添加"
+    var phone=""
+    var messageCount=0
+}
+
 
 class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
 
     
     var sendPhone=""
-    var seachResult=myFriend( )
+    var seachResult=myFriend()
+    var bookPhone=[myFriend()]
     //NSMutableArray
     var tabelHeaderView:FriendSearch!
     override func viewDidLoad() {
@@ -39,9 +41,76 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
         self.tableView.tableHeaderView=tabelHeaderView
         tableView.delegate = self
         tableView.dataSource = self
-//        NotificationCenter.default.addObserver(self, selector: #selector(addfriendSuccess), name: NSNotification.Name(rawValue: "sendAddFriendMesSuccess"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addfriendSuccess), name: NSNotification.Name(rawValue: "sendAddFriendMesSuccess"), object: nil)
+         Tongxunlu()
         
     }
+    
+    
+    func Tongxunlu()
+    {
+        let gyConact = GYConactBook()
+        
+        
+        let friends:String=gyConact.getAllPerson()!
+        
+        getTXFriends(TXLfriends: friends)
+        
+    }
+    func getTXFriends(TXLfriends:String){
+        if TXLfriends==""
+        {
+            return
+        }
+     /*   let werbservice = MyInfoWerbservice()
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
+        werbservice.getUserNickImage([TXLfriends], returnBlock: { [weak self](responseObject:NSMutableDictionary!,statusManager: StatusManager!) -> Void in
+            
+            if let strongSelf=self{
+                MBProgressHUD.hideHUDForView(strongSelf.view, animated: true)
+                if statusManager.networkStatus==kSuccessStatus
+                {
+                    let state=responseObject.objectForKey("state") as! Int
+                    if state>0
+                    {
+                        
+                        let friends=responseObject.objectForKey("data") as! NSArray
+                        for i in 0...(friends.count-1)
+                        {
+                            var friendtmp=myFriend()
+                            friendtmp.isExist=true
+                            friendtmp.status=friends[i].objectForKey("Status") as! Int
+                            if (friendtmp.status+10013)==0
+                            {
+                                continue
+                            }
+                            if (friends[i].objectForKey("headimg") != nil) {
+                                friendtmp.imgUrl=friends[i].objectForKey("headimg") as! String
+                            } else {
+                                friendtmp.imgUrl = ""
+                            }
+                            
+                            friendtmp.Name=friends[i].objectForKey("nickname") as! String
+                            friendtmp.phone=friends[i].objectForKey("mobile") as! String
+                            
+                            friendtmp.Name=friendtmp.Name.characters.count==0 ? friendtmp.phone: friendtmp.Name
+                            
+                            strongSelf.bookPhone.append(friendtmp)
+                        }
+                        strongSelf.tableView.reloadData()
+                    }
+                    
+                }
+                
+            }
+            })
+ */
+    }
+    
+    
+
+
 
     func addfriendSuccess()
     {
@@ -113,14 +182,14 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-//        let cell = Bundle.main.loadNibNamed("AddFriendTableViewCell", owner: nil, options: nil)?.last as! AddFriendTableViewCell
+//       let cell = Bundle.main.loadNibNamed("AddFriendTableViewCell", owner: nil, options: nil)?.last as! AddFriendTableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddFriendTableViewCellid",for:indexPath as IndexPath) as! AddFriendTableViewCell
-        /*
+        
         cell.AddFriendButton.addTarget(self, action: #selector(toAddFriend), for: .touchUpInside)
         // Configure the cell...
         cell.selectionStyle=UITableViewCellSelectionStyle.none
         cell.AddFriendButton.tag=indexPath.section+indexPath.row
-
+        if indexPath.section == 0{
             if seachResult.isExist==true
             {
                 switch (seachResult.status)
@@ -153,8 +222,34 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
                 
                 cell.Name.text=seachResult.Name
             }
+        } else {
+            switch (bookPhone[indexPath.row].status)
+            {
+            case 0:
+                cell.AddFriendButton.isEnabled=true
+                cell.AddFriendButton.setTitle(loadLanguage("添加"), for: .normal)
+                break
+            case 1:
+                cell.AddFriendButton.isEnabled=false
+                cell.AddFriendButton.setTitle(loadLanguage("已发送"), for: .normal)
+                cell.AddFriendButton.backgroundColor=UIColor.clear
+                cell.AddFriendButton.setTitleColor(UIColor.gray, for: .normal)
+                break
+            case 2:
+                cell.AddFriendButton.isEnabled=false
+                cell.AddFriendButton.setTitle(loadLanguage("已添加"), for: .normal)
+                cell.AddFriendButton.backgroundColor=UIColor.clear
+                cell.AddFriendButton.setTitleColor(UIColor.gray, for: .normal)
+                break
+            default:
+                break
+                
+            }
+            
+            cell.headImage.image=bookPhone[indexPath.row].imgUrl=="" ? UIImage(named: "DefaultHeadImage") : UIImage(data: NSData(contentsOf: NSURL(string: bookPhone[indexPath.row].imgUrl)! as URL)! as Data)
+            cell.Name.text=bookPhone[indexPath.row].Name
 
-     */
+        }
         return cell
     }
     
