@@ -62,50 +62,63 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
         {
             return
         }
-        /*   let werbservice = MyInfoWerbservice()
-         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-         
-         werbservice.getUserNickImage([TXLfriends], returnBlock: { [weak self](responseObject:NSMutableDictionary!,statusManager: StatusManager!) -> Void in
-         
-         if let strongSelf=self{
-         MBProgressHUD.hideHUDForView(strongSelf.view, animated: true)
-         if statusManager.networkStatus==kSuccessStatus
-         {
-         let state=responseObject.objectForKey("state") as! Int
-         if state>0
-         {
-         
-         let friends=responseObject.objectForKey("data") as! NSArray
-         for i in 0...(friends.count-1)
-         {
-         var friendtmp=myFriend()
-         friendtmp.isExist=true
-         friendtmp.status=friends[i].objectForKey("Status") as! Int
-         if (friendtmp.status+10013)==0
-         {
-         continue
-         }
-         if (friends[i].objectForKey("headimg") != nil) {
-         friendtmp.imgUrl=friends[i].objectForKey("headimg") as! String
-         } else {
-         friendtmp.imgUrl = ""
-         }
-         
-         friendtmp.Name=friends[i].objectForKey("nickname") as! String
-         friendtmp.phone=friends[i].objectForKey("mobile") as! String
-         
-         friendtmp.Name=friendtmp.Name.characters.count==0 ? friendtmp.phone: friendtmp.Name
-         
-         strongSelf.bookPhone.append(friendtmp)
-         }
-         strongSelf.tableView.reloadData()
-         }
-         
-         }
-         
-         }
-         })
-         */
+        let str = TXLfriends.replacingOccurrences(of: "<null>", with: "")
+        let params:NSDictionary = ["jsonmobile":str]
+        
+        weak var weakSelf = self
+        
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+        SVProgressHUD.show()
+        User.GetUserNickImage(params, { (responseObject) in
+            SVProgressHUD.dismiss()
+            let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0
+            print(responseObject)
+            //-10013
+            if isSuccess > 0 {
+                
+                let arr = responseObject.dictionary?["data"]?.array
+                
+                for i in 0...(arr!.count - 1) {
+                    
+                    var friendtmp=myFriend()
+                    friendtmp.isExist=true
+                    friendtmp.status=(arr?[i].dictionary?["Status"]?.intValue)!
+                    if (friendtmp.status+10013)==0
+                    {
+                        continue
+                    }
+                    
+                    if (arr?[i].dictionary?["headimg"]?.stringValue != nil) {
+                        friendtmp.imgUrl = (arr?[i].dictionary?["headimg"]?.stringValue)!
+                    } else {
+                        friendtmp.imgUrl = ""
+                    }
+                    
+                    
+                    friendtmp.Name=(arr?[i].dictionary?["nickname"]?.stringValue)!
+                    friendtmp.phone=(arr?[i].dictionary?["mobile"]?.stringValue)!
+                    
+                    friendtmp.Name=friendtmp.Name.characters.count==0 ? friendtmp.phone: friendtmp.Name
+                    
+                    self.bookPhone.append(friendtmp)
+                }
+
+                weakSelf?.tableView.reloadData()
+            } else {
+                
+            }
+            }) { (error) in
+            SVProgressHUD.dismiss()
+            
+            
+            let alertView = SCLAlertView()
+            _ = alertView.addButton(loadLanguage("确定"), action: {})
+            _ = alertView.showError(loadLanguage("温馨提示"), subTitle:(error?.localizedDescription)!)
+            
+        }
+
     }
 
 
@@ -176,61 +189,19 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
         }
         else
         {
-            return bookPhone.count//通讯录好友数量
+            return bookPhone.count - 1//通讯录好友数量
         }
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       /*
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AddFriendTableViewCellid",for:indexPath as IndexPath) as! AddFriendTableViewCell
-        
-         cell.AddFriendButton.addTarget(self, action: #selector(toAddFriend), for: .touchUpInside)
-         // Configure the cell...
-         cell.selectionStyle=UITableViewCellSelectionStyle.none
-         cell.AddFriendButton.tag=indexPath.section+indexPath.row
-         
-         if seachResult.isExist==true
-         {
-         switch (seachResult.status)
-         {
-         case 0:
-         cell.AddFriendButton.isEnabled=true
-         cell.AddFriendButton.setTitle(loadLanguage("添加"), for: .normal)
-         break
-         case 1:
-         cell.AddFriendButton.isEnabled=false
-         cell.AddFriendButton.setTitle(loadLanguage("已发送"), for: .normal)
-         cell.AddFriendButton.backgroundColor=UIColor.clear
-         cell.AddFriendButton.setTitleColor(UIColor.gray, for: .normal)
-         break
-         case 2:
-         cell.AddFriendButton.isEnabled=false
-         cell.AddFriendButton.setTitle(loadLanguage("已添加"), for: .normal)
-         cell.AddFriendButton.backgroundColor=UIColor.clear
-         cell.AddFriendButton.setTitleColor(UIColor.gray, for: .normal)
-         break
-         default:
-         break
-         
-         }
-         if seachResult.imgUrl == "" {
-         cell.headImage.image = UIImage(named: "DefaultHeadImage")
-         } else {
-         cell.headImage.sd_setImage(with: URL(string:seachResult.imgUrl ))
-         }
-         
-         cell.Name.text=seachResult.Name
-         }
-         
- */
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddFriendTableViewCellid",for:indexPath as IndexPath) as! AddFriendTableViewCell
         
         cell.AddFriendButton.addTarget(self, action: #selector(toAddFriend), for: .touchUpInside)
         // Configure the cell...
         cell.selectionStyle=UITableViewCellSelectionStyle.none
-        cell.AddFriendButton.tag=indexPath.section+indexPath.row
+        cell.AddFriendButton.tag=indexPath.section+indexPath.row + 1
         if indexPath.section == 0{
             if seachResult.isExist==true
             {
@@ -288,25 +259,24 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
                 
             }
             
-            cell.headImage.image=bookPhone[indexPath.row].imgUrl=="" ? UIImage(named: "DefaultHeadImage") : UIImage(data: NSData(contentsOf: NSURL(string: bookPhone[indexPath.row].imgUrl)! as URL)! as Data)
-            cell.Name.text=bookPhone[indexPath.row].Name
+            cell.headImage.image=bookPhone[indexPath.row + 1].imgUrl=="" ? UIImage(named: "DefaultHeadImage") : UIImage(data: NSData(contentsOf: NSURL(string: bookPhone[indexPath.row + 1].imgUrl)! as URL)! as Data)
+            cell.Name.text=bookPhone[indexPath.row + 1].Name
             
         }
 
-        
         return cell
 
     }
-   
     
     func toAddFriend(button:UIButton)
     {
-        if button.tag==0
+        if button.tag==1
         {
             sendPhone=seachResult.phone
         } else{
             sendPhone=bookPhone[button.tag-1].phone
         }
+        print(sendPhone)
         self.performSegue(withIdentifier: "toAddFriendGYID", sender: nil)
     }
     
@@ -376,25 +346,7 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
             _ = alertView.showError(loadLanguage("温馨提示"), subTitle:(error?.localizedDescription)!)
 
         }
-        
-        //        User.SearchFriend(params, { (responseObject) in
-        //            print(responseObject)
-        //
-        //            if responseObject["userinfo"].isEmpty {
-        //
-        //                let alert = UIAlertView(title: "", message:loadLanguage("非浩泽用户"), delegate: self, cancelButtonTitle: "ok")
-        //                alert.show()
-        //                return
-        //
-        //            } else {
-        //                let dic = responseObject["userinfo"].dictionary
-        ////                seachResult.imgUrl = dic[""]
-        //           
-        //            }
-        //            
-        //            }) { (error) in
-        //                print(error)
-        //        }
+
         
     }
     
