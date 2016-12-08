@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
     }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        window?.rootViewController = LoginManager.instance.loginViewController
+        window!.makeKeyAndVisible()
         //开启IQKEyBoard
         IQKeyboardManager.shared().isEnabled = true
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
@@ -32,12 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         UIApplication.shared.registerUserNotificationSettings(userSetting)
         BPush.disableLbs()//禁用地理位置
         BPush.registerChannel(launchOptions, apiKey: "7nGBGzSxkIgjpEHHusrgdobS", pushMode: BPushMode.production, withFirstAction: nil, withSecondAction: nil, withCategory: nil, useBehaviorTextInput: false, isDebug: false)
+        
         //注册微信//
         WXApi.registerApp("wx45a8cc642a2295b5", withDescription: "haoze")
         
-        window?.rootViewController = LoginManager.instance.loginViewController
-        window!.makeKeyAndVisible()
         
+        Thread.sleep(forTimeInterval: 2)
         return true
     }
     //微信 delegate---->
@@ -110,8 +112,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
             }
         })
     }
-    
-    
+    // 当 DeviceToken 获取失败时，系统会回调此方法
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("DeviceToken 获取失败:\(error)")
+    }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         BPush.handleNotification(userInfo)
@@ -145,7 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
      
         
     }
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    func application(_ application: UIApplication, didFailToContinueUserActivityWithType userActivityType: String, error: Error) {
         print(error)
     }
     
