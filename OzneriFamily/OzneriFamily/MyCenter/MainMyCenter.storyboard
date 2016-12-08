@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bFO-IS-5LL">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bFO-IS-5LL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -219,12 +219,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FHS-l8-KT6">
-                        <barButtonItem key="leftBarButtonItem" title="取消" id="Osp-RZ-Mf0">
-                            <color key="tintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="CancelClickWithSender:" destination="oBx-vi-sWt" id="RAQ-33-5aT"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="发送" id="Mlg-eK-gUF">
                             <connections>
                                 <action selector="SendClickWithSender:" destination="oBx-vi-sWt" id="m9I-mI-7rL"/>
@@ -233,7 +227,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="MessTF" destination="pnZ-jp-faz" id="55m-EV-izL"/>
-                        <outlet property="left" destination="Osp-RZ-Mf0" id="D0X-yW-2pA"/>
                         <outlet property="right" destination="Mlg-eK-gUF" id="xvm-ev-4DB"/>
                     </connections>
                 </viewController>

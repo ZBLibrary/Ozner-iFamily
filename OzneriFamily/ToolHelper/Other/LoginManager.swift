@@ -74,7 +74,7 @@ class LoginManager:NSObject{
             {
                 isPhoneLogin=LoginManager.instance.currentLoginType==OznerLoginType.ByPhoneNumber
             }
-            return isPhoneLogin ? loginViewController_Phone:loginViewController_Email
+            return 1 == 1 ? loginViewController_Phone:loginViewController_Email
         }
         
         

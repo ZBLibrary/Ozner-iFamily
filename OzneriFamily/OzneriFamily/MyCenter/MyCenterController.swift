@@ -27,7 +27,6 @@ class MyCenterController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         setupUI()
         
         setData()
