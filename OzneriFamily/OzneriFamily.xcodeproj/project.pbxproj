@@ -231,6 +231,7 @@
 		8D92F6711D9534890068A40A /* LeftMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F6701D9534890068A40A /* LeftMenu.storyboard */; };
 		8D9951381DACE4540050FB19 /* DeviceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9951371DACE4540050FB19 /* DeviceViewContainer.swift */; };
 		8DA417901DDC8E2B00EC7381 /* CupTDSCircleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4178F1DDC8E2B00EC7381 /* CupTDSCircleView.xib */; };
+		8DA6830C1DFA7714001D1D28 /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA6830B1DFA7714001D1D28 /* LocalNotificationHelper.swift */; };
 		8DAE80571D9A097800A9946F /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80541D9A097800A9946F /* SlideMenuController.swift */; };
 		8DAE80601D9A0CB200A9946F /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DAE805E1D9A0CB200A9946F /* AFNetworking.framework */; };
 		8DAE80611D9A0CB200A9946F /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8DAE805E1D9A0CB200A9946F /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -703,6 +704,7 @@
 		8D92F6701D9534890068A40A /* LeftMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LeftMenu.storyboard; sourceTree = "<group>"; };
 		8D9951371DACE4540050FB19 /* DeviceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceViewContainer.swift; sourceTree = "<group>"; };
 		8DA4178F1DDC8E2B00EC7381 /* CupTDSCircleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupTDSCircleView.xib; sourceTree = "<group>"; };
+		8DA6830B1DFA7714001D1D28 /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		8DAE80541D9A097800A9946F /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		8DAE80551D9A097800A9946F /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuControllerSwift.h; sourceTree = "<group>"; };
 		8DAE805E1D9A0CB200A9946F /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
@@ -1537,6 +1539,7 @@
 				8D0D69511DDD9AE80097038E /* String+Expand.swift */,
 				8D1268811DDEE7EB0042DE3E /* InfoPlist.strings */,
 				8D1268881DDEE8460042DE3E /* Localizable.strings */,
+				8DA6830B1DFA7714001D1D28 /* LocalNotificationHelper.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -2352,6 +2355,7 @@
 				8D0D68BF1DDD99540097038E /* NSBundle+ZHCMessages.m in Sources */,
 				8D0D68CB1DDD99540097038E /* ZHCMessagesTimestampFormatter.m in Sources */,
 				8D1C66E01DAA3B62008C639F /* OznerManager.m in Sources */,
+				8DA6830C1DFA7714001D1D28 /* LocalNotificationHelper.swift in Sources */,
 				8D0F63D21DB09DE600FA38BF /* RDVTabBar.m in Sources */,
 				8D0D68D71DDD99540097038E /* ZHCVideoMediaItem.m in Sources */,
 				8DC02F7E1DB5F03B007F57DB /* BaseDeviceIO.m in Sources */,

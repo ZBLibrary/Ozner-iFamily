@@ -12,7 +12,14 @@ class ReplenishSexController: UIViewController {
 
     var currSetting:DeviceSetting!
     @IBAction func saveClick(_ sender: AnyObject) {
-        currSetting.put("sex", value: sexImg1.isHidden ? "男":"女")
+        let newSexStr = sexImg1.isHidden ? "男":"女"
+        let oldSexStr = currSetting.get("sex", default: "女") as! String
+        if newSexStr != oldSexStr {
+            currSetting.put("sex", value: newSexStr)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "BuShuiYiSexChanged"), object: nil, userInfo: ["sex":newSexStr])
+        }
+        
+        _=self.navigationController?.popViewController(animated: true)
     }
     @IBOutlet var sexLabel1: UILabel!
     @IBOutlet var sexLabel2: UILabel!

@@ -11,11 +11,22 @@ import UIKit
 class SetReplenishTimeController: UIViewController {
 
     var currSetting:DeviceSetting!
-    
+    //带+号表示选中状态，否则，未选中状态
     @IBAction func saveClick(_ sender: AnyObject) {
-        currSetting.put("checktime1", value: timeLabel1.text!)
-        currSetting.put("checktime2", value: timeLabel2.text!)
-        currSetting.put("checktime3", value: timeLabel3.text!)
+        currSetting.put("checktime1", value: timeLabel1.text!+(timeImg1.isHidden ? "":"+"))
+        currSetting.put("checktime2", value: timeLabel2.text!+(timeImg2.isHidden ? "":"+"))
+        currSetting.put("checktime3", value: timeLabel3.text!+(timeImg3.isHidden ? "":"+"))
+        for i in 0...2 {
+            LocalNotificationHelper.removeNoticeForKey(key: "BuShuiYi"+["checktime1","checktime2","checktime3"][i])
+            if !([timeImg1,timeImg2,timeImg3][i].isHidden) {
+                let tmpLabel = [timeLabel1,timeLabel2,timeLabel3][i] as UILabel
+                
+                let date = NSDate(string: tmpLabel.text!, formatString: "hh:mm")
+                LocalNotificationHelper.addNoticeForKeyEveryDay(key: "BuShuiYi"+["checktime1","checktime2","checktime3"][i], date: date as! Date, alertBody: "您的补水时间已到，请及时补充水分！") 
+            }
+        }
+        
+        
         _=self.navigationController?.popViewController(animated: true)
     }
     @IBOutlet var timeLabel1: UILabel!
@@ -27,9 +38,10 @@ class SetReplenishTimeController: UIViewController {
     var currTimeLabel:UILabel!
     
     @IBAction func timeTapClick(_ sender: UITapGestureRecognizer) {
-        timeImg1.isHidden = sender.view?.tag != 0
-        timeImg2.isHidden = sender.view?.tag != 1
-        timeImg3.isHidden = sender.view?.tag != 2
+        let currTimeImg=[timeImg1,timeImg2,timeImg3][(sender.view?.tag)!]
+        currTimeImg?.isHidden = !(currTimeImg?.isHidden)!
+        datePicker.isHidden = (currTimeImg?.isHidden)!
+        
         currTimeLabel=[timeLabel1,timeLabel2,timeLabel3][(sender.view?.tag)!]
         datePicker.date=NSDate(string: currTimeLabel.text!, formatString: "hh:mm") as Date
     }
@@ -40,10 +52,20 @@ class SetReplenishTimeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeLabel1.text = currSetting.get("checktime1", default: "08:00") as! String?
-        timeLabel2.text = currSetting.get("checktime2", default: "14:30") as! String?
-        timeLabel3.text = currSetting.get("checktime3", default: "21:00") as! String?
-         datePicker.date=NSDate(string: timeLabel1.text!, formatString: "hh:mm") as Date
+        //带+号表示选中状态，否则，未选中状态
+        let checktime1 = currSetting.get("checktime1", default: "08:00") as! String?
+        timeImg1.isHidden = !(checktime1?.contains("+"))!
+        timeLabel1.text = checktime1?.replacingOccurrences(of: "+", with: "")
+        
+        let checktime2 = currSetting.get("checktime2", default: "14:30") as! String?
+        timeImg2.isHidden = !(checktime2?.contains("+"))!
+        timeLabel2.text = checktime2?.replacingOccurrences(of: "+", with: "")
+        
+        let checktime3 = currSetting.get("checktime3", default: "21:00") as! String?
+        timeImg3.isHidden = !(checktime3?.contains("+"))!
+        timeLabel3.text = checktime3?.replacingOccurrences(of: "+", with: "")
+        
+        datePicker.date=NSDate(string: timeLabel1.text!, formatString: "hh:mm") as Date
         currTimeLabel=timeLabel1
         // Do any additional setup after loading the view.
     }
