@@ -8,12 +8,13 @@
 
 import UIKit
 import IQKeyboardManager
+import UserNotifications
 
 var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
 }
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotificationCenterDelegate {
 
     var window: UIWindow? = {
         return UIWindow(frame: UIScreen.main.bounds)
@@ -30,11 +31,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         myTypes.insert(UIUserNotificationType.sound)
         myTypes.insert(UIUserNotificationType.badge)
         myTypes.insert(UIUserNotificationType.alert)
-        let userSetting = UIUserNotificationSettings(types:myTypes, categories:nil)
-        UIApplication.shared.registerUserNotificationSettings(userSetting)
+        
+        
+//        if #available(iOS 10.0, *) {
+//            let notifiCenter = UNUserNotificationCenter.current()
+//            notifiCenter.delegate = self
+//            let types = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
+//            notifiCenter.requestAuthorization(options: types) { (flag, error) in
+//                if flag {
+//                   print("iOS request notification success")
+//                }else{
+//                    print(" iOS 10 request notification fail")
+//                }
+//            }
+//        } else { //iOS8,iOS9注册通知
+            let setting = UIUserNotificationSettings(types: [UIUserNotificationType.alert,UIUserNotificationType.sound,UIUserNotificationType.badge], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(setting)
+//        }
+        
+        UIApplication.shared.registerForRemoteNotifications()
+        
+        
+    
+//        let userSetting = UIUserNotificationSettings(types:myTypes, categories:nil)
+//        UIApplication.shared.registerUserNotificationSettings(userSetting)
         BPush.disableLbs()//禁用地理位置
         BPush.registerChannel(launchOptions, apiKey: "7nGBGzSxkIgjpEHHusrgdobS", pushMode: BPushMode.production, withFirstAction: nil, withSecondAction: nil, withCategory: nil, useBehaviorTextInput: false, isDebug: false)
-        
+        BPush.description()
+//        BPush.debugDescription()
         //注册微信//
         WXApi.registerApp("wx45a8cc642a2295b5", withDescription: "haoze")
         
@@ -105,10 +129,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         BPush.registerDeviceToken(deviceToken)// 必须
-    
+        print(deviceToken)
+        
         BPush.bindChannel(completeHandler: { (result, error) -> Void in
+            print(result)
             if ((result) != nil) {
-                BPush.setTag("Mytag", withCompleteHandler: nil)
+
+                BPush.setTag("GYMytag", withCompleteHandler: { (result, error) in
+                    if (result != nil) {
+                        print("设置tag成功")
+                    }
+                })
             }
         })
     }
@@ -117,32 +148,198 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         print("DeviceToken 获取失败:\(error)")
     }
     
+   
+    //iOS 8/9
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    
         BPush.handleNotification(userInfo)
         completionHandler(UIBackgroundFetchResult.newData)
         print(userInfo)
         
+        let alert = SCLAlertView()
+        
+        _ = alert.showInfo("shoudaol", subTitle: "123")
+        
+        _ = alert.addButton("ahode", action: {})
+        
         let WaterJson = userInfo as! [String: AnyObject]
         
-        for (k,v) in WaterJson {
+        do {
+            let strChat = try! JSONSerialization.data(withJSONObject: WaterJson, options: JSONSerialization.WritingOptions.prettyPrinted)
             
+            DispatchQueue.main.async {
+                
+                let alert = SCLAlertView()
+                
+                _ = alert.showInfo(strChat.base64EncodedString(), subTitle: "123")
+                
+                _ = alert.addButton("ahode", action: {})
+                
+                
+            }
+
+        } catch {
+            
+        }
+        
+        
+        for (k,v) in WaterJson {
+        
             if k == "data" {
-//                let msg = (v.isKind(of: NSNull())) ? "" : (v as! String)
-//                let msg = "13"
-//                
-//                let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-//                conModel.content =  msg
-//                conModel.type = ChatType.Content.rawValue
-//                conModel.userId = "468-768355-23123"
-//                
-//                CoreDataManager.defaultManager.saveChanges()
+                let msg = v as! String
+                let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+                conModel.content =  msg
+                conModel.type = ChatType.Content.rawValue
+                conModel.userId = "468-768355-23123"
+                
+                if msg.contains("<div style=") {
+                    conModel.content = try! NSAttributedString.init(data: msg.data(using: String.Encoding.utf8)!, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes: nil).string
+                }
+                
+                let msS = msg as NSString
+                
+//                let str = msS.sub
+                
+                
+                
+                if msg.contains("<div style=") && msg.contains("src=") {
+                
+                do {
+                    let regex = try! NSRegularExpression(pattern: "<img\\ssrc[^>]*/>", options: .allowCommentsAndWhitespace)
+                    
+                    let result = regex.matches(in: msg, options: .reportCompletion, range: NSMakeRange(0, msg.characters.count))
+                    
+                    var content = msg as NSString
+                    var sourceSrcs: [String: String] = ["": ""]
+                    
+                    for item in result {
+                        let range = item.rangeAt(0)
+                        
+                        let imgHtml = content.substring(with: range) as NSString
+                        var array = [""]
+                        
+                        if imgHtml.range(of: "src=\"").location != NSNotFound {
+                            array = imgHtml.components(separatedBy: "src=\"")
+                        } else if imgHtml.range(of: "src=").location != NSNotFound {
+                            array = imgHtml.components(separatedBy: "src=")
+                        }
+                        
+                        if array.count >= 2 {
+                            var src = array[1] as NSString
+                            if src.range(of: "\"").location != NSNotFound {
+                                src = src.substring(to: src.range(of: "\"").location) as NSString
+                                
+                                // 图片链接正确解析出来
+                                print(src)
+                                
+                                DispatchQueue.main.async {
+                                    
+                                    let alert = SCLAlertView()
+                                    
+                                    _ = alert.showInfo(src as String, subTitle: "123")
+                                    
+                                    _ = alert.addButton("ahode", action: {})
+                                    
+                                    
+                                }
+                                
+                                // 加载图片
+                                // 这里不处理重复加载的问题，实际开发中，应该要做一下处理。
+                                // 也就是先判断是否已经加载过，且未清理掉该缓存的图片。如果
+                                // 已经缓存过，否则才执行下面的语句。
+                                let data = try? Data(contentsOf: URL(string: src as String)!)
+                                
+                                conModel.type = ChatType.IMAGE.rawValue
+                                conModel.content = data?.base64EncodedString()
+                                
+                                // 记录下原URL和本地URL
+                                // 如果用异步加载图片的方式，先可以提交将每个URL起好名字，由于这里使用的是原URL的md5作为名称，
+                                // 因此每个URL的名字是固定的。
+                            }
+                        }
+                    }
+
+                }
+                }
+//                if msg.contains("<div style=") && msg.contains("src=") {
+//                    
+//                    conModel.type = ChatType.IMAGE.rawValue
+//                    
+//                    let regex = try! NSRegularExpression(pattern: "<img\\ssrc[^>]*/>", options: .allowCommentsAndWhitespace)
+//                    
+//                    let result = regex.matches(in: msg, options: .reportCompletion, range: NSRange(location: 0,length: msg.characters.count))
+//                    
+//                    for item in result {
+//                        
+//                        _ = item.rangeAt(0)
+//                        
+//                        
+//                    }
+//                    
+////                    conModel.content
+//                    
+//                }
+   
+                CoreDataManager.defaultManager.saveChanges()
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
+                
+                DispatchQueue.main.async {
+                    
+                    let alert = SCLAlertView()
+                    
+                    _ = alert.showInfo("搜到消息", subTitle: msg)
+                    
+                    _ = alert.addButton("ahode", action: {})
+                    
+                    
+                }
                 
             }
             
         }
         
     }
+                
     
+    /*
+    @available(iOS 10.0, *)//前台
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print(notification.request.content.userInfo)
+        completionHandler([.sound,.alert])
+        DispatchQueue.main.async {
+            
+            let alert = SCLAlertView()
+            
+            _ = alert.showInfo("shoudaol", subTitle: "123")
+            
+            _ = alert.addButton("ahode", action: {})
+            
+            
+        }
+    }
+    
+    @available(iOS 10.0, *)//后台点击
+    private func userNotificationCenter(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void){
+        let userInfo = response.notification.request.content.userInfo
+        print("userInfo10:\(userInfo)")
+        completionHandler()
+        
+        DispatchQueue.main.async {
+            
+            let alert = SCLAlertView()
+            
+            _ = alert.showInfo("shoudaol", subTitle: "123")
+            
+            _ = alert.addButton("ahode", action: {})
+            
+            
+        }
+        
+       
+    }
+    
+    */
     func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
         
         print(userInfo)
