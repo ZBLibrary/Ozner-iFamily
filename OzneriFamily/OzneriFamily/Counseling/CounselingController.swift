@@ -50,13 +50,6 @@ class CounselingController: ZHCMessagesViewController {
         
         initNavarionBar()
         
-        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-        let msg = ""
-        
-        conModel.content =  msg
-        conModel.type = ChatType.Content.rawValue
-        conModel.userId = "468-768355-23123"
-        
         NotificationCenter.default.addObserver(self, selector: #selector(CounselingController.kefuAction), name: NSNotification.Name.init(rawValue: "KeFuMessage"), object: nil)
         
         demoData = ZHCModelData()

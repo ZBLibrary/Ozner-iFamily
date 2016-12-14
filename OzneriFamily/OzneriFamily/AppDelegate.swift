@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManager
 import UserNotifications
+import WebImage
 
 var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
@@ -154,34 +155,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
     
         BPush.handleNotification(userInfo)
         completionHandler(UIBackgroundFetchResult.newData)
-        print(userInfo)
-        
-        let alert = SCLAlertView()
-        
-        _ = alert.showInfo("shoudaol", subTitle: "123")
-        
-        _ = alert.addButton("ahode", action: {})
         
         let WaterJson = userInfo as! [String: AnyObject]
-        
-        do {
-            let strChat = try! JSONSerialization.data(withJSONObject: WaterJson, options: JSONSerialization.WritingOptions.prettyPrinted)
-            
-            DispatchQueue.main.async {
-                
-                let alert = SCLAlertView()
-                
-                _ = alert.showInfo(strChat.base64EncodedString(), subTitle: "123")
-                
-                _ = alert.addButton("ahode", action: {})
-                
-                
-            }
-
-        } catch {
-            
-        }
-        
         
         for (k,v) in WaterJson {
         
@@ -192,109 +167,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                 conModel.type = ChatType.Content.rawValue
                 conModel.userId = "468-768355-23123"
                 
-                if msg.contains("<div style=") {
-                    conModel.content = try! NSAttributedString.init(data: msg.data(using: String.Encoding.utf8)!, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes: nil).string
+                if msg.contains("<div style=") && !msg.contains("src=") {
+                    
+                    let range1 = msg.range(of: "雅黑\">")
+                    let range2 = msg.range(of: "</div>")
+                    conModel.content = msg.substring(with: (range1?.upperBound)!..<(range2?.lowerBound)!)
+                    CoreDataManager.defaultManager.saveChanges()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
                 }
-                
-                let msS = msg as NSString
-                
-//                let str = msS.sub
-                
-                
-                
-                if msg.contains("<div style=") && msg.contains("src=") {
-                
-                do {
-                    let regex = try! NSRegularExpression(pattern: "<img\\ssrc[^>]*/>", options: .allowCommentsAndWhitespace)
-                    
-                    let result = regex.matches(in: msg, options: .reportCompletion, range: NSMakeRange(0, msg.characters.count))
-                    
-                    var content = msg as NSString
-                    var sourceSrcs: [String: String] = ["": ""]
-                    
-                    for item in result {
-                        let range = item.rangeAt(0)
-                        
-                        let imgHtml = content.substring(with: range) as NSString
-                        var array = [""]
-                        
-                        if imgHtml.range(of: "src=\"").location != NSNotFound {
-                            array = imgHtml.components(separatedBy: "src=\"")
-                        } else if imgHtml.range(of: "src=").location != NSNotFound {
-                            array = imgHtml.components(separatedBy: "src=")
-                        }
-                        
-                        if array.count >= 2 {
-                            var src = array[1] as NSString
-                            if src.range(of: "\"").location != NSNotFound {
-                                src = src.substring(to: src.range(of: "\"").location) as NSString
-                                
-                                // 图片链接正确解析出来
-                                print(src)
-                                
-                                DispatchQueue.main.async {
-                                    
-                                    let alert = SCLAlertView()
-                                    
-                                    _ = alert.showInfo(src as String, subTitle: "123")
-                                    
-                                    _ = alert.addButton("ahode", action: {})
-                                    
-                                    
-                                }
-                                
-                                // 加载图片
-                                // 这里不处理重复加载的问题，实际开发中，应该要做一下处理。
-                                // 也就是先判断是否已经加载过，且未清理掉该缓存的图片。如果
-                                // 已经缓存过，否则才执行下面的语句。
-                                let data = try? Data(contentsOf: URL(string: src as String)!)
-                                
-                                conModel.type = ChatType.IMAGE.rawValue
-                                conModel.content = data?.base64EncodedString()
-                                
-                                // 记录下原URL和本地URL
-                                // 如果用异步加载图片的方式，先可以提交将每个URL起好名字，由于这里使用的是原URL的md5作为名称，
-                                // 因此每个URL的名字是固定的。
-                            }
-                        }
-                    }
 
-                }
-                }
-//                if msg.contains("<div style=") && msg.contains("src=") {
-//                    
-//                    conModel.type = ChatType.IMAGE.rawValue
-//                    
-//                    let regex = try! NSRegularExpression(pattern: "<img\\ssrc[^>]*/>", options: .allowCommentsAndWhitespace)
-//                    
-//                    let result = regex.matches(in: msg, options: .reportCompletion, range: NSRange(location: 0,length: msg.characters.count))
-//                    
-//                    for item in result {
-//                        
-//                        _ = item.rangeAt(0)
-//                        
-//                        
-//                    }
-//                    
-////                    conModel.content
-//                    
-//                }
-   
-                CoreDataManager.defaultManager.saveChanges()
+                if msg.contains("<div style=") && msg.contains("src=") {
+                    
+                    var imageStr = ""
+                    
+                    if msg.contains(".gif") {
+                        
+                        let range1 = msg.range(of: "http")
+                        let range2 = msg.range(of: ".gif")
+                        imageStr = msg.substring(with: (range1?.lowerBound)!..<(range2?.upperBound)!)
+                    }
+                    
+                    if  msg.contains(".jpg") {
+                        
+                        let range1 = msg.range(of: "http")
+                        let range2 = msg.range(of: ".jpg")
+                        imageStr = msg.substring(with: (range1?.lowerBound)!..<(range2?.upperBound)!)
+                        
+                    }
+                    
+                    conModel.type = ChatType.IMAGE.rawValue
+                    
+                    DispatchQueue.main.async {
+                        
+                        let alert = SCLAlertView()
+                        
+                        _ = alert.showInfo(imageStr, subTitle: "123")
+                        
+                        _ = alert.addButton("ahode", action: {})
+                        
+                    }
+                    
                 
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
-                
-                DispatchQueue.main.async {
                     
-                    let alert = SCLAlertView()
-                    
-                    _ = alert.showInfo("搜到消息", subTitle: msg)
-                    
-                    _ = alert.addButton("ahode", action: {})
-                    
+                    let imageView = UIImageView()
+                    imageView.sd_setImage(with: URL(string: imageStr), placeholderImage: nil, options: SDWebImageOptions.cacheMemoryOnly, completed: { (image, _, _, _) in
+                        
+                        let data: Data = UIImageJPEGRepresentation(image!, 1.0)!
+                        
+                        conModel.content = data.base64EncodedString()
+                        CoreDataManager.defaultManager.saveChanges()
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
+                        
+                    })
                     
                 }
-                
+
             }
             
         }

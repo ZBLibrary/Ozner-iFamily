@@ -115,13 +115,13 @@
 
 -(void)addPhotoMediaMessage:(ConsultModel *)model
 {
-    ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImage:[UIImage imageWithData:    [[NSData alloc] initWithBase64EncodedString:model.content options:NSDataBase64DecodingIgnoreUnknownCharacters]]];
-    if (model.userId == kZHCDemoAvatarIdJobs) {
-        photoItem.appliesMediaViewMaskAsOutgoing = NO;
+    ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImage:[UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:model.content options:NSDataBase64DecodingIgnoreUnknownCharacters]]];
+    if ([model.userId isEqualToString:kZHCDemoAvatarIdJobs] ) {
+        photoItem.appliesMediaViewMaskAsOutgoing = YES;
         ZHCMessage *photoMessage = [ZHCMessage messageWithSenderId:model.userId displayName:@"Jobs" media:photoItem];
         [self.messages addObject:photoMessage];
     } else {
-        photoItem.appliesMediaViewMaskAsOutgoing = YES;
+        photoItem.appliesMediaViewMaskAsOutgoing = NO;
         ZHCMessage *photoMessage = [ZHCMessage messageWithSenderId:model.userId displayName:@"小泽妹" media:photoItem];
         [self.messages addObject:photoMessage];
     }
