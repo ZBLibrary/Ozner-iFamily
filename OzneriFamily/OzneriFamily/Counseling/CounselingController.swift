@@ -52,6 +52,15 @@ class CounselingController: ZHCMessagesViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(CounselingController.kefuAction), name: NSNotification.Name.init(rawValue: "KeFuMessage"), object: nil)
         
+        
+        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+        
+//        conModel.content = "<div style=\"font-size:14px;font-family:微软雅黑\"><img id=\"imgUpload\" src=\"http://dkf.ozner.net/upload/7SBY_1481523779.jpg_600_600.jpg\"></div>"
+        conModel.content = "http://dkf.ozner.net/upload/7SBY_1481523779.jpg_600_600.jpg"
+        conModel.type = ChatType.IMAGE.rawValue
+        conModel.userId = senderId()
+        
+        CoreDataManager.defaultManager.saveChanges()
         demoData = ZHCModelData()
 
         DispatchQueue.main.async {
@@ -59,6 +68,8 @@ class CounselingController: ZHCMessagesViewController {
             self.recoverMessageInputToolBar();
             
         }
+        
+        
         
         User.GetAccesstoken()
     }

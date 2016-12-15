@@ -54,7 +54,22 @@
     ZHCMessagesAvatarImageFactory *avatarFactory = [[ZHCMessagesAvatarImageFactory alloc] initWithDiameter:kZHCMessagesTableViewCellAvatarSizeDefault];
     //拿到当前头像
        ZHCMessagesAvatarImage *cookImage = [avatarFactory avatarImageWithImage:[UIImage imageNamed:@"HaoZeKeFuImage"]];
-    ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:[UIImage sd_imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:User.currentUser.headimage]]]];
+//    ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:[UIImage sd_imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:User.currentUser.headimage]]]];
+        ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:[UIImage imageNamed:@"HaoZeKeFuImage"]];
+    
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:User.currentUser.headimage] options:SDWebImageCacheMemoryOnly progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        if (!error) {
+                        
+            dispatch_async(dispatch_get_main_queue(), ^{
+                ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:image];
+                self.avatars = @{kZHCDemoAvatarIdCook : cookImage,
+                                 kZHCDemoAvatarIdJobs : jobsImage};
+            });
+        }
+    }];
+    
     self.avatars = @{kZHCDemoAvatarIdCook : cookImage,
                              kZHCDemoAvatarIdJobs : jobsImage};
     
@@ -115,7 +130,8 @@
 
 -(void)addPhotoMediaMessage:(ConsultModel *)model
 {
-    ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImage:[UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:model.content options:NSDataBase64DecodingIgnoreUnknownCharacters]]];
+//    ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImage:[UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:model.content options:NSDataBase64DecodingIgnoreUnknownCharacters]]];
+        ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImageUrl:model.content];
     if ([model.userId isEqualToString:kZHCDemoAvatarIdJobs] ) {
         photoItem.appliesMediaViewMaskAsOutgoing = YES;
         ZHCMessage *photoMessage = [ZHCMessage messageWithSenderId:model.userId displayName:@"Jobs" media:photoItem];
