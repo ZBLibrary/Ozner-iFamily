@@ -126,8 +126,6 @@
         [self.messages addObject:photoMessage];
     }
 
-   
-
     
 }
 

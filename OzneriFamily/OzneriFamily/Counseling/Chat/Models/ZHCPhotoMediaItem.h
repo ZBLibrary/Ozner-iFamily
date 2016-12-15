@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (copy, nonatomic, nullable) UIImage *image;
 
+@property (copy,nonatomic) NSString *imageUrl;
 /**
  *  Initializes and returns a photo media item object having the given image.
  *
@@ -34,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  Once the image has been retrieved, you can then set the image property.
  */
 - (instancetype)initWithImage:(nullable UIImage *)image;
+
+- (instancetype)initWithImageUrl:(nullable NSString *)imageUrl;
 
 @end
 NS_ASSUME_NONNULL_END

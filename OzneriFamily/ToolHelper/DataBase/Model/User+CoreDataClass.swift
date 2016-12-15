@@ -149,7 +149,7 @@ public class User: BaseDataObject {
             failure(error)
         }
     }
-    //咨询朱广阳 star
+    //咨询朱光阳 star
     //获取聊天Token
     
     class func GetAccesstoken() {

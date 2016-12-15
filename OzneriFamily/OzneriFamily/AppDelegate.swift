@@ -162,18 +162,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         
             if k == "data" {
                 let msg = v as! String
+                
                 let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-                conModel.content =  msg
+                
                 conModel.type = ChatType.Content.rawValue
                 conModel.userId = "468-768355-23123"
+                conModel.content = msg
+                CoreDataManager.defaultManager.saveChanges()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
+                return
+              
+                if !msg.contains("<div style=") {
+                
+                    let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+                    
+                    conModel.type = ChatType.Content.rawValue
+                    conModel.userId = "468-768355-23123"
+                    conModel.content = msg
+                    CoreDataManager.defaultManager.saveChanges()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
+                    return
+                    
+                }
+            
                 
                 if msg.contains("<div style=") && !msg.contains("src=") {
+                    
+                    let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+
+                    conModel.type = ChatType.Content.rawValue
+                    conModel.userId = "468-768355-23123"
                     
                     let range1 = msg.range(of: "雅黑\">")
                     let range2 = msg.range(of: "</div>")
                     conModel.content = msg.substring(with: (range1?.upperBound)!..<(range2?.lowerBound)!)
+            
                     CoreDataManager.defaultManager.saveChanges()
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
+                    return
+                    
                 }
 
                 if msg.contains("<div style=") && msg.contains("src=") {
@@ -182,49 +209,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                     
                     if msg.contains(".gif") {
                         
+//                        let range1 = msg.range(of: "http")
+//                        let range2 = msg.range(of: ".gif")
+//                        imageStr = msg.substring(with: (range1?.lowerBound)!..<(range2?.upperBound)!)
+                        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+                        conModel.content =  msg
+                        conModel.type = ChatType.Content.rawValue
+                        conModel.userId = "468-768355-23123"
+                        CoreDataManager.defaultManager.saveChanges()
+                        return
+                    }
+                    
+                    if  msg.contains("<img id=\"imgUpload\"") {
+                        
                         let range1 = msg.range(of: "http")
-                        let range2 = msg.range(of: ".gif")
-                        imageStr = msg.substring(with: (range1?.lowerBound)!..<(range2?.upperBound)!)
-                    }
-                    
-                    if  msg.contains(".jpg") {
-                        
-                        let range1 = msg.range(of: "http")
-                        let range2 = msg.range(of: ".jpg")
-                        imageStr = msg.substring(with: (range1?.lowerBound)!..<(range2?.upperBound)!)
+                        let range2 = msg.range(of: "\"></div>")
+                        imageStr = msg.substring(with: (range1?.lowerBound)!..<(range2?.lowerBound)!)
                         
                     }
                     
-                    conModel.type = ChatType.IMAGE.rawValue
+                    let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+                    conModel.content =  msg
+                    conModel.type = ChatType.Content.rawValue
+                    conModel.userId = "468-768355-23123"
                     
-                    DispatchQueue.main.async {
-                        
-                        let alert = SCLAlertView()
-                        
-                        _ = alert.showInfo(imageStr, subTitle: "123")
-                        
-                        _ = alert.addButton("ahode", action: {})
-                        
-                    }
+                    CoreDataManager.defaultManager.saveChanges()
                     
-                
-                    
-                    let imageView = UIImageView()
-                    imageView.sd_setImage(with: URL(string: imageStr), placeholderImage: nil, options: SDWebImageOptions.cacheMemoryOnly, completed: { (image, _, _, _) in
+                    SDWebImageManager.shared().downloadImage(with: URL(string:  imageStr), options: .cacheMemoryOnly, progress: { (_, _) in
                         
-                        let data: Data = UIImageJPEGRepresentation(image!, 1.0)!
+                    }) { (image, _, _, _, _) in
+
+                        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+                        conModel.type = ChatType.IMAGE.rawValue
+                        conModel.userId = "468-768355-23123"
+                        
+                        let data: Data = UIImagePNGRepresentation(image!)!
                         
                         conModel.content = data.base64EncodedString()
                         CoreDataManager.defaultManager.saveChanges()
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
-                        
-                    })
+                    }
                     
                 }
-
+ 
             }
             
         }
+
         
     }
                 

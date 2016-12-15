@@ -10,7 +10,7 @@
 #import "ZHCMessagesMediaPlaceholderView.h"
 #import "ZHCMessagesMediaViewBubbleImageMasker.h"
 #import <MobileCoreServices/UTCoreTypes.h>
-
+#import <WebImage/WebImage.h>
 @interface ZHCPhotoMediaItem()
 @property (strong, nonatomic) UIImageView *cachedImageView;
 
@@ -25,6 +25,16 @@
     self = [super init];
     if (self) {
         _image = [image copy];
+        _cachedImageView = nil;
+    }
+    return self;
+}
+
+- (instancetype)initWithImageUrl:(NSString *)imageUrl
+{
+    self = [super init];
+    if (self) {
+        _imageUrl = [imageUrl copy];
         _cachedImageView = nil;
     }
     return self;
@@ -63,6 +73,8 @@
     if (self.cachedImageView == nil) {
         CGSize size = [self mediaViewDisplaySize];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:self.image];
+//        UIImageView *imageView = [[UIImageView alloc] init];
+//        [imageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrl]];
         imageView.frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;

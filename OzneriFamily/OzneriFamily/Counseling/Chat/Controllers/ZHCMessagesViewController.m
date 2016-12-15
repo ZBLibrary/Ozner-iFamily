@@ -23,7 +23,7 @@
 #import "UIView+ZHCMessages.h"
 
 #import "OzneriFamily-Swift.h"
-
+#import "XMFaceManager.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <objc/runtime.h>
 
@@ -531,7 +531,18 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
     [cell applyLayoutAttributes:size.width];
     if (!isMediaMessage) {
-        cell.textView.text = [messagecell text];
+       
+        
+//        if ([[messagecell text] containsString:@"class=\"imgEmotion\""]) {
+//            //此处图文混排
+//            NSMutableAttributedString *attrS = [XMFaceManager emotionStrWithString: [messagecell text]];
+//            [attrS addAttributes:[self textStyle] range:NSMakeRange(0, attrS.length)];
+//            cell.textView.attributedText = attrS;
+//        } else {
+             cell.textView.text = [messagecell text];
+//        }
+        
+        
         NSParameterAssert(cell.textView.text != nil);
         id<ZHCMessageBubbleImageDataSource> bubbleImageDataSource = [tableView.dataSource tableView:tableView messageBubbleImageDataForCellAtIndexPath:indexPath];
         cell.messageBubbleImageView.image = [bubbleImageDataSource messageBubbleImage];
@@ -593,6 +604,19 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     [cell setNeedsLayout];
     return cell;
 }
+
+- (NSDictionary *)textStyle {
+    UIFont *font = [UIFont systemFontOfSize:14];
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    style.paragraphSpacing = 0.15 * font.lineHeight;
+    style.hyphenationFactor = 1.0;
+    return @{
+             NSFontAttributeName: font,
+             NSParagraphStyleAttributeName: style,
+             NSForegroundColorAttributeName: [UIColor whiteColor]
+             };
+}
+
 
 -(ZHCMessagesTableViewCell *)messageTableViewDequeueReusableCellWithIndexPath:(NSIndexPath *)indexPath
 {
