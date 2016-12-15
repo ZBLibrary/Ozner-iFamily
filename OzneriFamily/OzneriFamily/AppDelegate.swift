@@ -229,27 +229,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                     }
                     
                     let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-                    conModel.content =  msg
-                    conModel.type = ChatType.Content.rawValue
+                    conModel.content =  imageStr
+                    conModel.type = ChatType.IMAGE.rawValue
                     conModel.userId = "468-768355-23123"
                     
                     CoreDataManager.defaultManager.saveChanges()
                     
-                    SDWebImageManager.shared().downloadImage(with: URL(string:  imageStr), options: .cacheMemoryOnly, progress: { (_, _) in
-                        
-                    }) { (image, _, _, _, _) in
-
-                        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-                        conModel.type = ChatType.IMAGE.rawValue
-                        conModel.userId = "468-768355-23123"
-                        
-                        let data: Data = UIImagePNGRepresentation(image!)!
-                        
-                        conModel.content = data.base64EncodedString()
-                        CoreDataManager.defaultManager.saveChanges()
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
-                    }
-                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
                 }
  
             }

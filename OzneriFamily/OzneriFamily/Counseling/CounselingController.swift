@@ -9,6 +9,7 @@
 import UIKit
 import AFNetworking
 import SwiftyJSON
+import WebImage
 
 let appid_News = "hzapi"
 let appsecret_News = "8af0134asdffe12"
@@ -255,7 +256,30 @@ class CounselingController: ZHCMessagesViewController {
         let currentMessage = demoData?.messages.object(at: indexPath.item) as! ZHCMessage
 
         if currentMessage.isMediaMessage {
-            UUImageAvatarBrowser.show((currentMessage.media as! ZHCPhotoMediaItem).image)
+            
+            if ((currentMessage.media as! ZHCPhotoMediaItem).image != nil) {
+                
+                UUImageAvatarBrowser.show((currentMessage.media as! ZHCPhotoMediaItem).image)
+                
+            } else {
+                //网络图片
+                let str = (currentMessage.media as! ZHCPhotoMediaItem).imageUrl
+                
+                SDWebImageManager.shared().downloadImage(with: URL(string:str), options: .cacheMemoryOnly , progress: { (_, _) in
+                    
+                    }, completed: { (image, error, _, _, _) in
+                        
+                        if !(error != nil) {
+                            
+                            UUImageAvatarBrowser.show(image!)
+                            
+                        }
+                        
+                })
+                
+                
+            }
+            
         }
         
     }
