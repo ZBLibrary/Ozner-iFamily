@@ -485,6 +485,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     
     ZHCMessage *message = (ZHCMessage *)[tableView.dataSource tableView:tableView messageDataForCellAtIndexPath:indexPath];
     CGFloat height = 0.0;
+    NSLog(@"%@",message);
     CGSize size = [self.bubbleSizeCalculator messageBubbleSizeForMessageData:message atIndexPath:indexPath withTableView:tableView];
     
     CGFloat avatarHeight = 0.0f;
@@ -532,15 +533,16 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     [cell applyLayoutAttributes:size.width];
     if (!isMediaMessage) {
        
-        
-//        if ([[messagecell text] containsString:@"class=\"imgEmotion\""]) {
-//            //此处图文混排
-//            NSMutableAttributedString *attrS = [XMFaceManager emotionStrWithString: [messagecell text]];
-//            [attrS addAttributes:[self textStyle] range:NSMakeRange(0, attrS.length)];
-//            cell.textView.attributedText = attrS;
-//        } else {
+        //[messagecell text] containsString:@"class=\"imgEmotion\""]
+        if ([[messagecell text] containsString:@"<div style=\""]) {
+            //此处图文混排
+            NSMutableAttributedString *attrS = [XMFaceManager emotionStrWithString: [messagecell text]];
+            [attrS addAttributes:[self textStyle] range:NSMakeRange(0, attrS.length)];
+            cell.textView.attributedText = attrS;
+//            cell.textView.text = 
+        } else {
              cell.textView.text = [messagecell text];
-//        }
+        }
         
         
         NSParameterAssert(cell.textView.text != nil);

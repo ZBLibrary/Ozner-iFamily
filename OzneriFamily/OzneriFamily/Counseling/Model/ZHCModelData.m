@@ -55,20 +55,34 @@
     //拿到当前头像
        ZHCMessagesAvatarImage *cookImage = [avatarFactory avatarImageWithImage:[UIImage imageNamed:@"HaoZeKeFuImage"]];
 //    ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:[UIImage sd_imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:User.currentUser.headimage]]]];
-        ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:[UIImage imageNamed:@"HaoZeKeFuImage"]];
+//        ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:[UIImage imageNamed:@"HaoZeKeFuImage"]];
+
+    UIImageView *imageView = [[UIImageView alloc] init];
     
-    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:User.currentUser.headimage] options:SDWebImageCacheMemoryOnly progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        
-    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+    [imageView sd_setImageWithURL:[NSURL URLWithString:User.currentUser.headimage] placeholderImage:[UIImage imageNamed:@"HaoZeKeFuImage"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (!error) {
-                        
             dispatch_async(dispatch_get_main_queue(), ^{
-                ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:image];
-                self.avatars = @{kZHCDemoAvatarIdCook : cookImage,
-                                 kZHCDemoAvatarIdJobs : jobsImage};
-            });
+                imageView.image = image;
+
+             });
+            
         }
     }];
+
+    ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:imageView.image];
+    
+//    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:User.currentUser.headimage] options:SDWebImageCacheMemoryOnly progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//        
+//    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+//        if (!error) {
+//                        
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                ZHCMessagesAvatarImage *jobsImage = [avatarFactory avatarImageWithImage:image];
+//                self.avatars = @{kZHCDemoAvatarIdCook : cookImage,
+//                                 kZHCDemoAvatarIdJobs : jobsImage};
+//            });
+//        }
+//    }];
     
     self.avatars = @{kZHCDemoAvatarIdCook : cookImage,
                              kZHCDemoAvatarIdJobs : jobsImage};
@@ -132,8 +146,8 @@
 {
 //    ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImage:[UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:model.content options:NSDataBase64DecodingIgnoreUnknownCharacters]]];
     if ([model.userId isEqualToString:kZHCDemoAvatarIdJobs] ) {
-//           ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImage:[UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:model.content options:NSDataBase64DecodingIgnoreUnknownCharacters]]];
-        ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImageUrl:model.content];
+           ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImage:[UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:model.content options:NSDataBase64DecodingIgnoreUnknownCharacters]]];
+//        ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImageUrl:model.content];
         photoItem.appliesMediaViewMaskAsOutgoing = YES;
         ZHCMessage *photoMessage = [ZHCMessage messageWithSenderId:model.userId displayName:@"Jobs" media:photoItem];
         [self.messages addObject:photoMessage];
