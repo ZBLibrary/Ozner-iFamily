@@ -17,7 +17,6 @@
 		8D0D68401DDD8A3B0097038E /* RNModifyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0D683A1DDD8A3B0097038E /* RNModifyPasswordViewController.swift */; };
 		8D0D68411DDD8A3B0097038E /* RNModifyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0D683B1DDD8A3B0097038E /* RNModifyPasswordViewController.xib */; };
 		8D0D68431DDD981D0097038E /* WebShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0D68421DDD981D0097038E /* WebShopController.swift */; };
-		8D0D68BA1DDD99540097038E /* CounselingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0D68441DDD99540097038E /* CounselingController.swift */; };
 		8D0D68BB1DDD99540097038E /* ZHCMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8D0D68471DDD99540097038E /* ZHCMessagesAssets.bundle */; };
 		8D0D68BC1DDD99540097038E /* BDImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0D684A1DDD99540097038E /* BDImagePicker.m */; };
 		8D0D68BD1DDD99540097038E /* UUImageAvatarBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0D684C1DDD99540097038E /* UUImageAvatarBrowser.m */; };
@@ -232,6 +231,7 @@
 		8D92F6711D9534890068A40A /* LeftMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F6701D9534890068A40A /* LeftMenu.storyboard */; };
 		8D9951381DACE4540050FB19 /* DeviceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9951371DACE4540050FB19 /* DeviceViewContainer.swift */; };
 		8DA417901DDC8E2B00EC7381 /* CupTDSCircleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4178F1DDC8E2B00EC7381 /* CupTDSCircleView.xib */; };
+		8DA6830C1DFA7714001D1D28 /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA6830B1DFA7714001D1D28 /* LocalNotificationHelper.swift */; };
 		8DAE80571D9A097800A9946F /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80541D9A097800A9946F /* SlideMenuController.swift */; };
 		8DAE80601D9A0CB200A9946F /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DAE805E1D9A0CB200A9946F /* AFNetworking.framework */; };
 		8DAE80611D9A0CB200A9946F /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8DAE805E1D9A0CB200A9946F /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -347,6 +347,7 @@
 		8DF78D611D94DBEB002C4202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DF78D601D94DBEB002C4202 /* Assets.xcassets */; };
 		B727C35D1DACE90000FE990F /* SuccessPairCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B727C35B1DACE90000FE990F /* SuccessPairCell.swift */; };
 		B727C35E1DACE90000FE990F /* SuccessPairCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B727C35C1DACE90000FE990F /* SuccessPairCell.xib */; };
+		B74D83CC1DEE7A97006F31E5 /* CounselingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74D83CB1DEE7A97006F31E5 /* CounselingController.swift */; };
 		B7567CA31DB0872800AA7C91 /* CupMatchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7567CA21DB0872800AA7C91 /* CupMatchView.xib */; };
 		B7567CA51DB0873B00AA7C91 /* CupMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7567CA41DB0873B00AA7C91 /* CupMatchView.swift */; };
 		B7567CA71DB0D91F00AA7C91 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */; };
@@ -355,6 +356,7 @@
 		B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */; };
 		B79803DF1DB5C41D001EC5AA /* WaterRefeishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */; };
 		B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */; };
+		B7D6E4991DF928CF00D79BFF /* GYConactBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6E4981DF928CF00D79BFF /* GYConactBook.swift */; };
 		B7EF061C1DB8A357008BE7D4 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EF061A1DB8A346008BE7D4 /* WebImage.framework */; };
 		B7EF061D1DB8A357008BE7D4 /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7EF061A1DB8A346008BE7D4 /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7F9D5441DE40B7500678317 /* GYShareImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F9D5431DE40B7500678317 /* GYShareImage.swift */; };
@@ -406,7 +408,6 @@
 		8D0D683A1DDD8A3B0097038E /* RNModifyPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNModifyPasswordViewController.swift; sourceTree = "<group>"; };
 		8D0D683B1DDD8A3B0097038E /* RNModifyPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RNModifyPasswordViewController.xib; sourceTree = "<group>"; };
 		8D0D68421DDD981D0097038E /* WebShopController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebShopController.swift; sourceTree = "<group>"; };
-		8D0D68441DDD99540097038E /* CounselingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounselingController.swift; sourceTree = "<group>"; };
 		8D0D68471DDD99540097038E /* ZHCMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZHCMessagesAssets.bundle; sourceTree = "<group>"; };
 		8D0D68491DDD99540097038E /* BDImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImagePicker.h; sourceTree = "<group>"; };
 		8D0D684A1DDD99540097038E /* BDImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImagePicker.m; sourceTree = "<group>"; };
@@ -704,6 +705,7 @@
 		8D92F6701D9534890068A40A /* LeftMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LeftMenu.storyboard; sourceTree = "<group>"; };
 		8D9951371DACE4540050FB19 /* DeviceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceViewContainer.swift; sourceTree = "<group>"; };
 		8DA4178F1DDC8E2B00EC7381 /* CupTDSCircleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupTDSCircleView.xib; sourceTree = "<group>"; };
+		8DA6830B1DFA7714001D1D28 /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		8DAE80541D9A097800A9946F /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		8DAE80551D9A097800A9946F /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuControllerSwift.h; sourceTree = "<group>"; };
 		8DAE805E1D9A0CB200A9946F /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
@@ -902,6 +904,7 @@
 		9C704BF1A0D2ADD5B7874B6A /* Pods-OzneriFamily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.debug.xcconfig"; sourceTree = "<group>"; };
 		B727C35B1DACE90000FE990F /* SuccessPairCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessPairCell.swift; sourceTree = "<group>"; };
 		B727C35C1DACE90000FE990F /* SuccessPairCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuccessPairCell.xib; sourceTree = "<group>"; };
+		B74D83CB1DEE7A97006F31E5 /* CounselingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounselingController.swift; sourceTree = "<group>"; };
 		B7567CA21DB0872800AA7C91 /* CupMatchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupMatchView.xib; sourceTree = "<group>"; };
 		B7567CA41DB0873B00AA7C91 /* CupMatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupMatchView.swift; sourceTree = "<group>"; };
 		B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
@@ -909,6 +912,7 @@
 		B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallAriClearView.xib; sourceTree = "<group>"; };
 		B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterRefeishView.swift; sourceTree = "<group>"; };
 		B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterRefeishView.xib; sourceTree = "<group>"; };
+		B7D6E4981DF928CF00D79BFF /* GYConactBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYConactBook.swift; sourceTree = "<group>"; };
 		B7EF061A1DB8A346008BE7D4 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		B7F9D5431DE40B7500678317 /* GYShareImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYShareImage.swift; sourceTree = "<group>"; };
 		DBB08E966F838D15B4582606 /* Pods-OzneriFamily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.release.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.release.xcconfig"; sourceTree = "<group>"; };
@@ -1537,6 +1541,7 @@
 				8D0D69511DDD9AE80097038E /* String+Expand.swift */,
 				8D1268811DDEE7EB0042DE3E /* InfoPlist.strings */,
 				8D1268881DDEE8460042DE3E /* Localizable.strings */,
+				8DA6830B1DFA7714001D1D28 /* LocalNotificationHelper.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -2048,6 +2053,7 @@
 		B7EF05FF1DB8A11F008BE7D4 /* MyCenter */ = {
 			isa = PBXGroup;
 			children = (
+				B7D6E4981DF928CF00D79BFF /* GYConactBook.swift */,
 				8D0D68EF1DDD99A00097038E /* MainMyCenter.storyboard */,
 				8D0D68F01DDD99A00097038E /* MyCenterController.swift */,
 				8D0D68F11DDD99A00097038E /* Controller */,
@@ -2059,7 +2065,7 @@
 		B7EF061E1DB8A53A008BE7D4 /* Counseling */ = {
 			isa = PBXGroup;
 			children = (
-				8D0D68441DDD99540097038E /* CounselingController.swift */,
+				B74D83CB1DEE7A97006F31E5 /* CounselingController.swift */,
 				8D0D68451DDD99540097038E /* Chat */,
 				8D0D68B31DDD99540097038E /* Model */,
 			);
@@ -2352,6 +2358,7 @@
 				8D0D68BF1DDD99540097038E /* NSBundle+ZHCMessages.m in Sources */,
 				8D0D68CB1DDD99540097038E /* ZHCMessagesTimestampFormatter.m in Sources */,
 				8D1C66E01DAA3B62008C639F /* OznerManager.m in Sources */,
+				8DA6830C1DFA7714001D1D28 /* LocalNotificationHelper.swift in Sources */,
 				8D0F63D21DB09DE600FA38BF /* RDVTabBar.m in Sources */,
 				8D0D68D71DDD99540097038E /* ZHCVideoMediaItem.m in Sources */,
 				8DC02F7E1DB5F03B007F57DB /* BaseDeviceIO.m in Sources */,
@@ -2393,7 +2400,6 @@
 				8D0D68DC1DDD99540097038E /* ZHCMessagesComposerTextView.m in Sources */,
 				8DC02F9A1DB5F03B007F57DB /* mosquitto.c in Sources */,
 				8D0D69281DDD99A00097038E /* MyLikeViewController.swift in Sources */,
-				8D0D68BA1DDD99540097038E /* CounselingController.swift in Sources */,
 				8D429A0F1DCA0E570083011C /* SkinDetailController.swift in Sources */,
 				8D0E5E6E1DD09C0500AFAD23 /* ChartViewOfSkinDetail.swift in Sources */,
 				8D0D69491DDD99A10097038E /* YanZhengCell.swift in Sources */,
@@ -2444,6 +2450,7 @@
 				8D103D231DD5C2B400291C4F /* CupSetDrinkTimeController.swift in Sources */,
 				8D0D68E91DDD99540097038E /* ZHCMessagesToolbarContentView.m in Sources */,
 				B7567CA51DB0873B00AA7C91 /* CupMatchView.swift in Sources */,
+				B74D83CC1DEE7A97006F31E5 /* CounselingController.swift in Sources */,
 				8DC02F8B1DB5F03B007F57DB /* TapRecord.m in Sources */,
 				8D109F201DAD081400458171 /* CALayer+Expand.swift in Sources */,
 				8D117C271D9D06730024187E /* LoginViewController.swift in Sources */,
@@ -2578,6 +2585,7 @@
 				8DC02E761DB5CE91007F57DB /* Air_WifiMainView.swift in Sources */,
 				8DC02F641DB5F03B007F57DB /* AirPurifierManager.m in Sources */,
 				8D7837091DE292B000A3D9E3 /* OznerShareManager.swift in Sources */,
+				B7D6E4991DF928CF00D79BFF /* GYConactBook.swift in Sources */,
 				8D109F221DAE1E6700458171 /* UIColor+Expand.swift in Sources */,
 				8D0D69201DDD99A00097038E /* MyCenterController.swift in Sources */,
 				8DC02F7D1DB5F03B007F57DB /* CupSettings.m in Sources */,
@@ -2672,8 +2680,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2695,6 +2703,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "75ee7087-e2ae-4b0e-93f2-22e2ba7b9210";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2724,8 +2733,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2740,6 +2749,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "75ee7087-e2ae-4b0e-93f2-22e2ba7b9210";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -2755,8 +2765,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = UZZG6NM74T;
+				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2780,6 +2792,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2795,8 +2809,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = UZZG6NM74T;
+				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2820,6 +2836,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

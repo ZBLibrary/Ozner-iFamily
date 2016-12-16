@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
     }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        window?.rootViewController = LoginManager.instance.loginViewController
+        window!.makeKeyAndVisible()
         //开启IQKEyBoard
         IQKeyboardManager.shared().isEnabled = true
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
@@ -32,11 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         UIApplication.shared.registerUserNotificationSettings(userSetting)
         BPush.disableLbs()//禁用地理位置
         BPush.registerChannel(launchOptions, apiKey: "7nGBGzSxkIgjpEHHusrgdobS", pushMode: BPushMode.production, withFirstAction: nil, withSecondAction: nil, withCategory: nil, useBehaviorTextInput: false, isDebug: false)
+        
         //注册微信//
         WXApi.registerApp("wx45a8cc642a2295b5", withDescription: "haoze")
         
-        window?.rootViewController = LoginManager.instance.loginViewController
-        window!.makeKeyAndVisible()
+        
+        Thread.sleep(forTimeInterval: 2)
         return true
     }
     //微信 delegate---->
@@ -53,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         application.registerForRemoteNotifications()
     }
+    
+  
     
     func onReq(_ req: BaseReq!) {
         
@@ -100,18 +105,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         BPush.registerDeviceToken(deviceToken)// 必须
+    
         BPush.bindChannel(completeHandler: { (result, error) -> Void in
             if ((result) != nil) {
                 BPush.setTag("Mytag", withCompleteHandler: nil)
             }
         })
     }
+    // 当 DeviceToken 获取失败时，系统会回调此方法
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("DeviceToken 获取失败:\(error)")
+    }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         BPush.handleNotification(userInfo)
-        //completionHandler(UIBackgroundFetchResult.newData)
+        completionHandler(UIBackgroundFetchResult.newData)
+        print(userInfo)
+        
+        let WaterJson = userInfo as! [String: AnyObject]
+        
+        for (k,v) in WaterJson {
+            
+            if k == "data" {
+//                let msg = (v.isKind(of: NSNull())) ? "" : (v as! String)
+//                let msg = "13"
+//                
+//                let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+//                conModel.content =  msg
+//                conModel.type = ChatType.Content.rawValue
+//                conModel.userId = "468-768355-23123"
+//                
+//                CoreDataManager.defaultManager.saveChanges()
+                
+            }
+            
+        }
         
     }
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
+        
+        print(userInfo)
+     
+        
+    }
+    func application(_ application: UIApplication, didFailToContinueUserActivityWithType userActivityType: String, error: Error) {
         print(error)
     }
     

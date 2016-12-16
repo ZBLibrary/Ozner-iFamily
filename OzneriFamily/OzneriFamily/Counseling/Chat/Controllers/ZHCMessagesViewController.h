@@ -294,6 +294,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)didReceiveMenuWillHideNotification:(NSNotification *)notification;
 
+- (void)recoverMessageInputToolBar;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

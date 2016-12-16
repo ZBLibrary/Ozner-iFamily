@@ -29,7 +29,7 @@ class SendYanZHViewController: UIViewController,UITextFieldDelegate {
         MessTF.delegate=self
         MessTF.becomeFirstResponder()
         
-        left.title = loadLanguage("取消")
+//        left.title = loadLanguage("取消")
         right.title = loadLanguage("发送")
         
     }
@@ -67,8 +67,6 @@ class SendYanZHViewController: UIViewController,UITextFieldDelegate {
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-        
-//        SVProgressHUD.setViewForExtension(self.view)
         SVProgressHUD.show()
         
         User.AddFriend(params, { (data) in

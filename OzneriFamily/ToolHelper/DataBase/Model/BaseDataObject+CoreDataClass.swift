@@ -66,7 +66,9 @@ extension BaseDataObject{
                 
                 success(json)
             }, failure: { (error) in
+                SVProgressHUD.dismiss()
                 failure(error)
+                
         })
     }
     //传图片可以在这里扩展

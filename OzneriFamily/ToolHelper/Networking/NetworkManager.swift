@@ -161,6 +161,7 @@ class NetworkManager:NSObject{
         assert(self?.RootAdress != nil, "RootAddress不能为nil")
         let manager = AFHTTPSessionManager(baseURL: NSURL(string: (self?.RootAdress)!) as URL?)
         manager.responseSerializer = AFHTTPResponseSerializer()
+        manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
         return manager
         }()
     /**
