@@ -115,6 +115,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
         tapGesture.numberOfTouchesRequired=1
         personBgImgView.addGestureRecognizer(tapGesture)
         SetWaterReplenishView()
+        NotificationCenter.default.addObserver(self, selector: #selector(SexChanged), name: NSNotification.Name(rawValue: "BuShuiYiSexChanged"), object: nil)
     }
     
     //0初始页面,1点击某个部位进入的页面,2检测中,3检测结果出来显示的页面
@@ -291,14 +292,15 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     fileprivate var currentSex:SexType=SexType.WoMan{
         didSet{
             stateOfView=0
+            setNeedsLayout()
+            layoutIfNeeded()
         }
     }
     //更新性别
-    func updateViewzb()
+    func SexChanged(notice:Notification)
     {
-        currentSex=((self.currentDevice as! WaterReplenishmentMeter).settings.get("sex", default: loadLanguage("女")))! as! String==loadLanguage("女") ? SexType.WoMan:SexType.Man
-        setNeedsLayout()
-        layoutIfNeeded()
+        let sexStr=notice.userInfo?["sex"] as! String
+        currentSex = sexStr=="女" ? SexType.WoMan:SexType.Man
     }
     //皮肤检测回掉方法
     func updateViewState()
@@ -338,9 +340,9 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     //初始化视图
     func SetWaterReplenishView()
     {
-        updateViewzb()
+        let sexStr=((self.currentDevice as! WaterReplenishmentMeter).settings.get("sex", default: "女"))! as! String
+        currentSex = sexStr=="女" ? SexType.WoMan:SexType.Man
         getAllWeakAndMonthData()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateViewzb), name: NSNotification.Name(rawValue: "updateDeviceInfo"), object: nil)
     }
     
     

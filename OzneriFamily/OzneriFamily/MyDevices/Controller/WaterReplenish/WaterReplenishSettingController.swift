@@ -17,6 +17,7 @@ class WaterReplenishSettingController: DeviceSettingController {
         self.saveDevice()
     }
     @IBOutlet var nameAndAttrLabel: UILabel!
+    @IBOutlet var sexLabel: UILabel!
     @IBAction func deleteClick(_ sender: AnyObject) {
         super.deleteDevice()
     }
@@ -36,6 +37,10 @@ class WaterReplenishSettingController: DeviceSettingController {
         nameAndAttrLabel.text="\(name)(\(attr))"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        sexLabel.text=self.deviceSetting.get("sex", default: "女") as! String?
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

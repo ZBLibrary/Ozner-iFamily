@@ -60,8 +60,17 @@ class CupSettingController: DeviceSettingController {
         UIApplication.shared.keyWindow?.addSubview(pickDateView)
     }
     @IBAction func cupVoiceSwitch(_ sender: UISwitch) {
+        (self.deviceSetting as! CupSettings).remindEnable=sender.isOn
     }
     @IBAction func phoneSwitch(_ sender: UISwitch) {
+        if sender.isOn {
+            let repeatInter = Int((self.deviceSetting as! CupSettings).remindInterval)
+            let starTime = Int((self.deviceSetting as! CupSettings).remindStart/60)
+            let endTime = Int((self.deviceSetting as! CupSettings).remindEnd/60)
+            LocalNotificationHelper.addCupNotice(repeatInter: repeatInter, starTime: starTime, endTime: endTime)
+        }else{
+            LocalNotificationHelper.removeNoticeForKey(key: "CupRemind")
+        }
     }
     
     @IBAction func segmentClick(_ sender: UISegmentedControl) {
