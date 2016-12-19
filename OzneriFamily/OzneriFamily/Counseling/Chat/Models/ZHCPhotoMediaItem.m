@@ -10,7 +10,7 @@
 #import "ZHCMessagesMediaPlaceholderView.h"
 #import "ZHCMessagesMediaViewBubbleImageMasker.h"
 #import <MobileCoreServices/UTCoreTypes.h>
-
+#import <WebImage/WebImage.h>
 @interface ZHCPhotoMediaItem()
 @property (strong, nonatomic) UIImageView *cachedImageView;
 
@@ -25,6 +25,16 @@
     self = [super init];
     if (self) {
         _image = [image copy];
+        _cachedImageView = nil;
+    }
+    return self;
+}
+
+- (instancetype)initWithImageUrl:(NSString *)imageUrl
+{
+    self = [super init];
+    if (self) {
+        _imageUrl = [imageUrl copy];
         _cachedImageView = nil;
     }
     return self;
@@ -56,22 +66,66 @@
 
 - (UIView *)mediaView
 {
-    if (self.image == nil) {
-        return nil;
+    
+    if (self.image) {
+        
+        if (self.cachedImageView == nil) {
+            CGSize size = [self mediaViewDisplaySize];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:self.image];
+            imageView.frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            imageView.clipsToBounds = YES;
+            [ZHCMessagesMediaViewBubbleImageMasker applyBubbleImageMaskToMediaView:imageView isOutgoing:self.appliesMediaViewMaskAsOutgoing];
+            self.cachedImageView = imageView;
+        }
+        return self.cachedImageView;
     }
     
     if (self.cachedImageView == nil) {
         CGSize size = [self mediaViewDisplaySize];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:self.image];
+        UIImageView *imageView = [[UIImageView alloc] init];
         imageView.frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;
         [ZHCMessagesMediaViewBubbleImageMasker applyBubbleImageMaskToMediaView:imageView isOutgoing:self.appliesMediaViewMaskAsOutgoing];
         self.cachedImageView = imageView;
+        [imageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            if (!error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.cachedImageView = imageView;
+                });
+                
+            }
+            
+        }];
+        
     }
     
     return self.cachedImageView;
 }
+
+//- (UIView *)mediaView
+//{
+////    if (self.image == nil) {
+////        return nil;
+////    }
+//    
+//    if (self.cachedImageView == nil) {
+//        CGSize size = [self mediaViewDisplaySize];
+////        UIImageView *imageView = [[UIImageView alloc] initWithImage:self.image];
+//        UIImageView *imageView = [[UIImageView alloc] init];
+//        [imageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrl] placeholderImage:[UIImage imageNamed:@""] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//            self.cachedImageView = imageView;
+//        }];
+//        imageView.frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
+//        imageView.contentMode = UIViewContentModeScaleAspectFill;
+//        imageView.clipsToBounds = YES;
+//        [ZHCMessagesMediaViewBubbleImageMasker applyBubbleImageMaskToMediaView:imageView isOutgoing:self.appliesMediaViewMaskAsOutgoing];
+//        self.cachedImageView = imageView;
+//    }
+//    
+//    return self.cachedImageView;
+//}
 
 - (NSUInteger)mediaHash
 {

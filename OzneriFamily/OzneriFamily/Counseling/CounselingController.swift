@@ -9,6 +9,7 @@
 import UIKit
 import AFNetworking
 import SwiftyJSON
+import WebImage
 
 let appid_News = "hzapi"
 let appsecret_News = "8af0134asdffe12"
@@ -49,15 +50,17 @@ class CounselingController: ZHCMessagesViewController {
         super.viewDidLoad()
         
         initNavarionBar()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CounselingController.kefuAction), name: NSNotification.Name.init(rawValue: "KeFuMessage"), object: nil)
+        
+//        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+//        conModel.content = "<div style=\"font-size:14px;font-family:微软雅黑\"><img id=\"imgUpload\" src=\"http://dkf.ozner.net/upload/7SBY_1481523779.jpg_600_600.jpg\"></div>"
+//        conModel.content = "<div style=\"font-size:14px;font-family:微软雅黑\"><img class=\"imgEmotion\" src=\"http://dkf.ozner.net/templates/common/images/78.gif\" data-title=\"拥抱\">123456</div>"
+//        conModel.content = "http://dkf.ozner.net/upload/7SBY_1481523779.jpg_600_600.jpg"
+//        conModel.type = ChatType.Content.rawValue
+//        conModel.userId = senderId()
+//        CoreDataManager.defaultManager.saveChanges()
 
-        
-        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-        conModel.content =  "123"
-        conModel.type = ChatType.Content.rawValue
-        conModel.userId = "468-768355-23123"
-        
-        CoreDataManager.defaultManager.saveChanges()
-        
         demoData = ZHCModelData()
 
         DispatchQueue.main.async {
@@ -67,6 +70,26 @@ class CounselingController: ZHCMessagesViewController {
         }
         
         User.GetAccesstoken()
+    }
+    
+    
+    func kefuAction() {
+        
+        DispatchQueue.main.async {
+            
+//            let  arrs:[ConsultModel] = ConsultModel.allCachedObjects() as! [ConsultModel]
+            self.demoData  = ZHCModelData()
+            self.finishSendingMessage(animated: true)
+            
+        }
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+     
+        
     }
     
     // MARK: - ZHCMessagesTableViewDataSource
@@ -230,7 +253,30 @@ class CounselingController: ZHCMessagesViewController {
         let currentMessage = demoData?.messages.object(at: indexPath.item) as! ZHCMessage
 
         if currentMessage.isMediaMessage {
-            UUImageAvatarBrowser.show((currentMessage.media as! ZHCPhotoMediaItem).image)
+            
+            if ((currentMessage.media as! ZHCPhotoMediaItem).image != nil) {
+                
+                UUImageAvatarBrowser.show((currentMessage.media as! ZHCPhotoMediaItem).image)
+                
+            } else {
+                //网络图片
+                let str = (currentMessage.media as! ZHCPhotoMediaItem).imageUrl
+                
+                SDWebImageManager.shared().downloadImage(with: URL(string:str), options: .cacheMemoryOnly , progress: { (_, _) in
+                    
+                    }, completed: { (image, error, _, _, _) in
+                        
+                        if !(error != nil) {
+                            
+                            UUImageAvatarBrowser.show(image!)
+                            
+                        }
+                        
+                })
+                
+                
+            }
+            
         }
         
     }
@@ -311,25 +357,22 @@ class CounselingController: ZHCMessagesViewController {
             print(json)
             
             let customId = JSON(json)
-            let imagURL = customId.dictionary?["msg"]?.stringValue
+//            let imagURL = customId.dictionary?["msg"]?.stringValue
+//            if imagURL == "success" {
             
-            if imagURL == "success" {
-                
                 let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
                 
                 conModel.content =  text
                 conModel.type = ChatType.Content.rawValue
-                print(senderId)
                 conModel.userId = senderId
                 
                 CoreDataManager.defaultManager.saveChanges()
                 self.demoData  = ZHCModelData()
                 self.finishSendingMessage(animated: true)
-                }
+//                }
             
             
         }) { (_, error) in
-            print(error)
             
             let alertView = SCLAlertView()
             _ = alertView.addButton("确定", action: {})
@@ -518,6 +561,12 @@ class CounselingController: ZHCMessagesViewController {
             let message = ZHCMessage(senderId: model.userId!, displayName: "小泽妹", text: model.content!)
             self.demoData?.messages.add(message)
         }
+        
+    }
+    
+    deinit {
+        
+    NotificationCenter.default.removeObserver(self)
         
     }
 
