@@ -13,8 +13,8 @@ class MyCenterController: UIViewController {
 
     var tableView: UITableView!
     
-    var headView: UIView!
-    
+    var headView: MyInfoHeadView!
+
     var dataArr: NSMutableArray?
     
     var webViewType:String?
@@ -143,7 +143,8 @@ class MyCenterController: UIViewController {
             navigationController?.navigationBar.isHidden = false
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"fanhui"), style: UIBarButtonItemStyle.done, target: self, action: #selector(MyCenterController.backAction))
         }
-        
+        let devices=OznerManager.instance().getDevices()        
+        headView.infoNumLb.text="\(Int((devices?.count)!))"
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
