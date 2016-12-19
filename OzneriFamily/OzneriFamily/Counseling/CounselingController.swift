@@ -68,14 +68,7 @@ class CounselingController: ZHCMessagesViewController {
         
         User.GetAccesstoken()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
-    }
-        override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-        
-        }
+    
     // MARK: - ZHCMessagesTableViewDataSource
     
     override func senderDisplayName() -> String {
