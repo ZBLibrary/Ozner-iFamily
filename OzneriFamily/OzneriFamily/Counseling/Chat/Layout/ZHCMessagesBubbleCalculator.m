@@ -10,7 +10,7 @@
 #import "UIImage+ZHCMessages.h"
 #import "ZHCMessagesTableviewLayoutAttributes.h"
 #import "ZHCMessagesTableViewCell.h"
-
+#import "XMFaceManager.h"
 @interface ZHCMessagesBubbleCalculator()
 @property (strong, nonatomic, readonly) NSCache *cache;
 
@@ -92,8 +92,18 @@
         CGFloat bubbleWidth = attributes.messageBubbleContainerViewWidth;
         CGFloat maxTextViewWidth = 0.0;
         maxTextViewWidth = bubbleWidth - (textViewHorizontallySpaceWithAvatar + attributes.textViewTextContainerInsets.left + attributes.textViewTextContainerInsets.right);
+        CGRect stringRect;
+        //图文混排的高度
+        if ([[messageData text] containsString:@"</div>"]) {
+            NSMutableAttributedString *attrS = [XMFaceManager emotionStrWithString: [messageData text]];
+            [attrS addAttributes:[self textStyle] range:NSMakeRange(0, attrS.length)];
+          stringRect =  [attrS.string boundingRectWithSize:CGSizeMake(maxTextViewWidth, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{ NSFontAttributeName : attributes.messageBubbleFont } context:nil];
+            
+        } else {
+            stringRect = [[messageData text]boundingRectWithSize:CGSizeMake(maxTextViewWidth, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{ NSFontAttributeName : attributes.messageBubbleFont } context:nil];
+        }
        
-      CGRect stringRect = [[messageData text]boundingRectWithSize:CGSizeMake(maxTextViewWidth, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{ NSFontAttributeName : attributes.messageBubbleFont } context:nil];
+     
         
 //        CGRect stringRect2 = [[messageData text]boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin) attributes:@{ NSFontAttributeName : attributes.messageBubbleFont } context:nil];
         NSLog(@"%f,%f",stringRect.size.width,stringRect.size.height);
@@ -127,6 +137,17 @@
 
 }
 
+- (NSDictionary *)textStyle {
+    UIFont *font = [UIFont systemFontOfSize:14];
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    style.paragraphSpacing = 0.15 * font.lineHeight;
+    style.hyphenationFactor = 1.0;
+    return @{
+             NSFontAttributeName: font,
+             NSParagraphStyleAttributeName: style,
+             NSForegroundColorAttributeName: [UIColor whiteColor]
+             };
+}
 
 #pragma mark Utilities
 - (CGSize)zhc_avatarSizeForMessageData:(id<ZHCMessageData>)messageData withTableView:(ZHCMessagesTableView *)tableView

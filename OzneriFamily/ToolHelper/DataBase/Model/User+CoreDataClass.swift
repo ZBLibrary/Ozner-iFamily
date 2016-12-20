@@ -149,7 +149,7 @@ public class User: BaseDataObject {
             failure(error)
         }
     }
-    //咨询朱广阳 star
+    //咨询朱光阳 star
     //获取聊天Token
     
     class func GetAccesstoken() {
@@ -433,6 +433,10 @@ public class User: BaseDataObject {
 //    }
     //更新用户信息
     class func UpdateUserInfo(){
+        //
+        if BPush.getChannelId() == nil {
+            return
+        }
         self.fetchData(key: "UpdateUserInfo", parameters: ["channel_id":4,"device_id":BPush.getChannelId()], success: { (json) in
             User.GetUserInfo()
             }) { (error) in
