@@ -10,6 +10,11 @@ import Foundation
 import SwiftyJSON
 import AFNetworking
 
+public enum ChatHttpMethod {
+    case GET
+    case POST
+}
+
 /// 网络访问类封装
 class NetworkManager:NSObject{
     required init?(NetworkConfig: NSDictionary) {

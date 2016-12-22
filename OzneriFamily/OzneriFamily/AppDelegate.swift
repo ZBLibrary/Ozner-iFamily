@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
     }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         window?.rootViewController = LoginManager.instance.loginViewController
         window!.makeKeyAndVisible()
         //开启IQKEyBoard

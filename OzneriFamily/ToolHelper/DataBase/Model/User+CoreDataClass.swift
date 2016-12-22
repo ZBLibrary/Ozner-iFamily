@@ -13,6 +13,28 @@ let UserDefaultsUserTokenKey = "usertoken"
 let UserDefaultsUserIDKey = "userid"
 let CurrentUserDidChangeNotificationName = "CurrentUserDidChangeNotificatiovarme"
 
+let appid_News = "hzapi"
+let appsecret_News = "8af0134asdffe12"
+
+let appidandsecret = "&appid=hzapi&appsecret=8af0134asdffe12"
+
+let NEWS_URL = "http://dkf.ozner.net/api"
+
+var customerid_News = 0
+let ChannelID_News = 4
+let ct_id = 1 //咨询类别
+
+var deviceid_News = ""//百度推送设备号
+
+
+var acsstoken_News = ""
+var sign_News = ""
+
+public enum ChatType:String {
+    case IMAGE = "123"
+    case Content = "456"
+}
+
 typealias successJsonBlock = (JSON) -> Void
 typealias successVoidBlock = ()->Void
 typealias failureBlock = (_ error:Error?)->Void
@@ -252,10 +274,94 @@ public class User: BaseDataObject {
             print(error)
         }
   
+    }
+    
+    //发送消息
+    class func sendMessageToKeFu(message:String,stateBlock:@escaping (_ isSuccess:Bool)->Void) {
+        
+        //在此发送数据到服务器 成功添加 否则不添加
+        var urlStr = NEWS_URL + "/customermsg.ashx?access_token="
+        urlStr += acsstoken_News + "&sign=" + sign_News.MD5
+        
+        let params:NSDictionary = ["customer_id":customerid_News as NSNumber,"device_id":deviceid_News,"channel_id": ChannelID_News as NSNumber,"msg": message]
+        
+        let mansger = AFHTTPSessionManager()
+        mansger.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
+        
+        mansger.post(urlStr, parameters: params, success: { (_, json) in
+            print(json)
+            
+            let customId = JSON(json)
+            let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+            conModel.content =  message
+            conModel.type = ChatType.Content.rawValue
+            conModel.userId = "123"
+            CoreDataManager.defaultManager.saveChanges()
+            stateBlock(true)
+            
+        }) { (_, error) in
+            
+//            let alertView = SCLAlertView()
+//            _ = alertView.addButton("确定", action: {})
+//            _ = alertView.showInfo("信息发送失败", subTitle: "请确保网络通畅并已关注浩泽微信公众号!")
+            stateBlock(false)
+            
+        }
+
         
     }
     
-    
+    //发送图片
+    class func sendImageToKeFu(image:UIImage,stateBlock:@escaping (_ isSuccess:Bool)->Void) {
+        let data: Data = UIImageJPEGRepresentation(image, 1.0)!
+        
+        var urlStr = NEWS_URL + "/uploadpic.ashx?access_token="
+        urlStr += acsstoken_News + "&sign=" + sign_News.MD5
+        
+        let mansger = AFHTTPSessionManager()
+        mansger.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
+        
+        mansger.post(urlStr, parameters: nil, constructingBodyWith: { (dataFormat) in
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyHHmmss"
+            let str = formatter.string(from: Date())
+            let fileName = str + ".jpg"
+            dataFormat.appendPart(withFileData: data, name: str, fileName: fileName, mimeType: "image/jpeg")
+            
+        }, success: { (_, json) in
+            
+            let customId = JSON(json)
+            let imagURL = customId.dictionary?["result"]?.dictionary?["picpath"]?.stringValue
+            
+            var urlStr = NEWS_URL + "/customermsg.ashx?access_token="
+            urlStr += acsstoken_News + "&sign=" + sign_News.MD5
+            
+            let params:NSDictionary = ["customer_id":customerid_News as NSNumber,"device_id":deviceid_News,"channel_id": ChannelID_News as NSNumber,"msg":"<img height=\"260px\" src=\"" + imagURL! + "\"/>"]
+            
+            mansger.post(urlStr, parameters: params, success: { (_, json) in
+        
+                let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+                
+                conModel.content =  data.base64EncodedString()
+                conModel.type = ChatType.IMAGE.rawValue
+                conModel.userId = "123"
+                
+                CoreDataManager.defaultManager.saveChanges()
+     
+                stateBlock(true)
+            }) { (_, error) in
+                print(error)
+                stateBlock(false)
+            }
+            
+            
+        }) { (_, error) in
+            print(error)
+            stateBlock(false)
+        }
+        
+    }
     
     //我
     //提意见
