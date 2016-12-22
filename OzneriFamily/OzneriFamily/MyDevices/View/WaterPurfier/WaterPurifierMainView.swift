@@ -33,9 +33,20 @@ class WaterPurifierMainView: OznerDeviceView {
     @IBOutlet var tdsStateLabel: UILabel!
     @IBOutlet var tdsValueLabel_BF: UILabel!
     @IBOutlet var tdsValueLabel_AF: UILabel!
+    @IBOutlet var offLineLabel: UILabel!//断网提示Label
+    @IBOutlet var tdsContainerView: UIView!
     @IBAction func toTDSDetailClick(_ sender: UITapGestureRecognizer) {
-        if isBlueDevice==false {
-            self.delegate.DeviceViewPerformSegue!(SegueID: "showWaterPurfierTDS", sender: nil)
+        if isBlueDevice==false {//wifi设备
+            if (self.currentDevice as! WaterPurifier).isOffline {//断网状态
+                weak var weakself=self
+                offLineSuggestView.updateView(IsAir: false, callback: {
+                    weakself?.offLineSuggestView.removeFromSuperview()
+                })
+                self.window?.addSubview(offLineSuggestView)
+            }else{
+                self.delegate.DeviceViewPerformSegue!(SegueID: "showWaterPurfierTDS", sender: nil)
+            }
+            
         }
         
     }
@@ -98,21 +109,24 @@ class WaterPurifierMainView: OznerDeviceView {
     }
     
     
-    /*
+   
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
+    var offLineSuggestView:OffLineSuggest!
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        offLineSuggestView=Bundle.main.loadNibNamed("OffLineSuggest", owner: nil, options: nil)?.first as! OffLineSuggest
+        offLineSuggestView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
+        offLineSuggestView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
     }
-    */
+    
     //                (currentDeviceView as! WaterPurifierMainView).circleView.updateCircleView(angleBefore: 0.7, angleAfter: 0.5)
-    var tds:(tds1:Int,tds2:Int)=(-1,-1){
+    var tds:(tds1:Int,tds2:Int)=(0,-1){
         didSet{
             if tds==oldValue {
                 return
             }
-            let tmptdsBF = tds.tds1==65535 ? 0:tds.tds1
-            let tmptdsAF = tds.tds2==65535 ? 0:tds.tds2
+            let tmptdsBF = (tds.tds1==65535 || tds.tds1<0) ? 0:tds.tds1
+            let tmptdsAF = (tds.tds2==65535 || tds.tds2<0) ? 0:tds.tds2
             let tdsBF=max(tmptdsBF, tmptdsAF)
             let tdsAF=min(tmptdsBF, tmptdsAF)
             
@@ -179,20 +193,60 @@ class WaterPurifierMainView: OznerDeviceView {
     override func SensorUpdate(device: OznerDevice!) {
         //更新传感器视图
         if isBlueDevice {
+            tdsContainerView.isHidden=false
+            offLineLabel.isHidden=true
             tds=(Int((device as! ROWaterPurufier).waterInfo.tds1),Int((device as! ROWaterPurufier).waterInfo.tds2))
         }else{
-            tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
-            operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+            if (device as! WaterPurifier).isOffline
+            {
+                tdsContainerView.isHidden=true
+                offLineLabel.isHidden=false
+                offLineLabel.text="设备已断开"
+                operation=(false,false,false)
+            }else{
+                if (device as! WaterPurifier).status.power==false {
+                    tdsContainerView.isHidden=true
+                    offLineLabel.isHidden=false
+                    offLineLabel.text="设备已关机"
+                    operation=(false,false,false)
+                }else{
+                    tdsContainerView.isHidden=false
+                    offLineLabel.isHidden=true
+                    tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
+                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+                }
+                
+            }
         }
         
     }
     override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
         //更新连接状态视图
         if isBlueDevice {
+            tdsContainerView.isHidden=false
+            offLineLabel.isHidden=true
             tds=(Int((device as! ROWaterPurufier).waterInfo.tds1),Int((device as! ROWaterPurufier).waterInfo.tds2))
         }else{
-            tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
-            operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+            if (device as! WaterPurifier).isOffline
+            {
+                tdsContainerView.isHidden=true
+                offLineLabel.isHidden=false
+                offLineLabel.text="设备已断开"
+                operation=(false,false,false)
+            }else{
+                if (device as! WaterPurifier).status.power==false {
+                    tdsContainerView.isHidden=true
+                    self.offLineLabel.isHidden=false
+                    self.offLineLabel.text="设备已关机"
+                    operation=(false,false,false)
+                }else{
+                    tdsContainerView.isHidden=false
+                    self.offLineLabel.isHidden=true
+                    tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
+                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+                }
+                
+            }
         }
     }
 }

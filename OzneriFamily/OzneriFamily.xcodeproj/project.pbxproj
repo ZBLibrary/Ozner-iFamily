@@ -201,6 +201,8 @@
 		8D429A0B1DCA0DDB0083011C /* WaterPurfierTDSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A0A1DCA0DDB0083011C /* WaterPurfierTDSController.swift */; };
 		8D429A0D1DCA0E3B0083011C /* SkinQueryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A0C1DCA0E3B0083011C /* SkinQueryController.swift */; };
 		8D429A0F1DCA0E570083011C /* SkinDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A0E1DCA0E570083011C /* SkinDetailController.swift */; };
+		8D4301131E0A723F002BAFD9 /* OffLineSuggest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4301121E0A723F002BAFD9 /* OffLineSuggest.swift */; };
+		8D4301151E0A7259002BAFD9 /* OffLineSuggest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4301141E0A7259002BAFD9 /* OffLineSuggest.xib */; };
 		8D449BD01DCDFB58005998AA /* Air_Wifi_SpeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D449BCF1DCDFB58005998AA /* Air_Wifi_SpeedModel.swift */; };
 		8D449BD21DCDFB63005998AA /* Air_Wifi_SpeedModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D449BD11DCDFB63005998AA /* Air_Wifi_SpeedModel.xib */; };
 		8D4A5E1D1DE419D4008A6960 /* ShareMoneyToWeChat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4A5E1B1DE419D4008A6960 /* ShareMoneyToWeChat.xib */; };
@@ -674,6 +676,8 @@
 		8D429A0A1DCA0DDB0083011C /* WaterPurfierTDSController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurfierTDSController.swift; sourceTree = "<group>"; };
 		8D429A0C1DCA0E3B0083011C /* SkinQueryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinQueryController.swift; sourceTree = "<group>"; };
 		8D429A0E1DCA0E570083011C /* SkinDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinDetailController.swift; sourceTree = "<group>"; };
+		8D4301121E0A723F002BAFD9 /* OffLineSuggest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffLineSuggest.swift; sourceTree = "<group>"; };
+		8D4301141E0A7259002BAFD9 /* OffLineSuggest.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffLineSuggest.xib; sourceTree = "<group>"; };
 		8D449BCF1DCDFB58005998AA /* Air_Wifi_SpeedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Air_Wifi_SpeedModel.swift; sourceTree = "<group>"; };
 		8D449BD11DCDFB63005998AA /* Air_Wifi_SpeedModel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Air_Wifi_SpeedModel.xib; sourceTree = "<group>"; };
 		8D4A5E1B1DE419D4008A6960 /* ShareMoneyToWeChat.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareMoneyToWeChat.xib; sourceTree = "<group>"; };
@@ -1685,6 +1689,8 @@
 				8DC02E661DB5CE91007F57DB /* NoDeviceView.swift */,
 				8DC02E671DB5CE91007F57DB /* NoDeviceView.xib */,
 				8DC02FB91DB623BC007F57DB /* OznerDeviceView.swift */,
+				8D4301121E0A723F002BAFD9 /* OffLineSuggest.swift */,
+				8D4301141E0A7259002BAFD9 /* OffLineSuggest.xib */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -2260,6 +2266,7 @@
 				8D0D69381DDD99A10097038E /* FriendRecentView.xib in Resources */,
 				8D12687F1DDEE7EB0042DE3E /* InfoPlist.strings in Resources */,
 				B7227A6F1E0138050007ADE4 /* gyGift.plist in Resources */,
+				8D4301151E0A7259002BAFD9 /* OffLineSuggest.xib in Resources */,
 				8D4A5E1D1DE419D4008A6960 /* ShareMoneyToWeChat.xib in Resources */,
 				8D5045C81DB34AD700EAC3B3 /* Airgif_blue.gif in Resources */,
 				8D0D694C1DDD99A10097038E /* ZanMeTableViewCell.xib in Resources */,
@@ -2499,6 +2506,7 @@
 				8D0D68C21DDD99540097038E /* UIColor+ZHCMessages.m in Sources */,
 				8D1C670A1DAA4052008C639F /* SelectDeviceCell.swift in Sources */,
 				8D0D692C1DDD99A00097038E /* SendYanZHViewController.swift in Sources */,
+				8D4301131E0A723F002BAFD9 /* OffLineSuggest.swift in Sources */,
 				8D0D68BC1DDD99540097038E /* BDImagePicker.m in Sources */,
 				8DAE80921D9B9A3E00A9946F /* BaseDataObject+CoreDataProperties.swift in Sources */,
 				8DC02F931DB5F03B007F57DB /* WaterPurifierStatus.m in Sources */,

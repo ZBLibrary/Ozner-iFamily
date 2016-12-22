@@ -32,10 +32,15 @@ class Air_WifiMainView: OznerDeviceView {
     @IBOutlet var lockButton: UIButton!
     var speedModelView:Air_Wifi_SpeedModel!
     var outdoorAirView:AirOutdoorView!
+    var offLineSuggestView:OffLineSuggest!
     override func draw(_ rect: CGRect) {
         speedModelView=Bundle.main.loadNibNamed("Air_Wifi_SpeedModel", owner: nil, options: nil)?.first as! Air_Wifi_SpeedModel
         speedModelView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         speedModelView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
+        
+        offLineSuggestView=Bundle.main.loadNibNamed("OffLineSuggest", owner: nil, options: nil)?.first as! OffLineSuggest
+        offLineSuggestView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
+        offLineSuggestView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
         
         outdoorAirView=Bundle.main.loadNibNamed("AirOutdoorView", owner: nil, options: nil)?.first as! AirOutdoorView
         outdoorAirView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
@@ -50,7 +55,16 @@ class Air_WifiMainView: OznerDeviceView {
     }
     
     @IBAction func seeLvXinClick(_ sender: AnyObject) {
-        self.delegate.DeviceViewPerformSegue!(SegueID: "showAirLvXin", sender: nil)
+        weak var weakself=self
+        if (self.currentDevice as! AirPurifier_MxChip).isOffline{
+            offLineSuggestView.updateView(IsAir: true, callback: {
+                weakself?.offLineSuggestView.removeFromSuperview()
+            })
+            self.window?.addSubview(offLineSuggestView)
+        }else{
+            self.delegate.DeviceViewPerformSegue!(SegueID: "showAirLvXin", sender: nil)
+        }
+        
     }
     //查看室外空气
     @IBAction func seeOutdoorAirClick(_ sender: AnyObject) {
@@ -181,15 +195,22 @@ class Air_WifiMainView: OznerDeviceView {
         }
     }
     override func SensorUpdate(device: OznerDevice!) {
-        //更新传感器视图
-        if (self.currentDevice as! AirPurifier_MxChip).status.getPower==false
+        //更新连接状态视图
+        if (device as! AirPurifier_MxChip).isOffline
         {
-            PM25_In = -1
+            PM25_In = -2
+            operation=(false,0,false)
         }else{
-            PM25_In=Int((self.currentDevice as! AirPurifier_MxChip).sensor.pm25)
+            if (self.currentDevice as! AirPurifier_MxChip).status.getPower==false
+            {
+                PM25_In = -1
+            }else{
+                PM25_In=Int((self.currentDevice as! AirPurifier_MxChip).sensor.pm25)
+            }
+            
+            operation=((device as! AirPurifier_MxChip).status.getPower,Int((device as! AirPurifier_MxChip).status.speed),(device as! AirPurifier_MxChip).status.getLock)
         }
-        
-        operation=((device as! AirPurifier_MxChip).status.getPower,Int((device as! AirPurifier_MxChip).status.speed),(device as! AirPurifier_MxChip).status.getLock)
+
     }
     override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
         //更新连接状态视图
@@ -198,11 +219,15 @@ class Air_WifiMainView: OznerDeviceView {
             PM25_In = -2
             operation=(false,0,false)
         }else{
-           // PM25_In=Int((self.currentDevice as! AirPurifier_MxChip).sensor.pm25)
-            //operation=((device as! AirPurifier_MxChip).status.getPower,Int((device as! AirPurifier_MxChip).status.speed),(device as! AirPurifier_MxChip).status.getLock)
+            if (self.currentDevice as! AirPurifier_MxChip).status.getPower==false
+            {
+                PM25_In = -1
+            }else{
+                PM25_In=Int((self.currentDevice as! AirPurifier_MxChip).sensor.pm25)
+            }
+            
+            operation=((device as! AirPurifier_MxChip).status.getPower,Int((device as! AirPurifier_MxChip).status.speed),(device as! AirPurifier_MxChip).status.getLock)
         }
-        
-        
     }
 }
 

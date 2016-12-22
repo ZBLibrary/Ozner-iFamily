@@ -115,6 +115,7 @@ class RoWaterPuefierLvXinController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
     }
     /*
     // MARK: - Navigation

@@ -16,7 +16,6 @@ class SetDeviceNameController: UIViewController {
         let vc=self.navigationController?.viewControllers[(vcs?.count)!-2] as! DeviceSettingController
         vc.nameChange(name: nameTextFeild.text!, attr: [attributeName0.text!,attributeName1.text!][currSelectAttrIndex])
         _=self.navigationController?.popViewController(animated: true)
-        
     }
     @IBOutlet var nameTextFeild: UITextField!
     
@@ -43,8 +42,7 @@ class SetDeviceNameController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        var attri:[Int:String]!
-        
+        var attri:[Int:String]!        
         switch OznerDeviceType.getType(type: LoginManager.instance.currentDevice.type){
         case OznerDeviceType.Cup:
             attri=[0:"我的水杯",1:"家人水杯"]

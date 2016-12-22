@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OffLineSuggest" customModule="OzneriFamily" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQx-43-g79">
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5Q-y3-tjO">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="145" id="8LC-fy-VsV"/>
+                                <constraint firstAttribute="height" constant="40" id="DI6-Su-JJF"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="我知道了"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                    <color key="value" red="0.0" green="0.440099448" blue="0.94756072759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="IKnowClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="dk4-W5-zqz"/>
+                            </connections>
+                        </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="请尝试以下方式：  1.检查您的设备是否通电  2.请检测您的网络是否通畅  3.同时按下电源和风速，WIFI指示灯闪烁，重新配对  4.如仍无法连接设备，请在设置中删除此设备，重新配对" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bon-Lc-hB4">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="i5Q-y3-tjO" secondAttribute="bottom" constant="15" id="ERe-v8-9AG"/>
+                        <constraint firstItem="i5Q-y3-tjO" firstAttribute="top" secondItem="bon-Lc-hB4" secondAttribute="bottom" constant="5" id="M79-R2-djT"/>
+                        <constraint firstItem="bon-Lc-hB4" firstAttribute="top" secondItem="xQx-43-g79" secondAttribute="top" constant="10" id="Unv-7b-mSR"/>
+                        <constraint firstItem="i5Q-y3-tjO" firstAttribute="centerX" secondItem="xQx-43-g79" secondAttribute="centerX" id="gJz-Rj-wjM"/>
+                        <constraint firstAttribute="trailing" secondItem="bon-Lc-hB4" secondAttribute="trailing" constant="15" id="hIJ-it-9Yc"/>
+                        <constraint firstAttribute="height" constant="250" id="ivC-8P-dsT"/>
+                        <constraint firstItem="bon-Lc-hB4" firstAttribute="leading" secondItem="xQx-43-g79" secondAttribute="leading" constant="15" id="tf1-a5-vl5"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="xQx-43-g79" secondAttribute="bottom" id="AXM-am-a4U"/>
+                <constraint firstAttribute="trailing" secondItem="xQx-43-g79" secondAttribute="trailing" id="Hfu-PA-WVv"/>
+                <constraint firstItem="xQx-43-g79" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vbo-ea-7NP"/>
+            </constraints>
+            <connections>
+                <outlet property="textView" destination="bon-Lc-hB4" id="BHG-Fr-MSb"/>
+            </connections>
+            <point key="canvasLocation" x="-52.5" y="58.5"/>
+        </view>
+    </objects>
+</document>

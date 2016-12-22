@@ -13,8 +13,16 @@ class MainTabBarController: RDVTabBarController {
     //
     //
     func loadTabBar() {
+        
         let ownerStr = (LoginManager.instance.currentLoginType==OznerLoginType.ByPhoneNumber ? User.currentUser?.phone : User.currentUser?.email)
         OznerManager.instance().setOwner(ownerStr)
+        //获取服务器设备
+//        if OznerManager.instance().getDevices().count==0
+//        {
+//            User.GetDeviceList(success: {                
+//                }, failure: { (error) in
+//            })
+//        }
         sleep(UInt32(1.5))
         let c1 = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
         

@@ -15,22 +15,19 @@ class WebShopController: UIViewController {
     var webView:UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        urlstr=NetworkManager.defaultManager?.UrlNameWithRoot("WebStore")
-//
-//        webView = UIWebView(frame: self.view.bounds)
-//        
-//        webView.scalesPageToFit = true
-//        webView.delegate = self
-//        webView.loadRequest(URLRequest(url: URL(string:urlstr!)!))
-//         self.view.addSubview(webView)
-//        webView.addSubview(btn)
-//        btn.addTarget(self, action: #selector(WebShopController.loadAgin), for: UIControlEvents.touchUpInside)
-//        btn.isHidden = true
+        urlstr=NetworkManager.defaultManager?.UrlNameWithRoot("WebStore")
+
+        webView = UIWebView(frame: self.view.bounds)
         
-//        let image = UIImageView(frame: CGRect(x: 20, y: 20, width: 200, height: 200))
-//        image.backgroundColor = UIColor.red
-//        image.sd_setImage(with: URL(string: "http://dkf.ozner.net/upload/4LWF_1481690454.jpg"))
-//        view.addSubview(image)
+        webView.scalesPageToFit = true
+        webView.delegate = self
+        webView.loadRequest(URLRequest(url: URL(string:urlstr!)!))
+         self.view.addSubview(webView)
+        webView.addSubview(btn)
+        btn.addTarget(self, action: #selector(WebShopController.loadAgin), for: UIControlEvents.touchUpInside)
+        btn.isHidden = true
+        
+
     
 
     }
