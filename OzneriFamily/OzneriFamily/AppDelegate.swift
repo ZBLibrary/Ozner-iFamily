@@ -34,8 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         myTypes.insert(UIUserNotificationType.sound)
         myTypes.insert(UIUserNotificationType.badge)
         myTypes.insert(UIUserNotificationType.alert)
-        
-        
+   
 //        if #available(iOS 10.0, *) {
 //            let notifiCenter = UNUserNotificationCenter.current()
 //            notifiCenter.delegate = self
@@ -253,7 +252,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                 let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
                 
                 conModel.type = ChatType.Content.rawValue
-                conModel.userId = "468-768355-23123"
+                conModel.userId = "0"
                 conModel.content = msg
                 CoreDataManager.defaultManager.saveChanges()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
@@ -267,7 +266,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                 let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
                 
                 conModel.type = ChatType.Content.rawValue
-                conModel.userId = "468-768355-23123"
+                conModel.userId = "0"
                 
                 let range1 = msg.range(of: "雅黑\">")
                 let range2 = msg.range(of: "</div>")
@@ -289,7 +288,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                     let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
                     conModel.content =  msg
                     conModel.type = ChatType.Content.rawValue
-                    conModel.userId = "468-768355-23123"
+                    conModel.userId = "0"
                     CoreDataManager.defaultManager.saveChanges()
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
                     return
@@ -308,7 +307,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                         let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
                         conModel.content =  imageStr
                         conModel.type = ChatType.IMAGE.rawValue
-                        conModel.userId = "468-768355-23123"
+                        conModel.userId = "0"
                         
                         CoreDataManager.defaultManager.saveChanges()
                         

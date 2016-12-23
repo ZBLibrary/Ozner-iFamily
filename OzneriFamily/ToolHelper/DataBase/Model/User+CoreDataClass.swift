@@ -289,9 +289,7 @@ public class User: BaseDataObject {
         mansger.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
         
         mansger.post(urlStr, parameters: params, success: { (_, json) in
-            print(json)
             
-            let customId = JSON(json)
             let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
             conModel.content =  message
             conModel.type = ChatType.Content.rawValue

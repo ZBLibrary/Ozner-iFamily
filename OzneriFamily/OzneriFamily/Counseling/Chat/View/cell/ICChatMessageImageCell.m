@@ -12,6 +12,7 @@
 #import "ICMessage.h"
 #import "ICFileTool.h"
 #import "ICMessageHelper.h"
+#import <WebImage/WebImage.h>
 
 @interface ICChatMessageImageCell ()
 
@@ -38,24 +39,63 @@
     [super setModelFrame:modelFrame];
 
     ICMediaManager *manager = [ICMediaManager sharedManager];
-    UIImage *image = [manager imageWithLocalPath:[manager imagePathWithName:modelFrame.model.mediaPath.lastPathComponent]];
-    self.imageBtn.frame = modelFrame.picViewF;
-    self.bubbleView.userInteractionEnabled = _imageBtn.imageView.image != nil;
-    self.bubbleView.image = nil;
-    if (modelFrame.model.isSender) {    // 发送者
-        UIImage *arrowImage = [manager arrowMeImage:image size:modelFrame.picViewF.size mediaPath:modelFrame.model.mediaPath isSender:modelFrame.model.isSender];
-        [self.imageBtn setBackgroundImage:arrowImage forState:UIControlStateNormal];
+//    UIImage *image = [manager imageWithLocalPath:[manager imagePathWithName:modelFrame.model.mediaPath.lastPathComponent]];
+   __block UIImage *image1;
+    if ([modelFrame.model.mediaPath containsString:@"http"]) {
+        // TODO: 此处设置图片
+        [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:modelFrame.model.mediaPath] options:SDWebImageCacheMemoryOnly progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            if (!error) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    image1 = image;
+                    self.imageBtn.frame = modelFrame.picViewF;
+                    self.bubbleView.userInteractionEnabled = _imageBtn.imageView.image != nil;
+                    self.bubbleView.image = nil;
+                    if (modelFrame.model.isSender) {    // 发送者
+                        UIImage *arrowImage = [manager arrowMeImage:image1 size:modelFrame.picViewF.size mediaPath:modelFrame.model.mediaPath isSender:modelFrame.model.isSender];
+                        [self.imageBtn setBackgroundImage:arrowImage forState:UIControlStateNormal];
+                    } else {
+                        NSString *orgImgPath = [manager originImgPath:modelFrame];
+                        if ([ICFileTool fileExistsAtPath:orgImgPath]) {
+                            UIImage *orgImg = [manager imageWithLocalPath:orgImgPath];
+                            UIImage *arrowImage = [manager arrowMeImage:orgImg size:modelFrame.picViewF.size mediaPath:orgImgPath isSender:modelFrame.model.isSender];
+                            [self.imageBtn setBackgroundImage:arrowImage forState:UIControlStateNormal];
+                        } else {
+                            UIImage *arrowImage = [manager arrowMeImage:image1 size:modelFrame.picViewF.size mediaPath:modelFrame.model.mediaPath isSender:modelFrame.model.isSender];
+                            [self.imageBtn setBackgroundImage:arrowImage forState:UIControlStateNormal];
+                        }
+                    }
+
+                });
+                
+            }
+        }];
+        
     } else {
-        NSString *orgImgPath = [manager originImgPath:modelFrame];
-        if ([ICFileTool fileExistsAtPath:orgImgPath]) {
-            UIImage *orgImg = [manager imageWithLocalPath:orgImgPath];
-            UIImage *arrowImage = [manager arrowMeImage:orgImg size:modelFrame.picViewF.size mediaPath:orgImgPath isSender:modelFrame.model.isSender];
+        image1 = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:modelFrame.model.mediaPath options:NSDataBase64DecodingIgnoreUnknownCharacters]];
+        self.imageBtn.frame = modelFrame.picViewF;
+        self.bubbleView.userInteractionEnabled = _imageBtn.imageView.image != nil;
+        self.bubbleView.image = nil;
+        if (modelFrame.model.isSender) {    // 发送者
+            UIImage *arrowImage = [manager arrowMeImage:image1 size:modelFrame.picViewF.size mediaPath:modelFrame.model.mediaPath isSender:modelFrame.model.isSender];
             [self.imageBtn setBackgroundImage:arrowImage forState:UIControlStateNormal];
         } else {
-            UIImage *arrowImage = [manager arrowMeImage:image size:modelFrame.picViewF.size mediaPath:modelFrame.model.mediaPath isSender:modelFrame.model.isSender];
-            [self.imageBtn setBackgroundImage:arrowImage forState:UIControlStateNormal];
+            NSString *orgImgPath = [manager originImgPath:modelFrame];
+            if ([ICFileTool fileExistsAtPath:orgImgPath]) {
+                UIImage *orgImg = [manager imageWithLocalPath:orgImgPath];
+                UIImage *arrowImage = [manager arrowMeImage:orgImg size:modelFrame.picViewF.size mediaPath:orgImgPath isSender:modelFrame.model.isSender];
+                [self.imageBtn setBackgroundImage:arrowImage forState:UIControlStateNormal];
+            } else {
+                UIImage *arrowImage = [manager arrowMeImage:image1 size:modelFrame.picViewF.size mediaPath:modelFrame.model.mediaPath isSender:modelFrame.model.isSender];
+                [self.imageBtn setBackgroundImage:arrowImage forState:UIControlStateNormal];
+            }
         }
+
     }
+    
+
 }
 
 - (void)imageBtnClick:(UIButton *)btn

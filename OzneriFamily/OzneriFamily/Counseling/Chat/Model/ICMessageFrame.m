@@ -14,7 +14,7 @@
 #import "ICMessageConst.h"
 #import "ICMessageHelper.h"
 #import "ICVideoManager.h"
-
+#import <WebImage/WebImage.h>
 #define APP_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define APP_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
@@ -52,7 +52,8 @@
         } else if ([model.message.type isEqualToString:TypePic]) { // 图片
             CGSize imageSize = CGSizeMake(40, 40);
             // TODO: 此处设置图片
-            UIImage *image   = [UIImage imageWithContentsOfFile:[[ICMediaManager sharedManager] imagePathWithName:model.mediaPath.lastPathComponent]];
+//            UIImage *image   = [UIImage imageWithContentsOfFile:[[ICMediaManager sharedManager] imagePathWithName:model.mediaPath.lastPathComponent]];
+            UIImage *image = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:model.mediaPath options:NSDataBase64DecodingIgnoreUnknownCharacters]];
             if (image) {
                 imageSize          = [self handleImage:image.size];
             }
@@ -122,10 +123,34 @@
             _topViewF     = CGRectMake(CGRectGetMinX(_bubbleViewF)+arrowWidth, cellMargin, topViewSize.width, topViewSize.height);
             _chatLabelF   = CGRectMake(x, cellMargin + bubblePadding + topViewH, chateLabelSize.width, chateLabelSize.height);
         } else if ([model.message.type isEqualToString:TypePic]) {
-            CGSize imageSize = CGSizeMake(40, 40);
-            UIImage *image   = [UIImage imageWithContentsOfFile:[[ICMediaManager sharedManager] imagePathWithName:model.mediaPath.lastPathComponent]];
-            if (image) {
-                imageSize = [self handleImage:image.size];
+           __block CGSize imageSize = CGSizeMake(130, 130);
+//            UIImage *image   = [UIImage imageWithContentsOfFile:[[ICMediaManager sharedManager] imagePathWithName:model.mediaPath.lastPathComponent]];
+           __block UIImage *image1;
+            [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:model.mediaPath] options:SDWebImageCacheMemoryOnly progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                if (!error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        image1 = image;
+                        if (image1) {
+                            imageSize = [self handleImage:image1.size];
+                        }
+                        imageSize.width        = imageSize.width > cellMinW ? imageSize.width : cellMinW;
+                        CGSize topViewSize     = CGSizeMake(imageSize.width-arrowWidth, topViewH);
+                        CGSize bubbleSize      = CGSizeMake(imageSize.width, imageSize.height);
+                        CGFloat bubbleX        = CGRectGetMaxX(_headImageViewF)+headToBubble;
+                        _bubbleViewF           = CGRectMake(bubbleX, cellMargin+topViewH, bubbleSize.width, bubbleSize.height);
+                        CGFloat x              = CGRectGetMinX(_bubbleViewF);
+                        _topViewF              = CGRectMake(x+arrowWidth, cellMargin, topViewSize.width, topViewSize.height);
+                        _picViewF              = CGRectMake(x, cellMargin+topViewH, imageSize.width, imageSize.height);
+                        
+                    });
+             
+                }
+            }];
+            if (image1) {
+                imageSize = [self handleImage:image1.size];
             }
             imageSize.width        = imageSize.width > cellMinW ? imageSize.width : cellMinW;
             CGSize topViewSize     = CGSizeMake(imageSize.width-arrowWidth, topViewH);

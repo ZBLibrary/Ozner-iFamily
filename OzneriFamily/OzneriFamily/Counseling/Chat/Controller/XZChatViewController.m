@@ -48,6 +48,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMessage) name:@"KeFuMessage" object:nil];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = self.group.gName;
     
@@ -86,18 +88,65 @@
     [self.tableView registerClass:[ICChatMessageFileCell class] forCellReuseIdentifier:TypeFile];
 }
 
+- (void)updateMessage
+{
+     NSArray *modelArrs = [ConsultModel allCachedObjects];
+    ConsultModel *molde = modelArrs.lastObject;
+    ICMessageFrame *messageF;
+    if ([molde.type isEqual: @"456"]) {
+        //普通消息
+        if ([molde.userId boolValue]) {
+            messageF = [ICMessageHelper createMessageFrame:TypeText content:molde.content path:nil from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:YES];
+        } else {
+            messageF  = [ICMessageHelper createMessageFrame:TypeText content:molde.content path:nil from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:NO];
+        }
+        
+    } else {
+        //图片消息
+        if ([molde.userId boolValue]) {
+            messageF  = [ICMessageHelper createMessageFrame:TypePic content:@"[图片]" path:molde.content from:@"gxz" to:self.group.gId fileKey:nil isSender:YES receivedSenderByYourself:NO];
+        } else {
+            messageF  = [ICMessageHelper createMessageFrame:TypePic content:@"[图片]" path:molde.content from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:NO];
+        }
+        
+    }
+    messageF.model.message.deliveryState = ICMessageDeliveryState_Delivered;
+    [self.dataSource addObject:messageF];
+    [self.tableView beginUpdates];
+     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView endUpdates];
+    [self scrollToBottom];
+}
+
 // 加载数据
 - (void)loadDataSource
 {
-    
-    NSArray *array = [[NSArray alloc] init];
-    
-     ICMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeText content:@"123" path:nil from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:NO];
-    ICMessageFrame *messageF1 = [ICMessageHelper createMessageFrame:TypeText content:@"123" path:nil from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:YES];
+    NSArray *modelArrs = [ConsultModel allCachedObjects];
+    ICMessageFrame *messageF;
+    for (ConsultModel *molde in modelArrs) {
+        
+        if ([molde.type isEqual: @"456"]) {
+            //普通消息
+            if ([molde.userId boolValue]) {
+                messageF = [ICMessageHelper createMessageFrame:TypeText content:molde.content path:nil from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:YES];
+            } else {
+                messageF  = [ICMessageHelper createMessageFrame:TypeText content:molde.content path:nil from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:NO];
+            }
+            
+        } else {
+            //图片消息
+            if ([molde.userId boolValue]) {
+               messageF  = [ICMessageHelper createMessageFrame:TypePic content:@"[图片]" path:molde.content from:@"gxz" to:self.group.gId fileKey:nil isSender:YES receivedSenderByYourself:NO];
+            } else {
+                 messageF  = [ICMessageHelper createMessageFrame:TypePic content:@"[图片]" path:molde.content from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:NO];
+            }
 
-    array = @[messageF,messageF1,messageF1,messageF,messageF,messageF,messageF1,messageF1,messageF1,messageF1,messageF1,messageF1,messageF1,messageF1,messageF1,messageF1];
+        }
+        messageF.model.message.deliveryState = ICMessageDeliveryState_Delivered;
+        [self.dataSource addObject:messageF];
+    }
     
-    [self.dataSource addObjectsFromArray:array];
+//    [self.dataSource addObjectsFromArray:array];
     [self scrollToBottom];
 }
 
@@ -245,6 +294,7 @@
         if (isBool) {
             
             [self messageSendSucced:messageF];
+            //存储普通消息到数据库
             
         } else {
             
@@ -271,7 +321,10 @@
          isSender:(BOOL)isSender
 {
     [self.dataSource addObject:messageF];
-    [self.tableView reloadData];
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView endUpdates];
+    [self scrollToBottom];
     if (isSender || _isKeyBoardAppear) {
         [self scrollToBottom];
     }
@@ -313,13 +366,25 @@
 
 - (void)sendImageMessageWithImg:(UIImage *)imgPath
 {
+   
+    NSData *data = UIImageJPEGRepresentation(imgPath, 0.5);
     
-    NSData *data = UIImagePNGRepresentation(imgPath);
-    
-    ICMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic content:@"[图片]" path:[data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] from:@"gxz" to:self.group.gId fileKey:nil isSender:YES receivedSenderByYourself:NO];
+    ICMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic content:@"[图片]" path:[data base64Encoding] from:@"gxz" to:self.group.gId fileKey:nil isSender:YES receivedSenderByYourself:NO];
     [self addObject:messageF isSender:YES];
     
-    [self messageSendSucced:messageF];
+    [User sendImageToKeFuWithImage:imgPath stateBlock:^(BOOL isSuccess) {
+        
+        if (isSuccess) {
+            [self messageSendSucced:messageF];
+             ///存储图片到数据库
+            
+        } else {
+            [self messageSendFaild:messageF];
+        }
+        
+    }];
+    
+  
     
 }
 
@@ -558,7 +623,28 @@
 - (void)showLargeImageWithPath:(NSString *)imgPath
                   withMessageF:(ICMessageFrame *)messageF
 {
-    UIImage *image = [[ICMediaManager sharedManager] imageWithLocalPath:imgPath];
+//    UIImage *image = [[ICMediaManager sharedManager] imageWithLocalPath:imgPath];
+    UIImage *image ;
+    if ([imgPath containsString:@"http"]) {
+        
+        [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:imgPath] options:SDWebImageCacheMemoryOnly progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            if (!error) {
+                image = image;
+                ICPhotoBrowserController *photoVC = [[ICPhotoBrowserController alloc] initWithImage:image];
+                self.presentImageView.image       = image;
+                photoVC.transitioningDelegate     = self;
+                photoVC.modalPresentationStyle    = UIModalPresentationCustom;
+                [self presentViewController:photoVC animated:YES completion:nil];
+            }
+        }];
+        
+    } else {
+       image = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:imgPath options:NSDataBase64DecodingIgnoreUnknownCharacters]];
+    }
+    
+
     if (image == nil) {
         ICLog(@"image is not existed");
         return;
