@@ -7,6 +7,7 @@
 #import "JCRootViewController.h"//引导页
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "BPush.h"
+#import "UICountingLabel/UICountingLabel.h"
 //#import "IQKeyboardManager.h"
 
 

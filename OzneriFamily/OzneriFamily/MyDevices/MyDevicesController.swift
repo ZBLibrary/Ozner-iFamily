@@ -73,7 +73,7 @@ class MyDevicesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceViewContainer.delegate=self
-        view.frame = CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
+        self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleBottomMargin]
         // Do any additional setup after loading the view.
     }
 
@@ -90,6 +90,7 @@ class MyDevicesController: UIViewController {
         deviceViewContainer.SetDeviceAndView()
         self.navigationController?.navigationBar.isHidden=true
         LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
+        self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleBottomMargin]
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.addLeftGestures()
         

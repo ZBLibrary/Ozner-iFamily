@@ -7,12 +7,12 @@
 //
 
 import UIKit
-
+import UICountingLabel
 class Air_WifiMainView: OznerDeviceView {
 
     //header
     @IBOutlet var PM25StateLabel: UILabel!
-    @IBOutlet var PM25ValueLabel: UILabel!
+    @IBOutlet var PM25ValueLabel: UICountingLabel!
     @IBOutlet var VOCValueLabel: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var humidityLabel: UILabel!
@@ -105,18 +105,19 @@ class Air_WifiMainView: OznerDeviceView {
     var PM25_In = 0{
         didSet{
             if PM25_In != oldValue   {
-                if (self.currentDevice as! AirPurifier_MxChip).status.getPower==false {
-                    PM25ValueLabel.text="已关机"
+                if PM25_In == -1 || PM25_In == -2 {//-1 已关机,-2 已断开
+                    PM25ValueLabel.text = PM25_In == -2 ? "设备已断开":"设备已关机"
                     PM25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 35*width_screen/375)
                     return
                 }
-                PM25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 55*width_screen/375)
-                if PM25_In<=0 || PM25_In == 65535 {//暂无
+                
+                if PM25_In < -2 || PM25_In == 0 || PM25_In == 65535 {//暂无数据
                     PM25ValueLabel.text="-"
                     return
                 }
-                
-                PM25ValueLabel.text="\(PM25_In)"
+                PM25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 55*width_screen/375)
+                PM25ValueLabel.format = "%d"
+                PM25ValueLabel.count(from: CGFloat(oldValue==65535 ? 0:oldValue), to: CGFloat(PM25_In))
                 let tmpTmp=(self.currentDevice as! AirPurifier_MxChip).sensor.temperature
                 temperatureLabel.text=(tmpTmp==65535 ? "-":"\(tmpTmp)")+"℃"
                 let tmpHumidity=(self.currentDevice as! AirPurifier_MxChip).sensor.humidity
@@ -183,7 +184,7 @@ class Air_WifiMainView: OznerDeviceView {
         //更新传感器视图
         if (self.currentDevice as! AirPurifier_MxChip).status.getPower==false
         {
-            PM25_In=0
+            PM25_In = -1
         }else{
             PM25_In=Int((self.currentDevice as! AirPurifier_MxChip).sensor.pm25)
         }
@@ -192,7 +193,16 @@ class Air_WifiMainView: OznerDeviceView {
     }
     override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
         //更新连接状态视图
-        //connectChange=device.connectStatus()
+        if (device as! AirPurifier_MxChip).isOffline
+        {
+            PM25_In = -2
+            operation=(false,0,false)
+        }else{
+           // PM25_In=Int((self.currentDevice as! AirPurifier_MxChip).sensor.pm25)
+            //operation=((device as! AirPurifier_MxChip).status.getPower,Int((device as! AirPurifier_MxChip).status.speed),(device as! AirPurifier_MxChip).status.getLock)
+        }
+        
+        
     }
 }
 

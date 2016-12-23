@@ -13,7 +13,8 @@ class AirLvXinController: UIViewController {
     @IBOutlet var pm25ValueLabel: UILabel!
     @IBOutlet var vocValueLabel: UILabel!
     @IBOutlet var vocWidthConstraint: NSLayoutConstraint!
-    @IBOutlet var totalHeightConstraint: NSLayoutConstraint!
+    //@IBOutlet var totalHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var totalPurificatContainerView: UIView!
     @IBOutlet var totalValueLabel: UILabel!
     @IBOutlet var reSetLvXinButton: UIButton!
     @IBAction func reSetLvXinClick(_ sender: AnyObject) {
@@ -38,14 +39,15 @@ class AirLvXinController: UIViewController {
         if OznerDeviceType.getType(type: device.type)==OznerDeviceType.Air_Blue {//台式
             reSetLvXinButton.isHidden=false
             vocWidthConstraint.constant = -width_screen/2
-            totalHeightConstraint.constant = -height_screen*90/667
+            //hiden
+            totalPurificatContainerView.isHidden=true
             pm25ValueLabel.text="\(Int((device as! AirPurifier_Bluetooth).sensor.pm25))"
             print((device as! AirPurifier_Bluetooth).status.filterStatus.workTime)
             SetLvXin(workTime: Int((device as! AirPurifier_Bluetooth).status.filterStatus.workTime), maxUseMM: 60000)
         }else{//立式空净
             reSetLvXinButton.isHidden=true
             vocWidthConstraint.constant = 0
-            totalHeightConstraint.constant = 0
+            totalPurificatContainerView.isHidden=false
             pm25ValueLabel.text="\(Int((device as! AirPurifier_MxChip).sensor.pm25))"
             var vocValue = (device as! AirPurifier_MxChip).sensor.voc
             vocValue = vocValue<0||vocValue>3 ? 4:vocValue
@@ -108,6 +110,7 @@ class AirLvXinController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.CupTDSDetail)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
     }
    
     // MARK: - Navigation

@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import UICountingLabel
 
 class Air_BlueMainView: OznerDeviceView {
 
     
     @IBOutlet var pm25StateLabel: UILabel!
-    @IBOutlet var pm25ValueLabel: UILabel!
+    @IBOutlet var pm25ValueLabel: UICountingLabel!
     @IBOutlet var temperatureValueLabel: UILabel!
     @IBOutlet var humidityValueLabel: UILabel!
     @IBOutlet var FLZLabel: UILabel!
@@ -92,9 +93,6 @@ class Air_BlueMainView: OznerDeviceView {
     }
     private func updateSpeed(touchX:CGFloat,isEnd:Bool){
         if currentDevice?.connectStatus() != Connected {
-            pm25ValueLabel.text="设备已断开"
-            FLZLabel.isHidden=true
-            pm25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 35*width_screen/320)
             updateSliderView(touchX: 0, isEnd: isEnd)
         }else{
             updateSliderView(touchX: touchX, isEnd: isEnd)
@@ -131,23 +129,27 @@ class Air_BlueMainView: OznerDeviceView {
             })
         }
     }
+    
     private var PM25_In = 0{//头部视图
         didSet{
             if PM25_In != oldValue   {
-                if (self.currentDevice as! AirPurifier_Bluetooth).status.power==false {
-                    pm25ValueLabel.text="已关机"
+                if PM25_In == -1 || PM25_In == -2 {//-1 已关机,-2 已断开
+                    pm25ValueLabel.text = PM25_In == -2 ? "设备已断开":"设备已关机"
                     pm25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 35*width_screen/375)
                     FLZLabel.isHidden=true
                     updateSpeed(touchX: 0, isEnd: false)
                     return
                 }
-                pm25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 55*width_screen/375)
-                if PM25_In<=0 || PM25_In == 65535 {//暂无
+                if PM25_In < -2 || PM25_In == 0 || PM25_In == 65535 {//暂无数据
+                    FLZLabel.isHidden=true
                     pm25ValueLabel.text="-"
                     return
                 }
+                pm25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 55*width_screen/375)
                 FLZLabel.isHidden=false
-                pm25ValueLabel.text="\(PM25_In)"
+                pm25ValueLabel.format = "%d"
+                pm25ValueLabel.count(from: CGFloat(oldValue==65535 ? 0:oldValue), to: CGFloat(PM25_In))
+                
                 temperatureValueLabel.text="\((self.currentDevice as! AirPurifier_Bluetooth).sensor.temperature)℃"
                 humidityValueLabel.text="\((self.currentDevice as! AirPurifier_Bluetooth).sensor.humidity)%"
                 switch true {
@@ -177,7 +179,7 @@ class Air_BlueMainView: OznerDeviceView {
         //更新传感器视图
         if (self.currentDevice as! AirPurifier_Bluetooth).status.power==false
         {
-            PM25_In=0
+            PM25_In = -1
         }else{
             PM25_In=Int((self.currentDevice as! AirPurifier_Bluetooth).sensor.pm25)
         }
@@ -194,7 +196,9 @@ class Air_BlueMainView: OznerDeviceView {
             case Connected:
                 tmpValue=CGFloat((currentDevice as! AirPurifier_Bluetooth).status.rpm)/100
                 tmpValue=34.5*width_screen/375+tmpValue*264*width_screen/375
+                PM25_In=Int((self.currentDevice as! AirPurifier_Bluetooth).sensor.pm25)
             default:
+                PM25_In = -2
                 break
             }
             updateSpeed(touchX: tmpValue, isEnd: false)
