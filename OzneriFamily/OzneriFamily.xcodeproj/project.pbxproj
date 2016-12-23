@@ -293,6 +293,7 @@
 		8DEB84AD1DA897930088794A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEB84AC1DA897930088794A /* libsqlite3.0.tbd */; };
 		8DEB84AF1DA897A00088794A /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEB84AE1DA897A00088794A /* libxml2.tbd */; };
 		8DF78D611D94DBEB002C4202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DF78D601D94DBEB002C4202 /* Assets.xcassets */; };
+		B703D8ED1E0CF1F90083810A /* XMFaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B703D8EC1E0CF1F90083810A /* XMFaceManager.m */; };
 		B717E7E61E0BAB5400B6DEBD /* ICMessageConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B717E7091E0BAB5400B6DEBD /* ICMessageConst.m */; };
 		B717E7E71E0BAB5400B6DEBD /* ICChatBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B717E70C1E0BAB5400B6DEBD /* ICChatBoxViewController.m */; };
 		B717E7E81E0BAB5400B6DEBD /* ICDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B717E70E1E0BAB5400B6DEBD /* ICDocumentViewController.m */; };
@@ -843,6 +844,8 @@
 		8DEB84AE1DA897A00088794A /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		8DF78D601D94DBEB002C4202 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C704BF1A0D2ADD5B7874B6A /* Pods-OzneriFamily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.debug.xcconfig"; sourceTree = "<group>"; };
+		B703D8EB1E0CF1F90083810A /* XMFaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMFaceManager.h; sourceTree = "<group>"; };
+		B703D8EC1E0CF1F90083810A /* XMFaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMFaceManager.m; sourceTree = "<group>"; };
 		B717E7041E0BAB5400B6DEBD /* ICChatBoxViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICChatBoxViewControllerDelegate.h; sourceTree = "<group>"; };
 		B717E7051E0BAB5400B6DEBD /* ICChatConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICChatConst.h; sourceTree = "<group>"; };
 		B717E7061E0BAB5400B6DEBD /* ICChatHearder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICChatHearder.h; sourceTree = "<group>"; };
@@ -2058,6 +2061,8 @@
 		B717E71C1E0BAB5400B6DEBD /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				B703D8EB1E0CF1F90083810A /* XMFaceManager.h */,
+				B703D8EC1E0CF1F90083810A /* XMFaceManager.m */,
 				B717E71D1E0BAB5400B6DEBD /* ICFaceManager.h */,
 				B717E71E1E0BAB5400B6DEBD /* ICFaceManager.m */,
 				B717E71F1E0BAB5400B6DEBD /* ICFileTool.h */,
@@ -2953,6 +2958,7 @@
 				8D0D69471DDD99A10097038E /* MyRankTableViewCell.swift in Sources */,
 				8D0D69221DDD99A00097038E /* AddFriendsTableViewController.swift in Sources */,
 				8DC02FA41DB5F03B007F57DB /* util_mosq.c in Sources */,
+				B703D8ED1E0CF1F90083810A /* XMFaceManager.m in Sources */,
 				B717E80F1E0BAB5400B6DEBD /* ICFileButton.m in Sources */,
 				8D0D695C1DDDB2F70097038E /* OzneriFamilyModel.xcdatamodeld in Sources */,
 				B717E8041E0BAB5400B6DEBD /* ICChatBoxFaceView.m in Sources */,

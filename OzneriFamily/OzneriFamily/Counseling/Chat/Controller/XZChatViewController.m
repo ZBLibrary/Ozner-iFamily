@@ -65,6 +65,9 @@
 
 - (void)setupUI
 {
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CallPhoneImage"] style:UIBarButtonSystemItemDone target:self action:@selector(phoneCallAction)];
+    
     self.view.backgroundColor = IColor(240, 237, 237);
     // 注意添加顺序
     [self addChildViewController:self.chatBoxVC];
@@ -77,6 +80,15 @@
     self.tableView.backgroundColor = IColor(240, 237, 237);
     // self.view的高度有时候是不准确的
     self.tableView.frame = CGRectMake(0, 0, self.view.width, APP_Frame_Height-HEIGHT_TABBAR-HEIGHT_NAVBAR-HEIGHT_STATUSBAR);
+}
+
+- (void)phoneCallAction{
+    
+    UIWebView *call = [[UIWebView alloc] init];
+    
+    [call loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:4008202667"]]];
+    [self.view addSubview:call];
+    
 }
 
 - (void)registerCell
@@ -455,6 +467,11 @@
 - (BOOL)canBecomeFirstResponder
 {
     return YES;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - voice & video

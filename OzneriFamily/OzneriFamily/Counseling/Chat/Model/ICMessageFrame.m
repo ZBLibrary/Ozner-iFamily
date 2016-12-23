@@ -14,6 +14,7 @@
 #import "ICMessageConst.h"
 #import "ICMessageHelper.h"
 #import "ICVideoManager.h"
+#import "XMFaceManager.h"
 #import <WebImage/WebImage.h>
 #define APP_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define APP_HEIGHT ([UIScreen mainScreen].bounds.size.height)
@@ -114,7 +115,18 @@
         CGSize nameSize       = CGSizeMake(0, 0);
         cellMinW = nameSize.width + 6 + timeSize.width; // 最小宽度
         if ([model.message.type isEqualToString:TypeText]) {
-            CGSize chateLabelSize = [model.message.content sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
+            CGSize chateLabelSize;
+            if ([model.message.content containsString:@"<div style=\""]) {
+               NSMutableAttributedString *attributeStr = [XMFaceManager emotionStrWithString: model.message.content];
+                [attributeStr addAttributes:[self textStyle] range:NSMakeRange(0, attributeStr.length)];
+                chateLabelSize  =  [attributeStr.string boundingRectWithSize:CGSizeMake(chatLabelMax, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{ NSFontAttributeName :MessageFont} context:nil].size;
+                if (chateLabelSize.width < chatLabelMax - 20) {
+                    chateLabelSize.width += 20;
+                }
+            } else {
+               chateLabelSize  = [model.message.content sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
+            }
+           
             CGSize topViewSize    = CGSizeMake(cellMinW+bubblePadding*2, topViewH);
             CGSize bubbleSize = CGSizeMake(chateLabelSize.width + bubblePadding * 2 + arrowWidth, chateLabelSize.height + bubblePadding * 2);
             
@@ -217,6 +229,18 @@
     }
 }
 
+
+- (NSDictionary *)textStyle {
+    UIFont *font = [UIFont systemFontOfSize:16];
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    style.paragraphSpacing = 0.15 * font.lineHeight;
+    style.hyphenationFactor = 1.0;
+    return @{
+             NSFontAttributeName: font,
+             NSParagraphStyleAttributeName: style,
+             NSForegroundColorAttributeName: [UIColor whiteColor]
+             };
+}
 
     
 // 缩放，临时的方法

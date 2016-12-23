@@ -10,7 +10,7 @@
 #import "MJExtension.h"
 #import "XZEmotion.h"
 #import "ICFaceManager.h"
-
+#import "XMFaceManager.h"
 #import "XZConstants.h"
 #import "XZHeaderFile.h"
 
@@ -49,8 +49,13 @@ static NSArray * _emojiEmotions,*_custumEmotions,*gifEmotions;
                                                 font:(UIFont *)font
                                           lineHeight:(CGFloat)lineHeight
 {
-    NSMutableAttributedString *attributeStr
-                      = [[NSMutableAttributedString alloc] initWithString:message];
+    NSMutableAttributedString *attributeStr;
+    if ([message containsString:@"<div style=\""]) {
+         attributeStr = [XMFaceManager emotionStrWithString: message];
+    } else {
+       attributeStr = [[NSMutableAttributedString alloc] initWithString:message];
+    }
+    
     NSString *regEmj  = @"\\[[a-zA-Z0-9\\/\\u4e00-\\u9fa5]+\\]";// [微笑]、［哭］等自定义表情处理
     NSError *error    = nil;
     NSRegularExpression *expression = [NSRegularExpression regularExpressionWithPattern:regEmj options:NSRegularExpressionCaseInsensitive error:&error];

@@ -9,7 +9,7 @@
 #import "ICChatMessageTextCell.h"
 #import "ICMessageModel.h"
 #import "ICFaceManager.h"
-
+#import "XMFaceManager.h"
 @interface ICChatMessageTextCell ()
 
 @end
@@ -38,10 +38,32 @@
 {
     [super setModelFrame:modelFrame];
     self.chatLabel.frame = modelFrame.chatLabelF;
-    [self.chatLabel setAttributedText:[ICFaceManager transferMessageString:modelFrame.model.message.content font:self.chatLabel.font lineHeight:self.chatLabel.font.lineHeight]];
+    
+    if ([modelFrame.model.message.content containsString:@"div"]) {
+         NSMutableAttributedString *attrS = [XMFaceManager emotionStrWithString: modelFrame.model.message.content];
+         [attrS addAttributes:[self textStyle] range:NSMakeRange(0, attrS.length)];
+        self.chatLabel.attributedText = attrS;
+    } else {
+         [self.chatLabel setAttributedText:[ICFaceManager transferMessageString:modelFrame.model.message.content font:self.chatLabel.font lineHeight:self.chatLabel.font.lineHeight]]; 
+    }
+    
+  
 //    self.chatLabel.text = modelFrame.model.content;
 }
 
+- (NSDictionary *)textStyle {
+    UIFont *font = [UIFont systemFontOfSize:16.f];
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    //    if (self.message.messageText.length > 20) {
+    //        style.alignment = self.message.messageOwner == XMMessageOwnerTypeSelf ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    //    }else{
+    //    }
+    style.alignment = NSTextAlignmentCenter;
+    style.paragraphSpacing = 0.25 * font.lineHeight;
+    style.hyphenationFactor = 1.0;
+    return @{NSFontAttributeName: font,
+             NSParagraphStyleAttributeName: style};
+}
 
 - (void)attemptOpenURL:(NSURL *)url
 {

@@ -174,31 +174,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
             
         }
 
-        
-        if application.applicationState ==  UIApplicationState.active {
-            //不做任何处理
             if action_baidu == "chat" {
                 AudioServicesPlaySystemSound(1007)
                 loadKeFuMessage(data_baidu!)
-
+            
             }
-            
-        }  else {
-            
-            if action_baidu == "chat" {
-                UIApplication.shared.applicationIconBadgeNumber = 1
-                loadKeFuMessage(data_baidu!)
-                //跳转聊天界面
-                DispatchQueue.main.async {
-                    
-                    let alert = SCLAlertView()
-                    _ = alert.addButton("跳转吧", action: {})
-                    _ = alert.showInfo("点击了", subTitle: "123")
-                    LoginManager.instance.mainTabBarController?.selectedIndex = 2
-                }
-            }
-            
-        }
+        
+//        if application.applicationState ==  UIApplicationState.active {
+//            //不做任何处理
+//            if action_baidu == "chat" {
+//                AudioServicesPlaySystemSound(1007)
+//                loadKeFuMessage(data_baidu!)
+//
+//            }
+//            
+//        }  else {
+//            
+//            if action_baidu == "chat" {
+//                UIApplication.shared.applicationIconBadgeNumber = 1
+//                loadKeFuMessage(data_baidu!)
+//                //跳转聊天界面
+//                DispatchQueue.main.async {
+//                    
+//                    let alert = SCLAlertView()
+//                    _ = alert.addButton("跳转吧", action: {})
+//                    _ = alert.showInfo("点击了", subTitle: "123")
+////                    LoginManager.instance.mainTabBarController?.selectedIndex = 2
+//                }
+//            }
+//            
+//        }
         
         if action_baidu == "NewFriend" {
             //别人接受我的请求－－－－通知
@@ -318,17 +323,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                     
                 }
                 
-//                if arrStr.count > 2 {
-//                    
-//                    let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-//                    conModel.content =  msg
-//                    conModel.type = ChatType.Content.rawValue
-//                    conModel.userId = "468-768355-23123"
-//                    
-//                    CoreDataManager.defaultManager.saveChanges()
-//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
-//                    
-//                }
+                if arrStr.count > 2 {
+                    
+                    let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+                    conModel.content =  msg
+                    conModel.type = ChatType.Content.rawValue
+                    conModel.userId = "0"
+                    
+                    CoreDataManager.defaultManager.saveChanges()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
+                    
+                }
                 
             }
             
