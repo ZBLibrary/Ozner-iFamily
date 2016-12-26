@@ -91,8 +91,8 @@ class MySuggestViewController: BaseViewController,UITextViewDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.title=loadLanguage("我要提意见")
-        self.navigationController?.navigationBar.isHidden=false
-   
+//        self.navigationController?.navigationBar.isHidden=false
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         LoginManager.instance.mainTabBarController?.setTabBarHidden(true, animated: false)
         //self.tabBarController?.tabBar.hidden=true
     }
