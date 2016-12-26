@@ -150,16 +150,18 @@
     if (scanData)
     {
         NSString* identifier=[self getIdentifier:peripheral];
-        if ([advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey])
-                    {
-                            NSData* data=[advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey];
+        if (![name isEqualToString:@"Ozner Cup"])
+        {//这里导致杯子不能重新连接
+            if ([advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey])
+            {
+                NSData* data=[advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey];
                 
-                            BytePtr bytes=(BytePtr)[data bytes];
-                            identifier =[NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X",
-                                                                   bytes[7],bytes[6],bytes[5],bytes[4],bytes[3],bytes[2]];
-                            //NSString* address=[
-                        }
-        
+                BytePtr bytes=(BytePtr)[data bytes];
+                identifier =[NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X",
+                             bytes[7],bytes[6],bytes[5],bytes[4],bytes[3],bytes[2]];
+                //NSString* address=[
+            }
+        }
         BluetoothIO* io=(BluetoothIO*)[self getAvailableDevice:identifier];
         if (!io)
         {
