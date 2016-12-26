@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CupTemperatureController: UIViewController {
+class CupTemperatureController: BaseViewController {
 
     @IBOutlet var tempValueLabel: UILabel!
 

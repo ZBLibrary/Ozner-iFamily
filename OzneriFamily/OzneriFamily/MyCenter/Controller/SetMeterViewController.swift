@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetMeterViewController: UIViewController {
+class SetMeterViewController: BaseViewController {
 
     var Temperature=0
     var WaterMeter=0

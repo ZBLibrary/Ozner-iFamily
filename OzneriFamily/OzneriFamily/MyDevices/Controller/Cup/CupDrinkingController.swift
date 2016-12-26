@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CupDrinkingController: UIViewController {
+class CupDrinkingController: BaseViewController {
 
     //header
     @IBAction func shareClick(_ sender: AnyObject) {

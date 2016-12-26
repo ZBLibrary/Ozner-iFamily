@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyFriendViewController: UIViewController ,UIScrollViewDelegate{
+class MyFriendViewController: BaseViewController ,UIScrollViewDelegate{
 
     var centerView: MyFriendCenterView!
     

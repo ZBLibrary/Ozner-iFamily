@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReplenishSexController: UIViewController {
+class ReplenishSexController: BaseViewController {
 
     var currSetting:DeviceSetting!
     @IBAction func saveClick(_ sender: AnyObject) {

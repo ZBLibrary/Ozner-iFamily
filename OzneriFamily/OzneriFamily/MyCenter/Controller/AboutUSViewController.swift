@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutUSViewController: UIViewController {
+class AboutUSViewController: BaseViewController {
 
   
     @IBOutlet var ScoreLable: UILabel!

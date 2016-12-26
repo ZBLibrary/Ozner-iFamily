@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetReplenishTimeController: UIViewController {
+class SetReplenishTimeController: BaseViewController {
 
     var currSetting:DeviceSetting!
     //带+号表示选中状态，否则，未选中状态

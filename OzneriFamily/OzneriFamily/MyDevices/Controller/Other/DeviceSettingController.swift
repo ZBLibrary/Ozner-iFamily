@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DeviceSettingController: UIViewController {
+class DeviceSettingController: BaseViewController {
 
 
     var deviceSetting:DeviceSetting!

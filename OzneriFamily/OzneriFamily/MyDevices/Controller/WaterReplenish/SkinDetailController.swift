@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SkinDetailController: UIViewController {
+class SkinDetailController: BaseViewController {
 
     var currentBody=BodyParts.Face
     

@@ -17,7 +17,7 @@ enum WeiXinUrlType:String {
     
 }
 
-class BaseWebView: UIViewController {
+class BaseWebView: BaseViewController {
 
     var webViewType:String?
     

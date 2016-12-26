@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutDeviceController: UIViewController {
+class AboutDeviceController: BaseViewController {
 
     @IBOutlet var webView: UIWebView!
     private var type=0//0代表网址，1代表图片,2代表本地网页

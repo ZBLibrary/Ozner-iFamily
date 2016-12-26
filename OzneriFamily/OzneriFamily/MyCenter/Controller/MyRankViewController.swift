@@ -16,7 +16,7 @@ import UIKit
     
 }
 
-class MyRankViewController: UIViewController {
+class MyRankViewController: BaseViewController {
     
     var tableView: UITableView?
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TapLvXinController: UIViewController {
+class TapLvXinController: BaseViewController {
 
     //var isShowScanView = true
     var waterPurfierData:[String:Any]?

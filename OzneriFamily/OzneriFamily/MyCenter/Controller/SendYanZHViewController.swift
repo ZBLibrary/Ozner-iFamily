@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SendYanZHViewController: UIViewController,UITextFieldDelegate {
+class SendYanZHViewController: BaseViewController,UITextFieldDelegate {
 
     var sendphone=""
     @IBAction func CancelClick(sender: AnyObject) {

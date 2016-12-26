@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MySetViewController: UIViewController {
+class MySetViewController: BaseViewController {
 
 
     @IBOutlet weak var logout: UIButton!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AirLvXinController: UIViewController {
+class AirLvXinController: BaseViewController {
 
     @IBOutlet var pm25ValueLabel: UILabel!
     @IBOutlet var vocValueLabel: UILabel!

@@ -22,7 +22,7 @@ class MainTabBarController: RDVTabBarController {
         let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController 
         
         
-        let nvc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        let nvc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateInitialViewController() as! GYNavViewController
         leftViewController.mainViewController=nvc
         SlideMenuOptions.leftViewWidth=298*width_screen/375
         let slideMenuController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
@@ -39,7 +39,7 @@ class MainTabBarController: RDVTabBarController {
         group.lastMsgString = "你等着!"
         let nav3 = UINavigationController(rootViewController: chatVc)
         
-        let c4=UIStoryboard(name: "MainMyCenter", bundle: nil).instantiateInitialViewController() as!UINavigationController
+        let c4=UIStoryboard(name: "MainMyCenter", bundle: nil).instantiateInitialViewController() as!GYNavViewController
         
         self.viewControllers=[slideMenuController,c2,nav3,c4]
         //设置tabbar

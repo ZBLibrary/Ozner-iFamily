@@ -8,7 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-class MySuggestViewController: UIViewController,UITextViewDelegate {
+class MySuggestViewController: BaseViewController,UITextViewDelegate {
 
     @IBOutlet var messCount: UILabel!
 

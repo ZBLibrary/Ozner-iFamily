@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EquidsCollectionViewController: UIViewController {
+class EquidsCollectionViewController: BaseViewController {
     
 
     var colltionView: UICollectionView?

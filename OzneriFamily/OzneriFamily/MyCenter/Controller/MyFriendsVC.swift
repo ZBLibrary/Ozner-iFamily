@@ -29,7 +29,7 @@ class ChatModel: NSObject {
     var chatSendId:String?
 }
 
-class MyFriendsVC: UIViewController {
+class MyFriendsVC: BaseViewController {
 
     var tableView: UITableView!
 

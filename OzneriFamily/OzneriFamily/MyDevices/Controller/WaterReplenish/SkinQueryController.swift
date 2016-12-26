@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SkinQueryController: UIViewController {
+class SkinQueryController: BaseViewController {
 
     var currentSkinTypeIndex=0//0：无，1油，2干,3中
     var totalTimes = 0

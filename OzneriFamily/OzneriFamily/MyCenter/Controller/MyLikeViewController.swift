@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyLikeViewController: UIViewController {
+class MyLikeViewController: BaseViewController {
     
     var tableView: UITableView?
 

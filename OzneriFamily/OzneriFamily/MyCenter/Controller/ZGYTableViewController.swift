@@ -31,6 +31,13 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
 
         self.title=loadLanguage("添加好友")
         
+        let backBtn = UIButton()
+        
+        backBtn.setImage(UIImage(named: "backBg"), for: UIControlState.normal)
+        backBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
+        backBtn.addTarget(self, action: #selector(BaseViewController.backAction), for: UIControlEvents.touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+        
         self.tableView.rowHeight = 44
         tableView.register(UINib.init(nibName: "AddFriendTableViewCell", bundle: nil), forCellReuseIdentifier: "AddFriendTableViewCellid")
         tabelHeaderView = Bundle.main.loadNibNamed("FriendSearch", owner: self, options: nil)?.last as! FriendSearch
@@ -44,6 +51,10 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
         tableView.dataSource = self
         NotificationCenter.default.addObserver(self, selector: #selector(addfriendSuccess), name: NSNotification.Name(rawValue: "sendAddFriendMesSuccess"), object: nil)
         Tongxunlu()
+    }
+    
+    func backAction() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func Tongxunlu()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CupSetDrinkTimeController: UIViewController {
+class CupSetDrinkTimeController: BaseViewController {
 
     var currSetting:CupSettings!
     @IBAction func saveClick(_ sender: AnyObject) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoWaterPuefierLvXinController: UIViewController {
+class RoWaterPuefierLvXinController: BaseViewController {
 
     var currentDevice:ROWaterPurufier!
     @IBOutlet var fuweiButton: UIButton!

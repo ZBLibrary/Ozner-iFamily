@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CupTDSDetailController: UIViewController {
+class CupTDSDetailController: BaseViewController {
 
 
     @IBAction func shareClick(_ sender: UIBarButtonItem) {

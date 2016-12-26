@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyDeviceRankViewController: UIViewController {
+class MyDeviceRankViewController: BaseViewController {
 
     var tableView: UITableView?
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WaterPurfierTDSController: UIViewController {
+class WaterPurfierTDSController: BaseViewController {
 
     //header
     @IBOutlet var tdsValueLabel_BF: UILabel!

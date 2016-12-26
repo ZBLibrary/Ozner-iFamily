@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetDeviceNameController: UIViewController {
+class SetDeviceNameController: BaseViewController {
 
    
     @IBAction func SaveClick(_ sender: AnyObject) {

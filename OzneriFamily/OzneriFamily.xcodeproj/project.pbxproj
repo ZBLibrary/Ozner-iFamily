@@ -399,6 +399,8 @@
 		B7567CA51DB0873B00AA7C91 /* CupMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7567CA41DB0873B00AA7C91 /* CupMatchView.swift */; };
 		B7567CA71DB0D91F00AA7C91 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */; };
 		B7567CA91DB0DAF400AA7C91 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7753A921E10F16000F39427 /* GYNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7753A911E10F16000F39427 /* GYNavViewController.swift */; };
+		B7753A941E10F45E00F39427 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7753A931E10F45E00F39427 /* BaseViewController.swift */; };
 		B79803DB1DB5B14A001EC5AA /* SmallAriClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79803DA1DB5B14A001EC5AA /* SmallAriClearView.swift */; };
 		B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */; };
 		B79803DF1DB5C41D001EC5AA /* WaterRefeishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */; };
@@ -1058,6 +1060,8 @@
 		B7567CA21DB0872800AA7C91 /* CupMatchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupMatchView.xib; sourceTree = "<group>"; };
 		B7567CA41DB0873B00AA7C91 /* CupMatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupMatchView.swift; sourceTree = "<group>"; };
 		B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		B7753A911E10F16000F39427 /* GYNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYNavViewController.swift; sourceTree = "<group>"; };
+		B7753A931E10F45E00F39427 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B79803DA1DB5B14A001EC5AA /* SmallAriClearView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallAriClearView.swift; sourceTree = "<group>"; };
 		B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallAriClearView.xib; sourceTree = "<group>"; };
 		B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterRefeishView.swift; sourceTree = "<group>"; };
@@ -1369,6 +1373,8 @@
 			children = (
 				8D1EF3871D93DE050009D034 /* AppDelegate.swift */,
 				8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */,
+				B7753A911E10F16000F39427 /* GYNavViewController.swift */,
+				B7753A931E10F45E00F39427 /* BaseViewController.swift */,
 				8DEB83B11DA896700088794A /* Info.plist */,
 				8D5ABB291D9E632E008524A7 /* OzneriFamily.entitlements */,
 				8D117C0F1D9CDEB00024187E /* Login+Register+Guiding */,
@@ -2759,6 +2765,7 @@
 				8D17D40B1DC2EA0A002B0F89 /* AgreementController.swift in Sources */,
 				8D129A231DD4B5080022F7EA /* LBXScanView.swift in Sources */,
 				8D0D69301DDD99A10097038E /* ZGYTableViewController.swift in Sources */,
+				B7753A941E10F45E00F39427 /* BaseViewController.swift in Sources */,
 				B717E8271E0BAB5400B6DEBD /* MASConstraint.m in Sources */,
 				B717E7F21E0BAB5400B6DEBD /* ICMessageHelper.m in Sources */,
 				8D129A261DD4B5080022F7EA /* LBXScanWrapper.swift in Sources */,
@@ -2938,6 +2945,7 @@
 				8D0D69331DDD99A10097038E /* EquidsCollectionViewCell.swift in Sources */,
 				8D16BC4F1DB8719F00CA3A49 /* AboutDeviceController.swift in Sources */,
 				8DC02FAB1DB5F03B007F57DB /* ConfigurationDevice.m in Sources */,
+				B7753A921E10F16000F39427 /* GYNavViewController.swift in Sources */,
 				8DC02EA81DB5D100007F57DB /* SCLExtensions.swift in Sources */,
 				8DC02F8D1DB5F03B007F57DB /* TapSensor.m in Sources */,
 				B717E8031E0BAB5400B6DEBD /* ICChatBox.m in Sources */,

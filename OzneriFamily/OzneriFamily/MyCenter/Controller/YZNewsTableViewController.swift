@@ -24,7 +24,7 @@ class  YZNewsModel:NSObject {
     
 }
 
-class YZNewsTableViewController: UIViewController {
+class YZNewsTableViewController: BaseViewController {
 
     
     var tableView: UITableView?
