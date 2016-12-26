@@ -11,16 +11,20 @@ import IQKeyboardManager
 import UserNotifications
 import WebImage
 import SwiftyJSON
+import CoreLocation
 
 var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
 }
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotificationCenterDelegate,CLLocationManagerDelegate {
 
     var window: UIWindow? = {
         return UIWindow(frame: UIScreen.main.bounds)
     }()
+    
+    private var locateManage:CLLocationManager?
+    private var currentCoordinate: CLLocationCoordinate2D?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -52,6 +56,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
 //        }
         
         UIApplication.shared.registerForRemoteNotifications()
+        
+        locateManage = CLLocationManager()
+        
+        locateManage?.delegate = self
+        currentCoordinate = CLLocationCoordinate2D()
+        
+        if ((locateManage?.requestWhenInUseAuthorization()) == nil) {
+            locateManage?.requestWhenInUseAuthorization()
+        }
+        
+        locateManage?.desiredAccuracy = kCLLocationAccuracyBest
+        locateManage?.startUpdatingHeading()
+        
         
         
     
@@ -492,6 +509,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         
         task.resume()
         
+        
+    }
+    
+    // MARK: - 定位
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if let newloca = locations.last {
+            
+            CLGeocoder().reverseGeocodeLocation(newloca, completionHandler: { (pms, error) in
+                
+                if !(error != nil) {
+                    
+                    if let newCoorDinate = pms?.last?.location?.coordinate {
+                        
+                        manager.startUpdatingHeading()
+                        
+                        let placemark: CLPlacemark? = pms?.last
+                        
+                        if let mark = placemark {
+
+                            let locality = mark.locality ?? ""
+                            
+                            //保存定位地址
+                            if locality.contains("市") {
+                               
+                             let str = locality.replacingOccurrences(of: "市", with: "")
+                                
+                                UserDefaults.standard.setValue(str, forKey: "GYCITY")
+                                UserDefaults.standard.synchronize()
+                            } else {
+                                
+                                UserDefaults.standard.setValue(locality, forKey: "GYCITY")
+                                UserDefaults.standard.synchronize()
+                            }
+
+                            
+                        }
+                        
+                    }
+                    
+                    
+                }
+                
+            })
+            
+        }
         
     }
     

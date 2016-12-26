@@ -676,7 +676,8 @@ public class User: BaseDataObject {
     }
     //空气净化器获取室外空气数据
     class func GetWeather(success: @escaping ((_ pollution:String,_ cityname:String,_ PM25:String,_ AQI:String,_ temperature:String,_ humidity:String,_ dataFrom:String) -> Void), failure: @escaping ((Error) -> Void)){
-        self.fetchData(key: "GetWeather", parameters: ["city":"北京"], success: { (json) in
+        let city = UserDefaults.standard.value(forKey: "GYCITY") as? String ?? ""
+        self.fetchData(key: "GetWeather", parameters: ["city":city], success: { (json) in
             var dataFrom=json["weatherform"].stringValue
             //解析json
             let dataStr=json["data"].stringValue
@@ -684,6 +685,10 @@ public class User: BaseDataObject {
             let jsonData=JSON(data: tmpData!)
             let jsonDic=jsonData["HeWeather data service 3.0"][0].dictionaryValue
             let tmpdic=jsonDic["aqi"]?["city"]
+            guard let dicTmp = tmpdic else {
+                success("",city,"","","","","")
+                return
+            }
             let pollution=tmpdic?["qlty"].stringValue//中度污染
             let AQI=tmpdic?["aqi"].stringValue
             let PM25=tmpdic?["pm25"].stringValue
