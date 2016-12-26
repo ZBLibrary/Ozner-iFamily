@@ -676,7 +676,7 @@ public class User: BaseDataObject {
     }
     //空气净化器获取室外空气数据
     class func GetWeather(success: @escaping ((_ pollution:String,_ cityname:String,_ PM25:String,_ AQI:String,_ temperature:String,_ humidity:String,_ dataFrom:String) -> Void), failure: @escaping ((Error) -> Void)){
-        self.fetchData(key: "GetWeather", parameters: nil, success: { (json) in
+        self.fetchData(key: "GetWeather", parameters: ["city":"北京"], success: { (json) in
             var dataFrom=json["weatherform"].stringValue
             //解析json
             let dataStr=json["data"].stringValue

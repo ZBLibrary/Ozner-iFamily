@@ -403,6 +403,7 @@
 		B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */; };
 		B79803DF1DB5C41D001EC5AA /* WaterRefeishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */; };
 		B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */; };
+		B7B12AFE1E10AC1300711EBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B12AFD1E10AC1300711EBF /* MapKit.framework */; };
 		B7D6E4991DF928CF00D79BFF /* GYConactBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6E4981DF928CF00D79BFF /* GYConactBook.swift */; };
 		B7EF061C1DB8A357008BE7D4 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EF061A1DB8A346008BE7D4 /* WebImage.framework */; };
 		B7EF061D1DB8A357008BE7D4 /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7EF061A1DB8A346008BE7D4 /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -1061,6 +1062,7 @@
 		B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallAriClearView.xib; sourceTree = "<group>"; };
 		B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterRefeishView.swift; sourceTree = "<group>"; };
 		B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterRefeishView.xib; sourceTree = "<group>"; };
+		B7B12AFD1E10AC1300711EBF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B7D6E4981DF928CF00D79BFF /* GYConactBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYConactBook.swift; sourceTree = "<group>"; };
 		B7EF061A1DB8A346008BE7D4 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		B7F9D5431DE40B7500678317 /* GYShareImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYShareImage.swift; sourceTree = "<group>"; };
@@ -1076,6 +1078,7 @@
 				8D5ABB201D9E4A02008524A7 /* CoreTelephony.framework in Frameworks */,
 				8D7837051DE28DF200A3D9E3 /* Security.framework in Frameworks */,
 				8D7837031DE28DD900A3D9E3 /* libc++.tbd in Frameworks */,
+				B7B12AFE1E10AC1300711EBF /* MapKit.framework in Frameworks */,
 				8DEB84AF1DA897A00088794A /* libxml2.tbd in Frameworks */,
 				8DEB84AD1DA897930088794A /* libsqlite3.0.tbd in Frameworks */,
 				8D7837011DE28B5200A3D9E3 /* libWeChatSDK.a in Frameworks */,
@@ -1125,6 +1128,7 @@
 		2DE76852156050BD045D7EB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7B12AFD1E10AC1300711EBF /* MapKit.framework */,
 				8D7837061DE28E1500A3D9E3 /* CFNetwork.framework */,
 				8D7837041DE28DF200A3D9E3 /* Security.framework */,
 				8D7837021DE28DD900A3D9E3 /* libc++.tbd */,
@@ -2529,6 +2533,9 @@
 								enabled = 1;
 							};
 							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
 							com.apple.Push = {
