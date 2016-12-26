@@ -138,11 +138,12 @@ class MyCenterController: UIViewController {
 
         switch LoginManager.instance.currentLoginType! {
         case .ByPhoneNumber:
-            navigationController?.navigationBar.isHidden = true
+            navigationController?.setNavigationBarHidden(true, animated: animated)
         case .ByEmail:
             navigationController?.navigationBar.isHidden = false
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"fanhui"), style: UIBarButtonItemStyle.done, target: self, action: #selector(MyCenterController.backAction))
         }
+        
         let devices=OznerManager.instance().getDevices()        
         headView.infoNumLb.text="\(Int((devices?.count)!))"
     }

@@ -33,7 +33,7 @@ class BaseViewController: UIViewController {
     }
     
     func backAction() {
-       self.navigationController?.popViewController(animated: true)
+       navigationController?.popViewController(animated: true)
     }
     
     //MARK: - Override
@@ -66,6 +66,8 @@ class BaseViewController: UIViewController {
     //MARK: - Life cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {

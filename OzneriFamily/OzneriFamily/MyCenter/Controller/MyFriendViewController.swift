@@ -65,6 +65,7 @@ class MyFriendViewController: BaseViewController ,UIScrollViewDelegate{
         
         scrollerView.addSubview(leftViewController.view)
         scrollerView.addSubview(rightViewController.view)
+        self.scrollerView.panGestureRecognizer.require(toFail: (navigationController?.interactivePopGestureRecognizer)!)
         myFe()
     }
     

@@ -54,7 +54,9 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
     }
     
     func backAction() {
+        
         self.navigationController?.popViewController(animated: true)
+        
     }
     
     func Tongxunlu()
