@@ -22,7 +22,7 @@ enum OznerDeviceType:String {
     //case Air_Wifi_Ayla="Air_Wifi_Ayla"
   
     func Name()->String {
-        return ["智能水杯","水探头","智能检测笔","净水器","台式空净","立式空净","补水仪","净水器"][self.hashValue]
+        return [loadLanguage("智能水杯"),loadLanguage("水探头"),loadLanguage("智能检测笔"),loadLanguage("净水器"),loadLanguage("台式空净"),loadLanguage("立式空净"),loadLanguage("补水仪"),loadLanguage("净水器")][self.hashValue]
     }
     func Name_En()->String {
         return ["Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish","WaterPurfier"][self.hashValue]
@@ -52,11 +52,11 @@ class SelectDeviceCell: UITableViewCell {
         switch deviceType {
         case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish,.Water_Bluetooth://蓝牙
             typeImg.image=UIImage(named: "select_device_3")
-            typeState.text = "蓝牙连接"
+            typeState.text = loadLanguage("蓝牙连接")
             break
         default://Wifi
             typeImg.image=UIImage(named: "select_device_4")
-            typeState.text = "Wifi连接"
+            typeState.text = loadLanguage("Wifi连接")
             break
         }
 

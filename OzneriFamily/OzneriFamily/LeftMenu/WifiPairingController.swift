@@ -13,6 +13,8 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
     @IBAction func backClick(_ sender: AnyObject) {
         _=self.navigationController?.popToRootViewController(animated: true)
     }
+    @IBOutlet weak var conWL: UILabel!
+    @IBOutlet weak var connectWl: UILabel!
     //无线网视图容器
     @IBOutlet var wifiViewContainer: UIView!
     @IBOutlet var wifiNameText: UITextField!
@@ -38,6 +40,8 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
         StarWifiPairing()
     }
     
+    @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var remberPwd: UILabel!
     //正在进行配对时的动画点
     @IBOutlet var dotImg1: UIImageView!
     @IBOutlet var dotImg2: UIImageView!
@@ -50,11 +54,17 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = loadLanguage("Wifi配对")
+        connectWl.text = loadLanguage("连接WLAN")
+        conWL.text = loadLanguage("选择一个可用的WLAN,让设备接入网络")
+        remberPwd.text = loadLanguage("下次记住密码")
+        nextBtn.setTitle(loadLanguage("下一步"), for: UIControlState.normal)
         mxChipPair=MXChipPair()
         mxChipPair.delegate=self
         wifiNameText.text=MXChipPair.getWifiSSID()
         let wifiPassWord=UserDefaults.standard.object(forKey: "Wifi_\(wifiNameText.text!)") ?? ""
         wifiPassWordText.text = (wifiPassWord as! String)
+        wifiPassWordText.placeholder = loadLanguage("请输入密码")
     }
 
     override func didReceiveMemoryWarning() {

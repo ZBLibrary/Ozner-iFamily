@@ -24,9 +24,18 @@ class PairFailedController: UIViewController {
     }
     @IBOutlet var botoomState: UILabel!
     
+    @IBOutlet weak var problmLb: UILabel!
+    @IBOutlet weak var pairBtn: UIButton!
+    @IBOutlet weak var pairLb: UILabel!
+    @IBOutlet weak var failedLb: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        botoomState.text = isBlueToothDevice==true ? "您可以检查设备和手机蓝牙连接状态后再进行配对":"您可以检查设备和手机Wifi连接状态后再进行配对"
+        self.title = loadLanguage("配对超时")
+        self.failedLb.text = loadLanguage("未成功")
+        self.pairLb.text = loadLanguage("重新配对")
+        self.pairBtn.setTitle(loadLanguage("重新配对"), for: UIControlState.normal)
+        self.problmLb.text = loadLanguage("常见问题")
+        botoomState.text = isBlueToothDevice==true ?  loadLanguage("您可以检查设备和手机蓝牙连接状态后再进行配对"): loadLanguage("您可以检查设备和手机Wifi连接状态后再进行配对")
         // Do any additional setup after loading the view.
     }
 

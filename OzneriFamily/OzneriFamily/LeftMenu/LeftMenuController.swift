@@ -20,6 +20,8 @@ class LeftMenuController: UIViewController {
     var deviceArray:NSArray!//设备数组
     var currentSelectCellIndex:Int=0//当前选中Cell Index
     
+    @IBOutlet weak var startLb: UILabel!
+    @IBOutlet weak var deviceLb: UILabel!
     //无设备头像View
     @IBOutlet var heightConstraintOfNoDevice: NSLayoutConstraint!
     @IBOutlet var imgButtonOfNoDevice: UIButton!
@@ -49,6 +51,8 @@ class LeftMenuController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceArray=NSArray()
+        startLb.text = loadLanguage("开启浩泽智能生活")
+        deviceLb.text = loadLanguage("选择智能设备")
         self.tableView.delegate=self
         self.tableView.dataSource=self
         self.tableView.rowHeight=90*height_screen/667

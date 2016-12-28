@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,8 +17,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7a-nX-KhO">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="432"/>
                     <subviews>
-                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="DeviceHeadImg" translatesAutoresizingMaskIntoConstraints="NO" id="jSE-EO-0ek"/>
+                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="DeviceHeadImg" translatesAutoresizingMaskIntoConstraints="NO" id="jSE-EO-0ek">
+                            <rect key="frame" x="149" y="162.5" width="77" height="107"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -24,10 +30,13 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y81-r8-Jtp">
+                    <rect key="frame" x="0.0" y="432" width="375" height="235"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDp-aC-jYy">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJh-g8-kQq">
+                                    <rect key="frame" x="0.0" y="44.5" width="375" height="41"/>
                                     <string key="text">请添加设备
 开启浩泽智能生活</string>
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
@@ -35,6 +44,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pem-Eo-tFb">
+                                    <rect key="frame" x="115.5" y="139.5" width="144" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="OLX-OG-s7n"/>
                                         <constraint firstAttribute="width" constant="144" id="m1h-Ig-ThZ"/>
@@ -58,9 +68,11 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUp-Dj-hUh">
+                                    <rect key="frame" x="0.0" y="179.5" width="375" height="55.5"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hnx-Ji-JOX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                             </subviews>
@@ -108,6 +120,10 @@
                 <constraint firstItem="h7a-nX-KhO" firstAttribute="height" secondItem="Y81-r8-Jtp" secondAttribute="height" multiplier="390:212" id="osj-kO-gFF"/>
                 <constraint firstAttribute="bottom" secondItem="Y81-r8-Jtp" secondAttribute="bottom" id="r7b-zr-c4q"/>
             </constraints>
+            <connections>
+                <outlet property="addDevieceLb" destination="uJh-g8-kQq" id="Ucs-Jk-aJl"/>
+                <outlet property="deviceBtn" destination="pem-Eo-tFb" id="bVT-xm-euW"/>
+            </connections>
             <point key="canvasLocation" x="-46" y="53"/>
         </view>
     </objects>

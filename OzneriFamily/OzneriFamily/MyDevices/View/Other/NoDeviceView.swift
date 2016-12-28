@@ -12,9 +12,17 @@ class NoDeviceView: OznerDeviceView {
    
     
     
+    @IBOutlet weak var addDevieceLb: UILabel!
+    @IBOutlet weak var deviceBtn: UIButton!
     @IBAction func addDeviceClick(_ sender: AnyObject) {
         let addDeviceNav=UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNav") as! UINavigationController
         self.delegate.PresentModelController!(controller: addDeviceNav)
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        deviceBtn.setTitle(loadLanguage("添加设备"), for: UIControlState.normal)
+//        addDevieceLb.text = loadLanguage("请添加设备\n开启浩泽智能生活")
+        addDevieceLb.text = loadLanguage("请添加设备") + "\n" + loadLanguage("开启浩泽智能生活")
     }
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
