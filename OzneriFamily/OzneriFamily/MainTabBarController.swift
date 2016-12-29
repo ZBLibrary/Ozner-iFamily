@@ -23,6 +23,7 @@ class MainTabBarController: RDVTabBarController {
 //                }, failure: { (error) in
 //            })
 //        }
+        
         sleep(UInt32(1.5))
         let c1 = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
         
