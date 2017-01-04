@@ -55,7 +55,13 @@ class PairingController: UIViewController,OznerManagerDelegate {
         deviceImg.image = UIImage(named: deviceDes.imageName)
         typeState.text = deviceDes.typeStateText
         deviceState.text = deviceDes.deviceStateText
-        pairTimer =  Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(selectPairType), userInfo: nil, repeats: false)//1秒动画，然后选择配对方式
+//        pairTimer =  Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(selectPairType), userInfo: nil, repeats: false)//1秒动画，然后选择配对方式
+        
+//        let additionalTime: DispatchTimeInterval = .seconds(1)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + additionalTime) { 
+//            self.selectPairType()
+//        }
+        
     }
     
     @objc private func selectPairType()  {
@@ -64,8 +70,14 @@ class PairingController: UIViewController,OznerManagerDelegate {
         }
         switch currDeviceType {
         case OznerDeviceType.Cup,OznerDeviceType.Tap,OznerDeviceType.TDSPan,OznerDeviceType.Air_Blue,OznerDeviceType.WaterReplenish,OznerDeviceType.Water_Bluetooth://蓝牙配对
+            if pairTimer == nil {
+                return
+            }
             StarBluePair()
         case OznerDeviceType.Water_Wifi,OznerDeviceType.Air_Wifi://Wifi配对
+            if pairTimer == nil {
+                return
+            }
             self.performSegue(withIdentifier: "showWifiPair", sender: nil)
             break
         }
@@ -76,7 +88,9 @@ class PairingController: UIViewController,OznerManagerDelegate {
     var blueTimer:Timer?
     var remainTimer=0 //倒计时60秒
     func StarBluePair() {
-       
+        if pairTimer == nil {
+            return
+        }
         remainTimer=60
         blueDevices=[OznerDevice]()
         blueTimer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(bluePairing), userInfo: nil, repeats: true)
@@ -116,18 +130,30 @@ class PairingController: UIViewController,OznerManagerDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        pairTimer =  Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(selectPairType), userInfo: nil, repeats: false)//1秒动画，然后选择配对方式
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        blueTimer?.invalidate()
+        pairTimer?.invalidate()
+        pairTimer = nil
+        
+        blueTimer = nil
+    }
+    
     deinit {
         //防止手势返回时导致界面跳转无导航以及界面
+        blueTimer?.invalidate()
+        pairTimer?.invalidate()
         pairTimer = nil
+        
         blueTimer = nil
         
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        blueTimer?.invalidate()
-        blueTimer=nil
-        pairTimer = nil
-    }
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
