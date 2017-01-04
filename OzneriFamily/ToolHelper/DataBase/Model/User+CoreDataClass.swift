@@ -685,19 +685,22 @@ public class User: BaseDataObject {
             let jsonData=JSON(data: tmpData!)
             let jsonDic=jsonData["HeWeather data service 3.0"][0].dictionaryValue
             let tmpdic=jsonDic["aqi"]?["city"]
-            guard let dicTmp = tmpdic else {
-                success("",city,"","","","","")
-                return
-            }
-            let pollution=tmpdic?["qlty"].stringValue//中度污染
-            let AQI=tmpdic?["aqi"].stringValue
-            let PM25=tmpdic?["pm25"].stringValue
+            
             let cityname=jsonDic["basic"]?["city"].stringValue//上海
             let tmptime=jsonDic["basic"]?["update"]["loc"].stringValue//"2015-12-25 02:54"
             dataFrom=dataFrom+"   "+tmptime!+"发布"
             let humidity=jsonDic["now"]?["hum"].stringValue
             let temperature=jsonDic["now"]?["tmp"].stringValue
-            success(pollution!,cityname!,PM25!,AQI!,temperature!,humidity!,dataFrom)
+
+            
+            guard let dicTmp = tmpdic else {
+                success("暂无",cityname!,"暂无","暂无",temperature!,humidity!,dataFrom)
+                return
+            }
+            let pollution=tmpdic?["qlty"].stringValue//中度污染
+            let AQI=tmpdic?["aqi"].stringValue
+            let PM25=tmpdic?["pm25"].stringValue
+                       success(pollution!,cityname!,PM25!,AQI!,temperature!,humidity!,dataFrom)
             }, failure: failure)
     }
     //水探头净水器扫码换滤芯

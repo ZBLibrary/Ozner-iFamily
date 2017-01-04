@@ -410,6 +410,7 @@
 		B7EF061C1DB8A357008BE7D4 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EF061A1DB8A346008BE7D4 /* WebImage.framework */; };
 		B7EF061D1DB8A357008BE7D4 /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7EF061A1DB8A346008BE7D4 /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7F9D5441DE40B7500678317 /* GYShareImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F9D5431DE40B7500678317 /* GYShareImage.swift */; };
+		B7FAA6BE1E1CA138009042B4 /* GYFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FAA6BD1E1CA138009042B4 /* GYFadeAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1070,6 +1071,7 @@
 		B7D6E4981DF928CF00D79BFF /* GYConactBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYConactBook.swift; sourceTree = "<group>"; };
 		B7EF061A1DB8A346008BE7D4 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		B7F9D5431DE40B7500678317 /* GYShareImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYShareImage.swift; sourceTree = "<group>"; };
+		B7FAA6BD1E1CA138009042B4 /* GYFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYFadeAnimator.swift; sourceTree = "<group>"; };
 		DBB08E966F838D15B4582606 /* Pods-OzneriFamily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.release.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1375,6 +1377,7 @@
 				B7753A911E10F16000F39427 /* GYNavViewController.swift */,
 				8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */,
 				B7753A931E10F45E00F39427 /* BaseViewController.swift */,
+				B7FAA6BD1E1CA138009042B4 /* GYFadeAnimator.swift */,
 				8DEB83B11DA896700088794A /* Info.plist */,
 				8D5ABB291D9E632E008524A7 /* OzneriFamily.entitlements */,
 				8D117C0F1D9CDEB00024187E /* Login+Register+Guiding */,
@@ -2799,6 +2802,7 @@
 				B717E8141E0BAB5400B6DEBD /* ICTextField.m in Sources */,
 				8D0E5E701DD2DFA400AFAD23 /* SetReplenishTimeController.swift in Sources */,
 				8DC02FBA1DB623BC007F57DB /* OznerDeviceView.swift in Sources */,
+				B7FAA6BE1E1CA138009042B4 /* GYFadeAnimator.swift in Sources */,
 				8DC02F6D1DB5F03B007F57DB /* MxChipAirPurifierStatus.m in Sources */,
 				8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */,
 				8D14A93C1DD9907000920AE9 /* HSVZB.m in Sources */,

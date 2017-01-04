@@ -13,12 +13,17 @@ enum OznerLeftMenu: Int {
 }
 
 //var CurrentSelectDeviceID:String?//全局变量，个人中心中可以改变
-class LeftMenuController: UIViewController {
+class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegate{
 
     
     var mainViewController: UINavigationController!//设备视图控制器
     var deviceArray:NSArray!//设备数组
     var currentSelectCellIndex:Int=0//当前选中Cell Index
+    ///声明一个动画实例
+    
+    private let transition = GYFadeAnimator()
+
+    
     
     @IBOutlet weak var startLb: UILabel!
     @IBOutlet weak var deviceLb: UILabel!
@@ -40,7 +45,8 @@ class LeftMenuController: UIViewController {
     @IBAction func AddDeviceClick(_ sender: UIButton) {
         let addDeviceNav=UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNav") as! UINavigationController
         weak var weakSelf=self
-        self.present(addDeviceNav, animated: false) {
+//        addDeviceNav.transitioningDelegate = self
+        self.present(addDeviceNav, animated: true) {
             weakSelf?.closeLeft()
         }
     }
@@ -97,6 +103,8 @@ class LeftMenuController: UIViewController {
         
         self.tableView.selectRow(at: IndexPath(row: currentSelectCellIndex, section: 0), animated: false, scrollPosition: .none)
     }
+    
+    
 
     /*
     // MARK: - Navigation
