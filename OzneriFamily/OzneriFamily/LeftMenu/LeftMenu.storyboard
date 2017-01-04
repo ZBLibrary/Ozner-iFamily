@@ -993,10 +993,10 @@
             </objects>
             <point key="canvasLocation" x="575" y="1794"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav View Controller-->
         <scene sceneID="rkx-zM-n4h">
             <objects>
-                <navigationController storyboardIdentifier="LeftMenuNav" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ZSQ-wJ-Jrq" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LeftMenuNav" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ZSQ-wJ-Jrq" customClass="GYNavViewController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b1j-a6-wZb">
@@ -1040,7 +1040,7 @@
         <image name="zuo1" width="14" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Mnx-mC-lsK"/>
         <segue reference="9J8-o2-sth"/>
-        <segue reference="Qdq-gX-CEZ"/>
     </inferredMetricsTieBreakers>
 </document>

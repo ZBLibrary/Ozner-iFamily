@@ -47,7 +47,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
         case OznerDeviceType.Air_Wifi:
             deviceDes = PairImagsAndState(imageName: "icon_bigair_peidui_waitting", typeStateText:loadLanguage( "正在进行Wifi配对"), deviceStateText:loadLanguage( "同时按下电源和风速键,WiFi指示灯闪烁。"))
         case OznerDeviceType.WaterReplenish:
-            deviceDes = PairImagsAndState(imageName: "WaterReplenish3", typeStateText: "", deviceStateText: loadLanguage("正在进行蓝牙配对"))
+            deviceDes = PairImagsAndState(imageName: "WaterReplenish3", typeStateText: "请长按开机键五秒至灯光闪烁", deviceStateText: loadLanguage("正在进行蓝牙配对"))
         case OznerDeviceType.Water_Bluetooth:
             deviceDes = PairImagsAndState(imageName: "icon_peidui_jingshuiqi_watting", typeStateText: "", deviceStateText: loadLanguage("正在进行蓝牙配对"))
        
@@ -55,14 +55,13 @@ class PairingController: UIViewController,OznerManagerDelegate {
         deviceImg.image = UIImage(named: deviceDes.imageName)
         typeState.text = deviceDes.typeStateText
         deviceState.text = deviceDes.deviceStateText
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(selectPairType), userInfo: nil, repeats: false)//1秒动画，然后选择配对方式
+        pairTimer =  Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(selectPairType), userInfo: nil, repeats: false)//1秒动画，然后选择配对方式
     }
     
-    
-
-    
     @objc private func selectPairType()  {
-        
+        if pairTimer == nil {
+            return
+        }
         switch currDeviceType {
         case OznerDeviceType.Cup,OznerDeviceType.Tap,OznerDeviceType.TDSPan,OznerDeviceType.Air_Blue,OznerDeviceType.WaterReplenish,OznerDeviceType.Water_Bluetooth://蓝牙配对
             StarBluePair()
@@ -71,6 +70,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
             break
         }
     }
+    var pairTimer:Timer?
     //每隔2秒搜寻下蓝牙设备，总共搜索不到30秒，搜到就就跳转到成功
     var blueDevices=[OznerDevice]()
     var blueTimer:Timer?
@@ -117,12 +117,16 @@ class PairingController: UIViewController,OznerManagerDelegate {
     }
     
     deinit {
-        print("已销毁")
+        //防止手势返回时导致界面跳转无导航以及界面
+        pairTimer = nil
+        blueTimer = nil
+        
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         blueTimer?.invalidate()
         blueTimer=nil
+        pairTimer = nil
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
