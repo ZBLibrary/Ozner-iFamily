@@ -27,8 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
     private var currentCoordinate: CLLocationCoordinate2D?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+ 
         window?.rootViewController = LoginManager.instance.loginViewController
+        window?.backgroundColor = UIColor.white
         window!.makeKeyAndVisible()
         //开启IQKEyBoard
         IQKeyboardManager.shared().isEnabled = true

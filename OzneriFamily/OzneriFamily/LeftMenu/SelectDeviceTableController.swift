@@ -9,16 +9,20 @@
 import UIKit
 
 
-class SelectDeviceTableController: UITableViewController {
+class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDelegate{
 
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
        self.dismiss(animated: false, completion: nil)
     }
+    
+    var panGesture: UIGestureRecognizer?
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = loadLanguage("选择设备")
+//        panGesture = UIPanGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.handlePanGesture(_:)))
+//        self.view.addGestureRecognizer(panGesture!)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -27,6 +31,57 @@ class SelectDeviceTableController: UITableViewController {
         self.tableView.rowHeight=120*height_screen/667
     }
 
+    func handlePanGesture(_ panGesture: UIPanGestureRecognizer) {
+        
+        let presentVc = panGesture.view
+        var rootView:UIViewController?
+        
+        if panGesture.state == UIGestureRecognizerState.began {
+            appDelegate.window?.rootViewController = LoginManager.instance.mainTabBarController
+            rootView = (appDelegate.window?.rootViewController)!
+            var frame = rootView?.view.frame
+            frame = CGRect(x: -appDelegate.window!.frame.width, y: 0, width: (appDelegate.window?.frame.width)!, height: (appDelegate.window?.frame.height)!)
+            rootView?.view.frame = frame!
+            appDelegate.window?.insertSubview((rootView?.view!)!, at: 0)
+            
+        } else if panGesture.state == .changed {
+            let point_inView = panGesture.translation(in: self.view)
+            
+            if point_inView.x >= 10 {
+                presentVc?.transform = CGAffineTransform.init(translationX: point_inView.x - 10, y: 0)
+                rootView?.view.transform = CGAffineTransform.init(translationX: point_inView.x, y: 0)
+            }
+            
+        } else if panGesture.state == .ended {
+            
+            let point_inView = panGesture.translation(in: self.view)
+            
+            if (point_inView.x > 100) {
+                
+                UIView.animate(withDuration: 0.3, animations: { 
+                    
+                    presentVc?.transform = CGAffineTransform.init(translationX: self.view.width, y: 0)
+                    
+                }, completion: { (finished) in
+                    rootView?.view.frame = CGRect(x: 0, y: 0, width: (appDelegate.window?.frame.width)!, height: (appDelegate.window?.frame.height)!)
+//                    appDelegate.window?.willRemoveSubview((rootView?.view)!)
+                    self.dismiss(animated: false, completion: nil)
+                    presentVc?.transform = CGAffineTransform.identity
+                })
+                
+            } else {
+                UIView.animate(withDuration: 0.3, animations: {
+                      presentVc?.transform = CGAffineTransform.identity
+                }, completion: { (finished) in
+                    
+                })
+            }
+            
+            
+        }
+        
+        
+    }
     
 
     override func viewWillAppear(_ animated: Bool) {

@@ -46,7 +46,9 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
         let addDeviceNav=UIStoryboard(name: "LeftMenu", bundle: nil).instantiateViewController(withIdentifier: "LeftMenuNav") as! UINavigationController
         weak var weakSelf=self
 //        addDeviceNav.transitioningDelegate = self
-        self.present(addDeviceNav, animated: true) {
+//        addDeviceNav.modalPresentationStyle = .custom
+//        addDeviceNav.modalTransitionStyle = .crossDissolve
+        self.present(addDeviceNav, animated: false) {
             weakSelf?.closeLeft()
         }
     }
@@ -56,6 +58,7 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
         deviceArray=NSArray()
         startLb.text = loadLanguage("开启浩泽智能生活")
         deviceLb.text = loadLanguage("选择智能设备")
@@ -104,7 +107,13 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
         self.tableView.selectRow(at: IndexPath(row: currentSelectCellIndex, section: 0), animated: false, scrollPosition: .none)
     }
     
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transition
+    }
     
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transition
+    }
 
     /*
     // MARK: - Navigation
