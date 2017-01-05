@@ -24,7 +24,7 @@ class TapSettingController: DeviceSettingController {
     @IBAction func checkTimeClick(_ sender: UITapGestureRecognizer) {
         UIApplication.shared.keyWindow?.addSubview(pickDateView)
         currTimeLabel = [timeLabel1,timeLabel2][(sender.view?.tag)!]
-        pickDateView.datePicker.date = NSDate(string: currTimeLabel.text!, formatString: "hh:mm") as Date
+        pickDateView.datePicker.date = NSDate(string: currTimeLabel.text!, formatString: "HH:mm") as Date
     }
     @IBAction func deleteDeviceClick(_ sender: AnyObject) {
         super.deleteDevice()
@@ -48,7 +48,7 @@ class TapSettingController: DeviceSettingController {
     func pickerOK()  {
         let date = pickDateView.datePicker.date as NSDate
         
-        currTimeLabel.text=date.formattedDate(withFormat: "hh:mm")
+        currTimeLabel.text=date.formattedDate(withFormat: "HH:mm")
         self.deviceSetting.put(["checktime1","checktime2"][currTimeLabel.tag], value: currTimeLabel.text!)
         
         if currTimeLabel.tag==0 {

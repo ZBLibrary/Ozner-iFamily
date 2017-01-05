@@ -58,7 +58,7 @@ class LoginManager:NSObject{
         let tmpPhoneVC = UIStoryboard(name: "Login+Register+Guiding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         //判断手机登陆需不需要引导页
         let phoneVC=LoginManager.isFristOpenApp ? JCRootViewController(last: tmpPhoneVC):tmpPhoneVC
-        return    phoneVC
+        return  phoneVC
     }()
     lazy var loginViewController_Email: RNEmailLoginViewController = {
         

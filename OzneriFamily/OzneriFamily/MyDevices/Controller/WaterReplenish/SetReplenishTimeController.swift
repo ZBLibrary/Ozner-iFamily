@@ -21,7 +21,7 @@ class SetReplenishTimeController: BaseViewController {
             if !([timeImg1,timeImg2,timeImg3][i].isHidden) {
                 let tmpLabel = [timeLabel1,timeLabel2,timeLabel3][i] as UILabel
                 
-                let date = NSDate(string: tmpLabel.text!, formatString: "hh:mm")
+                let date = NSDate(string: tmpLabel.text!, formatString: "HH:mm")
                 LocalNotificationHelper.addNoticeForKeyEveryDay(key: "BuShuiYi"+["checktime1","checktime2","checktime3"][i], date: date as! Date, alertBody: "您的补水时间已到，请及时补充水分！") 
             }
         }
@@ -43,11 +43,11 @@ class SetReplenishTimeController: BaseViewController {
         datePicker.isHidden = (currTimeImg?.isHidden)!
         
         currTimeLabel=[timeLabel1,timeLabel2,timeLabel3][(sender.view?.tag)!]
-        datePicker.date=NSDate(string: currTimeLabel.text!, formatString: "hh:mm") as Date
+        datePicker.date=NSDate(string: currTimeLabel.text!, formatString: "HH:mm") as Date
     }
     @IBOutlet var datePicker: UIDatePicker!
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker, forEvent event: UIEvent) {
-        currTimeLabel.text=(sender.date as NSDate).formattedDate(withFormat: "hh:mm")
+        currTimeLabel.text=(sender.date as NSDate).formattedDate(withFormat: "HH:mm")
     }
     
     override func viewDidLoad() {
@@ -65,7 +65,7 @@ class SetReplenishTimeController: BaseViewController {
         timeImg3.isHidden = !(checktime3?.contains("+"))!
         timeLabel3.text = checktime3?.replacingOccurrences(of: "+", with: "")
         
-        datePicker.date=NSDate(string: timeLabel1.text!, formatString: "hh:mm") as Date
+        datePicker.date=NSDate(string: timeLabel1.text!, formatString: "HH:mm") as Date
         currTimeLabel=timeLabel1
         // Do any additional setup after loading the view.
     }

@@ -28,8 +28,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
  
-        window?.rootViewController = LoginManager.instance.loginViewController
+        
+        
         window?.backgroundColor = UIColor.white
+        
+        User.loginWithLocalUserInfo(success: { (user) in
+            LoginManager.instance.mainTabBarController = MainTabBarController()
+            LoginManager.instance.mainTabBarController?.loadTabBar()
+            LoginManager.instance.mainTabBarController?.modalTransitionStyle = .crossDissolve
+            window?.rootViewController = LoginManager.instance.mainTabBarController
+
+        }) { (error) in
+            window?.rootViewController = LoginManager.instance.loginViewController
+
+        }
+
         window!.makeKeyAndVisible()
         //开启IQKEyBoard
         IQKeyboardManager.shared().isEnabled = true
@@ -69,10 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         
         locateManage?.desiredAccuracy = kCLLocationAccuracyBest
         locateManage?.startUpdatingHeading()
-        
-        
-        
-    
+       
 //        let userSetting = UIUserNotificationSettings(types:myTypes, categories:nil)
 //        UIApplication.shared.registerUserNotificationSettings(userSetting)
         BPush.disableLbs()//禁用地理位置
@@ -524,7 +534,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                 
                 if !(error != nil) {
                     
-                    if let newCoorDinate = pms?.last?.location?.coordinate {
+                    if let _ = pms?.last?.location?.coordinate {
                         
                         manager.startUpdatingHeading()
                         
@@ -547,7 +557,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                                 UserDefaults.standard.synchronize()
                             }
 
-                            
+                            self.locateManage?.stopUpdatingLocation()
                         }
                         
                     }
