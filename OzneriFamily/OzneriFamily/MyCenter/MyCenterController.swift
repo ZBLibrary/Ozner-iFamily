@@ -9,7 +9,7 @@
 import UIKit
 import WebImage
 
-class MyCenterController: UIViewController {
+class MyCenterController: BaseViewController {
 
     var tableView: UITableView!
     
@@ -141,7 +141,7 @@ class MyCenterController: UIViewController {
             navigationController?.setNavigationBarHidden(true, animated: animated)
         case .ByEmail:
             navigationController?.navigationBar.isHidden = false
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"fanhui"), style: UIBarButtonItemStyle.done, target: self, action: #selector(MyCenterController.backAction))
+//            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"fanhui"), style: UIBarButtonItemStyle.done, target: self, action: #selector(MyCenterController.backAction))
         }
         
         let devices=OznerManager.instance().getDevices()        
@@ -155,7 +155,7 @@ class MyCenterController: UIViewController {
         super.viewDidAppear(animated)
         LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: animated)
     }
-    func backAction() {
+    override func backAction() {
         LoginManager.instance.setTabbarSelected(index: 0)
     }
     

@@ -109,7 +109,10 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
         // #warning Incomplete implementation, return the number of rows
         return 8
     }
-
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectdevice", for: indexPath) as! SelectDeviceCell
