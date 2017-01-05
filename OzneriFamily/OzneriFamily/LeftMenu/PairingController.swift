@@ -28,6 +28,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         animalImg.oznerRotateSpeed=180
     }
     
