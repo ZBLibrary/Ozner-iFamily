@@ -88,8 +88,8 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
         super.viewWillAppear(animated)
         //self.navigationItem.leftBarButtonItem = nil
         self.slideMenuController()?.removeLeftGestures()
-        self.navigationController!.navigationBar .setBackgroundImage(UIImage(named: "bg_clear_addDevice"), for: UIBarMetrics.default)
-        self.navigationController!.navigationBar.shadowImage = UIImage(named: "bg_clear_addDevice")
+//        self.navigationController!.navigationBar .setBackgroundImage(UIImage(named: "bg_clear_addDevice"), for: UIBarMetrics.default)
+//        self.navigationController!.navigationBar.shadowImage = UIImage(named: "bg_clear_addDevice")
         
         
     }

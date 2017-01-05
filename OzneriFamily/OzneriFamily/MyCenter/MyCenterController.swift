@@ -127,6 +127,7 @@ class MyCenterController: BaseViewController {
             dataArr!.add(one)
             dataArr!.add(six)
             dataArr!.add(seven)
+            headView.nameLb.text = User.currentUser?.email
         }
      
         

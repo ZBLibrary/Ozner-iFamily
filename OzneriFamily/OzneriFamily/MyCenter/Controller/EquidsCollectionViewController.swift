@@ -19,7 +19,7 @@ class EquidsCollectionViewController: BaseViewController {
         super.viewDidLoad()
         deviceArrs = OznerManager.instance().getDevices() as! [OznerDevice]!
     
-        self.title = "已有设备"
+        self.title = loadLanguage("已有设备")
         
         layout = UICollectionViewFlowLayout()
         colltionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout!)
