@@ -86,8 +86,8 @@ class CupMainView: OznerDeviceView {
     private var Drinking = 0.0{
         didSet{
             if Drinking != oldValue   {
-                let drinkGoal=(self.currentDevice as! Cup).settings.get("DrinkGoal", default: 2000) as! Double
-                let tmpDrinking = Drinking/drinkGoal
+                let drinkGoal=(self.currentDevice as! Cup).settings.get("DrinkGoal", default: 2000) as! Int
+                let tmpDrinking = Drinking/Double(drinkGoal)
                 drinkingGoalLabel.text=loadLanguage("饮水目标")+":\(Int(drinkGoal))ml"
                 drinkingValueLabel.text="\(Int(Drinking))ml"
                 switch true {
