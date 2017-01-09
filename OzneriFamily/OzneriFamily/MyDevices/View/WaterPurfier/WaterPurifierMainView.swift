@@ -117,9 +117,9 @@ class WaterPurifierMainView: OznerDeviceView {
             let tdsAF=min(tmptdsBF, tmptdsAF)
             
             tdsValueLabel_BF.text = tdsBF==0 ? "暂无":"\(tdsBF)"
-            tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:52)*width_screen/375)
+            tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:52)*(width_screen - 25)/375)
             tdsValueLabel_AF.text = tdsAF==0 ? "暂无":"\(tdsAF)"
-            tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:52)*width_screen/375)
+            tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:52)*(width_screen - 25)/375)
             
             var angleBF = CGFloat(0)
             switch true {
