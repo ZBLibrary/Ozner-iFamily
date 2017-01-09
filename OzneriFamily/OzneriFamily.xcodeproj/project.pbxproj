@@ -685,7 +685,7 @@
 		8DC02E881DB5CEFE007F57DB /* WaterReplenishMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterReplenishMainView.xib; sourceTree = "<group>"; };
 		8DC02EA51DB5D100007F57DB /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		8DC02EA61DB5D100007F57DB /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
-		8DC02EB01DB5E755007F57DB /* OzneriFamily-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OzneriFamily-Bridging-Header.h"; sourceTree = "<group>"; };
+		8DC02EB01DB5E755007F57DB /* OzneriFamily-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OzneriFamily-Bridging-Header.h"; path = "../OzneriFamily-Bridging-Header.h"; sourceTree = "<group>"; };
 		8DC02EBA1DB5F03B007F57DB /* OznerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OznerHeader.h; sourceTree = "<group>"; };
 		8DC02EBC1DB5F03B007F57DB /* AirPurifierManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPurifierManager.h; sourceTree = "<group>"; };
 		8DC02EBD1DB5F03B007F57DB /* AirPurifierManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirPurifierManager.m; sourceTree = "<group>"; };
@@ -1134,6 +1134,11 @@
 		2DE76852156050BD045D7EB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DAE805F1D9A0CB200A9946F /* SwiftyJSON.framework */,
+				8DAE805E1D9A0CB200A9946F /* AFNetworking.framework */,
+				8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */,
+				B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */,
+				B7EF061A1DB8A346008BE7D4 /* WebImage.framework */,
 				B7B12AFD1E10AC1300711EBF /* MapKit.framework */,
 				8D7837061DE28E1500A3D9E3 /* CFNetwork.framework */,
 				8D7837041DE28DF200A3D9E3 /* Security.framework */,
@@ -1344,12 +1349,6 @@
 		8D1EF37B1D93DE050009D034 = {
 			isa = PBXGroup;
 			children = (
-				8DC02EB01DB5E755007F57DB /* OzneriFamily-Bridging-Header.h */,
-				B7EF061A1DB8A346008BE7D4 /* WebImage.framework */,
-				B7567CA61DB0D91F00AA7C91 /* SnapKit.framework */,
-				8D5ABB161D9E30B6008524A7 /* SVProgressHUD.framework */,
-				8DAE805E1D9A0CB200A9946F /* AFNetworking.framework */,
-				8DAE805F1D9A0CB200A9946F /* SwiftyJSON.framework */,
 				8D1EF3BB1D93DFE30009D034 /* ToolHelper */,
 				8D1EF3861D93DE050009D034 /* OzneriFamily */,
 				8D1EF39D1D93DE050009D034 /* OzneriFamilyTests */,
@@ -1412,6 +1411,7 @@
 		8D1EF3BB1D93DFE30009D034 /* ToolHelper */ = {
 			isa = PBXGroup;
 			children = (
+				8DC02EB01DB5E755007F57DB /* OzneriFamily-Bridging-Header.h */,
 				8D7836FD1DE28B4600A3D9E3 /* WeChatSDK */,
 				8D129A171DD4B5080022F7EA /* SwiftScan */,
 				8D0F63CB1DB09DE600FA38BF /* RDVTabBarController */,

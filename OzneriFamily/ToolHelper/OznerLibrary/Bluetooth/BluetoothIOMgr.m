@@ -47,11 +47,11 @@
 }
 -(void)registerScanResponseParser:(id<ScanResponseParserDelegate>)delgeate;
 {
-        for (id parser in scanRespParseres)
-            {
-                    if (parser==delgeate) return;
-                }
-        [scanRespParseres addObject:delgeate];
+    for (id parser in scanRespParseres)
+    {
+        if (parser==delgeate) return;
+    }
+    [scanRespParseres addObject:delgeate];
 }
 -(bool)isScanning
 {
@@ -117,23 +117,23 @@
         CBUUID* uuid=[CBUUID UUIDWithString:@"FFF0"];
         NSData* data=[dict objectForKey:uuid];
         @try {
-             if (scanRespParseres.count>0)
-                            {
-                                    for (id parser in scanRespParseres)
-                                        {
-                                                scanData=[parser parserScanData:peripheral data:data];
-                                                if (scanData) break;
-                                            }
-                                }
-                       if (!scanData)
-                                scanData=[[ScanData alloc] init:data];
+            if (scanRespParseres.count>0)
+            {
+                for (id parser in scanRespParseres)
+                {
+                    scanData=[parser parserScanData:peripheral data:data];
+                    if (scanData) break;
+                }
+            }
+            if (!scanData)
+                scanData=[[ScanData alloc] init:data];
         }
         @catch (NSException *exception) {
             return;
         }
         
     }
-//    NSLog(@"found:%@",peripheral.name);
+    //    NSLog(@"found:%@",peripheral.name);
     if (scanData==nil)
     {
         if ([advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey])
@@ -146,19 +146,23 @@
             return ;
         
     }
-
+    
     if (scanData)
     {
         NSString* identifier=[self getIdentifier:peripheral];
-        if ([advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey])
-                    {
-                            NSData* data=[advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey];
+        
+        if (![name isEqualToString:@"Ozner Cup"]) {
+            
+            if ([advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey])
+            {
+                NSData* data=[advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey];
                 
-                            BytePtr bytes=(BytePtr)[data bytes];
-                            identifier =[NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X",
-                                                                   bytes[7],bytes[6],bytes[5],bytes[4],bytes[3],bytes[2]];
-                            //NSString* address=[
-                        }
+                BytePtr bytes=(BytePtr)[data bytes];
+                identifier =[NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X",
+                             bytes[7],bytes[6],bytes[5],bytes[4],bytes[3],bytes[2]];
+                //NSString* address=[
+            }
+        }
         
         BluetoothIO* io=(BluetoothIO*)[self getAvailableDevice:identifier];
         if (!io)
@@ -170,19 +174,20 @@
             }
             io.name=peripheral.name;
         }
-            
+        
         [io updateScarnResponse:scanData.scanResponesType Data:scanData.scanResponesData];
         [self doAvailable:io];
     }
+    
 }
 
 
 
 -(void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
-
+    
     BluetoothIO* io=(BluetoothIO*)[self getAvailableDevice:[self getIdentifier:peripheral]];
-        NSLog(@"didConnectPeripheral:%@",io.identifier);
+    NSLog(@"didConnectPeripheral:%@",io.identifier);
     [io updateConnectStatus:Connecting];
 }
 
