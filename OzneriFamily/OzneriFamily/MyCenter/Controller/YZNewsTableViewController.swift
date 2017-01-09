@@ -43,10 +43,7 @@ class YZNewsTableViewController: BaseViewController {
     func initData() {
         
         weak var weakSelf = self
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-        SVProgressHUD.show()
+       LoginManager.instance.showHud()
         User.GetUserVerifMessage({ (responseObject) in
             SVProgressHUD.dismiss()
             print(responseObject)

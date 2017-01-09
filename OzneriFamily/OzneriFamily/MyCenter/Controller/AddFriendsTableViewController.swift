@@ -296,11 +296,8 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
         let params:NSDictionary = ["jsonmobile":phonestr]
         
         weak var weakSelf = self
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-//        SVProgressHUD.setViewForExtension(self.view)
-        SVProgressHUD.show()
+        
+        LoginManager.instance.showHud()
         User.GetUserNickImage(params, { (responseObject) in
             SVProgressHUD.dismiss()
             let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0

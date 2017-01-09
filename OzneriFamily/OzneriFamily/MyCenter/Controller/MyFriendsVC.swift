@@ -60,10 +60,8 @@ class MyFriendsVC: BaseViewController {
     }
     
     private  func getDatas() {
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-        SVProgressHUD.show()
+        
+        LoginManager.instance.showHud()
         weak var weakSelf = self
         User.GetFriendList({ (responseObject) in
             SVProgressHUD.dismiss()
@@ -148,11 +146,7 @@ class MyFriendsVC: BaseViewController {
         
         let params:NSDictionary = ["otheruserid":model.friendID!,"message":bootomRecentView.recentContentLb.text!]
         
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-//        SVProgressHUD.setViewForExtension(self.view)
-        SVProgressHUD.show()
+        LoginManager.instance.showHud()
         weak var weakSelf = self
         User.LeaveMessage(params, { (responseObject) in
             SVProgressHUD.dismiss()
@@ -310,10 +304,10 @@ extension MyFriendsVC: UITableViewDataSource,UITableViewDelegate {
         }
         bootomRecentView.isHidden = false
         let group = DispatchGroup.init()
-        SVProgressHUD.show()
+
+        LoginManager.instance.showHud()
         group.enter()
         weak var weakSelf = self
-        print(model.friendID)
         User.GetHistoryMessage(["otheruserid":model.friendID!], { (responseObject) in
             print(responseObject)
             

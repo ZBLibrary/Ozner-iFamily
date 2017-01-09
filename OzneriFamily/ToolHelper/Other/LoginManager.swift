@@ -144,6 +144,18 @@ class LoginManager:NSObject{
     func setTabbarSelected(index:Int) {
         mainTabBarController?.selectedIndex=UInt(index)
     }
+    
+    
+    //
+    
+    func showHud() {
+        
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.none)
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+        SVProgressHUD.show()
+        
+    }
 }
 
 

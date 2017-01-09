@@ -64,11 +64,7 @@ class SendYanZHViewController: BaseViewController,UITextFieldDelegate {
 
         let params:NSDictionary = ["content":messstring,"mobile":sendphone]
         
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-        SVProgressHUD.show()
-        
+        LoginManager.instance.showHud()
         User.AddFriend(params, { (data) in
             print(data)
             SVProgressHUD.dismiss()

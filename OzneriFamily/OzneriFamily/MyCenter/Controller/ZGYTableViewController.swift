@@ -80,10 +80,7 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
         
         weak var weakSelf = self
         
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-        SVProgressHUD.show()
+        LoginManager.instance.showHud()
         User.GetUserNickImage(params, { (responseObject) in
             SVProgressHUD.dismiss()
             let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0
@@ -318,10 +315,7 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
         
         weak var weakSelf = self
         
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-        SVProgressHUD.show()
+        LoginManager.instance.showHud()
         User.GetUserNickImage(params, { (responseObject) in
             SVProgressHUD.dismiss()
             let isSuccess =  responseObject.dictionary?["state"]?.intValue ?? 0
