@@ -21,14 +21,32 @@ class WaterPurfierTDSController: BaseViewController {
         let tdsValue = min(device.sensor.tds1,device.sensor.tds2)
         var rankValue=0
         var beatValue=0
+        LoginManager.instance.showHud()
         User.TDSSensor(deviceID: device.identifier, type: device.type, tds: Int(tdsValue), beforetds: 0, success: { (rank, total) in
+            SVProgressHUD.dismiss()
             rankValue = rank
             beatValue = Int(100*CGFloat(total-rank)/CGFloat(total))
+            
+            let img=OznerShareManager.getshareImage(rankValue, type: 1, value: Int(tdsValue), beat: beatValue, maxWater: 0)
+            OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title: "浩泽净水家", shareImg: img)
+            
             }, failure: { (error) in
                 
+                let appearance = SCLAlertView.SCLAppearance(
+                    showCloseButton: false,
+                    dynamicAnimatorActive: true
+                )
+                let alert=SCLAlertView(appearance: appearance)
+                _=alert.addButton(loadLanguage("否")) {
+                }
+                _=alert.addButton(loadLanguage("是")) {
+                   
+                }
+                _=alert.showInfo("", subTitle: loadLanguage("请求失败,请重试?"))
+                
         })
-        let img=OznerShareManager.getshareImage(rankValue, type: 1, value: Int(tdsValue), beat: beatValue, maxWater: 0)
-        OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title: "浩泽净水家", shareImg: img)
+//        let img=OznerShareManager.getshareImage(rankValue, type: 1, value: Int(tdsValue), beat: beatValue, maxWater: 0)
+//        OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title: "浩泽净水家", shareImg: img)
     }
     @IBAction func ConsultingClick(_ sender: AnyObject) {
         LoginManager.instance.setTabbarSelected(index: 2)

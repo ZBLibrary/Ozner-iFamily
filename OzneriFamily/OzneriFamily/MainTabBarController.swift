@@ -11,16 +11,13 @@ import UIKit
 class MainTabBarController: RDVTabBarController {
 
     //
-    //
     func loadTabBar() {
         let ownerStr = (LoginManager.instance.currentLoginType==OznerLoginType.ByPhoneNumber ? User.currentUser?.phone : User.currentUser?.email)
         OznerManager.instance().setOwner(ownerStr)
         sleep(UInt32(1.5))
         let c1 = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
         
-        
-        let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController 
-        
+        let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController
         
         let nvc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateInitialViewController() as! GYNavViewController
         leftViewController.mainViewController=nvc
