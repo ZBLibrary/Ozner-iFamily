@@ -18,9 +18,23 @@ class AirLvXinController: BaseViewController {
     @IBOutlet var totalValueLabel: UILabel!
     @IBOutlet var reSetLvXinButton: UIButton!
     @IBAction func reSetLvXinClick(_ sender: AnyObject) {
-        let device=LoginManager.instance.currentDevice
-        (device as! AirPurifier_Bluetooth).status.resetFilterStatus({ (error) in
-        })
+        
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false,
+            dynamicAnimatorActive: true
+        )
+        let alert=SCLAlertView(appearance: appearance)
+        _=alert.addButton(loadLanguage("否")) {
+        }
+        _=alert.addButton(loadLanguage("是")) {
+            let device=LoginManager.instance.currentDevice
+            (device as! AirPurifier_Bluetooth).status.resetFilterStatus({ (error) in
+            })
+        }
+        _=alert.showInfo("", subTitle: loadLanguage("您是否要重置滤芯?"))
+        
+        
+    
     }
     @IBOutlet var lvxinImg: UIImageView!
     @IBOutlet var lvxinValueLabel: UILabel!
