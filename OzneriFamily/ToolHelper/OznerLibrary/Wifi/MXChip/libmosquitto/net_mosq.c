@@ -150,6 +150,7 @@ int _mosquitto_packet_queue(struct mosquitto *mosq, struct _mosquitto_packet *pa
 	packet->next = NULL;
 	pthread_mutex_lock(&mosq->out_packet_mutex);
 	if(mosq->out_packet){
+        //TODO: 闪退
 		mosq->out_packet_last->next = packet;
 	}else{
 		mosq->out_packet = packet;

@@ -49,7 +49,17 @@ class WaterPurfierTDSController: BaseViewController {
 //        OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title: "浩泽净水家", shareImg: img)
     }
     @IBAction func ConsultingClick(_ sender: AnyObject) {
-        LoginManager.instance.setTabbarSelected(index: 2)
+//        LoginManager.instance.setTabbarSelected(index: 2)
+        
+        let phoneNum = NSMutableString.init(string: "tel:4008209667")
+        
+        let callWebView = UIWebView()
+        
+        callWebView.loadRequest(NSURLRequest(url: NSURL.init(string: phoneNum as String)! as URL) as URLRequest)
+        
+        self.view.addSubview(callWebView)
+
+        
     }
     //center
     @IBOutlet var TDSchartView: WaterPurfierTDSChart!
