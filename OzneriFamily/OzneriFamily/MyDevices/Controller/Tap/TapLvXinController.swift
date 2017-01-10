@@ -22,7 +22,18 @@ class TapLvXinController: BaseViewController {
     @IBOutlet var stopDateLabel: UILabel!
     //咨询购买
     @IBAction func consultingClick(_ sender: AnyObject) {
-         LoginManager.instance.setTabbarSelected(index: 2)
+//         LoginManager.instance.setTabbarSelected(index: 2)
+        
+        
+        let phoneNum = NSMutableString.init(string: "tel:4008209667")
+        
+        let callWebView = UIWebView()
+        
+        callWebView.loadRequest(NSURLRequest(url: NSURL.init(string: phoneNum as String)! as URL) as URLRequest)
+        
+        self.view.addSubview(callWebView)
+
+        
     }
    
     //扫码

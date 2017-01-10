@@ -22,7 +22,7 @@ enum OznerDeviceType:String {
     //case Air_Wifi_Ayla="Air_Wifi_Ayla"
   
     func Name()->String {
-        return [loadLanguage("智能水杯"),loadLanguage("水探头"),loadLanguage("智能检测笔"),loadLanguage("净水器"),loadLanguage("台式空净"),loadLanguage("立式空净"),loadLanguage("补水仪"),loadLanguage("净水器")][self.hashValue]
+        return [loadLanguage("智能水杯"),loadLanguage("智能水探头"),loadLanguage("智能检测笔"),loadLanguage("免安装净水器"),loadLanguage("台式空净"),loadLanguage("智能空气净化器"),loadLanguage("智能补水仪"),loadLanguage("净水器")][self.hashValue]
     }
     func Name_En()->String {
         return ["Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish","WaterPurfier"][self.hashValue]
