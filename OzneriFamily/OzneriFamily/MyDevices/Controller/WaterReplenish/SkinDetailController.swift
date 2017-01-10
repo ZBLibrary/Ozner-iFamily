@@ -89,7 +89,14 @@ class SkinDetailController: BaseViewController {
     @IBOutlet var weakLabel7: UILabel!
     //footer
     @IBAction func ConsultingClick(_ sender: AnyObject) {
-        LoginManager.instance.setTabbarSelected(index: 2)
+//        LoginManager.instance.setTabbarSelected(index: 2)
+        let urlStr = NSMutableString.init(string: "tel:4008209667")
+        
+        let callWebView = UIWebView()
+        callWebView.loadRequest(URLRequest(url: URL(string: urlStr as String)!))
+        
+        self.view.addSubview(callWebView)
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -921,7 +921,7 @@
                                                 <rect key="frame" x="60.5" y="669" width="254" height="42"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F9-AY-JRU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="42"/>
+                                                        <rect key="frame" x="87" y="0.0" width="80" height="42"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="oNN-gA-TMK"/>
@@ -947,40 +947,13 @@
                                                             <action selector="ConsultingClick:" destination="Xci-YO-YQk" eventType="touchUpInside" id="frO-0M-w9O"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTn-F2-PXC">
-                                                        <rect key="frame" x="108" y="0.0" width="146" height="42"/>
-                                                        <color key="backgroundColor" red="0.84945362810000002" green="0.89295941590000005" blue="0.96779614690000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="146" id="ihj-3w-ulD"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="购买精华水" image="device_puucashezb">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="20"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                                <integer key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
-                                                                <color key="value" red="0.23136687280000001" green="0.53873193259999996" blue="0.95808607339999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
+                                                    <constraint firstItem="2F9-AY-JRU" firstAttribute="centerX" secondItem="nIa-BE-NLH" secondAttribute="centerX" id="1Wv-S1-bfD"/>
                                                     <constraint firstAttribute="height" constant="42" id="EFR-aT-jC2"/>
                                                     <constraint firstItem="2F9-AY-JRU" firstAttribute="top" secondItem="nIa-BE-NLH" secondAttribute="top" id="IDf-VL-Bpu"/>
-                                                    <constraint firstItem="2F9-AY-JRU" firstAttribute="leading" secondItem="nIa-BE-NLH" secondAttribute="leading" id="L78-Bh-6PK"/>
-                                                    <constraint firstAttribute="trailing" secondItem="oTn-F2-PXC" secondAttribute="trailing" id="PEV-8K-PaN"/>
-                                                    <constraint firstItem="oTn-F2-PXC" firstAttribute="top" secondItem="nIa-BE-NLH" secondAttribute="top" id="aaU-zj-WwB"/>
                                                     <constraint firstAttribute="bottom" secondItem="2F9-AY-JRU" secondAttribute="bottom" id="ami-1i-I1e"/>
-                                                    <constraint firstAttribute="bottom" secondItem="oTn-F2-PXC" secondAttribute="bottom" id="cYt-St-7Me"/>
                                                     <constraint firstAttribute="width" constant="254" id="rs5-Yj-N38"/>
                                                 </constraints>
                                             </view>
@@ -1016,13 +989,7 @@
                             <constraint firstItem="Lh9-KN-yuC" firstAttribute="top" secondItem="lD3-3Y-GRc" secondAttribute="top" id="wnj-1e-NYZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="智能补水仪详情" id="clj-bW-cvm">
-                        <barButtonItem key="rightBarButtonItem" image="device_share" id="vl0-OY-tLM">
-                            <connections>
-                                <action selector="shareClick:" destination="Xci-YO-YQk" id="ART-hR-6pf"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="智能补水仪详情" id="clj-bW-cvm"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="826"/>
                     <connections>
@@ -1288,7 +1255,7 @@
                                                     <constraint firstItem="C4b-AX-jKD" firstAttribute="top" secondItem="xj0-y3-Cgq" secondAttribute="top" constant="10" id="lJK-PF-CzO"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55o-xI-C0R">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55o-xI-C0R">
                                                 <rect key="frame" x="114.5" y="842.5" width="146" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="146" id="5dD-Kk-yNj"/>
@@ -1709,7 +1676,7 @@
                                         <rect key="frame" x="60.5" y="49.5" width="254" height="42"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Uv-Bw-RFN">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="42"/>
+                                                <rect key="frame" x="87" y="0.0" width="80" height="42"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="baB-MX-6pb"/>
@@ -1735,43 +1702,14 @@
                                                     <action selector="consultingClick:" destination="3Ak-V9-a2E" eventType="touchUpInside" id="sOG-xW-7au"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8M-Jk-Re2">
-                                                <rect key="frame" x="108" y="0.0" width="146" height="42"/>
-                                                <color key="backgroundColor" red="0.8494536280632019" green="0.89295941591262817" blue="0.96779614686965942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="146" id="ycU-dT-p8U"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="购买滤芯" image="device_puucashezb">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                        <integer key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
-                                                        <color key="value" red="0.23136687278747559" green="0.53873193264007568" blue="0.95808607339859009" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <segue destination="aGC-dU-WII" kind="show" identifier="showBuyAirLvXin" id="a3P-Op-FFc"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="AHk-oh-QB7"/>
                                             <constraint firstItem="9Uv-Bw-RFN" firstAttribute="top" secondItem="Pwp-7u-nAn" secondAttribute="top" id="Awo-uW-dyK"/>
+                                            <constraint firstItem="9Uv-Bw-RFN" firstAttribute="centerX" secondItem="Pwp-7u-nAn" secondAttribute="centerX" id="J7c-Ed-AmN"/>
                                             <constraint firstAttribute="width" constant="254" id="JEU-cR-phU"/>
-                                            <constraint firstAttribute="bottom" secondItem="H8M-Jk-Re2" secondAttribute="bottom" id="W0b-7K-oFf"/>
-                                            <constraint firstItem="H8M-Jk-Re2" firstAttribute="top" secondItem="Pwp-7u-nAn" secondAttribute="top" id="g21-q3-gl6"/>
-                                            <constraint firstItem="9Uv-Bw-RFN" firstAttribute="leading" secondItem="Pwp-7u-nAn" secondAttribute="leading" id="prt-eK-N6Y"/>
-                                            <constraint firstAttribute="trailing" secondItem="H8M-Jk-Re2" secondAttribute="trailing" id="txM-Lw-WNj"/>
+                                            <constraint firstItem="9Uv-Bw-RFN" firstAttribute="centerY" secondItem="Pwp-7u-nAn" secondAttribute="centerY" id="gs5-p9-mIV"/>
                                             <constraint firstAttribute="bottom" secondItem="9Uv-Bw-RFN" secondAttribute="bottom" id="yiJ-NT-cYA"/>
                                         </constraints>
                                     </view>
@@ -7702,7 +7640,7 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="tp2-Ak-HiM"/>
         <segue reference="9TT-wP-6Ha"/>
-        <segue reference="bDU-2Y-kqE"/>
     </inferredMetricsTieBreakers>
 </document>
