@@ -2344,12 +2344,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xc-Ne-Nw5">
                                                 <rect key="frame" x="0.0" y="58.5" width="375" height="40"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7l-y8-NuM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="29" height="40"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZp-NH-KW1">
-                                                        <rect key="frame" x="29" y="0.0" width="144" height="40"/>
+                                                        <rect key="frame" x="115.5" y="0.0" width="144" height="40"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hfu-Wr-rG7">
                                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="40"/>
@@ -2379,6 +2375,7 @@
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="Hfu-Wr-rG7" secondAttribute="trailing" id="6tj-Si-TzB"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="144" id="7St-Zb-c5M"/>
                                                             <constraint firstItem="Hfu-Wr-rG7" firstAttribute="top" secondItem="JZp-NH-KW1" secondAttribute="top" id="DNg-IT-lkM"/>
                                                             <constraint firstAttribute="width" constant="144" id="GMS-rE-SfU"/>
                                                             <constraint firstAttribute="bottom" secondItem="Hfu-Wr-rG7" secondAttribute="bottom" id="Q7v-IP-kfz"/>
@@ -2397,72 +2394,12 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTZ-P6-jDZ">
-                                                        <rect key="frame" x="173" y="0.0" width="29" height="40"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y6P-ZI-0b3">
-                                                        <rect key="frame" x="346" y="0.0" width="29" height="40"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZd-D5-So8">
-                                                        <rect key="frame" x="202" y="0.0" width="144" height="40"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjl-D5-Hb7">
-                                                                <rect key="frame" x="0.0" y="0.0" width="144" height="40"/>
-                                                                <color key="backgroundColor" red="0.90040379762649536" green="0.94835788011550903" blue="0.99833661317825317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="11" maxY="0.0"/>
-                                                                <state key="normal" title="购买净水器" image="device_puucashezb">
-                                                                    <color key="titleColor" red="0.18039215689999999" green="0.34509803919999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="20"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                                        <integer key="value" value="1"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
-                                                                        <color key="value" red="0.23584315180778503" green="0.53887647390365601" blue="0.95406836271286011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="buyDeviceClick:" destination="ivk-xY-aWD" eventType="touchUpInside" id="fk6-AG-vJ6"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="Bjl-D5-Hb7" secondAttribute="trailing" id="H3g-xU-tDP"/>
-                                                            <constraint firstItem="Bjl-D5-Hb7" firstAttribute="leading" secondItem="IZd-D5-So8" secondAttribute="leading" id="HgY-8s-1p9"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Bjl-D5-Hb7" secondAttribute="bottom" id="TNS-D7-K0y"/>
-                                                            <constraint firstItem="Bjl-D5-Hb7" firstAttribute="top" secondItem="IZd-D5-So8" secondAttribute="top" id="dPZ-J4-fU0"/>
-                                                        </constraints>
-                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="p7l-y8-NuM" secondAttribute="bottom" id="7dD-Ob-eDU"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Y6P-ZI-0b3" secondAttribute="trailing" id="9SE-L6-scz"/>
-                                                    <constraint firstItem="JZp-NH-KW1" firstAttribute="leading" secondItem="p7l-y8-NuM" secondAttribute="trailing" id="CHQ-hc-7kj"/>
-                                                    <constraint firstItem="cTZ-P6-jDZ" firstAttribute="leading" secondItem="JZp-NH-KW1" secondAttribute="trailing" id="Ftj-CS-A2L"/>
-                                                    <constraint firstItem="IZd-D5-So8" firstAttribute="top" secondItem="0xc-Ne-Nw5" secondAttribute="top" id="GuD-in-S8x"/>
-                                                    <constraint firstItem="Y6P-ZI-0b3" firstAttribute="width" secondItem="p7l-y8-NuM" secondAttribute="width" id="IZ9-DN-AQO"/>
-                                                    <constraint firstItem="cTZ-P6-jDZ" firstAttribute="top" secondItem="0xc-Ne-Nw5" secondAttribute="top" id="LDY-gM-IGc"/>
                                                     <constraint firstItem="JZp-NH-KW1" firstAttribute="top" secondItem="0xc-Ne-Nw5" secondAttribute="top" id="PbT-Iv-jrV"/>
-                                                    <constraint firstItem="Y6P-ZI-0b3" firstAttribute="top" secondItem="0xc-Ne-Nw5" secondAttribute="top" id="VX4-8k-eJN"/>
                                                     <constraint firstAttribute="bottom" secondItem="JZp-NH-KW1" secondAttribute="bottom" id="aFs-z5-gkG"/>
-                                                    <constraint firstItem="IZd-D5-So8" firstAttribute="leading" secondItem="cTZ-P6-jDZ" secondAttribute="trailing" id="dFl-ji-i1m"/>
-                                                    <constraint firstItem="p7l-y8-NuM" firstAttribute="top" secondItem="0xc-Ne-Nw5" secondAttribute="top" id="g2m-vh-j2R"/>
-                                                    <constraint firstAttribute="bottom" secondItem="cTZ-P6-jDZ" secondAttribute="bottom" id="hYO-SL-3Qb"/>
-                                                    <constraint firstItem="p7l-y8-NuM" firstAttribute="leading" secondItem="0xc-Ne-Nw5" secondAttribute="leading" id="hin-h7-4kS"/>
-                                                    <constraint firstAttribute="bottom" secondItem="IZd-D5-So8" secondAttribute="bottom" id="obQ-wI-0QJ"/>
-                                                    <constraint firstItem="IZd-D5-So8" firstAttribute="width" secondItem="JZp-NH-KW1" secondAttribute="width" id="qF1-0q-Zvo"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Y6P-ZI-0b3" secondAttribute="bottom" id="tEP-Ho-q7e"/>
-                                                    <constraint firstItem="cTZ-P6-jDZ" firstAttribute="width" secondItem="p7l-y8-NuM" secondAttribute="width" id="uWL-rA-7EJ"/>
-                                                    <constraint firstItem="Y6P-ZI-0b3" firstAttribute="leading" secondItem="IZd-D5-So8" secondAttribute="trailing" id="vBH-PK-OiL"/>
+                                                    <constraint firstItem="JZp-NH-KW1" firstAttribute="centerX" secondItem="0xc-Ne-Nw5" secondAttribute="centerX" id="auw-Os-4ar"/>
                                                     <constraint firstAttribute="height" constant="40" id="xfz-Ft-7Z6"/>
                                                 </constraints>
                                             </view>
