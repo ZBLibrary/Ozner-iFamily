@@ -12,8 +12,9 @@ class MainTabBarController: RDVTabBarController {
 
     //
     func loadTabBar() {
-        let ownerStr = (LoginManager.instance.currentLoginType==OznerLoginType.ByPhoneNumber ? User.currentUser?.phone : User.currentUser?.email)
+        let ownerStr = User.currentUser?.phone
         OznerManager.instance().setOwner(ownerStr)
+        LoginManager.instance.currentLoginType=OznerLoginType.ByEmail
         sleep(UInt32(1.5))
         let c1 = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
         
@@ -51,7 +52,7 @@ class MainTabBarController: RDVTabBarController {
             index+=1
         }
         CustomTabBarIsHidden = !(LoginManager.instance.currentLoginType==OznerLoginType.ByPhoneNumber)
-        setTabBarHidden(CustomTabBarIsHidden, animated: false)
+        setTabBarHidden(true, animated: false)
     }
     private var CustomTabBarIsHidden:Bool!//系统tabbar是不是隐藏的
     override func setTabBarHidden(_ hidden: Bool, animated: Bool) {

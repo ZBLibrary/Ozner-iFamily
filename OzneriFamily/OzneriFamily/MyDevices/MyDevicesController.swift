@@ -99,7 +99,7 @@ class MyDevicesController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: animated)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(true, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

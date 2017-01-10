@@ -61,7 +61,7 @@ class SkinQueryController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.WaterReplenishSkin)
-        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
+//        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
     }
     
     // MARK: - Navigation

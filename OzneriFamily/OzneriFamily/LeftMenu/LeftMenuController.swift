@@ -79,8 +79,8 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
             heightConstraintOfHaveDevice.constant=110
             imgButtonOfNoDevice.isHidden=false
             ImgButtonOfHaveDevice.isHidden=false
-            nameLabelOfNoDevice.text=User.currentUser?.email
-            nameLabelOfHaveDevice.text=User.currentUser?.email
+            nameLabelOfNoDevice.text=User.currentUser?.phone
+            nameLabelOfHaveDevice.text=User.currentUser?.phone
         }
         // Do any additional setup after loading the view.
     }

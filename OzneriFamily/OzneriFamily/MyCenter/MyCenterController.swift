@@ -26,7 +26,7 @@ class MyCenterController: BaseViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupUI()
         
         setData()
@@ -55,11 +55,11 @@ class MyCenterController: BaseViewController {
         
         infoHeadView.myMoneyBtn.addTarget(self, action: #selector(MyCenterController.myMoneyBtnAction), for: UIControlEvents.touchUpInside)
         
-        if User.currentUser?.headimage == "" || User.currentUser?.headimage == nil {
+//        if User.currentUser?.headimage == "" || User.currentUser?.headimage == nil {
             infoHeadView.iconImage.image = UIImage(named:"My_Unlogin_head")
-        } else {
-        infoHeadView.iconImage.sd_setImage(with: URL(string: (User.currentUser?.headimage)!))
-        }
+//        } else {
+//        infoHeadView.iconImage.sd_setImage(with: URL(string: (User.currentUser?.headimage)!))
+//        }
         //TODO: -
         infoHeadView.nameLb.text = User.currentUser?.username == "" ? (User.currentUser?.phone) ?? "Ozner" : (User.currentUser?.username) ?? "Ozner"
         //会员等级
@@ -122,12 +122,13 @@ class MyCenterController: BaseViewController {
         case .ByEmail:
             dataArr = NSMutableArray(capacity: 3)
             let one = MyInfoStrcut.init(imageName: "My_share", nameLb: loadLanguage("我的设备"))
-            let six = MyInfoStrcut.init(imageName: "My_suggest", nameLb: loadLanguage("我要提意见"))
+//            let six = MyInfoStrcut.init(imageName: "My_suggest", nameLb: loadLanguage("我要提意见"))
+            let four = MyInfoStrcut.init(imageName: "My_friends", nameLb: loadLanguage("我的好友"))
             let seven = MyInfoStrcut.init(imageName: "My_set", nameLb: loadLanguage("设置"))
             dataArr!.add(one)
-            dataArr!.add(six)
+            dataArr!.add(four)
             dataArr!.add(seven)
-            headView.nameLb.text = User.currentUser?.email
+            headView.nameLb.text = User.currentUser?.phone
         }
      
         

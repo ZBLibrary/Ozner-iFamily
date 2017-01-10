@@ -107,7 +107,7 @@ class TapLvXinController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.DeviceSetting)
-        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
+//        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
     }
     
     

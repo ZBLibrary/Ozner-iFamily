@@ -116,7 +116,7 @@ class WaterPurfierTDSController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.SetCustomBarStyle(style: OznerNavBarStyle.CupTDSDetail)
-        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
+//        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
     }
 
     

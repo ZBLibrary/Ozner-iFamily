@@ -120,7 +120,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         BPush.bindChannel { (result, error) in
             User.UpdateUserInfo()
         }
-        LoginManager.instance.currentLoginType=OznerLoginType.ByPhoneNumber
+        LoginManager.instance.currentLoginType=OznerLoginType.ByEmail
         LoginManager.instance.mainTabBarController = MainTabBarController()
         LoginManager.instance.mainTabBarController?.loadTabBar()
         LoginManager.instance.mainTabBarController?.modalTransitionStyle = .crossDissolve
