@@ -47,6 +47,7 @@ class WaterReplenishSettingController: DeviceSettingController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="showAboutDevice" {
             let VC=segue.destination as!  AboutDeviceController
+            VC.title = "关于补水仪"
             VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutWaterReplenish"]?.stringValue)!, Type: 0)
         }
         if segue.identifier=="showSetTime" {

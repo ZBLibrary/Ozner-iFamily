@@ -26,7 +26,7 @@ class MyCenterController: BaseViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "个人设置"
         setupUI()
         
         setData()

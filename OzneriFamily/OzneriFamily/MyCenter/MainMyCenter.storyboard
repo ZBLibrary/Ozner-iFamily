@@ -606,7 +606,6 @@
                                         <include reference="NF6-AC-u2z"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="Bfe-Wv-B1O"/>
                                         <include reference="lkA-Aw-BlO"/>
                                         <include reference="wse-Rp-6PC"/>
                                         <include reference="zb8-HK-X68"/>
@@ -614,6 +613,7 @@
                                         <include reference="GMV-n2-cQr"/>
                                         <include reference="cR9-ZN-Cac"/>
                                         <include reference="vUp-HI-sML"/>
+                                        <exclude reference="Bfe-Wv-B1O"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1006,10 +1006,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="KEn-q4-y6W"/>
-                                <exclude reference="LmF-cY-cKv"/>
                                 <exclude reference="ybn-xs-zf1"/>
                                 <exclude reference="yyn-Vr-L9k"/>
+                                <exclude reference="KEn-q4-y6W"/>
+                                <exclude reference="LmF-cY-cKv"/>
                             </mask>
                         </variation>
                     </view>
@@ -1052,8 +1052,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Logo_My_Set" translatesAutoresizingMaskIntoConstraints="NO" id="mHr-OY-1pm">
-                                <rect key="frame" x="155" y="108" width="65" height="65"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="loginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="mHr-OY-1pm">
+                                <rect key="frame" x="157.5" y="108" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="2S4-Um-pNm"/>
                                     <constraint firstAttribute="width" constant="65" id="2XB-hQ-hNL"/>
@@ -1066,7 +1066,7 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浩泽净水家" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXo-OF-Hjc">
-                                <rect key="frame" x="157" y="183" width="61.5" height="12"/>
+                                <rect key="frame" x="157" y="178" width="61.5" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="VAP-YK-fZ1"/>
                                 </constraints>
@@ -1075,7 +1075,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hiO-vw-RcH">
-                                <rect key="frame" x="0.0" y="245" width="375" height="96"/>
+                                <rect key="frame" x="0.0" y="240" width="375" height="96"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kB-Gy-dzT">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
@@ -1248,9 +1248,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo_My_Set" width="65" height="65"/>
         <image name="My_toright_icon" width="10" height="13"/>
         <image name="Rank_toright" width="8" height="17"/>
         <image name="Set_gou" width="15" height="11"/>
+        <image name="loginLogo" width="60" height="60"/>
     </resources>
 </document>

@@ -20,10 +20,10 @@ class AboutUSViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         currenLb.text = loadLanguage("当前版本")
-     self.title=loadLanguage("关于浩泽净水家" )
+     self.title=loadLanguage("关于君融科技" )
         //UpdateLable.text=loadLanguage("检查更新版本" )
         ScoreLable.text=loadLanguage("评个分吧")
-        HaozeLable.text=loadLanguage("浩泽净水家")
+        HaozeLable.text=loadLanguage("君融科技")
         versionLb.text = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
     }
     //评个分吧
