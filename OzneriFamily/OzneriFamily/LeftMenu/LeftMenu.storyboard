@@ -55,6 +55,12 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="立即添加设备,开启您的智慧生活吧" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEB-4u-qUp">
+                                        <rect key="frame" x="93.5" y="141" width="187.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQW-Kj-AHQ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                         <subviews>
@@ -88,6 +94,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.68360894918441772" green="0.87675398588180542" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="WEB-4u-qUp" firstAttribute="centerX" secondItem="J6A-9T-Ohv" secondAttribute="centerX" id="4RA-3R-oMC"/>
                                     <constraint firstItem="x0k-ys-Jee" firstAttribute="leading" secondItem="bi2-Zn-yIp" secondAttribute="leading" constant="20" id="COP-K2-3IB"/>
                                     <constraint firstItem="b1L-ZX-gFG" firstAttribute="leading" secondItem="x0k-ys-Jee" secondAttribute="trailing" id="IAh-o2-Jig"/>
                                     <constraint firstItem="b1L-ZX-gFG" firstAttribute="height" secondItem="bi2-Zn-yIp" secondAttribute="height" multiplier="100:603" id="MIB-QV-hRa"/>
@@ -96,6 +103,7 @@
                                     <constraint firstItem="x0k-ys-Jee" firstAttribute="height" secondItem="bi2-Zn-yIp" secondAttribute="height" multiplier="60:602" id="Qyz-xy-rLQ"/>
                                     <constraint firstItem="x0k-ys-Jee" firstAttribute="top" secondItem="b1L-ZX-gFG" secondAttribute="bottom" id="SYf-WY-xhe"/>
                                     <constraint firstItem="mQW-Kj-AHQ" firstAttribute="top" secondItem="bi2-Zn-yIp" secondAttribute="top" id="XD3-HP-ray"/>
+                                    <constraint firstItem="WEB-4u-qUp" firstAttribute="top" secondItem="J6A-9T-Ohv" secondAttribute="bottom" constant="5" id="hTl-zw-EIL"/>
                                     <constraint firstItem="J6A-9T-Ohv" firstAttribute="leading" secondItem="bi2-Zn-yIp" secondAttribute="leading" id="kXR-ul-n1E"/>
                                     <constraint firstItem="kVn-eS-OOo" firstAttribute="height" secondItem="bi2-Zn-yIp" secondAttribute="height" multiplier="255:603" id="kXZ-e2-YF9"/>
                                     <constraint firstAttribute="trailing" secondItem="J6A-9T-Ohv" secondAttribute="trailing" id="nuW-ok-7kG"/>
