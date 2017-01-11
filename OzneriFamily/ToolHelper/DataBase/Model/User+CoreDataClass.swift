@@ -693,7 +693,7 @@ public class User: BaseDataObject {
             let temperature=jsonDic["now"]?["tmp"].stringValue
 
             
-            guard let dicTmp = tmpdic else {
+            guard let _ = tmpdic else {
                 success("暂无",cityname!,"暂无","暂无",temperature!,humidity!,dataFrom)
                 return
             }
