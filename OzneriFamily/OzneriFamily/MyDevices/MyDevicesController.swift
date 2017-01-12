@@ -157,7 +157,6 @@ extension MyDevicesController : DeviceViewContainerDelegate{
         let device=LoginManager.instance.currentDevice
         switch  OznerDeviceType.getType(type: device.type) {
         case OznerDeviceType.Tap:
-
             deviceNameLabel.text = "智能水探头"
         case .Water_Wifi:
              deviceNameLabel.text = "免安装净水器(台式/立式)"

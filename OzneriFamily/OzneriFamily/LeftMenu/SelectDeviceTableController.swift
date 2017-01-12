@@ -21,8 +21,8 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
         super.viewDidLoad()
 
         self.title = loadLanguage("选择设备")
-//        panGesture = UIPanGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.handlePanGesture(_:)))
-//        self.view.addGestureRecognizer(panGesture!)
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.handlePanGesture(_:)))
+        self.view.addGestureRecognizer(panGesture!)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,9 +33,27 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
 
     func handlePanGesture(_ panGesture: UIPanGestureRecognizer) {
         
+        if panGesture.state == UIGestureRecognizerState.began {
+            
+            let point_inView = panGesture.translation(in: self.view)
+            print(point_inView.x)
+            
+//            self.dismiss(animated: false, completion: nil)
+            
+        } else if panGesture.state == .changed {
+            let point_inView = panGesture.translation(in: self.view)
+            
+            if point_inView.x > 10 {
+               self.dismiss(animated: false, completion: nil)
+            }
+         
+            
+        }
+        
+        /*
         let presentVc = panGesture.view
         var rootView:UIViewController?
-        
+
         if panGesture.state == UIGestureRecognizerState.began {
             appDelegate.window?.rootViewController = LoginManager.instance.mainTabBarController
             rootView = (appDelegate.window?.rootViewController)!
@@ -80,10 +98,10 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
             
         }
         
-        
+        */
     }
     
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //self.navigationItem.leftBarButtonItem = nil

@@ -9,7 +9,7 @@
 import UIKit
 import WebImage
 
-class MyCenterController: BaseViewController {
+class MyCenterController: BaseViewController ,UIGestureRecognizerDelegate{
 
     var tableView: UITableView!
     
@@ -17,6 +17,7 @@ class MyCenterController: BaseViewController {
 
     var dataArr: NSMutableArray?
     
+    var panGesture: UIGestureRecognizer?
     var webViewType:String?
     lazy var shareView:ShareMoneyToWeChat = {
         let tmpView=Bundle.main.loadNibNamed("ShareMoneyToWeChat", owner: self, options: nil)?.last as! ShareMoneyToWeChat
@@ -33,6 +34,26 @@ class MyCenterController: BaseViewController {
         
     }
     
+    func handlePanGesture(_ panGesture: UIPanGestureRecognizer) {
+        
+        if panGesture.state == UIGestureRecognizerState.began {
+            
+            let point_inView = panGesture.translation(in: self.view)
+            print(point_inView.x)
+            
+            //            self.dismiss(animated: false, completion: nil)
+            
+        } else if panGesture.state == .changed {
+            let point_inView = panGesture.translation(in: self.view)
+            
+            if point_inView.x > 10 {
+                LoginManager.instance.setTabbarSelected(index: 0)
+            }
+            
+            
+        }
+    }
+    
     func setupUI() {
         
         
@@ -44,6 +65,9 @@ class MyCenterController: BaseViewController {
             
         case .ByEmail:
               infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (2.8/7))
+            
+              panGesture = UIPanGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.handlePanGesture(_:)))
+              self.view.addGestureRecognizer(panGesture!)
         }
         
 
