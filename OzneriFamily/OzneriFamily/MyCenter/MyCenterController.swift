@@ -38,7 +38,17 @@ class MyCenterController: BaseViewController {
         
         let infoHeadView = UINib.init(nibName: "MyInfoHeadView", bundle: nil).instantiate(withOwner: self, options: nil).first as! MyInfoHeadView
         
-        infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (3.3/7))
+        switch LoginManager.instance.currentLoginType! {
+        case .ByPhoneNumber:
+              infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (3.3/7))
+            
+        case .ByEmail:
+              infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (2.8/7))
+        }
+        
+
+        
+      
         
         //
         if LoginManager.instance.currentLoginType != .ByPhoneNumber {
@@ -109,7 +119,6 @@ class MyCenterController: BaseViewController {
             let five = MyInfoStrcut.init(imageName: "My_baogao", nameLb: loadLanguage("查看水质检测报告"))
             let six = MyInfoStrcut.init(imageName: "My_suggest", nameLb: loadLanguage("我要提意见"))
             let seven = MyInfoStrcut.init(imageName: "My_set", nameLb: loadLanguage("设置"))
-            
             
             dataArr!.add(one)
             dataArr!.add(two)

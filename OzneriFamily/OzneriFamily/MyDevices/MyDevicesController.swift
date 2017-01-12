@@ -152,7 +152,25 @@ extension MyDevicesController : DeviceViewContainerDelegate{
         }
     }
     func DeviceNameChange(name: String) {
-        deviceNameLabel.text=name
+        
+//        deviceNameLabel.text=name
+        let device=LoginManager.instance.currentDevice
+        switch  OznerDeviceType.getType(type: device.type) {
+        case OznerDeviceType.Tap:
+
+            deviceNameLabel.text = "智能水探头"
+        case .Water_Wifi:
+             deviceNameLabel.text = "免安装净水器(台式/立式)"
+        case .Air_Blue,.Air_Wifi:
+             deviceNameLabel.text = "智能立式空气净化器"
+        case .WaterReplenish:
+             deviceNameLabel.text = "智能补水仪"
+            
+        default:
+            break
+        }
+
+        
     }
     func DeviceConnectStateChange(stateDes: String) {
         deviceConnectStateLabel.text=stateDes
