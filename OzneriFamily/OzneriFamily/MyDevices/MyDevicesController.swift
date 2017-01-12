@@ -153,7 +153,11 @@ extension MyDevicesController : DeviceViewContainerDelegate{
     }
     func DeviceNameChange(name: String) {
         
-//        deviceNameLabel.text=name
+        if name == "首页" {
+            deviceNameLabel.text=name
+            return
+        }
+        
         let device=LoginManager.instance.currentDevice
         switch  OznerDeviceType.getType(type: device.type) {
         case OznerDeviceType.Tap:
@@ -166,6 +170,7 @@ extension MyDevicesController : DeviceViewContainerDelegate{
              deviceNameLabel.text = "智能补水仪"
             
         default:
+           
             break
         }
 
