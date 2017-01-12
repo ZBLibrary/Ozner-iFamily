@@ -42,8 +42,17 @@ class WaterPurfierSettingController: DeviceSettingController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="showAboutDevice" {
             let VC=segue.destination as!  AboutDeviceController
+            VC.title = "关于净水器(台式)"
             VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutWaterPurifer"]?.stringValue)!, Type: 0)
         }
+        
+        if segue.identifier == "showAboutDeviceLishi" {
+            
+            let VC=segue.destination as!  AboutDeviceController
+            VC.title = "关于净水器(立式)"
+            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutLishi"]?.stringValue)!, Type: 0)
+        }
+        
     }
     
 

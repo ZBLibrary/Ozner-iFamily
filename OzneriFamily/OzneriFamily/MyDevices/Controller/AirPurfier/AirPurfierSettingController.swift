@@ -45,7 +45,7 @@ class AirPurfierSettingController: DeviceSettingController {
             let VC=segue.destination as!  AboutDeviceController
 //            VC.setLoadContent(content: OznerDeviceType.getType(type: LoginManager.instance.currentDevice.type)==OznerDeviceType.Air_Blue ? "airOperation_small":"airOperation_big", Type: 1)
             VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutAirPurifier"]?.stringValue)!, Type: 0)
-            VC.title="空气净化器使用说明"
+            VC.title="关于空气净化器"
         }
         if segue.identifier=="showCommonQestion" {
             let VC=segue.destination as!  AboutDeviceController
