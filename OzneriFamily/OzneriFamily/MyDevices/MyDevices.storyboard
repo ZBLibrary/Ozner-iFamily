@@ -6609,7 +6609,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMr-Sv-dZs">
                                 <rect key="frame" x="0.0" y="64" width="375" height="1366"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4g-4M-TnD">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4g-4M-TnD">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1366"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ps-zY-vZP">
@@ -6716,7 +6716,7 @@
                                                                     </mask>
                                                                 </variation>
                                                             </view>
-                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yO-t9-0Kp">
+                                                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yO-t9-0Kp">
                                                                 <rect key="frame" x="0.0" y="325" width="375" height="118"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫描包装上的二维码，激活APP并启动滤芯复位。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JE-WJ-mCj">
@@ -7085,6 +7085,7 @@
                         <outlet property="lvxinDaysLabel" destination="arG-L5-7T3" id="ILg-U3-C3a"/>
                         <outlet property="lvxinValueLabel" destination="8jo-cq-hnT" id="lp2-F7-c9P"/>
                         <outlet property="nowDateLabel" destination="dH0-Hr-8lE" id="TRY-tk-KMG"/>
+                        <outlet property="scanView" destination="6yO-t9-0Kp" id="fmu-ag-nFY"/>
                         <outlet property="scanViewHeightConstraint" destination="lcl-F6-P0Y" id="BZc-bl-Vsg"/>
                         <outlet property="starDateLabel" destination="eLK-xz-6XZ" id="foV-EA-8nF"/>
                         <outlet property="stopDateLabel" destination="rAS-Y9-Msd" id="KOk-35-NBS"/>
@@ -7584,7 +7585,7 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tp2-Ak-HiM"/>
+        <segue reference="szW-Mm-7nO"/>
         <segue reference="9TT-wP-6Ha"/>
     </inferredMetricsTieBreakers>
 </document>
