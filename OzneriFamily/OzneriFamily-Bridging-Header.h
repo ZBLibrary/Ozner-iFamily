@@ -42,3 +42,5 @@
 #import "XZGroup.h"
 #import "XZChatViewController.h"
 
+//FPS Label
+#import "YYFPSLabel.h"

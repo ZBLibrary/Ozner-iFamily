@@ -405,6 +405,8 @@
 		B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */; };
 		B79803DF1DB5C41D001EC5AA /* WaterRefeishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */; };
 		B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */; };
+		B7AEB3EF1E286C9C00684338 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AEB3EC1E286C9C00684338 /* YYFPSLabel.m */; };
+		B7AEB3F01E286C9C00684338 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AEB3EE1E286C9C00684338 /* YYWeakProxy.m */; };
 		B7B12AFE1E10AC1300711EBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B12AFD1E10AC1300711EBF /* MapKit.framework */; };
 		B7D6E4991DF928CF00D79BFF /* GYConactBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6E4981DF928CF00D79BFF /* GYConactBook.swift */; };
 		B7EF061C1DB8A357008BE7D4 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EF061A1DB8A346008BE7D4 /* WebImage.framework */; };
@@ -1067,6 +1069,10 @@
 		B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallAriClearView.xib; sourceTree = "<group>"; };
 		B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterRefeishView.swift; sourceTree = "<group>"; };
 		B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterRefeishView.xib; sourceTree = "<group>"; };
+		B7AEB3EB1E286C9C00684338 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
+		B7AEB3EC1E286C9C00684338 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		B7AEB3ED1E286C9C00684338 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
+		B7AEB3EE1E286C9C00684338 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 		B7B12AFD1E10AC1300711EBF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B7D6E4981DF928CF00D79BFF /* GYConactBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYConactBook.swift; sourceTree = "<group>"; };
 		B7EF061A1DB8A346008BE7D4 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
@@ -1493,6 +1499,10 @@
 		8D92F64E1D94F64F0068A40A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				B7AEB3EB1E286C9C00684338 /* YYFPSLabel.h */,
+				B7AEB3EC1E286C9C00684338 /* YYFPSLabel.m */,
+				B7AEB3ED1E286C9C00684338 /* YYWeakProxy.h */,
+				B7AEB3EE1E286C9C00684338 /* YYWeakProxy.m */,
 				8D92F65D1D9510450068A40A /* LoginManager.swift */,
 				8D0D69531DDD9D040097038E /* NSDate+Category.swift */,
 				8DC02EA51DB5D100007F57DB /* SCLAlertView.swift */,
@@ -2758,6 +2768,7 @@
 				8DC02E7A1DB5CE91007F57DB /* CupHeadCircleView.swift in Sources */,
 				B717E8091E0BAB5400B6DEBD /* ICEmotionListView.m in Sources */,
 				8D129A201DD4B5080022F7EA /* LBXPermissions.swift in Sources */,
+				B7AEB3F01E286C9C00684338 /* YYWeakProxy.m in Sources */,
 				B717E81F1E0BAB5400B6DEBD /* XZGroup.m in Sources */,
 				8D0D69351DDD99A10097038E /* FriendChatCell.swift in Sources */,
 				8D1C66E01DAA3B62008C639F /* OznerManager.m in Sources */,
@@ -3035,6 +3046,7 @@
 				8DC02F7D1DB5F03B007F57DB /* CupSettings.m in Sources */,
 				8D0D694B1DDD99A10097038E /* ZanMeTableViewCell.swift in Sources */,
 				8DC02E7E1DB5CE91007F57DB /* TapMainView.swift in Sources */,
+				B7AEB3EF1E286C9C00684338 /* YYFPSLabel.m in Sources */,
 				8DC02F991DB5F03B007F57DB /* messages_mosq.c in Sources */,
 				8DAE806B1D9A600900A9946F /* LeftMenuDeviceCell.swift in Sources */,
 				8D11A1831DDB33D0002F14D3 /* CupTDSDetailLineView.swift in Sources */,

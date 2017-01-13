@@ -117,6 +117,11 @@ class MyCenterController: BaseViewController ,UIGestureRecognizerDelegate{
         
         view.addSubview(tableView)
         
+        #if DEBUG
+            let yyLb = YYFPSLabel(frame: CGRect(x: self.view.frame.maxX - 60, y: self.view.frame.maxY - 30, width: 60, height: 30))
+            self.navigationController?.view.addSubview(yyLb)
+        #endif
+        
     }
     
     func myDeviceNumBtnAction() {

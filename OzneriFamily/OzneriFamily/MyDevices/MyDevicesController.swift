@@ -74,7 +74,12 @@ class MyDevicesController: UIViewController {
         super.viewDidLoad()
         deviceViewContainer.delegate=self
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleBottomMargin]
-        // Do any additional setup after loading the view.
+    
+#if DEBUG
+        let yyLb = YYFPSLabel(frame: CGRect(x: self.view.frame.maxX - 60, y: self.view.frame.maxY - 30, width: 60, height: 30))
+        self.navigationController?.view.addSubview(yyLb)
+#endif
+        
     }
 
     
