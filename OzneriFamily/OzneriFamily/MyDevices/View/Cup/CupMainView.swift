@@ -119,7 +119,7 @@ class CupMainView: OznerDeviceView {
                     temperatureStateLabel.text=loadLanguage("当前水温暂无")
                     return
                 }
-                switch true {
+                switch true { 
                 case Temperature<=Int(temperature_low):
                     temperatureImg.image=UIImage(named: "wen_du_1")
                     temperatureValueLabel.text=loadLanguage("偏凉")

@@ -63,6 +63,10 @@ class DeviceViewContainer: UIView {
         }
   
        //移除设备视图
+//        self.subviews.forEach { (view) in
+//            view.removeFromSuperview()
+//        }
+        
         for view in self.subviews {
             view.removeFromSuperview()
         }
