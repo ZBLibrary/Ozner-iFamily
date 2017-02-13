@@ -123,6 +123,9 @@
         return [self postSend:op];
     }else
     {
+
+        // TODO: Crash（未解决）
+//        NSLog(@"----------------:%@", runThread.name);
         [self performSelector:@selector(postSend:) onThread:runThread withObject:op waitUntilDone:true];
         return errorinfo==nil;
     }

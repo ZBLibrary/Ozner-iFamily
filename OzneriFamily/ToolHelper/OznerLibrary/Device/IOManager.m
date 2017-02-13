@@ -39,9 +39,14 @@
     @try{
         [devices removeObjectForKey:io.identifier];
     }
+    // TODO: - Crash
+    @catch (NSException *exception) {
+        NSLog(@"%@", exception);
+    }
     @finally{
         [locker unlock];
     }
+   
     [self.delegate IOManager:self Unavailable:io];
 }
 

@@ -196,6 +196,9 @@
     NSLog(@"didDisconnectPeripheral:%@",[error debugDescription]);
     BluetoothIO* io=(BluetoothIO*)[self getAvailableDevice:[self getIdentifier:peripheral]];
     [io updateConnectStatus:Disconnect];
+    if (!io) {
+        return;
+    }
     [self doUnavailable:io];
 }
 

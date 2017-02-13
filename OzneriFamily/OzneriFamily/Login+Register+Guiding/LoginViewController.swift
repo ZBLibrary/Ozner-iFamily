@@ -77,6 +77,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             return
         }
         weak var weakSelf=self
+        
         User.loginWithPhone(phone: phoneTextField.text!, phonecode: YZMTextField.text!,success:
             { (user) in
                 weakSelf?.presentMainViewController()
