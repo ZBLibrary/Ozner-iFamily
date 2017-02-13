@@ -40,6 +40,8 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
     @IBAction func headImgClick(_ sender: UIButton) {
         closeLeft()
         LoginManager.instance.setTabbarSelected(index: 3)
+
+        
     }
     //添加设备
     @IBAction func AddDeviceClick(_ sender: UIButton) {

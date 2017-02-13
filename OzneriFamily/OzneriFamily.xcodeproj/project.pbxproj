@@ -405,6 +405,8 @@
 		B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */; };
 		B79803DF1DB5C41D001EC5AA /* WaterRefeishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */; };
 		B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */; };
+		B7A7F5341E51537300DE9372 /* Extension+WHC_Debuger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A7F5321E51537300DE9372 /* Extension+WHC_Debuger.swift */; };
+		B7A7F5351E51537300DE9372 /* WHC_Debuger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A7F5331E51537300DE9372 /* WHC_Debuger.swift */; };
 		B7AEB3EF1E286C9C00684338 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AEB3EC1E286C9C00684338 /* YYFPSLabel.m */; };
 		B7AEB3F01E286C9C00684338 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AEB3EE1E286C9C00684338 /* YYWeakProxy.m */; };
 		B7B12AFE1E10AC1300711EBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B12AFD1E10AC1300711EBF /* MapKit.framework */; };
@@ -1069,6 +1071,8 @@
 		B79803DC1DB5B15D001EC5AA /* SmallAriClearView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallAriClearView.xib; sourceTree = "<group>"; };
 		B79803DE1DB5C41D001EC5AA /* WaterRefeishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterRefeishView.swift; sourceTree = "<group>"; };
 		B79803E01DB5C42E001EC5AA /* WaterRefeishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterRefeishView.xib; sourceTree = "<group>"; };
+		B7A7F5321E51537300DE9372 /* Extension+WHC_Debuger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+WHC_Debuger.swift"; sourceTree = "<group>"; };
+		B7A7F5331E51537300DE9372 /* WHC_Debuger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WHC_Debuger.swift; sourceTree = "<group>"; };
 		B7AEB3EB1E286C9C00684338 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
 		B7AEB3EC1E286C9C00684338 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		B7AEB3ED1E286C9C00684338 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
@@ -1499,6 +1503,8 @@
 		8D92F64E1D94F64F0068A40A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				B7A7F5321E51537300DE9372 /* Extension+WHC_Debuger.swift */,
+				B7A7F5331E51537300DE9372 /* WHC_Debuger.swift */,
 				B7AEB3EB1E286C9C00684338 /* YYFPSLabel.h */,
 				B7AEB3EC1E286C9C00684338 /* YYFPSLabel.m */,
 				B7AEB3ED1E286C9C00684338 /* YYWeakProxy.h */,
@@ -2826,6 +2832,7 @@
 				8D0E5E6E1DD09C0500AFAD23 /* ChartViewOfSkinDetail.swift in Sources */,
 				8D0D69491DDD99A10097038E /* YanZhengCell.swift in Sources */,
 				8D1C86AE1DD33BEF00B15221 /* TapDatePickerView.swift in Sources */,
+				B7A7F5341E51537300DE9372 /* Extension+WHC_Debuger.swift in Sources */,
 				8D0D681D1DDD5AF50097038E /* CupTDSLineView.swift in Sources */,
 				8DC02F9E1DB5F03B007F57DB /* read_handle_shared.c in Sources */,
 				B717E7EC1E0BAB5400B6DEBD /* ICMessageFrame.m in Sources */,
@@ -2990,6 +2997,7 @@
 				8DC02FA41DB5F03B007F57DB /* util_mosq.c in Sources */,
 				B703D8ED1E0CF1F90083810A /* XMFaceManager.m in Sources */,
 				B717E80F1E0BAB5400B6DEBD /* ICFileButton.m in Sources */,
+				B7A7F5351E51537300DE9372 /* WHC_Debuger.swift in Sources */,
 				8D0D695C1DDDB2F70097038E /* OzneriFamilyModel.xcdatamodeld in Sources */,
 				B717E8041E0BAB5400B6DEBD /* ICChatBoxFaceView.m in Sources */,
 				8DC02F971DB5F03B007F57DB /* logging_mosq.c in Sources */,

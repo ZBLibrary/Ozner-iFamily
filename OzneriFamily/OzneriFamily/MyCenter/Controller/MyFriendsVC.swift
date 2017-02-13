@@ -70,6 +70,7 @@ class MyFriendsVC: BaseViewController {
             if isSuccess > 0 {
                 print(responseObject)
                 let modelArr = responseObject["friendlist"].array
+                weakSelf?.tableView.backgroundView = nil
                 
                 for item in modelArr! {
                     
@@ -86,11 +87,15 @@ class MyFriendsVC: BaseViewController {
                 weakSelf?.chaArrs = NSMutableArray(capacity: (weakSelf?.dataArr?.count)!)
                 weakSelf?.tableView.reloadData()
 
+            } else {
+                    let nofriend = UINib(nibName: "FriendZeroBgView", bundle: nil).instantiate(withOwner: nil, options: nil).last as! FriendZeroBgView
+                    nofriend.frame = CGRect(x: 0, y: 49, width: width_screen, height: height_screen-height_navBar)
+                    weakSelf?.tableView.backgroundView = nofriend
+                    return
+
             }
         }) { (error) in
             SVProgressHUD.dismiss()
-            
-            
             
             let alertView = SCLAlertView()
             _ = alertView.addButton(loadLanguage("确定"), action: {})
@@ -141,8 +146,6 @@ class MyFriendsVC: BaseViewController {
         }
         
         let model = (dataArr?[currentSecion])! as FriendModel
-        
-        
         
         let params:NSDictionary = ["otheruserid":model.friendID!,"message":bootomRecentView.recentContentLb.text!]
         
