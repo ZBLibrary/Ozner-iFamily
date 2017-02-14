@@ -32,6 +32,7 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
     @IBOutlet var imgButtonOfNoDevice: UIButton!
     @IBOutlet var nameLabelOfNoDevice: UILabel!
     
+    @IBOutlet weak var icon_buble_add_device: UIImageView!
     //有设备头像View
     @IBOutlet var ImgButtonOfHaveDevice: UIButton!
     @IBOutlet var nameLabelOfHaveDevice: UILabel!
@@ -59,6 +60,8 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        icon_buble_add_device.image = UIImage(named: loadLanguage("icon_buble_add_device"))
+        
         deviceArray=NSArray()
         startLb.text = loadLanguage("开启浩泽智能生活")
         deviceLb.text = loadLanguage("选择智能设备")
