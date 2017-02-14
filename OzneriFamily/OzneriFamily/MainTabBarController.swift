@@ -45,7 +45,7 @@ class MainTabBarController: RDVTabBarController {
         self.tabBar.backgroundColor=UIColor.white
         var index=0
         for item in (self.tabBar.items as! [RDVTabBarItem]){
-            item.title=["我的设备","商城","咨询","我"][index]
+            item.title=[loadLanguage("我的设备"),loadLanguage("商城"),loadLanguage("咨询"),loadLanguage("我")][index]
             item.setBackgroundSelectedImage(UIImage(named: "bg_TabBar"), withUnselectedImage: UIImage(named: "bg_TabBar"))
             item.setFinishedSelectedImage(UIImage(named: "bar_select_\(index)"), withFinishedUnselectedImage: UIImage(named: "bar_normal_\(index)"))
             index+=1
