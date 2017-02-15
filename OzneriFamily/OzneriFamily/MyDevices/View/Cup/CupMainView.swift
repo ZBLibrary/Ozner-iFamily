@@ -20,8 +20,12 @@ class CupMainView: OznerDeviceView {
         self.delegate.DeviceViewPerformSegue!(SegueID: "showCupTemperatureDetail", sender: nil)
     }
     
+    
     @IBOutlet var circleView: CupHeadCircleView!
     
+    @IBOutlet weak var tdsLb: UILabel!
+    @IBOutlet weak var tempLb: UILabel!
+    @IBOutlet weak var tdLb: UILabel!
     @IBOutlet var tdsImg: UIImageView!
     @IBOutlet var tdsState: UILabel!
     @IBOutlet var tdsValueLabel: UILabel!
@@ -35,6 +39,22 @@ class CupMainView: OznerDeviceView {
     @IBOutlet var temperatureImg: UIImageView!
     @IBOutlet var temperatureValueLabel: UILabel!
     @IBOutlet var temperatureStateLabel: UILabel!
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        tdLb.text = loadLanguage("今日饮水量")
+        tempLb.text = loadLanguage("水温")
+        tdsLb.text = loadLanguage("水质纯净值TDS")
+        drinkingGoalLabel.text = loadLanguage("饮水目标:2000ml")
+        temperatureValueLabel.text = loadLanguage("暂无")
+        temperatureStateLabel.text = loadLanguage("当前水温暂无")
+        tdsState.text = loadLanguage("一般")
+        tdsValueLabel.text = loadLanguage("暂无")
+        tdsBeatLabel.text = loadLanguage("击败了0%的用户")
+        
+    }
     
     override func draw(_ rect: CGRect) {
         
@@ -88,7 +108,7 @@ class CupMainView: OznerDeviceView {
             if Drinking != oldValue   {
                 let drinkGoal=(self.currentDevice as! Cup).settings.get("DrinkGoal", default: 2000) as! Int
                 let tmpDrinking = Drinking/Double(drinkGoal)
-                drinkingGoalLabel.text=loadLanguage("饮水目标")+":\(Int(drinkGoal))ml"
+                drinkingGoalLabel.text=loadLanguage("饮水目标:")+"\(Int(drinkGoal))ml"
                 drinkingValueLabel.text="\(Int(Drinking))ml"
                 switch true {
                 case tmpDrinking<=0:

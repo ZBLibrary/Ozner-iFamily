@@ -34,13 +34,13 @@ class CupDrinkingController: BaseViewController {
         leftLabel1.text=["500\nml","3000\nml","3000\nml"][sender.selectedSegmentIndex]
         leftLabel2.text=["300","2000","2000"][sender.selectedSegmentIndex]
         leftLabel3.text=["100","1000","1000"][sender.selectedSegmentIndex]
-        bottomLabel1.text=["0h","周一","01"][sender.selectedSegmentIndex]
-        bottomLabel2.text=["","周二",""][sender.selectedSegmentIndex]
-        bottomLabel3.text=["8","周三","11"][sender.selectedSegmentIndex]
-        bottomLabel4.text=["","周四",""][sender.selectedSegmentIndex]
-        bottomLabel5.text=["16","周五","21"][sender.selectedSegmentIndex]
-        bottomLabel6.text=["","周六",""][sender.selectedSegmentIndex]
-        bottomLabel7.text=["23","周日","\(NSDate().daysInMonth())"][sender.selectedSegmentIndex]
+        bottomLabel1.text=["0h", loadLanguage("周一"),"01"][sender.selectedSegmentIndex]
+        bottomLabel2.text=["",loadLanguage("周二"),""][sender.selectedSegmentIndex]
+        bottomLabel3.text=["8",loadLanguage("周三"),"11"][sender.selectedSegmentIndex]
+        bottomLabel4.text=["",loadLanguage("周四"),""][sender.selectedSegmentIndex]
+        bottomLabel5.text=["16",loadLanguage("周五"),"21"][sender.selectedSegmentIndex]
+        bottomLabel6.text=["",loadLanguage("周六"),""][sender.selectedSegmentIndex]
+        bottomLabel7.text=["23",loadLanguage("周日"),"\(NSDate().daysInMonth())"][sender.selectedSegmentIndex]
         chartView.updateView(segindex: sender.selectedSegmentIndex)
     }
     @IBOutlet var chartView: CupDrinkingChartView!

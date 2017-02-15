@@ -53,6 +53,7 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
             weakSelf?.closeLeft()
         }
     }
+    @IBOutlet weak var addDeviceLb: UILabel!
     @IBOutlet var noDeviceViewContainer: UIView!
     //有设备设备表
     @IBOutlet var tableContainer: UIView!//tableView的容器
@@ -61,7 +62,7 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         icon_buble_add_device.image = UIImage(named: loadLanguage("icon_buble_add_device"))
-        
+        addDeviceLb.text = loadLanguage("添加新设备")
         deviceArray=NSArray()
         startLb.text = loadLanguage("开启浩泽智能生活")
         deviceLb.text = loadLanguage("选择智能设备")

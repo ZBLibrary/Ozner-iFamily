@@ -61,13 +61,13 @@ class CupTDSDetailLineView: UIView {
     }
     var switchDate = 0{//0日,1周,2月
         didSet{
-            xLabel1.text=["0h","周一","01"][switchDate]
-            xLabel2.text=["","周二",""][switchDate]
-            xLabel3.text=["8","周三","11"][switchDate]
-            xLabel4.text=["","周四",""][switchDate]
-            xLabel5.text=["16","周五","21"][switchDate]
-            xLabel6.text=["","周六",""][switchDate]
-            xLabel7.text=["23","周日","\(NSDate().daysInMonth())"][switchDate]
+            xLabel1.text=["0h",loadLanguage("周一"),"01"][switchDate]
+            xLabel2.text=["",loadLanguage("周二"),""][switchDate]
+            xLabel3.text=["8",loadLanguage("周三"),"11"][switchDate]
+            xLabel4.text=["",loadLanguage("周四"),""][switchDate]
+            xLabel5.text=["16",loadLanguage("周五"),"21"][switchDate]
+            xLabel6.text=["",loadLanguage("周六"),""][switchDate]
+            xLabel7.text=["23",loadLanguage("周日"),"\(NSDate().daysInMonth())"][switchDate]
             tdsLineView.updateCircleView(SensorType: whitchType, DateType: switchDate, Volumes: volumes)
             if volumes==nil {
                 return

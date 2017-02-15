@@ -23,6 +23,12 @@ class CupTDSDetailController: BaseViewController {
     @IBOutlet var tdsStateImg: UIImageView!
     @IBOutlet var tdsStateLabel: UILabel!
     
+    @IBOutlet weak var buyBtn: UIButton!
+    @IBOutlet weak var healthLb: UIButton!
+    @IBOutlet weak var gaishanlb: UILabel!
+    @IBOutlet weak var zixunBtn: UIButton!
+    @IBOutlet weak var friendLb: UILabel!
+    @IBOutlet weak var tdsLb: UILabel!
     @IBOutlet var chartContainerView: UIView!
     @IBAction func buyWaterPurfier(_ sender: UIButton) {
         LoginManager.instance.setTabbarSelected(index: 1)
@@ -33,7 +39,13 @@ class CupTDSDetailController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = loadLanguage("水质纯净值TDS")
+        tdsLb.text = loadLanguage("水质纯净值")
+        friendLb.text = loadLanguage("好友排名")
+        healthLb.setTitle(loadLanguage("健康水知道 "), for: UIControlState.normal)
+        buyBtn.setTitle(loadLanguage("购买净水器"), for: UIControlState.normal)
+        zixunBtn.setTitle(loadLanguage("咨询"), for: UIControlState.normal)
+        gaishanlb.text = loadLanguage("改善您的饮水健康")
         let device = LoginManager.instance.currentDevice as! Cup
         tdsValue=device.sensor.tds==65535 ? 0 :device.sensor.tds
         tdsValueLabel.text = tdsValue==0 ? "-":"\(tdsValue)"

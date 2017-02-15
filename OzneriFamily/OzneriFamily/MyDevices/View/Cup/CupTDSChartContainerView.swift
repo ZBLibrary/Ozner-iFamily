@@ -22,6 +22,17 @@ class CupTDSChartContainerView: UIView {
         lineView.switchDate=segmentControl.selectedSegmentIndex
     }
     @IBOutlet var chartContainerView: UIView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        titleLabel.text = loadLanguage("水质纯净值分布")
+        segmentControl.setTitle(loadLanguage("日"), forSegmentAt: 0)
+        segmentControl.setTitle(loadLanguage("月"), forSegmentAt: 2)
+        segmentControl.setTitle(loadLanguage("周"), forSegmentAt: 1)
+        
+    }
+    
     //SensorType 0TDS,1温度
     func InitSetView(volumes:CupRecordList,sensorType:Int) {
        

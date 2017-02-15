@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,17 +18,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1u6-rW-pec">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="490"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-g1-Ecz" customClass="CupHeadCircleView" customModule="OzneriFamily" customModuleProvider="target">
+                            <rect key="frame" x="32.5" y="162.5" width="310" height="165"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="击败了0%的用户" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wy8-m2-Egu">
+                                    <rect key="frame" x="95" y="145.5" width="120" height="19.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QwV-kr-rVN">
+                                    <rect key="frame" x="105" y="71" width="100.5" height="74.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsX-zw-1tR">
+                                            <rect key="frame" x="0.0" y="15" width="100.5" height="44.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
                                             <color key="textColor" red="0.22552007439999999" green="0.44347250459999998" blue="0.86721867320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -43,8 +51,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iom-io-hJM">
+                                    <rect key="frame" x="95" y="32.5" width="120" height="38.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水质纯净值TDS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gf-JU-Aqg">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="17"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                             <color key="textColor" red="0.22552007436752319" green="0.44347250461578369" blue="0.86721867322921753" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -53,6 +63,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOW-Xq-MWy">
+                                            <rect key="frame" x="46.5" y="22.5" width="27" height="16"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                             <color key="textColor" red="0.22552007436752319" green="0.44347250461578369" blue="0.86721867322921753" alpha="0.79657240316901412" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -61,6 +72,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="baobiao" translatesAutoresizingMaskIntoConstraints="NO" id="H4k-7O-8iB">
+                                            <rect key="frame" x="22.5" y="22.5" width="16" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="H4k-7O-8iB" secondAttribute="height" multiplier="1:1" id="Gv6-HR-Pup"/>
                                             </constraints>
@@ -108,16 +120,22 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUA-VW-cNk">
+                    <rect key="frame" x="0.0" y="490" width="375" height="177"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-I9-9Po">
+                            <rect key="frame" x="0.0" y="33" width="375" height="111"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8VM-Dv-5Oz">
+                                    <rect key="frame" x="0.0" y="0.0" width="187" height="111"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3C-QO-fst">
+                                            <rect key="frame" x="20" y="15.5" width="147" height="80"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cuE-i6-rqk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="147" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日饮水量：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4H-SQ-6WO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="98" height="15.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -126,11 +144,13 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="yin_shui_liang_0" translatesAutoresizingMaskIntoConstraints="NO" id="vvK-Mj-6rw">
+                                                            <rect key="frame" x="0.0" y="31" width="34" height="49"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="vvK-Mj-6rw" secondAttribute="height" multiplier="31:44" id="oaP-lP-y3I"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="饮水目标:2000ml" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jok-Im-Jaw">
+                                                            <rect key="frame" x="44" y="64" width="103" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                             <color key="textColor" red="0.29021114110000001" green="0.40533691640000002" blue="0.87950104480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -139,6 +159,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0ml" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eed-YN-lXS">
+                                                            <rect key="frame" x="44" y="31" width="103" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                                             <color key="textColor" red="0.29021114110000001" green="0.40533691640000002" blue="0.87950104480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -184,10 +205,13 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqH-Oi-B5E">
+                                    <rect key="frame" x="188" y="0.0" width="187" height="111"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Yz-u8-GG3">
+                                            <rect key="frame" x="20" y="15.5" width="147" height="80"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水温：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xg5-D9-rCI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="147" height="15.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -196,11 +220,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="device_wenduzb_0" translatesAutoresizingMaskIntoConstraints="NO" id="oYV-h2-AiA">
+                                                    <rect key="frame" x="0.0" y="31" width="24.5" height="49"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="oYV-h2-AiA" secondAttribute="height" multiplier="1:2" id="ysq-kq-JlH"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无法测量当前温度" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYr-jR-cCv">
+                                                    <rect key="frame" x="34.5" y="64" width="112.5" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                     <color key="textColor" red="0.29021114110946655" green="0.40533691644668579" blue="0.87950104475021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -209,6 +235,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVN-s5-eiy">
+                                                    <rect key="frame" x="34.5" y="31" width="112.5" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
                                                     <color key="textColor" red="0.29021114110000001" green="0.40533691640000002" blue="0.87950104480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -229,7 +256,7 @@
                                                 <constraint firstItem="HVN-s5-eiy" firstAttribute="top" secondItem="oYV-h2-AiA" secondAttribute="top" id="E3B-Tl-2jM"/>
                                                 <constraint firstAttribute="trailing" secondItem="tYr-jR-cCv" secondAttribute="trailing" id="EPL-gc-SNR"/>
                                                 <constraint firstItem="xg5-D9-rCI" firstAttribute="top" secondItem="9Yz-u8-GG3" secondAttribute="top" id="F1Q-lu-jko"/>
-                                                <constraint firstItem="xg5-D9-rCI" firstAttribute="width" secondItem="9Yz-u8-GG3" secondAttribute="width" multiplier="36:72" id="K44-DA-efy"/>
+                                                <constraint firstItem="xg5-D9-rCI" firstAttribute="width" secondItem="9Yz-u8-GG3" secondAttribute="width" multiplier="72:72" id="K44-DA-efy"/>
                                                 <constraint firstAttribute="bottom" secondItem="tYr-jR-cCv" secondAttribute="bottom" id="LaB-Nq-eg2"/>
                                                 <constraint firstItem="xg5-D9-rCI" firstAttribute="leading" secondItem="9Yz-u8-GG3" secondAttribute="leading" id="Oz3-pO-R8d"/>
                                                 <constraint firstItem="tYr-jR-cCv" firstAttribute="leading" secondItem="oYV-h2-AiA" secondAttribute="trailing" constant="10" id="R5G-Mz-Ne1"/>
@@ -290,10 +317,13 @@
                 <outlet property="drinkingGoalLabel" destination="Jok-Im-Jaw" id="dPM-p7-amq"/>
                 <outlet property="drinkingImg" destination="vvK-Mj-6rw" id="gZM-vZ-AEv"/>
                 <outlet property="drinkingValueLabel" destination="Eed-YN-lXS" id="Cc2-1i-Ri4"/>
+                <outlet property="tdLb" destination="c4H-SQ-6WO" id="ask-rv-jSL"/>
                 <outlet property="tdsBeatLabel" destination="Wy8-m2-Egu" id="hV6-fm-7tA"/>
                 <outlet property="tdsImg" destination="H4k-7O-8iB" id="BME-8k-vwo"/>
+                <outlet property="tdsLb" destination="0gf-JU-Aqg" id="lfc-lJ-2PW"/>
                 <outlet property="tdsState" destination="fOW-Xq-MWy" id="Vr3-hQ-nRo"/>
                 <outlet property="tdsValueLabel" destination="QsX-zw-1tR" id="lsK-D9-aQw"/>
+                <outlet property="tempLb" destination="xg5-D9-rCI" id="QTQ-oF-Ptu"/>
                 <outlet property="temperatureImg" destination="oYV-h2-AiA" id="ycK-fw-YLZ"/>
                 <outlet property="temperatureStateLabel" destination="tYr-jR-cCv" id="vok-yj-p0Z"/>
                 <outlet property="temperatureValueLabel" destination="HVN-s5-eiy" id="sZ5-py-DEu"/>
