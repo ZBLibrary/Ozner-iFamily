@@ -169,6 +169,16 @@ class PairSuccessController: UIViewController {
         OznerManager.instance().save(deviceArr[0])
     
         LoginManager.instance.currentDeviceIdentifier=deviceArr[0].identifier
+        
+        //上传到服务器
+        LoginManager.instance.showHud()
+        User.AddDevice(mac: deviceArr[0].identifier, type: deviceArr[0].type, setting: deviceArr[0].settings.toJSON(), success: {
+            print("设备上传到服务器成功！")
+            SVProgressHUD.dismiss()
+        }, failure: { (error) in
+            SVProgressHUD.dismiss()
+            print("设备上传到服务器失败！")
+        })
         self.dismiss(animated: false, completion: {})
     }
     func CheckInputText()->Bool

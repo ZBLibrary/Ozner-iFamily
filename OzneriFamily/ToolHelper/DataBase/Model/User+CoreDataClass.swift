@@ -756,4 +756,29 @@ public class User: BaseDataObject {
             }, failure: failure)
     }
     
+    //绑定设备
+    class func AddDevice(mac:String,type:String,setting:String,success: @escaping (() -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "AddDevice", parameters: ["Mac":mac,"DeviceType":type,"Settings":setting], success: { (json) in
+            success()
+        }, failure: failure)
+    }
+    //解除绑定设备
+    class func DeleteDevice(mac:String,success: @escaping (() -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "DeleteDevice", parameters: ["mac":mac], success: { (json) in
+            success()
+        }, failure: failure)
+    }
+    // 获取设备列表
+    class func GetDeviceList(success: @escaping (() -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchDataWithProgress(key: "GetDeviceList", parameters: [:], success: { (json) in
+            for item in json["data"].arrayValue
+            {
+                let device=OznerDevice(item["Mac"].stringValue, type: item["DeviceType"].stringValue, settings: item["Settings"].stringValue)
+                OznerManager.instance().save(device)
+            }
+        }, failure: failure)
+        
+    }
+
+    
 }

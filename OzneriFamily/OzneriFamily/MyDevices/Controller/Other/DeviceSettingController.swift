@@ -55,6 +55,13 @@ class DeviceSettingController: BaseViewController {
             let device=LoginManager.instance.currentDevice
             LoginManager.instance.currentDeviceIdentifier=nil
             OznerManager.instance().remove(device)
+            //删除服务器设备
+            LoginManager.instance.showHud()
+            User.DeleteDevice(mac: device.identifier, success: {
+            SVProgressHUD.dismiss()
+            }, failure: { (error) in
+            SVProgressHUD.dismiss()
+            })
             _=self.navigationController?.popViewController(animated: true)
         }
         _=alert.showInfo("", subTitle: loadLanguage("删除此设备"))

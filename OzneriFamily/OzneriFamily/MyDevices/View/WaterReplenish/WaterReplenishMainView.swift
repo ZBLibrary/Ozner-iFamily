@@ -53,9 +53,10 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     
     fileprivate let centerOfImg=CGPoint(x: width_screen/2, y: 446*kHightOfWaterReplensh/2)
     //数组以 脸 眼 手 颈 的顺序 半径30范围内
+    //*((446*64)/602)
     fileprivate let locationOfImg=[
-        SexType.WoMan:[CGPoint(x: 142*kWidthOfWaterReplensh, y: 265*kHightOfWaterReplensh),CGPoint(x: 214*kWidthOfWaterReplensh, y: 243*kHightOfWaterReplensh),CGPoint(x: 142*kWidthOfWaterReplensh, y: 370*kHightOfWaterReplensh),CGPoint(x: 206*kWidthOfWaterReplensh, y: 328*kHightOfWaterReplensh)],
-        SexType.Man:[CGPoint(x: 142*kWidthOfWaterReplensh, y: 262*kHightOfWaterReplensh),CGPoint(x: 214*kWidthOfWaterReplensh, y: 240*kHightOfWaterReplensh),CGPoint(x: 142*kWidthOfWaterReplensh, y: 370*kHightOfWaterReplensh),CGPoint(x: 206*kWidthOfWaterReplensh, y: 328*kHightOfWaterReplensh)]
+        SexType.WoMan:[CGPoint(x: 142*kWidthOfWaterReplensh, y: 265*kHightOfWaterReplensh+((446*64)/602)),CGPoint(x: 214*kWidthOfWaterReplensh, y: 243*kHightOfWaterReplensh+((446*64)/602)),CGPoint(x: 142*kWidthOfWaterReplensh, y: 370*kHightOfWaterReplensh+((446*64)/602)),CGPoint(x: 206*kWidthOfWaterReplensh, y: 328*kHightOfWaterReplensh+((446*64)/602))],
+        SexType.Man:[CGPoint(x: 142*kWidthOfWaterReplensh, y: 262*kHightOfWaterReplensh+((446*64)/602)),CGPoint(x: 214*kWidthOfWaterReplensh, y: 240*kHightOfWaterReplensh+((446*64)/602)),CGPoint(x: 142*kWidthOfWaterReplensh, y: 370*kHightOfWaterReplensh+((446*64)/602)),CGPoint(x: 206*kWidthOfWaterReplensh, y: 328*kHightOfWaterReplensh+((446*64)/602))]
     ]
     
     func personImgTapClick(_ sender: UITapGestureRecognizer) {
