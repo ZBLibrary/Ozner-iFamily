@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "UICountingLabel.h"
 
-FOUNDATION_EXPORT double Pods_OzneriFamilyVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_OzneriFamilyVersionString[];
+FOUNDATION_EXPORT double UICountingLabelVersionNumber;
+FOUNDATION_EXPORT const unsigned char UICountingLabelVersionString[];
 
