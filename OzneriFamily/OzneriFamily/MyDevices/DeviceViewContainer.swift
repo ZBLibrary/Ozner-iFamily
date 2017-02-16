@@ -207,17 +207,31 @@ extension DeviceViewContainer:OznerDeviceDelegate{
     func oznerDeviceStatusUpdate(_ device: OznerDevice!) {
         if CheckIsCurrentDevice(device: device) == true {
             currentDeviceView.currentDevice=device
-            //解析当前状态
-            switch device.connectStatus() {
-            case Connecting:
-                delegate.DeviceConnectStateChange!(stateDes: "正在连接中...")
-            case Disconnect:
-                delegate.DeviceConnectStateChange!(stateDes: "设备已断开")
-            case Connected:
-                delegate.DeviceConnectStateChange!(stateDes: "设备已连接")
-            default://已连接
+           
+            switch OznerDeviceType.getType(type: (device?.type)!) {
+            case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish,.Water_Bluetooth:
+                //解析当前状态
+                switch device.connectStatus() {
+                case Connecting:
+                    delegate.DeviceConnectStateChange!(stateDes: "正在连接中...")
+                case Disconnect:
+                    delegate.DeviceConnectStateChange!(stateDes: "设备已断开")
+                case Connected:
+                    delegate.DeviceConnectStateChange!(stateDes: "设备已连接")
+                default://已连接
+                    delegate.DeviceConnectStateChange!(stateDes: "")
+                }
+                
+                break
+            default:
                 delegate.DeviceConnectStateChange!(stateDes: "")
-            }      
+                break
+            }
+
+            
+            
+            
+            
             //设置主页
             currentDeviceView.StatusUpdate(device: device, status: DeviceViewStatus.Connectted)
         }
