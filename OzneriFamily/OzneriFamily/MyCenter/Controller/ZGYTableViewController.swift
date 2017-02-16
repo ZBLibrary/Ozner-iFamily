@@ -329,7 +329,7 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
                     
                     let alertView=SCLAlertView()
                     _ = alertView.addButton(loadLanguage("确定"), action: {})
-                    _ = alertView.showSuccess(loadLanguage("温馨提示"), subTitle: loadLanguage("非浩泽用户!"))
+                    _ = alertView.showSuccess(loadLanguage("温馨提示"), subTitle: loadLanguage("非君融用户!"))
                     return
                     
                 }

@@ -34,7 +34,7 @@ extension UIView {
             DispatchQueue.main.async {
                 let note = NSStringFromClass(self.classForCoder).components(separatedBy: ".").last!
                 let msg = note + "不在主线程操作UI,危险!!"
-                UIAlertView(title: "WHC_Debuger", message: msg, delegate: nil, cancelButtonTitle: "OK").show()
+//                UIAlertView(title: "WHC_Debuger", message: msg, delegate: nil, cancelButtonTitle: "OK").show()
                 print(">>>>>>>>>\(msg)<<<<<<<<<")
             }
         }
