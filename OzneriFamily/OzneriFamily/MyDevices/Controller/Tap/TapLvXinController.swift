@@ -88,7 +88,7 @@ class TapLvXinController: BaseViewController {
             User.FilterService(deviceID: (LoginManager.instance?.currentDeviceIdentifier)!, success: { (usedDay, starDate) in
                 self.setLvXin(stopDate: (starDate as NSDate).addingDays(30) as NSDate, maxDays: 30)
                 }, failure: { (error) in
-                    
+                    print(error)
             })
         }
         // Do any additional setup after loading the view.
