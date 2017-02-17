@@ -34,7 +34,7 @@ class Air_WifiMainView: OznerDeviceView {
     var outdoorAirView:AirOutdoorView!
     override func draw(_ rect: CGRect) {
         speedModelView=Bundle.main.loadNibNamed("Air_Wifi_SpeedModel", owner: nil, options: nil)?.first as! Air_Wifi_SpeedModel
-        speedModelView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
+        speedModelView.frame=CGRect(x: 0, y: 64*(200/603), width: width_screen, height: height_screen)
         speedModelView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
         
         outdoorAirView=Bundle.main.loadNibNamed("AirOutdoorView", owner: nil, options: nil)?.first as! AirOutdoorView
