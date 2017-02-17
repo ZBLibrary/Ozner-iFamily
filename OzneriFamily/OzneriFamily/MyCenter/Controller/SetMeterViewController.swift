@@ -15,7 +15,10 @@ class SetMeterViewController: BaseViewController {
 
     @IBAction func Save(sender: AnyObject) {
         print("保存数据")
-        
+        UserDefaults.standard.setValue(Temperature, forKey: "Temperature")
+        UserDefaults.standard.setValue(WaterMeter, forKey: "WaterMeter")
+        UserDefaults.standard.synchronize()
+      _ = self.navigationController?.popViewController(animated: true)
     }
    
     
@@ -80,6 +83,8 @@ class SetMeterViewController: BaseViewController {
         DanWei3.isHidden=true
         DanWei4.isHidden=true
         DanWei5.isHidden=true
+        Temperature =  (UserDefaults.standard.value(forKey: "Temperature") as? Int) == nil ? 0 : (UserDefaults.standard.value(forKey: "Temperature") as! Int)
+        WaterMeter = (UserDefaults.standard.value(forKey: "WaterMeter") as? Int) == nil ? 0 : (UserDefaults.standard.value(forKey: "WaterMeter") as! Int)
 
         if Temperature==0
         {

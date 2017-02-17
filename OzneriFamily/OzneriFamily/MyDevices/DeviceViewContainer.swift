@@ -196,6 +196,7 @@ extension DeviceViewContainer:OznerDeviceDelegate{
                 break
             case .WaterReplenish:
                 batteryValue = Int((currentDevice as! WaterReplenishmentMeter).status.battery*100)
+//                (currentDeviceView as! WaterReplenishMainView).updateViewState()
             case .Water_Bluetooth:
                 let tmpDev=currentDevice as! ROWaterPurufier
                 let lvxinValue=min(tmpDev.filterInfo.filter_A_Percentage, tmpDev.filterInfo.filter_B_Percentage, tmpDev.filterInfo.filter_C_Percentage)

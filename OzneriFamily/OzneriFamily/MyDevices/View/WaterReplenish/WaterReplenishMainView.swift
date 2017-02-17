@@ -402,7 +402,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
         //更新连接状态视图
         
-//        self.updateViewState()
+        self.updateViewState()
     }
     
 }
