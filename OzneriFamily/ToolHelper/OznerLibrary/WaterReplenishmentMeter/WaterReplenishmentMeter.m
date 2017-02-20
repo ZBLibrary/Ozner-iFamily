@@ -31,9 +31,11 @@
     return self;
 }
 
--(void)DeviceIODidDisconnected:(BaseDeviceIO *)io
+-(void)DeviceIODidDisconnected:(BaseDeviceIO *)Io
 {
     [_status reset];
+    // TODO: - 解决补水仪断开时状态不更新问题
+    [super DeviceIODidDisconnected:Io];
 }
 
 +(BOOL)isBindMode:(BluetoothIO*)io
