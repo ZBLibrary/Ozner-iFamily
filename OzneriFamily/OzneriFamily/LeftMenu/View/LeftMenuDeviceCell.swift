@@ -14,16 +14,23 @@ class LeftMenuDeviceCell: UITableViewCell {
 
     var device:OznerDevice! {
         didSet{
-            connectLabel.text=["连接中","已断开","已连接"][Int(device.connectStatus().rawValue)]
+//            connectLabel.text=["连接中","已断开","已连接"][Int(device.connectStatus().rawValue)]
             deviceName.text=device.settings.name
             deviceAdressLabel.text=device.settings.get(AttributeOfDevice, default: "我的家庭") as! String?
             switch OznerDeviceType.getType(type: (device?.type)!) {
             case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish,.Water_Bluetooth:
+                connectLabel.text=["连接中","已断开","已连接"][Int(device.connectStatus().rawValue)]
                 connectImg.image=UIImage(named: "device_icon_blutooth")//蓝牙图标
                 break
-            default:
+            case .Air_Wifi:
                 connectImg.image=UIImage(named: "device_icon_wifi")//Wifi图标
+                connectLabel.text=(device as! AirPurifier_MxChip).isOffline ? "已断开" : "已连接"
                 break
+            case .Water_Wifi:
+                connectImg.image=UIImage(named: "device_icon_wifi")//Wifi图标
+                connectLabel.text=(device as! WaterPurifier).isOffline ? "已断开" : "已连接"
+                break
+
             }
         }
     }
