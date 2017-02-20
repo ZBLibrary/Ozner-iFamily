@@ -106,7 +106,7 @@ class Air_WifiMainView: OznerDeviceView {
         didSet{
             if PM25_In != oldValue   {
                 if PM25_In == -1 || PM25_In == -2 {//-1 已关机,-2 已断开
-                    PM25ValueLabel.text = PM25_In == -2 ? "设备已断开":"设备已关机"
+                    PM25ValueLabel.text = PM25_In == -2 ? "设备云已断开":"设备已关机"
                     PM25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 35*width_screen/375)
                     return
                 }
