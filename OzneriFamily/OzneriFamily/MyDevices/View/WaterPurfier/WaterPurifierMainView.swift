@@ -231,7 +231,7 @@ class WaterPurifierMainView: OznerDeviceView {
             {
                 tdsContainerView.isHidden=true
                 offLineLabel.isHidden=false
-                offLineLabel.text="设备已断开"
+                offLineLabel.text="设备云已断开"
                 operation=(false,false,false)
             }else{
                 if (device as! WaterPurifier).status.power==false {
