@@ -16,20 +16,34 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
        self.dismiss(animated: false, completion: nil)
     }
     
-    var panGesture: UIGestureRecognizer?
+//    var panGesture: UIGestureRecognizer?
+    var leftPanGesture: UISwipeGestureRecognizer?
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = loadLanguage("选择设备")
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.handlePanGesture(_:)))
-        self.view.addGestureRecognizer(panGesture!)
-
+//        panGesture = UIPanGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.handlePanGesture(_:)))
+//        self.view.addGestureRecognizer(panGesture!)
+        
+        leftPanGesture = UISwipeGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.leftHandPanGesture(_:)))
+        self.view.addGestureRecognizer(leftPanGesture!)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.tableView.rowHeight=120*height_screen/667
+    }
+    
+    func leftHandPanGesture(_ panGesture: UISwipeGestureRecognizer) {
+        
+        
+        if panGesture.direction == .left{
+            
+                self.dismiss(animated: false, completion: nil)
+            
+        }
+        
     }
 
     func handlePanGesture(_ panGesture: UIPanGestureRecognizer) {

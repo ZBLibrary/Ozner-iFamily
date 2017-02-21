@@ -25,6 +25,7 @@ class ShareMoneyToWeChat: UIView {
     @IBAction func cancelClick(_ sender: AnyObject) {
         self.removeFromSuperview()
         //didRemoved!()
+       
     }
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
