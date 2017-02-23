@@ -2948,12 +2948,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bootomHideView" destination="HLU-gv-wMb" id="AwK-cc-1Db"/>
                         <outlet property="buyBtn" destination="Ogw-yY-HrQ" id="Kun-Oq-jh2"/>
                         <outlet property="chartContainerView" destination="Hsr-Xh-mTi" id="epv-eo-C02"/>
                         <outlet property="friendLb" destination="iwp-lO-HGf" id="zPd-Yt-DLe"/>
                         <outlet property="gaishanlb" destination="QQy-Ux-qzv" id="qGQ-c6-sMg"/>
                         <outlet property="healthLb" destination="1WC-9P-xAc" id="aDr-Ot-rFh"/>
                         <outlet property="rankLabel" destination="h1P-Ti-oek" id="A2V-P4-KsC"/>
+                        <outlet property="rightBtn" destination="gh4-nF-2cx" id="2c5-rI-fr5"/>
                         <outlet property="tdsLb" destination="4UU-Ga-tFV" id="hKG-ZH-pO8"/>
                         <outlet property="tdsStateImg" destination="Vyq-xH-OXa" id="oOS-Ye-AdS"/>
                         <outlet property="tdsStateLabel" destination="nUO-pm-Etw" id="ZFr-Xh-Q3F"/>
@@ -6365,7 +6367,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KXF-19-WIa">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>

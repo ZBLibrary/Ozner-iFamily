@@ -15,6 +15,8 @@ class CupTDSDetailController: BaseViewController {
         let img = OznerShareManager.getshareImage(rankValue, type: 1, value: 1, beat: beatValue, maxWater: 0)
         OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title: "浩泽净水家", shareImg: img)
     }
+    @IBOutlet weak var rightBtn: UIBarButtonItem!
+    @IBOutlet weak var bootomHideView: UIView!
     @IBOutlet var tdsValueLabel: UILabel!
     @IBOutlet var rankLabel: UILabel!
     @IBAction func ConsultingClick(_ sender: UIButton) {
@@ -46,6 +48,16 @@ class CupTDSDetailController: BaseViewController {
         buyBtn.setTitle(loadLanguage("购买净水器"), for: UIControlState.normal)
         zixunBtn.setTitle(loadLanguage("咨询"), for: UIControlState.normal)
         gaishanlb.text = loadLanguage("改善您的饮水健康")
+        if !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        {
+            bootomHideView.isHidden = true
+            zixunBtn.isHidden = true
+            self.navigationItem.rightBarButtonItem = nil
+        } else {
+            bootomHideView.isHidden = false
+            zixunBtn.isHidden = false
+        }
+
         let device = LoginManager.instance.currentDevice as! Cup
         tdsValue=device.sensor.tds==65535 ? 0 :device.sensor.tds
         tdsValueLabel.text = tdsValue==0 ? "-":"\(tdsValue)"
