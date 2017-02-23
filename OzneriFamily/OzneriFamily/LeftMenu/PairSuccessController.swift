@@ -63,6 +63,8 @@ class PairSuccessController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = loadLanguage("配对成功")
+        searchLb.text = loadLanguage("已搜索到的设备")
         loadImageandLb()
         setUpUI()
     }

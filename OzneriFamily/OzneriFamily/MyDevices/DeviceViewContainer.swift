@@ -217,11 +217,11 @@ extension DeviceViewContainer:OznerDeviceDelegate{
                 //解析当前状态
                 switch device.connectStatus() {
                 case Connecting:
-                    delegate.DeviceConnectStateChange!(stateDes: "正在连接中...")
+                    delegate.DeviceConnectStateChange!(stateDes: loadLanguage("正在连接中..."))
                 case Disconnect:
-                    delegate.DeviceConnectStateChange!(stateDes: "设备已断开")
+                    delegate.DeviceConnectStateChange!(stateDes:loadLanguage("设备已断开"))
                 case Connected:
-                    delegate.DeviceConnectStateChange!(stateDes: "设备已连接")
+                    delegate.DeviceConnectStateChange!(stateDes: loadLanguage("设备已连接"))
                 default://已连接
                     delegate.DeviceConnectStateChange!(stateDes: "")
                 }

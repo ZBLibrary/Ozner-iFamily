@@ -501,7 +501,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                                 
                             })
                             
-                            alertView.showInfo("发现新版本" + versionsInAppStore, subTitle: "此版本需要强制更新")
+                            alertView.showInfo("发现新版本" + versionsInAppStore, subTitle: desc)
                             
                             })
                     }
