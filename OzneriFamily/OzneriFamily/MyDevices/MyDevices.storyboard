@@ -2993,7 +2993,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TbG-Tj-4yG">
                                                 <rect key="frame" x="0.0" y="0.0" width="112" height="58"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日饮水完成" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5F-fH-mdR">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日饮水完成" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5F-fH-mdR" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="112" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.34509803919999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3025,7 +3025,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f34-Gx-pQu">
                                                 <rect key="frame" x="146" y="0.0" width="66" height="58"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="好友排名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZh-4G-mN5">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="好友排名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZh-4G-mN5" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="66" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.34509803919999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3314,7 +3314,7 @@
                                             <constraint firstItem="7jH-gW-P2p" firstAttribute="top" secondItem="los-SS-bT9" secondAttribute="top" id="QPg-R5-GFd"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="饮水量指数分布" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXj-Ge-fYY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="饮水量指数分布" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXj-Ge-fYY" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                         <rect key="frame" x="130.5" y="0.0" width="114.5" height="46"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3372,7 +3372,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYd-YT-C9z">
                                         <rect key="frame" x="0.0" y="33.5" width="375" height="112"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="改善您的饮水健康" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zML-dD-WFQ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="改善您的饮水健康" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zML-dD-WFQ" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                 <rect key="frame" x="118" y="17.5" width="139" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="bIB-FK-Ajf"/>
@@ -3578,12 +3578,15 @@
                         <outlet property="bottomLabel5" destination="YCg-mx-hiQ" id="j82-7x-Mo2"/>
                         <outlet property="bottomLabel6" destination="hRq-ns-gsl" id="5dr-eN-wFf"/>
                         <outlet property="bottomLabel7" destination="iqb-So-2OO" id="6xl-eh-LFb"/>
+                        <outlet property="buyBtn" destination="VZM-Bi-62g" id="7dh-3g-QVQ"/>
                         <outlet property="chartView" destination="5Ib-1D-ORI" id="j6b-o5-QP8"/>
                         <outlet property="drinkValueLabel" destination="SC7-V1-lQD" id="e4R-74-3nd"/>
+                        <outlet property="healthyBtn" destination="Du6-UE-ic5" id="vbk-Cf-ai9"/>
                         <outlet property="leftLabel1" destination="Q7d-iM-Fff" id="UNv-2T-XRV"/>
                         <outlet property="leftLabel2" destination="Hfs-7R-Ce4" id="E8j-t4-nlL"/>
                         <outlet property="leftLabel3" destination="Cg4-tH-qMO" id="F8Q-P7-dw6"/>
                         <outlet property="rankLabel" destination="qrg-E9-t16" id="UKp-NO-9rk"/>
+                        <outlet property="segement" destination="aTT-IU-ayU" id="hs9-3O-xdr"/>
                         <outlet property="tdsStateImg" destination="QZx-n8-qll" id="3mp-Gj-iOw"/>
                         <outlet property="tdsStateLabel" destination="laO-We-Q7h" id="y7x-Tp-VGU"/>
                         <outlet property="zixunBtn" destination="mjB-I7-qox" id="F9e-ro-ZHG"/>
@@ -3614,7 +3617,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVb-gi-Nwd">
                                                 <rect key="frame" x="0.0" y="0.0" width="112" height="58"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水温" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSj-1S-YCu">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水温" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSj-1S-YCu" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="33" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.34509803919999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3643,10 +3646,10 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwK-eB-0ia">
-                                                <rect key="frame" x="246" y="18" width="80" height="40"/>
+                                                <rect key="frame" x="226" y="18" width="100" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Pe1-So-vtH"/>
-                                                    <constraint firstAttribute="width" constant="80" id="a15-lO-AY8"/>
+                                                    <constraint firstAttribute="width" constant="100" id="a15-lO-AY8"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -3714,7 +3717,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KS5-SY-i3x">
                                         <rect key="frame" x="0.0" y="33.5" width="375" height="112"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="改善您的饮水健康" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnY-sv-JVI">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="改善您的饮水健康" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnY-sv-JVI" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                 <rect key="frame" x="118" y="17.5" width="139" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="DAq-Qb-yFi"/>
@@ -3906,10 +3909,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="水温" id="3U9-wc-9C2"/>
                     <connections>
+                        <outlet property="bootomHideView" destination="tvg-gR-N7l" id="HSa-vr-jX0"/>
+                        <outlet property="buyBtn" destination="Hvo-kw-reA" id="a1l-pr-nk8"/>
                         <outlet property="chartContainerview" destination="qRS-dY-JPj" id="z9I-sl-eSt"/>
+                        <outlet property="healthyBtn" destination="aME-Yj-O8u" id="rYi-Kv-wXh"/>
                         <outlet property="tempStateImg" destination="T8x-h7-gOE" id="EZQ-oC-fQq"/>
                         <outlet property="tempStateLabel" destination="wqe-Oc-1Zs" id="0T5-tJ-MTb"/>
                         <outlet property="tempValueLabel" destination="Fum-Rg-75f" id="pLL-Nn-HGX"/>
+                        <outlet property="zixunBtn" destination="IwK-eB-0ia" id="46F-T8-V8W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3J4-4y-j3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -7782,6 +7789,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aaL-mh-gXA"/>
-        <segue reference="bX4-9X-yAZ"/>
+        <segue reference="hVS-De-GoT"/>
     </inferredMetricsTieBreakers>
 </document>

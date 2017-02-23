@@ -19,8 +19,12 @@ class CupTemperatureController: BaseViewController {
     @IBOutlet var tempStateLabel: UILabel!
     
 
+    @IBOutlet weak var buyBtn: UIButton!
+    @IBOutlet weak var healthyBtn: UIButton!
+    @IBOutlet weak var zixunBtn: UIButton!
     //var chartContainerView: CupTDSChartContainerView!
     
+    @IBOutlet weak var bootomHideView: UIView!
     @IBOutlet var chartContainerview: UIView!
    
     @IBAction func buyWaterPurfier(_ sender: AnyObject) {
@@ -28,7 +32,21 @@ class CupTemperatureController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = loadLanguage("水温")
         let device = LoginManager.instance.currentDevice as! Cup
+        zixunBtn.setTitle(loadLanguage("咨询"), for: UIControlState.normal)
+        healthyBtn.setTitle(loadLanguage("健康水知道 "), for: UIControlState.normal)
+        buyBtn.setTitle(loadLanguage("购买净水器"), for: UIControlState.normal)
+        
+        if !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        {
+            zixunBtn.isHidden = true
+            bootomHideView.isHidden = true
+        } else {
+            zixunBtn.isHidden = false
+            bootomHideView.isHidden = false
+        }
+        
         let temp=device.sensor.temperature==65535 ? 0 :device.sensor.temperature
         switch true
         {

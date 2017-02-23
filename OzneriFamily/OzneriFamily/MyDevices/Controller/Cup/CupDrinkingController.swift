@@ -45,6 +45,9 @@ class CupDrinkingController: BaseViewController {
     }
     @IBOutlet var chartView: CupDrinkingChartView!
     
+    @IBOutlet weak var segement: UISegmentedControl!
+    @IBOutlet weak var buyBtn: UIButton!
+    @IBOutlet weak var healthyBtn: UIButton!
     @IBOutlet weak var zixunBtn: UIButton!
     @IBOutlet weak var bootomHideView: UIView!
     @IBOutlet var leftLabel1: UILabel!
@@ -68,15 +71,19 @@ class CupDrinkingController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = loadLanguage("饮水量")
-        
+        segement.setTitle(loadLanguage("日"), forSegmentAt: 0)
+        segement.setTitle(loadLanguage("周"), forSegmentAt: 1)
+        segement.setTitle(loadLanguage("月"), forSegmentAt: 2)
         let device = LoginManager.instance.currentDevice as! Cup
         let dateStr=NSDate().formattedDate(withFormat: "YYYY-MM-DD")+" 00:00:00"
         drinkGoal=Int(device.settings.get("drink", default: "2000") as! String)!
            zixunBtn.setTitle(loadLanguage("咨询"), for: UIControlState.normal)
+        buyBtn.setTitle(loadLanguage("购买净水器"), for: UIControlState.normal)
+        healthyBtn.setTitle(loadLanguage("健康水知道 "), for: UIControlState.normal)
         if !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
         {
-//          bootomHideView.isHidden = true
-//         zixunBtn.isHidden = true
+          bootomHideView.isHidden = true
+         zixunBtn.isHidden = true
         self.navigationItem.rightBarButtonItem = nil
         } else {
           bootomHideView.isHidden = false

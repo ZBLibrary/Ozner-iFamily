@@ -21,7 +21,7 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let backBtn = UIButton()
         
         backBtn.setImage(UIImage(named: "backBg"), for: UIControlState.normal)
