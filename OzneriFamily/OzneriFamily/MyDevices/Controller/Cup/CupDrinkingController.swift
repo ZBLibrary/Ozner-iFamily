@@ -45,6 +45,8 @@ class CupDrinkingController: BaseViewController {
     }
     @IBOutlet var chartView: CupDrinkingChartView!
     
+    @IBOutlet weak var zixunBtn: UIButton!
+    @IBOutlet weak var bootomHideView: UIView!
     @IBOutlet var leftLabel1: UILabel!
     @IBOutlet var leftLabel2: UILabel!
     @IBOutlet var leftLabel3: UILabel!
@@ -65,9 +67,21 @@ class CupDrinkingController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = loadLanguage("饮水量")
+        
         let device = LoginManager.instance.currentDevice as! Cup
         let dateStr=NSDate().formattedDate(withFormat: "YYYY-MM-DD")+" 00:00:00"
         drinkGoal=Int(device.settings.get("drink", default: "2000") as! String)!
+           zixunBtn.setTitle(loadLanguage("咨询"), for: UIControlState.normal)
+        if !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        {
+//          bootomHideView.isHidden = true
+//         zixunBtn.isHidden = true
+        self.navigationItem.rightBarButtonItem = nil
+        } else {
+          bootomHideView.isHidden = false
+            zixunBtn.isHidden = true
+        }
         if let record = device.volumes.getRecordBy(NSDate(string: dateStr, formatString: "YYYY-MM-DD hh:mm:ss") as Date!)
         {
             if drinkGoal==0 {

@@ -3060,10 +3060,10 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjB-I7-qox">
-                                                <rect key="frame" x="246" y="18" width="80" height="40"/>
+                                                <rect key="frame" x="226" y="18" width="100" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="PS0-20-Cg6"/>
-                                                    <constraint firstAttribute="width" constant="80" id="X1O-fL-V2d"/>
+                                                    <constraint firstAttribute="width" constant="100" id="X1O-fL-V2d"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -3570,6 +3570,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bootomHideView" destination="xPW-df-HNU" id="Pz1-DG-8KX"/>
                         <outlet property="bottomLabel1" destination="Kjh-NV-3u1" id="pNf-bd-cQm"/>
                         <outlet property="bottomLabel2" destination="hK8-e8-SXS" id="m7v-ky-t1M"/>
                         <outlet property="bottomLabel3" destination="Whk-Nw-Tkg" id="LPD-ni-I3X"/>
@@ -3585,6 +3586,7 @@
                         <outlet property="rankLabel" destination="qrg-E9-t16" id="UKp-NO-9rk"/>
                         <outlet property="tdsStateImg" destination="QZx-n8-qll" id="3mp-Gj-iOw"/>
                         <outlet property="tdsStateLabel" destination="laO-We-Q7h" id="y7x-Tp-VGU"/>
+                        <outlet property="zixunBtn" destination="mjB-I7-qox" id="F9e-ro-ZHG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mda-JT-jG4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -7779,7 +7781,7 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tbJ-jG-BG0"/>
         <segue reference="aaL-mh-gXA"/>
+        <segue reference="bX4-9X-yAZ"/>
     </inferredMetricsTieBreakers>
 </document>
