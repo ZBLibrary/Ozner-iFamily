@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         //注册微信//
         WXApi.registerApp("wx45a8cc642a2295b5", withDescription: "haoze")
         
-        
+        updateversion()
         Thread.sleep(forTimeInterval: 2)
         return true
     }
@@ -431,7 +431,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         UIApplication.shared.applicationIconBadgeNumber = 0
-        updateversion()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -484,7 +483,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                     DispatchQueue.main.async(execute: {
                             let alertView = SCLAlertView()
                             alertView.addButton("前往更新 ", action: {
-                                let url = "https://itunes.apple.com/cn/app/fm-lu-xing-jie-ban-lu-xing/id955305764?mt=8";
+                                let url = "https://itunes.apple.com/cn/app/fm-lu-xing-jie-ban-lu-xing/id1153485553?mt=8";
                                 UIApplication.shared.openURL(URL(string: url)!)
                                 
                             })
@@ -496,12 +495,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                         DispatchQueue.main.async(execute: {
                             let alertView = SCLAlertView()
                             alertView.addButton("前往更新 ", action: {
-                                let url = "https://itunes.apple.com/cn/app/fm-lu-xing-jie-ban-lu-xing/id955305764?mt=8";
+                                let url = "https://itunes.apple.com/cn/app/fm-lu-xing-jie-ban-lu-xing/id1153485553?mt=8";
                                 UIApplication.shared.openURL(URL(string: url)!)
                                 
                             })
                             
-                            alertView.showInfo("发现新版本" + versionsInAppStore, subTitle: "此版本需要强制更新")
+                            alertView.showInfo("发现新版本" + versionsInAppStore, subTitle: desc)
                             
                             })
                     }
