@@ -85,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
        
 //        let userSetting = UIUserNotificationSettings(types:myTypes, categories:nil)
 //        UIApplication.shared.registerUserNotificationSettings(userSetting)
+        Bugly.start(withAppId: "78bbbe1a43")
         BPush.disableLbs()//禁用地理位置
         BPush.registerChannel(launchOptions, apiKey: "7nGBGzSxkIgjpEHHusrgdobS", pushMode: BPushMode.production, withFirstAction: nil, withSecondAction: nil, withCategory: nil, useBehaviorTextInput: false, isDebug: false)
         BPush.description()
@@ -162,7 +163,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         print(deviceToken)
         
         BPush.bindChannel(completeHandler: { (result, error) -> Void in
-            print(result)
+
             if ((result) != nil) {
 
                 BPush.setTag("GYMytag", withCompleteHandler: { (result, error) in
@@ -446,7 +447,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         
         let session = URLSession.shared
         
-        let request = NSMutableURLRequest(url: URL(string: "https://api.github.com/repos/ozner-app-ios-org/updateApi/contents/iFamily/iFamily.json")!)
+        let request = NSMutableURLRequest(url: URL(string: "https://api.github.com/repos/ozner-app-ios-org/updateApi/contents/InesUpdateFile/inse.json")!)
         
         request.httpMethod = "GET"
         request.timeoutInterval = 10
