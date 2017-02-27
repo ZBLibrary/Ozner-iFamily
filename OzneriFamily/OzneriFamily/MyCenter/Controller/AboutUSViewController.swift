@@ -28,7 +28,7 @@ class AboutUSViewController: BaseViewController {
     }
     //评个分吧
     @IBAction func GiveScore(sender: AnyObject) {
-        let str = "itms-apps://itunes.apple.com/app/id955305764"
+        let str = "itms-apps://itunes.apple.com/app/id1153485553"
         UIApplication.shared.openURL(NSURL(string: str)! as URL)
     }
 
