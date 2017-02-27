@@ -18,7 +18,7 @@ var appDelegate: AppDelegate {
 }
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotificationCenterDelegate,CLLocationManagerDelegate {
-
+    
     var window: UIWindow? = {
         return UIWindow(frame: UIScreen.main.bounds)
     }()
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
     private var currentCoordinate: CLLocationCoordinate2D?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
- 
+        
         
         
         window?.backgroundColor = UIColor.white
@@ -37,12 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
             LoginManager.instance.mainTabBarController?.loadTabBar()
             LoginManager.instance.mainTabBarController?.modalTransitionStyle = .crossDissolve
             window?.rootViewController = LoginManager.instance.mainTabBarController
-
+            
         }) { (error) in
             window?.rootViewController = LoginManager.instance.loginViewController
-
+            
         }
-
+        
         window!.makeKeyAndVisible()
         //开启IQKEyBoard
         IQKeyboardManager.shared().isEnabled = true
@@ -52,22 +52,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         myTypes.insert(UIUserNotificationType.sound)
         myTypes.insert(UIUserNotificationType.badge)
         myTypes.insert(UIUserNotificationType.alert)
-   
-//        if #available(iOS 10.0, *) {
-//            let notifiCenter = UNUserNotificationCenter.current()
-//            notifiCenter.delegate = self
-//            let types = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
-//            notifiCenter.requestAuthorization(options: types) { (flag, error) in
-//                if flag {
-//                   print("iOS request notification success")
-//                }else{
-//                    print(" iOS 10 request notification fail")
-//                }
-//            }
-//        } else { //iOS8,iOS9注册通知
-            let setting = UIUserNotificationSettings(types: [UIUserNotificationType.alert,UIUserNotificationType.sound,UIUserNotificationType.badge], categories: nil)
-            UIApplication.shared.registerUserNotificationSettings(setting)
-//        }
+        
+        //        if #available(iOS 10.0, *) {
+        //            let notifiCenter = UNUserNotificationCenter.current()
+        //            notifiCenter.delegate = self
+        //            let types = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
+        //            notifiCenter.requestAuthorization(options: types) { (flag, error) in
+        //                if flag {
+        //                   print("iOS request notification success")
+        //                }else{
+        //                    print(" iOS 10 request notification fail")
+        //                }
+        //            }
+        //        } else { //iOS8,iOS9注册通知
+        let setting = UIUserNotificationSettings(types: [UIUserNotificationType.alert,UIUserNotificationType.sound,UIUserNotificationType.badge], categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(setting)
+        //        }
         
         UIApplication.shared.registerForRemoteNotifications()
         
@@ -82,13 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         
         locateManage?.desiredAccuracy = kCLLocationAccuracyBest
         locateManage?.startUpdatingHeading()
-       
-//        let userSetting = UIUserNotificationSettings(types:myTypes, categories:nil)
-//        UIApplication.shared.registerUserNotificationSettings(userSetting)
+        
+        //        let userSetting = UIUserNotificationSettings(types:myTypes, categories:nil)
+        //        UIApplication.shared.registerUserNotificationSettings(userSetting)
+        Bugly.start(withAppId: "78bbbe1a43")
         BPush.disableLbs()//禁用地理位置
         BPush.registerChannel(launchOptions, apiKey: "7nGBGzSxkIgjpEHHusrgdobS", pushMode: BPushMode.production, withFirstAction: nil, withSecondAction: nil, withCategory: nil, useBehaviorTextInput: false, isDebug: false)
         BPush.description()
-//        BPush.debugDescription()
+        //        BPush.debugDescription()
         //注册微信//
         WXApi.registerApp("wx45a8cc642a2295b5", withDescription: "haoze")
         
@@ -111,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         application.registerForRemoteNotifications()
     }
     
-  
+    
     
     func onReq(_ req: BaseReq!) {
         
@@ -162,9 +163,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         print(deviceToken)
         
         BPush.bindChannel(completeHandler: { (result, error) -> Void in
-            print(result)
+            
             if ((result) != nil) {
-
+                
                 BPush.setTag("GYMytag", withCompleteHandler: { (result, error) in
                     if (result != nil) {
                         print("设置tag成功")
@@ -178,10 +179,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         print("DeviceToken 获取失败:\(error)")
     }
     
-   
+    
     //iOS 8/9
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-    
+        
         BPush.handleNotification(userInfo)
         completionHandler(UIBackgroundFetchResult.newData)
         
@@ -191,7 +192,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         var data_baidu:String?
         
         for (k,v) in WaterJson {
-          
+            
             if k == "action" {
                 action_baidu = v as? String ?? ""
             }
@@ -201,44 +202,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
             }
             
         }
-
-            if action_baidu == "chat" {
-                AudioServicesPlaySystemSound(1007)
-                loadKeFuMessage(data_baidu!)
-            
-            }
         
-//        if application.applicationState ==  UIApplicationState.active {
-//            //不做任何处理
-//            if action_baidu == "chat" {
-//                AudioServicesPlaySystemSound(1007)
-//                loadKeFuMessage(data_baidu!)
-//
-//            }
-//            
-//        }  else {
-//            
-//            if action_baidu == "chat" {
-//                UIApplication.shared.applicationIconBadgeNumber = 1
-//                loadKeFuMessage(data_baidu!)
-//                //跳转聊天界面
-//                DispatchQueue.main.async {
-//                    
-//                    let alert = SCLAlertView()
-//                    _ = alert.addButton("跳转吧", action: {})
-//                    _ = alert.showInfo("点击了", subTitle: "123")
-////                    LoginManager.instance.mainTabBarController?.selectedIndex = 2
-//                }
-//            }
-//            
-//        }
+        if action_baidu == "chat" {
+            AudioServicesPlaySystemSound(1007)
+            loadKeFuMessage(data_baidu!)
+            
+        }
+        
+        //        if application.applicationState ==  UIApplicationState.active {
+        //            //不做任何处理
+        //            if action_baidu == "chat" {
+        //                AudioServicesPlaySystemSound(1007)
+        //                loadKeFuMessage(data_baidu!)
+        //
+        //            }
+        //
+        //        }  else {
+        //
+        //            if action_baidu == "chat" {
+        //                UIApplication.shared.applicationIconBadgeNumber = 1
+        //                loadKeFuMessage(data_baidu!)
+        //                //跳转聊天界面
+        //                DispatchQueue.main.async {
+        //
+        //                    let alert = SCLAlertView()
+        //                    _ = alert.addButton("跳转吧", action: {})
+        //                    _ = alert.showInfo("点击了", subTitle: "123")
+        ////                    LoginManager.instance.mainTabBarController?.selectedIndex = 2
+        //                }
+        //            }
+        //
+        //        }
         
         if action_baidu == "NewFriend" {
             //别人接受我的请求－－－－通知
         }
         
         if action_baidu == "NewFriendVF"{
-             //别人请求添加我为好友 －－－通知
+            //别人请求添加我为好友 －－－通知
             
         }
         
@@ -262,154 +263,154 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
             }
             if data_baidu!.contains((User.currentUser?.usertoken)!)
             {
-                    
+                
             }
             else
             {
-                    //账号被人登录了
-               let alert=UIAlertView(title: loadLanguage("提示"), message: loadLanguage("账号在另一台设备上登录了，请重新登录"), delegate: self, cancelButtonTitle: loadLanguage("确定"))
+                //账号被人登录了
+                let alert=UIAlertView(title: loadLanguage("提示"), message: loadLanguage("账号在另一台设备上登录了，请重新登录"), delegate: self, cancelButtonTitle: loadLanguage("确定"))
                 alert.show()
             }
             
         }
         
     }
-
+    
     
     func loadKeFuMessage(_ str:String){
         
-            let msg = str
+        let msg = str
+        
+        if !msg.contains("<div style=") {
             
-            if !msg.contains("<div style=") {
-                
+            let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+            
+            conModel.type = ChatType.Content.rawValue
+            conModel.userId = "0"
+            conModel.content = msg
+            CoreDataManager.defaultManager.saveChanges()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
+            return
+            
+        }
+        
+        
+        if msg.contains("<div style=") && !msg.contains("src=") {
+            
+            let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+            
+            conModel.type = ChatType.Content.rawValue
+            conModel.userId = "0"
+            
+            let range1 = msg.range(of: "雅黑\">")
+            let range2 = msg.range(of: "</div>")
+            conModel.content = msg.substring(with: (range1?.upperBound)!..<(range2?.lowerBound)!)
+            
+            CoreDataManager.defaultManager.saveChanges()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
+            return
+            
+        }
+        
+        if msg.contains("<div style=") && msg.contains("src=") {
+            
+            var imageStr = ""
+            if msg.contains(".gif") {
+                //                        let range1 = msg.range(of: "http")
+                //                        let range2 = msg.range(of: ".gif")
+                //                        imageStr = msg.substring(with: (range1?.lowerBound)!..<(range2?.upperBound)!)
                 let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-                
+                conModel.content =  msg
                 conModel.type = ChatType.Content.rawValue
                 conModel.userId = "0"
-                conModel.content = msg
                 CoreDataManager.defaultManager.saveChanges()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
                 return
-                
             }
+            let arrStr = msg.components(separatedBy: "http")
             
-            
-            if msg.contains("<div style=") && !msg.contains("src=") {
+            //如果只有一个url
+            if arrStr.count == 2 {
                 
-                let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-                
-                conModel.type = ChatType.Content.rawValue
-                conModel.userId = "0"
-                
-                let range1 = msg.range(of: "雅黑\">")
-                let range2 = msg.range(of: "</div>")
-                conModel.content = msg.substring(with: (range1?.upperBound)!..<(range2?.lowerBound)!)
-                
-                CoreDataManager.defaultManager.saveChanges()
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
-                return
-                
-            }
-            
-            if msg.contains("<div style=") && msg.contains("src=") {
-                
-                var imageStr = ""
-                if msg.contains(".gif") {
-                    //                        let range1 = msg.range(of: "http")
-                    //                        let range2 = msg.range(of: ".gif")
-                    //                        imageStr = msg.substring(with: (range1?.lowerBound)!..<(range2?.upperBound)!)
+                if  msg.contains("<img id=\"imgUpload\"") && msg.contains("微软雅黑\"><img") && msg.contains("\"></div>") {
+                    
+                    let range1 = msg.range(of: "http")
+                    let range2 = msg.range(of: "\"></div>")
+                    imageStr = msg.substring(with: (range1?.lowerBound)!..<(range2?.lowerBound)!)
+                    
                     let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-                    conModel.content =  msg
-                    conModel.type = ChatType.Content.rawValue
+                    conModel.content =  imageStr
+                    conModel.type = ChatType.IMAGE.rawValue
                     conModel.userId = "0"
+                    
                     CoreDataManager.defaultManager.saveChanges()
+                    
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
                     return
-                }
-                let arrStr = msg.components(separatedBy: "http")
-                
-                //如果只有一个url
-                if arrStr.count == 2 {
-
-                    if  msg.contains("<img id=\"imgUpload\"") && msg.contains("微软雅黑\"><img") && msg.contains("\"></div>") {
-                        
-                        let range1 = msg.range(of: "http")
-                        let range2 = msg.range(of: "\"></div>")
-                        imageStr = msg.substring(with: (range1?.lowerBound)!..<(range2?.lowerBound)!)
-                        
-                        let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-                        conModel.content =  imageStr
-                        conModel.type = ChatType.IMAGE.rawValue
-                        conModel.userId = "0"
-                        
-                        CoreDataManager.defaultManager.saveChanges()
-                        
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
-                        return
-                        
-                    }
                     
                 }
                 
-                if arrStr.count > 2 {
-                    
-                    let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
-                    conModel.content =  msg
-                    conModel.type = ChatType.Content.rawValue
-                    conModel.userId = "0"
-                    
-                    CoreDataManager.defaultManager.saveChanges()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
-                    
-                }
+            }
+            
+            if arrStr.count > 2 {
+                
+                let conModel =  CoreDataManager.defaultManager.create(entityName: "ConsultModel") as! ConsultModel
+                conModel.content =  msg
+                conModel.type = ChatType.Content.rawValue
+                conModel.userId = "0"
+                
+                CoreDataManager.defaultManager.saveChanges()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KeFuMessage"), object: nil)
                 
             }
             
         }
+        
+    }
     
     
     /*
-    @available(iOS 10.0, *)//前台
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print(notification.request.content.userInfo)
-        completionHandler([.sound,.alert])
-        DispatchQueue.main.async {
-            
-            let alert = SCLAlertView()
-            
-            _ = alert.showInfo("shoudaol", subTitle: "123")
-            
-            _ = alert.addButton("ahode", action: {})
-            
-            
-        }
-    }
-    
-    @available(iOS 10.0, *)//后台点击
-    private func userNotificationCenter(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void){
-        let userInfo = response.notification.request.content.userInfo
-        print("userInfo10:\(userInfo)")
-        completionHandler()
-        
-        DispatchQueue.main.async {
-            
-            let alert = SCLAlertView()
-            
-            _ = alert.showInfo("shoudaol", subTitle: "123")
-            
-            _ = alert.addButton("ahode", action: {})
-            
-            
-        }
-        
-       
-    }
-    
-    */
+     @available(iOS 10.0, *)//前台
+     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+     print(notification.request.content.userInfo)
+     completionHandler([.sound,.alert])
+     DispatchQueue.main.async {
+     
+     let alert = SCLAlertView()
+     
+     _ = alert.showInfo("shoudaol", subTitle: "123")
+     
+     _ = alert.addButton("ahode", action: {})
+     
+     
+     }
+     }
+     
+     @available(iOS 10.0, *)//后台点击
+     private func userNotificationCenter(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void){
+     let userInfo = response.notification.request.content.userInfo
+     print("userInfo10:\(userInfo)")
+     completionHandler()
+     
+     DispatchQueue.main.async {
+     
+     let alert = SCLAlertView()
+     
+     _ = alert.showInfo("shoudaol", subTitle: "123")
+     
+     _ = alert.addButton("ahode", action: {})
+     
+     
+     }
+     
+     
+     }
+     
+     */
     func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
         
         print(userInfo)
-     
+        
         
     }
     func application(_ application: UIApplication, didFailToContinueUserActivityWithType userActivityType: String, error: Error) {
@@ -419,20 +420,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
     func applicationWillResignActive(_ application: UIApplication) {
         
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         if UserDefaults.standard.value(forKey: UserDefaultsUserIDKey) != nil {
@@ -446,7 +447,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         
         let session = URLSession.shared
         
-        let request = NSMutableURLRequest(url: URL(string: "https://api.github.com/repos/ozner-app-ios-org/updateApi/contents/iFamily/iFamily.json")!)
+        let request = NSMutableURLRequest(url: URL(string: "https://api.github.com/repos/ozner-app-ios-org/updateApi/contents/InesUpdateFile/inse.json")!)
         
         request.httpMethod = "GET"
         request.timeoutInterval = 10
@@ -480,7 +481,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                     
                     if updateType == "optional"{
                         
-                    DispatchQueue.main.async(execute: {
+                        DispatchQueue.main.async(execute: {
                             let alertView = SCLAlertView()
                             alertView.addButton("前往更新 ", action: {
                                 let url = "https://itunes.apple.com/cn/app/fm-lu-xing-jie-ban-lu-xing/id1153485553?mt=8";
@@ -502,7 +503,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                             
                             alertView.showInfo("发现新版本" + versionsInAppStore, subTitle: desc)
                             
-                            })
+                        })
                     }
                     
                 } else {
@@ -540,13 +541,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                         let placemark: CLPlacemark? = pms?.last
                         
                         if let mark = placemark {
-
+                            
                             let locality = mark.locality ?? ""
                             
                             //保存定位地址
                             if locality.contains("市") {
-                               
-                             let str = locality.replacingOccurrences(of: "市", with: "")
+                                
+                                let str = locality.replacingOccurrences(of: "市", with: "")
                                 
                                 UserDefaults.standard.setValue(str, forKey: "GYCITY")
                                 UserDefaults.standard.synchronize()
@@ -555,7 +556,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                                 UserDefaults.standard.setValue(locality, forKey: "GYCITY")
                                 UserDefaults.standard.synchronize()
                             }
-
+                            
                             self.locateManage?.stopUpdatingLocation()
                         }
                         
@@ -570,8 +571,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         
     }
     
-
-
-
+    
+    
+    
 }
 

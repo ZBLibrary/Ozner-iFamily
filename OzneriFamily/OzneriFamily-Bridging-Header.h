@@ -10,7 +10,7 @@
 #import "UICountingLabel/UICountingLabel.h"
 //#import "IQKeyboardManager.h"
 
-
+#import <Bugly/Bugly.h>
 //OznerLibrary 浩泽库
 #import "OznerManager.h"
 #import "TapManager.h"
