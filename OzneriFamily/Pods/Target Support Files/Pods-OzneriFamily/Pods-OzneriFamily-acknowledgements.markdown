@@ -1,11 +1,6 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## Bugly
-
-Copyright 2016 tencent.com. All rights reserved.
-
-
 ## DateTools
 
 The MIT License (MIT)
