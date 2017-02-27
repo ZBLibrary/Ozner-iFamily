@@ -11,6 +11,7 @@ import UIKit
 class SetDeviceNameController: BaseViewController {
 
    
+    @IBOutlet weak var addressLb: GYLabel!
     @IBAction func SaveClick(_ sender: AnyObject) {
         let vcs=self.navigationController?.viewControllers
         let vc=self.navigationController?.viewControllers[(vcs?.count)!-2] as! DeviceSettingController
@@ -43,21 +44,23 @@ class SetDeviceNameController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
+        addressLb.text = loadLanguage("使用地点")
         var attri:[Int:String]!
         
         switch OznerDeviceType.getType(type: LoginManager.instance.currentDevice.type){
         case OznerDeviceType.Cup:
-            attri=[0:"我的水杯",1:"家人水杯"]
+            attri=[0:loadLanguage("我的水杯"),1:loadLanguage("家人水杯")]
         case .Tap,.TDSPan:
-            attri=[0:"洗手间",1:"厨房"]
+            attri=[0:loadLanguage("洗手间"),1:loadLanguage("厨房")]
         case .Water_Wifi:
-            attri=[0:"家",1:"办公室"]
+            attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
         case .Air_Blue,.Air_Wifi:
-            attri=[0:"客厅",1:"卧室"]
+            attri=[0:loadLanguage("客厅"),1:loadLanguage("卧室")]
         case .WaterReplenish:
-            attri=[0:"办公室",1:"家"]
+            attri=[0:loadLanguage("办公室"),1:loadLanguage("家")]
         case .Water_Bluetooth:
-            attri=[0:"家",1:"办公室"]
+            attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
         }
         attributeName0.text=attri[0]
         attributeName1.text=attri[1]

@@ -41,7 +41,7 @@ class CupCustomPickerView: UIView,UIPickerViewDelegate {
         return pickerData.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(pickerData[row])分钟"
+        return "\(pickerData[row])" + loadLanguage("分钟")
     }
     var currRow = 0
     

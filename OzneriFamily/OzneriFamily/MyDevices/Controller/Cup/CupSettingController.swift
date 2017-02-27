@@ -20,6 +20,7 @@ class CupSettingController: DeviceSettingController {
     @IBOutlet var weightTF: UITextField!
     @IBOutlet var drinkingLabel: UITextField!
     
+    @IBOutlet weak var deleteBtn: UIButton!
     //今日状态
     @IBOutlet var todayStateButton1: UIButton!
     @IBOutlet var todayStateButton2: UIButton!
@@ -52,7 +53,7 @@ class CupSettingController: DeviceSettingController {
         let index=[15:0,30:1,45:2,60:3,120:4][timeSpace]
         pickDateView.setView(valueIndex: index!, OKClick: { (value) in
             (self.deviceSetting as! CupSettings).remindInterval=uint(value)
-            self.drinkRemindSpaceLabel.text="\(value%60+value/60)"+(value>=60 ? "小时":"分钟")
+            self.drinkRemindSpaceLabel.text="\(value%60+value/60)"+(value>=60 ? loadLanguage("小时"):loadLanguage("分钟"))
             self.pickDateView.removeFromSuperview()
         }) {
             self.pickDateView.removeFromSuperview()
@@ -74,15 +75,18 @@ class CupSettingController: DeviceSettingController {
     }
     
     @IBAction func segmentClick(_ sender: UISegmentedControl) {
-        segLabel1.text = sender.selectedSegmentIndex==0 ? "25°C以下":"健康"
-        segLabel2.text = sender.selectedSegmentIndex==0 ? "25°C-50°C":"一般"
-        segLabel3.text = sender.selectedSegmentIndex==0 ? "50°C以上":"较差"
+        segLabel1.text = sender.selectedSegmentIndex==0 ? loadLanguage("25°C以下"):loadLanguage("健康")
+        segLabel2.text = sender.selectedSegmentIndex==0 ? loadLanguage("25°C-50°C"):loadLanguage("一般")
+        segLabel3.text = sender.selectedSegmentIndex==0 ? loadLanguage("50°C以上"):loadLanguage("较差")
     
     }
     @IBOutlet var segLabel1: UILabel!
     @IBOutlet var segLabel2: UILabel!
     @IBOutlet var segLabel3: UILabel!
     
+    @IBOutlet weak var aboutView: UIView!
+    @IBOutlet weak var tempSegement: UISegmentedControl!
+    @IBOutlet weak var zhuyilb: GYLabel!
     @IBAction func deletClick(_ sender: AnyObject) {
         super.deleteDevice()
     }
@@ -90,8 +94,21 @@ class CupSettingController: DeviceSettingController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameAndAttrLabel.text=self.getNameAndAttr()
+        self.title = loadLanguage("设置")
+        self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
+        zhuyilb.text = loadLanguage("电池低于10%,光圈双闪")
+        deleteBtn.setTitle(loadLanguage("删除此设备"), for: UIControlState.normal)
+        tempSegement.setTitle(loadLanguage("饮水温度"), forSegmentAt: 0)
+        tempSegement.setTitle(loadLanguage("饮水纯净指数TDS"), forSegmentAt: 1)
         weightTF.text=self.deviceSetting.get("weight", default: "56") as! String?
         drinkingLabel.text=self.deviceSetting.get("drink", default: "2000") as! String?
+        
+        if !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber) {
+            
+            aboutView.removeFromSuperview()
+            
+        }
+        
         for i in 0...3 {
             let buttonStateIsOn = (self.deviceSetting.get("todayState\(i+1)", default: "false") as! String)=="true"
             let imgName = [false:["setmystate1","setmystate2","setmystate3","setmystate4"],
@@ -112,7 +129,7 @@ class CupSettingController: DeviceSettingController {
         pickDateView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
         
         let timeSpace = Int((self.deviceSetting as! CupSettings).remindInterval)
-         self.drinkRemindSpaceLabel.text="\(timeSpace%60+timeSpace/60)"+(timeSpace>=60 ? "小时":"分钟")
+         self.drinkRemindSpaceLabel.text="\(timeSpace%60+timeSpace/60)"+(timeSpace>=60 ? loadLanguage("小时"):loadLanguage("分钟"))
     }
     func weightTFDone(){
         //体重

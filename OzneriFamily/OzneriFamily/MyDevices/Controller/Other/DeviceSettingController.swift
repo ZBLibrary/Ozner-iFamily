@@ -40,7 +40,7 @@ class DeviceSettingController: BaseViewController {
         deviceSetting.put("usingSite", value: attr)
     }
     func getNameAndAttr() -> String {
-        return deviceSetting.name+"("+(deviceSetting.get("usingSite", default: "办公室") as! String)+")"
+        return deviceSetting.name+"("+(deviceSetting.get("usingSite", default:loadLanguage("办公室")) as! String)+")"
     }
     func deleteDevice()
     {
