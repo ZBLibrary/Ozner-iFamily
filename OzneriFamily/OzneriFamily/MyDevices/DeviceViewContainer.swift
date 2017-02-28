@@ -289,7 +289,7 @@ extension DeviceViewContainer{
                     let alert=SCLAlertView(appearance: appearance)
                     _=alert.addButton(loadLanguage(loadLanguage("现在去购买滤芯"))) {
                         //跳到购买滤芯的页面
-                        weakSelf?.delegate.DeviceViewPerformSegue!(SegueID: "showBuyLvXin", sender: ["title":"净水器滤芯","url":NetworkManager.defaultManager?.UrlWithRoot(url!)])
+                        weakSelf?.delegate.DeviceViewPerformSegue!(SegueID: "showBuyLvXin", sender: ["title":loadLanguage("净水器滤芯"),"url":NetworkManager.defaultManager?.UrlWithRoot(url!)])
                     }
                     _=alert.addButton(loadLanguage("我知道了"), action:{})
                     _=alert.showInfo("", subTitle: loadLanguage("你的滤芯即将到期，请及时更换滤芯，以免耽误您的使用"))

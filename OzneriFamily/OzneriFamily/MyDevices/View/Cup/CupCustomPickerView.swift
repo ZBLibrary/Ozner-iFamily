@@ -18,6 +18,14 @@ class CupCustomPickerView: UIView,UIPickerViewDelegate {
     }
     @IBOutlet var pickerView: UIPickerView!
     
+    @IBOutlet weak var sureBnt: UIButton!
+    @IBOutlet weak var cancleBtn: UIButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        sureBnt.setTitle(loadLanguage("确定"), for: UIControlState.normal)
+        cancleBtn.setTitle(loadLanguage("取消"), for: UIControlState.normal)
+    }
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {

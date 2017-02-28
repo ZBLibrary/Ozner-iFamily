@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,8 +18,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCP-Mx-dHQ">
+                    <rect key="frame" x="0.0" y="434.5" width="375" height="232.5"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月水质纯净指数分布" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSN-06-usq">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月水质纯净指数分布" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSN-06-usq" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                            <rect key="frame" x="20" y="15.5" width="168" height="18"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -25,27 +30,35 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ld-E8-rzw">
+                            <rect key="frame" x="0.0" y="33.5" width="375" height="199"/>
                             <subviews>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MY3-gx-7N3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDd-7o-tHX">
+                                            <rect key="frame" x="5" y="143.5" width="365" height="55.5"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bD-i9-KQr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="365" height="0.5"/>
                                                     <color key="backgroundColor" red="0.89782440659999996" green="0.90195995569999998" blue="0.90598070620000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="8oA-3e-Z0e"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zy-VJ-yaT">
+                                                    <rect key="frame" x="0.0" y="26.5" width="365" height="29"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aei-Uh-fe1">
+                                                            <rect key="frame" x="10" y="0.0" width="68.5" height="13"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="健康(17%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIW-dQ-ijt">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="健康(17%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIW-dQ-ijt" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                                    <rect key="frame" x="14" y="0.0" width="54.5" height="13"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                                     <color key="textColor" red="0.16998475790000001" green="0.51475077869999997" blue="0.94249087570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOg-ky-9Td">
+                                                                    <rect key="frame" x="0.0" y="1" width="11" height="11"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="WOg-ky-9Td" secondAttribute="height" id="6yi-Wy-5W6"/>
@@ -77,13 +90,16 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26Q-da-WS7">
+                                                            <rect key="frame" x="147" y="0.0" width="71.5" height="13"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般(65%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4w-kl-7zC">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般(65%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4w-kl-7zC" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                                    <rect key="frame" x="14" y="0.0" width="57.5" height="13"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                                     <color key="textColor" red="0.45430004600000001" green="0.33254387969999999" blue="0.94756072759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBB-6H-qxE">
+                                                                    <rect key="frame" x="0.0" y="1" width="11" height="11"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="eBB-6H-qxE" secondAttribute="height" id="rJN-0Q-cNG"/>
@@ -115,13 +131,16 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5m-Vy-Mu1">
+                                                            <rect key="frame" x="290.5" y="0.0" width="69.5" height="13"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="较差(18%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPN-oH-hIf">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="较差(18%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPN-oH-hIf" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                                    <rect key="frame" x="14" y="0.0" width="55.5" height="13"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                                     <color key="textColor" red="0.95416659120000002" green="0.41542607549999999" blue="0.42040103670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FcU-xE-Wqk">
+                                                                    <rect key="frame" x="0.0" y="1" width="11" height="11"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="FcU-xE-Wqk" secondAttribute="height" id="jN7-Hy-jYP"/>
@@ -164,21 +183,25 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5T-pC-t7B">
+                                                    <rect key="frame" x="22.5" y="3" width="4" height="10"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="8"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sck-8S-adf">
+                                                    <rect key="frame" x="26.5" y="3" width="113" height="10"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="8"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qo-H6-bEp">
+                                                    <rect key="frame" x="139.5" y="3" width="112.5" height="10"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="8"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fl-g9-WRJ">
+                                                    <rect key="frame" x="252" y="3" width="113" height="10"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="8"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -206,10 +229,13 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uxd-p0-FHw">
+                                            <rect key="frame" x="5" y="0.0" width="365" height="143.5"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uA5-DV-Cmj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="18.5" height="143.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="较差" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2L-Ep-my0">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="较差" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2L-Ep-my0" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="10" width="18.5" height="11"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="11" id="fKg-kL-0Pb"/>
                                                             </constraints>
@@ -217,7 +243,8 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="健康" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="met-c3-B7C">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="健康" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="met-c3-B7C" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="110" width="18.5" height="11"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="11" id="yAT-UC-hmO"/>
                                                             </constraints>
@@ -225,7 +252,8 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2t-Yl-kAb">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2t-Yl-kAb" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="21" width="18.5" height="89"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="9"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -246,6 +274,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlx-gT-P87" customClass="LineChartView" customModule="OzneriFamily" customModuleProvider="target">
+                                                    <rect key="frame" x="23.5" y="15" width="341.5" height="128.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
@@ -297,17 +326,22 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ms-g0-3SJ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="434.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bV-B6-NUP" customClass="CupHeadCircleView" customModule="OzneriFamily" customModuleProvider="target">
+                            <rect key="frame" x="32.5" y="135" width="310" height="165"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="击败了0%的用户" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTN-sg-UeU">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="击败了0%的用户" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTN-sg-UeU" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                    <rect key="frame" x="95" y="145.5" width="120" height="19.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70g-x4-vOK">
+                                    <rect key="frame" x="105" y="71" width="100.5" height="74.5"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfF-1N-ba1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfF-1N-ba1" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="14.5" width="100.5" height="45"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
                                             <color key="textColor" red="0.22552007439999999" green="0.44347250459999998" blue="0.86721867320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -325,8 +359,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ify-1q-kKl">
+                                    <rect key="frame" x="95" y="32.5" width="120" height="38.5"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水质纯净值TDS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exT-nU-TIZ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水质纯净值TDS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exT-nU-TIZ" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="17"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                             <color key="textColor" red="0.22552007439999999" green="0.44347250459999998" blue="0.86721867320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -334,7 +370,8 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQW-SV-PBx">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQW-SV-PBx" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                            <rect key="frame" x="46.5" y="22.5" width="27" height="16"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                             <color key="textColor" red="0.22552007439999999" green="0.44347250459999998" blue="0.86721867320000001" alpha="0.7965724032" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -343,6 +380,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="baobiao" translatesAutoresizingMaskIntoConstraints="NO" id="Kkx-qP-rJF">
+                                            <rect key="frame" x="22.5" y="22.5" width="16" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Kkx-qP-rJF" secondAttribute="height" multiplier="1:1" id="CGB-mL-34Y"/>
                                             </constraints>

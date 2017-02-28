@@ -13,6 +13,9 @@ class TapLvXinController: BaseViewController {
     //var isShowScanView = true
     var waterPurfierData:[String:Any]?
     
+    @IBOutlet weak var hideView3: UIView!
+    @IBOutlet weak var hideView2: UIView!
+    @IBOutlet weak var hideView1: UIView!
     //滤芯
     @IBOutlet var lvxinDaysLabel: UILabel!
     @IBOutlet var lvxinValueLabel: UILabel!
@@ -52,8 +55,15 @@ class TapLvXinController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let device=LoginManager.instance.currentDevice
         
+        self.title = loadLanguage("滤芯状态")
+        let device=LoginManager.instance.currentDevice
+        let isBool = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        
+        hideView1.isHidden = isBool
+        hideView2.isHidden = isBool
+        hideView3.isHidden = isBool
+       
         let deviceType = OznerDeviceType.getType(type: device.type)
         heightImgConstrant.constant = deviceType==OznerDeviceType.Water_Wifi ? 0:width_screen*613/375
         if deviceType==OznerDeviceType.Water_Wifi {

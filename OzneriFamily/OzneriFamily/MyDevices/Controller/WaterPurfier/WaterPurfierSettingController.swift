@@ -22,6 +22,7 @@ class WaterPurfierSettingController: DeviceSettingController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = loadLanguage("设置")
         nameAndAttrLabel.text=self.getNameAndAttr()
         // Do any additional setup after loading the view.
     }

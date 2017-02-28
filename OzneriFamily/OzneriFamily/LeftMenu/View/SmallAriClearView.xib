@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,17 +17,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="台式空净名称" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rRi-SA-6l7">
+                    <rect key="frame" x="70" y="50" width="139.5" height="17"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TR4-oh-LOq">
+                    <rect key="frame" x="56" y="71" width="167" height="1"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="S89-tn-iWs"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客厅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9b-YC-daD">
+                    <rect key="frame" x="124" y="90" width="31" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="FUf-mw-0UY"/>
                     </constraints>
@@ -32,7 +38,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpW-NY-NVU">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpW-NY-NVU" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
+                    <rect key="frame" x="24" y="146" width="231" height="40"/>
                     <color key="backgroundColor" red="0.13725490200000001" green="0.43529411759999997" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="5DZ-5k-s3J"/>

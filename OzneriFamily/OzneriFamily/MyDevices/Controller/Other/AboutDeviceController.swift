@@ -16,6 +16,7 @@ class AboutDeviceController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = loadLanguage("关于设备")
         switch type {
         case 0:
             webView.loadRequest(URLRequest(url: URL(string: Content)!))

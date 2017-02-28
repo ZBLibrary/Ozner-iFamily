@@ -32,6 +32,8 @@ class TapSettingController: DeviceSettingController {
     var pickDateView:TapDatePickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
+        self.title = loadLanguage("设置")
         pickDateView=Bundle.main.loadNibNamed("TapDatePickerView", owner: nil, options: nil)?.last as! TapDatePickerView
         pickDateView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         pickDateView.cancelButton.addTarget(self, action: #selector(pickerCancle), for: .touchUpInside)

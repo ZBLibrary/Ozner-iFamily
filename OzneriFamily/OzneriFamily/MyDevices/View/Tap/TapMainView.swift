@@ -88,9 +88,9 @@ class TapMainView: OznerDeviceView {
     }
     private func SetBotoomText(recordArr:NSArray)  {
         if recordArr.count==0 {
-            goodOfMonthLabel.text="健康(0%)"
-            generalOfMonthLabel.text="一般(0%)"
-            badOfMonthLabel.text="较差(0%)"
+            goodOfMonthLabel.text=loadLanguage("健康(0%)")
+            generalOfMonthLabel.text=loadLanguage("一般(0%)")
+            badOfMonthLabel.text=loadLanguage("较差(0%)")
             return
         }
         var goodTDSCount = 0
@@ -103,13 +103,13 @@ class TapMainView: OznerDeviceView {
         }
         generalTDSCount=generalTDSCount-goodTDSCount
         if badTDSCount==0 {
-            goodOfMonthLabel.text="健康(\(Int(100*goodTDSCount/recordArr.count))%)"
-            generalOfMonthLabel.text="一般(\(100-Int(100*goodTDSCount/recordArr.count))%)"
-            badOfMonthLabel.text="较差(0%)"
+            goodOfMonthLabel.text=loadLanguage("健康")+"(\(Int(100*goodTDSCount/recordArr.count))%)"
+            generalOfMonthLabel.text=loadLanguage("一般")+"(\(100-Int(100*goodTDSCount/recordArr.count))%)"
+            badOfMonthLabel.text=loadLanguage("较差")+"(0%)"
         }else{
-            goodOfMonthLabel.text="健康(\(Int(100*goodTDSCount/recordArr.count))%)"
-            generalOfMonthLabel.text="一般(\(Int(100*generalTDSCount/recordArr.count))%)"
-            badOfMonthLabel.text="较差(\(100-Int(100*goodTDSCount/recordArr.count)-Int(100*generalTDSCount/recordArr.count))%)"
+            goodOfMonthLabel.text=loadLanguage("健康")+"(\(Int(100*goodTDSCount/recordArr.count))%)"
+            generalOfMonthLabel.text=loadLanguage("一般")+"(\(Int(100*generalTDSCount/recordArr.count))%)"
+            badOfMonthLabel.text=loadLanguage("较差")+"(\(100-Int(100*goodTDSCount/recordArr.count)-Int(100*generalTDSCount/recordArr.count))%)"
         }
     }
     override func SensorUpdate(device: OznerDevice!) {
