@@ -125,7 +125,7 @@ class Air_WifiMainView: OznerDeviceView {
                 
                 let tmpVOCIndex=(self.currentDevice as! AirPurifier_MxChip).sensor.voc
                 if tmpVOCIndex>=0&&tmpVOCIndex<=3 {
-                    let vocStr=["优","良","一般","差"][Int(tmpVOCIndex)]
+                    let vocStr=[loadLanguage("优"),loadLanguage("良"),loadLanguage("一般"),loadLanguage("差")][Int(tmpVOCIndex)]
                     VOCValueLabel.text=loadLanguage(vocStr)
                 }else{
                     VOCValueLabel.text="-"

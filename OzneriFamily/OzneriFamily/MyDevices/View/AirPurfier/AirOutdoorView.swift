@@ -33,7 +33,7 @@ class AirOutdoorView: UIView {
         AQILabel.text=AQI
         tempLabel.text=temp+"℃"
         himitLabel.text=himit+"%"
-        dataFromLabel.text="数据来源:"+from
+        dataFromLabel.text=loadLanguage("数据来源:")+from
         callBack=callback
     }
 }

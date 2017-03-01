@@ -65,7 +65,7 @@ class AirLvXinController: BaseViewController {
             pm25ValueLabel.text="\(Int((device as! AirPurifier_MxChip).sensor.pm25))"
             var vocValue = (device as! AirPurifier_MxChip).sensor.voc
             vocValue = vocValue<0||vocValue>3 ? 4:vocValue
-            vocValueLabel.text=["优","良","一般","差","-"][Int(vocValue)]
+            vocValueLabel.text=[loadLanguage("优"),loadLanguage("良"),loadLanguage("一般"),loadLanguage("差"),"-"][Int(vocValue)]
             totalValueLabel.text="\((device as! AirPurifier_MxChip).sensor.totalClean/1000)"
             if let filter=(device as! AirPurifier_MxChip).status.filterStatus {
                 SetLvXin(workTime: Int(filter.workTime), maxUseMM: 129600)
@@ -136,21 +136,21 @@ class AirLvXinController: BaseViewController {
         if segue.identifier == "showBuyAirLvXin" {
             let vc=segue.destination as! AboutDeviceController
             vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail64_1"))!, Type: 0)
-            vc.title="购买空净滤芯"
+            vc.title=loadLanguage("购买空净滤芯")
         }
         if segue.identifier=="showWhatIsPM25"
         {
             let vc=segue.destination as! AboutDeviceController
             
             vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是PM25"]?.stringValue)!, Type: 2)
-            vc.title="什么是PM25"
+            vc.title=loadLanguage("什么是PM25")
         }
         if segue.identifier=="showWhatIsVOC"
         {
             let vc=segue.destination as! AboutDeviceController
             
             vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是VOC"]?.stringValue)!, Type: 2)
-            vc.title="什么是VOC"
+            vc.title=loadLanguage("什么是VOC")
         }
     }
     

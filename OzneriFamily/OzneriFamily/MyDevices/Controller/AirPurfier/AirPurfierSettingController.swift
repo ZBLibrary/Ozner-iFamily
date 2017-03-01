@@ -45,12 +45,12 @@ class AirPurfierSettingController: DeviceSettingController {
             
             let VC=segue.destination as!  AboutDeviceController
             VC.setLoadContent(content: OznerDeviceType.getType(type: LoginManager.instance.currentDevice.type)==OznerDeviceType.Air_Blue ? "airOperation_small":"airOperation_big", Type: 1)
-            VC.title="空气净化器使用说明"
+            VC.title=loadLanguage("空气净化器使用说明")
         }
         if segue.identifier=="showCommonQestion" {
             let VC=segue.destination as!  AboutDeviceController
             VC.setLoadContent(content: OznerDeviceType.getType(type: LoginManager.instance.currentDevice.type)==OznerDeviceType.Air_Blue ? "airProblem_small":"airProblem_big", Type: 1)
-            VC.title="常见问题"
+            VC.title=loadLanguage("常见问题")
             
         }
     }

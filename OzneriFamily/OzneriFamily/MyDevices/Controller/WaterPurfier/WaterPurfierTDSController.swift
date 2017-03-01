@@ -28,7 +28,7 @@ class WaterPurfierTDSController: BaseViewController {
             beatValue = Int(100*CGFloat(total-rank)/CGFloat(total))
             
             let img=OznerShareManager.getshareImage(rankValue, type: 1, value: Int(tdsValue), beat: beatValue, maxWater: 0)
-            OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title: "浩泽净水家", shareImg: img)
+            OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title:loadLanguage("浩泽净水家"), shareImg: img)
             
             }, failure: { (error) in
                 
@@ -54,13 +54,13 @@ class WaterPurfierTDSController: BaseViewController {
     //center
     @IBOutlet var TDSchartView: WaterPurfierTDSChart!
     @IBAction func segmentClick(_ sender: UISegmentedControl) {
-        weakLabel1.text = sender.selectedSegmentIndex==0 ? "周一":"01"
-         weakLabe2.text = sender.selectedSegmentIndex==0 ? "周二":""
-        weakLabel3.text = sender.selectedSegmentIndex==0 ? "周三":"11"
-        weakLabel4.text = sender.selectedSegmentIndex==0 ? "周四":""
-        weakLabel5.text = sender.selectedSegmentIndex==0 ? "周五":"21"
-        weakLabel6.text = sender.selectedSegmentIndex==0 ? "周六":""
-        weakLabel7.text = sender.selectedSegmentIndex==0 ? "周日":"\(NSDate().daysInMonth())"
+        weakLabel1.text = sender.selectedSegmentIndex==0 ? loadLanguage("周一"):"01"
+         weakLabe2.text = sender.selectedSegmentIndex==0 ? loadLanguage("周二"):""
+        weakLabel3.text = sender.selectedSegmentIndex==0 ? loadLanguage("周三"):"11"
+        weakLabel4.text = sender.selectedSegmentIndex==0 ? loadLanguage("周四"):""
+        weakLabel5.text = sender.selectedSegmentIndex==0 ? loadLanguage("周五"):"21"
+        weakLabel6.text = sender.selectedSegmentIndex==0 ? loadLanguage("周六"):""
+        weakLabel7.text = sender.selectedSegmentIndex==0 ? loadLanguage("周日"):"\(NSDate().daysInMonth())"
         self.TDSchartView.updateView(isWeak: sender.selectedSegmentIndex==0)
     }
     @IBOutlet var weakLabel1: UILabel!
@@ -120,14 +120,14 @@ class WaterPurfierTDSController: BaseViewController {
             let vc = segue.destination as! AboutDeviceController
             
             vc.setLoadContent(content: (NetworkManager.defaultManager?.URL!["jxszd"]?.stringValue)!, Type: 0)
-            vc.title="健康水知道"
+            vc.title=loadLanguage("健康水知道")
         }
         if segue.identifier=="showWhatIsTDS"
         {
             let vc=segue.destination as! AboutDeviceController
             
             vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是TDS"]?.stringValue)!, Type: 2)
-            vc.title="什么是TDS"
+            vc.title=loadLanguage("什么是TDS")
         }
     }
     

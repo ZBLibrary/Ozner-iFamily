@@ -81,6 +81,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         weak var weakSelf=self
         User.loginWithPhone(phone: phoneTextField.text!, phonecode: YZMTextField.text!,success:
             { (user) in
+                
+                UserDefaults.standard.setValue(weakSelf?.phoneTextField.text!, forKey: "LoginPhone")
+                UserDefaults.standard.setValue(weakSelf?.YZMTextField.text!, forKey: "LoginCode")
+                UserDefaults.standard.synchronize()
                 weakSelf?.presentMainViewController()
             }, failure:
             { (error) in
@@ -158,6 +162,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        phoneTextField.text = UserDefaults.standard.value(forKey: "LoginPhone") as! String?
+        YZMTextField.text = UserDefaults.standard.value(forKey: "LoginCode") as! String?
+        phoneTextField.placeholder = loadLanguage("请输入手机号")
         YZMTextField.placeholder=loadLanguage("输入验证码")
          phoneTextField.keyboardType = .numberPad
     }
