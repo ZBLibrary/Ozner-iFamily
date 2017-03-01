@@ -300,7 +300,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     func SexChanged(notice:Notification)
     {
         let sexStr=notice.userInfo?["sex"] as! String
-        currentSex = sexStr=="女" ? SexType.WoMan:SexType.Man
+        currentSex = sexStr==loadLanguage("女") ? SexType.WoMan:SexType.Man
     }
     //皮肤检测回掉方法
     func updateViewState()
@@ -340,8 +340,8 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     //初始化视图
     func SetWaterReplenishView()
     {
-        let sexStr=((self.currentDevice as! WaterReplenishmentMeter).settings.get("sex", default: "女"))! as! String
-        currentSex = sexStr=="女" ? SexType.WoMan:SexType.Man
+        let sexStr=((self.currentDevice as! WaterReplenishmentMeter).settings.get("sex", default: loadLanguage("女")))! as! String
+        currentSex = sexStr==loadLanguage("女") ? SexType.WoMan:SexType.Man
         getAllWeakAndMonthData()
     }
     

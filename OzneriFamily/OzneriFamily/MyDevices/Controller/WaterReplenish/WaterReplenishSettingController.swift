@@ -24,6 +24,7 @@ class WaterReplenishSettingController: DeviceSettingController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = loadLanguage("设置")
+        self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
         nameAndAttrLabel.text=self.getNameAndAttr()
         // Do any additional setup after loading the view.
     }
@@ -40,7 +41,7 @@ class WaterReplenishSettingController: DeviceSettingController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sexLabel.text=self.deviceSetting.get("sex", default: "女") as! String?
+        sexLabel.text=self.deviceSetting.get("sex", default: loadLanguage("女")) as! String?
     }
     // MARK: - Navigation
 
@@ -58,6 +59,14 @@ class WaterReplenishSettingController: DeviceSettingController {
             let VC=segue.destination as!  ReplenishSexController
             VC.currSetting=self.deviceSetting
         }
+        
+        if segue.identifier == "showBuyWater" {
+            
+            let VC=segue.destination as!  AboutDeviceController
+            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["buyEssenceWater"]?.stringValue)!, Type: 0)
+            
+        }
+        
     }
     
 

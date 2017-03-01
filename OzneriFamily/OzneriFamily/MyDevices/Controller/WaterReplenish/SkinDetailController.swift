@@ -70,13 +70,13 @@ class SkinDetailController: BaseViewController {
         if let tmpdata = ([WeakData,MonthData][segmentControl.selectedSegmentIndex])[currentBody.hashValue] {
             chartView.drawChartView(data: tmpdata, charttype: segmentControl.selectedSegmentIndex)
         }
-        weakLabel1.text = sender.selectedSegmentIndex==0 ? "周一":"\(NSDate().month())月1日"
-        weakLabel2.text = sender.selectedSegmentIndex==0 ? "周二":""
-        weakLabel3.text = sender.selectedSegmentIndex==0 ? "周三":"11"
-        weakLabel4.text = sender.selectedSegmentIndex==0 ? "周四":""
-        weakLabel5.text = sender.selectedSegmentIndex==0 ? "周五":"21"
-        weakLabel6.text = sender.selectedSegmentIndex==0 ? "周六":""
-        weakLabel7.text = sender.selectedSegmentIndex==0 ? "周日":"\(NSDate().daysInMonth())"
+        weakLabel1.text = sender.selectedSegmentIndex==0 ? loadLanguage("周一"):"\(NSDate().month())月1日"
+        weakLabel2.text = sender.selectedSegmentIndex==0 ? loadLanguage("周二"):""
+        weakLabel3.text = sender.selectedSegmentIndex==0 ? loadLanguage("周三"):"11"
+        weakLabel4.text = sender.selectedSegmentIndex==0 ? loadLanguage("周四"):""
+        weakLabel5.text = sender.selectedSegmentIndex==0 ? loadLanguage("周五"):"21"
+        weakLabel6.text = sender.selectedSegmentIndex==0 ? loadLanguage("周六"):""
+        weakLabel7.text = sender.selectedSegmentIndex==0 ? loadLanguage("周日"):"\(NSDate().daysInMonth())"
     }
     @IBOutlet var chartView: ChartViewOfSkinDetail!
     @IBOutlet var skinDataStateLabel: UILabel!
@@ -150,7 +150,7 @@ class SkinDetailController: BaseViewController {
         
         if segue.identifier=="showBuyWater" {
             let vc = segue.destination as! AboutDeviceController
-            vc.title="购买精华水"
+            vc.title=loadLanguage("购买精华水")
             vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["buyEssenceWater"]?.stringValue)!, Type: 0)
         }
         if segue.identifier=="showWhatIsWater"
@@ -158,14 +158,14 @@ class SkinDetailController: BaseViewController {
             let vc=segue.destination as! AboutDeviceController
             
             vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是水分"]?.stringValue)!, Type: 2)
-            vc.title="什么是水分"
+            vc.title=loadLanguage("什么是水分")
         }
         if segue.identifier=="showWhatIsOil"
         {
             let vc=segue.destination as! AboutDeviceController
             
             vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是油分"]?.stringValue)!, Type: 2)
-            vc.title="什么是油分"
+            vc.title=loadLanguage("什么是油分")
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

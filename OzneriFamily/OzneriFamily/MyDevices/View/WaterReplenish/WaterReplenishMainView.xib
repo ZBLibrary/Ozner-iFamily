@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,17 +18,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5K-eK-6cg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
                     <subviews>
                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="womanOfReplensh1" translatesAutoresizingMaskIntoConstraints="NO" id="2Lg-l1-uqp">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
                             <gestureRecognizers/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzO-Yd-6nJ">
+                            <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="GPD-lF-dgJ"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请点击您想要检测的身体部位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtW-UP-D68">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请点击您想要检测的身体部位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtW-UP-D68" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                            <rect key="frame" x="15" y="86" width="345" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="iAI-OO-1yu"/>
                             </constraints>
@@ -49,8 +56,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbm-U2-8Li">
+                    <rect key="frame" x="0.0" y="446" width="375" height="156"/>
                     <subviews>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zC-rN-dho">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zC-rN-dho" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
+                            <rect key="frame" x="99.5" y="58" width="176" height="40"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="176" id="Kll-fX-fVH"/>
@@ -75,10 +84,13 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21z-sd-ZXa">
+                            <rect key="frame" x="0.0" y="60" width="375" height="96"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPc-pe-4O8">
+                                    <rect key="frame" x="15" y="20" width="345" height="56"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上一次检测 暂无  |  平均值 暂无（0次）" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ep-kh-acp">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上一次检测 暂无  |  平均值 暂无（0次）" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ep-kh-acp" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="mvE-aL-OIn"/>
                                             </constraints>
@@ -86,7 +98,8 @@
                                             <color key="textColor" red="0.12549019610000001" green="0.40000000000000002" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="眼部肌肤干燥，易出现皱纹及水肿。此处皮肤一旦松弛较难回复原状态。补水是延缓衰老的根本保障。" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoJ-vX-svI">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="眼部肌肤干燥，易出现皱纹及水肿。此处皮肤一旦松弛较难回复原状态。补水是延缓衰老的根本保障。" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoJ-vX-svI" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="16" width="345" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="Q7g-f7-vqV"/>
                                             </constraints>
@@ -100,6 +113,7 @@
                                             </variation>
                                         </label>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Z-Bi-4vk">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="56"/>
                                             <connections>
                                                 <action selector="toDetailClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="7VO-03-iIT"/>
                                             </connections>
@@ -155,9 +169,13 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUe-zE-cc9">
+                    <rect key="frame" x="127.5" y="386" width="120" height="120"/>
                     <subviews>
-                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="WaterReplenishTesting" translatesAutoresizingMaskIntoConstraints="NO" id="s9Z-ES-hsY"/>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请将补水仪放置脸部" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciS-VF-ehq">
+                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="WaterReplenishTesting" translatesAutoresizingMaskIntoConstraints="NO" id="s9Z-ES-hsY">
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请将补水仪放置脸部" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciS-VF-ehq" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                            <rect key="frame" x="15" y="35" width="90" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="cDW-lW-ttI"/>
                                 <constraint firstAttribute="width" constant="90" id="xP0-fh-yhb"/>
@@ -167,8 +185,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KiJ-ls-PVS">
+                            <rect key="frame" x="20" y="18" width="80" height="84"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ral-pm-M7J">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ral-pm-M7J" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="19"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="19" id="cNh-0n-isF"/>
                                     </constraints>
@@ -176,7 +196,8 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63R-xd-II3">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63R-xd-II3" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="46" width="65" height="38"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="Itj-iM-M2w"/>
                                         <constraint firstAttribute="height" constant="38" id="zqY-Wk-x7L"/>
@@ -191,6 +212,7 @@
                                     </variation>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1O-EU-wAE">
+                                    <rect key="frame" x="65" y="69" width="15" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="PR8-AP-Jrw"/>
                                     </constraints>

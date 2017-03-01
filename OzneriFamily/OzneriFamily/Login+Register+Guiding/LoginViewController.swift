@@ -68,6 +68,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func loginClick(_ sender: AnyObject) {
         
+        
         if MyRegex("^1[0-9]{10}$").match(input: phoneTextField.text!)==false {
             errorLabel.text=loadLanguage("手机号码格式不正确!")
             return
@@ -157,6 +158,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         YZMTextField.placeholder=loadLanguage("输入验证码")
+         phoneTextField.keyboardType = .numberPad
     }
 
     override func didReceiveMemoryWarning() {

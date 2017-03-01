@@ -48,7 +48,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
         case OznerDeviceType.Air_Wifi:
             deviceDes = PairImagsAndState(imageName: "icon_bigair_peidui_waitting", typeStateText:loadLanguage( "正在进行Wifi配对"), deviceStateText:loadLanguage( "同时按下电源和风速键,WiFi指示灯闪烁。"))
         case OznerDeviceType.WaterReplenish:
-            deviceDes = PairImagsAndState(imageName: "WaterReplenish3", typeStateText: "请长按开机键五秒至灯光闪烁", deviceStateText: loadLanguage("正在进行蓝牙配对"))
+            deviceDes = PairImagsAndState(imageName: "WaterReplenish3", typeStateText:loadLanguage("请长按开机键五秒至灯光闪烁"), deviceStateText: loadLanguage("正在进行蓝牙配对"))
         case OznerDeviceType.Water_Bluetooth:
             deviceDes = PairImagsAndState(imageName: "icon_peidui_jingshuiqi_watting", typeStateText: "", deviceStateText: loadLanguage("正在进行蓝牙配对"))
        

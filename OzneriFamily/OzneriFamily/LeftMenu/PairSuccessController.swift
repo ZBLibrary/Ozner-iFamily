@@ -199,7 +199,7 @@ class PairSuccessController: UIViewController {
         case OznerDeviceType.WaterReplenish:
             
             settings["name"]=(mainMatchView as! WaterRefeishView).placeName.text!
-            settings["sex"]=(mainMatchView as! WaterRefeishView).segementSex.selectedSegmentIndex==0 ? "女":"男"
+            settings["sex"]=(mainMatchView as! WaterRefeishView).segementSex.selectedSegmentIndex==0 ? loadLanguage("女"):loadLanguage("男")
             
         default:
             settings["name"]=(mainMatchView as! SmallAriClearView).nameLb.text!

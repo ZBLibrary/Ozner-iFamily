@@ -22,7 +22,7 @@ class SetReplenishTimeController: BaseViewController {
                 let tmpLabel = [timeLabel1,timeLabel2,timeLabel3][i] as UILabel
                 
                 let date = NSDate(string: tmpLabel.text!, formatString: "HH:mm")
-                LocalNotificationHelper.addNoticeForKeyEveryDay(key: "BuShuiYi"+["checktime1","checktime2","checktime3"][i], date: date as! Date, alertBody: "您的补水时间已到，请及时补充水分！") 
+                LocalNotificationHelper.addNoticeForKeyEveryDay(key: "BuShuiYi"+["checktime1","checktime2","checktime3"][i], date: date as! Date, alertBody: loadLanguage("您的补水时间已到，请及时补充水分！"))
             }
         }
         
@@ -52,6 +52,10 @@ class SetReplenishTimeController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = loadLanguage("补水提醒时间")
+        self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
+        
         //带+号表示选中状态，否则，未选中状态
         let checktime1 = currSetting.get("checktime1", default: "08:00") as! String?
         timeImg1.isHidden = !(checktime1?.contains("+"))!
