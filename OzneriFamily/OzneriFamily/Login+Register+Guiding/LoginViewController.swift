@@ -68,6 +68,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func loginClick(_ sender: AnyObject) {
         
+        phoneTextField.text = (phoneTextField.text)!.replacingOccurrences(of: " ", with: "")
         
         if MyRegex("^1[0-9]{10}$").match(input: phoneTextField.text!)==false {
             errorLabel.text=loadLanguage("手机号码格式不正确!")
