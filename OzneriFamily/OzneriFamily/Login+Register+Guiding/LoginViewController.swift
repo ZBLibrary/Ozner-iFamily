@@ -104,6 +104,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             return
         }
         
+        
         getYYbutton.isEnabled=false
         getYYbutton.backgroundColor=grayColor
         getYYbutton.layer.borderColorWithUIColor=grayColor
