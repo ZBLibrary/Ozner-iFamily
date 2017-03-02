@@ -83,13 +83,13 @@
                                         <rect key="frame" x="12.5" y="61" width="250" height="15"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17H-Et-1LD">
-                                                <rect key="frame" x="41" y="-5" width="209" height="25"/>
+                                                <rect key="frame" x="17" y="-5" width="233" height="25"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <state key="normal" title="我已阅读并同意《君融科技免责条款》">
+                                                <state key="normal" title="我已阅读并同意《浩泽伊泉净品免责条款》">
                                                     <color key="titleColor" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="textWithLanguage" value="我已阅读并同意《君融科技免责条款》"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="textWithLanguage" value="我已阅读并同意《浩泽伊泉净品免责条款》"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <segue destination="MMh-w8-HkT" kind="presentation" id="K2L-QH-mTt"/>
@@ -97,7 +97,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sn-9p-LnD">
                                                 <rect key="frame" x="0.0" y="-0.5" width="16" height="16"/>
-                                                <state key="normal" image="agreeSelected" backgroundImage="FEDD3FBF-7A41-4B82-B1BB-535979C1B219"/>
+                                                <state key="normal" image="agreeSelected" backgroundImage="4CF09F39-4FA8-46F8-962A-D9DEBBE4253D"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -876,8 +876,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmK-ST-1dS">
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="君融科技免责条款" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMn-Kf-VvO">
-                                                <rect key="frame" x="118" y="12" width="139" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浩泽伊泉净品免责条款" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMn-Kf-VvO">
+                                                <rect key="frame" x="101" y="12" width="173.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -938,7 +938,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FEDD3FBF-7A41-4B82-B1BB-535979C1B219" width="16" height="16">
+        <image name="4CF09F39-4FA8-46F8-962A-D9DEBBE4253D" width="16" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -1009,7 +1009,7 @@ Di0OMA5CDkUOSgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAA5MA
         <image name="YZM" width="14" height="20"/>
         <image name="agreeSelected" width="16" height="16"/>
         <image name="fanhui" width="10" height="21"/>
-        <image name="loginLogo" width="60" height="60"/>
+        <image name="loginLogo" width="93" height="93"/>
         <image name="phone" width="14" height="20"/>
     </resources>
 </document>

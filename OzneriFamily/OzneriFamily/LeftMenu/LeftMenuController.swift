@@ -62,7 +62,7 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         deviceArray=NSArray()
-        startLb.text = loadLanguage("伊泉净品智慧生活体验")
+        startLb.text = loadLanguage("浩泽伊泉净品智慧生活体验")
         deviceLb.text = loadLanguage("选择智能设备")
         self.tableView.delegate=self
         self.tableView.dataSource=self

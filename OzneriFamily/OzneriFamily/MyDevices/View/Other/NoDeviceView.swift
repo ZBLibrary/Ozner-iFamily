@@ -22,7 +22,7 @@ class NoDeviceView: OznerDeviceView {
         super.awakeFromNib()
         deviceBtn.setTitle(loadLanguage("添加设备"), for: UIControlState.normal)
 //        addDevieceLb.text = loadLanguage("请添加设备\n开启浩泽智能生活")
-        addDevieceLb.text = loadLanguage("请添加设备") + "\n" + loadLanguage("开启伊泉智慧生活")
+        addDevieceLb.text = loadLanguage("请添加设备") + "\n" + loadLanguage("开启浩泽伊泉净品智慧生活")
     }
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!

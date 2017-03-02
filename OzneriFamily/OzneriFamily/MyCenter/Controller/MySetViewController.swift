@@ -28,7 +28,7 @@ class MySetViewController: BaseViewController {
         self.title = loadLanguage("设置")
         pushLb.text = loadLanguage("允许推送消息")
         calcuteNum.text = loadLanguage("计量单位")
-        aboutOzne.text = loadLanguage("关于君融科技")
+        aboutOzne.text = loadLanguage("关于浩泽伊泉净品")
         logout.setTitle(loadLanguage("退出登录"), for: UIControlState.normal)
     }
     
