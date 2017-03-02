@@ -16,6 +16,12 @@ class WaterReplenishSettingController: DeviceSettingController {
     @IBAction func saveClick(_ sender: AnyObject) {
         self.saveDevice()
     }
+    @IBOutlet weak var hideimage1: UIImageView!
+    @IBOutlet weak var hideimage2: GYLabel!
+    @IBOutlet weak var hideview2: UIView!
+    @IBOutlet weak var hidelb2: UIImageView!
+    @IBOutlet weak var hideview1: UIView!
+    @IBOutlet weak var hidelb1: GYLabel!
     @IBOutlet var nameAndAttrLabel: UILabel!
     @IBOutlet var sexLabel: UILabel!
     @IBAction func deleteClick(_ sender: AnyObject) {
@@ -24,6 +30,16 @@ class WaterReplenishSettingController: DeviceSettingController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = loadLanguage("设置")
+        
+        if !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber ) {
+            hidelb1.removeFromSuperview()
+            hidelb2.removeFromSuperview()
+            hideview1.removeFromSuperview()
+            hideview2.removeFromSuperview()
+            hideimage2.removeFromSuperview()
+            hideimage1.removeFromSuperview()
+        }
+        
         self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
         nameAndAttrLabel.text=self.getNameAndAttr()
         // Do any additional setup after loading the view.

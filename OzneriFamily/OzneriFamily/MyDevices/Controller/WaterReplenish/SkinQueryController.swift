@@ -13,10 +13,12 @@ class SkinQueryController: BaseViewController {
     var currentSkinTypeIndex=0//0：无，1油，2干,3中
     var totalTimes = 0
     //header
+    @IBOutlet weak var buybTN: GYButton!
     @IBOutlet var skinTypeLabel: UILabel!
     @IBOutlet var skinTypeImg: UIImageView!
     @IBOutlet var skinTypeStateLabel: UILabel!
     //center
+    @IBOutlet weak var segementO: UISegmentedControl!
     @IBOutlet var testCountLabel: UILabel!
     @IBOutlet var testStateLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -39,11 +41,16 @@ class SkinQueryController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = loadLanguage("肤质查询")
+        buybTN.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        segementO.setTitle(loadLanguage("干性"), forSegmentAt: 0)
+        segementO.setTitle(loadLanguage("油性"), forSegmentAt: 1)
+        segementO.setTitle(loadLanguage("中性"), forSegmentAt: 2)
         let sexStr=LoginManager.instance.currentDevice.settings.get("sex", default: "女") as! String
         currSex = sexStr==loadLanguage("女") ? "woman":"man"
-        footerSkinType.image=UIImage(named:currSex+"SkinOfChaXun1")
+        footerSkinType.image=UIImage(named:loadLanguage(currSex+"SkinOfChaXun1"))
         skinTypeLabel.text=skinTextArr[currentSkinTypeIndex]
-        skinTypeImg.image=UIImage(named:currSex+"SkinOfChaXun\(currentSkinTypeIndex)")
+        skinTypeImg.image=UIImage(named:loadLanguage(currSex+"SkinOfChaXun\(currentSkinTypeIndex)"))
         skinTypeStateLabel.text=skinDescripeText[currentSkinTypeIndex]
        
         testCountLabel.text = totalTimes<45 ? "\(totalTimes)/45":"\(totalTimes)"

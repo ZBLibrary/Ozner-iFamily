@@ -70,7 +70,7 @@ class SkinDetailController: BaseViewController {
         if let tmpdata = ([WeakData,MonthData][segmentControl.selectedSegmentIndex])[currentBody.hashValue] {
             chartView.drawChartView(data: tmpdata, charttype: segmentControl.selectedSegmentIndex)
         }
-        weakLabel1.text = sender.selectedSegmentIndex==0 ? loadLanguage("周一"):"\(NSDate().month())月1日"
+        weakLabel1.text = sender.selectedSegmentIndex==0 ? loadLanguage("周一"):"\(NSDate().month())·1"
         weakLabel2.text = sender.selectedSegmentIndex==0 ? loadLanguage("周二"):""
         weakLabel3.text = sender.selectedSegmentIndex==0 ? loadLanguage("周三"):"11"
         weakLabel4.text = sender.selectedSegmentIndex==0 ? loadLanguage("周四"):""
@@ -87,6 +87,7 @@ class SkinDetailController: BaseViewController {
     @IBOutlet var weakLabel5: UILabel!
     @IBOutlet var weakLabel6: UILabel!
     @IBOutlet var weakLabel7: UILabel!
+    @IBOutlet weak var hideView: UIView!
     //footer
     @IBAction func ConsultingClick(_ sender: AnyObject) {
         LoginManager.instance.setTabbarSelected(index: 2)
@@ -94,6 +95,16 @@ class SkinDetailController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getAllWeakAndMonthData()
+        self.title = loadLanguage("智能补水仪详情")
+        hideView.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        if  !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber ) {
+             self.navigationItem.rightBarButtonItem =  nil
+            
+        }
+        
+       
+        segmentControl.setTitle(loadLanguage("周"), forSegmentAt: 0)
+        segmentControl.setTitle(loadLanguage("月"), forSegmentAt: 1)
         skinDataStateLabel.text=""
         // Do any additional setup after loading the view.
     }
@@ -157,14 +168,14 @@ class SkinDetailController: BaseViewController {
         {
             let vc=segue.destination as! AboutDeviceController
             
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是水分"]?.stringValue)!, Type: 2)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?[loadLanguage("什么是水分 ")]?.stringValue)!, Type: 2)
             vc.title=loadLanguage("什么是水分")
         }
         if segue.identifier=="showWhatIsOil"
         {
             let vc=segue.destination as! AboutDeviceController
             
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是油分"]?.stringValue)!, Type: 2)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?[loadLanguage("什么是油分 ")]?.stringValue)!, Type: 2)
             vc.title=loadLanguage("什么是油分")
         }
         // Get the new view controller using segue.destinationViewController.

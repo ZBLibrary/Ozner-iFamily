@@ -14,7 +14,7 @@ let height_navBar:CGFloat = 64
 let height_statusBar:CGFloat = 20
 let height_screen:CGFloat = UIScreen.main.bounds.size.height
 let width_screen:CGFloat = UIScreen.main.bounds.size.width
-let k_height:CGFloat=(LoginManager.instance.isChinese_Simplified ? 1:(667/603))*height_screen/667
+let k_height:CGFloat=( LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber ? 1:(667/603))*height_screen/667
 
 enum OznerLoginType:String{
     case ByPhoneNumber="ByPhoneNumber"
