@@ -690,22 +690,22 @@ public class User: BaseDataObject {
             let tmptime=jsonDic["basic"]?["update"]["loc"].stringValue ?? ""//"2015-12-25 02:54"
             
             if tmptime == "" {
-                dataFrom = "暂无"
+                dataFrom = loadLanguage("暂无")
             } else {
-                dataFrom=dataFrom+"   "+tmptime+"发布"
+                dataFrom=dataFrom+"   "+tmptime + loadLanguage("发布")
             }
             
-            let humidity=jsonDic["now"]?["hum"].stringValue ?? "暂无"
-            let temperature=jsonDic["now"]?["tmp"].stringValue ?? "暂无"
+            let humidity=jsonDic["now"]?["hum"].stringValue ?? loadLanguage("暂无")
+            let temperature=jsonDic["now"]?["tmp"].stringValue ?? loadLanguage("暂无")
             
             guard let _ = tmpdic else {
-                success("暂无",cityname,"暂无","暂无",temperature,humidity,dataFrom)
+                success(loadLanguage("暂无"),loadLanguage(cityname),loadLanguage("暂无"),loadLanguage("暂无"),temperature,humidity,dataFrom)
                 return
             }
-            let pollution=tmpdic?["qlty"].stringValue ?? "暂无"//中度污染
-            let AQI=tmpdic?["aqi"].stringValue ?? "暂无"
-            let PM25=tmpdic?["pm25"].stringValue ?? "暂无"
-            success(pollution,cityname,PM25,AQI,temperature,humidity,dataFrom)
+            let pollution=tmpdic?["qlty"].stringValue ?? loadLanguage("暂无")//中度污染
+            let AQI=tmpdic?["aqi"].stringValue ?? loadLanguage("暂无")
+            let PM25=tmpdic?["pm25"].stringValue ?? loadLanguage("暂无")
+            success(loadLanguage(pollution),loadLanguage(cityname),PM25,AQI,temperature,humidity,dataFrom)
         }, failure: failure)
 
     }

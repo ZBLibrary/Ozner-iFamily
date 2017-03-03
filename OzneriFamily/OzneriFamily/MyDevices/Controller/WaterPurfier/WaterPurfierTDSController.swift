@@ -11,6 +11,7 @@ import UIKit
 class WaterPurfierTDSController: BaseViewController {
 
     //header
+    @IBOutlet weak var segement: UISegmentedControl!
     @IBOutlet var tdsValueLabel_BF: UILabel!
     @IBOutlet var tdsValueLabel_AF: UILabel!
     @IBOutlet var rankLabel: UILabel!
@@ -71,6 +72,8 @@ class WaterPurfierTDSController: BaseViewController {
     @IBOutlet var weakLabel6: UILabel!
     @IBOutlet var weakLabel7: UILabel!
     
+    @IBOutlet weak var hideView1: UIView!
+    @IBOutlet weak var hideBtn1: GYButton!
     //footer
     @IBAction func buyDeviceClick(_ sender: AnyObject) {
         LoginManager.instance.setTabbarSelected(index: 1)
@@ -79,9 +82,23 @@ class WaterPurfierTDSController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        hideBtn1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        
+        if !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber) {
+            self.navigationItem.rightBarButtonItem = nil
+           
+        }
+        
+        self.title = loadLanguage("水质纯净值TDS")
+        
         let device = LoginManager.instance.currentDevice as! WaterPurifier
         let TDS_BF=max(device.sensor.tds1, device.sensor.tds2)
         let TDS_AF=min(device.sensor.tds1, device.sensor.tds2)
+        segement.setTitle(loadLanguage("周"), forSegmentAt: 0)
+        segement.setTitle(loadLanguage("月"), forSegmentAt: 1)
         tdsValueLabel_BF.text = TDS_BF==0||TDS_BF==65535 ? "-":"\(TDS_BF)"
         tdsValueLabel_AF.text = TDS_AF==0||TDS_AF==65535 ? "-":"\(TDS_AF)"
         // Do any additional setup after loading the view.

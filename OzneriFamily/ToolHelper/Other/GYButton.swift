@@ -34,6 +34,7 @@ class GYButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        
         if self.title(for: UIControlState.normal) != nil {
             self.setTitle(loadLanguage(self.title(for: UIControlState.normal)!), for: UIControlState.normal)
         }

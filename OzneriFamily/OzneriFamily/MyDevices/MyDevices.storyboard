@@ -1867,7 +1867,7 @@
                                                             <constraint firstAttribute="width" secondItem="81D-uI-uRo" secondAttribute="height" multiplier="1:1" id="Qpb-hf-LX7"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水质纯净值" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j59-lH-aCQ">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水质纯净值" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j59-lH-aCQ" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="95" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.34509803919999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1876,8 +1876,8 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTS-Ae-vlH">
-                                                        <rect key="frame" x="-5" y="59" width="28" height="11"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTS-Ae-vlH" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                        <rect key="frame" x="-10" y="59" width="28" height="11"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                         <color key="textColor" red="0.70006245369999998" green="0.30815944080000002" blue="0.66109830140000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1903,8 +1903,8 @@
                                                         <color key="textColor" red="0.22942048309999999" green="0.44709640740000001" blue="0.8791764379" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化后" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eK1-XN-MYW">
-                                                        <rect key="frame" x="28" y="59" width="28" height="11"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化后" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eK1-XN-MYW" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                        <rect key="frame" x="32" y="59" width="28" height="11"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                         <color key="textColor" red="0.22942048309999999" green="0.44709640740000001" blue="0.8791764379" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1919,7 +1919,7 @@
                                                     <constraint firstItem="lZy-7V-YEo" firstAttribute="bottom" secondItem="UKD-3m-vDR" secondAttribute="bottom" id="FLp-W1-amP"/>
                                                     <constraint firstItem="81D-uI-uRo" firstAttribute="width" secondItem="4G5-L7-N6d" secondAttribute="width" multiplier="17:112" id="Hvc-gI-bWL"/>
                                                     <constraint firstItem="j59-lH-aCQ" firstAttribute="top" secondItem="4G5-L7-N6d" secondAttribute="top" id="MJN-mM-1Ba"/>
-                                                    <constraint firstItem="PTS-Ae-vlH" firstAttribute="centerX" secondItem="UKD-3m-vDR" secondAttribute="centerX" id="NwV-I4-1hO"/>
+                                                    <constraint firstItem="PTS-Ae-vlH" firstAttribute="centerX" secondItem="UKD-3m-vDR" secondAttribute="centerX" constant="-5" id="NwV-I4-1hO"/>
                                                     <constraint firstItem="UKD-3m-vDR" firstAttribute="leading" secondItem="4G5-L7-N6d" secondAttribute="leading" id="VXY-yf-ixg"/>
                                                     <constraint firstItem="uEv-mk-Gsd" firstAttribute="top" secondItem="UKD-3m-vDR" secondAttribute="top" id="YGC-Ju-wMZ"/>
                                                     <constraint firstItem="uEv-mk-Gsd" firstAttribute="leading" secondItem="UKD-3m-vDR" secondAttribute="trailing" id="cgv-9i-tv4"/>
@@ -1928,7 +1928,7 @@
                                                     <constraint firstItem="81D-uI-uRo" firstAttribute="leading" secondItem="j59-lH-aCQ" secondAttribute="trailing" id="fwO-6i-RS0"/>
                                                     <constraint firstItem="lZy-7V-YEo" firstAttribute="top" secondItem="UKD-3m-vDR" secondAttribute="top" id="gpf-wh-u4y"/>
                                                     <constraint firstItem="PTS-Ae-vlH" firstAttribute="top" secondItem="UKD-3m-vDR" secondAttribute="bottom" id="kSI-w3-y1B"/>
-                                                    <constraint firstItem="eK1-XN-MYW" firstAttribute="centerX" secondItem="lZy-7V-YEo" secondAttribute="centerX" id="nHi-XL-WAq"/>
+                                                    <constraint firstItem="eK1-XN-MYW" firstAttribute="centerX" secondItem="lZy-7V-YEo" secondAttribute="centerX" constant="4" id="nHi-XL-WAq"/>
                                                     <constraint firstItem="lZy-7V-YEo" firstAttribute="leading" secondItem="uEv-mk-Gsd" secondAttribute="trailing" id="q6u-n0-q9T"/>
                                                     <constraint firstAttribute="bottom" secondItem="eK1-XN-MYW" secondAttribute="bottom" id="zeW-Gt-DAq"/>
                                                 </constraints>
@@ -1939,7 +1939,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVd-py-PAh">
                                                 <rect key="frame" x="146" y="0.0" width="66" height="70"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="好友排名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8m-TA-ncb">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="好友排名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8m-TA-ncb" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="66" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.34509803919999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1973,11 +1973,11 @@
                                                     <constraint firstItem="PSm-uX-nSZ" firstAttribute="leading" secondItem="uVd-py-PAh" secondAttribute="leading" id="r5r-sG-rZg"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zor-oC-EJd">
-                                                <rect key="frame" x="246" y="30" width="80" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zor-oC-EJd" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
+                                                <rect key="frame" x="231" y="30" width="95" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="1PO-42-UsV"/>
-                                                    <constraint firstAttribute="width" constant="80" id="aQk-NR-n73"/>
+                                                    <constraint firstAttribute="width" constant="95" id="aQk-NR-n73"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -2016,7 +2016,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Zor-oC-EJd" secondAttribute="trailing" id="sim-3U-HBH"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="完美水质，体内每个细胞都说好！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THi-od-Zt3">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="完美水质，体内每个细胞都说好！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THi-od-Zt3" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                         <rect key="frame" x="45.5" y="82" width="199" height="68"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.34509803919999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2051,13 +2051,13 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1a0-iy-Vgz">
                                                         <rect key="frame" x="39.5" y="122" width="320" height="20"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWY-wU-mSi">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWY-wU-mSi" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="8" width="49.5" height="12"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                 <color key="textColor" red="0.52450919149999997" green="0.55672359469999999" blue="0.57345598939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周四" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQv-7g-xok">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周四" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQv-7g-xok" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="149" y="8" width="22" height="12"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="22" id="my5-FT-GAV"/>
@@ -2066,31 +2066,31 @@
                                                                 <color key="textColor" red="0.52450919149999997" green="0.55672359469999999" blue="0.57345598939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周日" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPY-c0-NDb">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周日" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPY-c0-NDb" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="270.5" y="8" width="49.5" height="12"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                 <color key="textColor" red="0.52450919149999997" green="0.55672359469999999" blue="0.57345598939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周二" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekc-Gl-1Ld">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周二" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekc-Gl-1Ld" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="49.5" y="8" width="50" height="12"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                 <color key="textColor" red="0.52450919149999997" green="0.55672359469999999" blue="0.57345598939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周三" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aa8-RX-tx8">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周三" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aa8-RX-tx8" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="99.5" y="8" width="49.5" height="12"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                 <color key="textColor" red="0.52450919149999997" green="0.55672359469999999" blue="0.57345598939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周五" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jk-eB-2Ze">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周五" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jk-eB-2Ze" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="171" y="8" width="49.5" height="12"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                 <color key="textColor" red="0.52450919149999997" green="0.55672359469999999" blue="0.57345598939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周六" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-J5-adG">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周六" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-J5-adG" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="220.5" y="8" width="50" height="12"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                 <color key="textColor" red="0.52450919149999997" green="0.55672359469999999" blue="0.57345598939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2136,19 +2136,19 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rLo-lA-xSl">
                                                         <rect key="frame" x="0.0" y="0.0" width="44.5" height="121"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="较差" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9m-Uz-hVj">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="较差" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9m-Uz-hVj" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="22" y="0.0" width="22.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安全" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlt-xq-LEt">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安全" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlt-xq-LEt" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="22" y="80.5" width="22.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                                 <color key="textColor" red="0.032312974333763123" green="0.62567442655563354" blue="0.081017114222049713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIc-bq-pqt">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIc-bq-pqt" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="22" y="40.5" width="22.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -2207,13 +2207,13 @@
                                                     <constraint firstItem="hP0-2h-plQ" firstAttribute="top" secondItem="jhr-Au-xdl" secondAttribute="bottom" id="pRb-Xg-vv6"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化后" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kc-ZU-4cW">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化后" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kc-ZU-4cW" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                 <rect key="frame" x="232" y="152" width="37" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                 <color key="textColor" red="0.21710735559463501" green="0.50405031442642212" blue="0.89849025011062622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y32-jo-tQd">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y32-jo-tQd" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                 <rect key="frame" x="95.5" y="152" width="37" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                 <color key="textColor" red="0.71601575613021851" green="0.3085353672504425" blue="0.64879316091537476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2278,7 +2278,7 @@
                                             <constraint firstItem="5Kc-ZU-4cW" firstAttribute="centerY" secondItem="4t0-oG-HyU" secondAttribute="centerY" id="z27-pf-nnS"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水质纯净指数分布" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGQ-m4-8C4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水质纯净指数分布" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGQ-m4-8C4" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                         <rect key="frame" x="122" y="0.0" width="131" height="46"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2335,7 +2335,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBx-ZU-0lA">
                                         <rect key="frame" x="0.0" y="35.5" width="375" height="118"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="改善您的饮水健康" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ld-ca-NtG">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="改善您的饮水健康" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ld-ca-NtG" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                 <rect key="frame" x="118" y="19.5" width="139" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="sVH-vS-Sef"/>
@@ -2354,12 +2354,12 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZp-NH-KW1">
                                                         <rect key="frame" x="29" y="0.0" width="144" height="40"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hfu-Wr-rG7">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hfu-Wr-rG7" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="40"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                                                <state key="normal" title="健康水知道" image="device_konwzb">
+                                                                <state key="normal" title="健康水知道 " image="device_konwzb">
                                                                     <color key="titleColor" red="0.18039215689999999" green="0.34509803919999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
@@ -2411,7 +2411,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZd-D5-So8">
                                                         <rect key="frame" x="202" y="0.0" width="144" height="40"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjl-D5-Hb7">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjl-D5-Hb7" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="40"/>
                                                                 <color key="backgroundColor" red="0.90040379762649536" green="0.94835788011550903" blue="0.99833661317825317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
@@ -2546,7 +2546,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="TDSchartView" destination="jhr-Au-xdl" id="TO0-1u-XtK"/>
+                        <outlet property="hideBtn1" destination="Zor-oC-EJd" id="3Oh-Pq-izQ"/>
+                        <outlet property="hideView1" destination="ozb-Qe-cz6" id="qdF-Lu-eDF"/>
                         <outlet property="rankLabel" destination="PSm-uX-nSZ" id="hIE-xs-jw9"/>
+                        <outlet property="segement" destination="XvK-Sf-U3E" id="enP-pe-geU"/>
                         <outlet property="tdsStateImg" destination="Jbd-rW-z3M" id="QVF-l3-4Cd"/>
                         <outlet property="tdsStateLabel" destination="THi-od-Zt3" id="J9O-z3-GaY"/>
                         <outlet property="tdsValueLabel_AF" destination="lZy-7V-YEo" id="SAD-qU-eOg"/>
@@ -5209,7 +5212,7 @@
                                                             <constraint firstAttribute="height" constant="1" id="19L-eH-JNA"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的净水器" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfJ-d7-4XU">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的净水器" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfJ-d7-4XU" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                         <rect key="frame" x="15" y="15.5" width="71.5" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5218,7 +5221,7 @@
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="PtT-QR-vlE">
                                                         <rect key="frame" x="352" y="15.5" width="8" height="17"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的净水器(办公室)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhK-JP-755">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的净水器(办公室)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhK-JP-755" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                         <rect key="frame" x="209.5" y="15" width="132.5" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="127" id="ung-Lk-nfr"/>
@@ -5260,7 +5263,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHS-j4-MeY">
                                                 <rect key="frame" x="0.0" y="78" width="375" height="48"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于净水器" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mi-O8-jZz">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于净水器" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mi-O8-jZz" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                         <rect key="frame" x="15" y="16" width="66.5" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5289,7 +5292,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="eYg-2l-pTa" secondAttribute="bottom" id="qZR-do-sNQ"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0f-eL-hW5">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0f-eL-hW5" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
                                                 <rect key="frame" x="117.5" y="151" width="140" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="140" id="gZ9-YK-6Fm"/>
@@ -7816,7 +7819,7 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aaL-mh-gXA"/>
-        <segue reference="uTu-U7-iUE"/>
+        <segue reference="9TT-wP-6Ha"/>
+        <segue reference="bDU-2Y-kqE"/>
     </inferredMetricsTieBreakers>
 </document>

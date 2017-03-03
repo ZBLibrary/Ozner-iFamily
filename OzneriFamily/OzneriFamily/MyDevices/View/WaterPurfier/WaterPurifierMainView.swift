@@ -130,9 +130,9 @@ class WaterPurifierMainView: OznerDeviceView {
             let tdsBF=max(tmptdsBF, tmptdsAF)
             let tdsAF=min(tmptdsBF, tmptdsAF)
             
-            tdsValueLabel_BF.text = tdsBF==0 ? "暂无":"\(tdsBF)"
+            tdsValueLabel_BF.text = tdsBF==0 ? loadLanguage("暂无"):"\(tdsBF)"
             tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:52)*width_screen/375)
-            tdsValueLabel_AF.text = tdsAF==0 ? "暂无":"\(tdsAF)"
+            tdsValueLabel_AF.text = tdsAF==0 ? loadLanguage("暂无"):"\(tdsAF)"
             tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:52)*width_screen/375)
             
             var angleBF = CGFloat(0)
@@ -201,13 +201,13 @@ class WaterPurifierMainView: OznerDeviceView {
             {
                 tdsContainerView.isHidden=true
                 offLineLabel.isHidden=false
-                offLineLabel.text="设备云已断开"
+                offLineLabel.text=loadLanguage("设备云已断开")
                 operation=(false,false,false)
             }else{
                 if (device as! WaterPurifier).status.power==false {
                     tdsContainerView.isHidden=true
                     offLineLabel.isHidden=false
-                    offLineLabel.text="设备已关机"
+                    offLineLabel.text=loadLanguage("设备已关机")
                     operation=(false,false,false)
                 }else{
                     tdsContainerView.isHidden=false
