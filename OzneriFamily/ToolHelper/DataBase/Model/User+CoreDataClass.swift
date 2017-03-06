@@ -692,7 +692,7 @@ public class User: BaseDataObject {
             if tmptime == "" {
                 dataFrom = loadLanguage("暂无")
             } else {
-                dataFrom=dataFrom+"   "+tmptime + loadLanguage("发布")
+                dataFrom=loadLanguage(dataFrom)+"   "+tmptime + loadLanguage("发布")
             }
             
             let humidity=jsonDic["now"]?["hum"].stringValue ?? loadLanguage("暂无")

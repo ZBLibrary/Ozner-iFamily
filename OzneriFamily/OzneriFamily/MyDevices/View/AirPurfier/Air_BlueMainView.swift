@@ -113,13 +113,13 @@ class Air_BlueMainView: OznerDeviceView {
         sliderValueLabel.text="\(tmpValueInt)"
         switch true {
         case tmpValueInt==0:
-            sliderValueStateLabel.text="关机"
+            sliderValueStateLabel.text=loadLanguage("关机")
         case tmpValueInt>0&&tmpValueInt<=33:
-            sliderValueStateLabel.text="低速"
+            sliderValueStateLabel.text=loadLanguage("低速")
         case tmpValueInt>33&&tmpValueInt<=66:
-            sliderValueStateLabel.text="中速"
+            sliderValueStateLabel.text=loadLanguage("中速")
         default:
-            sliderValueStateLabel.text="高速"
+            sliderValueStateLabel.text=loadLanguage("高速")
         }
         if isEnd==true {
             
@@ -134,7 +134,7 @@ class Air_BlueMainView: OznerDeviceView {
         didSet{
             if PM25_In != oldValue   {
                 if PM25_In == -1 || PM25_In == -2 {//-1 已关机,-2 已断开
-                    pm25ValueLabel.text = PM25_In == -2 ? "设备已断开":"设备已关机"
+                    pm25ValueLabel.text = PM25_In == -2 ? loadLanguage("设备已断开"):loadLanguage("设备已关机")
                     pm25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 35*width_screen/375)
                     FLZLabel.isHidden=true
                     updateSpeed(touchX: 0, isEnd: false)

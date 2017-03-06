@@ -49,12 +49,15 @@ class AirLvXinController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = loadLanguage("室内空气质量详情")
+        
         let device=LoginManager.instance.currentDevice
         if OznerDeviceType.getType(type: device.type)==OznerDeviceType.Air_Blue {//台式
             reSetLvXinButton.isHidden=false
             vocWidthConstraint.constant = -width_screen/2
             //hiden
-            totalPurificatContainerView.isHidden=true
+            totalPurificatContainerView.removeFromSuperview()
             pm25ValueLabel.text="\(Int((device as! AirPurifier_Bluetooth).sensor.pm25))"
             print((device as! AirPurifier_Bluetooth).status.filterStatus.workTime)
             SetLvXin(workTime: Int((device as! AirPurifier_Bluetooth).status.filterStatus.workTime), maxUseMM: 60000)

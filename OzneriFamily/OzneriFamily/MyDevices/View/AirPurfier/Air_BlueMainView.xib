@@ -245,8 +245,8 @@
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="air0017" translatesAutoresizingMaskIntoConstraints="NO" id="01h-w6-Kgx">
                                                     <rect key="frame" x="3.5" y="24" width="18" height="12"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高速" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2U-uA-3Gi">
-                                                    <rect key="frame" x="0.0" y="45.5" width="25" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高速" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2U-uA-3Gi" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="45.5" width="30" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                     <color key="textColor" red="0.65047091245651245" green="0.66669827699661255" blue="0.67084783315658569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -255,7 +255,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="01h-w6-Kgx" firstAttribute="centerY" secondItem="rog-nk-cg1" secondAttribute="centerY" id="1Gb-nm-FQn"/>
-                                                <constraint firstAttribute="trailing" secondItem="q2U-uA-3Gi" secondAttribute="trailing" id="RS4-sX-Ztn"/>
+                                                <constraint firstAttribute="trailing" secondItem="q2U-uA-3Gi" secondAttribute="trailing" constant="-5" id="RS4-sX-Ztn"/>
                                                 <constraint firstAttribute="width" constant="25" id="S4w-HQ-NWY"/>
                                                 <constraint firstItem="01h-w6-Kgx" firstAttribute="centerX" secondItem="rog-nk-cg1" secondAttribute="centerX" id="Uof-pk-56t"/>
                                                 <constraint firstItem="q2U-uA-3Gi" firstAttribute="leading" secondItem="rog-nk-cg1" secondAttribute="leading" id="isr-Zi-2xz"/>
@@ -380,14 +380,14 @@
                             <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="室外空气：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogV-Fw-4CU" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                            <rect key="frame" x="54" y="1" width="71.5" height="47.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="室外空气:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogV-Fw-4CU" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                            <rect key="frame" x="54" y="1" width="61.5" height="47.5"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                             <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重度污染" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imr-YP-VLR" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                            <rect key="frame" x="125.5" y="0.0" width="57.5" height="48.5"/>
+                            <rect key="frame" x="115.5" y="0.0" width="57.5" height="48.5"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
