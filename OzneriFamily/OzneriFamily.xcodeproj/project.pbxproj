@@ -409,6 +409,7 @@
 		B7AEB3F01E286C9C00684338 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AEB3EE1E286C9C00684338 /* YYWeakProxy.m */; };
 		B7B12AFE1E10AC1300711EBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B12AFD1E10AC1300711EBF /* MapKit.framework */; };
 		B7D6E4991DF928CF00D79BFF /* GYConactBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6E4981DF928CF00D79BFF /* GYConactBook.swift */; };
+		B7DC8DD41E6EAA430007539A /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = B7DC8DD31E6EAA430007539A /* main.js */; };
 		B7E4C5D71E55A10B00CD1E3F /* WaterPurifierMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E4C5D51E55A10B00CD1E3F /* WaterPurifierMainView.swift */; };
 		B7E4C5D81E55A10B00CD1E3F /* WaterPurifierMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E4C5D61E55A10B00CD1E3F /* WaterPurifierMainView.xib */; };
 		B7E4C5DB1E55A1B800CD1E3F /* OffLineSuggest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E4C5D91E55A1B800CD1E3F /* OffLineSuggest.swift */; };
@@ -1079,6 +1080,7 @@
 		B7AEB3EE1E286C9C00684338 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 		B7B12AFD1E10AC1300711EBF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B7D6E4981DF928CF00D79BFF /* GYConactBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYConactBook.swift; sourceTree = "<group>"; };
+		B7DC8DD31E6EAA430007539A /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		B7E4C5D51E55A10B00CD1E3F /* WaterPurifierMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurifierMainView.swift; sourceTree = "<group>"; };
 		B7E4C5D61E55A10B00CD1E3F /* WaterPurifierMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterPurifierMainView.xib; sourceTree = "<group>"; };
 		B7E4C5D91E55A1B800CD1E3F /* OffLineSuggest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffLineSuggest.swift; sourceTree = "<group>"; };
@@ -1386,6 +1388,7 @@
 		8D1EF3861D93DE050009D034 /* OzneriFamily */ = {
 			isa = PBXGroup;
 			children = (
+				B7DC8DD31E6EAA430007539A /* main.js */,
 				8D1EF3871D93DE050009D034 /* AppDelegate.swift */,
 				B7753A911E10F16000F39427 /* GYNavViewController.swift */,
 				8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */,
@@ -2487,7 +2490,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D1EF3AE1D93DE050009D034 /* Build configuration list for PBXNativeTarget "OzneriFamily" */;
 			buildPhases = (
-				030763E99468789435F61235 /* 📦 Check Pods Manifest.lock */,
+				030763E99468789435F61235 /* [CP] Check Pods Manifest.lock */,
 				A2BA87CED2A9DDCC1938133B /* [CP] Check Pods Manifest.lock */,
 				8D1EF3801D93DE050009D034 /* Sources */,
 				8D1EF3811D93DE050009D034 /* Frameworks */,
@@ -2658,6 +2661,7 @@
 				8DC02E751DB5CE91007F57DB /* Air_BlueMainView.xib in Resources */,
 				8D11A1851DDB33DC002F14D3 /* CupTDSDetailLineView.xib in Resources */,
 				8D0D693A1DDD99A10097038E /* FriendSearch.xib in Resources */,
+				B7DC8DD41E6EAA430007539A /* main.js in Resources */,
 				8D0D69361DDD99A10097038E /* FriendChatCell.xib in Resources */,
 				8D184E8A1DED717D0008047E /* RoWaterPuefierLvXinController.xib in Resources */,
 				8D0D69421DDD99A10097038E /* MyFriendCenterView.xib in Resources */,
@@ -2698,19 +2702,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		030763E99468789435F61235 /* 📦 Check Pods Manifest.lock */ = {
+		030763E99468789435F61235 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		0F1665DC02AFC89ACBB05DF2 /* [CP] Copy Pods Resources */ = {
