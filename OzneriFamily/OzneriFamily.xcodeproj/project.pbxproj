@@ -2487,6 +2487,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D1EF3AE1D93DE050009D034 /* Build configuration list for PBXNativeTarget "OzneriFamily" */;
 			buildPhases = (
+				030763E99468789435F61235 /* 📦 Check Pods Manifest.lock */,
 				A2BA87CED2A9DDCC1938133B /* [CP] Check Pods Manifest.lock */,
 				8D1EF3801D93DE050009D034 /* Sources */,
 				8D1EF3811D93DE050009D034 /* Frameworks */,
@@ -2495,6 +2496,8 @@
 				0F1665DC02AFC89ACBB05DF2 /* [CP] Copy Pods Resources */,
 				8D2666E01D98EE590028CB33 /* Embed Frameworks */,
 				B70ADC601E63C578008668A7 /* Run Script */,
+				7427B15DA9BA4E11EAE6A1BB /* 📦 Embed Pods Frameworks */,
+				2DCDC201FFF8987999D301EF /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2559,7 +2562,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = UZZG6NM74T;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2695,6 +2698,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		030763E99468789435F61235 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		0F1665DC02AFC89ACBB05DF2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2708,6 +2726,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2DCDC201FFF8987999D301EF /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7427B15DA9BA4E11EAE6A1BB /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A2BA87CED2A9DDCC1938133B /* [CP] Check Pods Manifest.lock */ = {
@@ -3254,9 +3302,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = UZZG6NM74T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3279,10 +3327,10 @@
 					"-framework",
 					"\"DateTools\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Ozner.Ines;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ozner.Ines12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1dd52bdd-5631-4055-b0f2-7fae176771a5";
-				PROVISIONING_PROFILE_SPECIFIER = ines_dis;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -3299,9 +3347,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = UZZG6NM74T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3324,10 +3372,10 @@
 					"-framework",
 					"\"DateTools\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Ozner.Ines;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ozner.Ines12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1dd52bdd-5631-4055-b0f2-7fae176771a5";
-				PROVISIONING_PROFILE_SPECIFIER = ines_dis;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
