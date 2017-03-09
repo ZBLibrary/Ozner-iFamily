@@ -13,19 +13,21 @@ class RoWaterPuefierLvXinController: BaseViewController {
     var currentDevice:ROWaterPurufier!
     @IBOutlet var fuweiButton: UIButton!
     @IBAction func fuweiClick(sender: UIButton) {
-        currentDevice.resetFilter()
+        
         let alert = SCLAlertView()
-        alert.addButton("我知道了") {
+        alert.addButton(loadLanguage("我知道了")) {
+            self.currentDevice.resetFilter()
         }
-        alert.addButton("购买滤芯") {
+        alert.addButton(loadLanguage("购买滤芯")) {
+            LoginManager.instance.setTabbarSelected(index: 1)
         }
-        alert.showInfo("", subTitle: "为了您和您家人的健康，请及时更换滤芯")
+        alert.showInfo("", subTitle: loadLanguage("为了您和您家人的健康，请及时更换滤芯"))
     }
     
-    @IBOutlet weak var hideView1: UIView!
     
     @IBOutlet weak var hideImage1: UIImageView!
-    @IBOutlet weak var hideview2: UIView!
+    @IBOutlet weak var hideView2: UIView!
+    @IBOutlet weak var hideView1: UIView!
     @IBOutlet var lvxinAlertLabel: UILabel!
     @IBOutlet var lvxinValueLabelA: UILabel!
     @IBOutlet var lvxinValueLabelB: UILabel!
@@ -86,35 +88,36 @@ class RoWaterPuefierLvXinController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
         
     }
-    var timer:Timer!
+    //var timer:Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         currentDevice=LoginManager.instance.currentDevice as! ROWaterPurufier
-        
+        self.title=loadLanguage("当前滤芯状态")
+        lvxinAlertLabel.text = loadLanguage("清\n洗\n水\n路\n保\n护\n器")
         hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
-        hideview2.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        hideView2.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
         hideImage1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
-        
-        self.title = loadLanguage("当前滤芯状态")
         lvxinValueLabelA.text="\(currentDevice.filterInfo.filter_A_Percentage)%"
         lvxinValueLabelB.text="\(currentDevice.filterInfo.filter_B_Percentage)%"
         lvxinValueLabelC.text="\(currentDevice.filterInfo.filter_C_Percentage)%"
         
-        timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
-        fuweiButton.isHidden = !currentDevice.isEnableFilterReset()
+        //timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
+        let minFilter=min(currentDevice.filterInfo.filter_A_Percentage, currentDevice.filterInfo.filter_B_Percentage, currentDevice.filterInfo.filter_C_Percentage)
+        fuweiButton.isHidden = minFilter>0
+        lvxinAlertLabel.text = ""   
         // Do any additional setup after loading the view.
     }
-    var istrue = true
-    
-    func alertLabelShanShuo() {
-        istrue = !istrue
-        lvxinAlertLabel.text = istrue ? loadLanguage("清\n洗\n水\n路\n保\n护\n器"):""
-        if false {
-            timer.invalidate()
-            timer=nil
-        }
-    }
+//    var istrue = true
+//    
+//    func alertLabelShanShuo() {
+//        istrue = !istrue
+//        lvxinAlertLabel.text = istrue ? "清\n洗\n水\n路\n保\n护\n器":""        
+//        if false {
+//            timer.invalidate()
+//            timer=nil
+//        }
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

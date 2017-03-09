@@ -1,6 +1,11 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## Bugly
+
+Copyright 2016 tencent.com. All rights reserved.
+
+
 ## DateTools
 
 The MIT License (MIT)
@@ -57,7 +62,7 @@ SOFTWARE.
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Zhouqi Mo (https://github.com/MoZhouqi)
+Copyright (c) 2017 Zhouqi Mo (https://github.com/MoZhouqi)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -155,21 +155,22 @@ Byte calcSum(Byte* data,int size)
     if (data==nil) return;
     if (data.length<1) return;
     BytePtr bytes=(BytePtr)[data bytes];
+    NSData* needData=[NSData dataWithBytes:bytes+1 length:data.length-1];
     Byte opCode=bytes[0];
     lastDataTime=[NSDate dateWithTimeIntervalSinceNow:0];
     switch (opCode) {
         case opCode_respone_setting:
-            [_settingInfo load:data];
+            [_settingInfo load:needData];
             [self doSensorUpdate];
             //settingInfo.fromBytes(data);
             break;
         case opCode_respone_water:
-            [_waterInfo load:data];
+            [_waterInfo load:needData];
             [self doSensorUpdate];
             //waterInfo.fromBytes(data);
             break;
         case opCode_respone_filter:
-            [_filterInfo load:data];
+            [_filterInfo load:needData];
             [self doSensorUpdate];
             
             //filterInfo.fromBytes(data);
@@ -233,6 +234,16 @@ Byte calcSum(Byte* data,int size)
 
 +(BOOL)isBindMode:(BluetoothIO*)io
 {
-    return true;
+    if (io)
+    {
+        if (io.scanResponseData)
+        {
+            Byte flag=((Byte*)[io.scanResponseData bytes])[0];
+            return flag;
+        }
+        return false;
+    }
+    else
+        return false;
 }
 @end

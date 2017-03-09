@@ -3,8 +3,9 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'OzneriFamily' do
-    pod 'DateTools'
-    pod 'IQKeyboardManager'
-    pod 'UICountingLabel'
-    pod 'KMNavigationBarTransition'
+    pod 'DateTools','~> 2.0.0'
+    pod 'IQKeyboardManager','~> 4.0.8'
+    pod 'UICountingLabel','~> 1.4.0'
+    pod 'KMNavigationBarTransition','~> 1.0.0'
+    pod 'Bugly','~> 2.4.6'
 end
