@@ -13,11 +13,13 @@ class RoWaterPuefierLvXinController: BaseViewController {
     var currentDevice:ROWaterPurufier!
     @IBOutlet var fuweiButton: UIButton!
     @IBAction func fuweiClick(sender: UIButton) {
-        currentDevice.resetFilter()
+        
         let alert = SCLAlertView()
         alert.addButton("我知道了") {
+            self.currentDevice.resetFilter()
         }
         alert.addButton("购买滤芯") {
+            LoginManager.instance.setTabbarSelected(index: 1)
         }
         alert.showInfo("", subTitle: "为了您和您家人的健康，请及时更换滤芯")
     }
@@ -83,7 +85,7 @@ class RoWaterPuefierLvXinController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
         
     }
-    var timer:Timer!
+    //var timer:Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,20 +95,22 @@ class RoWaterPuefierLvXinController: BaseViewController {
         lvxinValueLabelB.text="\(currentDevice.filterInfo.filter_B_Percentage)%"
         lvxinValueLabelC.text="\(currentDevice.filterInfo.filter_C_Percentage)%"
         
-        timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
-        fuweiButton.isHidden = !currentDevice.isEnableFilterReset()
+        //timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
+        let minFilter=min(currentDevice.filterInfo.filter_A_Percentage, currentDevice.filterInfo.filter_B_Percentage, currentDevice.filterInfo.filter_C_Percentage)
+        fuweiButton.isHidden = minFilter>0
+        lvxinAlertLabel.text = ""   
         // Do any additional setup after loading the view.
     }
-    var istrue = true
-    
-    func alertLabelShanShuo() {
-        istrue = !istrue
-        lvxinAlertLabel.text = istrue ? "清\n洗\n水\n路\n保\n护\n器":""        
-        if false {
-            timer.invalidate()
-            timer=nil
-        }
-    }
+//    var istrue = true
+//    
+//    func alertLabelShanShuo() {
+//        istrue = !istrue
+//        lvxinAlertLabel.text = istrue ? "清\n洗\n水\n路\n保\n护\n器":""        
+//        if false {
+//            timer.invalidate()
+//            timer=nil
+//        }
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

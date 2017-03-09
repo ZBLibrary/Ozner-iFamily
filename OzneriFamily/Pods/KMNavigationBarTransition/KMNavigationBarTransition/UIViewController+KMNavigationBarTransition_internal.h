@@ -1,5 +1,5 @@
 //
-//  KMWeakObjectContainer.h
+//  UIViewController+KMNavigationBarTransition_internal.h
 //
 //  Copyright (c) 2017 Zhouqi Mo (https://github.com/MoZhouqi)
 //
@@ -21,8 +21,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-extern void km_objc_setAssociatedWeakObject(id container, void *key, id value);
-extern id km_objc_getAssociatedWeakObject(id container, void *key);
+@interface UIViewController (KMNavigationBarTransition_Internal)
 
+@property (nonatomic, strong) UINavigationBar *km_transitionNavigationBar;
+@property (nonatomic, assign) BOOL km_prefersNavigationBarBackgroundViewHidden;
+
+- (void)km_addTransitionNavigationBarIfNeeded;
+
+@end

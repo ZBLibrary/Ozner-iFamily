@@ -44,7 +44,12 @@ class WaterPurfierSettingController: DeviceSettingController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="showAboutDevice" {
             let VC=segue.destination as!  AboutDeviceController
-            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutWaterPurifer"]?.stringValue)!, Type: 0)
+            var url=(NetworkManager.defaultManager?.URL?["AboutWaterPurifer"]?.stringValue)!
+            
+            if  LoginManager.instance.currentDevice.type == OznerDeviceType.Water_Bluetooth.rawValue{
+                url=(NetworkManager.defaultManager?.URL?["AboutROWaterPurifer"]?.stringValue)!
+            }
+            VC.setLoadContent(content: url, Type: 0)
         }
     }
     
