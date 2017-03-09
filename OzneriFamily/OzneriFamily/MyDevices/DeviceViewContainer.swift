@@ -278,6 +278,10 @@ extension DeviceViewContainer{
             User.GetMachineLifeOutTime(deviceID: devID, success: { (usedDays, stopDate) in
                 let useValue=ceil(Double(100*(365-usedDays)/365))
                 
+                //TODO : Crash
+                //Could not cast value of type 'OzneriFamily.Air_WifiMainView' (0x1005819b8) to 'OzneriFamily.WaterPurifierMainView' (0x1005811c8).
+                //                2017-03-09 11:22:09.433609 OzneriFamily[4888:1207047] Could not cast value of type 'OzneriFamily.Air_WifiMainView' (0x1005819b8) to 'OzneriFamily.WaterPurifierMainView' (0x1005811c8).
+                
                  (weakSelf?.currentDeviceView as! WaterPurifierMainView).setLvXinAndEnable(scan: scanEnable, cool: coolEnable, hot: hotEnable, buyLvXinUrl: url!, lvXinStopDate: stopDate as NSDate, lvXinUsedDays: Int(useValue))
                 self.LvXinValue=Int(useValue)
                 if useValue<10//小于10%提醒及时更换滤芯

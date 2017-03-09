@@ -22,7 +22,10 @@ class RoWaterPuefierLvXinController: BaseViewController {
         alert.showInfo("", subTitle: "为了您和您家人的健康，请及时更换滤芯")
     }
     
+    @IBOutlet weak var hideView1: UIView!
     
+    @IBOutlet weak var hideImage1: UIImageView!
+    @IBOutlet weak var hideview2: UIView!
     @IBOutlet var lvxinAlertLabel: UILabel!
     @IBOutlet var lvxinValueLabelA: UILabel!
     @IBOutlet var lvxinValueLabelB: UILabel!
@@ -88,7 +91,12 @@ class RoWaterPuefierLvXinController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentDevice=LoginManager.instance.currentDevice as! ROWaterPurufier
-        self.title="当前滤芯状态"
+        
+        hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        hideview2.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        hideImage1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        
+        self.title = loadLanguage("当前滤芯状态")
         lvxinValueLabelA.text="\(currentDevice.filterInfo.filter_A_Percentage)%"
         lvxinValueLabelB.text="\(currentDevice.filterInfo.filter_B_Percentage)%"
         lvxinValueLabelC.text="\(currentDevice.filterInfo.filter_C_Percentage)%"
@@ -101,7 +109,7 @@ class RoWaterPuefierLvXinController: BaseViewController {
     
     func alertLabelShanShuo() {
         istrue = !istrue
-        lvxinAlertLabel.text = istrue ? "清\n洗\n水\n路\n保\n护\n器":""        
+        lvxinAlertLabel.text = istrue ? loadLanguage("清\n洗\n水\n路\n保\n护\n器"):""
         if false {
             timer.invalidate()
             timer=nil

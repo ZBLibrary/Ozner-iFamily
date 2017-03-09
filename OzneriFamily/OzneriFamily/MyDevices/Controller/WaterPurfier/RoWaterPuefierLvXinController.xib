@@ -12,6 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RoWaterPuefierLvXinController" customModule="OzneriFamily" customModuleProvider="target">
             <connections>
                 <outlet property="fuweiButton" destination="koX-6w-8Nc" id="fxs-uH-rIE"/>
+                <outlet property="hideImage1" destination="0ku-AF-mIC" id="98u-0f-UD4"/>
+                <outlet property="hideView1" destination="gMU-Sn-pMv" id="63b-dh-lmL"/>
+                <outlet property="hideview2" destination="Rey-00-Kbx" id="ijM-8a-pvQ"/>
                 <outlet property="lvxinAlertLabel" destination="F2s-Ty-axH" id="J2w-tC-qkZ"/>
                 <outlet property="lvxinValueLabelA" destination="hFr-le-edU" id="P9X-2Q-OSx"/>
                 <outlet property="lvxinValueLabelB" destination="jkE-E1-ryl" id="Eyx-Y8-tC0"/>
@@ -136,10 +139,10 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ybb-Wm-47I">
                                     <rect key="frame" x="0.0" y="201" width="375" height="108"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：及时更换滤芯才能保证饮用水的安全。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlE-4r-ELN" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="12" width="345" height="11"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：及时更换滤芯才能保证饮用水的安全。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlE-4r-ELN" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                            <rect key="frame" x="15" y="12" width="345" height="25"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="11" id="sre-E0-Kaq"/>
+                                                <constraint firstAttribute="height" constant="25" id="sre-E0-Kaq"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.38823529410000002" green="0.3921568627" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -154,7 +157,7 @@
                                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="device_puucashezb" translatesAutoresizingMaskIntoConstraints="NO" id="RBB-Qy-RTA">
                                                             <rect key="frame" x="10" y="10" width="21" height="20"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买滤芯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nv-8b-YRY">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买滤芯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nv-8b-YRY" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                             <rect key="frame" x="42" y="0.0" width="78" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="78" id="5le-o4-jrt"/>
@@ -197,7 +200,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nej-vc-MmQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="95" height="40"/>
                                                     <subviews>
                                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="zixunIconzb" translatesAutoresizingMaskIntoConstraints="NO" id="BPL-EB-sq4">
                                                             <rect key="frame" x="10" y="11" width="23" height="18"/>
@@ -206,10 +209,10 @@
                                                                 <constraint firstAttribute="height" constant="18" id="c8U-v4-CCX"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="咨询" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqE-eB-L3e">
-                                                            <rect key="frame" x="36" y="11.5" width="44" height="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="咨询" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqE-eB-L3e" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                            <rect key="frame" x="35" y="11.5" width="60" height="17"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="44" id="a4t-9l-SZb"/>
+                                                                <constraint firstAttribute="width" constant="60" id="a4t-9l-SZb"/>
                                                                 <constraint firstAttribute="height" constant="17" id="oMY-KF-cxd"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
@@ -217,7 +220,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tY4-6S-3Pm" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="95" height="40"/>
                                                             <connections>
                                                                 <action selector="zixunClickWithSender:" destination="-1" eventType="touchUpInside" id="JNq-2Q-t09"/>
                                                             </connections>
@@ -229,7 +232,7 @@
                                                         <constraint firstItem="hqE-eB-L3e" firstAttribute="centerY" secondItem="Nej-vc-MmQ" secondAttribute="centerY" id="3AN-1C-NZU"/>
                                                         <constraint firstItem="tY4-6S-3Pm" firstAttribute="top" secondItem="Nej-vc-MmQ" secondAttribute="top" id="3Dr-E4-0iu"/>
                                                         <constraint firstAttribute="bottom" secondItem="tY4-6S-3Pm" secondAttribute="bottom" id="4Dc-MR-gLf"/>
-                                                        <constraint firstAttribute="width" constant="80" id="DyK-R9-XOy"/>
+                                                        <constraint firstAttribute="width" constant="95" id="DyK-R9-XOy"/>
                                                         <constraint firstAttribute="trailing" secondItem="hqE-eB-L3e" secondAttribute="trailing" id="Lhd-2x-CIQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="tY4-6S-3Pm" secondAttribute="trailing" id="PqH-pC-h5I"/>
                                                         <constraint firstItem="tY4-6S-3Pm" firstAttribute="leading" secondItem="Nej-vc-MmQ" secondAttribute="leading" id="S0q-tL-kgR"/>
@@ -298,10 +301,9 @@
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浩泽智能杯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnC-lB-sit" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="浩泽智能杯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnC-lB-sit" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                             <rect key="frame" x="270" y="151" width="65" height="23"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="65" id="8OI-JH-FeU"/>
                                                 <constraint firstAttribute="height" constant="23" id="Cmh-TU-9vu"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
@@ -312,7 +314,6 @@
                                             <rect key="frame" x="150.5" y="151" width="74" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="arD-to-pdJ"/>
-                                                <constraint firstAttribute="width" constant="74" id="pWA-re-k6x"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                             <color key="textColor" red="0.20392156859999999" green="0.20784313730000001" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -342,10 +343,9 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浩泽智能水探头" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iS-sc-vzJ" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                            <rect key="frame" x="21.5" y="151" width="95" height="21"/>
+                                            <rect key="frame" x="30.5" y="151" width="86" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="kIn-jN-e0l"/>
-                                                <constraint firstAttribute="width" constant="95" id="mEA-Yo-ItG"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                             <color key="textColor" red="0.20392156859999999" green="0.20784313730000001" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -375,11 +375,12 @@
                                         <constraint firstItem="xs8-2v-rB2" firstAttribute="centerX" secondItem="Rey-00-Kbx" secondAttribute="centerX" id="Iyj-z0-qtU"/>
                                         <constraint firstItem="NnC-lB-sit" firstAttribute="top" secondItem="WqM-rl-MM2" secondAttribute="bottom" constant="19" id="POI-Qf-pc8"/>
                                         <constraint firstItem="aKk-yx-pf6" firstAttribute="centerX" secondItem="Rey-00-Kbx" secondAttribute="centerX" id="PP2-55-a9j"/>
-                                        <constraint firstItem="NnC-lB-sit" firstAttribute="leading" secondItem="aKk-yx-pf6" secondAttribute="trailing" constant="45.5" id="Swo-YI-ZYT"/>
                                         <constraint firstItem="WqM-rl-MM2" firstAttribute="top" secondItem="Rey-00-Kbx" secondAttribute="top" constant="60" id="WPC-sc-x1E"/>
-                                        <constraint firstItem="aKk-yx-pf6" firstAttribute="leading" secondItem="5iS-sc-vzJ" secondAttribute="trailing" constant="34" id="aNX-Sv-ooM"/>
                                         <constraint firstItem="xs8-2v-rB2" firstAttribute="leading" secondItem="Wqe-3u-zSY" secondAttribute="trailing" constant="24" id="bPd-mZ-GtQ"/>
                                         <constraint firstAttribute="height" constant="202" id="dEc-sp-sl4"/>
+                                        <constraint firstItem="NnC-lB-sit" firstAttribute="centerX" secondItem="WqM-rl-MM2" secondAttribute="centerX" constant="2.5" id="g3v-Rh-2YD"/>
+                                        <constraint firstItem="5iS-sc-vzJ" firstAttribute="centerX" secondItem="Wqe-3u-zSY" secondAttribute="centerX" id="gii-Gw-bld"/>
+                                        <constraint firstItem="aKk-yx-pf6" firstAttribute="centerX" secondItem="xs8-2v-rB2" secondAttribute="centerX" id="hNf-Vc-J2W"/>
                                         <constraint firstItem="Vtx-yK-Saq" firstAttribute="top" secondItem="Rey-00-Kbx" secondAttribute="top" constant="14" id="mO0-p6-7EJ"/>
                                         <constraint firstItem="WqM-rl-MM2" firstAttribute="leading" secondItem="xs8-2v-rB2" secondAttribute="trailing" constant="23" id="mn9-5q-HUg"/>
                                     </constraints>
@@ -413,7 +414,7 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="iJt-E0-0cA" secondAttribute="bottom" id="MaM-il-0dd"/>
+                        <constraint firstAttribute="bottom" secondItem="iJt-E0-0cA" secondAttribute="bottom" constant="-110" id="MaM-il-0dd"/>
                         <constraint firstItem="iJt-E0-0cA" firstAttribute="top" secondItem="t2U-oT-3xl" secondAttribute="top" id="UQG-3h-MGk"/>
                         <constraint firstItem="iJt-E0-0cA" firstAttribute="leading" secondItem="t2U-oT-3xl" secondAttribute="leading" id="d82-ZS-mSi"/>
                         <constraint firstItem="iJt-E0-0cA" firstAttribute="centerX" secondItem="t2U-oT-3xl" secondAttribute="centerX" id="um2-Bw-P62"/>

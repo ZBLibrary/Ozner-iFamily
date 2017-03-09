@@ -43,6 +43,7 @@ class AirLvXinController: BaseViewController {
     @IBOutlet var stopDateLabel: UILabel!
     @IBOutlet var imgWidthConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var hideView1: UIView!
     
     @IBAction func consultingClick(_ sender: AnyObject) {
          LoginManager.instance.setTabbarSelected(index: 2)
@@ -51,7 +52,7 @@ class AirLvXinController: BaseViewController {
         super.viewDidLoad()
         
         self.title = loadLanguage("室内空气质量详情")
-        
+        hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
         let device=LoginManager.instance.currentDevice
         if OznerDeviceType.getType(type: device.type)==OznerDeviceType.Air_Blue {//台式
             reSetLvXinButton.isHidden=false
