@@ -12,7 +12,7 @@ import UserNotifications
 import WebImage
 import SwiftyJSON
 import CoreLocation
-import JSPatchPlatform
+//import JSPatchPlatform
 
 var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
@@ -94,8 +94,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         //注册微信//
         WXApi.registerApp("wx45a8cc642a2295b5", withDescription: "haoze")
         
-        JSPatch.start(withAppKey: "c37296b9783bbf81")
-        JSPatch.sync()
+//        JSPatch.start(withAppKey: "c37296b9783bbf81")
+//        JSPatch.sync()
         
         updateversion()
         Thread.sleep(forTimeInterval: 2)
