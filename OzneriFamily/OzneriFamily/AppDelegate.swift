@@ -465,14 +465,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
                 
-                let str = ((json as! [String:AnyObject])["content"] as! String).replacingOccurrences(of: "\n", with: "")
+                let str = ((json as! [String:AnyObject])["content"] as? String)?.replacingOccurrences(of: "\n", with: "")
+                
+                guard let s = str else {
+                    return
+                }
                 
                 //解码
-                let edcodeData = Data(base64Encoded: str, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
+                let edcodeData = Data(base64Encoded: s, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
                 let decodedString = String(data: edcodeData!, encoding: String.Encoding.utf8)
                 
                 let data2 = decodedString?.data(using: String.Encoding.utf8)
                 
+                guard let _ = data2 else{
+                    return
+                }
                 
                 let dic = JSON(data: data2!)
                 let versionsInAppStore = dic["result"]["version"].stringValue
@@ -480,8 +487,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                 let updateType = dic["result"]["updateType"].stringValue
                 let currentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
                 
+                guard let _ = currentVersion else{
+                    return
+                }
+                
                 // 相同也算升序
-                if versionsInAppStore.compare(currentVersion!) != ComparisonResult.orderedAscending {
+                if versionsInAppStore.compare(currentVersion!) == ComparisonResult.orderedDescending {
                     
                     if updateType == "optional"{
                         
