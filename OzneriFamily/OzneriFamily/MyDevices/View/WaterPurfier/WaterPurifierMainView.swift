@@ -11,7 +11,8 @@ import UIKit
 class WaterPurifierMainView: OznerDeviceView {
 
     var scanEnable = true
-    var coolEnable = true
+    ///制冷默认为false
+    var coolEnable = false
     var hotEnable = true
     var buyLvXinUrl = ""
     var lvXinStopDate = NSDate()
