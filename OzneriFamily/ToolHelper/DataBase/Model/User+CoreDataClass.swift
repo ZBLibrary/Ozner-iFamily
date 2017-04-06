@@ -566,8 +566,8 @@ public class User: BaseDataObject {
             
             success(
                 (tmpData?["boolshow"]?.intValue==1 ? true:false),
-                (tmpData?["Attr"]?.stringValue.contains("cool:true"))!,
-                (tmpData?["Attr"]?.stringValue.contains("hot:true"))!,
+                (tmpData?["Attr"]?.stringValue.contains("cool:true")) ?? false,
+                (tmpData?["Attr"]?.stringValue.contains("hot:true")) ?? false,
                 (tmpData?["MachineType"]?.stringValue)!,
                 (tmpData?["buylinkurl"]?.stringValue)!,
                 (tmpData?["days"]?.intValue)!)
