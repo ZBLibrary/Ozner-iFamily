@@ -12,5 +12,6 @@
 #define WATER_PURIFIER_SENSOR_ERROR 0xffff
 @property (nonatomic,readonly) int TDS1;
 @property (nonatomic,readonly) int TDS2;
+@property (nonatomic,readonly) int filterRemindDays;
 -(void)load:(BytePtr)bytes;
 @end
