@@ -431,7 +431,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         UIApplication.shared.applicationIconBadgeNumber = 0
-        updateversion()
+//        updateversion()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
