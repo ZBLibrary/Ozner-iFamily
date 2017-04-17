@@ -122,14 +122,26 @@
     NSLog(@"mqtt connected");
     waitTime=defalutWaitTime;
     self->_connected=true;
-    [self.delegate MQTTProxyConnected:self];
+    
+    if ([self.delegate respondsToSelector:@selector(MQTTProxyConnected:)]) {
+        
+        [self.delegate MQTTProxyConnected:self];
+        
+    }
+    
     
 }
 -(void)doDiconnected
 {
     NSLog(@"mqtt connectionClosed");
     self->_connected=false;
-    [self.delegate MQTTProxyDisconnected:self];
+    
+    if ([self.delegate respondsToSelector:@selector(MQTTProxyDisconnected:)]) {
+        
+        [self.delegate MQTTProxyDisconnected:self];
+        
+    }
+    
     
 }
 
