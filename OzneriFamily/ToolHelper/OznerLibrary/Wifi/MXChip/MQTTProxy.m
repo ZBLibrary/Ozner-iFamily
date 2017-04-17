@@ -122,14 +122,31 @@
     NSLog(@"mqtt connected");
     waitTime=defalutWaitTime;
     self->_connected=true;
-    [self.delegate MQTTProxyConnected:self];
+    
+    
+    /**
+     代理为空
+
+     @param MQTTProxyConnected: MQTTProxyConnected: description
+     @return return value description
+     */
+    if ([self.delegate respondsToSelector:@selector(MQTTProxyConnected:)]) {
+        [self.delegate MQTTProxyConnected:self];
+    }
+    
     
 }
 -(void)doDiconnected
 {
     NSLog(@"mqtt connectionClosed");
     self->_connected=false;
-    [self.delegate MQTTProxyDisconnected:self];
+    
+    if ([self.delegate respondsToSelector:@selector(MQTTProxyDisconnected:)]){
+        
+        [self.delegate MQTTProxyDisconnected:self];
+        
+    }
+    
     
 }
 
