@@ -26,13 +26,13 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
     
     var sendPhone=""
     var seachResult=myFriend()
-    var bookPhone=[myFriend()]
+    var bookPhone=[myFriend]()
     //NSMutableArray
     var tabelHeaderView:FriendSearch!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title=loadLanguage("添加好友")
-
+        view.backgroundColor = UIColor.white
         self.tableView.rowHeight = 44
         tableView.register(UINib.init(nibName: "AddFriendTableViewCell", bundle: nil), forCellReuseIdentifier: "AddFriendTableViewCellid")
         tabelHeaderView = Bundle.main.loadNibNamed("FriendSearch", owner: self, options: nil)?.last as! FriendSearch
@@ -185,7 +185,7 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
 //       let cell = Bundle.main.loadNibNamed("AddFriendTableViewCell", owner: nil, options: nil)?.last as! AddFriendTableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddFriendTableViewCellid",for:indexPath as IndexPath) as! AddFriendTableViewCell
         
-        cell.AddFriendButton.addTarget(self, action: #selector(toAddFriend), for: .touchUpInside)
+        cell.AddFriendButton.addTarget(self, action: #selector(toAddFriend(_:)), for: .touchUpInside)
         // Configure the cell...
         cell.selectionStyle=UITableViewCellSelectionStyle.none
         cell.AddFriendButton.tag=indexPath.section+indexPath.row
@@ -253,7 +253,7 @@ class AddFriendsTableViewController: UITableViewController,UITextFieldDelegate {
         return cell
     }
     
-    func toAddFriend(button:UIButton)
+    func toAddFriend(_ button:UIButton)
     {
         if button.tag==0
         {

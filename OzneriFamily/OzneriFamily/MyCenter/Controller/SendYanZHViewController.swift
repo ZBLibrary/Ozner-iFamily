@@ -84,7 +84,7 @@ class SendYanZHViewController: BaseViewController,UITextFieldDelegate {
                 _ = alert.addButton(loadLanguage("确定"), action: {
                     _=self.navigationController?.popViewController(animated: true)
                 })
-                _ = alert.showSuccess(loadLanguage( "温馨提示"), subTitle:loadLanguage("请求失败"))
+                _ = alert.showSuccess(loadLanguage( "温馨提示"), subTitle:loadLanguage(error?.localizedDescription ?? "请求失败"))
                 
                 
         }

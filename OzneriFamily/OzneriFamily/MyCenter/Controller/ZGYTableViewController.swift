@@ -23,7 +23,7 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
 
     var sendPhone=""
     var seachResult=myFriend()
-    var bookPhone=[myFriend()]
+    var bookPhone:[myFriend] = []
     //NSMutableArray
     var tabelHeaderView:FriendSearch!
     override func viewDidLoad() {
@@ -87,7 +87,7 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
             print(responseObject)
             //-10013
             if isSuccess > 0 {
-                
+                self.bookPhone.removeAll()
                 let arr = responseObject.dictionary?["data"]?.array
                 
                 for i in 0...(arr!.count - 1) {
@@ -95,7 +95,7 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
                     var friendtmp=myFriend()
                     friendtmp.isExist=true
                     friendtmp.status=(arr?[i].dictionary?["Status"]?.intValue)!
-                    if (friendtmp.status+10013)==0
+                    if (friendtmp.status+10013)<=0
                     {
                         continue
                     }
@@ -208,10 +208,10 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddFriendTableViewCellid",for:indexPath as IndexPath) as! AddFriendTableViewCell
         
-        cell.AddFriendButton.addTarget(self, action: #selector(toAddFriend), for: .touchUpInside)
+        cell.AddFriendButton.addTarget(self, action: #selector(toAddFriend(_:)), for: .touchUpInside)
         // Configure the cell...
         cell.selectionStyle=UITableViewCellSelectionStyle.none
-        cell.AddFriendButton.tag=indexPath.section+indexPath.row + 1
+        cell.AddFriendButton.tag=indexPath.section+indexPath.row
         if indexPath.section == 0{
             if seachResult.isExist==true
             {
@@ -246,6 +246,9 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
                 cell.Name.text=seachResult.Name
             }
         } else {
+//            if bookPhone[indexPath.row] {
+//                
+//            }
             switch (bookPhone[indexPath.row].status)
             {
             case 0:
@@ -269,8 +272,8 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
                 
             }
             
-            cell.headImage.image=bookPhone[indexPath.row + 1].imgUrl=="" ? UIImage(named: "DefaultHeadImage") : UIImage(data: NSData(contentsOf: NSURL(string: bookPhone[indexPath.row + 1].imgUrl)! as URL)! as Data)
-            cell.Name.text=bookPhone[indexPath.row + 1].Name
+            cell.headImage.image=bookPhone[indexPath.row].imgUrl=="" ? UIImage(named: "DefaultHeadImage") : UIImage(data: NSData(contentsOf: NSURL(string: bookPhone[indexPath.row].imgUrl)! as URL)! as Data)
+            cell.Name.text=bookPhone[indexPath.row].Name
             
         }
 
@@ -278,13 +281,13 @@ class ZGYTableViewController: UITableViewController ,UITextFieldDelegate{
 
     }
     
-    func toAddFriend(button:UIButton)
+    func toAddFriend(_ button:UIButton)
     {
-        if button.tag==1
+        if button.tag==0
         {
             sendPhone=seachResult.phone
         } else{
-            sendPhone=bookPhone[button.tag-1].phone
+            sendPhone=bookPhone[button.tag - 1].phone
         }
         print(sendPhone)
         self.performSegue(withIdentifier: "toAddFriendGYID", sender: nil)
