@@ -110,7 +110,16 @@ class CupSettingController: DeviceSettingController {
         }
         
         for i in 0...3 {
-            let buttonStateIsOn = (self.deviceSetting.get("todayState\(i+1)", default: "false") as! String)=="true"
+           
+            let v = self.deviceSetting.get("todayState\(i+1)", default: "false")
+            
+            let v1 = v as? String
+            
+            guard v1 != nil else {
+                return
+            }
+            
+            let buttonStateIsOn = (self.deviceSetting.get("todayState\(i+1)", default: "false")  as! String)=="true"
             let imgName = [false:["setmystate1","setmystate2","setmystate3","setmystate4"],
                            true:["setmystate1c","setmystate2c","setmystate3c","setmystate4c"]][buttonStateIsOn]?[i]
             
