@@ -70,6 +70,7 @@ class CupTemperatureController: BaseViewController {
         
         
         let chartCont=Bundle.main.loadNibNamed("CupTDSChartContainerView", owner: nil, options: nil)?.last as! CupTDSChartContainerView
+        chartCont.titleLabel.text = "水温分布"
         chartContainerview.addSubview(chartCont)
         chartCont.translatesAutoresizingMaskIntoConstraints = false
         chartCont.snp.makeConstraints { (make) in
