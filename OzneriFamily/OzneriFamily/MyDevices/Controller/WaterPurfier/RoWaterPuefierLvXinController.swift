@@ -103,8 +103,8 @@ class RoWaterPuefierLvXinController: BaseViewController {
         lvxinValueLabelC.text="\(currentDevice.filterInfo.filter_C_Percentage)%"
         
         //timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
-        let minFilter=min(currentDevice.filterInfo.filter_A_Percentage, currentDevice.filterInfo.filter_B_Percentage, currentDevice.filterInfo.filter_C_Percentage)
-        fuweiButton.isHidden = minFilter>0
+        //let minFilter=min(currentDevice.filterInfo.filter_A_Percentage, currentDevice.filterInfo.filter_B_Percentage, currentDevice.filterInfo.filter_C_Percentage)
+        fuweiButton.isHidden = true//minFilter>0
         lvxinAlertLabel.text = ""   
         // Do any additional setup after loading the view.
     }
