@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bFO-IS-5LL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bFO-IS-5LL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -606,7 +606,6 @@
                                         <include reference="NF6-AC-u2z"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="Bfe-Wv-B1O"/>
                                         <include reference="lkA-Aw-BlO"/>
                                         <include reference="wse-Rp-6PC"/>
                                         <include reference="zb8-HK-X68"/>
@@ -614,6 +613,7 @@
                                         <include reference="GMV-n2-cQr"/>
                                         <include reference="cR9-ZN-Cac"/>
                                         <include reference="vUp-HI-sML"/>
+                                        <exclude reference="Bfe-Wv-B1O"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1006,10 +1006,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="KEn-q4-y6W"/>
-                                <exclude reference="LmF-cY-cKv"/>
                                 <exclude reference="ybn-xs-zf1"/>
                                 <exclude reference="yyn-Vr-L9k"/>
+                                <exclude reference="KEn-q4-y6W"/>
+                                <exclude reference="LmF-cY-cKv"/>
                             </mask>
                         </variation>
                     </view>
@@ -1097,7 +1097,7 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.0.2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kca-Fp-5tA">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.1.9" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kca-Fp-5tA">
                                                 <rect key="frame" x="313" y="17" width="42" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="42" id="ATv-iu-vha"/>
