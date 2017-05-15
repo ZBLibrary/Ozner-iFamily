@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## Bugly
 
-Copyright 2016 tencent.com. All rights reserved.
+Copyright 2017 tencent.com. All rights reserved.
 
 
 ## DateTools

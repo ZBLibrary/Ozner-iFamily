@@ -35,6 +35,8 @@ class PairingController: UIViewController,OznerManagerDelegate {
     private func loadImageandLb() {
         var deviceDes:PairImagsAndState
         switch currDeviceType {
+        case OznerDeviceType.Water_Bluetooth:
+            deviceDes = PairImagsAndState(imageName: "水芯片配对图标2", typeStateText: "", deviceStateText: loadLanguage("正在进行蓝牙配对"))
         case OznerDeviceType.Cup:
             deviceDes = PairImagsAndState(imageName: "icon_peidui_watting", typeStateText:loadLanguage( "正在进行蓝牙配对"), deviceStateText: loadLanguage("请将智能水杯倒置"))
         case OznerDeviceType.Tap:
@@ -49,8 +51,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
             deviceDes = PairImagsAndState(imageName: "icon_bigair_peidui_waitting", typeStateText:loadLanguage( "正在进行Wifi配对"), deviceStateText:loadLanguage( "同时按下电源和风速键,WiFi指示灯闪烁。"))
         case OznerDeviceType.WaterReplenish:
             deviceDes = PairImagsAndState(imageName: "WaterReplenish3", typeStateText:loadLanguage("请长按开机键五秒至灯光闪烁"), deviceStateText: loadLanguage("正在进行蓝牙配对"))
-        case OznerDeviceType.Water_Bluetooth:
-            deviceDes = PairImagsAndState(imageName: "icon_peidui_jingshuiqi_watting", typeStateText: "", deviceStateText: loadLanguage("正在进行蓝牙配对"))
+        
        
         }
         deviceImg.image = UIImage(named: deviceDes.imageName)

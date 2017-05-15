@@ -53,7 +53,7 @@ class LeftMenuDeviceCell: UITableViewCell {
         OznerDeviceType.Air_Blue:["device_jin_smallair_normal","device_jin_smallair_select"],
         OznerDeviceType.Air_Wifi:["device_jin_bigair_normal","device_jin_bigair_select"],
         OznerDeviceType.WaterReplenish:["WaterReplenish2","WaterReplenish1_2"],
-        OznerDeviceType.Water_Bluetooth:["device_jin_shui_qi_normal","device_jin_shui_qi_select"]
+        OznerDeviceType.Water_Bluetooth:["水芯片配对图标4","水芯片配对图标5"]
     ]
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

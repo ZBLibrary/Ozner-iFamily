@@ -9,6 +9,7 @@
 import UIKit
 //wifi产品一定要带WIFI字母
 enum OznerDeviceType:String {
+    case Water_Bluetooth="Ozner RO"
     case Cup="CP001"
     case Tap="SC001"
     case TDSPan="SCP001"
@@ -17,15 +18,15 @@ enum OznerDeviceType:String {
     case Air_Wifi="FOG_HAOZE_AIR"
  
     case WaterReplenish="BSY001"
-    case Water_Bluetooth="Ozner RO"
+    
     //case Water_Wifi_Ayla="Water_Wifi_Ayla"
     //case Air_Wifi_Ayla="Air_Wifi_Ayla"
   
     func Name()->String {
-        return [loadLanguage("智能水杯"),loadLanguage("水探头"),loadLanguage("智能检测笔"),loadLanguage("净水器"),loadLanguage("台式空净"),loadLanguage("立式空净"),loadLanguage("补水仪"),loadLanguage("净水器")][self.hashValue]
+        return [loadLanguage("水芯片净水器"),loadLanguage("智能水杯"),loadLanguage("水探头"),loadLanguage("智能检测笔"),loadLanguage("净水器"),loadLanguage("台式空净"),loadLanguage("立式空净"),loadLanguage("补水仪")][self.hashValue]
     }
     func Name_En()->String {
-        return ["Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish","WaterPurfier"][self.hashValue]
+        return ["WaterPurfier","Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish"][self.hashValue]
     }
     static func getType(type:String) -> OznerDeviceType {
         switch type {
@@ -60,7 +61,7 @@ class SelectDeviceCell: UITableViewCell {
             break
         }
 
-        deviceImg.image=UIImage(named: ["select_device_0","select_device_1","TDSPAN_ICON","select_device_2","select_device_3zb","select_device_4zb","WaterReplenish1_1","select_device_2"][deviceType.hashValue])
+        deviceImg.image=UIImage(named: ["水芯片配对图标1","select_device_0","select_device_1","TDSPAN_ICON","select_device_2","select_device_3zb","select_device_4zb","WaterReplenish1_1"][deviceType.hashValue])
         deviceName.text=deviceType.Name()
     }
 

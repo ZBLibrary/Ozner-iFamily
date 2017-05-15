@@ -129,7 +129,7 @@ class PairSuccessController: UIViewController {
             (mainMatchView as! SmallAriClearView).nameLb.placeholder = loadLanguage("净水器名称")
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             (mainMatchView as! SmallAriClearView).nameLb.delegate=self
-            successImage.image=UIImage(named: "icon_peidui_select_jingshuiqi")
+            successImage.image=UIImage(named: "水芯片配对图标3")
         
         }
         view.addSubview(mainMatchView)
@@ -317,7 +317,7 @@ extension PairSuccessController: UICollectionViewDelegate,UICollectionViewDataSo
                            OznerDeviceType.Air_Blue:"icon_peidui_select_smallair",
                            OznerDeviceType.Air_Wifi:"icon_peidui_select_bigair",
                            OznerDeviceType.WaterReplenish:"WaterReplenish4",
-                           OznerDeviceType.Water_Bluetooth:"icon_peidui_select_jingshuiqi"][CurrDeviceType]
+                           OznerDeviceType.Water_Bluetooth:"水芯片配对图标3"][CurrDeviceType]
         cell.iconImage.image=UIImage(named: iconImgName!)
         cell.nameLabel.text=CurrDeviceType.Name()
         
