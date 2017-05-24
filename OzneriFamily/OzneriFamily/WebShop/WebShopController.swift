@@ -17,7 +17,9 @@ class WebShopController: UIViewController {
         super.viewDidLoad()
         urlstr=NetworkManager.defaultManager?.UrlNameWithRoot("WebStore")
 
-        webView = UIWebView(frame: self.view.bounds)
+        let frame = CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
+        
+        webView = UIWebView(frame: frame)
         
         webView.scalesPageToFit = true
         webView.delegate = self
