@@ -33,12 +33,13 @@
     _Filter_A_Time=*((UInt32*)bytes);
     _Filter_B_Time=*((UInt32*)(bytes+4));
     _Filter_C_Time=*((UInt32*)(bytes+4));
-    _Filter_A_Time=(int)round(_Filter_A_Time/10.0)*10;
-    _Filter_B_Time=(int)round(_Filter_B_Time/10.0)*10;
-    _Filter_C_Time=(int)round(_Filter_C_Time/10.0)*10;
     _Filter_A_Percentage=bytes[12];
     _Filter_B_Percentage=bytes[13];
     _Filter_C_Percentage=bytes[14];
+    
+    _Filter_A_Percentage=(int)round(_Filter_A_Percentage/10.0)*10;
+    _Filter_B_Percentage=(int)round(_Filter_B_Percentage/10.0)*10;
+    _Filter_C_Percentage=(int)round(_Filter_C_Percentage/10.0)*10;
 }
 -(NSString *)description
 {

@@ -32,9 +32,9 @@
 
 -(void)DeviceIODidDisconnected:(BaseDeviceIO *)io
 {
-    [_filterInfo reset];
+    //[_filterInfo reset];
     [_settingInfo reset];
-    [_filterInfo reset];
+    //[_filterInfo reset];
 }
 
 

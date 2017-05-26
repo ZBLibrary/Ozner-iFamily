@@ -53,21 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         myTypes.insert(UIUserNotificationType.badge)
         myTypes.insert(UIUserNotificationType.alert)
    
-//        if #available(iOS 10.0, *) {
-//            let notifiCenter = UNUserNotificationCenter.current()
-//            notifiCenter.delegate = self
-//            let types = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
-//            notifiCenter.requestAuthorization(options: types) { (flag, error) in
-//                if flag {
-//                   print("iOS request notification success")
-//                }else{
-//                    print(" iOS 10 request notification fail")
-//                }
-//            }
-//        } else { //iOS8,iOS9注册通知
-            let setting = UIUserNotificationSettings(types: [UIUserNotificationType.alert,UIUserNotificationType.sound,UIUserNotificationType.badge], categories: nil)
-            UIApplication.shared.registerUserNotificationSettings(setting)
-//        }
+        let setting = UIUserNotificationSettings(types: [UIUserNotificationType.alert,UIUserNotificationType.sound,UIUserNotificationType.badge], categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(setting)
         
         UIApplication.shared.registerForRemoteNotifications()
         

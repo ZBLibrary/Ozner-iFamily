@@ -19,7 +19,11 @@ class RoWaterPuefierLvXinController: BaseViewController {
             self.currentDevice.resetFilter()
         }
         alert.addButton(loadLanguage("购买滤芯")) {
-            LoginManager.instance.setTabbarSelected(index: 1)
+            let vc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "AboutDeviceController") as! AboutDeviceController
+            //.URL!["URLOfBuyROWater"]?.stringValue)!
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("URLOfBuyROWater"))! , Type: 0)
+            vc.title="购买滤芯"
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         alert.showInfo("", subTitle: loadLanguage("为了您和您家人的健康，请及时更换滤芯"))
     }
@@ -37,7 +41,10 @@ class RoWaterPuefierLvXinController: BaseViewController {
     }
     
     @IBAction func buyLvXinClick(sender: AnyObject) {
-        LoginManager.instance.setTabbarSelected(index: 1)
+        let vc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "AboutDeviceController") as! AboutDeviceController
+        vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("URLOfBuyROWater"))!, Type: 0)
+        vc.title="购买滤芯"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func buyDeviceClick(sender: UIButton) {
         let vc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "AboutDeviceController") as! AboutDeviceController
@@ -103,8 +110,8 @@ class RoWaterPuefierLvXinController: BaseViewController {
         lvxinValueLabelC.text="\(currentDevice.filterInfo.filter_C_Percentage)%"
         
         //timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
-        //let minFilter=min(currentDevice.filterInfo.filter_A_Percentage, currentDevice.filterInfo.filter_B_Percentage, currentDevice.filterInfo.filter_C_Percentage)
-        fuweiButton.isHidden = true//minFilter>0
+        let minFilter=min(currentDevice.filterInfo.filter_A_Percentage, currentDevice.filterInfo.filter_B_Percentage, currentDevice.filterInfo.filter_C_Percentage)
+        fuweiButton.isHidden = minFilter>0
         lvxinAlertLabel.text = ""   
         // Do any additional setup after loading the view.
     }

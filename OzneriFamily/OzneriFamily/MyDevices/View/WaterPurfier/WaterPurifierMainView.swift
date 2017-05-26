@@ -64,6 +64,17 @@ class WaterPurifierMainView: OznerDeviceView {
     }
     @IBAction func operationButtonClick(_ sender: UIButton) {
         
+        if isBlueDevice {
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false,
+                dynamicAnimatorActive: true
+            )
+            let alert=SCLAlertView(appearance: appearance)
+            _=alert.addButton(loadLanguage("确定"), action: {return})
+            _=alert.showNotice(loadLanguage("提示"), subTitle: loadLanguage("抱歉，该净水器型号没有提供此项功能！"))
+            return
+        }
+        
         sender.isEnabled=false
         Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(setButtonEnable), userInfo: sender, repeats: false)//防止多次连续点击
         if sender.tag != 0 && operation.power==false {

@@ -156,7 +156,7 @@ class DeviceViewContainer: UIView {
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
                 //隐藏底部按钮
                 (currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
-                (currentDeviceView as! WaterPurifierMainView).footerContainer.isHidden=true
+                //(currentDeviceView as! WaterPurifierMainView).footerContainer.isHidden=true
             }
             oznerDeviceStatusUpdate(currentDevice)//初始化设备状态
         }
@@ -249,26 +249,6 @@ extension DeviceViewContainer:OznerDeviceDelegate{
 //从后台上传下拉数据方法
 extension DeviceViewContainer{
 
-//    //大空净设备滤芯
-//    func setBigAirLvXin() {
-//        //设置滤芯
-//        if let filterStatus=(currentDevice as! AirPurifier_MxChip).status.filterStatus
-//        {
-//            setAirLvXin(workTime: Int(filterStatus.workTime), maxTime: 129600)
-//            
-//        }else{
-//            Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(setBigAirLvXin), userInfo: nil, repeats: false)
-//        }
-//    }
-    
-    
-//    //空净滤芯状态
-//    func setAirLvXin(workTime:Int,maxTime:Int) {
-//        var lvxinValue=1-CGFloat(workTime)/CGFloat(maxTime)
-//        lvxinValue=min(1, lvxinValue)
-//        lvxinValue=max(0, lvxinValue)
-//        self.LvXinValue=Int(lvxinValue*100)
-//    }
     //设置净水器滤芯、型号、链接地址、是否提醒
     func SetWaterPurifer(devID:String){
         weak var weakSelf=self
@@ -277,11 +257,6 @@ extension DeviceViewContainer{
            
             User.GetMachineLifeOutTime(deviceID: devID, success: { (usedDays, stopDate) in
                 let useValue=ceil(Double(100*(365-usedDays)/365))
-                
-                //TODO : Crash
-                //Could not cast value of type 'OzneriFamily.Air_WifiMainView' (0x1005819b8) to 'OzneriFamily.WaterPurifierMainView' (0x1005811c8).
-                //                2017-03-09 11:22:09.433609 OzneriFamily[4888:1207047] Could not cast value of type 'OzneriFamily.Air_WifiMainView' (0x1005819b8) to 'OzneriFamily.WaterPurifierMainView' (0x1005811c8).
-                
                  (weakSelf?.currentDeviceView as! WaterPurifierMainView).setLvXinAndEnable(scan: scanEnable, cool: coolEnable, hot: hotEnable, buyLvXinUrl: url!, lvXinStopDate: stopDate as NSDate, lvXinUsedDays: Int(useValue))
                 self.LvXinValue=Int(useValue)
                 if useValue<10//小于10%提醒及时更换滤芯
@@ -305,10 +280,5 @@ extension DeviceViewContainer{
                 self.LvXinValue = -2
         }
     }
-//    func SetRoWaterPuriferLvXin()  {
-//      
-//        let tmpDev=currentDevice as! ROWaterPurufier
-//        let lvxinValue=min(tmpDev.filterInfo.filter_A_Percentage, tmpDev.filterInfo.filter_B_Percentage, tmpDev.filterInfo.filter_C_Percentage)
-//        self.LvXinValue=Int(lvxinValue)
-//    }
+
 }
