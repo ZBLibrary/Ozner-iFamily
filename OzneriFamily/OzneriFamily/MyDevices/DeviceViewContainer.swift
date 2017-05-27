@@ -257,6 +257,11 @@ extension DeviceViewContainer{
            
             User.GetMachineLifeOutTime(deviceID: devID, success: { (usedDays, stopDate) in
                 let useValue=ceil(Double(100*(365-usedDays)/365))
+                
+                guard (weakSelf?.currentDevice?.isKind(of: WaterPurifierMainView.self))! else {
+                    return
+                }
+                
                  (weakSelf?.currentDeviceView as! WaterPurifierMainView).setLvXinAndEnable(scan: scanEnable, cool: coolEnable, hot: hotEnable, buyLvXinUrl: url!, lvXinStopDate: stopDate as NSDate, lvXinUsedDays: Int(useValue))
                 self.LvXinValue=Int(useValue)
                 if useValue<10//小于10%提醒及时更换滤芯
