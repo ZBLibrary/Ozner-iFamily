@@ -53,7 +53,7 @@ class SetDeviceNameController: BaseViewController {
             attri=[0:loadLanguage("我的水杯"),1:loadLanguage("家人水杯")]
         case .Tap,.TDSPan:
             attri=[0:loadLanguage("洗手间"),1:loadLanguage("厨房")]
-        case .Water_Wifi:
+        case .Water_Wifi,.Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
             attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
         case .Air_Blue,.Air_Wifi:
             attri=[0:loadLanguage("客厅"),1:loadLanguage("卧室")]

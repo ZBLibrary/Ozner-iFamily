@@ -43,7 +43,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
             deviceDes = PairImagsAndState(imageName: "icon_peidui_tantou_watting", typeStateText:loadLanguage( "正在进行蓝牙配对"), deviceStateText: loadLanguage("长按下start按钮"))
         case OznerDeviceType.TDSPan:
             deviceDes = PairImagsAndState(imageName: "icon_peidui_TDSPAN_watting", typeStateText:loadLanguage( "正在进行蓝牙配对"), deviceStateText: loadLanguage("长按下start按钮"))
-        case OznerDeviceType.Water_Wifi:
+        case OznerDeviceType.Water_Wifi,.Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
             deviceDes = PairImagsAndState(imageName: "icon_peidui_jingshuiqi_watting", typeStateText: loadLanguage("正在进行Wifi配对"), deviceStateText: loadLanguage("请同时按下净水器加热与制冷两个按钮"))
         case OznerDeviceType.Air_Blue:
             deviceDes = PairImagsAndState(imageName: "icon_smallair_peidui_waitting", typeStateText: "", deviceStateText:loadLanguage( "正在进行蓝牙配对"))
@@ -51,8 +51,6 @@ class PairingController: UIViewController,OznerManagerDelegate {
             deviceDes = PairImagsAndState(imageName: "icon_bigair_peidui_waitting", typeStateText:loadLanguage( "正在进行Wifi配对"), deviceStateText:loadLanguage( "同时按下电源和风速键,WiFi指示灯闪烁。"))
         case OznerDeviceType.WaterReplenish:
             deviceDes = PairImagsAndState(imageName: "WaterReplenish3", typeStateText:loadLanguage("请长按开机键五秒至灯光闪烁"), deviceStateText: loadLanguage("正在进行蓝牙配对"))
-        
-       
         }
         deviceImg.image = UIImage(named: deviceDes.imageName)
         typeState.text = deviceDes.typeStateText
@@ -76,7 +74,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
                 return
             }
             StarBluePair()
-        case OznerDeviceType.Water_Wifi,OznerDeviceType.Air_Wifi://Wifi配对
+        case OznerDeviceType.Water_Wifi,OznerDeviceType.Air_Wifi,.Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF://Wifi配对
             if pairTimer == nil {
                 return
             }

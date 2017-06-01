@@ -30,7 +30,12 @@ class LeftMenuDeviceCell: UITableViewCell {
                 connectImg.image=UIImage(named: "device_icon_wifi")//Wifi图标
                 connectLabel.text=(device as! WaterPurifier).isOffline ? loadLanguage("已断开") : loadLanguage("已连接")
                 break
-
+            case .Water_Wifi_JZYA1XBA8CSFFSF:
+                break
+            case .Water_Wifi_JZYA1XBA8DRF:
+                break
+            case .Water_Wifi_JZYA1XBLG_DRF:
+                break
             }
         }
     }

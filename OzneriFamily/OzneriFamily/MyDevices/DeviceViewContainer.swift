@@ -101,13 +101,17 @@ class DeviceViewContainer: UIView {
         .Air_Blue:"Air_BlueMainView",
         .Air_Wifi:"Air_WifiMainView",
         .WaterReplenish:"WaterReplenishMainView",
-        .Water_Bluetooth:"WaterPurifierMainView"
+        .Water_Bluetooth:"WaterPurifierMainView",
+        .Water_Wifi_JZYA1XBA8CSFFSF:"WaterPur_A8CSFFSF",
+        .Water_Wifi_JZYA1XBA8DRF:"WaterPur_A8DRF",
+        .Water_Wifi_JZYA1XBLG_DRF:"WaterPur_A8DRF"
     ]
     private func SelectWitchView(device:OznerDevice?)  {
         
         
         currentDevice=device
-        var deviceNibName =  "NoDeviceView"
+        //测试
+        var deviceNibName =  "WaterPur_A8CSFFSF"//"NoDeviceView"
         if device != nil  {//有设备时视图初始化
             let tmpType=OznerDeviceType.getType(type: (device?.type)!)
             deviceNibName=DeviceNibName[tmpType]!
@@ -125,7 +129,9 @@ class DeviceViewContainer: UIView {
             delegate.DeviceNameChange!(name: "首页")
             delegate.DeviceConnectStateChange!(stateDes: "")
             delegate.WhitchCenterViewIsHiden!(SettingIsHiden: true, BateryIsHiden: true, FilterIsHiden: true,BottomValue:0)
-            
+            //测试
+            delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:160*k_height)
+            //delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:220*k_height)
         }else{//有设备时视图初始化
             currentDeviceView.currentDevice=device
             switch  OznerDeviceType.getType(type: (currentDevice?.type)!) {
@@ -156,7 +162,13 @@ class DeviceViewContainer: UIView {
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
                 //隐藏底部按钮
                 (currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
-                //(currentDeviceView as! WaterPurifierMainView).footerContainer.isHidden=true
+                
+            case .Water_Wifi_JZYA1XBA8CSFFSF:
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:160*k_height)
+                break
+            case .Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:220*k_height)
+                break
             }
             oznerDeviceStatusUpdate(currentDevice)//初始化设备状态
         }
@@ -204,6 +216,8 @@ extension DeviceViewContainer:OznerDeviceDelegate{
                 let tmpDev=currentDevice as! ROWaterPurufier
                 let lvxinValue=min(tmpDev.filterInfo.filter_A_Percentage, tmpDev.filterInfo.filter_B_Percentage, tmpDev.filterInfo.filter_C_Percentage)
                 self.LvXinValue=Int(lvxinValue)
+            case .Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
+                break
             }
         }
     }

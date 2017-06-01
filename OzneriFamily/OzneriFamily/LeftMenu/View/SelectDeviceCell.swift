@@ -9,6 +9,7 @@
 import UIKit
 //wifi产品一定要带WIFI字母
 enum OznerDeviceType:String {
+    
     case Water_Bluetooth="Ozner RO"
     case Cup="CP001"
     case Tap="SC001"
@@ -16,17 +17,20 @@ enum OznerDeviceType:String {
     case Water_Wifi="MXCHIP_HAOZE_Water"
     case Air_Blue="FLT001"
     case Air_Wifi="FOG_HAOZE_AIR"
- 
     case WaterReplenish="BSY001"
+    
+    case Water_Wifi_JZYA1XBA8CSFFSF="JZY-A1XB-A8_CSF&FSF"
+    case Water_Wifi_JZYA1XBA8DRF="JZY-A1XB-A8_DRF"
+    case Water_Wifi_JZYA1XBLG_DRF="JZY-A1XB-LG_DRF"
     
     //case Water_Wifi_Ayla="Water_Wifi_Ayla"
     //case Air_Wifi_Ayla="Air_Wifi_Ayla"
   
     func Name()->String {
-        return [loadLanguage("水芯片净水器"),loadLanguage("智能水杯"),loadLanguage("水探头"),loadLanguage("智能检测笔"),loadLanguage("净水器"),loadLanguage("台式空净"),loadLanguage("立式空净"),loadLanguage("补水仪")][self.hashValue]
+        return [loadLanguage("水芯片净水器"),loadLanguage("智能水杯"),loadLanguage("水探头"),loadLanguage("智能检测笔"),loadLanguage("净水器"),loadLanguage("台式空净"),loadLanguage("立式空净"),loadLanguage("补水仪"),loadLanguage("净水器"),loadLanguage("净水器"),loadLanguage("净水器")][self.hashValue]
     }
     func Name_En()->String {
-        return ["WaterPurfier","Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish"][self.hashValue]
+        return ["WaterPurfier","Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish","JZY-A1XB-A8_CSF&FSF","JZY-A1XB-A8_DRF","JZY-A1XB-LG_DRF"][self.hashValue]
     }
     static func getType(type:String) -> OznerDeviceType {
         switch type {

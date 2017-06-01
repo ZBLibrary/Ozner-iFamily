@@ -41,7 +41,7 @@ class EquidsCollectionViewCell: UICollectionViewCell {
             imgwhich+="My_shuiji"
         case .Air_Blue:
             imgwhich+="My_kongjing_small"
-        case .Air_Wifi:
+        case .Air_Wifi,.Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
             imgwhich+="My_kongjing_big"
         case .WaterReplenish:
             imgwhich+="My_bsy"

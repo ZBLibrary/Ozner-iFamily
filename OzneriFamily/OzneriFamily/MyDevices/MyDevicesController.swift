@@ -57,7 +57,7 @@ class MyDevicesController: UIViewController {
             self.performSegue(withIdentifier: "showTapSetting", sender: nil)
         case .TDSPan:
             self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
-        case .Water_Wifi,.Water_Bluetooth:
+        case .Water_Wifi,.Water_Bluetooth,.Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
             self.performSegue(withIdentifier: "showWaterPurfierSetting", sender: nil)
         case .Air_Blue,.Air_Wifi:
             self.performSegue(withIdentifier: "showAirSetting", sender: nil)

@@ -110,7 +110,7 @@ class PairSuccessController: UIViewController {
             (mainMatchView as! SmallAriClearView).nameLb.delegate=self
             successImage.image=UIImage(named: "icon_peidui_select_smallAir")
             
-        case OznerDeviceType.Air_Wifi:
+        case OznerDeviceType.Air_Wifi,.Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).placeLb.text = loadLanguage("办公室")
             (mainMatchView as! SmallAriClearView).nameLb.placeholder = loadLanguage("立式空净名称")

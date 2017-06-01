@@ -164,6 +164,11 @@
 		8D5ABB241D9E4A1C008524A7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB231D9E4A1C008524A7 /* SystemConfiguration.framework */; };
 		8D5ABB261D9E4A23008524A7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB251D9E4A23008524A7 /* CoreLocation.framework */; };
 		8D5ABB281D9E4A48008524A7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB271D9E4A48008524A7 /* AdSupport.framework */; };
+		8D6BFDBD1ED9626E00AC849C /* WaterPur_A8DRF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6BFDB91ED9626E00AC849C /* WaterPur_A8DRF.swift */; };
+		8D6BFDBE1ED9626E00AC849C /* WaterPur_A8DRF.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBA1ED9626E00AC849C /* WaterPur_A8DRF.xib */; };
+		8D6BFDBF1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBB1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift */; };
+		8D6BFDC01ED9626E00AC849C /* WaterPur_A8CSFFSF.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBC1ED9626E00AC849C /* WaterPur_A8CSFFSF.xib */; };
+		8D6BFDC61ED970F000AC849C /* WaterPurifier_1_5.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC51ED970F000AC849C /* WaterPurifier_1_5.m */; };
 		8D7837011DE28B5200A3D9E3 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7836FE1DE28B5200A3D9E3 /* libWeChatSDK.a */; };
 		8D7837031DE28DD900A3D9E3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7837021DE28DD900A3D9E3 /* libc++.tbd */; };
 		8D7837051DE28DF200A3D9E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7837041DE28DF200A3D9E3 /* Security.framework */; };
@@ -638,6 +643,12 @@
 		8D5ABB251D9E4A23008524A7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8D5ABB271D9E4A48008524A7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8D5ABB291D9E632E008524A7 /* OzneriFamily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OzneriFamily.entitlements; sourceTree = "<group>"; };
+		8D6BFDB91ED9626E00AC849C /* WaterPur_A8DRF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPur_A8DRF.swift; sourceTree = "<group>"; };
+		8D6BFDBA1ED9626E00AC849C /* WaterPur_A8DRF.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterPur_A8DRF.xib; sourceTree = "<group>"; };
+		8D6BFDBB1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPur_A8CSFFSF.swift; sourceTree = "<group>"; };
+		8D6BFDBC1ED9626E00AC849C /* WaterPur_A8CSFFSF.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterPur_A8CSFFSF.xib; sourceTree = "<group>"; };
+		8D6BFDC41ED970F000AC849C /* WaterPurifier_1_5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterPurifier_1_5.h; sourceTree = "<group>"; };
+		8D6BFDC51ED970F000AC849C /* WaterPurifier_1_5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterPurifier_1_5.m; sourceTree = "<group>"; };
 		8D7836FE1DE28B5200A3D9E3 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		8D7836FF1DE28B5200A3D9E3 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		8D7837001DE28B5200A3D9E3 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -1673,6 +1684,10 @@
 		8DC02E6D1DB5CE91007F57DB /* WaterPurfier */ = {
 			isa = PBXGroup;
 			children = (
+				8D6BFDB91ED9626E00AC849C /* WaterPur_A8DRF.swift */,
+				8D6BFDBA1ED9626E00AC849C /* WaterPur_A8DRF.xib */,
+				8D6BFDBB1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift */,
+				8D6BFDBC1ED9626E00AC849C /* WaterPur_A8CSFFSF.xib */,
 				B7DBCB5D1E5AB4BA00C5D7A3 /* WaterPurifierMainView.swift */,
 				B7DBCB5E1E5AB4BA00C5D7A3 /* WaterPurifierMainView.xib */,
 				8DC02E6E1DB5CE91007F57DB /* WaterPurifierHeadCircleView.swift */,
@@ -1862,6 +1877,8 @@
 				8D14A9241DD967AA00920AE9 /* RO_WaterInfo.m */,
 				8D14A9251DD967AA00920AE9 /* RO_FilterInfo.h */,
 				8D14A9261DD967AA00920AE9 /* RO_FilterInfo.m */,
+				8D6BFDC41ED970F000AC849C /* WaterPurifier_1_5.h */,
+				8D6BFDC51ED970F000AC849C /* WaterPurifier_1_5.m */,
 			);
 			path = WaterPurifier;
 			sourceTree = "<group>";
@@ -2621,6 +2638,7 @@
 				B717E8491E0BAB7100B6DEBD /* normal_face.plist in Resources */,
 				8D7837121DE2CC2300A3D9E3 /* ShareImageView.xib in Resources */,
 				8D0D68411DDD8A3B0097038E /* RNModifyPasswordViewController.xib in Resources */,
+				8D6BFDC01ED9626E00AC849C /* WaterPur_A8CSFFSF.xib in Resources */,
 				8DA417901DDC8E2B00EC7381 /* CupTDSCircleView.xib in Resources */,
 				8D0D69401DDD99A10097038E /* MyFriendCell.xib in Resources */,
 				8D0D694A1DDD99A10097038E /* YanZhengCell.xib in Resources */,
@@ -2632,6 +2650,7 @@
 				8D92F6711D9534890068A40A /* LeftMenu.storyboard in Resources */,
 				8D0D69321DDD99A10097038E /* AddFriendTableViewCell.xib in Resources */,
 				8D0D693C1DDD99A10097038E /* FriendZeroBgView.xib in Resources */,
+				8D6BFDBE1ED9626E00AC849C /* WaterPur_A8DRF.xib in Resources */,
 				8D123B541DD5EA3B00F424B3 /* CupCustomPickerView.xib in Resources */,
 				8D0D69481DDD99A10097038E /* MyRankTableViewCell.xib in Resources */,
 				B79803DD1DB5B15D001EC5AA /* SmallAriClearView.xib in Resources */,
@@ -2816,6 +2835,7 @@
 				B717E8281E0BAB5400B6DEBD /* MASConstraintMaker.m in Sources */,
 				8DC02F7C1DB5F03B007F57DB /* CupSensor.m in Sources */,
 				8DAE80911D9B9A3E00A9946F /* BaseDataObject+CoreDataClass.swift in Sources */,
+				8D6BFDBF1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift in Sources */,
 				B717E82E1E0BAB5400B6DEBD /* View+MASAdditions.m in Sources */,
 				8D117C221D9CFB0D0024187E /* JCRootViewController.m in Sources */,
 				B7D8C73B1E5EBC7E0015AAD3 /* GYLabel.swift in Sources */,
@@ -3069,10 +3089,12 @@
 				8D129A241DD4B5080022F7EA /* LBXScanViewController.swift in Sources */,
 				8D113DC91DB71981008CE2C6 /* UINavigationController+Expand.swift in Sources */,
 				B727C35D1DACE90000FE990F /* SuccessPairCell.swift in Sources */,
+				8D6BFDC61ED970F000AC849C /* WaterPurifier_1_5.m in Sources */,
 				8DC02F7A1DB5F03B007F57DB /* CupRecord.m in Sources */,
 				8DC02F6A1DB5F03B007F57DB /* AirPurifierInfo.m in Sources */,
 				B717E8211E0BAB5400B6DEBD /* ICPhotoBrowserController.m in Sources */,
 				8DC02F861DB5F03B007F57DB /* SqlLiteDB.m in Sources */,
+				8D6BFDBD1ED9626E00AC849C /* WaterPur_A8DRF.swift in Sources */,
 				8DC02F711DB5F03B007F57DB /* BluetoothSynchronizedObject.m in Sources */,
 				8DC02F6B1DB5F03B007F57DB /* MxChipAirPurifierFilterStatus.m in Sources */,
 				8D0D692E1DDD99A00097038E /* VerfyViewController.swift in Sources */,
