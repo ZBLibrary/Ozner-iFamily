@@ -53,13 +53,34 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = self.group.gName;
     
-    [self setupUI];
+//    [self setupUI];
+//    
+//    [self registerCell];
+//    
+//    [self loadDataSource];
+//    
+//    [User GetAccesstoken];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated] ;
     
-    [self registerCell];
     
-    [self loadDataSource];
+    NSDictionary *parameters = @{
+                                 @"user": @{
+                                         @"nick_name": @"小明",
+                                         @"cellphone":@"18888888888",
+                                         @"email":@"xiaoming@qq.com",
+                                         @"description":@"用户描述",
+                                         @"sdk_token":@"xxxxxxxxxxx"
+                                         }
+                                 };
+    [UdeskManager createCustomerWithCustomerInfo:parameters];
     
-    [User GetAccesstoken];
+    
+    UdeskSDKManager *chat = [[UdeskSDKManager alloc] initWithSDKStyle:[UdeskSDKStyle defaultStyle]];
+    [chat presentUdeskViewControllerWithType:UdeskIM viewController:self completion:nil];
+
 }
 
 

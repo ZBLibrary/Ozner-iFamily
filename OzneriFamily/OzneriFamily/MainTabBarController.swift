@@ -28,13 +28,15 @@ class MainTabBarController: RDVTabBarController {
         
         let c2=WebShopController()
       
-        let group = XZGroup()
-        group.gName = "咨询"
-        let chatVc = XZChatViewController()
-        chatVc.group = group
-        group.unReadCount = 2;
-        group.lastMsgString = "你等着!"
-        let nav3 = UINavigationController(rootViewController: chatVc)
+//        let group = XZGroup()
+//        group.gName = "咨询"
+//        let chatVc = XZChatViewController()
+//        chatVc.group = group
+//        group.unReadCount = 2;
+//        group.lastMsgString = "你等着!"
+        
+        let messageVC = RNMessageViewController()
+        let nav3 = UINavigationController(rootViewController: messageVC)
         
         let c4=UIStoryboard(name: "MainMyCenter", bundle: nil).instantiateInitialViewController() as!GYNavViewController
         

@@ -42,3 +42,11 @@
 #import "XZGroup.h"
 #import "XZChatViewController.h"
 
+
+// UDesk
+#import "Udesk.h"
+#import "UdeskFoundationMacro.h"
+#import "UIColor+UdeskSDK.h"
+#import "UdeskViewExt.h"
+#import "UdeskTransitioningAnimation.h"
+#import "UdeskChatViewController.h"
