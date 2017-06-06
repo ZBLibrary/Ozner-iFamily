@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -168,12 +168,20 @@
                             <color key="textColor" red="0.2312418520450592" green="0.5431370735168457" blue="0.95001107454299927" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浩泽安全净水--天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzJ-Ci-Orn">
+                            <rect key="frame" x="114.5" y="90" width="145" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" red="0.99924308061599731" green="0.063712760806083679" blue="0.45744079351425171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="l7r-pB-6LP" firstAttribute="centerX" secondItem="Y0s-Zx-CTz" secondAttribute="centerX" id="3xB-nn-jKJ"/>
                         <constraint firstItem="zbc-kP-Jm3" firstAttribute="width" secondItem="Y0s-Zx-CTz" secondAttribute="width" multiplier="310:375" id="BUi-89-Hms"/>
+                        <constraint firstItem="bzJ-Ci-Orn" firstAttribute="centerX" secondItem="Y0s-Zx-CTz" secondAttribute="centerX" id="Yvf-4Y-hQI"/>
                         <constraint firstItem="zbc-kP-Jm3" firstAttribute="centerY" secondItem="Y0s-Zx-CTz" secondAttribute="centerY" id="ZmE-E1-jo8"/>
+                        <constraint firstItem="bzJ-Ci-Orn" firstAttribute="top" secondItem="Y0s-Zx-CTz" secondAttribute="top" constant="90" id="aZ3-ra-TN5"/>
                         <constraint firstItem="l7r-pB-6LP" firstAttribute="top" secondItem="zbc-kP-Jm3" secondAttribute="bottom" constant="15" id="jHi-D9-mw8"/>
                         <constraint firstItem="zbc-kP-Jm3" firstAttribute="centerX" secondItem="Y0s-Zx-CTz" secondAttribute="centerX" id="rh4-Ul-e3G"/>
                     </constraints>
@@ -324,6 +332,7 @@
                 <outlet property="tdsStateLabel" destination="Qir-sV-5Cw" id="sFZ-9E-UgS"/>
                 <outlet property="tdsValueLabel_AF" destination="zax-Xv-gcJ" id="78t-w2-Zph"/>
                 <outlet property="tdsValueLabel_BF" destination="byb-ZA-dhf" id="dd2-TZ-2e1"/>
+                <outlet property="waterDaysLabel" destination="bzJ-Ci-Orn" id="wrR-Qw-fD1"/>
             </connections>
             <point key="canvasLocation" x="-112.5" y="23.5"/>
         </view>

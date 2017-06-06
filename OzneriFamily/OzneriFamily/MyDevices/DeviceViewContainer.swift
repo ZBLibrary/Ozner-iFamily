@@ -107,11 +107,9 @@ class DeviceViewContainer: UIView {
         .Water_Wifi_JZYA1XBLG_DRF:"WaterPur_A8DRF"
     ]
     private func SelectWitchView(device:OznerDevice?)  {
-        
-        
         currentDevice=device
         //测试
-        var deviceNibName =  "WaterPur_A8CSFFSF"//"NoDeviceView"
+        var deviceNibName = "NoDeviceView"//"WaterPur_A8CSFFSF"//
         if device != nil  {//有设备时视图初始化
             let tmpType=OznerDeviceType.getType(type: (device?.type)!)
             deviceNibName=DeviceNibName[tmpType]!
@@ -130,7 +128,7 @@ class DeviceViewContainer: UIView {
             delegate.DeviceConnectStateChange!(stateDes: "")
             delegate.WhitchCenterViewIsHiden!(SettingIsHiden: true, BateryIsHiden: true, FilterIsHiden: true,BottomValue:0)
             //测试
-            delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:160*k_height)
+            //delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:160*k_height)
             //delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:220*k_height)
         }else{//有设备时视图初始化
             currentDeviceView.currentDevice=device

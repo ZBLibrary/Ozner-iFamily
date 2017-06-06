@@ -781,4 +781,87 @@ public class User: BaseDataObject {
         
     }
     
+    // 获取水值充值卡列表
+    class func GetWaterCardList(success: @escaping (([WaterCardStruct]) -> Void), failure: @escaping ((Error) -> Void)){
+        
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+        SVProgressHUD.showProgress(0)
+        let manager = AFHTTPSessionManager.init()
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
+        manager.get("http://192.168.173.9:8025/PlatformTestWebApi/api/order/GetUserOnlineRechargeWaterOrderList", parameters:["uid":872716], progress: { (progress) in
+            //Update the progress view
+            DispatchQueue.main.async(execute: {
+                if Float(progress.fractionCompleted)<1{
+                    SVProgressHUD.showProgress(Float(progress.fractionCompleted))
+                }else{
+                    SVProgressHUD.dismiss()
+                }
+            })
+        }, success: { (task, response) in
+            let json=JSON(data: response as! Data)
+            var arr = [WaterCardStruct]()
+            for item in json["Data"].arrayValue
+            {
+                let ProductId=item["ProductId"].intValue
+                let OrderId=item["OrderId"].intValue
+                let OrderDtlId=item["OrderDtlId"].intValue
+                let OrginOrderCode=item["OrginOrderCode"].stringValue
+                var LimitTimes=item["LimitTimes"].intValue
+                
+                if ![1,6,12].contains(LimitTimes)
+                {
+                    LimitTimes=6
+                }
+                let BuyQuantity=item["BuyQuantity"].intValue //购买总数
+                let ActualQuantity=item["ActualQuantity"].intValue //已使用数量
+                
+                for i in 0..<BuyQuantity
+                {
+                    let itemStru=WaterCardStruct(ProductId: ProductId, OrderId: OrderId, OrderDtlId: OrderDtlId, LimitTimes: LimitTimes, OrginOrderCode: OrginOrderCode, IsUsed: (BuyQuantity-i)<=ActualQuantity)
+                    arr.append(itemStru)
+                }
+                
+            }
+            print(arr)
+            success(arr)
+        }, failure: { (task, error) in
+            SVProgressHUD.dismiss()
+            failure(error)
+        })
+    }
+    // 确认使用充水卡
+    class func UseWaterCard(cardinfo:WaterCardStruct,Mac:String,success: @escaping (() -> Void), failure: @escaping ((Error) -> Void)){
+        
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+        SVProgressHUD.showProgress(0)
+        let manager = AFHTTPSessionManager.init()
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
+        manager.post("http://192.168.173.9:8025/PlatformTestWebApi/api/order/OnlineRechargeWaterOrderConfirm", parameters:["ProductId":cardinfo.ProductId,"OrderId":cardinfo.OrderId,"OrderDtlId":cardinfo.OrderDtlId,"OrginOrderCode":cardinfo.OrginOrderCode,"Mac":Mac,"UCode":872716], progress: { (progress) in
+            //Update the progress view
+            DispatchQueue.main.async(execute: {
+                if Float(progress.fractionCompleted)<1{
+                    SVProgressHUD.showProgress(Float(progress.fractionCompleted))
+                }else{
+                    SVProgressHUD.dismiss()
+                }
+            })
+        }, success: { (task, response) in
+            let json=JSON(data: response as! Data)
+            if json["Result"].intValue==1 {
+                success()
+            }else{
+                failure(NSError.init(domain: json["Message"].stringValue, code: json["Result"].intValue, userInfo: nil))
+            }
+            
+        }, failure: { (task, error) in
+            SVProgressHUD.dismiss()
+            failure(error)
+        })
+    }
 }

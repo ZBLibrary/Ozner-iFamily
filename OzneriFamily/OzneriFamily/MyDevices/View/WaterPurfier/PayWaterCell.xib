@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="117" id="KGk-i7-Jjw" customClass="PayWaterCell" customModule="OzneriFamily" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="117"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="323" height="116"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ll-Cr-aPP">
+                        <rect key="frame" x="0.0" y="0.0" width="323" height="116.5"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="已选择" translatesAutoresizingMaskIntoConstraints="NO" id="An5-va-6tE">
+                                <rect key="frame" x="281" y="48" width="22" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="An5-va-6tE" secondAttribute="height" multiplier="11:10" id="156-Kz-UyR"/>
+                                    <constraint firstAttribute="height" constant="20" id="uCk-WN-vid"/>
+                                </constraints>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="一年卡" translatesAutoresizingMaskIntoConstraints="NO" id="DPq-cW-cRL">
+                                <rect key="frame" x="20" y="10" width="241" height="96.5"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="已使用" translatesAutoresizingMaskIntoConstraints="NO" id="MFw-W5-lYp">
+                                <rect key="frame" x="20" y="10" width="116" height="96.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MFw-W5-lYp" secondAttribute="height" multiplier="77:64" id="DMq-kk-P5k"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96068006753921509" green="0.96084433794021606" blue="0.96066969633102417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="An5-va-6tE" firstAttribute="centerY" secondItem="5ll-Cr-aPP" secondAttribute="centerY" id="0iI-QV-oEt"/>
+                            <constraint firstItem="An5-va-6tE" firstAttribute="leading" secondItem="DPq-cW-cRL" secondAttribute="trailing" constant="20" id="97D-Rb-ixg"/>
+                            <constraint firstItem="MFw-W5-lYp" firstAttribute="bottom" secondItem="DPq-cW-cRL" secondAttribute="bottom" id="C2S-z8-G2U"/>
+                            <constraint firstItem="DPq-cW-cRL" firstAttribute="leading" secondItem="5ll-Cr-aPP" secondAttribute="leading" constant="20" id="Dlk-Mr-kek"/>
+                            <constraint firstItem="MFw-W5-lYp" firstAttribute="top" secondItem="DPq-cW-cRL" secondAttribute="top" id="KF5-3L-p0Y"/>
+                            <constraint firstAttribute="bottom" secondItem="DPq-cW-cRL" secondAttribute="bottom" constant="10" id="RvZ-04-mZU"/>
+                            <constraint firstItem="MFw-W5-lYp" firstAttribute="leading" secondItem="DPq-cW-cRL" secondAttribute="leading" id="TZR-3D-K3R"/>
+                            <constraint firstItem="DPq-cW-cRL" firstAttribute="top" secondItem="5ll-Cr-aPP" secondAttribute="top" constant="10" id="clA-N8-Tfs"/>
+                            <constraint firstAttribute="trailing" secondItem="An5-va-6tE" secondAttribute="trailing" constant="20" id="fOz-7C-yUS"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.96068006753921509" green="0.96084433794021606" blue="0.96066969633102417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="5ll-Cr-aPP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Urv-al-4Xn"/>
+                    <constraint firstAttribute="trailing" secondItem="5ll-Cr-aPP" secondAttribute="trailing" id="XrT-cS-E9A"/>
+                    <constraint firstItem="5ll-Cr-aPP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZGc-aP-vwJ"/>
+                    <constraint firstAttribute="bottom" secondItem="5ll-Cr-aPP" secondAttribute="bottom" id="nsz-8k-0R4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cardImg" destination="DPq-cW-cRL" id="e5m-Qf-dDT"/>
+                <outlet property="selectImg" destination="An5-va-6tE" id="eyH-sg-UYB"/>
+                <outlet property="useImg" destination="MFw-W5-lYp" id="yfp-dp-IFC"/>
+            </connections>
+            <point key="canvasLocation" x="26.5" y="88.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="一年卡" width="324" height="123"/>
+        <image name="已使用" width="77" height="64"/>
+        <image name="已选择" width="40" height="40"/>
+    </resources>
+</document>

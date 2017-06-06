@@ -24,6 +24,7 @@
     _TDS1_RAW=0;
     _TDS2_RAW=0;
     _TDS_Temperature=0;
+
 }
 -(void)load:(NSData*)data
 {

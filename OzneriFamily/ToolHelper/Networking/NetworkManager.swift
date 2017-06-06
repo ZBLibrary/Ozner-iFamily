@@ -100,8 +100,6 @@ class NetworkManager:NSObject{
                 failure?(error)
         }
 
-        
-        
     }
     private func request(url: String,method:ChatHttpMethod,
                          

@@ -17,6 +17,9 @@ class WaterPurfierSettingController: DeviceSettingController {
         self.saveDevice()
     }
     @IBOutlet var nameAndAttrLabel: UILabel!
+    @IBOutlet var macAdressLabel: GYLabel!
+    @IBOutlet var waterPayViewContainer: UIView!
+
     @IBAction func deleteClick(_ sender: AnyObject) {
         super.deleteDevice()
     }
@@ -25,6 +28,8 @@ class WaterPurfierSettingController: DeviceSettingController {
         self.title = loadLanguage("设置")
         self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
         nameAndAttrLabel.text=self.getNameAndAttr()
+        waterPayViewContainer.isHidden=(LoginManager.instance.currentDevice.type != OznerDeviceType.Water_Bluetooth.rawValue)
+        macAdressLabel.text="mac:"+LoginManager.instance.currentDevice.identifier
         // Do any additional setup after loading the view.
     }
     

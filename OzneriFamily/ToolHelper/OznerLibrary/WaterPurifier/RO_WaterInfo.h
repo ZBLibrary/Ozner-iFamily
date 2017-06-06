@@ -14,6 +14,7 @@
 @property (readonly)  int TDS1_RAW;
 @property (readonly)  int TDS2_RAW;
 @property (readonly)  int TDS_Temperature;
+
 -(void)load:(NSData*)data;
 -(void)reset;
 @end

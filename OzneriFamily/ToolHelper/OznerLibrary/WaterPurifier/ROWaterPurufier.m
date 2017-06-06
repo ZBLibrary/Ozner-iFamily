@@ -8,7 +8,7 @@
 
 #import "ROWaterPurufier.h"
 #import "../Device/OznerDevice.hpp"
-
+#import "DateTools/DateTools.h"
 @implementation ROWaterPurufier
 
 
@@ -212,11 +212,64 @@ Byte calcSum(Byte* data,int size)
     if ((requestCount%2)==0)
     {
         [self requestFilterInfo];
+        [self requestSettingInfo];
     }else
         [self requestWaterInfo];
     requestCount++;
 }
-
+//冲水
+-(BOOL)addWaterMonths:(int)months{
+    if (!io) return false;
+    NSDate* curWaterDate = _settingInfo.WaterStopDate;
+    if ([curWaterDate timeIntervalSince1970]==0) {//没有获取到水值信息
+        [self requestSettingInfo];
+        return false;
+    }
+    
+    NSMutableData* data=[[NSMutableData alloc] init];
+    Byte bytes[19];
+    bytes[0]=opCode_update_setting;
+    NSDate* time=[NSDate dateWithTimeIntervalSinceNow:0];
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *dateComps = [cal components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond fromDate:time];
+    
+    bytes[1]=[dateComps year]-2000;
+    bytes[2]=[dateComps month];
+    bytes[3]=[dateComps day];
+    bytes[4]=[dateComps hour];
+    bytes[5]=[dateComps minute];
+    bytes[6]=[dateComps second];
+    
+    bytes[7]=_settingInfo.Ozone_Interval;
+    bytes[8]=_settingInfo.Ozone_WorkTime;
+    bytes[9]=0;
+    NSDate* stopDate=[[NSDate alloc] init];
+    if ([_settingInfo.WaterStopDate timeIntervalSinceDate:stopDate]>0) {
+        stopDate=_settingInfo.WaterStopDate;
+    }
+    stopDate=[stopDate dateByAddingMonths:months];
+    bytes[10]=[stopDate year]-2000;
+    bytes[11]=[stopDate month];
+    bytes[12]=[stopDate day];
+    bytes[13]=[stopDate hour];
+    bytes[14]=[stopDate minute];
+    bytes[15]=[stopDate second];
+    bytes[16]=0x88;
+    bytes[17]=0x16;
+    bytes[18]=calcSum(bytes,18);
+    [data appendBytes:bytes length:19];
+    [io send:data];
+    sleep(1);
+    [self requestSettingInfo];
+    sleep(2);
+    if ([stopDate month]==[_settingInfo.WaterStopDate month]&&[stopDate year]==[_settingInfo.WaterStopDate year]) {
+        return true;
+    }
+    else{
+        return false;
+    }
+    
+}
 //重置滤芯时间
 -(BOOL) resetFilter
 {

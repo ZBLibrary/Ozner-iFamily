@@ -26,6 +26,7 @@ class WaterPurifierMainView: OznerDeviceView {
         self.lvXinStopDate=lvXinStopDate
         self.lvXinUsedDays=lvXinUsedDays
     }
+    @IBOutlet var waterDaysLabel: UILabel!//水值
     @IBOutlet var circleView: WaterPurifierHeadCircleView!
     
     //header
@@ -128,6 +129,7 @@ class WaterPurifierMainView: OznerDeviceView {
         offLineSuggestView=Bundle.main.loadNibNamed("OffLineSuggest", owner: nil, options: nil)?.first as! OffLineSuggest
         offLineSuggestView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         offLineSuggestView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
+        waterDaysLabel.text=""
     }
     
     //                (currentDeviceView as! WaterPurifierMainView).circleView.updateCircleView(angleBefore: 0.7, angleAfter: 0.5)
@@ -184,6 +186,14 @@ class WaterPurifierMainView: OznerDeviceView {
             circleView.updateCircleView(angleBefore: angleBF, angleAfter: angleAF)
         }
     }
+    var waterDays:Int = -1{
+        didSet{
+            if waterDays != oldValue {
+                waterDaysLabel.text="浩泽安全净水\(waterDays)天"
+            }
+        }
+    }
+    
     let color_normol=UIColor(red: 177.0/255.0, green: 178.0/255.0, blue: 179.0/255.0, alpha: 1)
     let color_select=UIColor(red: 63.0/255.0, green: 135.0/255.0, blue: 237.0/255.0, alpha: 1)
     var operation:(power:Bool,hot:Bool,cool:Bool) = (false,true,true){
@@ -207,6 +217,7 @@ class WaterPurifierMainView: OznerDeviceView {
             tdsContainerView.isHidden=false
             offLineLabel.isHidden=true
             tds=(Int((device as! ROWaterPurufier).waterInfo.tds1),Int((device as! ROWaterPurufier).waterInfo.tds2))
+            waterDays=Int((device as! ROWaterPurufier).settingInfo.waterRemindDays)
         }else{
             if (device as! WaterPurifier).isOffline
             {
