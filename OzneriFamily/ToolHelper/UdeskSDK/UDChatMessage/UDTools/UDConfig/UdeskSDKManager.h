@@ -65,7 +65,7 @@ typedef enum : NSUInteger {
 /**
  设置自定义留言表单
 
- @param isCustom
+ @param isCustom ""
  */
 - (void)setCustomForm:(BOOL)isCustom;
 

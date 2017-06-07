@@ -494,6 +494,8 @@
 		E04DC4C61EE0F934009905E6 /* UdeskReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E04DC4791EE0F934009905E6 /* UdeskReachability.m */; };
 		E04DC4C81EE0FB7A009905E6 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E04DC4C71EE0FB7A009905E6 /* libresolv.tbd */; };
 		E04DC4CA1EE1074E009905E6 /* RNMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04DC4C91EE1074E009905E6 /* RNMessageViewController.swift */; };
+		E0967A151EE78C9700F7C98C /* RNChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0967A141EE78C9700F7C98C /* RNChatViewController.swift */; };
+		E0967A191EE7905400F7C98C /* RNUdeskConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0967A181EE7905400F7C98C /* RNUdeskConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1320,6 +1322,8 @@
 		E04DC4791EE0F934009905E6 /* UdeskReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UdeskReachability.m; sourceTree = "<group>"; };
 		E04DC4C71EE0FB7A009905E6 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		E04DC4C91EE1074E009905E6 /* RNMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNMessageViewController.swift; sourceTree = "<group>"; };
+		E0967A141EE78C9700F7C98C /* RNChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNChatViewController.swift; sourceTree = "<group>"; };
+		E0967A181EE7905400F7C98C /* RNUdeskConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNUdeskConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2308,6 +2312,8 @@
 				B73A6D081E0BBCFF00590930 /* XZChatViewController.h */,
 				B73A6D091E0BBCFF00590930 /* XZChatViewController.m */,
 				E04DC4C91EE1074E009905E6 /* RNMessageViewController.swift */,
+				E0967A141EE78C9700F7C98C /* RNChatViewController.swift */,
+				E0967A181EE7905400F7C98C /* RNUdeskConfig.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3582,6 +3588,7 @@
 				E04DC4AA1EE0F934009905E6 /* UdeskSDKConfig.m in Sources */,
 				E04DC4BD1EE0F934009905E6 /* UdeskBouncyViewControllerAnimator.m in Sources */,
 				8DAE80911D9B9A3E00A9946F /* BaseDataObject+CoreDataClass.swift in Sources */,
+				E0967A151EE78C9700F7C98C /* RNChatViewController.swift in Sources */,
 				B717E82E1E0BAB5400B6DEBD /* View+MASAdditions.m in Sources */,
 				8D117C221D9CFB0D0024187E /* JCRootViewController.m in Sources */,
 				B7D8C73B1E5EBC7E0015AAD3 /* GYLabel.swift in Sources */,
@@ -3683,6 +3690,7 @@
 				8DC02E7B1DB5CE91007F57DB /* LineChartView.swift in Sources */,
 				B717E8341E0BAB5400B6DEBD /* MJPropertyKey.m in Sources */,
 				E04DC4B31EE0F934009905E6 /* UdeskPhotographyHelper.m in Sources */,
+				E0967A191EE7905400F7C98C /* RNUdeskConfig.swift in Sources */,
 				E04DC4831EE0F934009905E6 /* UdeskChatMessage.m in Sources */,
 				8D184E891DED717D0008047E /* RoWaterPuefierLvXinController.swift in Sources */,
 				B717E81E1E0BAB5400B6DEBD /* UIView+Extension.m in Sources */,
