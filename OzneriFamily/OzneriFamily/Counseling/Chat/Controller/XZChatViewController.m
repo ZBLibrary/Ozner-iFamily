@@ -53,13 +53,27 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = self.group.gName;
     
-    [self setupUI];
+    //    [self setupUI];
+    //
+    //    [self registerCell];
+    //
+    //    [self loadDataSource];
+    //
+    //    [User GetAccesstoken];
     
-    [self registerCell];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated] ;
     
-    [self loadDataSource];
+    // 聊天界面调用方式
+    RNUdeskConfig *config = [[RNUdeskConfig alloc] initWithLeaveMessageBlock:^(UIViewController * vc) {
+        // 留言回调
+    }];
     
-    [User GetAccesstoken];
+    UdeskSDKManager *chat = [config shareInstance];
+    [chat presentUdeskViewControllerWithType:UdeskIM viewController:self completion:nil];
+    
 }
 
 
@@ -71,11 +85,11 @@
     self.view.backgroundColor = IColor(240, 237, 237);
     // 注意添加顺序
     [self addChildViewController:self.chatBoxVC];
-     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.tableView];
     [self.view addSubview:self.chatBoxVC.view];
-   
+    
     self.chatBoxVC.view.frame = CGRectMake(0,APP_Frame_Height-HEIGHT_TABBAR - 64, App_Frame_Width, APP_Frame_Height);
-
+    
     
     self.tableView.backgroundColor = IColor(240, 237, 237);
     // self.view的高度有时候是不准确的
@@ -102,7 +116,7 @@
 
 - (void)updateMessage
 {
-     NSArray *modelArrs = [ConsultModel allCachedObjects];
+    NSArray *modelArrs = [ConsultModel allCachedObjects];
     ConsultModel *molde = modelArrs.lastObject;
     ICMessageFrame *messageF;
     if ([molde.type isEqual: @"456"]) {
@@ -125,7 +139,7 @@
     messageF.model.message.deliveryState = ICMessageDeliveryState_Delivered;
     [self.dataSource addObject:messageF];
     [self.tableView beginUpdates];
-     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
     [self.tableView endUpdates];
     [self scrollToBottom];
 }
@@ -148,17 +162,17 @@
         } else {
             //图片消息
             if ([molde.userId boolValue]) {
-               messageF  = [ICMessageHelper createMessageFrame:TypePic content:@"[图片]" path:molde.content from:@"gxz" to:self.group.gId fileKey:nil isSender:YES receivedSenderByYourself:NO];
+                messageF  = [ICMessageHelper createMessageFrame:TypePic content:@"[图片]" path:molde.content from:@"gxz" to:self.group.gId fileKey:nil isSender:YES receivedSenderByYourself:NO];
             } else {
-                 messageF  = [ICMessageHelper createMessageFrame:TypePic content:@"[图片]" path:molde.content from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:NO];
+                messageF  = [ICMessageHelper createMessageFrame:TypePic content:@"[图片]" path:molde.content from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:NO];
             }
-
+            
         }
         messageF.model.message.deliveryState = ICMessageDeliveryState_Delivered;
         [self.dataSource addObject:messageF];
     }
     
-//    [self.dataSource addObjectsFromArray:array];
+    //    [self.dataSource addObjectsFromArray:array];
     [self scrollToBottom];
 }
 
@@ -285,7 +299,7 @@
 {
     if (messageStr && messageStr.length > 0) {
         [self sendTextMessageWithContent:messageStr];
-//        [self otherSendTextMessageWithContent:messageStr];
+        //        [self otherSendTextMessageWithContent:messageStr];
     }
 }
 
@@ -322,10 +336,10 @@
 #pragma mark - 他人发送的消息
 - (void)otherSendTextMessageWithContent:(NSString *)messageStr
 {
-//    ICMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeText content:messageStr path:nil from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:NO];
-//    [self addObject:messageF isSender:YES];
-//    
-//    [self messageSendSucced:messageF];
+    //    ICMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeText content:messageStr path:nil from:@"gxz" to:self.group.gId fileKey:nil isSender:NO receivedSenderByYourself:NO];
+    //    [self addObject:messageF isSender:YES];
+    //
+    //    [self messageSendSucced:messageF];
 }
 
 #pragma mark - 增加数据源并刷新
@@ -371,14 +385,14 @@
                      imagePath:(NSString *)imgPath
 {
     if (image && imgPath) {
-//        [self sendImageMessageWithImgPath:imgPath];
+        //        [self sendImageMessageWithImgPath:imgPath];
         [self sendImageMessageWithImg:image];
     }
 }
 
 - (void)sendImageMessageWithImg:(UIImage *)imgPath
 {
-   
+    
     NSData *data = UIImageJPEGRepresentation(imgPath, 0.5);
     
     ICMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic content:@"[图片]" path:[data base64Encoding] from:@"gxz" to:self.group.gId fileKey:nil isSender:YES receivedSenderByYourself:NO];
@@ -388,7 +402,7 @@
         
         if (isSuccess) {
             [self messageSendSucced:messageF];
-             ///存储图片到数据库
+            ///存储图片到数据库
             
         } else {
             [self messageSendFaild:messageF];
@@ -396,7 +410,7 @@
         
     }];
     
-  
+    
     
 }
 
@@ -640,7 +654,7 @@
 - (void)showLargeImageWithPath:(NSString *)imgPath
                   withMessageF:(ICMessageFrame *)messageF
 {
-//    UIImage *image = [[ICMediaManager sharedManager] imageWithLocalPath:imgPath];
+    //    UIImage *image = [[ICMediaManager sharedManager] imageWithLocalPath:imgPath];
     UIImage *image ;
     if ([imgPath containsString:@"http"]) {
         
@@ -658,10 +672,10 @@
         }];
         
     } else {
-       image = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:imgPath options:NSDataBase64DecodingIgnoreUnknownCharacters]];
+        image = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:imgPath options:NSDataBase64DecodingIgnoreUnknownCharacters]];
     }
     
-
+    
     if (image == nil) {
         ICLog(@"image is not existed");
         return;
@@ -693,25 +707,25 @@
         _copyMenuItem   = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyMessage:)];
     }
     if (_deleteMenuItem == nil) {
-//        _deleteMenuItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteMessage:)];
+        //        _deleteMenuItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteMessage:)];
     }
-//    if (_forwardMenuItem == nil) {
-//        _forwardMenuItem = [[UIMenuItem alloc] initWithTitle:@"转发" action:@selector(forwardMessage:)];
-//    }
-//    NSInteger currentTime = [ICMessageHelper currentMessageTime];
-//    NSInteger interval    = currentTime - messageModel.message.date;
-//    if (messageModel.isSender) {
-//        if ((interval/1000) < 5*60 && !(messageModel.message.deliveryState == ICMessageDeliveryState_Failure)) {
-//            if (_recallMenuItem == nil) {
-//                _recallMenuItem = [[UIMenuItem alloc] initWithTitle:@"撤回" action:@selector(recallMessage:)];
-//            }
-//            [[UIMenuController sharedMenuController] setMenuItems:@[_copyMenuItem,_deleteMenuItem,_recallMenuItem,_forwardMenuItem]];
-//        } else {
-//            [[UIMenuController sharedMenuController] setMenuItems:@[_copyMenuItem,_deleteMenuItem,_forwardMenuItem]];
-//        }
-//    } else {
-        [[UIMenuController sharedMenuController] setMenuItems:@[_copyMenuItem]];
-//    }
+    //    if (_forwardMenuItem == nil) {
+    //        _forwardMenuItem = [[UIMenuItem alloc] initWithTitle:@"转发" action:@selector(forwardMessage:)];
+    //    }
+    //    NSInteger currentTime = [ICMessageHelper currentMessageTime];
+    //    NSInteger interval    = currentTime - messageModel.message.date;
+    //    if (messageModel.isSender) {
+    //        if ((interval/1000) < 5*60 && !(messageModel.message.deliveryState == ICMessageDeliveryState_Failure)) {
+    //            if (_recallMenuItem == nil) {
+    //                _recallMenuItem = [[UIMenuItem alloc] initWithTitle:@"撤回" action:@selector(recallMessage:)];
+    //            }
+    //            [[UIMenuController sharedMenuController] setMenuItems:@[_copyMenuItem,_deleteMenuItem,_recallMenuItem,_forwardMenuItem]];
+    //        } else {
+    //            [[UIMenuController sharedMenuController] setMenuItems:@[_copyMenuItem,_deleteMenuItem,_forwardMenuItem]];
+    //        }
+    //    } else {
+    [[UIMenuController sharedMenuController] setMenuItems:@[_copyMenuItem]];
+    //    }
     [[UIMenuController sharedMenuController] setTargetRect:showInView.frame inView:showInView.superview ];
     [[UIMenuController sharedMenuController] setMenuVisible:YES animated:YES];
 }
@@ -763,7 +777,7 @@
         _chatBoxVC = [[ICChatBoxViewController alloc] init];
         //        APP_Frame_Height-HEIGHT_TABBAR
         //懒加载设置Frame会异常
-//        [_chatBoxVC.view setFrame:CGRectMake(0,64, App_Frame_Width, APP_Frame_Height)];
+        //        [_chatBoxVC.view setFrame:CGRectMake(0,64, App_Frame_Width, APP_Frame_Height)];
         _chatBoxVC.delegate = self;
     }
     return _chatBoxVC;
@@ -776,7 +790,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor whiteColor];
-//        _tableView.contentInset = UIEdgeInsetsMake(-(HEIGHT_STATUSBAR+HEIGHT_NAVBAR), 0, 0, 0);
+        //        _tableView.contentInset = UIEdgeInsetsMake(-(HEIGHT_STATUSBAR+HEIGHT_NAVBAR), 0, 0, 0);
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;

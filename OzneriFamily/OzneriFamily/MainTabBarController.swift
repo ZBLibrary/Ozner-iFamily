@@ -34,6 +34,13 @@ class MainTabBarController: RDVTabBarController {
         chatVc.group = group
         group.unReadCount = 2;
         group.lastMsgString = "你等着!"
+        
+        //        let config =  UdeskSDKConfig.init()
+        //        let setting = UdeskSetting.init()
+        //
+        //     //   let messageVC = RNChatViewController(sdkConfig: config, withSettings: setting)
+        //
+        //        let messageVC = RNMessageViewController()
         let nav3 = UINavigationController(rootViewController: chatVc)
         
         let c4=UIStoryboard(name: "MainMyCenter", bundle: nil).instantiateInitialViewController() as!GYNavViewController

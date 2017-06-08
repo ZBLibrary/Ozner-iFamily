@@ -423,6 +423,9 @@
 		B7EF061D1DB8A357008BE7D4 /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7EF061A1DB8A346008BE7D4 /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7F9D5441DE40B7500678317 /* GYShareImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F9D5431DE40B7500678317 /* GYShareImage.swift */; };
 		B7FAA6BE1E1CA138009042B4 /* GYFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FAA6BD1E1CA138009042B4 /* GYFadeAnimator.swift */; };
+		E01C97B81EE96A7B00927574 /* RNChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C97B51EE96A7B00927574 /* RNChatViewController.swift */; };
+		E01C97B91EE96A7B00927574 /* RNMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C97B61EE96A7B00927574 /* RNMessageViewController.swift */; };
+		E01C97BA1EE96A7B00927574 /* RNUdeskConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C97B71EE96A7B00927574 /* RNUdeskConfig.swift */; };
 		E0745AA81EE94ED200CB39CC /* libUdesk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E07459DF1EE94ED200CB39CC /* libUdesk.a */; };
 		E0745AA91EE94ED200CB39CC /* UdeskContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07459E91EE94ED200CB39CC /* UdeskContentController.m */; };
 		E0745AAA1EE94ED200CB39CC /* UdeskFAQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07459EB1EE94ED200CB39CC /* UdeskFAQViewController.m */; };
@@ -1177,6 +1180,9 @@
 		B7F9D5431DE40B7500678317 /* GYShareImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYShareImage.swift; sourceTree = "<group>"; };
 		B7FAA6BD1E1CA138009042B4 /* GYFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYFadeAnimator.swift; sourceTree = "<group>"; };
 		DBB08E966F838D15B4582606 /* Pods-OzneriFamily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzneriFamily.release.xcconfig"; path = "Pods/Target Support Files/Pods-OzneriFamily/Pods-OzneriFamily.release.xcconfig"; sourceTree = "<group>"; };
+		E01C97B51EE96A7B00927574 /* RNChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNChatViewController.swift; sourceTree = "<group>"; };
+		E01C97B61EE96A7B00927574 /* RNMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNMessageViewController.swift; sourceTree = "<group>"; };
+		E01C97B71EE96A7B00927574 /* RNUdeskConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNUdeskConfig.swift; sourceTree = "<group>"; };
 		E07459DF1EE94ED200CB39CC /* libUdesk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUdesk.a; sourceTree = "<group>"; };
 		E07459E01EE94ED200CB39CC /* UdeskAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UdeskAgent.h; sourceTree = "<group>"; };
 		E07459E11EE94ED200CB39CC /* UdeskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UdeskManager.h; sourceTree = "<group>"; };
@@ -2335,6 +2341,9 @@
 				B717E7101E0BAB5400B6DEBD /* ICFileScanController.m */,
 				B73A6D081E0BBCFF00590930 /* XZChatViewController.h */,
 				B73A6D091E0BBCFF00590930 /* XZChatViewController.m */,
+				E01C97B51EE96A7B00927574 /* RNChatViewController.swift */,
+				E01C97B61EE96A7B00927574 /* RNMessageViewController.swift */,
+				E01C97B71EE96A7B00927574 /* RNUdeskConfig.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3650,6 +3659,7 @@
 				B717E8271E0BAB5400B6DEBD /* MASConstraint.m in Sources */,
 				B717E7F21E0BAB5400B6DEBD /* ICMessageHelper.m in Sources */,
 				E0745ABB1EE94ED200CB39CC /* UdeskTipsCell.m in Sources */,
+				E01C97B91EE96A7B00927574 /* RNMessageViewController.swift in Sources */,
 				8D129A261DD4B5080022F7EA /* LBXScanWrapper.swift in Sources */,
 				B717E7EB1E0BAB5400B6DEBD /* ICMessage.m in Sources */,
 				8D117C231D9CFB0D0024187E /* ModelController.m in Sources */,
@@ -3722,6 +3732,7 @@
 				B717E7E71E0BAB5400B6DEBD /* ICChatBoxViewController.m in Sources */,
 				8D0D69311DDD99A10097038E /* AddFriendTableViewCell.swift in Sources */,
 				8D1761E31DC83387004A6B90 /* WaterPurfierSettingController.swift in Sources */,
+				E01C97BA1EE96A7B00927574 /* RNUdeskConfig.swift in Sources */,
 				8D0D683C1DDD8A3B0097038E /* RNEmailLoginViewController.swift in Sources */,
 				8D449BD01DCDFB58005998AA /* Air_Wifi_SpeedModel.swift in Sources */,
 				E0745AB81EE94ED200CB39CC /* UdeskChatCell.m in Sources */,
@@ -3949,6 +3960,7 @@
 				8D0D68431DDD981D0097038E /* WebShopController.swift in Sources */,
 				8DC02FA81DB5F03B007F57DB /* MXChipIO.m in Sources */,
 				B717E7FF1E0BAB5400B6DEBD /* ICChatMessageVoiceCell.m in Sources */,
+				E01C97B81EE96A7B00927574 /* RNChatViewController.swift in Sources */,
 				B717E7F61E0BAB5400B6DEBD /* ICBaseMessageCell.m in Sources */,
 				E0745AAD1EE94ED200CB39CC /* UdeskAgentHttpData.m in Sources */,
 				8DC02F851DB5F03B007F57DB /* Helper.m in Sources */,

@@ -79,6 +79,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         //注册微信//
         WXApi.registerApp("wx45a8cc642a2295b5", withDescription: "haoze")
         
+        // 初始化 Udesk
+        UdeskManager.initWithAppKey("4ddf84becfd2320bca9f183136574c0f", appId: "f633b561471be762", domain: "ozner.udesk.cn")
+        
         
         Thread.sleep(forTimeInterval: 2)
         return true

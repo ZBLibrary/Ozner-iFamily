@@ -42,6 +42,7 @@
 #import "UdeskBaseMessage.h"
 #import "UdeskSDKManager.h"
 #import "UdeskSetting.h"
+#import "OzneriFamily-Swift.h"
 
 @interface UdeskChatViewController ()<UIGestureRecognizerDelegate,UDEmotionManagerViewDelegate,UITableViewDelegate,UITableViewDataSource,UdeskChatViewModelDelegate,UdeskInputBarDelegate,UdeskVoiceRecordViewDelegate,UdeskCellDelegate>
 
@@ -79,7 +80,7 @@
 }
 
 - (void)setupBase {
-
+    
     if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
@@ -100,7 +101,7 @@
 }
 
 - (void)leaveChatViewController {
-
+    
     if (self.sdkConfig) {
         if (self.sdkConfig.leaveChatViewController) {
             self.sdkConfig.leaveChatViewController();
@@ -111,31 +112,32 @@
 //滑动返回
 - (void)handlePopRecognizer:(UIScreenEdgePanGestureRecognizer *)recognizer {
     
-    //离开页面
-    [self leaveChatViewController];
-    //隐藏键盘
-    [self.inputBar.inputTextView resignFirstResponder];
-    CGPoint translation = [recognizer translationInView:self.view];
-    CGFloat xPercent = translation.x / CGRectGetWidth(self.view.bounds) * 0.9;
-    
-    switch (recognizer.state) {
-        case UIGestureRecognizerStateBegan:
-            [UdeskTransitioningAnimation setInteractive:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
-            break;
-        case UIGestureRecognizerStateChanged:
-            [UdeskTransitioningAnimation updateInteractiveTransition:xPercent];
-            break;
-        default:
-            if (xPercent < .45) {
-                [UdeskTransitioningAnimation cancelInteractiveTransition];
-            } else {
-                [UdeskTransitioningAnimation finishInteractiveTransition];
-            }
-            [UdeskTransitioningAnimation setInteractive:NO];
-            break;
-    }
-    
+    //    //离开页面
+    //    [self leaveChatViewController];
+    //    //隐藏键盘
+    //    [self.inputBar.inputTextView resignFirstResponder];
+    //    CGPoint translation = [recognizer translationInView:self.view];
+    //    CGFloat xPercent = translation.x / CGRectGetWidth(self.view.bounds) * 0.9;
+    //
+    //    switch (recognizer.state) {
+    //        case UIGestureRecognizerStateBegan:
+    //            [UdeskTransitioningAnimation setInteractive:YES];
+    //            [self dismissViewControllerAnimated:YES completion:nil];
+    //            break;
+    //        case UIGestureRecognizerStateChanged:
+    //            [UdeskTransitioningAnimation updateInteractiveTransition:xPercent];
+    //            break;
+    //        default:
+    //            if (xPercent < .45) {
+    //                [UdeskTransitioningAnimation cancelInteractiveTransition];
+    //            } else {
+    //                [UdeskTransitioningAnimation finishInteractiveTransition];
+    //            }
+    //            [UdeskTransitioningAnimation setInteractive:NO];
+    //            break;
+    //    }
+    //
+    //    [[LoginManager instance] setTabbarSelectedWithIndex:0];
 }
 //点击返回
 - (void)dismissChatViewController {
@@ -154,14 +156,17 @@
     } else {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+    // LoginManager.instance.setTabbarSelected(index: 0)
+    
+    [[LoginManager instance] setTabbarSelectedWithIndex:0];
 }
 
 - (void)viewDidLoad {
-
+    
     [super viewDidLoad];
-
+    
     [self setupBase];
-
+    
     //初始化viewModel
     [self initViewModel];
     //初始化消息页面布局
@@ -179,7 +184,7 @@
 #pragma mark - UdeskChatViewModelDelegate
 //刷新表
 - (void)reloadChatTableView {
-
+    
     @udWeakify(self);
     //更新消息内容
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -198,7 +203,7 @@
             NSLog(@"%@",exception);
         } @finally {
         }
-
+        
     });
 }
 
@@ -220,12 +225,12 @@
 }
 
 - (void)didSurveyCompletion:(NSString *)message {
-
+    
     [UdeskTopAlertView showAlertType:UDAlertTypeGreen withMessage:message parentView:self.view];
 }
 
 - (void)setNavigationTitle:(UdeskAgent *)agent {
-
+    
     //底部功能栏根据客服状态code做操作
     self.inputBar.agent = agent;
     //如果开发者设定了 title ，则不更新 title
@@ -279,21 +284,21 @@
         [titleButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -titleImage.size.width-10, 0, titleImage.size.width)];
         [titleButton setImageEdgeInsets:UIEdgeInsetsMake(0, titleSize.width, 0, -titleSize.width)];
     }
-
+    
     if (agent.code == UDAgentStatusResultQueue) {
         titleButton.imageView.hidden = YES;
         CGFloat x = CGRectGetMaxX(titleButton.titleLabel.frame);
-         [titleButton setImageEdgeInsets:UIEdgeInsetsMake(0, x+40, 0, 0)];
+        [titleButton setImageEdgeInsets:UIEdgeInsetsMake(0, x+40, 0, 0)];
     } else {
         titleButton.imageView.hidden = NO;
     }
-
+    
     self.navigationItem.titleView = titleButton;
 }
 
 //点击发送留言
 - (void)didSelectSendTicket {
-
+    
     self.chatViewModel.isNotShowAlert = YES;
     
     //如果用户实现了自定义留言界面
@@ -308,7 +313,7 @@
 
 //点击黑名单弹窗提示的确定
 - (void)didSelectBlacklistedAlertViewOkButton {
-
+    
     self.chatViewModel.isNotShowAlert = YES;
     [self dismissChatViewController];
 }
@@ -317,7 +322,7 @@
 - (void)initilzer {
     
     // 初始化message tableView
-	_messageTableView = [[UdeskMessageTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _messageTableView = [[UdeskMessageTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     _messageTableView.delegate = self;
     _messageTableView.dataSource = self;
     //是否需要下拉刷新
@@ -362,7 +367,7 @@
 }
 //点击语音按钮
 - (void)didSelectVoiceButton:(BOOL)selected {
-
+    
     if (selected) {
         self.textViewInputViewType = UDInputViewTypeVoice;
         [self voiceRecordView];
@@ -373,7 +378,7 @@
 }
 //点击满意度按钮
 - (void)didSurveyWithMessage:(NSString *)message hasSurvey:(BOOL)hasSurvey {
-
+    
     self.textViewInputViewType = UDInputViewTypeNormal;
     [self layoutOtherMenuViewHiden:NO];
     // 已经评价了弹出橘色 没有弹出绿色
@@ -410,7 +415,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     id message = [self.chatViewModel objectAtIndexPath:indexPath.row];
-
+    
     NSString *messageModelName = NSStringFromClass([message class]);
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:messageModelName];
     
@@ -435,7 +440,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UdeskBaseMessage *message = [self.chatViewModel objectAtIndexPath:indexPath.row];
-    if (message.cellHeight) {        
+    if (message.cellHeight) {
         return message.cellHeight;
     }
     else {
@@ -458,18 +463,18 @@
 
 #pragma mark - UdeskCellDelegate
 - (void)didSelectImageCell {
-
+    
     [self.view endEditing:YES];
 }
 
 - (void)sendProductURL:(NSString *)url {
-
+    
     [self didSendTextAction:url];
 }
 
 //结构化消息
 - (void)didSelectStructButton {
-
+    
     if (self.sdkConfig.structMessageCallBack) {
         self.sdkConfig.structMessageCallBack();
     }
@@ -502,7 +507,7 @@
 }
 #pragma mark - 表情view
 - (UdeskEmotionManagerView *)emotionManagerView {
-
+    
     if (!_emotionManagerView) {
         CGFloat emotionHeight = UD_SCREEN_WIDTH<375?200:216;
         _emotionManagerView = [[UdeskEmotionManagerView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds), CGRectGetWidth(self.view.bounds), emotionHeight)];
@@ -526,7 +531,7 @@
 }
 #pragma mark - 吐司提示view
 - (UdeskVoiceRecordHUD *)voiceRecordHUD {
-
+    
     if (!_voiceRecordHUD) {
         _voiceRecordHUD = [[UdeskVoiceRecordHUD alloc] init];
     }
@@ -534,7 +539,7 @@
 }
 #pragma mark - 录音动画view
 - (UdeskVoiceRecordView *)voiceRecordView {
-
+    
     if (!_voiceRecordView) {
         _voiceRecordView = [[UdeskVoiceRecordView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds), CGRectGetWidth(self.view.bounds), 200)];
         _voiceRecordView.alpha = 0.0;
@@ -548,12 +553,12 @@
 #pragma mark - UdeskVoiceRecordViewDelegate
 //完成录音
 - (void)finishRecordedWithVoicePath:(NSString *)voicePath withAudioDuration:(NSString *)duration {
-
+    
     [self didSendMessageWithVoice:voicePath audioDuration:duration];
 }
 //录音时间太短
 - (void)speakDurationTooShort {
-
+    
     [self.voiceRecordHUD showTooShortRecord:self.view];
 }
 
@@ -646,13 +651,13 @@
             self.textViewInputViewType = UDInputViewTypeNormal;
         }
     }];
-
+    
 }
 
 
 #pragma mark - 发送文字
 - (void)didSendTextAction:(NSString *)text {
-
+    
     @udWeakify(self);
     [self.chatViewModel sendTextMessage:text completion:^(UdeskMessage *message, BOOL sendStatus) {
         //处理发送结果UI
@@ -692,7 +697,7 @@
         [self.chatViewModel showAlertViewWithAgent];
     }
     else {
-    
+        
         UdeskChatMessage *failedMessage = [notif.userInfo objectForKey:@"failedMessage"];
         UdeskMessage *message = [[UdeskMessage alloc] initWithChatMessage:failedMessage];
         
@@ -707,7 +712,7 @@
 
 #pragma mark - 发送咨询对象url
 - (void)sendProductMessageURL:(NSNotification *)notif {
-
+    
     NSString *productUrl = [notif.userInfo objectForKey:@"productUrl"];
     [self didSendTextAction:productUrl];
 }
@@ -764,7 +769,7 @@
 
 #pragma mark - UDEmotionManagerView Delegate
 - (void)emojiViewDidPressDeleteButton:(UIButton *)deletebutton {
-
+    
     if (self.inputBar.inputTextView.text.length > 0) {
         NSRange lastRange = [self.inputBar.inputTextView.text rangeOfComposedCharacterSequenceAtIndex:self.inputBar.inputTextView.text.length-1];
         self.inputBar.inputTextView.text = [self.inputBar.inputTextView.text substringToIndex:lastRange.location];
@@ -781,7 +786,7 @@
 }
 //点击表情面板的发送按钮
 - (void)didEmotionViewSendAction {
-
+    
     [self didSendTextAction:self.inputBar.inputTextView.text];
 }
 
@@ -793,10 +798,10 @@
 
 #pragma mark - 监听键盘通知做出相应的操作
 - (void)subscribeToKeyboard {
-
+    
     @udWeakify(self);
     [self ud_subscribeKeyboardWithBeforeAnimations:nil animations:^(CGRect keyboardRect, NSTimeInterval duration, BOOL isShowing) {
-
+        
         @udStrongify(self);
         if (self.textViewInputViewType == UDInputViewTypeText) {
             //计算键盘的Y
@@ -810,13 +815,13 @@
                 inputViewFrameY = messageViewFrameBottom;
             //改变底部功能栏frame
             self.inputBar.frame = CGRectMake(inputViewFrame.origin.x,
-                                                         inputViewFrameY,
-                                                         inputViewFrame.size.width,
-                                                         inputViewFrame.size.height);
+                                             inputViewFrameY,
+                                             inputViewFrame.size.width,
+                                             inputViewFrame.size.height);
             //改变tableview frame
-            [self.messageTableView setTableViewInsetsWithBottomValue:self.view.frame.size.height 
+            [self.messageTableView setTableViewInsetsWithBottomValue:self.view.frame.size.height
              - self.inputBar.frame.origin.y];
-
+            
             if (isShowing) {
                 [self.messageTableView scrollToBottomAnimated:NO];
                 self.emotionManagerView.alpha = 0.0;
@@ -827,9 +832,9 @@
             }
             
         }
-
+        
     } completion:nil];
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
