@@ -80,7 +80,7 @@
 - (void)setupUI
 {
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CallPhoneImage"] style:UIBarButtonSystemItemDone target:self action:@selector(phoneCallAction)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CallPhoneImage"] style:UIBarButtonItemStyleDone target:self action:@selector(phoneCallAction)];
     
     self.view.backgroundColor = IColor(240, 237, 237);
     // 注意添加顺序

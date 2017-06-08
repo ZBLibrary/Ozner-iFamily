@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+// 配置 UdeskSDKManager
 class RNUdeskConfig: NSObject {
     
     typealias LeaveMessageBlock = (UIViewController) -> ()
