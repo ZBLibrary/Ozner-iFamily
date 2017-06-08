@@ -39,7 +39,9 @@
     _WaterStopDate=[formatter dateFromString:[NSString stringWithFormat:@"%d-%d-%d %d:%d:%d",
                                               bytes[8]+2000,bytes[9],bytes[10],
                                               bytes[11],bytes[12],bytes[13]]];
-    _WaterRemindDays=[_WaterStopDate timeIntervalSinceDate:[[NSDate alloc] init]]/(3600*24);
+    
+    _WaterRemindDays=([_WaterStopDate timeIntervalSinceDate:[[NSDate alloc] init]]+8*3600)/(3600*24);
+    
     NSLog(@"%d", _WaterRemindDays);
 }
 

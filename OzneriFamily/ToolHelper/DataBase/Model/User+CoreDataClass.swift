@@ -189,7 +189,7 @@ public class User: BaseDataObject {
             self.GetUserInfoFunc()
             
         }) { (error) in
-            print(error)
+            print(error ?? "")
         }
         
     }
@@ -329,7 +329,7 @@ public class User: BaseDataObject {
             
         }, success: { (_, json) in
             
-            let customId = JSON(json)
+            let customId = JSON(json!)
             let imagURL = customId.dictionary?["result"]?.dictionary?["picpath"]?.stringValue
             
             var urlStr = NEWS_URL + "/customermsg.ashx?access_token="
@@ -791,7 +791,7 @@ public class User: BaseDataObject {
         let manager = AFHTTPSessionManager.init()
         manager.responseSerializer = AFHTTPResponseSerializer()
         manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
-        manager.get("http://192.168.173.9:8025/PlatformTestWebApi/api/order/GetUserOnlineRechargeWaterOrderList", parameters:["uid":872716], progress: { (progress) in
+        manager.get("http://192.168.173.9:8025/PlatformTestWebApi/api/order/GetUserOnlineRechargeWaterOrderList", parameters:["mobile":User.currentUser?.phone], progress: { (progress) in
             //Update the progress view
             DispatchQueue.main.async(execute: {
                 if Float(progress.fractionCompleted)<1{
@@ -810,7 +810,7 @@ public class User: BaseDataObject {
                 let OrderDtlId=item["OrderDtlId"].intValue
                 let OrginOrderCode=item["OrginOrderCode"].stringValue
                 var LimitTimes=item["LimitTimes"].intValue
-                
+                let UCode=item["UCode"].intValue
                 if ![1,6,12].contains(LimitTimes)
                 {
                     LimitTimes=6
@@ -820,13 +820,26 @@ public class User: BaseDataObject {
                 
                 for i in 0..<BuyQuantity
                 {
-                    let itemStru=WaterCardStruct(ProductId: ProductId, OrderId: OrderId, OrderDtlId: OrderDtlId, LimitTimes: LimitTimes, OrginOrderCode: OrginOrderCode, IsUsed: (BuyQuantity-i)<=ActualQuantity)
+                    let itemStru=WaterCardStruct(ProductId: ProductId, OrderId: OrderId, OrderDtlId: OrderDtlId, LimitTimes: LimitTimes, OrginOrderCode: OrginOrderCode, UCode: UCode, IsUsed: (BuyQuantity-i)<=ActualQuantity)
                     arr.append(itemStru)
                 }
                 
             }
-            print(arr)
-            success(arr)
+            //排序
+            var arrSort = [WaterCardStruct]()
+            for item in arr
+            {
+                if !item.IsUsed{
+                    arrSort.append(item)
+                }
+            }
+            for item in arr
+            {
+                if item.IsUsed{
+                    arrSort.append(item)
+                }
+            }
+            success(arrSort)
         }, failure: { (task, error) in
             SVProgressHUD.dismiss()
             failure(error)
@@ -842,7 +855,7 @@ public class User: BaseDataObject {
         let manager = AFHTTPSessionManager.init()
         manager.responseSerializer = AFHTTPResponseSerializer()
         manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
-        manager.post("http://192.168.173.9:8025/PlatformTestWebApi/api/order/OnlineRechargeWaterOrderConfirm", parameters:["ProductId":cardinfo.ProductId,"OrderId":cardinfo.OrderId,"OrderDtlId":cardinfo.OrderDtlId,"OrginOrderCode":cardinfo.OrginOrderCode,"Mac":Mac,"UCode":872716], progress: { (progress) in
+        manager.post("http://192.168.173.9:8025/PlatformTestWebApi/api/order/OnlineRechargeWaterOrderConfirm", parameters:["ProductId":cardinfo.ProductId,"OrderId":cardinfo.OrderId,"OrderDtlId":cardinfo.OrderDtlId,"OrginOrderCode":cardinfo.OrginOrderCode,"Mac":Mac,"UCode":cardinfo.UCode], progress: { (progress) in
             //Update the progress view
             DispatchQueue.main.async(execute: {
                 if Float(progress.fractionCompleted)<1{

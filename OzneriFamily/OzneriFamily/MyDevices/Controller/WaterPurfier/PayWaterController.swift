@@ -13,7 +13,7 @@ struct WaterCardStruct {
     var OrderDtlId:Int
     var LimitTimes:Int
     var OrginOrderCode:String
-    
+    var UCode:Int
     var IsUsed:Bool
 }
 class PayWaterController: UIViewController {
@@ -28,11 +28,17 @@ class PayWaterController: UIViewController {
         if dataArr[selectRow].IsUsed {
             return
         }
+        let alertView=SCLAlertView()
+        if LoginManager.instance.currentDevice.connectStatus() != Connected
+        {
+            _=alertView.showTitle("", subTitle: "设备已断开!检查设备或手机蓝牙是否链接正常", duration: 3.0, completeText: "确定", style: SCLAlertViewStyle.error)
+            return
+        }
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
         SVProgressHUD.showProgress(0)
-        let alertView=SCLAlertView()
+        
         let weakSelf=self
         let RODevice = LoginManager.instance.currentDevice as! ROWaterPurufier
         DispatchQueue.global().async {

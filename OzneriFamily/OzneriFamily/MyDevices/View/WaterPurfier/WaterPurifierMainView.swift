@@ -217,6 +217,7 @@ class WaterPurifierMainView: OznerDeviceView {
             tdsContainerView.isHidden=false
             offLineLabel.isHidden=true
             tds=(Int((device as! ROWaterPurufier).waterInfo.tds1),Int((device as! ROWaterPurufier).waterInfo.tds2))
+            print((device as! ROWaterPurufier).settingInfo.waterStopDate)
             waterDays=Int((device as! ROWaterPurufier).settingInfo.waterRemindDays)
         }else{
             if (device as! WaterPurifier).isOffline
