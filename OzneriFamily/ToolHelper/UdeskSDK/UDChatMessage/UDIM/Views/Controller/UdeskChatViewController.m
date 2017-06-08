@@ -42,6 +42,7 @@
 #import "UdeskBaseMessage.h"
 #import "UdeskSDKManager.h"
 #import "UdeskSetting.h"
+#import "OzneriFamily-Swift.h"
 
 @interface UdeskChatViewController ()<UIGestureRecognizerDelegate,UDEmotionManagerViewDelegate,UITableViewDelegate,UITableViewDataSource,UdeskChatViewModelDelegate,UdeskInputBarDelegate,UdeskVoiceRecordViewDelegate,UdeskCellDelegate>
 
@@ -111,31 +112,32 @@
 //滑动返回
 - (void)handlePopRecognizer:(UIScreenEdgePanGestureRecognizer *)recognizer {
     
-    //离开页面
-    [self leaveChatViewController];
-    //隐藏键盘
-    [self.inputBar.inputTextView resignFirstResponder];
-    CGPoint translation = [recognizer translationInView:self.view];
-    CGFloat xPercent = translation.x / CGRectGetWidth(self.view.bounds) * 0.9;
-    
-    switch (recognizer.state) {
-        case UIGestureRecognizerStateBegan:
-            [UdeskTransitioningAnimation setInteractive:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
-            break;
-        case UIGestureRecognizerStateChanged:
-            [UdeskTransitioningAnimation updateInteractiveTransition:xPercent];
-            break;
-        default:
-            if (xPercent < .45) {
-                [UdeskTransitioningAnimation cancelInteractiveTransition];
-            } else {
-                [UdeskTransitioningAnimation finishInteractiveTransition];
-            }
-            [UdeskTransitioningAnimation setInteractive:NO];
-            break;
-    }
-    
+//    //离开页面
+//    [self leaveChatViewController];
+//    //隐藏键盘
+//    [self.inputBar.inputTextView resignFirstResponder];
+//    CGPoint translation = [recognizer translationInView:self.view];
+//    CGFloat xPercent = translation.x / CGRectGetWidth(self.view.bounds) * 0.9;
+//    
+//    switch (recognizer.state) {
+//        case UIGestureRecognizerStateBegan:
+//            [UdeskTransitioningAnimation setInteractive:YES];
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//            break;
+//        case UIGestureRecognizerStateChanged:
+//            [UdeskTransitioningAnimation updateInteractiveTransition:xPercent];
+//            break;
+//        default:
+//            if (xPercent < .45) {
+//                [UdeskTransitioningAnimation cancelInteractiveTransition];
+//            } else {
+//                [UdeskTransitioningAnimation finishInteractiveTransition];
+//            }
+//            [UdeskTransitioningAnimation setInteractive:NO];
+//            break;
+//    }
+//    
+//    [[LoginManager instance] setTabbarSelectedWithIndex:0];
 }
 //点击返回
 - (void)dismissChatViewController {
@@ -154,6 +156,9 @@
     } else {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+   // LoginManager.instance.setTabbarSelected(index: 0)
+
+    [[LoginManager instance] setTabbarSelectedWithIndex:0];
 }
 
 - (void)viewDidLoad {

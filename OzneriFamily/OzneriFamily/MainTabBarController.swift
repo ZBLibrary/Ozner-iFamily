@@ -28,64 +28,22 @@ class MainTabBarController: RDVTabBarController {
         
         let c2=WebShopController()
       
-//        let group = XZGroup()
-//        group.gName = "咨询"
-//        let chatVc = XZChatViewController()
-//        chatVc.group = group
-//        group.unReadCount = 2;
-//        group.lastMsgString = "你等着!"
+        let group = XZGroup()
+        group.gName = "咨询"
+        let chatVc = XZChatViewController()
+        chatVc.group = group
+        group.unReadCount = 2;
+        group.lastMsgString = "你等着!"
         
-        var userDic = [String: String]()
-        // 初始化客户信息
-        let userID = UserDefaults.standard.value(forKey: UserDefaultsUserIDKey) ?? User.currentUser?.username ?? String(describing: Date())
-        userDic["sdk_token"] = userID as? String
-        
-        if let username = User.currentUser?.username, username != "" {
-            userDic["nick_name"] = username
-        }else{
-            userDic["nick_name"] = "未知"
-        }
-        
-        if let phone = User.currentUser?.phone, phone != "" {
-            userDic["cellphone"] = phone
-        }
-        
-        if let email = User.currentUser?.email, email != "" {
-            userDic["email"] = email
-        }
-        
-        if let scope = User.currentUser?.username, scope != "" {
-            userDic["description"] = scope
-        }else{
-            userDic["description"] = "无具体描述"
-        }
-        
-        let params = ["user": userDic]
-        UdeskManager.createCustomer(withCustomerInfo: params)
-        
-        // 咨询对象
-        let requestDic = ["productTitle": "台式空净", "productDetail": "$88888888", "productURL": "www.baidu.com"]
-        
-        let chatViewManager = UdeskSDKManager.init(sdkStyle: UdeskSDKStyle.default())
-        chatViewManager?.leaveMessageButtonAction({ (vc) in
-            // vc 就是 "UdeskChatViewController.h"
-            // 从聊天界面跳转转到自定义的留言界面
-            //                let msgVC = RNMessageViewController()
-            //                let nav = UINavigationController(rootViewController: msgVC)
-            //                vc?.navigationController?.present(nav, animated: true, completion: {
-            //                    //
-            //                })
-            
-        })
-        chatViewManager?.setProductMessage(requestDic)
-        
-        let config =  UdeskSDKConfig.init()
-        let setting = UdeskSetting.init()
-        
-        let messageVC = RNChatViewController(sdkConfig: config, withSettings: setting)
-        
-       // let messageVC = RNMessageViewController()
-        let nav3 = UINavigationController(rootViewController: messageVC!)
+
+       
+//        let config =  UdeskSDKConfig.init()
+//        let setting = UdeskSetting.init()
+//        
+//     //   let messageVC = RNChatViewController(sdkConfig: config, withSettings: setting)
+//        
+//        let messageVC = RNMessageViewController()
+        let nav3 = UINavigationController(rootViewController: chatVc)
         
         let c4=UIStoryboard(name: "MainMyCenter", bundle: nil).instantiateInitialViewController() as!GYNavViewController
         

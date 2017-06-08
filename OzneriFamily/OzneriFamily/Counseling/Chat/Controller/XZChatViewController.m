@@ -60,25 +60,18 @@
 //    [self loadDataSource];
 //    
 //    [User GetAccesstoken];
-}
+    
+ }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated] ;
     
+    // 聊天界面调用方式
+    RNUdeskConfig *config = [[RNUdeskConfig alloc] initWithLeaveMessageBlock:^(UIViewController * vc) {
+        // 留言回调
+    }];
     
-    NSDictionary *parameters = @{
-                                 @"user": @{
-                                         @"nick_name": @"小明",
-                                         @"cellphone":@"18888888888",
-                                         @"email":@"xiaoming@qq.com",
-                                         @"description":@"用户描述",
-                                         @"sdk_token":@"xxxxxxxxxxx"
-                                         }
-                                 };
-    [UdeskManager createCustomerWithCustomerInfo:parameters];
-    
-    
-    UdeskSDKManager *chat = [[UdeskSDKManager alloc] initWithSDKStyle:[UdeskSDKStyle defaultStyle]];
+    UdeskSDKManager *chat = [config shareInstance];
     [chat presentUdeskViewControllerWithType:UdeskIM viewController:self completion:nil];
 
 }
