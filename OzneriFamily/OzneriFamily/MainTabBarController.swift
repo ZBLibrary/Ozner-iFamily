@@ -48,6 +48,7 @@ class MainTabBarController: UITabBarController {
         
         let c3 = CounselingController()
         c3.tabBarItem.title="咨询"
+        //
         c3.tabBarItem.image=UIImage(named: "bar_normal_2")
         c3.tabBarItem.selectedImage=UIImage(named: "bar_select_2")
         
