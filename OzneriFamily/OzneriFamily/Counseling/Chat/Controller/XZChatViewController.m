@@ -67,9 +67,10 @@
     [super viewWillAppear:animated] ;
     
     // 聊天界面调用方式
-    RNUdeskConfig *config = [[RNUdeskConfig alloc] initWithLeaveMessageBlock:^(UIViewController * vc) {
-        // 留言回调
-    }];
+//    RNUdeskConfig *config = [[RNUdeskConfig alloc] initWithLeaveMessageBlock:^(UIViewController * vc) {
+//        // 留言回调
+//    }];
+    RNUdeskConfig *config = [[RNUdeskConfig alloc] init];
     
     UdeskSDKManager *chat = [config shareInstance];
     [chat presentUdeskViewControllerWithType:UdeskIM viewController:self completion:nil];

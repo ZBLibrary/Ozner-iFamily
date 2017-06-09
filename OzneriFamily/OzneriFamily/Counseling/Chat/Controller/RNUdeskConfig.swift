@@ -14,11 +14,16 @@ class RNUdeskConfig: NSObject {
     
     typealias LeaveMessageBlock = (UIViewController) -> ()
     
-    var leaveMessageBlock: LeaveMessageBlock
+    var leaveMessageBlock: LeaveMessageBlock?
     
+    override init() {
+        super.init()
+    }
+    // 需要重写留言界面时使用该初始方法
     init(leaveMessageBlock: @escaping LeaveMessageBlock) {
         self.leaveMessageBlock = leaveMessageBlock
     }
+    
     
     func shareInstance() -> UdeskSDKManager?{
         
@@ -54,14 +59,19 @@ class RNUdeskConfig: NSObject {
         // let requestDic = ["productTitle": "台式空净", "productDetail": "$88888888", "productURL": "www.baidu.com"]
         
         let chatViewManager = UdeskSDKManager.init(sdkStyle: UdeskSDKStyle.default())
-        chatViewManager?.leaveMessageButtonAction({ (vc) in
+        
+        if let leaveBlock = self.leaveMessageBlock {
             
-            // 留言回调 vc = UdeskChatViewController
-            if let v = vc {
-                self.leaveMessageBlock(v)
-            }
-            
-        })
+            chatViewManager?.leaveMessageButtonAction({ (vc) in
+                
+                // 留言回调 vc = UdeskChatViewController
+                if let v = vc {
+                    leaveBlock(v)
+                }
+                
+            })
+        }
+        
         // chatViewManager?.setProductMessage(requestDic)
         
         return chatViewManager
