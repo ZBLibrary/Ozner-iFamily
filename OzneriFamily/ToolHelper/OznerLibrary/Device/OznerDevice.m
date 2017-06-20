@@ -85,7 +85,14 @@
 }
 -(void)doStatusUpdate
 {
-    [self performSelectorOnMainThread:@selector(statusUpdate) withObject:nil waitUntilDone:true];
+    @try {
+        [self performSelectorOnMainThread:@selector(statusUpdate) withObject:nil waitUntilDone:true];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
+    
 }
 -(void)statusUpdate
 {
