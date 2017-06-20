@@ -564,6 +564,10 @@ public class User: BaseDataObject {
         self.fetchData(key: "GetMachineType", parameters: ["type":deviceID], success: { (json) in
             let tmpData=json["data"].dictionary
             
+            guard tmpData != nil else {
+                return
+            }
+            
             success(
                 (tmpData?["boolshow"]?.intValue==1 ? true:false),
                 (tmpData?["Attr"]?.stringValue.contains("cool:true"))!,
