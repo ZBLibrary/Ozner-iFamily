@@ -14,6 +14,7 @@ struct WaterCardStruct {
     var LimitTimes:Int
     var OrginOrderCode:String
     var UCode:Int
+    var Days:Int
     var IsUsed:Bool
 }
 class PayWaterController: UIViewController {
@@ -42,7 +43,7 @@ class PayWaterController: UIViewController {
         let weakSelf=self
         let RODevice = LoginManager.instance.currentDevice as! ROWaterPurufier
         DispatchQueue.global().async {
-            if RODevice.addWaterMonths(Int32(self.dataArr[self.selectRow].LimitTimes))
+            if RODevice.addWaterDays(Int32(self.dataArr[self.selectRow].Days))
             {
                 //设备充值成功
                 User.UseWaterCard(cardinfo: self.dataArr[self.selectRow], Mac: RODevice.identifier, success: { () in
@@ -63,7 +64,7 @@ class PayWaterController: UIViewController {
                 }, failure: { (error) in
                     //充值失败
                     DispatchQueue.global().async{
-                        RODevice.addWaterMonths(-(Int32)(weakSelf.dataArr[weakSelf.selectRow].LimitTimes))
+                        RODevice.addWaterDays(-(Int32)(weakSelf.dataArr[weakSelf.selectRow].Days))
                     }
 
                     DispatchQueue.main.async {
@@ -161,7 +162,7 @@ extension PayWaterController:UITableViewDataSource{
         print(dataArr)
         let cell=tableview.dequeueReusableCell(withIdentifier: "PayWaterCell") as! PayWaterCell
         cell.selectionStyle=UITableViewCellSelectionStyle.none
-        cell.cardImg.image=UIImage(named: [1:"试用卡",6:"半年卡",12:"一年卡"][dataArr[indexPath.row].LimitTimes]!)  //["试用卡","半年卡","一年卡"]
+        cell.cardImg.image=UIImage(named: [0:"维修卡",1:"试用卡",6:"半年卡",12:"一年卡"][dataArr[indexPath.row].LimitTimes]!)
         cell.useImg.isHidden = !dataArr[indexPath.row].IsUsed//true
         cell.selectImg.isHidden = !cell.useImg.isHidden
         cell.selectImg.image=UIImage(named: indexPath.row==selectRow ? "已选择":"未选择")

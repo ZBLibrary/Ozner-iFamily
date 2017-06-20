@@ -31,5 +31,5 @@
 -(BOOL) isEnableFilterReset;
 
 +(BOOL)isBindMode:(BluetoothIO*)io;
--(BOOL)addWaterMonths:(int)months;
+-(BOOL)addWaterDays:(int)months;
 @end

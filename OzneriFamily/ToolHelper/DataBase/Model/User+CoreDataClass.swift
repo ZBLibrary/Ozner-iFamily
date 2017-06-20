@@ -791,7 +791,7 @@ public class User: BaseDataObject {
         let manager = AFHTTPSessionManager.init()
         manager.responseSerializer = AFHTTPResponseSerializer()
         manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
-        manager.get("http://192.168.173.9:8025/PlatformTestWebApi/api/order/GetUserOnlineRechargeWaterOrderList", parameters:["mobile":User.currentUser?.phone], progress: { (progress) in
+        manager.get("http://tests.oznerwater.com:8888/api/order/GetUserOnlineRechargeWaterOrderList", parameters:["mobile":User.currentUser?.phone], progress: { (progress) in
             //Update the progress view
             DispatchQueue.main.async(execute: {
                 if Float(progress.fractionCompleted)<1{
@@ -811,16 +811,16 @@ public class User: BaseDataObject {
                 let OrginOrderCode=item["OrginOrderCode"].stringValue
                 var LimitTimes=item["LimitTimes"].intValue
                 let UCode=item["UCode"].intValue
-                if ![1,6,12].contains(LimitTimes)
+                if ![0,1,6,12].contains(LimitTimes)
                 {
                     LimitTimes=6
                 }
                 let BuyQuantity=item["BuyQuantity"].intValue //购买总数
                 let ActualQuantity=item["ActualQuantity"].intValue //已使用数量
-                
+                let Days=item["Days"].intValue //已使用数量
                 for i in 0..<BuyQuantity
                 {
-                    let itemStru=WaterCardStruct(ProductId: ProductId, OrderId: OrderId, OrderDtlId: OrderDtlId, LimitTimes: LimitTimes, OrginOrderCode: OrginOrderCode, UCode: UCode, IsUsed: (BuyQuantity-i)<=ActualQuantity)
+                    let itemStru=WaterCardStruct(ProductId: ProductId, OrderId: OrderId, OrderDtlId: OrderDtlId, LimitTimes: LimitTimes, OrginOrderCode: OrginOrderCode, UCode: UCode, Days: Days, IsUsed: (BuyQuantity-i)<=ActualQuantity)
                     arr.append(itemStru)
                 }
                 
@@ -855,7 +855,7 @@ public class User: BaseDataObject {
         let manager = AFHTTPSessionManager.init()
         manager.responseSerializer = AFHTTPResponseSerializer()
         manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
-        manager.post("http://192.168.173.9:8025/PlatformTestWebApi/api/order/OnlineRechargeWaterOrderConfirm", parameters:["ProductId":cardinfo.ProductId,"OrderId":cardinfo.OrderId,"OrderDtlId":cardinfo.OrderDtlId,"OrginOrderCode":cardinfo.OrginOrderCode,"Mac":Mac,"UCode":cardinfo.UCode], progress: { (progress) in
+        manager.post("http://tests.oznerwater.com:8888/api/order/OnlineRechargeWaterOrderConfirm", parameters:["ProductId":cardinfo.ProductId,"OrderId":cardinfo.OrderId,"OrderDtlId":cardinfo.OrderDtlId,"OrginOrderCode":cardinfo.OrginOrderCode,"Mac":Mac,"UCode":cardinfo.UCode], progress: { (progress) in
             //Update the progress view
             DispatchQueue.main.async(execute: {
                 if Float(progress.fractionCompleted)<1{

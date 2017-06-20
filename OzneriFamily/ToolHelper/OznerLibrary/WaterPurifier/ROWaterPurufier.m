@@ -30,8 +30,10 @@
     return self;
 }
 
--(void)DeviceIODidDisconnected:(BaseDeviceIO *)io
+-(void)DeviceIODidDisconnected:(BaseDeviceIO *)Io
 {
+    [self stop_auto_update];
+    [super DeviceIODidDisconnected:Io];
     //[_filterInfo reset];
     [_settingInfo reset];
     //[_filterInfo reset];
@@ -218,7 +220,7 @@ Byte calcSum(Byte* data,int size)
     requestCount++;
 }
 //冲水
--(BOOL)addWaterMonths:(int)months{
+-(BOOL)addWaterDays:(int)days{
     if (!io) return false;
     NSDate* curWaterDate = _settingInfo.WaterStopDate;
     if ([curWaterDate timeIntervalSince1970]==0) {//没有获取到水值信息
@@ -247,7 +249,7 @@ Byte calcSum(Byte* data,int size)
     if ([_settingInfo.WaterStopDate timeIntervalSinceDate:stopDate]>0) {
         stopDate=_settingInfo.WaterStopDate;
     }
-    stopDate=[stopDate dateByAddingMonths:months];
+    stopDate=[stopDate dateByAddingDays:days];
     bytes[10]=[stopDate year]-2000;
     bytes[11]=[stopDate month];
     bytes[12]=[stopDate day];
