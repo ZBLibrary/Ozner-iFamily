@@ -23,14 +23,16 @@ enum OznerDeviceType:String {
     case Water_Wifi_JZYA1XBA8DRF="JZY-A1XB-A8_DRF"
     case Water_Wifi_JZYA1XBLG_DRF="JZY-A1XB-LG_DRF"
     
+    case Water_KitchenBLe="RO Comml"
+    
     //case Water_Wifi_Ayla="Water_Wifi_Ayla"
     //case Air_Wifi_Ayla="Air_Wifi_Ayla"
   
     func Name()->String {
-        return [loadLanguage("水芯片净水器"),loadLanguage("智能水杯"),loadLanguage("水探头"),loadLanguage("智能检测笔"),loadLanguage("净水器"),loadLanguage("台式空净"),loadLanguage("立式空净"),loadLanguage("补水仪"),loadLanguage("净水器"),loadLanguage("净水器"),loadLanguage("净水器")][self.hashValue]
+        return [loadLanguage("水芯片净水器"),loadLanguage("智能水杯"),loadLanguage("水探头"),loadLanguage("智能检测笔"),loadLanguage("净水器"),loadLanguage("台式空净"),loadLanguage("立式空净"),loadLanguage("补水仪"),loadLanguage("净水器"),loadLanguage("净水器"),loadLanguage("净水器"),loadLanguage("水芯片净水器")][self.hashValue]
     }
     func Name_En()->String {
-        return ["WaterPurfier","Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish","JZY-A1XB-A8_CSF&FSF","JZY-A1XB-A8_DRF","JZY-A1XB-LG_DRF"][self.hashValue]
+        return ["WaterPurfier","Cup","Tap","TDSPan","WaterPurfier","Air_Blue","Air_Wifi","WaterReplenish","JZY-A1XB-A8_CSF&FSF","JZY-A1XB-A8_DRF","JZY-A1XB-LG_DRF","RO Comml"][self.hashValue]
     }
     static func getType(type:String) -> OznerDeviceType {
         switch type {
