@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		68A4D9D91EFB8CEC00B0EFB1 /* ROWaterSettingTwoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A4D9D81EFB8CEC00B0EFB1 /* ROWaterSettingTwoInfo.m */; };
+		68A4D9DC1EFBA3D900B0EFB1 /* GYValueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A4D9DA1EFBA3D900B0EFB1 /* GYValueSlider.swift */; };
+		68A4D9DD1EFBA3D900B0EFB1 /* GYTempValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A4D9DB1EFBA3D900B0EFB1 /* GYTempValueView.swift */; };
 		7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */; };
 		8D0D681B1DDD5AE90097038E /* CupTDSLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0D681A1DDD5AE90097038E /* CupTDSLineView.xib */; };
 		8D0D681D1DDD5AF50097038E /* CupTDSLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0D681C1DDD5AF50097038E /* CupTDSLineView.swift */; };
@@ -547,6 +549,8 @@
 		3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OzneriFamily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68A4D9D71EFB8CEC00B0EFB1 /* ROWaterSettingTwoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROWaterSettingTwoInfo.h; sourceTree = "<group>"; };
 		68A4D9D81EFB8CEC00B0EFB1 /* ROWaterSettingTwoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROWaterSettingTwoInfo.m; sourceTree = "<group>"; };
+		68A4D9DA1EFBA3D900B0EFB1 /* GYValueSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYValueSlider.swift; sourceTree = "<group>"; };
+		68A4D9DB1EFBA3D900B0EFB1 /* GYTempValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTempValueView.swift; sourceTree = "<group>"; };
 		8D0D681A1DDD5AE90097038E /* CupTDSLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupTDSLineView.xib; sourceTree = "<group>"; };
 		8D0D681C1DDD5AF50097038E /* CupTDSLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupTDSLineView.swift; sourceTree = "<group>"; };
 		8D0D68361DDD8A3B0097038E /* RNEmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNEmailLoginViewController.swift; sourceTree = "<group>"; };
@@ -1944,6 +1948,8 @@
 		8DC02E6D1DB5CE91007F57DB /* WaterPurfier */ = {
 			isa = PBXGroup;
 			children = (
+				68A4D9DA1EFBA3D900B0EFB1 /* GYValueSlider.swift */,
+				68A4D9DB1EFBA3D900B0EFB1 /* GYTempValueView.swift */,
 				8D6BFDB91ED9626E00AC849C /* WaterPur_A8DRF.swift */,
 				8D6BFDBA1ED9626E00AC849C /* WaterPur_A8DRF.xib */,
 				8D6BFDBB1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift */,
@@ -3697,6 +3703,7 @@
 				8DC02F721DB5F03B007F57DB /* FirmwareTools.m in Sources */,
 				8D113DCB1DB77FB4008CE2C6 /* TapSettingController.swift in Sources */,
 				E0745ABD1EE94ED200CB39CC /* UdeskEmotionManagerView.m in Sources */,
+				68A4D9DC1EFBA3D900B0EFB1 /* GYValueSlider.swift in Sources */,
 				B717E81A1E0BAB5400B6DEBD /* NSString+Extension.m in Sources */,
 				8D429A071DCA0D6E0083011C /* TapLvXinController.swift in Sources */,
 				8DC02F681DB5F03B007F57DB /* BluetoothAirPurifierStatus.m in Sources */,
@@ -3859,6 +3866,7 @@
 				B717E7ED1E0BAB5400B6DEBD /* ICMessageModel.m in Sources */,
 				8D92F6581D94FAB00068A40A /* MyDevicesController.swift in Sources */,
 				E0745AF01EE94ED200CB39CC /* UdeskXPathQuery.m in Sources */,
+				68A4D9DD1EFBA3D900B0EFB1 /* GYTempValueView.swift in Sources */,
 				B717E8171E0BAB5400B6DEBD /* ICVoiceHud.m in Sources */,
 				B717E82D1E0BAB5400B6DEBD /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				B717E7F81E0BAB5400B6DEBD /* ICChatMessageBaseCell.m in Sources */,

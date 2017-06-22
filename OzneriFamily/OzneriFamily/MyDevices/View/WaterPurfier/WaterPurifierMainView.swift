@@ -17,6 +17,7 @@ class WaterPurifierMainView: OznerDeviceView {
     var lvXinStopDate = NSDate()
     var lvXinUsedDays = 0
     var isBlueDevice = false
+    var currentBtn:UIButton?
     
     func setLvXinAndEnable(scan:Bool,cool:Bool,hot:Bool,buyLvXinUrl:String,lvXinStopDate:NSDate,lvXinUsedDays:Int){
         self.scanEnable=scan
@@ -29,6 +30,7 @@ class WaterPurifierMainView: OznerDeviceView {
     @IBOutlet var waterDaysLabel: UILabel!//水值
     @IBOutlet var circleView: WaterPurifierHeadCircleView!
     
+    @IBOutlet weak var kitChenView: UIView!
     //header
     @IBOutlet var tdsImg: UIImageView!
     @IBOutlet var tdsStateLabel: UILabel!
@@ -60,6 +62,14 @@ class WaterPurifierMainView: OznerDeviceView {
     @IBOutlet var hotButton: UIButton!
     @IBOutlet var coolLabel: UILabel!
     @IBOutlet var coolButton: UIButton!
+    
+    //1
+    
+    @IBOutlet weak var lowBtn: UIButton!
+    @IBOutlet weak var centerBtn: UIButton!
+    
+    @IBOutlet weak var customerBtn: UIButton!
+    @IBOutlet weak var highBtn: UIButton!
     func setButtonEnable(timer:Timer) {
         (timer.userInfo as! UIButton).isEnabled=true
     }
@@ -120,6 +130,78 @@ class WaterPurifierMainView: OznerDeviceView {
         
     }
     
+    
+    
+    @IBAction func tempAction(_ sender: UIButton) {
+        
+        let device = currentDevice as? ROWaterPurufier
+        lowBtn.isEnabled = false
+        centerBtn.isEnabled = false
+        highBtn.isEnabled = false
+        currentBtn?.isEnabled = false
+        switch sender.tag {
+        case 5555:
+            
+            if (device?.setHotTemp(55))! {
+                
+                cornerBtn(sender)
+                
+            }
+     
+            
+            break
+        case 6666:
+            
+            if (device?.setHotTemp(80))! {
+                cornerBtn(sender)
+            }
+            break
+        case 7777:
+            if (device?.setHotTemp(95))! {
+                cornerBtn(sender)
+            }
+            break
+        case 8888:
+            let value = UserDefaults.standard.value(forKey: "UISliderValue") ?? 44
+            device?.setHotTemp(value as! Int32)
+            break
+        default:
+            break
+        }
+        lowBtn.isEnabled = true
+        centerBtn.isEnabled = true
+        highBtn.isEnabled = true
+        currentBtn?.isEnabled = true
+        
+        if currentBtn != sender {
+            if currentBtn != nil {
+                
+                btnBackColor(currentBtn!)
+
+            }
+            currentBtn = sender
+
+        }
+        
+    }
+    
+    fileprivate func btnBackColor(_ sender:UIButton) {
+        
+        sender.layer.masksToBounds = false
+        sender.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+        sender.layer.borderWidth = 0
+    
+    }
+    
+    fileprivate func cornerBtn(_ sender:UIButton) {
+        
+        sender.layer.cornerRadius = 20
+        sender.layer.masksToBounds = true
+        sender.layer.borderWidth = 2
+        sender.layer.borderColor = UIColor.init(hex: "48c2fa").cgColor
+        sender.setTitleColor(UIColor.init(hex: "48c2fa"), for: UIControlState.normal)
+        
+    }
     
    
     // Only override draw() if you perform custom drawing.

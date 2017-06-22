@@ -256,6 +256,7 @@ Byte calcSum(Byte* data,int size)
         updateTimer=[NSTimer scheduledTimerWithTimeInterval:3 target:self
                                                    selector:@selector(auto_update)
                                                    userInfo:nil repeats:YES];
+        
         [updateTimer fire];
     }
 }

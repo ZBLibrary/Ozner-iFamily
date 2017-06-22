@@ -105,6 +105,7 @@ class DeviceViewContainer: UIView {
         .Water_Wifi_JZYA1XBA8CSFFSF:"WaterPur_A8CSFFSF",
         .Water_Wifi_JZYA1XBA8DRF:"WaterPur_A8DRF",
         .Water_Wifi_JZYA1XBLG_DRF:"WaterPur_A8DRF"
+//        .Water_KitchenBLe:"WaterPurifierMainView"
     ]
     private func SelectWitchView(device:OznerDevice?)  {
         currentDevice=device
