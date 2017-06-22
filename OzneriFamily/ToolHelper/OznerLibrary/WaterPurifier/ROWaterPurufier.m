@@ -18,6 +18,16 @@
 #define opCode_respone_water 0x22
 #define opCode_respone_filter 0x23
 #define opCode_update_setting 0x40
+#define opCode_respone_filterTime 0x24
+#define opCode_respone_SettingInfo 0x25
+#define opCode_update_Temp 0x41
+
+#define type_status  1
+#define type_sensor  2
+#define type_filter  3
+#define type_a2dp  4
+#define type_SettingTwo 5
+
 
 -(instancetype)init:(NSString *)identifier Type:(NSString *)type Settings:(NSString *)json
 {
@@ -26,6 +36,8 @@
         _filterInfo=[[RO_FilterInfo alloc] init];
         _settingInfo=[[ROWaterSettingInfo alloc] init];
         _waterInfo=[[RO_WaterInfo alloc] init];
+        _twoInfo = [[ROWaterSettingTwoInfo alloc] init];
+
     }
     return self;
 }
@@ -37,6 +49,8 @@
     //[_filterInfo reset];
     [_settingInfo reset];
     //[_filterInfo reset];
+    [_twoInfo rest];
+
 }
 
 
@@ -86,6 +100,31 @@ Byte calcSum(Byte* data,int size)
     
     [io send:data];
 }
+
+- (BOOL)requestFilterTime {
+    
+    NSMutableData* data=[[NSMutableData alloc] init];
+    Byte bytes[3];
+    bytes[0]=opCode_request_info;
+    bytes[1]=4;
+    bytes[2]=calcSum(bytes,2);
+    [data appendBytes:bytes length:3];
+    
+    return [io send:data];
+}
+
+- (BOOL)requestSetting {
+    
+    NSMutableData* data=[[NSMutableData alloc] init];
+    Byte bytes[3];
+    bytes[0]=opCode_request_info;
+    bytes[1]=5;
+    bytes[2]=calcSum(bytes,2);
+    [data appendBytes:bytes length:3];
+    
+    return [io send:data];
+}
+
 
 /*!
  滤芯历史信息
@@ -147,8 +186,11 @@ Byte calcSum(Byte* data,int size)
 }
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"%@\n%@\n%@",[_settingInfo description],
-            [_waterInfo description],[_filterInfo description]];
+//    return [NSString stringWithFormat:@"%@\n%@\n%@",[_settingInfo description],
+//            [_waterInfo description],[_filterInfo description]];
+    return [NSString stringWithFormat:@"%@\n%@\n%@\n%@",[_settingInfo description],
+            [_waterInfo description],[_filterInfo description],[_twoInfo description]];
+
     //return [NSString stringWithFormat:@"status:%@",[_status description]];
 }
 
@@ -177,6 +219,16 @@ Byte calcSum(Byte* data,int size)
             
             //filterInfo.fromBytes(data);
             break;
+        case opCode_respone_filterTime:
+            break;
+        case opCode_respone_SettingInfo:
+             {
+              
+             [_twoInfo load:data];
+             [self doSensorUpdate];
+             }
+            break;
+
     }
 }
 
@@ -217,6 +269,8 @@ Byte calcSum(Byte* data,int size)
         [self requestSettingInfo];
     }else
         [self requestWaterInfo];
+        [self requestSetting];
+
     requestCount++;
 }
 //冲水
@@ -272,6 +326,36 @@ Byte calcSum(Byte* data,int size)
     }
     
 }
+
+
+/**
+ 设置加热温度 （厨上式水机）
+ 
+ @return return value description
+ */
+-(BOOL)setHotTemp:(int)temp {
+    
+    if (temp == _twoInfo.hottempSet) return true;
+    
+    NSMutableData* data=[[NSMutableData alloc] init];
+    Byte bytes[10];
+    bytes[0]=opCode_update_Temp;
+    bytes[1]=temp;
+    bytes[2]=_twoInfo.isPower?1:0;
+    bytes[3]=_twoInfo.openPowerTime;
+    bytes[4]=_twoInfo.closePowerTime;
+    bytes[5]=_twoInfo.isHot;
+    bytes[6]=_twoInfo.startHotTime;
+    bytes[7]=_twoInfo.endHotTime;
+    bytes[8]=_twoInfo.isCold;
+    bytes[9]=calcSum(bytes, 9);
+    [data appendBytes:bytes length:10];
+    
+    return [io send:data];
+    
+}
+
+
 //重置滤芯时间
 -(BOOL) resetFilter
 {
@@ -294,7 +378,7 @@ Byte calcSum(Byte* data,int size)
         if (io.scanResponseData)
         {
             Byte flag=((Byte*)[io.scanResponseData bytes])[0];
-            return flag;
+            return flag == 0;
         }
         return false;
     }

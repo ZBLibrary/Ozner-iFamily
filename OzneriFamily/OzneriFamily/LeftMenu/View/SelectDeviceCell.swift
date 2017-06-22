@@ -9,8 +9,8 @@
 import UIKit
 //wifi产品一定要带WIFI字母
 enum OznerDeviceType:String {
-    
-    case Water_Bluetooth="Ozner RO"
+    //RO Comml Ozner RO
+    case Water_Bluetooth="RO Comml"
     case Cup="CP001"
     case Tap="SC001"
     case TDSPan="SCP001"
@@ -23,7 +23,7 @@ enum OznerDeviceType:String {
     case Water_Wifi_JZYA1XBA8DRF="JZY-A1XB-A8_DRF"
     case Water_Wifi_JZYA1XBLG_DRF="JZY-A1XB-LG_DRF"
     
-    case Water_KitchenBLe="RO Comml"
+//    case Water_KitchenBLe="RO Comml"
     
     //case Water_Wifi_Ayla="Water_Wifi_Ayla"
     //case Air_Wifi_Ayla="Air_Wifi_Ayla"
