@@ -38,7 +38,7 @@ class GYTempValueView: UIView {
     
     fileprivate func initUI() {
         
-        valueLb = UILabel(frame: CGRect.init(x: 3, y: 3, width: self.frame.width - 6, height: self.frame.height - 6))
+        valueLb = UILabel(frame: CGRect.init(x: 3, y: 0, width: self.frame.width - 6, height: self.frame.height - 6))
         valueLb.layer.cornerRadius = valueLb.frame.height / 2
         valueLb.font = UIFont.systemFont(ofSize: 16)
         valueLb.textAlignment = .center

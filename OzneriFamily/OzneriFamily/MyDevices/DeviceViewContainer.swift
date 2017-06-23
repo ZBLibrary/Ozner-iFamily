@@ -226,7 +226,7 @@ extension DeviceViewContainer:OznerDeviceDelegate{
             currentDeviceView.currentDevice=device
             //解析当前状态
             switch OznerDeviceType.getType(type: (device?.type)!) {
-            case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish,.Water_Bluetooth:
+            case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish,.Water_Bluetooth,.Water_KitchenBLe:
                 //解析当前状态
                 switch device.connectStatus() {
                 case Connecting:

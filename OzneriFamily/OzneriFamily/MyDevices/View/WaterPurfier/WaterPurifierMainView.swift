@@ -153,6 +153,7 @@ class WaterPurifierMainView: OznerDeviceView {
                 
                 cornerBtn(sender)
                 valueSlider.value = 55
+                
             }
             break
         case 6666:
@@ -180,6 +181,18 @@ class WaterPurifierMainView: OznerDeviceView {
             break
         }
         
+        if valueSlider.previewView != nil {
+            
+            valueSlider.previewView?.frame = canclueFrame()
+            valueSlider.previewView?.changeValue(String.init(format: "%.0f", valueSlider.value) + "℃")
+            
+        } else {
+            
+            valueSlider.addSubview(valueSlider.creatGYTmpView(canclueFrame()))
+            valueSlider.previewView?.changeValue(String.init(format: "%.0f", valueSlider.value) + "℃")
+
+        }
+        
         lowBtn.isEnabled = true
         centerBtn.isEnabled = true
         highBtn.isEnabled = true
@@ -198,6 +211,14 @@ class WaterPurifierMainView: OznerDeviceView {
         
     }
     
+    fileprivate func canclueFrame() -> CGRect{
+        let rect = valueSlider.thumbRect(forBounds: valueSlider.bounds, trackRect: valueSlider.bounds, value: valueSlider.value)
+        let rect1 = rect.insetBy(dx: -8, dy: -8)
+        
+        let rect2 = rect1.offsetBy(dx: 0, dy: -20)
+        return rect2
+    }
+    
     fileprivate func btnBackColor(_ sender:UIButton) {
         
         sender.layer.masksToBounds = false
@@ -210,7 +231,7 @@ class WaterPurifierMainView: OznerDeviceView {
         
         UIView.animate(withDuration: 1) {
            
-            sender.layer.cornerRadius = 20
+            sender.layer.cornerRadius = 15
             sender.layer.masksToBounds = true
             sender.layer.borderWidth = 2
             sender.layer.borderColor = UIColor.init(hex: "48c2fa").cgColor
@@ -331,7 +352,6 @@ class WaterPurifierMainView: OznerDeviceView {
             }
             if device.type == "RO Comml" {
                 sumWater = canclueWater(Int((device as! ROWaterPurufier).waterInfo.waterml))
-  
             }
             
         }else{

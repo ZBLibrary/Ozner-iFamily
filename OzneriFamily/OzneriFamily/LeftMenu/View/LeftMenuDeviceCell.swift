@@ -19,6 +19,7 @@ class LeftMenuDeviceCell: UITableViewCell {
             deviceAdressLabel.text=device.settings.get(AttributeOfDevice, default:loadLanguage("我的家庭")) as! String?
             switch OznerDeviceType.getType(type: (device?.type)!) {
             case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish,.Water_Bluetooth,.Water_KitchenBLe:
+                
                 connectLabel.text=[loadLanguage("连接中"),loadLanguage("已断开"),loadLanguage("已连接")][Int(device.connectStatus().rawValue)]
                 connectImg.image=UIImage(named: "device_icon_blutooth")//蓝牙图标
                 break

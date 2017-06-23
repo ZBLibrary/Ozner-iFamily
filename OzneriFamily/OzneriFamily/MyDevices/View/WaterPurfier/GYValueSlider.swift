@@ -49,7 +49,7 @@ class GYValueSlider: UISlider {
       
         switch LoginManager.currenIphoneType() {
         case .Iphone6:
-            gradientLaye?.frame = CGRect(x: 1.5, y: 10, width: self.frame.width - 3, height: 2)
+            gradientLaye?.frame = CGRect(x: 1.5, y: 14, width: self.frame.width - 3, height: 2)
             break
         case .Iphone6p:
             gradientLaye?.frame = CGRect(x: 1.5, y: 20, width: self.frame.width - 3, height: 2)
@@ -75,15 +75,15 @@ class GYValueSlider: UISlider {
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         
         let tracking = super.beginTracking(touch, with: event)
+        let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
+        let rect1 = rect.insetBy(dx: -8, dy: -8)
         
+        let rect2 = rect1.offsetBy(dx: 0, dy: -20)
         
         if previewView == nil {
             
 //            let rect = CGRect.offsetBy(CGRect.insetBy(self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)))
-            let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
-            let rect1 = rect.insetBy(dx: -8, dy: -8)
-            
-            let rect2 = rect1.offsetBy(dx: 0, dy: -20)
+         
             
             addSubview(creatGYTmpView(rect2))
             
@@ -91,12 +91,14 @@ class GYValueSlider: UISlider {
                 self.previewView?.alpha = 1
             })
             
+        } else {
+            
+//            let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
+//            let rect1 = rect.insetBy(dx: -8, dy: -8)
+//            let rect2 = rect1.offsetBy(dx: 0, dy: -20)
+            previewView?.frame = rect2
+            
         }
-//        else {
-//            
-//            
-//            
-//        }
         
         
         return tracking
@@ -112,7 +114,7 @@ class GYValueSlider: UISlider {
             var rect = previewView?.frame
             rect?.origin.x = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value).midX - ((rect?.width)! / 2)
             previewView?.frame = rect!
-            previewView?.changeValue(String.init(format: "%.0f", self.value))
+            previewView?.changeValue(String.init(format: "%.0f", self.value) + "℃")
             
         }
         
@@ -128,7 +130,7 @@ class GYValueSlider: UISlider {
             UserDefaults.standard.setValue(Int32(String.init(format: "%.0f", self.value)), forKey: "UISliderValue")
             UserDefaults.standard.synchronize()
             
-            removeFromGYSlider()
+//            removeFromGYSlider()
 
         }
         
@@ -160,13 +162,13 @@ class GYValueSlider: UISlider {
         
     }
     
-    fileprivate func creatGYTmpView(_ frame: CGRect) -> GYTempValueView{
+    func creatGYTmpView(_ frame: CGRect) -> GYTempValueView{
         
         previewView = GYTempValueView(frame: frame)
 //        String(Double(self.value) * 100.0)
-        previewView?.valueLb.text = String.init(format: "%.0f", self.value)
+        previewView?.valueLb.text = String.init(format: "%.0f", self.value) + "℃"
         previewView?.layer.cornerRadius = (previewView?.frame.height)! / 2
-        previewView?.alpha = 0.2
+        previewView?.alpha = 1.0
         previewView?.backgroundColor = UIColor.clear
         return previewView!
         
@@ -174,7 +176,7 @@ class GYValueSlider: UISlider {
     
     func sliderValueChanged(_ sender:UISlider) {
         
-        print(sender.value)
+//        print(sender.value)
         
     }
     
