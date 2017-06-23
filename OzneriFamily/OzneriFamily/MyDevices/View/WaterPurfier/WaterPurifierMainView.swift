@@ -65,6 +65,8 @@ class WaterPurifierMainView: OznerDeviceView {
     
     //1
     
+    @IBOutlet weak var valueSlider: GYValueSlider!
+    @IBOutlet weak var sumwaterLb: UILabel!
     @IBOutlet weak var lowBtn: UIButton!
     @IBOutlet weak var centerBtn: UIButton!
     
@@ -135,9 +137,14 @@ class WaterPurifierMainView: OznerDeviceView {
     @IBAction func tempAction(_ sender: UIButton) {
         
         let device = currentDevice as? ROWaterPurufier
+        if device?.connectStatus() != Connected {
+            valueSlider.isEnabled = false
+            return
+        }
         lowBtn.isEnabled = false
         centerBtn.isEnabled = false
         highBtn.isEnabled = false
+        customerBtn.isEnabled = false
         currentBtn?.isEnabled = false
         switch sender.tag {
         case 5555:
@@ -145,32 +152,38 @@ class WaterPurifierMainView: OznerDeviceView {
             if (device?.setHotTemp(55))! {
                 
                 cornerBtn(sender)
-                
+                valueSlider.value = 55
             }
-     
-            
             break
         case 6666:
             
             if (device?.setHotTemp(80))! {
                 cornerBtn(sender)
+                valueSlider.value = 80
             }
             break
         case 7777:
             if (device?.setHotTemp(95))! {
                 cornerBtn(sender)
+                valueSlider.value = 95
             }
             break
         case 8888:
             let value = UserDefaults.standard.value(forKey: "UISliderValue") ?? 44
-            device?.setHotTemp(value as! Int32)
+            if (device?.setHotTemp(value as! Int32))! {
+                cornerBtn(sender)
+                valueSlider.value = value as! Float
+            }
+            
             break
         default:
             break
         }
+        
         lowBtn.isEnabled = true
         centerBtn.isEnabled = true
         highBtn.isEnabled = true
+        customerBtn.isEnabled = true
         currentBtn?.isEnabled = true
         
         if currentBtn != sender {
@@ -195,11 +208,15 @@ class WaterPurifierMainView: OznerDeviceView {
     
     fileprivate func cornerBtn(_ sender:UIButton) {
         
-        sender.layer.cornerRadius = 20
-        sender.layer.masksToBounds = true
-        sender.layer.borderWidth = 2
-        sender.layer.borderColor = UIColor.init(hex: "48c2fa").cgColor
-        sender.setTitleColor(UIColor.init(hex: "48c2fa"), for: UIControlState.normal)
+        UIView.animate(withDuration: 1) {
+           
+            sender.layer.cornerRadius = 20
+            sender.layer.masksToBounds = true
+            sender.layer.borderWidth = 2
+            sender.layer.borderColor = UIColor.init(hex: "48c2fa").cgColor
+            sender.setTitleColor(UIColor.init(hex: "48c2fa"), for: UIControlState.normal)
+            
+        }
         
     }
     
@@ -276,6 +293,14 @@ class WaterPurifierMainView: OznerDeviceView {
         }
     }
     
+    var sumWater:String = "0ml" {
+        didSet {
+            if sumWater != oldValue {
+                sumwaterLb.text = sumWater
+            }
+        }
+    }
+    
     let color_normol=UIColor(red: 177.0/255.0, green: 178.0/255.0, blue: 179.0/255.0, alpha: 1)
     let color_select=UIColor(red: 63.0/255.0, green: 135.0/255.0, blue: 237.0/255.0, alpha: 1)
     var operation:(power:Bool,hot:Bool,cool:Bool) = (false,true,true){
@@ -296,11 +321,19 @@ class WaterPurifierMainView: OznerDeviceView {
     override func SensorUpdate(device: OznerDevice!) {
         //更新传感器视图
         if isBlueDevice {
+            valueSlider.isEnabled = device.connectStatus() == Connected
             tdsContainerView.isHidden=false
             offLineLabel.isHidden=true
             tds=(Int((device as! ROWaterPurufier).waterInfo.tds1),Int((device as! ROWaterPurufier).waterInfo.tds2))
             print((device as! ROWaterPurufier).settingInfo.waterStopDate)
-            waterDays=Int((device as! ROWaterPurufier).settingInfo.waterRemindDays)
+            if device.type == "Ozner RO" {
+                waterDays=Int((device as! ROWaterPurufier).settingInfo.waterRemindDays)
+            }
+            if device.type == "RO Comml" {
+                sumWater = canclueWater(Int((device as! ROWaterPurufier).waterInfo.waterml))
+  
+            }
+            
         }else{
             if (device as! WaterPurifier).isOffline
             {
@@ -353,5 +386,20 @@ class WaterPurifierMainView: OznerDeviceView {
                 
             }
         }
+    }
+    
+    fileprivate func canclueWater(_ water:Int) -> String{
+        
+        switch water {
+        case 0...1000:
+            return "\(water)ml"
+        case 1000...1000000:
+            return String(format: "%.2f", Float(water)/1000.0) + "L"
+        case 1000000...Int.max:
+            return String(format: "%.2f", Float(water)/1000000.0) + "m³"
+        default:
+            break
+        }
+        return "0ml"
     }
 }

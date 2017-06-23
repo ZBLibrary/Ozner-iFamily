@@ -104,8 +104,8 @@ class DeviceViewContainer: UIView {
         .Water_Bluetooth:"WaterPurifierMainView",
         .Water_Wifi_JZYA1XBA8CSFFSF:"WaterPur_A8CSFFSF",
         .Water_Wifi_JZYA1XBA8DRF:"WaterPur_A8DRF",
-        .Water_Wifi_JZYA1XBLG_DRF:"WaterPur_A8DRF"
-//        .Water_KitchenBLe:"WaterPurifierMainView"
+        .Water_Wifi_JZYA1XBLG_DRF:"WaterPur_A8DRF",
+        .Water_KitchenBLe:"WaterPurifierMainView"
     ]
     private func SelectWitchView(device:OznerDevice?)  {
         currentDevice=device
@@ -157,7 +157,7 @@ class DeviceViewContainer: UIView {
             case .WaterReplenish:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:156*k_height)
                 
-            case .Water_Bluetooth:
+            case .Water_Bluetooth,.Water_KitchenBLe:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
                 //隐藏底部按钮
                 (currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
@@ -211,7 +211,7 @@ extension DeviceViewContainer:OznerDeviceDelegate{
                 break
             case .WaterReplenish:
                 batteryValue = Int((currentDevice as! WaterReplenishmentMeter).status.battery*100)
-            case .Water_Bluetooth:
+            case .Water_Bluetooth,.Water_KitchenBLe:
                 let tmpDev=currentDevice as! ROWaterPurufier
                 let lvxinValue=min(tmpDev.filterInfo.filter_A_Percentage, tmpDev.filterInfo.filter_B_Percentage, tmpDev.filterInfo.filter_C_Percentage)
                 self.LvXinValue=Int(lvxinValue)

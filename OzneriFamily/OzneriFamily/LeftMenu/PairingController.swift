@@ -35,7 +35,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
     private func loadImageandLb() {
         var deviceDes:PairImagsAndState
         switch currDeviceType {
-        case OznerDeviceType.Water_Bluetooth:
+        case OznerDeviceType.Water_Bluetooth,.Water_KitchenBLe:
             deviceDes = PairImagsAndState(imageName: "水芯片配对图标2", typeStateText: "", deviceStateText: loadLanguage("正在进行蓝牙配对"))
         case OznerDeviceType.Cup:
             deviceDes = PairImagsAndState(imageName: "icon_peidui_watting", typeStateText:loadLanguage( "正在进行蓝牙配对"), deviceStateText: loadLanguage("请将智能水杯倒置"))
@@ -69,7 +69,7 @@ class PairingController: UIViewController,OznerManagerDelegate {
             return
         }
         switch currDeviceType {
-        case OznerDeviceType.Cup,OznerDeviceType.Tap,OznerDeviceType.TDSPan,OznerDeviceType.Air_Blue,OznerDeviceType.WaterReplenish,OznerDeviceType.Water_Bluetooth://蓝牙配对
+        case OznerDeviceType.Cup,OznerDeviceType.Tap,OznerDeviceType.TDSPan,OznerDeviceType.Air_Blue,OznerDeviceType.WaterReplenish,OznerDeviceType.Water_Bluetooth,.Water_KitchenBLe://蓝牙配对
             if pairTimer == nil {
                 return
             }
@@ -113,7 +113,15 @@ class PairingController: UIViewController,OznerManagerDelegate {
                             blueDevices.append(device)
                         }
                     }
-                }else{
+                } else if currDeviceType == OznerDeviceType.Water_Bluetooth {
+                    
+                    if deviceType == OznerDeviceType.Water_KitchenBLe {
+                        if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
+                            blueDevices.append(device)
+                        }
+                    }
+                    
+                } else{
                     if currDeviceType == deviceType  {
                         if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
                             blueDevices.append(device)

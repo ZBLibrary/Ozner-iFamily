@@ -46,7 +46,19 @@ class GYValueSlider: UISlider {
         self.addTarget(self, action: #selector(sliderValueChanged(_:)), for: UIControlEvents.valueChanged)
         
         gradientLaye = CAGradientLayer()
-        gradientLaye?.frame = CGRect(x: 1.5, y: 8, width: self.frame.width - 3, height: 2)
+      
+        switch LoginManager.currenIphoneType() {
+        case .Iphone6:
+            gradientLaye?.frame = CGRect(x: 1.5, y: 10, width: self.frame.width - 3, height: 2)
+            break
+        case .Iphone6p:
+            gradientLaye?.frame = CGRect(x: 1.5, y: 20, width: self.frame.width - 3, height: 2)
+            break
+        default:
+            gradientLaye?.frame = CGRect(x: 1.5, y: 8, width: self.frame.width - 3, height: 2)
+            break
+        }
+        
         gradientLaye?.colors = [UIColor.init(hex: "0xFF6347").cgColor,
                                 UIColor.init(hex: "0xFFEC8B").cgColor,
                                 UIColor.init(hex: "0x98FB98").cgColor,

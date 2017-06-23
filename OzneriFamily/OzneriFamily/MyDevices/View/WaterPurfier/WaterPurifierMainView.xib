@@ -313,8 +313,8 @@
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15.6L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ile-hX-FBD">
-                                    <rect key="frame" x="232.5" y="20" width="74" height="35"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ile-hX-FBD">
+                                    <rect key="frame" x="232.5" y="20" width="26.5" height="35"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                     <color key="textColor" red="0.99607843137254903" green="0.53725490196078429" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -446,11 +446,13 @@
                 <outlet property="offLineLabel" destination="dhf-7U-Qlf" id="Ws3-dN-n1I"/>
                 <outlet property="powerButton" destination="fhe-WG-Za3" id="d8D-wB-NjM"/>
                 <outlet property="powerLabel" destination="zJv-F8-ZAx" id="u3b-Fj-PBB"/>
+                <outlet property="sumwaterLb" destination="ile-hX-FBD" id="CbJ-dl-MAw"/>
                 <outlet property="tdsContainerView" destination="jfq-gS-Sqz" id="p6W-vv-0OS"/>
                 <outlet property="tdsImg" destination="idb-9n-xnR" id="Sky-pj-Rot"/>
                 <outlet property="tdsStateLabel" destination="Qir-sV-5Cw" id="sFZ-9E-UgS"/>
                 <outlet property="tdsValueLabel_AF" destination="zax-Xv-gcJ" id="78t-w2-Zph"/>
                 <outlet property="tdsValueLabel_BF" destination="byb-ZA-dhf" id="dd2-TZ-2e1"/>
+                <outlet property="valueSlider" destination="sul-5u-Oek" id="djL-Em-nmT"/>
                 <outlet property="waterDaysLabel" destination="bzJ-Ci-Orn" id="wrR-Qw-fD1"/>
             </connections>
             <point key="canvasLocation" x="-112.5" y="23.5"/>

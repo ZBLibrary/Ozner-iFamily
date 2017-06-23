@@ -40,7 +40,7 @@ class MyDevicesController: UIViewController {
             self.performSegue(withIdentifier: "toTapLvXin", sender: senderData)
         case .Air_Blue,.Air_Wifi:
             self.performSegue(withIdentifier: "showAirLvXin", sender: nil)
-        case .Water_Bluetooth:
+        case .Water_Bluetooth,.Water_KitchenBLe:
             let vc = RoWaterPuefierLvXinController()
             self.navigationController?.pushViewController(vc, animated: true)
         default:
@@ -57,7 +57,7 @@ class MyDevicesController: UIViewController {
             self.performSegue(withIdentifier: "showTapSetting", sender: nil)
         case .TDSPan:
             self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
-        case .Water_Wifi,.Water_Bluetooth,.Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
+        case .Water_Wifi,.Water_Bluetooth,.Water_KitchenBLe,.Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
             self.performSegue(withIdentifier: "showWaterPurfierSetting", sender: nil)
         case .Air_Blue,.Air_Wifi:
             self.performSegue(withIdentifier: "showAirSetting", sender: nil)

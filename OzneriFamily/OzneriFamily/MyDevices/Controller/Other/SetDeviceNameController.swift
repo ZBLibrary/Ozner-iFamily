@@ -59,8 +59,9 @@ class SetDeviceNameController: BaseViewController {
             attri=[0:loadLanguage("客厅"),1:loadLanguage("卧室")]
         case .WaterReplenish:
             attri=[0:loadLanguage("办公室"),1:loadLanguage("家")]
-        case .Water_Bluetooth:
+        case .Water_Bluetooth,.Water_KitchenBLe:
             attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
+    
         }
         attributeName0.text=attri[0]
         attributeName1.text=attri[1]

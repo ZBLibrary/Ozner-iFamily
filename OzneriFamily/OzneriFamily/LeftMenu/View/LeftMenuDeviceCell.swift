@@ -18,7 +18,7 @@ class LeftMenuDeviceCell: UITableViewCell {
             deviceName.text=device.settings.name
             deviceAdressLabel.text=device.settings.get(AttributeOfDevice, default:loadLanguage("我的家庭")) as! String?
             switch OznerDeviceType.getType(type: (device?.type)!) {
-            case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish,.Water_Bluetooth:
+            case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish,.Water_Bluetooth,.Water_KitchenBLe:
                 connectLabel.text=[loadLanguage("连接中"),loadLanguage("已断开"),loadLanguage("已连接")][Int(device.connectStatus().rawValue)]
                 connectImg.image=UIImage(named: "device_icon_blutooth")//蓝牙图标
                 break
@@ -58,7 +58,8 @@ class LeftMenuDeviceCell: UITableViewCell {
         OznerDeviceType.Air_Blue:["device_jin_smallair_normal","device_jin_smallair_select"],
         OznerDeviceType.Air_Wifi:["device_jin_bigair_normal","device_jin_bigair_select"],
         OznerDeviceType.WaterReplenish:["WaterReplenish2","WaterReplenish1_2"],
-        OznerDeviceType.Water_Bluetooth:["水芯片配对图标4","水芯片配对图标5"]
+        OznerDeviceType.Water_Bluetooth:["水芯片配对图标4","水芯片配对图标5"],
+        OznerDeviceType.Water_KitchenBLe:["水芯片配对图标4","水芯片配对图标5"]
     ]
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

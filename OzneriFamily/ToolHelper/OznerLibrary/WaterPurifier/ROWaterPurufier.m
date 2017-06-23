@@ -351,8 +351,8 @@ Byte calcSum(Byte* data,int size)
     bytes[8]=_twoInfo.isCold;
     bytes[9]=calcSum(bytes, 9);
     [data appendBytes:bytes length:10];
-    
-    return [io send:data];
+    [io send:data];
+    return true;
     
 }
 
