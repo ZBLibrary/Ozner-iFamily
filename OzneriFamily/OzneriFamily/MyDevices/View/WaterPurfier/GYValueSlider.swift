@@ -15,10 +15,16 @@
 
 import UIKit
 
+@objc protocol GYValueSliderDelegate {
+   @objc optional func endTrackingSetValue()
+}
+
 class GYValueSlider: UISlider {
 
     var gradientLaye: CAGradientLayer?
     var previewView:GYTempValueView?
+    weak var delegate:GYValueSliderDelegate?
+    var block:(() -> Void)?
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -38,6 +44,7 @@ class GYValueSlider: UISlider {
         
         maximumTrackTintColor = UIColor.clear
         self.minimumTrackTintColor = UIColor.clear
+        self.isEnabled = false
         self.minimumValue = 44
         self.maximumValue = 99
         self.setMaximumTrackImage(imageFromColor(UIColor.clear), for: UIControlState.normal)
@@ -49,7 +56,7 @@ class GYValueSlider: UISlider {
       
         switch LoginManager.currenIphoneType() {
         case .Iphone6:
-            gradientLaye?.frame = CGRect(x: 1.5, y: 14, width: self.frame.width - 3, height: 2)
+            gradientLaye?.frame = CGRect(x: 1.5, y: 20, width: self.frame.width - 3, height: 2)
             break
         case .Iphone6p:
             gradientLaye?.frame = CGRect(x: 1.5, y: 20, width: self.frame.width - 3, height: 2)
@@ -78,7 +85,7 @@ class GYValueSlider: UISlider {
         let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
         let rect1 = rect.insetBy(dx: -8, dy: -8)
         
-        let rect2 = rect1.offsetBy(dx: 0, dy: -20)
+        let rect2 = rect1.offsetBy(dx: 0, dy: -30)
         
         if previewView == nil {
             
@@ -130,6 +137,10 @@ class GYValueSlider: UISlider {
             UserDefaults.standard.setValue(Int32(String.init(format: "%.0f", self.value)), forKey: "UISliderValue")
             UserDefaults.standard.synchronize()
             
+            if block != nil {
+                block!()
+            }
+            
 //            removeFromGYSlider()
 
         }
@@ -176,7 +187,7 @@ class GYValueSlider: UISlider {
     
     func sliderValueChanged(_ sender:UISlider) {
         
-//        print(sender.value)
+        print(sender.value)
         
     }
     

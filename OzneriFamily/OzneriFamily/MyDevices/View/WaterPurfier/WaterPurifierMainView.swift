@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WaterPurifierMainView: OznerDeviceView {
+class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
 
     var scanEnable = true
     var coolEnable = true
@@ -171,7 +171,7 @@ class WaterPurifierMainView: OznerDeviceView {
             break
         case 8888:
             let value = UserDefaults.standard.value(forKey: "UISliderValue") ?? 44
-            if (device?.setHotTemp(value as! Int32))! {
+            if (device?.setHotTemp(Int32(value as! Int)))! {
                 cornerBtn(sender)
                 valueSlider.value = value as! Float
             }
@@ -189,7 +189,7 @@ class WaterPurifierMainView: OznerDeviceView {
         } else {
             
             valueSlider.addSubview(valueSlider.creatGYTmpView(canclueFrame()))
-            valueSlider.previewView?.changeValue(String.init(format: "%.0f", valueSlider.value) + "℃")
+            valueSlider.previewView?.changeValue(String.init(format: "%.0f",valueSlider.value) + "℃")
 
         }
         
@@ -211,11 +211,20 @@ class WaterPurifierMainView: OznerDeviceView {
         
     }
     
+    func endTrackingSetValue() {
+        
+        let device = currentDevice as? ROWaterPurufier
+        device?.setHotTemp(Int32(valueSlider.value))
+        
+    }
+    
+    
+    
     fileprivate func canclueFrame() -> CGRect{
         let rect = valueSlider.thumbRect(forBounds: valueSlider.bounds, trackRect: valueSlider.bounds, value: valueSlider.value)
         let rect1 = rect.insetBy(dx: -8, dy: -8)
         
-        let rect2 = rect1.offsetBy(dx: 0, dy: -20)
+        let rect2 = rect1.offsetBy(dx: 0, dy: -30)
         return rect2
     }
     
@@ -352,6 +361,21 @@ class WaterPurifierMainView: OznerDeviceView {
             }
             if device.type == "RO Comml" {
                 sumWater = canclueWater(Int((device as! ROWaterPurufier).waterInfo.waterml))
+                
+                if valueSlider.previewView != nil {
+                    
+                    valueSlider.value = Float((device as! ROWaterPurufier).twoInfo.hottempSet)
+                    valueSlider.previewView?.frame = canclueFrame()
+                    valueSlider.previewView?.changeValue(String.init(format: "%.0f", round(valueSlider.value)) + "℃")
+                    
+                } else {
+                    valueSlider.value = Float((device as! ROWaterPurufier).twoInfo.hottempSet)
+                    valueSlider.addSubview(valueSlider.creatGYTmpView(canclueFrame()))
+                   
+                    valueSlider.previewView?.changeValue(String.init(format: "%.0f", round(valueSlider.value)) + "℃")
+                    
+                }
+
             }
             
         }else{

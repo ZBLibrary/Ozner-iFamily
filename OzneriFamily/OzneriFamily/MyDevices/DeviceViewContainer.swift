@@ -150,6 +150,7 @@ class DeviceViewContainer: UIView {
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
                 //设置滤芯及功能
                 SetWaterPurifer(devID: (currentDevice?.identifier)!)
+                (currentDeviceView as! WaterPurifierMainView).kitChenView.isHidden = true
             case .Air_Blue:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
             case .Air_Wifi:
@@ -157,11 +158,27 @@ class DeviceViewContainer: UIView {
             case .WaterReplenish:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:156*k_height)
                 
-            case .Water_Bluetooth,.Water_KitchenBLe:
+            case .Water_Bluetooth:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
                 //隐藏底部按钮
                 (currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
+                (currentDeviceView as! WaterPurifierMainView).kitChenView.isHidden = true
+            case .Water_KitchenBLe:
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
+                //隐藏底部按钮
+                (currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
+                (currentDeviceView as! WaterPurifierMainView).kitChenView.isHidden = false
+//                (currentDeviceView as! WaterPurifierMainView).valueSlider.delegate = self as! GYValueSliderDelegate
                 
+                
+                (currentDeviceView as! WaterPurifierMainView).valueSlider.block = { [weak self]() ->Void in
+                    let device = self?.currentDevice as? ROWaterPurufier
+                    device?.setHotTemp(Int32(round((self?.currentDeviceView as! WaterPurifierMainView).valueSlider.value)))
+                    (self?.currentDeviceView as! WaterPurifierMainView).currentBtn?.layer.masksToBounds = false
+                    (self?.currentDeviceView as! WaterPurifierMainView).currentBtn?.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+                    (self?.currentDeviceView as! WaterPurifierMainView).currentBtn?.layer.borderWidth = 0
+                    
+                }
             case .Water_Wifi_JZYA1XBA8CSFFSF:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:160*k_height)
                 break

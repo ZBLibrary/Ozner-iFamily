@@ -378,8 +378,10 @@ Byte calcSum(Byte* data,int size)
     {
         if (io.scanResponseData)
         {
+            
             Byte flag=((Byte*)[io.scanResponseData bytes])[0];
-            return flag == 0;
+//            return flag == 0;
+            return flag || flag == 0;
         }
         return false;
     }

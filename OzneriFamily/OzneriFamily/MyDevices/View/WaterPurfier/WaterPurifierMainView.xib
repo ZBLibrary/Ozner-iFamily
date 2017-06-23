@@ -385,9 +385,12 @@
                                     </constraints>
                                 </view>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="44" minValue="44" maxValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="sul-5u-Oek" customClass="GYValueSlider" customModule="OzneriFamily" customModuleProvider="target">
-                                    <rect key="frame" x="28" y="117" width="319" height="31"/>
+                                    <rect key="frame" x="28" y="117" width="319" height="41"/>
+                                    <accessibility key="accessibilityConfiguration">
+                                        <bool key="isElement" value="NO"/>
+                                    </accessibility>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="YAY-xV-WMq"/>
+                                        <constraint firstAttribute="height" constant="40" id="YAY-xV-WMq"/>
                                     </constraints>
                                 </slider>
                             </subviews>

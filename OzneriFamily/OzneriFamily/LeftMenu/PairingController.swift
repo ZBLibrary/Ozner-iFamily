@@ -113,7 +113,8 @@ class PairingController: UIViewController,OznerManagerDelegate {
                             blueDevices.append(device)
                         }
                     }
-                } else if currDeviceType == OznerDeviceType.Water_Bluetooth {
+                }
+                else if currDeviceType == OznerDeviceType.Water_Bluetooth {
                     
                     if deviceType == OznerDeviceType.Water_KitchenBLe {
                         if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
@@ -121,7 +122,14 @@ class PairingController: UIViewController,OznerManagerDelegate {
                         }
                     }
                     
-                } else{
+                    if deviceType == OznerDeviceType.Water_Bluetooth{
+                        if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
+                            blueDevices.append(device)
+                        }
+                    }
+                    
+                }
+                else{
                     if currDeviceType == deviceType  {
                         if let device=OznerManager.instance().getDeviceBy(io as! BaseDeviceIO) {
                             blueDevices.append(device)
