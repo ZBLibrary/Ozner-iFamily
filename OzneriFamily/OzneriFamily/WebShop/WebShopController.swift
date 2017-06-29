@@ -24,12 +24,10 @@ class WebShopController: UIViewController {
         webView.scalesPageToFit = true
         webView.delegate = self
         webView.loadRequest(URLRequest(url: URL(string:urlstr!)!))
-         self.view.addSubview(webView)
+        self.view.addSubview(webView)
         webView.addSubview(btn)
         btn.addTarget(self, action: #selector(WebShopController.loadAgin), for: UIControlEvents.touchUpInside)
         btn.isHidden = true
-    
-
     }
     
     
@@ -40,7 +38,9 @@ class WebShopController: UIViewController {
         btn1.setTitleColor(UIColor.black, for: UIControlState.normal)
         return btn1
     }()
-    
+    override func viewDidAppear(_ animated: Bool) {
+        webView.loadRequest(URLRequest(url: URL(string:urlstr!)!))
+    }
     func loadAgin() {
         
         webView.loadRequest(URLRequest(url: URL(string:urlstr!)!))

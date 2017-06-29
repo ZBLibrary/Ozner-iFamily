@@ -270,7 +270,7 @@ extension DeviceViewContainer{
             User.GetMachineLifeOutTime(deviceID: devID, success: { (usedDays, stopDate) in
                 let useValue=ceil(Double(100*(365-usedDays)/365))
                 
-                guard (weakSelf?.currentDevice?.isKind(of: WaterPurifierMainView.self))! else {
+                guard (weakSelf?.currentDeviceView?.isKind(of: WaterPurifierMainView.self))! else {
                     return
                 }
                 

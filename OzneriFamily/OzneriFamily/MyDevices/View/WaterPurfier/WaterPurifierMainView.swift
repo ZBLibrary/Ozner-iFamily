@@ -144,9 +144,9 @@ class WaterPurifierMainView: OznerDeviceView {
             let tdsAF=min(tmptdsBF, tmptdsAF)
             
             tdsValueLabel_BF.text = tdsBF==0 ? loadLanguage("暂无"):"\(tdsBF)"
-            tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:52)*width_screen/375)
+            tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:48)*width_screen/375)
             tdsValueLabel_AF.text = tdsAF==0 ? loadLanguage("暂无"):"\(tdsAF)"
-            tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:52)*width_screen/375)
+            tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:48)*width_screen/375)
             
             var angleBF = CGFloat(0)
             switch true {
@@ -189,7 +189,8 @@ class WaterPurifierMainView: OznerDeviceView {
     var waterDays:Int = -1{
         didSet{
             if waterDays != oldValue {
-                waterDaysLabel.text="浩泽安全净水\(waterDays)天"
+                waterDaysLabel.text="浩泽安全净水\(max(waterDays, 0))天"
+                
             }
         }
     }
