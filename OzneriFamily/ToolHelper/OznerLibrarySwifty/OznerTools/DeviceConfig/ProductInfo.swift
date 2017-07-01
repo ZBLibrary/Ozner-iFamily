@@ -135,6 +135,14 @@ class ProductInfo: NSObject {
         }
         return OZDeviceClass.Cup
     }
+    class func getCurrDeviceClass()->OZDeviceClass
+    {
+        return ProductInfo.getDeviceClassFromProductID(productID: ProductInfo.getCurrDeviceMac())
+    }
+    class func getCurrDeviceMac()->String
+    {
+        return (OznerManager.instance.currentDevice?.deviceInfo.deviceMac)!
+    }
 }
 
 

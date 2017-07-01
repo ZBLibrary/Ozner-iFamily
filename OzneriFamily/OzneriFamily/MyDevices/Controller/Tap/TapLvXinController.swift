@@ -64,7 +64,7 @@ class TapLvXinController: BaseViewController {
         hideView2.isHidden = isBool
         hideView3.isHidden = isBool
        
-        let deviceType = ProductInfo.getDeviceClassFromProductID(productID: (OznerManager.instance.currentDevice?.deviceInfo.productID)!)
+        let deviceType = ProductInfo.getCurrDeviceClass()
         heightImgConstrant.constant = deviceType == OZDeviceClass.WaterPurifier_Wifi ? 0:width_screen*613/375
         if deviceType==OZDeviceClass.WaterPurifier_Wifi {
             scanViewHeightConstraint.constant = (waterPurfierData?["scanEnable"] as! Bool) ? 118:0
@@ -76,7 +76,7 @@ class TapLvXinController: BaseViewController {
         }else{//探头
             //下载滤芯更新
             buyWaterLvXinUrl=(NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail39"))!
-            User.FilterService(deviceID: (OznerManager.instance.currentDevice?.deviceInfo.deviceMac)!, success: { (usedDay, starDate) in
+            User.FilterService(deviceID: ProductInfo.getCurrDeviceMac(), success: { (usedDay, starDate) in
                 self.setLvXin(stopDate: (starDate as NSDate).addingDays(30) as NSDate, maxDays: 30)
                 }, failure: { (error) in
                     

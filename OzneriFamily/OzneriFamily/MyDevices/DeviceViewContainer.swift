@@ -66,7 +66,7 @@ class DeviceViewContainer: UIView {
         //测试
         var deviceNibName = "NoDeviceView"//"WaterPur_A8CSFFSF"//
         if device != nil  {//有设备时视图初始化
-            let tmpType=ProductInfo.getDeviceClassFromProductID(productID: (OznerManager.instance.currentDevice?.deviceInfo.productID)!)
+            let tmpType=ProductInfo.getCurrDeviceClass()
             deviceNibName=DeviceNibName[tmpType]!
             device?.delegate=self
             delegate.DeviceNameChange!(name: (device?.settings.name)!)
@@ -87,13 +87,13 @@ class DeviceViewContainer: UIView {
             //delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:220*k_height)
         }else{//有设备时视图初始化
             
-            switch  ProductInfo.getDeviceClassFromProductID(productID: (OznerManager.instance.currentDevice?.deviceInfo.productID)!) {
+            switch  ProductInfo.getCurrDeviceClass() {
             case .Cup:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:160*k_height)
             case .Tap:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: false,BottomValue:211*k_height)
                 //下载滤芯更新
-                User.FilterService(deviceID: (OznerManager.instance.currentDevice?.deviceInfo.deviceMac)!, success: { (usedDay, _) in
+                User.FilterService(deviceID: ProductInfo.getCurrDeviceMac(), success: { (usedDay, _) in
                     self.LvXinValue=Int(ceil(100.0*(30.0-Float(usedDay))/30.0))
                     }, failure: { (error) in
                         print(error)
@@ -103,7 +103,7 @@ class DeviceViewContainer: UIView {
             case .WaterPurifier_Wifi:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
                 //设置滤芯及功能
-                SetWaterPurifer(devID: (OznerManager.instance.currentDevice?.deviceInfo.deviceMac)!)
+                SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac())
             case .AirPurifier_Blue:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
             case .AirPurifier_Wifi:
@@ -123,7 +123,7 @@ class DeviceViewContainer: UIView {
 //                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:220*k_height)
 //                break
             }
-            oznerDeviceStatusUpdate(OznerManager.instance.currentDevice)//初始化设备状态
+            OznerDeviceSensorUpdate(identifier: OznerManager.instance.currentDevice?.deviceInfo.deviceID)//初始化设备状态
         }
         
     }
@@ -134,23 +134,24 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
     ////OznerBaseDeviceDelegate
     func OznerDeviceSensorUpdate(identifier: String) {
         DispatchQueue.main.async {
-            currentDeviceView.SensorUpdate(device: device)
+            self.currentDeviceView.SensorUpdate(identifier:identifier)
             //滤芯电量或电池电量
-            switch OznerDeviceType.getType(type: device.type) {
+            let currentDevice=OznerManager.instance.currentDevice
+            switch ProductInfo.getCurrDeviceClass() {
             case .Cup:
-                batteryValue = Int((currentDevice as! Cup).sensor.powerPer()*100)
+                self.batteryValue = Int((currentDevice as! Cup).sensor.Battery)
             case .Tap:
-                batteryValue = Int((currentDevice as! Tap).sensor.powerPer()*100)
+                self.batteryValue = Int((currentDevice as! Tap).sensor.Battery)
             case .TDSPan:
-                batteryValue = Int((currentDevice as! Tap).sensor.powerPer()*100)
-            case .Air_Blue:
+                batteryValue = Int((currentDevice as! Tap).sensor.Battery)
+            case .AirPurifier_Blue:
                 //设置滤芯
                 let workTime=Int((currentDevice as! AirPurifier_Bluetooth).status.filterStatus.workTime)
                 var lvxinValue=1-CGFloat(workTime)/CGFloat(60000)
                 lvxinValue=min(1, lvxinValue)
                 lvxinValue=max(0, lvxinValue)
                 self.LvXinValue=Int(lvxinValue*100)
-            case .Air_Wifi:
+            case .AirPurifier_Wifi:
                 if let filterStatus=(currentDevice as! AirPurifier_Wifi).status.filterStatus
                 {
                     let workTime=Int(filterStatus.workTime)
@@ -159,16 +160,16 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                     lvxinValue=max(0, lvxinValue)
                     self.LvXinValue=Int(lvxinValue*100)
                 }
-            case .Water_Wifi:
+            case .WaterPurifier_Wifi:
                 break
             case .WaterReplenish:
-                batteryValue = Int((currentDevice as! WaterReplenish).status.battery*100)
-            case .Water_Bluetooth:
+                self.batteryValue = Int((currentDevice as! WaterReplenish).status.battery*100)
+            case .WaterPurifier_Blue:
                 let tmpDev=currentDevice as! WaterPurifier_Blue
                 let lvxinValue=min(tmpDev.filterInfo.filter_A_Percentage, tmpDev.filterInfo.filter_B_Percentage, tmpDev.filterInfo.filter_C_Percentage)
                 self.LvXinValue=Int(lvxinValue)
-            case .Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
-                break
+//            case .Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
+//                break
             }
         }
         
@@ -176,7 +177,19 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
     }
     func OznerDeviceStatusUpdate(identifier: String) {
         DispatchQueue.main.async {
-           
+            //解析当前状态
+            switch (OznerManager.instance.currentDevice?.connectStatus)! {
+            case OznerConnectStatus.Connecting:
+                self.delegate.DeviceConnectStateChange!(stateDes: loadLanguage("正在连接中..."))
+            case OznerConnectStatus.Disconnect:
+                self.delegate.DeviceConnectStateChange!(stateDes:loadLanguage("设备已断开"))
+            case OznerConnectStatus.Connected:
+                self.delegate.DeviceConnectStateChange!(stateDes: loadLanguage("设备已连接"))
+            default://已连接
+                self.delegate.DeviceConnectStateChange!(stateDes: "")
+            }
+            //设置主页
+            self.currentDeviceView.StatusUpdate(identifier: identifier, status: DeviceViewStatus.Connectted)
         }
     }
     func OznerDevicefilterUpdate(identifier: String) {
@@ -192,43 +205,6 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
     }
     
     
-    func oznerDeviceSensorUpdate(_ device: OznerBaseDevice!) {
-        if CheckIsCurrentDevice(device: device) == true {
-            
-            currentDeviceView.SensorUpdate(device: device)
-            
-            
-        }
-    }
-    //连接状态变化
-    func oznerDeviceStatusUpdate(_ device: OznerBaseDevice!) {
-        if CheckIsCurrentDevice(device: device) == true {
-            
-            //解析当前状态
-            switch device.deviceInfo.productID {
-            case "BLUE":
-                //解析当前状态
-                switch device.connectStatus {
-                case .Connecting:
-                    delegate.DeviceConnectStateChange!(stateDes: loadLanguage("正在连接中..."))
-                case .Disconnect:
-                    delegate.DeviceConnectStateChange!(stateDes:loadLanguage("设备已断开"))
-                case .Connected:
-                    delegate.DeviceConnectStateChange!(stateDes: loadLanguage("设备已连接"))
-                default://已连接
-                    delegate.DeviceConnectStateChange!(stateDes: "")
-                }
-                
-                break
-            default:
-                delegate.DeviceConnectStateChange!(stateDes: "")
-                break
-            }
-
-            //设置主页
-            currentDeviceView.StatusUpdate(device: device, status: DeviceViewStatus.Connectted)
-        }
-    }
     
 }
 

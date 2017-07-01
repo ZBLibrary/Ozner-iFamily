@@ -57,7 +57,7 @@ class WaterReplenishSettingController: DeviceSettingController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sexLabel.text=self.deviceSetting.get("sex", default: loadLanguage("女")) as! String?
+        sexLabel.text=self.deviceSetting.GetValue(key: "sex", defaultValue: loadLanguage("女"))
     }
     // MARK: - Navigation
 

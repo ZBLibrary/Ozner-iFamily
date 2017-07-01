@@ -10,7 +10,7 @@ import UIKit
 
 class RoWaterPuefierLvXinController: BaseViewController {
 
-    var currentDevice:ROWaterPurufier!
+    var currentDevice:WaterPurifier_Blue!
     @IBOutlet var fuweiButton: UIButton!
     @IBAction func fuweiClick(sender: UIButton) {
         
@@ -99,7 +99,8 @@ class RoWaterPuefierLvXinController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentDevice=LoginManager.instance.currentDevice as! ROWaterPurufier
+        
+        currentDevice=OznerManager.instance.currentDevice as! WaterPurifier_Blue
         self.title=loadLanguage("当前滤芯状态")
         lvxinAlertLabel.text = loadLanguage("清\n洗\n水\n路\n保\n护\n器")
         hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)

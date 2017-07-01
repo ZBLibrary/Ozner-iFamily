@@ -25,8 +25,8 @@ class OznerIOManager: NSObject {
     }
     //获取已配对的设备IO，或者设备重新连接调用
     func getIO(deviceinfo:OznerDeviceInfo) -> OznerBaseIO? {
-        let typeAtt=(DeviceConfigManager.deviceTypeInfo[deviceinfo.deviceType]?.typeAttr)!
-        switch typeAtt {
+        let ioType=ProductInfo.getIOTypeFromProductID(productID: deviceinfo.productID)
+        switch ioType {
         case .Ayla:
             return OznerAylaManager.instance.getIO(deviceinfo: deviceinfo)
         case .MxChip:
@@ -59,6 +59,7 @@ class OznerIOManager: NSObject {
     }
     func canclePair() {//取消配对
         //以后需要解决Ayla和庆科的区别，目前只有庆科配对
+        
         if currentPairDeviceClass != nil {
             switch (currentPairDeviceClass?.IOType)! {
             case .Bluetooth:
