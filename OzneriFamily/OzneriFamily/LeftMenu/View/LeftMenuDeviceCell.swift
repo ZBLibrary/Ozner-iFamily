@@ -12,29 +12,20 @@ let AttributeOfDevice = "AttributeOfDevice"
 
 class LeftMenuDeviceCell: UITableViewCell {
 
-    var device:OznerDevice! {
+    var device:OznerBaseDevice! {
         didSet{
-//            connectLabel.text=["连接中","已断开","已连接"][Int(device.connectStatus().rawValue)]
             deviceName.text=device.settings.name
-            deviceAdressLabel.text=device.settings.get(AttributeOfDevice, default:loadLanguage("我的家庭")) as! String?
-            switch OznerDeviceType.getType(type: (device?.type)!) {
-            case .Cup,.Tap,.TDSPan,.Air_Blue,.WaterReplenish,.Water_Bluetooth:
-                connectLabel.text=[loadLanguage("连接中"),loadLanguage("已断开"),loadLanguage("已连接")][Int(device.connectStatus().rawValue)]
+            deviceAdressLabel.text=device.settings.GetValue(key: AttributeOfDevice, defaultValue: loadLanguage("我的家庭"))
+            connectLabel.text=[OznerConnectStatus.Connecting:loadLanguage("连接中"),OznerConnectStatus.Disconnect:loadLanguage("已断开"),OznerConnectStatus.Connected:loadLanguage("已连接")][device.connectStatus]
+            switch ProductInfo.getIOTypeFromProductID(productID: device.deviceInfo.productID) {
+            case .Blue:
                 connectImg.image=UIImage(named: "device_icon_blutooth")//蓝牙图标
                 break
-            case .Air_Wifi:
+            case .MxChip,.Ayla,.AylaMxChip:
                 connectImg.image=UIImage(named: "device_icon_wifi")//Wifi图标
-                connectLabel.text=(device as! AirPurifier_MxChip).isOffline ? loadLanguage("已断开") : loadLanguage("已连接")
                 break
-            case .Water_Wifi:
-                connectImg.image=UIImage(named: "device_icon_wifi")//Wifi图标
-                connectLabel.text=(device as! WaterPurifier).isOffline ? loadLanguage("已断开") : loadLanguage("已连接")
-                break
-            case .Water_Wifi_JZYA1XBA8CSFFSF:
-                break
-            case .Water_Wifi_JZYA1XBA8DRF:
-                break
-            case .Water_Wifi_JZYA1XBLG_DRF:
+            default:
+                connectImg.image=UIImage(named: "")//无图标
                 break
             }
         }
@@ -50,15 +41,15 @@ class LeftMenuDeviceCell: UITableViewCell {
         
         // Initialization code
     }
-    private let imgArr:[OznerDeviceType:NSArray]=[
-        OznerDeviceType.Cup:["device_cup_normal_state","deveice_cup_select_state"],
-        OznerDeviceType.Tap:["device_tan_tou_noamrl_state","device_tan_tou_select_state"],
-        OznerDeviceType.TDSPan:["device_TDSPAN_noamrl_state","device_tdspan_select_state"],
-        OznerDeviceType.Water_Wifi:["device_jin_shui_qi_normal","device_jin_shui_qi_select"],
-        OznerDeviceType.Air_Blue:["device_jin_smallair_normal","device_jin_smallair_select"],
-        OznerDeviceType.Air_Wifi:["device_jin_bigair_normal","device_jin_bigair_select"],
-        OznerDeviceType.WaterReplenish:["WaterReplenish2","WaterReplenish1_2"],
-        OznerDeviceType.Water_Bluetooth:["水芯片配对图标4","水芯片配对图标5"]
+    private let imgArr:[OZDeviceClass:NSArray]=[
+        .Cup:["device_cup_normal_state","deveice_cup_select_state"],
+        .Tap:["device_tan_tou_noamrl_state","device_tan_tou_select_state"],
+        .TDSPan:["device_TDSPAN_noamrl_state","device_tdspan_select_state"],
+        .WaterPurifier_Wifi:["device_jin_shui_qi_normal","device_jin_shui_qi_select"],
+        .AirPurifier_Blue:["device_jin_smallair_normal","device_jin_smallair_select"],
+        .AirPurifier_Wifi:["device_jin_bigair_normal","device_jin_bigair_select"],
+        .WaterReplenish:["WaterReplenish2","WaterReplenish1_2"],
+        .WaterPurifier_Blue:["水芯片配对图标4","水芯片配对图标5"]
     ]
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -11,20 +11,11 @@ import UIKit
 class DeviceSettingController: BaseViewController {
 
 
-    var deviceSetting:DeviceSetting!
+    var deviceSetting:BaseDeviceSetting!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let device=LoginManager.instance.currentDevice
-        
-        
-        switch OznerDeviceType.getType(type: device.type) {
-        case OznerDeviceType.Cup:
-            deviceSetting=CupSettings(json: device.settings.toJSON())
-        case OznerDeviceType.Tap,OznerDeviceType.TDSPan:
-            deviceSetting=TapSettings(json: device.settings.toJSON())
-        default:
-            deviceSetting=DeviceSetting(json: device.settings.toJSON())
-        }
+        let device=OznerManager.instance.currentDevice
+        deviceSetting=BaseDeviceSetting(json: device?.settings.toJsonString())
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,10 +28,11 @@ class DeviceSettingController: BaseViewController {
     }
     func nameChange(name:String,attr:String) {
         deviceSetting.name=name
-        deviceSetting.put("usingSite", value: attr)
+        deviceSetting.SetValue(key: "usingSite", value: attr)
     }
     func getNameAndAttr() -> String {
-        return deviceSetting.name+"("+(deviceSetting.get("usingSite", default:loadLanguage("办公室")) as! String)+")"
+        
+        return deviceSetting.name+"("+deviceSetting.GetValue(key: "usingSite", defaultValue: loadLanguage("办公室"))+")"
     }
     func deleteDevice()
     {
@@ -52,13 +44,13 @@ class DeviceSettingController: BaseViewController {
         _=alert.addButton(loadLanguage("否")) {
         }
         _=alert.addButton(loadLanguage("是")) {
-            let device=LoginManager.instance.currentDevice
-            LoginManager.instance.currentDeviceIdentifier=nil
-            OznerManager.instance().remove(device)
+            let device=OznerManager.instance.currentDevice
+            
+            OznerManager.instance.deleteDevice(device: device!)
             
             //删除服务器设备
             LoginManager.instance.showHud()
-            User.DeleteDevice(mac: device.identifier, success: {
+            User.DeleteDevice(mac: (device?.deviceInfo.deviceMac)!, success: {
                 SVProgressHUD.dismiss()
             }, failure: { (error) in
                 SVProgressHUD.dismiss()
@@ -71,8 +63,8 @@ class DeviceSettingController: BaseViewController {
     }
     
     func back() {
-        let device=LoginManager.instance.currentDevice
-        if deviceSetting.toJSON()==device.settings.toJSON()
+        let device=OznerManager.instance.currentDevice
+        if deviceSetting.toJsonString()==device?.settings.toJsonString()
         {
             _=self.navigationController?.popViewController(animated: true)
         }else{
@@ -92,9 +84,9 @@ class DeviceSettingController: BaseViewController {
     }
     func saveDevice() {
         
-        let device=LoginManager.instance.currentDevice
-            device.settings=deviceSetting
-        OznerManager.instance().save(device)
+        let device=OznerManager.instance.currentDevice
+            device?.settings=deviceSetting
+        OznerManager.instance.saveDevice(device: device!)
         _=self.navigationController?.popViewController(animated: true)
     }
     /*

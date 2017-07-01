@@ -113,10 +113,6 @@
 		8D12AAC91DAB739F003A09E6 /* PairFailedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AAC81DAB739F003A09E6 /* PairFailedController.swift */; };
 		8D12AACB1DAB9A89003A09E6 /* WifiPairingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12AACA1DAB9A89003A09E6 /* WifiPairingController.swift */; };
 		8D1397311DDC7819006FB239 /* CupTDSChartContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1397301DDC7818006FB239 /* CupTDSChartContainerView.xib */; };
-		8D14A9271DD967AA00920AE9 /* ROWaterPurufier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14A9201DD967AA00920AE9 /* ROWaterPurufier.m */; };
-		8D14A9281DD967AA00920AE9 /* ROWaterSettingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14A9221DD967AA00920AE9 /* ROWaterSettingInfo.m */; };
-		8D14A9291DD967AA00920AE9 /* RO_WaterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14A9241DD967AA00920AE9 /* RO_WaterInfo.m */; };
-		8D14A92A1DD967AA00920AE9 /* RO_FilterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14A9261DD967AA00920AE9 /* RO_FilterInfo.m */; };
 		8D14A92C1DD98F6500920AE9 /* CupColorBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D14A92B1DD98F6500920AE9 /* CupColorBoardView.swift */; };
 		8D14A9381DD9907000920AE9 /* YJHColorPickerHSWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14A92F1DD9907000920AE9 /* YJHColorPickerHSWheel.m */; };
 		8D14A9391DD9907000920AE9 /* YJHColorPickerHSWheel2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14A9311DD9907000920AE9 /* YJHColorPickerHSWheel2.m */; };
@@ -134,15 +130,68 @@
 		8D17D40B1DC2EA0A002B0F89 /* AgreementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D17D40A1DC2EA0A002B0F89 /* AgreementController.swift */; };
 		8D184E891DED717D0008047E /* RoWaterPuefierLvXinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D184E871DED717D0008047E /* RoWaterPuefierLvXinController.swift */; };
 		8D184E8A1DED717D0008047E /* RoWaterPuefierLvXinController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D184E881DED717D0008047E /* RoWaterPuefierLvXinController.xib */; };
-		8D1C66E01DAA3B62008C639F /* OznerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C66651DAA3B62008C639F /* OznerManager.m */; };
 		8D1C670A1DAA4052008C639F /* SelectDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */; };
 		8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C67091DAA4052008C639F /* SelectDeviceCell.xib */; };
 		8D1C86AE1DD33BEF00B15221 /* TapDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C86AC1DD33BEF00B15221 /* TapDatePickerView.swift */; };
 		8D1C86AF1DD33BEF00B15221 /* TapDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C86AD1DD33BEF00B15221 /* TapDatePickerView.xib */; };
+		8D1DBC991F07720D0083E1D6 /* ProductInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1DBC971F07720D0083E1D6 /* ProductInfo.plist */; };
+		8D1DBC9A1F07720D0083E1D6 /* ProductInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DBC981F07720D0083E1D6 /* ProductInfo.swift */; };
 		8D1EF3881D93DE050009D034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3871D93DE050009D034 /* AppDelegate.swift */; };
 		8D1EF39F1D93DE050009D034 /* OzneriFamilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF39E1D93DE050009D034 /* OzneriFamilyTests.swift */; };
 		8D1EF3AA1D93DE050009D034 /* OzneriFamilyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3A91D93DE050009D034 /* OzneriFamilyUITests.swift */; };
 		8D1EF3C51D93F01F0009D034 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */; };
+		8D36D2CA1F06234A0091EB1F /* AirPurifier_Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2611F06234A0091EB1F /* AirPurifier_Bluetooth.swift */; };
+		8D36D2CB1F06234A0091EB1F /* AirPurifier_Wifi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2631F06234A0091EB1F /* AirPurifier_Wifi.swift */; };
+		8D36D2CC1F06234A0091EB1F /* BaseDeviceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2651F06234A0091EB1F /* BaseDeviceSetting.swift */; };
+		8D36D2CD1F06234A0091EB1F /* OznerBaseDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2661F06234A0091EB1F /* OznerBaseDevice.swift */; };
+		8D36D2CE1F06234A0091EB1F /* Cup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2681F06234A0091EB1F /* Cup.swift */; };
+		8D36D2CF1F06234A0091EB1F /* OznerCupRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2691F06234A0091EB1F /* OznerCupRecords.swift */; };
+		8D36D2D21F06234A0091EB1F /* OznerDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D26D1F06234A0091EB1F /* OznerDeviceManager.swift */; };
+		8D36D2D31F06234A0091EB1F /* Tap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D26F1F06234A0091EB1F /* Tap.swift */; };
+		8D36D2D41F06234A0091EB1F /* WaterPurifier_Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2711F06234A0091EB1F /* WaterPurifier_Blue.swift */; };
+		8D36D2D51F06234A0091EB1F /* WaterPurifier_Wifi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2731F06234A0091EB1F /* WaterPurifier_Wifi.swift */; };
+		8D36D2D61F06234A0091EB1F /* WaterReplenish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2751F06234A0091EB1F /* WaterReplenish.swift */; };
+		8D36D2D71F06234A0091EB1F /* WaterReplenishStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2761F06234A0091EB1F /* WaterReplenishStatus.swift */; };
+		8D36D2D81F06234A0091EB1F /* OznerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2781F06234A0091EB1F /* OznerDataManager.swift */; };
+		8D36D2D91F06234A0091EB1F /* OznerDeviceRecordHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2791F06234A0091EB1F /* OznerDeviceRecordHelper.swift */; };
+		8D36D2DA1F06234A0091EB1F /* OZAylaIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D27C1F06234A0091EB1F /* OZAylaIO.swift */; };
+		8D36D2DB1F06234A0091EB1F /* OznerAylaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D27D1F06234A0091EB1F /* OznerAylaManager.swift */; };
+		8D36D2DC1F06234A0091EB1F /* BabyBLEHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2801F06234A0091EB1F /* BabyBLEHelper.m */; };
+		8D36D2DD1F06234A0091EB1F /* BabyBLEIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2821F06234A0091EB1F /* BabyBLEIO.m */; };
+		8D36D2DE1F06234A0091EB1F /* BabyBluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2871F06234A0091EB1F /* BabyBluetooth.m */; };
+		8D36D2DF1F06234A0091EB1F /* BabyCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2891F06234A0091EB1F /* BabyCallback.m */; };
+		8D36D2E01F06234A0091EB1F /* BabyCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D28B1F06234A0091EB1F /* BabyCentralManager.m */; };
+		8D36D2E11F06234A0091EB1F /* BabyDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D28D1F06234A0091EB1F /* BabyDefine.m */; };
+		8D36D2E21F06234A0091EB1F /* BabyOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D28F1F06234A0091EB1F /* BabyOptions.m */; };
+		8D36D2E31F06234A0091EB1F /* BabyPeripheralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2911F06234A0091EB1F /* BabyPeripheralManager.m */; };
+		8D36D2E41F06234A0091EB1F /* BabyRhythm.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2931F06234A0091EB1F /* BabyRhythm.m */; };
+		8D36D2E51F06234A0091EB1F /* BabySpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2951F06234A0091EB1F /* BabySpeaker.m */; };
+		8D36D2E61F06234A0091EB1F /* BabyToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2971F06234A0091EB1F /* BabyToy.m */; };
+		8D36D2E71F06234A0091EB1F /* OZBluetoothIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2981F06234A0091EB1F /* OZBluetoothIO.swift */; };
+		8D36D2E81F06234A0091EB1F /* OznerBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2991F06234A0091EB1F /* OznerBluetoothManager.swift */; };
+		8D36D2E91F06234A0091EB1F /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D29F1F06234A0091EB1F /* GCDAsyncSocket.m */; };
+		8D36D2EA1F06234A0091EB1F /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2A11F06234A0091EB1F /* GCDAsyncUdpSocket.m */; };
+		8D36D2EB1F06234A0091EB1F /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2A41F06234A0091EB1F /* AsyncSocket.m */; };
+		8D36D2EC1F06234A0091EB1F /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2A61F06234A0091EB1F /* AsyncUdpSocket.m */; };
+		8D36D2ED1F06234A0091EB1F /* libEasyLink.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D36D2A91F06234A0091EB1F /* libEasyLink.a */; };
+		8D36D2EE1F06234A0091EB1F /* NSData+IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2AB1F06234A0091EB1F /* NSData+IPAddress.m */; };
+		8D36D2EF1F06234A0091EB1F /* NSDictionary+ZBAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2AD1F06234A0091EB1F /* NSDictionary+ZBAdd.m */; };
+		8D36D2F01F06234A0091EB1F /* NSDictionary+ZBKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2AF1F06234A0091EB1F /* NSDictionary+ZBKeyMapping.m */; };
+		8D36D2F11F06234A0091EB1F /* NSMutableDictionary+NilFuckOff.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2B11F06234A0091EB1F /* NSMutableDictionary+NilFuckOff.m */; };
+		8D36D2F21F06234A0091EB1F /* OznerBonjourDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2B31F06234A0091EB1F /* OznerBonjourDetail.m */; };
+		8D36D2F31F06234A0091EB1F /* ZBBonjourService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2B51F06234A0091EB1F /* ZBBonjourService.m */; };
+		8D36D2F41F06234A0091EB1F /* OZMxChipIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2B61F06234A0091EB1F /* OZMxChipIO.swift */; };
+		8D36D2F51F06234A0091EB1F /* OznerEasyLink_V1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2B71F06234A0091EB1F /* OznerEasyLink_V1.swift */; };
+		8D36D2F61F06234A0091EB1F /* OznerEasyLink_V2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2B81F06234A0091EB1F /* OznerEasyLink_V2.swift */; };
+		8D36D2F71F06234A0091EB1F /* OznerMQTT_V1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2B91F06234A0091EB1F /* OznerMQTT_V1.swift */; };
+		8D36D2F81F06234A0091EB1F /* OznerMQTT_V2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2BA1F06234A0091EB1F /* OznerMQTT_V2.swift */; };
+		8D36D2F91F06234A0091EB1F /* OznerMxChipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2BB1F06234A0091EB1F /* OznerMxChipManager.swift */; };
+		8D36D2FA1F06234A0091EB1F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2BE1F06234A0091EB1F /* Reachability.m */; };
+		8D36D2FB1F06234A0091EB1F /* OznerBaseIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2C01F06234A0091EB1F /* OznerBaseIO.swift */; };
+		8D36D2FC1F06234A0091EB1F /* OznerIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2C11F06234A0091EB1F /* OznerIOManager.swift */; };
+		8D36D2FD1F06234A0091EB1F /* OznerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2C21F06234A0091EB1F /* OznerManager.swift */; };
+		8D36D2FE1F06234A0091EB1F /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2C51F06234A0091EB1F /* Helper.m */; };
+		8D36D2FF1F06234A0091EB1F /* OznerTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2C71F06234A0091EB1F /* OznerTools.swift */; };
 		8D429A031DC9E9160083011C /* DeviceSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A021DC9E9160083011C /* DeviceSettingController.swift */; };
 		8D429A071DCA0D6E0083011C /* TapLvXinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A061DCA0D6E0083011C /* TapLvXinController.swift */; };
 		8D429A091DCA0D840083011C /* AirLvXinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A081DCA0D840083011C /* AirLvXinController.swift */; };
@@ -168,7 +217,6 @@
 		8D6BFDBE1ED9626E00AC849C /* WaterPur_A8DRF.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBA1ED9626E00AC849C /* WaterPur_A8DRF.xib */; };
 		8D6BFDBF1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBB1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift */; };
 		8D6BFDC01ED9626E00AC849C /* WaterPur_A8CSFFSF.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBC1ED9626E00AC849C /* WaterPur_A8CSFFSF.xib */; };
-		8D6BFDC61ED970F000AC849C /* WaterPurifier_1_5.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC51ED970F000AC849C /* WaterPurifier_1_5.m */; };
 		8D7141EC1EE5334B00AC9CE9 /* PayWaterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7141EB1EE5334B00AC9CE9 /* PayWaterController.swift */; };
 		8D7141EF1EE536D800AC9CE9 /* PayWaterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7141ED1EE536D800AC9CE9 /* PayWaterCell.swift */; };
 		8D7141F01EE536D800AC9CE9 /* PayWaterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D7141EE1EE536D800AC9CE9 /* PayWaterCell.xib */; };
@@ -220,80 +268,6 @@
 		8DC02E941DB5CEFE007F57DB /* WaterReplenishMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DC02E881DB5CEFE007F57DB /* WaterReplenishMainView.xib */; };
 		8DC02EA71DB5D100007F57DB /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EA51DB5D100007F57DB /* SCLAlertView.swift */; };
 		8DC02EA81DB5D100007F57DB /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EA61DB5D100007F57DB /* SCLExtensions.swift */; };
-		8DC02F641DB5F03B007F57DB /* AirPurifierManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EBD1DB5F03B007F57DB /* AirPurifierManager.m */; };
-		8DC02F651DB5F03B007F57DB /* AirPurifier_Bluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EC01DB5F03B007F57DB /* AirPurifier_Bluetooth.m */; };
-		8DC02F661DB5F03B007F57DB /* BluetoothAirPurifierFilterStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EC21DB5F03B007F57DB /* BluetoothAirPurifierFilterStatus.m */; };
-		8DC02F671DB5F03B007F57DB /* BluetoothAirPurifierSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EC41DB5F03B007F57DB /* BluetoothAirPurifierSensor.m */; };
-		8DC02F681DB5F03B007F57DB /* BluetoothAirPurifierStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EC61DB5F03B007F57DB /* BluetoothAirPurifierStatus.m */; };
-		8DC02F691DB5F03B007F57DB /* AirPurifier_MxChip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EC91DB5F03B007F57DB /* AirPurifier_MxChip.m */; };
-		8DC02F6A1DB5F03B007F57DB /* AirPurifierInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02ECC1DB5F03B007F57DB /* AirPurifierInfo.m */; };
-		8DC02F6B1DB5F03B007F57DB /* MxChipAirPurifierFilterStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02ECE1DB5F03B007F57DB /* MxChipAirPurifierFilterStatus.m */; };
-		8DC02F6C1DB5F03B007F57DB /* MxChipAirPurifierSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02ED01DB5F03B007F57DB /* MxChipAirPurifierSensor.m */; };
-		8DC02F6D1DB5F03B007F57DB /* MxChipAirPurifierStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02ED21DB5F03B007F57DB /* MxChipAirPurifierStatus.m */; };
-		8DC02F6E1DB5F03B007F57DB /* PowerTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02ED41DB5F03B007F57DB /* PowerTimer.m */; };
-		8DC02F6F1DB5F03B007F57DB /* BluetoothIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02ED71DB5F03B007F57DB /* BluetoothIO.m */; };
-		8DC02F701DB5F03B007F57DB /* BluetoothIOMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02ED91DB5F03B007F57DB /* BluetoothIOMgr.m */; };
-		8DC02F711DB5F03B007F57DB /* BluetoothSynchronizedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EDB1DB5F03B007F57DB /* BluetoothSynchronizedObject.m */; };
-		8DC02F721DB5F03B007F57DB /* FirmwareTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EDD1DB5F03B007F57DB /* FirmwareTools.m */; };
-		8DC02F731DB5F03B007F57DB /* ScanData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EDF1DB5F03B007F57DB /* ScanData.m */; };
-		8DC02F741DB5F03B007F57DB /* Cup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EE21DB5F03B007F57DB /* Cup.m */; };
-		8DC02F751DB5F03B007F57DB /* CupDBRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EE41DB5F03B007F57DB /* CupDBRecord.m */; };
-		8DC02F761DB5F03B007F57DB /* CupFirmware.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EE61DB5F03B007F57DB /* CupFirmware.m */; };
-		8DC02F771DB5F03B007F57DB /* CupGravity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EE81DB5F03B007F57DB /* CupGravity.m */; };
-		8DC02F781DB5F03B007F57DB /* CupManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EEA1DB5F03B007F57DB /* CupManager.m */; };
-		8DC02F791DB5F03B007F57DB /* CupRawRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EEC1DB5F03B007F57DB /* CupRawRecord.m */; };
-		8DC02F7A1DB5F03B007F57DB /* CupRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EEE1DB5F03B007F57DB /* CupRecord.m */; };
-		8DC02F7B1DB5F03B007F57DB /* CupRecordList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EF01DB5F03B007F57DB /* CupRecordList.m */; };
-		8DC02F7C1DB5F03B007F57DB /* CupSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EF21DB5F03B007F57DB /* CupSensor.m */; };
-		8DC02F7D1DB5F03B007F57DB /* CupSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EF41DB5F03B007F57DB /* CupSettings.m */; };
-		8DC02F7E1DB5F03B007F57DB /* BaseDeviceIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EF81DB5F03B007F57DB /* BaseDeviceIO.m */; };
-		8DC02F7F1DB5F03B007F57DB /* BaseDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EFB1DB5F03B007F57DB /* BaseDeviceManager.m */; };
-		8DC02F801DB5F03B007F57DB /* BaseOznerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EFD1DB5F03B007F57DB /* BaseOznerObject.m */; };
-		8DC02F811DB5F03B007F57DB /* DeviceSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02EFF1DB5F03B007F57DB /* DeviceSetting.m */; };
-		8DC02F821DB5F03B007F57DB /* IOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F021DB5F03B007F57DB /* IOManager.m */; };
-		8DC02F831DB5F03B007F57DB /* IOManagerList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F041DB5F03B007F57DB /* IOManagerList.m */; };
-		8DC02F841DB5F03B007F57DB /* OznerDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F071DB5F03B007F57DB /* OznerDevice.m */; };
-		8DC02F851DB5F03B007F57DB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F0A1DB5F03B007F57DB /* Helper.m */; };
-		8DC02F861DB5F03B007F57DB /* SqlLiteDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F0C1DB5F03B007F57DB /* SqlLiteDB.m */; };
-		8DC02F871DB5F03B007F57DB /* Tap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F0F1DB5F03B007F57DB /* Tap.m */; };
-		8DC02F881DB5F03B007F57DB /* TapFirmware.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F111DB5F03B007F57DB /* TapFirmware.m */; };
-		8DC02F891DB5F03B007F57DB /* TapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F131DB5F03B007F57DB /* TapManager.m */; };
-		8DC02F8A1DB5F03B007F57DB /* TapRawRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F151DB5F03B007F57DB /* TapRawRecord.m */; };
-		8DC02F8B1DB5F03B007F57DB /* TapRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F171DB5F03B007F57DB /* TapRecord.m */; };
-		8DC02F8C1DB5F03B007F57DB /* TapRecordList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F191DB5F03B007F57DB /* TapRecordList.m */; };
-		8DC02F8D1DB5F03B007F57DB /* TapSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F1B1DB5F03B007F57DB /* TapSensor.m */; };
-		8DC02F8E1DB5F03B007F57DB /* TapSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F1D1DB5F03B007F57DB /* TapSettings.m */; };
-		8DC02F8F1DB5F03B007F57DB /* WaterPurifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F201DB5F03B007F57DB /* WaterPurifier.m */; };
-		8DC02F901DB5F03B007F57DB /* WaterPurifierInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F221DB5F03B007F57DB /* WaterPurifierInfo.m */; };
-		8DC02F911DB5F03B007F57DB /* WaterPurifierManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F241DB5F03B007F57DB /* WaterPurifierManager.m */; };
-		8DC02F921DB5F03B007F57DB /* WaterPurifierSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F261DB5F03B007F57DB /* WaterPurifierSensor.m */; };
-		8DC02F931DB5F03B007F57DB /* WaterPurifierStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F281DB5F03B007F57DB /* WaterPurifierStatus.m */; };
-		8DC02F941DB5F03B007F57DB /* WaterReplenishmentMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F2B1DB5F03B007F57DB /* WaterReplenishmentMeter.m */; };
-		8DC02F951DB5F03B007F57DB /* WaterReplenishmentMeterMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F2D1DB5F03B007F57DB /* WaterReplenishmentMeterMgr.m */; };
-		8DC02F961DB5F03B007F57DB /* WaterReplenishmentMeterStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F2F1DB5F03B007F57DB /* WaterReplenishmentMeterStatus.m */; };
-		8DC02F971DB5F03B007F57DB /* logging_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F351DB5F03B007F57DB /* logging_mosq.c */; };
-		8DC02F981DB5F03B007F57DB /* memory_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F371DB5F03B007F57DB /* memory_mosq.c */; };
-		8DC02F991DB5F03B007F57DB /* messages_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F391DB5F03B007F57DB /* messages_mosq.c */; };
-		8DC02F9A1DB5F03B007F57DB /* mosquitto.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F3B1DB5F03B007F57DB /* mosquitto.c */; };
-		8DC02F9B1DB5F03B007F57DB /* net_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F3F1DB5F03B007F57DB /* net_mosq.c */; };
-		8DC02F9C1DB5F03B007F57DB /* read_handle.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F411DB5F03B007F57DB /* read_handle.c */; };
-		8DC02F9D1DB5F03B007F57DB /* read_handle_client.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F431DB5F03B007F57DB /* read_handle_client.c */; };
-		8DC02F9E1DB5F03B007F57DB /* read_handle_shared.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F441DB5F03B007F57DB /* read_handle_shared.c */; };
-		8DC02F9F1DB5F03B007F57DB /* send_client_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F451DB5F03B007F57DB /* send_client_mosq.c */; };
-		8DC02FA01DB5F03B007F57DB /* send_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F461DB5F03B007F57DB /* send_mosq.c */; };
-		8DC02FA11DB5F03B007F57DB /* thread_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F481DB5F03B007F57DB /* thread_mosq.c */; };
-		8DC02FA21DB5F03B007F57DB /* time_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F491DB5F03B007F57DB /* time_mosq.c */; };
-		8DC02FA31DB5F03B007F57DB /* tls_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F4B1DB5F03B007F57DB /* tls_mosq.c */; };
-		8DC02FA41DB5F03B007F57DB /* util_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F4D1DB5F03B007F57DB /* util_mosq.c */; };
-		8DC02FA51DB5F03B007F57DB /* will_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F4F1DB5F03B007F57DB /* will_mosq.c */; };
-		8DC02FA61DB5F03B007F57DB /* MQTTKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F541DB5F03B007F57DB /* MQTTKit.m */; };
-		8DC02FA71DB5F03B007F57DB /* MQTTProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F561DB5F03B007F57DB /* MQTTProxy.m */; };
-		8DC02FA81DB5F03B007F57DB /* MXChipIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F581DB5F03B007F57DB /* MXChipIO.m */; };
-		8DC02FA91DB5F03B007F57DB /* MXChipIOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F5A1DB5F03B007F57DB /* MXChipIOManager.m */; };
-		8DC02FAA1DB5F03B007F57DB /* MXChipPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F5C1DB5F03B007F57DB /* MXChipPair.m */; };
-		8DC02FAB1DB5F03B007F57DB /* ConfigurationDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F5F1DB5F03B007F57DB /* ConfigurationDevice.m */; };
-		8DC02FAC1DB5F03B007F57DB /* EasyLinkSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F611DB5F03B007F57DB /* EasyLinkSender.m */; };
-		8DC02FAD1DB5F03B007F57DB /* HttpServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02F631DB5F03B007F57DB /* HttpServer.m */; };
 		8DC02FB81DB61F87007F57DB /* CupSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02FB31DB61F87007F57DB /* CupSettingController.swift */; };
 		8DC02FBA1DB623BC007F57DB /* OznerDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02FB91DB623BC007F57DB /* OznerDeviceView.swift */; };
 		8DEB84AD1DA897930088794A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEB84AC1DA897930088794A /* libsqlite3.0.tbd */; };
@@ -660,15 +634,6 @@
 		8D12AAC81DAB739F003A09E6 /* PairFailedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairFailedController.swift; sourceTree = "<group>"; };
 		8D12AACA1DAB9A89003A09E6 /* WifiPairingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiPairingController.swift; sourceTree = "<group>"; };
 		8D1397301DDC7818006FB239 /* CupTDSChartContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupTDSChartContainerView.xib; sourceTree = "<group>"; };
-		8D14A91E1DD967AA00920AE9 /* BluetoothIOMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothIOMgr.h; sourceTree = "<group>"; };
-		8D14A91F1DD967AA00920AE9 /* ROWaterPurufier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROWaterPurufier.h; sourceTree = "<group>"; };
-		8D14A9201DD967AA00920AE9 /* ROWaterPurufier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROWaterPurufier.m; sourceTree = "<group>"; };
-		8D14A9211DD967AA00920AE9 /* ROWaterSettingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROWaterSettingInfo.h; sourceTree = "<group>"; };
-		8D14A9221DD967AA00920AE9 /* ROWaterSettingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROWaterSettingInfo.m; sourceTree = "<group>"; };
-		8D14A9231DD967AA00920AE9 /* RO_WaterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RO_WaterInfo.h; sourceTree = "<group>"; };
-		8D14A9241DD967AA00920AE9 /* RO_WaterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RO_WaterInfo.m; sourceTree = "<group>"; };
-		8D14A9251DD967AA00920AE9 /* RO_FilterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RO_FilterInfo.h; sourceTree = "<group>"; };
-		8D14A9261DD967AA00920AE9 /* RO_FilterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RO_FilterInfo.m; sourceTree = "<group>"; };
 		8D14A92B1DD98F6500920AE9 /* CupColorBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupColorBoardView.swift; sourceTree = "<group>"; };
 		8D14A92E1DD9907000920AE9 /* YJHColorPickerHSWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJHColorPickerHSWheel.h; sourceTree = "<group>"; };
 		8D14A92F1DD9907000920AE9 /* YJHColorPickerHSWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJHColorPickerHSWheel.m; sourceTree = "<group>"; };
@@ -691,12 +656,12 @@
 		8D17D40A1DC2EA0A002B0F89 /* AgreementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreementController.swift; sourceTree = "<group>"; };
 		8D184E871DED717D0008047E /* RoWaterPuefierLvXinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoWaterPuefierLvXinController.swift; sourceTree = "<group>"; };
 		8D184E881DED717D0008047E /* RoWaterPuefierLvXinController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoWaterPuefierLvXinController.xib; sourceTree = "<group>"; };
-		8D1C66641DAA3B62008C639F /* OznerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OznerManager.h; sourceTree = "<group>"; };
-		8D1C66651DAA3B62008C639F /* OznerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OznerManager.m; sourceTree = "<group>"; };
 		8D1C67081DAA4052008C639F /* SelectDeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDeviceCell.swift; sourceTree = "<group>"; };
 		8D1C67091DAA4052008C639F /* SelectDeviceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectDeviceCell.xib; sourceTree = "<group>"; };
 		8D1C86AC1DD33BEF00B15221 /* TapDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapDatePickerView.swift; sourceTree = "<group>"; };
 		8D1C86AD1DD33BEF00B15221 /* TapDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TapDatePickerView.xib; sourceTree = "<group>"; };
+		8D1DBC971F07720D0083E1D6 /* ProductInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProductInfo.plist; sourceTree = "<group>"; };
+		8D1DBC981F07720D0083E1D6 /* ProductInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductInfo.swift; sourceTree = "<group>"; };
 		8D1EF3841D93DE050009D034 /* OzneriFamily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OzneriFamily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1EF3871D93DE050009D034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D1EF39A1D93DE050009D034 /* OzneriFamilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OzneriFamilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -706,6 +671,82 @@
 		8D1EF3A91D93DE050009D034 /* OzneriFamilyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzneriFamilyUITests.swift; sourceTree = "<group>"; };
 		8D1EF3AB1D93DE050009D034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8D36D2611F06234A0091EB1F /* AirPurifier_Bluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPurifier_Bluetooth.swift; sourceTree = "<group>"; };
+		8D36D2631F06234A0091EB1F /* AirPurifier_Wifi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPurifier_Wifi.swift; sourceTree = "<group>"; };
+		8D36D2651F06234A0091EB1F /* BaseDeviceSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDeviceSetting.swift; sourceTree = "<group>"; };
+		8D36D2661F06234A0091EB1F /* OznerBaseDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerBaseDevice.swift; sourceTree = "<group>"; };
+		8D36D2681F06234A0091EB1F /* Cup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cup.swift; sourceTree = "<group>"; };
+		8D36D2691F06234A0091EB1F /* OznerCupRecords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerCupRecords.swift; sourceTree = "<group>"; };
+		8D36D26D1F06234A0091EB1F /* OznerDeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerDeviceManager.swift; sourceTree = "<group>"; };
+		8D36D26F1F06234A0091EB1F /* Tap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tap.swift; sourceTree = "<group>"; };
+		8D36D2711F06234A0091EB1F /* WaterPurifier_Blue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurifier_Blue.swift; sourceTree = "<group>"; };
+		8D36D2731F06234A0091EB1F /* WaterPurifier_Wifi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurifier_Wifi.swift; sourceTree = "<group>"; };
+		8D36D2751F06234A0091EB1F /* WaterReplenish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterReplenish.swift; sourceTree = "<group>"; };
+		8D36D2761F06234A0091EB1F /* WaterReplenishStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterReplenishStatus.swift; sourceTree = "<group>"; };
+		8D36D2781F06234A0091EB1F /* OznerDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerDataManager.swift; sourceTree = "<group>"; };
+		8D36D2791F06234A0091EB1F /* OznerDeviceRecordHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerDeviceRecordHelper.swift; sourceTree = "<group>"; };
+		8D36D27C1F06234A0091EB1F /* OZAylaIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OZAylaIO.swift; sourceTree = "<group>"; };
+		8D36D27D1F06234A0091EB1F /* OznerAylaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerAylaManager.swift; sourceTree = "<group>"; };
+		8D36D27F1F06234A0091EB1F /* BabyBLEHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyBLEHelper.h; sourceTree = "<group>"; };
+		8D36D2801F06234A0091EB1F /* BabyBLEHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyBLEHelper.m; sourceTree = "<group>"; };
+		8D36D2811F06234A0091EB1F /* BabyBLEIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyBLEIO.h; sourceTree = "<group>"; };
+		8D36D2821F06234A0091EB1F /* BabyBLEIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyBLEIO.m; sourceTree = "<group>"; };
+		8D36D2861F06234A0091EB1F /* BabyBluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyBluetooth.h; sourceTree = "<group>"; };
+		8D36D2871F06234A0091EB1F /* BabyBluetooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyBluetooth.m; sourceTree = "<group>"; };
+		8D36D2881F06234A0091EB1F /* BabyCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyCallback.h; sourceTree = "<group>"; };
+		8D36D2891F06234A0091EB1F /* BabyCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyCallback.m; sourceTree = "<group>"; };
+		8D36D28A1F06234A0091EB1F /* BabyCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyCentralManager.h; sourceTree = "<group>"; };
+		8D36D28B1F06234A0091EB1F /* BabyCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyCentralManager.m; sourceTree = "<group>"; };
+		8D36D28C1F06234A0091EB1F /* BabyDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyDefine.h; sourceTree = "<group>"; };
+		8D36D28D1F06234A0091EB1F /* BabyDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyDefine.m; sourceTree = "<group>"; };
+		8D36D28E1F06234A0091EB1F /* BabyOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyOptions.h; sourceTree = "<group>"; };
+		8D36D28F1F06234A0091EB1F /* BabyOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyOptions.m; sourceTree = "<group>"; };
+		8D36D2901F06234A0091EB1F /* BabyPeripheralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPeripheralManager.h; sourceTree = "<group>"; };
+		8D36D2911F06234A0091EB1F /* BabyPeripheralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyPeripheralManager.m; sourceTree = "<group>"; };
+		8D36D2921F06234A0091EB1F /* BabyRhythm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyRhythm.h; sourceTree = "<group>"; };
+		8D36D2931F06234A0091EB1F /* BabyRhythm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyRhythm.m; sourceTree = "<group>"; };
+		8D36D2941F06234A0091EB1F /* BabySpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabySpeaker.h; sourceTree = "<group>"; };
+		8D36D2951F06234A0091EB1F /* BabySpeaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabySpeaker.m; sourceTree = "<group>"; };
+		8D36D2961F06234A0091EB1F /* BabyToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyToy.h; sourceTree = "<group>"; };
+		8D36D2971F06234A0091EB1F /* BabyToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyToy.m; sourceTree = "<group>"; };
+		8D36D2981F06234A0091EB1F /* OZBluetoothIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OZBluetoothIO.swift; sourceTree = "<group>"; };
+		8D36D2991F06234A0091EB1F /* OznerBluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerBluetoothManager.swift; sourceTree = "<group>"; };
+		8D36D29E1F06234A0091EB1F /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		8D36D29F1F06234A0091EB1F /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		8D36D2A01F06234A0091EB1F /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		8D36D2A11F06234A0091EB1F /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		8D36D2A31F06234A0091EB1F /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		8D36D2A41F06234A0091EB1F /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		8D36D2A51F06234A0091EB1F /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		8D36D2A61F06234A0091EB1F /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
+		8D36D2A81F06234A0091EB1F /* EasyLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyLink.h; sourceTree = "<group>"; };
+		8D36D2A91F06234A0091EB1F /* libEasyLink.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEasyLink.a; sourceTree = "<group>"; };
+		8D36D2AA1F06234A0091EB1F /* NSData+IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+IPAddress.h"; sourceTree = "<group>"; };
+		8D36D2AB1F06234A0091EB1F /* NSData+IPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+IPAddress.m"; sourceTree = "<group>"; };
+		8D36D2AC1F06234A0091EB1F /* NSDictionary+ZBAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZBAdd.h"; sourceTree = "<group>"; };
+		8D36D2AD1F06234A0091EB1F /* NSDictionary+ZBAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ZBAdd.m"; sourceTree = "<group>"; };
+		8D36D2AE1F06234A0091EB1F /* NSDictionary+ZBKeyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZBKeyMapping.h"; sourceTree = "<group>"; };
+		8D36D2AF1F06234A0091EB1F /* NSDictionary+ZBKeyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ZBKeyMapping.m"; sourceTree = "<group>"; };
+		8D36D2B01F06234A0091EB1F /* NSMutableDictionary+NilFuckOff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+NilFuckOff.h"; sourceTree = "<group>"; };
+		8D36D2B11F06234A0091EB1F /* NSMutableDictionary+NilFuckOff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+NilFuckOff.m"; sourceTree = "<group>"; };
+		8D36D2B21F06234A0091EB1F /* OznerBonjourDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OznerBonjourDetail.h; sourceTree = "<group>"; };
+		8D36D2B31F06234A0091EB1F /* OznerBonjourDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OznerBonjourDetail.m; sourceTree = "<group>"; };
+		8D36D2B41F06234A0091EB1F /* ZBBonjourService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBBonjourService.h; sourceTree = "<group>"; };
+		8D36D2B51F06234A0091EB1F /* ZBBonjourService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBBonjourService.m; sourceTree = "<group>"; };
+		8D36D2B61F06234A0091EB1F /* OZMxChipIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OZMxChipIO.swift; sourceTree = "<group>"; };
+		8D36D2B71F06234A0091EB1F /* OznerEasyLink_V1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerEasyLink_V1.swift; sourceTree = "<group>"; };
+		8D36D2B81F06234A0091EB1F /* OznerEasyLink_V2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerEasyLink_V2.swift; sourceTree = "<group>"; };
+		8D36D2B91F06234A0091EB1F /* OznerMQTT_V1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerMQTT_V1.swift; sourceTree = "<group>"; };
+		8D36D2BA1F06234A0091EB1F /* OznerMQTT_V2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerMQTT_V2.swift; sourceTree = "<group>"; };
+		8D36D2BB1F06234A0091EB1F /* OznerMxChipManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerMxChipManager.swift; sourceTree = "<group>"; };
+		8D36D2BD1F06234A0091EB1F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		8D36D2BE1F06234A0091EB1F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		8D36D2C01F06234A0091EB1F /* OznerBaseIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerBaseIO.swift; sourceTree = "<group>"; };
+		8D36D2C11F06234A0091EB1F /* OznerIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerIOManager.swift; sourceTree = "<group>"; };
+		8D36D2C21F06234A0091EB1F /* OznerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerManager.swift; sourceTree = "<group>"; };
+		8D36D2C41F06234A0091EB1F /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		8D36D2C51F06234A0091EB1F /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		8D36D2C71F06234A0091EB1F /* OznerTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerTools.swift; sourceTree = "<group>"; };
 		8D429A021DC9E9160083011C /* DeviceSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSettingController.swift; sourceTree = "<group>"; };
 		8D429A061DCA0D6E0083011C /* TapLvXinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapLvXinController.swift; sourceTree = "<group>"; };
 		8D429A081DCA0D840083011C /* AirLvXinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirLvXinController.swift; sourceTree = "<group>"; };
@@ -732,8 +773,6 @@
 		8D6BFDBA1ED9626E00AC849C /* WaterPur_A8DRF.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterPur_A8DRF.xib; sourceTree = "<group>"; };
 		8D6BFDBB1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPur_A8CSFFSF.swift; sourceTree = "<group>"; };
 		8D6BFDBC1ED9626E00AC849C /* WaterPur_A8CSFFSF.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterPur_A8CSFFSF.xib; sourceTree = "<group>"; };
-		8D6BFDC41ED970F000AC849C /* WaterPurifier_1_5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterPurifier_1_5.h; sourceTree = "<group>"; };
-		8D6BFDC51ED970F000AC849C /* WaterPurifier_1_5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterPurifier_1_5.m; sourceTree = "<group>"; };
 		8D7141EB1EE5334B00AC9CE9 /* PayWaterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayWaterController.swift; sourceTree = "<group>"; };
 		8D7141ED1EE536D800AC9CE9 /* PayWaterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayWaterCell.swift; sourceTree = "<group>"; };
 		8D7141EE1EE536D800AC9CE9 /* PayWaterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayWaterCell.xib; sourceTree = "<group>"; };
@@ -787,161 +826,6 @@
 		8DC02EA51DB5D100007F57DB /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		8DC02EA61DB5D100007F57DB /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
 		8DC02EB01DB5E755007F57DB /* OzneriFamily-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OzneriFamily-Bridging-Header.h"; path = "../OzneriFamily-Bridging-Header.h"; sourceTree = "<group>"; };
-		8DC02EBA1DB5F03B007F57DB /* OznerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OznerHeader.h; sourceTree = "<group>"; };
-		8DC02EBC1DB5F03B007F57DB /* AirPurifierManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPurifierManager.h; sourceTree = "<group>"; };
-		8DC02EBD1DB5F03B007F57DB /* AirPurifierManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirPurifierManager.m; sourceTree = "<group>"; };
-		8DC02EBF1DB5F03B007F57DB /* AirPurifier_Bluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPurifier_Bluetooth.h; sourceTree = "<group>"; };
-		8DC02EC01DB5F03B007F57DB /* AirPurifier_Bluetooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirPurifier_Bluetooth.m; sourceTree = "<group>"; };
-		8DC02EC11DB5F03B007F57DB /* BluetoothAirPurifierFilterStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothAirPurifierFilterStatus.h; sourceTree = "<group>"; };
-		8DC02EC21DB5F03B007F57DB /* BluetoothAirPurifierFilterStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothAirPurifierFilterStatus.m; sourceTree = "<group>"; };
-		8DC02EC31DB5F03B007F57DB /* BluetoothAirPurifierSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothAirPurifierSensor.h; sourceTree = "<group>"; };
-		8DC02EC41DB5F03B007F57DB /* BluetoothAirPurifierSensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothAirPurifierSensor.m; sourceTree = "<group>"; };
-		8DC02EC51DB5F03B007F57DB /* BluetoothAirPurifierStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothAirPurifierStatus.h; sourceTree = "<group>"; };
-		8DC02EC61DB5F03B007F57DB /* BluetoothAirPurifierStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothAirPurifierStatus.m; sourceTree = "<group>"; };
-		8DC02EC81DB5F03B007F57DB /* AirPurifier_MxChip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPurifier_MxChip.h; sourceTree = "<group>"; };
-		8DC02EC91DB5F03B007F57DB /* AirPurifier_MxChip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirPurifier_MxChip.m; sourceTree = "<group>"; };
-		8DC02ECA1DB5F03B007F57DB /* AirPurifierConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPurifierConsts.h; sourceTree = "<group>"; };
-		8DC02ECB1DB5F03B007F57DB /* AirPurifierInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPurifierInfo.h; sourceTree = "<group>"; };
-		8DC02ECC1DB5F03B007F57DB /* AirPurifierInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirPurifierInfo.m; sourceTree = "<group>"; };
-		8DC02ECD1DB5F03B007F57DB /* MxChipAirPurifierFilterStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MxChipAirPurifierFilterStatus.h; sourceTree = "<group>"; };
-		8DC02ECE1DB5F03B007F57DB /* MxChipAirPurifierFilterStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MxChipAirPurifierFilterStatus.m; sourceTree = "<group>"; };
-		8DC02ECF1DB5F03B007F57DB /* MxChipAirPurifierSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MxChipAirPurifierSensor.h; sourceTree = "<group>"; };
-		8DC02ED01DB5F03B007F57DB /* MxChipAirPurifierSensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MxChipAirPurifierSensor.m; sourceTree = "<group>"; };
-		8DC02ED11DB5F03B007F57DB /* MxChipAirPurifierStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MxChipAirPurifierStatus.h; sourceTree = "<group>"; };
-		8DC02ED21DB5F03B007F57DB /* MxChipAirPurifierStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MxChipAirPurifierStatus.m; sourceTree = "<group>"; };
-		8DC02ED31DB5F03B007F57DB /* PowerTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerTimer.h; sourceTree = "<group>"; };
-		8DC02ED41DB5F03B007F57DB /* PowerTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerTimer.m; sourceTree = "<group>"; };
-		8DC02ED61DB5F03B007F57DB /* BluetoothIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothIO.h; sourceTree = "<group>"; };
-		8DC02ED71DB5F03B007F57DB /* BluetoothIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothIO.m; sourceTree = "<group>"; };
-		8DC02ED81DB5F03B007F57DB /* BluetoothIOMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothIOMgr.h; sourceTree = "<group>"; };
-		8DC02ED91DB5F03B007F57DB /* BluetoothIOMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothIOMgr.m; sourceTree = "<group>"; };
-		8DC02EDA1DB5F03B007F57DB /* BluetoothSynchronizedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothSynchronizedObject.h; sourceTree = "<group>"; };
-		8DC02EDB1DB5F03B007F57DB /* BluetoothSynchronizedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothSynchronizedObject.m; sourceTree = "<group>"; };
-		8DC02EDC1DB5F03B007F57DB /* FirmwareTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirmwareTools.h; sourceTree = "<group>"; };
-		8DC02EDD1DB5F03B007F57DB /* FirmwareTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirmwareTools.m; sourceTree = "<group>"; };
-		8DC02EDE1DB5F03B007F57DB /* ScanData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanData.h; sourceTree = "<group>"; };
-		8DC02EDF1DB5F03B007F57DB /* ScanData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanData.m; sourceTree = "<group>"; };
-		8DC02EE11DB5F03B007F57DB /* Cup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cup.h; sourceTree = "<group>"; };
-		8DC02EE21DB5F03B007F57DB /* Cup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cup.m; sourceTree = "<group>"; };
-		8DC02EE31DB5F03B007F57DB /* CupDBRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CupDBRecord.h; sourceTree = "<group>"; };
-		8DC02EE41DB5F03B007F57DB /* CupDBRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CupDBRecord.m; sourceTree = "<group>"; };
-		8DC02EE51DB5F03B007F57DB /* CupFirmware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CupFirmware.h; sourceTree = "<group>"; };
-		8DC02EE61DB5F03B007F57DB /* CupFirmware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CupFirmware.m; sourceTree = "<group>"; };
-		8DC02EE71DB5F03B007F57DB /* CupGravity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CupGravity.h; sourceTree = "<group>"; };
-		8DC02EE81DB5F03B007F57DB /* CupGravity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CupGravity.m; sourceTree = "<group>"; };
-		8DC02EE91DB5F03B007F57DB /* CupManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CupManager.h; sourceTree = "<group>"; };
-		8DC02EEA1DB5F03B007F57DB /* CupManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CupManager.m; sourceTree = "<group>"; };
-		8DC02EEB1DB5F03B007F57DB /* CupRawRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CupRawRecord.h; sourceTree = "<group>"; };
-		8DC02EEC1DB5F03B007F57DB /* CupRawRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CupRawRecord.m; sourceTree = "<group>"; };
-		8DC02EED1DB5F03B007F57DB /* CupRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CupRecord.h; sourceTree = "<group>"; };
-		8DC02EEE1DB5F03B007F57DB /* CupRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CupRecord.m; sourceTree = "<group>"; };
-		8DC02EEF1DB5F03B007F57DB /* CupRecordList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CupRecordList.h; sourceTree = "<group>"; };
-		8DC02EF01DB5F03B007F57DB /* CupRecordList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CupRecordList.m; sourceTree = "<group>"; };
-		8DC02EF11DB5F03B007F57DB /* CupSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CupSensor.h; sourceTree = "<group>"; };
-		8DC02EF21DB5F03B007F57DB /* CupSensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CupSensor.m; sourceTree = "<group>"; };
-		8DC02EF31DB5F03B007F57DB /* CupSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CupSettings.h; sourceTree = "<group>"; };
-		8DC02EF41DB5F03B007F57DB /* CupSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CupSettings.m; sourceTree = "<group>"; };
-		8DC02EF61DB5F03B007F57DB /* BaseDeviceIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDeviceIO.h; sourceTree = "<group>"; };
-		8DC02EF71DB5F03B007F57DB /* BaseDeviceIO.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseDeviceIO.hpp; sourceTree = "<group>"; };
-		8DC02EF81DB5F03B007F57DB /* BaseDeviceIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDeviceIO.m; sourceTree = "<group>"; };
-		8DC02EF91DB5F03B007F57DB /* BaseDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDeviceManager.h; sourceTree = "<group>"; };
-		8DC02EFA1DB5F03B007F57DB /* BaseDeviceManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseDeviceManager.hpp; sourceTree = "<group>"; };
-		8DC02EFB1DB5F03B007F57DB /* BaseDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDeviceManager.m; sourceTree = "<group>"; };
-		8DC02EFC1DB5F03B007F57DB /* BaseOznerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseOznerObject.h; sourceTree = "<group>"; };
-		8DC02EFD1DB5F03B007F57DB /* BaseOznerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseOznerObject.m; sourceTree = "<group>"; };
-		8DC02EFE1DB5F03B007F57DB /* DeviceSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceSetting.h; sourceTree = "<group>"; };
-		8DC02EFF1DB5F03B007F57DB /* DeviceSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceSetting.m; sourceTree = "<group>"; };
-		8DC02F001DB5F03B007F57DB /* IOManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOManager.h; sourceTree = "<group>"; };
-		8DC02F011DB5F03B007F57DB /* IOManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOManager.hpp; sourceTree = "<group>"; };
-		8DC02F021DB5F03B007F57DB /* IOManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOManager.m; sourceTree = "<group>"; };
-		8DC02F031DB5F03B007F57DB /* IOManagerList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOManagerList.h; sourceTree = "<group>"; };
-		8DC02F041DB5F03B007F57DB /* IOManagerList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOManagerList.m; sourceTree = "<group>"; };
-		8DC02F051DB5F03B007F57DB /* OznerDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OznerDevice.h; sourceTree = "<group>"; };
-		8DC02F061DB5F03B007F57DB /* OznerDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OznerDevice.hpp; sourceTree = "<group>"; };
-		8DC02F071DB5F03B007F57DB /* OznerDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OznerDevice.m; sourceTree = "<group>"; };
-		8DC02F091DB5F03B007F57DB /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
-		8DC02F0A1DB5F03B007F57DB /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
-		8DC02F0B1DB5F03B007F57DB /* SqlLiteDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlLiteDB.h; sourceTree = "<group>"; };
-		8DC02F0C1DB5F03B007F57DB /* SqlLiteDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlLiteDB.m; sourceTree = "<group>"; };
-		8DC02F0E1DB5F03B007F57DB /* Tap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tap.h; sourceTree = "<group>"; };
-		8DC02F0F1DB5F03B007F57DB /* Tap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tap.m; sourceTree = "<group>"; };
-		8DC02F101DB5F03B007F57DB /* TapFirmware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapFirmware.h; sourceTree = "<group>"; };
-		8DC02F111DB5F03B007F57DB /* TapFirmware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapFirmware.m; sourceTree = "<group>"; };
-		8DC02F121DB5F03B007F57DB /* TapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapManager.h; sourceTree = "<group>"; };
-		8DC02F131DB5F03B007F57DB /* TapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapManager.m; sourceTree = "<group>"; };
-		8DC02F141DB5F03B007F57DB /* TapRawRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapRawRecord.h; sourceTree = "<group>"; };
-		8DC02F151DB5F03B007F57DB /* TapRawRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapRawRecord.m; sourceTree = "<group>"; };
-		8DC02F161DB5F03B007F57DB /* TapRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapRecord.h; sourceTree = "<group>"; };
-		8DC02F171DB5F03B007F57DB /* TapRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapRecord.m; sourceTree = "<group>"; };
-		8DC02F181DB5F03B007F57DB /* TapRecordList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapRecordList.h; sourceTree = "<group>"; };
-		8DC02F191DB5F03B007F57DB /* TapRecordList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapRecordList.m; sourceTree = "<group>"; };
-		8DC02F1A1DB5F03B007F57DB /* TapSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapSensor.h; sourceTree = "<group>"; };
-		8DC02F1B1DB5F03B007F57DB /* TapSensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapSensor.m; sourceTree = "<group>"; };
-		8DC02F1C1DB5F03B007F57DB /* TapSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapSettings.h; sourceTree = "<group>"; };
-		8DC02F1D1DB5F03B007F57DB /* TapSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapSettings.m; sourceTree = "<group>"; };
-		8DC02F1F1DB5F03B007F57DB /* WaterPurifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterPurifier.h; sourceTree = "<group>"; };
-		8DC02F201DB5F03B007F57DB /* WaterPurifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterPurifier.m; sourceTree = "<group>"; };
-		8DC02F211DB5F03B007F57DB /* WaterPurifierInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterPurifierInfo.h; sourceTree = "<group>"; };
-		8DC02F221DB5F03B007F57DB /* WaterPurifierInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterPurifierInfo.m; sourceTree = "<group>"; };
-		8DC02F231DB5F03B007F57DB /* WaterPurifierManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterPurifierManager.h; sourceTree = "<group>"; };
-		8DC02F241DB5F03B007F57DB /* WaterPurifierManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterPurifierManager.m; sourceTree = "<group>"; };
-		8DC02F251DB5F03B007F57DB /* WaterPurifierSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterPurifierSensor.h; sourceTree = "<group>"; };
-		8DC02F261DB5F03B007F57DB /* WaterPurifierSensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterPurifierSensor.m; sourceTree = "<group>"; };
-		8DC02F271DB5F03B007F57DB /* WaterPurifierStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterPurifierStatus.h; sourceTree = "<group>"; };
-		8DC02F281DB5F03B007F57DB /* WaterPurifierStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterPurifierStatus.m; sourceTree = "<group>"; };
-		8DC02F2A1DB5F03B007F57DB /* WaterReplenishmentMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterReplenishmentMeter.h; sourceTree = "<group>"; };
-		8DC02F2B1DB5F03B007F57DB /* WaterReplenishmentMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterReplenishmentMeter.m; sourceTree = "<group>"; };
-		8DC02F2C1DB5F03B007F57DB /* WaterReplenishmentMeterMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterReplenishmentMeterMgr.h; sourceTree = "<group>"; };
-		8DC02F2D1DB5F03B007F57DB /* WaterReplenishmentMeterMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterReplenishmentMeterMgr.m; sourceTree = "<group>"; };
-		8DC02F2E1DB5F03B007F57DB /* WaterReplenishmentMeterStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterReplenishmentMeterStatus.h; sourceTree = "<group>"; };
-		8DC02F2F1DB5F03B007F57DB /* WaterReplenishmentMeterStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterReplenishmentMeterStatus.m; sourceTree = "<group>"; };
-		8DC02F331DB5F03B007F57DB /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		8DC02F341DB5F03B007F57DB /* dummypthread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dummypthread.h; sourceTree = "<group>"; };
-		8DC02F351DB5F03B007F57DB /* logging_mosq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = logging_mosq.c; sourceTree = "<group>"; };
-		8DC02F361DB5F03B007F57DB /* logging_mosq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logging_mosq.h; sourceTree = "<group>"; };
-		8DC02F371DB5F03B007F57DB /* memory_mosq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = memory_mosq.c; sourceTree = "<group>"; };
-		8DC02F381DB5F03B007F57DB /* memory_mosq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memory_mosq.h; sourceTree = "<group>"; };
-		8DC02F391DB5F03B007F57DB /* messages_mosq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = messages_mosq.c; sourceTree = "<group>"; };
-		8DC02F3A1DB5F03B007F57DB /* messages_mosq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messages_mosq.h; sourceTree = "<group>"; };
-		8DC02F3B1DB5F03B007F57DB /* mosquitto.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mosquitto.c; sourceTree = "<group>"; };
-		8DC02F3C1DB5F03B007F57DB /* mosquitto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mosquitto.h; sourceTree = "<group>"; };
-		8DC02F3D1DB5F03B007F57DB /* mosquitto_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mosquitto_internal.h; sourceTree = "<group>"; };
-		8DC02F3E1DB5F03B007F57DB /* mqtt3_protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mqtt3_protocol.h; sourceTree = "<group>"; };
-		8DC02F3F1DB5F03B007F57DB /* net_mosq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = net_mosq.c; sourceTree = "<group>"; };
-		8DC02F401DB5F03B007F57DB /* net_mosq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = net_mosq.h; sourceTree = "<group>"; };
-		8DC02F411DB5F03B007F57DB /* read_handle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = read_handle.c; sourceTree = "<group>"; };
-		8DC02F421DB5F03B007F57DB /* read_handle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = read_handle.h; sourceTree = "<group>"; };
-		8DC02F431DB5F03B007F57DB /* read_handle_client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = read_handle_client.c; sourceTree = "<group>"; };
-		8DC02F441DB5F03B007F57DB /* read_handle_shared.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = read_handle_shared.c; sourceTree = "<group>"; };
-		8DC02F451DB5F03B007F57DB /* send_client_mosq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = send_client_mosq.c; sourceTree = "<group>"; };
-		8DC02F461DB5F03B007F57DB /* send_mosq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = send_mosq.c; sourceTree = "<group>"; };
-		8DC02F471DB5F03B007F57DB /* send_mosq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = send_mosq.h; sourceTree = "<group>"; };
-		8DC02F481DB5F03B007F57DB /* thread_mosq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = thread_mosq.c; sourceTree = "<group>"; };
-		8DC02F491DB5F03B007F57DB /* time_mosq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = time_mosq.c; sourceTree = "<group>"; };
-		8DC02F4A1DB5F03B007F57DB /* time_mosq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_mosq.h; sourceTree = "<group>"; };
-		8DC02F4B1DB5F03B007F57DB /* tls_mosq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tls_mosq.c; sourceTree = "<group>"; };
-		8DC02F4C1DB5F03B007F57DB /* tls_mosq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tls_mosq.h; sourceTree = "<group>"; };
-		8DC02F4D1DB5F03B007F57DB /* util_mosq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = util_mosq.c; sourceTree = "<group>"; };
-		8DC02F4E1DB5F03B007F57DB /* util_mosq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util_mosq.h; sourceTree = "<group>"; };
-		8DC02F4F1DB5F03B007F57DB /* will_mosq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = will_mosq.c; sourceTree = "<group>"; };
-		8DC02F501DB5F03B007F57DB /* will_mosq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = will_mosq.h; sourceTree = "<group>"; };
-		8DC02F521DB5F03B007F57DB /* MQTTKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MQTTKit-Prefix.pch"; sourceTree = "<group>"; };
-		8DC02F531DB5F03B007F57DB /* MQTTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTTKit.h; sourceTree = "<group>"; };
-		8DC02F541DB5F03B007F57DB /* MQTTKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTTKit.m; sourceTree = "<group>"; };
-		8DC02F551DB5F03B007F57DB /* MQTTProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTTProxy.h; sourceTree = "<group>"; };
-		8DC02F561DB5F03B007F57DB /* MQTTProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTTProxy.m; sourceTree = "<group>"; };
-		8DC02F571DB5F03B007F57DB /* MXChipIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXChipIO.h; sourceTree = "<group>"; };
-		8DC02F581DB5F03B007F57DB /* MXChipIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXChipIO.m; sourceTree = "<group>"; };
-		8DC02F591DB5F03B007F57DB /* MXChipIOManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXChipIOManager.h; sourceTree = "<group>"; };
-		8DC02F5A1DB5F03B007F57DB /* MXChipIOManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXChipIOManager.m; sourceTree = "<group>"; };
-		8DC02F5B1DB5F03B007F57DB /* MXChipPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXChipPair.h; sourceTree = "<group>"; };
-		8DC02F5C1DB5F03B007F57DB /* MXChipPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXChipPair.m; sourceTree = "<group>"; };
-		8DC02F5E1DB5F03B007F57DB /* ConfigurationDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationDevice.h; sourceTree = "<group>"; };
-		8DC02F5F1DB5F03B007F57DB /* ConfigurationDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationDevice.m; sourceTree = "<group>"; };
-		8DC02F601DB5F03B007F57DB /* EasyLinkSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyLinkSender.h; sourceTree = "<group>"; };
-		8DC02F611DB5F03B007F57DB /* EasyLinkSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyLinkSender.m; sourceTree = "<group>"; };
-		8DC02F621DB5F03B007F57DB /* HttpServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpServer.h; sourceTree = "<group>"; };
-		8DC02F631DB5F03B007F57DB /* HttpServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpServer.m; sourceTree = "<group>"; };
 		8DC02FB31DB61F87007F57DB /* CupSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupSettingController.swift; sourceTree = "<group>"; };
 		8DC02FB91DB623BC007F57DB /* OznerDeviceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerDeviceView.swift; sourceTree = "<group>"; };
 		8DEB83B11DA896700088794A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1359,6 +1243,7 @@
 				8D7837051DE28DF200A3D9E3 /* Security.framework in Frameworks */,
 				8D7837031DE28DD900A3D9E3 /* libc++.tbd in Frameworks */,
 				B7B12AFE1E10AC1300711EBF /* MapKit.framework in Frameworks */,
+				8D36D2ED1F06234A0091EB1F /* libEasyLink.a in Frameworks */,
 				8DEB84AD1DA897930088794A /* libsqlite3.0.tbd in Frameworks */,
 				8D7837011DE28B5200A3D9E3 /* libWeChatSDK.a in Frameworks */,
 				8D5ABB281D9E4A48008524A7 /* AdSupport.framework in Frameworks */,
@@ -1602,23 +1487,13 @@
 			path = TDSPan;
 			sourceTree = "<group>";
 		};
-		8D1C66111DAA3B62008C639F /* OznerLibrary */ = {
+		8D1DBC961F07720D0083E1D6 /* DeviceConfig */ = {
 			isa = PBXGroup;
 			children = (
-				8D1C66641DAA3B62008C639F /* OznerManager.h */,
-				8D1C66651DAA3B62008C639F /* OznerManager.m */,
-				8DC02EBA1DB5F03B007F57DB /* OznerHeader.h */,
-				8DC02EBB1DB5F03B007F57DB /* AirPurifier */,
-				8DC02ED51DB5F03B007F57DB /* Bluetooth */,
-				8DC02EE01DB5F03B007F57DB /* Cup */,
-				8DC02EF51DB5F03B007F57DB /* Device */,
-				8DC02F081DB5F03B007F57DB /* Helper */,
-				8DC02F0D1DB5F03B007F57DB /* Tap */,
-				8DC02F1E1DB5F03B007F57DB /* WaterPurifier */,
-				8DC02F291DB5F03B007F57DB /* WaterReplenishmentMeter */,
-				8DC02F301DB5F03B007F57DB /* Wifi */,
+				8D1DBC971F07720D0083E1D6 /* ProductInfo.plist */,
+				8D1DBC981F07720D0083E1D6 /* ProductInfo.swift */,
 			);
-			path = OznerLibrary;
+			path = DeviceConfig;
 			sourceTree = "<group>";
 		};
 		8D1EF37B1D93DE050009D034 = {
@@ -1686,12 +1561,12 @@
 		8D1EF3BB1D93DFE30009D034 /* ToolHelper */ = {
 			isa = PBXGroup;
 			children = (
+				8D36D25E1F06234A0091EB1F /* OznerLibrarySwifty */,
 				8DC02EB01DB5E755007F57DB /* OzneriFamily-Bridging-Header.h */,
 				E07459DD1EE94ED200CB39CC /* UdeskSDK */,
 				8D7836FD1DE28B4600A3D9E3 /* WeChatSDK */,
 				8D129A171DD4B5080022F7EA /* SwiftScan */,
 				8D0F63CB1DB09DE600FA38BF /* RDVTabBarController */,
-				8D1C66111DAA3B62008C639F /* OznerLibrary */,
 				8D5ABB191D9E448A008524A7 /* BaiDuPush */,
 				8D10ECED1D98BC5B001BAC77 /* DataBase */,
 				8D10ECEE1D98BC5B001BAC77 /* Networking */,
@@ -1728,6 +1603,290 @@
 				8D0D68421DDD981D0097038E /* WebShopController.swift */,
 			);
 			path = WebShop;
+			sourceTree = "<group>";
+		};
+		8D36D25E1F06234A0091EB1F /* OznerLibrarySwifty */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2C21F06234A0091EB1F /* OznerManager.swift */,
+				8D36D25F1F06234A0091EB1F /* DeviceManager */,
+				8D36D2771F06234A0091EB1F /* OznerDataManager */,
+				8D36D27A1F06234A0091EB1F /* OznerIOManager */,
+				8D36D2C31F06234A0091EB1F /* OznerTools */,
+			);
+			path = OznerLibrarySwifty;
+			sourceTree = "<group>";
+		};
+		8D36D25F1F06234A0091EB1F /* DeviceManager */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2601F06234A0091EB1F /* AirPurifier_Bluetooth */,
+				8D36D2621F06234A0091EB1F /* AirPurifier_Wifi */,
+				8D36D2641F06234A0091EB1F /* BaseDevice */,
+				8D36D2671F06234A0091EB1F /* Cup */,
+				8D36D26D1F06234A0091EB1F /* OznerDeviceManager.swift */,
+				8D36D26E1F06234A0091EB1F /* Tap */,
+				8D36D2701F06234A0091EB1F /* WaterPurifier_Blue */,
+				8D36D2721F06234A0091EB1F /* WaterPurifier_Wifi */,
+				8D36D2741F06234A0091EB1F /* WaterReplenish */,
+			);
+			path = DeviceManager;
+			sourceTree = "<group>";
+		};
+		8D36D2601F06234A0091EB1F /* AirPurifier_Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2611F06234A0091EB1F /* AirPurifier_Bluetooth.swift */,
+			);
+			path = AirPurifier_Bluetooth;
+			sourceTree = "<group>";
+		};
+		8D36D2621F06234A0091EB1F /* AirPurifier_Wifi */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2631F06234A0091EB1F /* AirPurifier_Wifi.swift */,
+			);
+			path = AirPurifier_Wifi;
+			sourceTree = "<group>";
+		};
+		8D36D2641F06234A0091EB1F /* BaseDevice */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2651F06234A0091EB1F /* BaseDeviceSetting.swift */,
+				8D36D2661F06234A0091EB1F /* OznerBaseDevice.swift */,
+			);
+			path = BaseDevice;
+			sourceTree = "<group>";
+		};
+		8D36D2671F06234A0091EB1F /* Cup */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2681F06234A0091EB1F /* Cup.swift */,
+				8D36D2691F06234A0091EB1F /* OznerCupRecords.swift */,
+			);
+			path = Cup;
+			sourceTree = "<group>";
+		};
+		8D36D26E1F06234A0091EB1F /* Tap */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D26F1F06234A0091EB1F /* Tap.swift */,
+			);
+			path = Tap;
+			sourceTree = "<group>";
+		};
+		8D36D2701F06234A0091EB1F /* WaterPurifier_Blue */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2711F06234A0091EB1F /* WaterPurifier_Blue.swift */,
+			);
+			path = WaterPurifier_Blue;
+			sourceTree = "<group>";
+		};
+		8D36D2721F06234A0091EB1F /* WaterPurifier_Wifi */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2731F06234A0091EB1F /* WaterPurifier_Wifi.swift */,
+			);
+			path = WaterPurifier_Wifi;
+			sourceTree = "<group>";
+		};
+		8D36D2741F06234A0091EB1F /* WaterReplenish */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2751F06234A0091EB1F /* WaterReplenish.swift */,
+				8D36D2761F06234A0091EB1F /* WaterReplenishStatus.swift */,
+			);
+			path = WaterReplenish;
+			sourceTree = "<group>";
+		};
+		8D36D2771F06234A0091EB1F /* OznerDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2781F06234A0091EB1F /* OznerDataManager.swift */,
+				8D36D2791F06234A0091EB1F /* OznerDeviceRecordHelper.swift */,
+			);
+			path = OznerDataManager;
+			sourceTree = "<group>";
+		};
+		8D36D27A1F06234A0091EB1F /* OznerIOManager */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D27B1F06234A0091EB1F /* Ayla */,
+				8D36D27E1F06234A0091EB1F /* Bluetooth */,
+				8D36D29A1F06234A0091EB1F /* MxChip */,
+				8D36D2BF1F06234A0091EB1F /* OznerBaseIO */,
+				8D36D2C11F06234A0091EB1F /* OznerIOManager.swift */,
+			);
+			path = OznerIOManager;
+			sourceTree = "<group>";
+		};
+		8D36D27B1F06234A0091EB1F /* Ayla */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D27C1F06234A0091EB1F /* OZAylaIO.swift */,
+				8D36D27D1F06234A0091EB1F /* OznerAylaManager.swift */,
+			);
+			path = Ayla;
+			sourceTree = "<group>";
+		};
+		8D36D27E1F06234A0091EB1F /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D27F1F06234A0091EB1F /* BabyBLEHelper.h */,
+				8D36D2801F06234A0091EB1F /* BabyBLEHelper.m */,
+				8D36D2811F06234A0091EB1F /* BabyBLEIO.h */,
+				8D36D2821F06234A0091EB1F /* BabyBLEIO.m */,
+				8D36D2831F06234A0091EB1F /* BabyBluetooth */,
+				8D36D2981F06234A0091EB1F /* OZBluetoothIO.swift */,
+				8D36D2991F06234A0091EB1F /* OznerBluetoothManager.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		8D36D2831F06234A0091EB1F /* BabyBluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2841F06234A0091EB1F /* Classes */,
+			);
+			path = BabyBluetooth;
+			sourceTree = "<group>";
+		};
+		8D36D2841F06234A0091EB1F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2851F06234A0091EB1F /* objc */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8D36D2851F06234A0091EB1F /* objc */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2861F06234A0091EB1F /* BabyBluetooth.h */,
+				8D36D2871F06234A0091EB1F /* BabyBluetooth.m */,
+				8D36D2881F06234A0091EB1F /* BabyCallback.h */,
+				8D36D2891F06234A0091EB1F /* BabyCallback.m */,
+				8D36D28A1F06234A0091EB1F /* BabyCentralManager.h */,
+				8D36D28B1F06234A0091EB1F /* BabyCentralManager.m */,
+				8D36D28C1F06234A0091EB1F /* BabyDefine.h */,
+				8D36D28D1F06234A0091EB1F /* BabyDefine.m */,
+				8D36D28E1F06234A0091EB1F /* BabyOptions.h */,
+				8D36D28F1F06234A0091EB1F /* BabyOptions.m */,
+				8D36D2901F06234A0091EB1F /* BabyPeripheralManager.h */,
+				8D36D2911F06234A0091EB1F /* BabyPeripheralManager.m */,
+				8D36D2921F06234A0091EB1F /* BabyRhythm.h */,
+				8D36D2931F06234A0091EB1F /* BabyRhythm.m */,
+				8D36D2941F06234A0091EB1F /* BabySpeaker.h */,
+				8D36D2951F06234A0091EB1F /* BabySpeaker.m */,
+				8D36D2961F06234A0091EB1F /* BabyToy.h */,
+				8D36D2971F06234A0091EB1F /* BabyToy.m */,
+			);
+			path = objc;
+			sourceTree = "<group>";
+		};
+		8D36D29A1F06234A0091EB1F /* MxChip */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D29B1F06234A0091EB1F /* CocoaAsyncSocket */,
+				8D36D2A71F06234A0091EB1F /* EasyLink */,
+				8D36D2B61F06234A0091EB1F /* OZMxChipIO.swift */,
+				8D36D2B71F06234A0091EB1F /* OznerEasyLink_V1.swift */,
+				8D36D2B81F06234A0091EB1F /* OznerEasyLink_V2.swift */,
+				8D36D2B91F06234A0091EB1F /* OznerMQTT_V1.swift */,
+				8D36D2BA1F06234A0091EB1F /* OznerMQTT_V2.swift */,
+				8D36D2BB1F06234A0091EB1F /* OznerMxChipManager.swift */,
+				8D36D2BC1F06234A0091EB1F /* Reachability */,
+			);
+			path = MxChip;
+			sourceTree = "<group>";
+		};
+		8D36D29B1F06234A0091EB1F /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D29C1F06234A0091EB1F /* Source */,
+			);
+			path = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		8D36D29C1F06234A0091EB1F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D29D1F06234A0091EB1F /* GCD */,
+				8D36D2A21F06234A0091EB1F /* RunLoop */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		8D36D29D1F06234A0091EB1F /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D29E1F06234A0091EB1F /* GCDAsyncSocket.h */,
+				8D36D29F1F06234A0091EB1F /* GCDAsyncSocket.m */,
+				8D36D2A01F06234A0091EB1F /* GCDAsyncUdpSocket.h */,
+				8D36D2A11F06234A0091EB1F /* GCDAsyncUdpSocket.m */,
+			);
+			path = GCD;
+			sourceTree = "<group>";
+		};
+		8D36D2A21F06234A0091EB1F /* RunLoop */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2A31F06234A0091EB1F /* AsyncSocket.h */,
+				8D36D2A41F06234A0091EB1F /* AsyncSocket.m */,
+				8D36D2A51F06234A0091EB1F /* AsyncUdpSocket.h */,
+				8D36D2A61F06234A0091EB1F /* AsyncUdpSocket.m */,
+			);
+			path = RunLoop;
+			sourceTree = "<group>";
+		};
+		8D36D2A71F06234A0091EB1F /* EasyLink */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2A81F06234A0091EB1F /* EasyLink.h */,
+				8D36D2A91F06234A0091EB1F /* libEasyLink.a */,
+				8D36D2AA1F06234A0091EB1F /* NSData+IPAddress.h */,
+				8D36D2AB1F06234A0091EB1F /* NSData+IPAddress.m */,
+				8D36D2AC1F06234A0091EB1F /* NSDictionary+ZBAdd.h */,
+				8D36D2AD1F06234A0091EB1F /* NSDictionary+ZBAdd.m */,
+				8D36D2AE1F06234A0091EB1F /* NSDictionary+ZBKeyMapping.h */,
+				8D36D2AF1F06234A0091EB1F /* NSDictionary+ZBKeyMapping.m */,
+				8D36D2B01F06234A0091EB1F /* NSMutableDictionary+NilFuckOff.h */,
+				8D36D2B11F06234A0091EB1F /* NSMutableDictionary+NilFuckOff.m */,
+				8D36D2B21F06234A0091EB1F /* OznerBonjourDetail.h */,
+				8D36D2B31F06234A0091EB1F /* OznerBonjourDetail.m */,
+				8D36D2B41F06234A0091EB1F /* ZBBonjourService.h */,
+				8D36D2B51F06234A0091EB1F /* ZBBonjourService.m */,
+			);
+			path = EasyLink;
+			sourceTree = "<group>";
+		};
+		8D36D2BC1F06234A0091EB1F /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2BD1F06234A0091EB1F /* Reachability.h */,
+				8D36D2BE1F06234A0091EB1F /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		8D36D2BF1F06234A0091EB1F /* OznerBaseIO */ = {
+			isa = PBXGroup;
+			children = (
+				8D36D2C01F06234A0091EB1F /* OznerBaseIO.swift */,
+			);
+			path = OznerBaseIO;
+			sourceTree = "<group>";
+		};
+		8D36D2C31F06234A0091EB1F /* OznerTools */ = {
+			isa = PBXGroup;
+			children = (
+				8D1DBC961F07720D0083E1D6 /* DeviceConfig */,
+				8D36D2C41F06234A0091EB1F /* Helper.h */,
+				8D36D2C51F06234A0091EB1F /* Helper.m */,
+				8D36D2C71F06234A0091EB1F /* OznerTools.swift */,
+			);
+			path = OznerTools;
 			sourceTree = "<group>";
 		};
 		8D5ABB191D9E448A008524A7 /* BaiDuPush */ = {
@@ -1963,282 +2122,6 @@
 				8D0E5E6D1DD09C0500AFAD23 /* ChartViewOfSkinDetail.swift */,
 			);
 			path = WaterReplenish;
-			sourceTree = "<group>";
-		};
-		8DC02EBB1DB5F03B007F57DB /* AirPurifier */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02EBC1DB5F03B007F57DB /* AirPurifierManager.h */,
-				8DC02EBD1DB5F03B007F57DB /* AirPurifierManager.m */,
-				8DC02EBE1DB5F03B007F57DB /* Bluetooth */,
-				8DC02EC71DB5F03B007F57DB /* MXChip */,
-			);
-			path = AirPurifier;
-			sourceTree = "<group>";
-		};
-		8DC02EBE1DB5F03B007F57DB /* Bluetooth */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02EBF1DB5F03B007F57DB /* AirPurifier_Bluetooth.h */,
-				8DC02EC01DB5F03B007F57DB /* AirPurifier_Bluetooth.m */,
-				8DC02EC11DB5F03B007F57DB /* BluetoothAirPurifierFilterStatus.h */,
-				8DC02EC21DB5F03B007F57DB /* BluetoothAirPurifierFilterStatus.m */,
-				8DC02EC31DB5F03B007F57DB /* BluetoothAirPurifierSensor.h */,
-				8DC02EC41DB5F03B007F57DB /* BluetoothAirPurifierSensor.m */,
-				8DC02EC51DB5F03B007F57DB /* BluetoothAirPurifierStatus.h */,
-				8DC02EC61DB5F03B007F57DB /* BluetoothAirPurifierStatus.m */,
-			);
-			path = Bluetooth;
-			sourceTree = "<group>";
-		};
-		8DC02EC71DB5F03B007F57DB /* MXChip */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02EC81DB5F03B007F57DB /* AirPurifier_MxChip.h */,
-				8DC02EC91DB5F03B007F57DB /* AirPurifier_MxChip.m */,
-				8DC02ECA1DB5F03B007F57DB /* AirPurifierConsts.h */,
-				8DC02ECB1DB5F03B007F57DB /* AirPurifierInfo.h */,
-				8DC02ECC1DB5F03B007F57DB /* AirPurifierInfo.m */,
-				8DC02ECD1DB5F03B007F57DB /* MxChipAirPurifierFilterStatus.h */,
-				8DC02ECE1DB5F03B007F57DB /* MxChipAirPurifierFilterStatus.m */,
-				8DC02ECF1DB5F03B007F57DB /* MxChipAirPurifierSensor.h */,
-				8DC02ED01DB5F03B007F57DB /* MxChipAirPurifierSensor.m */,
-				8DC02ED11DB5F03B007F57DB /* MxChipAirPurifierStatus.h */,
-				8DC02ED21DB5F03B007F57DB /* MxChipAirPurifierStatus.m */,
-				8DC02ED31DB5F03B007F57DB /* PowerTimer.h */,
-				8DC02ED41DB5F03B007F57DB /* PowerTimer.m */,
-			);
-			path = MXChip;
-			sourceTree = "<group>";
-		};
-		8DC02ED51DB5F03B007F57DB /* Bluetooth */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02ED61DB5F03B007F57DB /* BluetoothIO.h */,
-				8DC02ED71DB5F03B007F57DB /* BluetoothIO.m */,
-				8DC02ED81DB5F03B007F57DB /* BluetoothIOMgr.h */,
-				8DC02ED91DB5F03B007F57DB /* BluetoothIOMgr.m */,
-				8DC02EDA1DB5F03B007F57DB /* BluetoothSynchronizedObject.h */,
-				8DC02EDB1DB5F03B007F57DB /* BluetoothSynchronizedObject.m */,
-				8DC02EDC1DB5F03B007F57DB /* FirmwareTools.h */,
-				8DC02EDD1DB5F03B007F57DB /* FirmwareTools.m */,
-				8DC02EDE1DB5F03B007F57DB /* ScanData.h */,
-				8DC02EDF1DB5F03B007F57DB /* ScanData.m */,
-			);
-			path = Bluetooth;
-			sourceTree = "<group>";
-		};
-		8DC02EE01DB5F03B007F57DB /* Cup */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02EE11DB5F03B007F57DB /* Cup.h */,
-				8DC02EE21DB5F03B007F57DB /* Cup.m */,
-				8DC02EE31DB5F03B007F57DB /* CupDBRecord.h */,
-				8DC02EE41DB5F03B007F57DB /* CupDBRecord.m */,
-				8DC02EE51DB5F03B007F57DB /* CupFirmware.h */,
-				8DC02EE61DB5F03B007F57DB /* CupFirmware.m */,
-				8DC02EE71DB5F03B007F57DB /* CupGravity.h */,
-				8DC02EE81DB5F03B007F57DB /* CupGravity.m */,
-				8DC02EE91DB5F03B007F57DB /* CupManager.h */,
-				8DC02EEA1DB5F03B007F57DB /* CupManager.m */,
-				8DC02EEB1DB5F03B007F57DB /* CupRawRecord.h */,
-				8DC02EEC1DB5F03B007F57DB /* CupRawRecord.m */,
-				8DC02EED1DB5F03B007F57DB /* CupRecord.h */,
-				8DC02EEE1DB5F03B007F57DB /* CupRecord.m */,
-				8DC02EEF1DB5F03B007F57DB /* CupRecordList.h */,
-				8DC02EF01DB5F03B007F57DB /* CupRecordList.m */,
-				8DC02EF11DB5F03B007F57DB /* CupSensor.h */,
-				8DC02EF21DB5F03B007F57DB /* CupSensor.m */,
-				8DC02EF31DB5F03B007F57DB /* CupSettings.h */,
-				8DC02EF41DB5F03B007F57DB /* CupSettings.m */,
-			);
-			path = Cup;
-			sourceTree = "<group>";
-		};
-		8DC02EF51DB5F03B007F57DB /* Device */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02EF61DB5F03B007F57DB /* BaseDeviceIO.h */,
-				8DC02EF71DB5F03B007F57DB /* BaseDeviceIO.hpp */,
-				8DC02EF81DB5F03B007F57DB /* BaseDeviceIO.m */,
-				8DC02EF91DB5F03B007F57DB /* BaseDeviceManager.h */,
-				8DC02EFA1DB5F03B007F57DB /* BaseDeviceManager.hpp */,
-				8DC02EFB1DB5F03B007F57DB /* BaseDeviceManager.m */,
-				8DC02EFC1DB5F03B007F57DB /* BaseOznerObject.h */,
-				8DC02EFD1DB5F03B007F57DB /* BaseOznerObject.m */,
-				8DC02EFE1DB5F03B007F57DB /* DeviceSetting.h */,
-				8DC02EFF1DB5F03B007F57DB /* DeviceSetting.m */,
-				8DC02F001DB5F03B007F57DB /* IOManager.h */,
-				8DC02F011DB5F03B007F57DB /* IOManager.hpp */,
-				8DC02F021DB5F03B007F57DB /* IOManager.m */,
-				8DC02F031DB5F03B007F57DB /* IOManagerList.h */,
-				8DC02F041DB5F03B007F57DB /* IOManagerList.m */,
-				8DC02F051DB5F03B007F57DB /* OznerDevice.h */,
-				8DC02F061DB5F03B007F57DB /* OznerDevice.hpp */,
-				8DC02F071DB5F03B007F57DB /* OznerDevice.m */,
-			);
-			path = Device;
-			sourceTree = "<group>";
-		};
-		8DC02F081DB5F03B007F57DB /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02F091DB5F03B007F57DB /* Helper.h */,
-				8DC02F0A1DB5F03B007F57DB /* Helper.m */,
-				8DC02F0B1DB5F03B007F57DB /* SqlLiteDB.h */,
-				8DC02F0C1DB5F03B007F57DB /* SqlLiteDB.m */,
-			);
-			path = Helper;
-			sourceTree = "<group>";
-		};
-		8DC02F0D1DB5F03B007F57DB /* Tap */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02F0E1DB5F03B007F57DB /* Tap.h */,
-				8DC02F0F1DB5F03B007F57DB /* Tap.m */,
-				8DC02F101DB5F03B007F57DB /* TapFirmware.h */,
-				8DC02F111DB5F03B007F57DB /* TapFirmware.m */,
-				8DC02F121DB5F03B007F57DB /* TapManager.h */,
-				8DC02F131DB5F03B007F57DB /* TapManager.m */,
-				8DC02F141DB5F03B007F57DB /* TapRawRecord.h */,
-				8DC02F151DB5F03B007F57DB /* TapRawRecord.m */,
-				8DC02F161DB5F03B007F57DB /* TapRecord.h */,
-				8DC02F171DB5F03B007F57DB /* TapRecord.m */,
-				8DC02F181DB5F03B007F57DB /* TapRecordList.h */,
-				8DC02F191DB5F03B007F57DB /* TapRecordList.m */,
-				8DC02F1A1DB5F03B007F57DB /* TapSensor.h */,
-				8DC02F1B1DB5F03B007F57DB /* TapSensor.m */,
-				8DC02F1C1DB5F03B007F57DB /* TapSettings.h */,
-				8DC02F1D1DB5F03B007F57DB /* TapSettings.m */,
-			);
-			path = Tap;
-			sourceTree = "<group>";
-		};
-		8DC02F1E1DB5F03B007F57DB /* WaterPurifier */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02F1F1DB5F03B007F57DB /* WaterPurifier.h */,
-				8DC02F201DB5F03B007F57DB /* WaterPurifier.m */,
-				8DC02F211DB5F03B007F57DB /* WaterPurifierInfo.h */,
-				8DC02F221DB5F03B007F57DB /* WaterPurifierInfo.m */,
-				8DC02F231DB5F03B007F57DB /* WaterPurifierManager.h */,
-				8DC02F241DB5F03B007F57DB /* WaterPurifierManager.m */,
-				8DC02F251DB5F03B007F57DB /* WaterPurifierSensor.h */,
-				8DC02F261DB5F03B007F57DB /* WaterPurifierSensor.m */,
-				8DC02F271DB5F03B007F57DB /* WaterPurifierStatus.h */,
-				8DC02F281DB5F03B007F57DB /* WaterPurifierStatus.m */,
-				8D14A91E1DD967AA00920AE9 /* BluetoothIOMgr.h */,
-				8D14A91F1DD967AA00920AE9 /* ROWaterPurufier.h */,
-				8D14A9201DD967AA00920AE9 /* ROWaterPurufier.m */,
-				8D14A9211DD967AA00920AE9 /* ROWaterSettingInfo.h */,
-				8D14A9221DD967AA00920AE9 /* ROWaterSettingInfo.m */,
-				8D14A9231DD967AA00920AE9 /* RO_WaterInfo.h */,
-				8D14A9241DD967AA00920AE9 /* RO_WaterInfo.m */,
-				8D14A9251DD967AA00920AE9 /* RO_FilterInfo.h */,
-				8D14A9261DD967AA00920AE9 /* RO_FilterInfo.m */,
-				8D6BFDC41ED970F000AC849C /* WaterPurifier_1_5.h */,
-				8D6BFDC51ED970F000AC849C /* WaterPurifier_1_5.m */,
-			);
-			path = WaterPurifier;
-			sourceTree = "<group>";
-		};
-		8DC02F291DB5F03B007F57DB /* WaterReplenishmentMeter */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02F2A1DB5F03B007F57DB /* WaterReplenishmentMeter.h */,
-				8DC02F2B1DB5F03B007F57DB /* WaterReplenishmentMeter.m */,
-				8DC02F2C1DB5F03B007F57DB /* WaterReplenishmentMeterMgr.h */,
-				8DC02F2D1DB5F03B007F57DB /* WaterReplenishmentMeterMgr.m */,
-				8DC02F2E1DB5F03B007F57DB /* WaterReplenishmentMeterStatus.h */,
-				8DC02F2F1DB5F03B007F57DB /* WaterReplenishmentMeterStatus.m */,
-			);
-			path = WaterReplenishmentMeter;
-			sourceTree = "<group>";
-		};
-		8DC02F301DB5F03B007F57DB /* Wifi */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02F311DB5F03B007F57DB /* MXChip */,
-			);
-			path = Wifi;
-			sourceTree = "<group>";
-		};
-		8DC02F311DB5F03B007F57DB /* MXChip */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02F321DB5F03B007F57DB /* libmosquitto */,
-				8DC02F511DB5F03B007F57DB /* MQTTKit */,
-				8DC02F551DB5F03B007F57DB /* MQTTProxy.h */,
-				8DC02F561DB5F03B007F57DB /* MQTTProxy.m */,
-				8DC02F571DB5F03B007F57DB /* MXChipIO.h */,
-				8DC02F581DB5F03B007F57DB /* MXChipIO.m */,
-				8DC02F591DB5F03B007F57DB /* MXChipIOManager.h */,
-				8DC02F5A1DB5F03B007F57DB /* MXChipIOManager.m */,
-				8DC02F5B1DB5F03B007F57DB /* MXChipPair.h */,
-				8DC02F5C1DB5F03B007F57DB /* MXChipPair.m */,
-				8DC02F5D1DB5F03B007F57DB /* Pair */,
-			);
-			path = MXChip;
-			sourceTree = "<group>";
-		};
-		8DC02F321DB5F03B007F57DB /* libmosquitto */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02F331DB5F03B007F57DB /* config.h */,
-				8DC02F341DB5F03B007F57DB /* dummypthread.h */,
-				8DC02F351DB5F03B007F57DB /* logging_mosq.c */,
-				8DC02F361DB5F03B007F57DB /* logging_mosq.h */,
-				8DC02F371DB5F03B007F57DB /* memory_mosq.c */,
-				8DC02F381DB5F03B007F57DB /* memory_mosq.h */,
-				8DC02F391DB5F03B007F57DB /* messages_mosq.c */,
-				8DC02F3A1DB5F03B007F57DB /* messages_mosq.h */,
-				8DC02F3B1DB5F03B007F57DB /* mosquitto.c */,
-				8DC02F3C1DB5F03B007F57DB /* mosquitto.h */,
-				8DC02F3D1DB5F03B007F57DB /* mosquitto_internal.h */,
-				8DC02F3E1DB5F03B007F57DB /* mqtt3_protocol.h */,
-				8DC02F3F1DB5F03B007F57DB /* net_mosq.c */,
-				8DC02F401DB5F03B007F57DB /* net_mosq.h */,
-				8DC02F411DB5F03B007F57DB /* read_handle.c */,
-				8DC02F421DB5F03B007F57DB /* read_handle.h */,
-				8DC02F431DB5F03B007F57DB /* read_handle_client.c */,
-				8DC02F441DB5F03B007F57DB /* read_handle_shared.c */,
-				8DC02F451DB5F03B007F57DB /* send_client_mosq.c */,
-				8DC02F461DB5F03B007F57DB /* send_mosq.c */,
-				8DC02F471DB5F03B007F57DB /* send_mosq.h */,
-				8DC02F481DB5F03B007F57DB /* thread_mosq.c */,
-				8DC02F491DB5F03B007F57DB /* time_mosq.c */,
-				8DC02F4A1DB5F03B007F57DB /* time_mosq.h */,
-				8DC02F4B1DB5F03B007F57DB /* tls_mosq.c */,
-				8DC02F4C1DB5F03B007F57DB /* tls_mosq.h */,
-				8DC02F4D1DB5F03B007F57DB /* util_mosq.c */,
-				8DC02F4E1DB5F03B007F57DB /* util_mosq.h */,
-				8DC02F4F1DB5F03B007F57DB /* will_mosq.c */,
-				8DC02F501DB5F03B007F57DB /* will_mosq.h */,
-			);
-			path = libmosquitto;
-			sourceTree = "<group>";
-		};
-		8DC02F511DB5F03B007F57DB /* MQTTKit */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02F521DB5F03B007F57DB /* MQTTKit-Prefix.pch */,
-				8DC02F531DB5F03B007F57DB /* MQTTKit.h */,
-				8DC02F541DB5F03B007F57DB /* MQTTKit.m */,
-			);
-			path = MQTTKit;
-			sourceTree = "<group>";
-		};
-		8DC02F5D1DB5F03B007F57DB /* Pair */ = {
-			isa = PBXGroup;
-			children = (
-				8DC02F5E1DB5F03B007F57DB /* ConfigurationDevice.h */,
-				8DC02F5F1DB5F03B007F57DB /* ConfigurationDevice.m */,
-				8DC02F601DB5F03B007F57DB /* EasyLinkSender.h */,
-				8DC02F611DB5F03B007F57DB /* EasyLinkSender.m */,
-				8DC02F621DB5F03B007F57DB /* HttpServer.h */,
-				8DC02F631DB5F03B007F57DB /* HttpServer.m */,
-			);
-			path = Pair;
 			sourceTree = "<group>";
 		};
 		8DC02FB11DB61F87007F57DB /* AirPurfier */ = {
@@ -3438,6 +3321,7 @@
 				8DC02E941DB5CEFE007F57DB /* WaterReplenishMainView.xib in Resources */,
 				B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */,
 				8DC02E7F1DB5CE91007F57DB /* TapMainView.xib in Resources */,
+				8D1DBC991F07720D0083E1D6 /* ProductInfo.plist in Resources */,
 				8D0D683F1DDD8A3B0097038E /* RNEmailRegisterViewController.xib in Resources */,
 				8D0D69441DDD99A10097038E /* MyInfoCell.xib in Resources */,
 				8D7141F01EE536D800AC9CE9 /* PayWaterCell.xib in Resources */,
@@ -3601,6 +3485,7 @@
 				E0745AC61EE94ED200CB39CC /* UdeskStructView.m in Sources */,
 				8D113DC71DB711B7008CE2C6 /* CupTemperatureController.swift in Sources */,
 				B717E7FD1E0BAB5400B6DEBD /* ICChatMessageTextCell.m in Sources */,
+				8D36D2DF1F06234A0091EB1F /* BabyCallback.m in Sources */,
 				8D429A031DC9E9160083011C /* DeviceSettingController.swift in Sources */,
 				8D14A93A1DD9907000920AE9 /* UIImage+ColorAtPixel.m in Sources */,
 				E0745AB71EE94ED200CB39CC /* UdeskBaseCell.m in Sources */,
@@ -3615,12 +3500,12 @@
 				E0745AE51EE94ED200CB39CC /* UdeskStringSizeUtil.m in Sources */,
 				E0745AD31EE94ED200CB39CC /* UIColor+UdeskSDK.m in Sources */,
 				B717E7F51E0BAB5400B6DEBD /* ICVideoManager.m in Sources */,
+				8D36D2EF1F06234A0091EB1F /* NSDictionary+ZBAdd.m in Sources */,
 				B7F9D5441DE40B7500678317 /* GYShareImage.swift in Sources */,
 				E0745AB91EE94ED200CB39CC /* UdeskProductCell.m in Sources */,
 				8D0D694F1DDD9A800097038E /* ConsultModel+CoreDataClass.swift in Sources */,
 				B717E8431E0BAB5400B6DEBD /* XZMessageViewController.m in Sources */,
 				B717E8281E0BAB5400B6DEBD /* MASConstraintMaker.m in Sources */,
-				8DC02F7C1DB5F03B007F57DB /* CupSensor.m in Sources */,
 				8DAE80911D9B9A3E00A9946F /* BaseDataObject+CoreDataClass.swift in Sources */,
 				8D6BFDBF1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift in Sources */,
 				B717E82E1E0BAB5400B6DEBD /* View+MASAdditions.m in Sources */,
@@ -3632,188 +3517,177 @@
 				B717E83E1E0BAB5400B6DEBD /* amrFileCodec.mm in Sources */,
 				B79803DB1DB5B14A001EC5AA /* SmallAriClearView.swift in Sources */,
 				8D1EF3881D93DE050009D034 /* AppDelegate.swift in Sources */,
+				8D36D2CB1F06234A0091EB1F /* AirPurifier_Wifi.swift in Sources */,
 				8D11A18D1DDB383B002F14D3 /* CupTDSCircleView.swift in Sources */,
 				B717E83A1E0BAB5400B6DEBD /* NSString+MJExtension.m in Sources */,
-				8DC02F941DB5F03B007F57DB /* WaterReplenishmentMeter.m in Sources */,
-				8DC02F951DB5F03B007F57DB /* WaterReplenishmentMeterMgr.m in Sources */,
-				8DC02FA61DB5F03B007F57DB /* MQTTKit.m in Sources */,
 				B717E8241E0BAB5400B6DEBD /* KILabel.m in Sources */,
 				E0745AE41EE94ED200CB39CC /* UdeskImageUtil.m in Sources */,
 				8DC02E7A1DB5CE91007F57DB /* CupHeadCircleView.swift in Sources */,
+				8D36D2D81F06234A0091EB1F /* OznerDataManager.swift in Sources */,
 				B717E8091E0BAB5400B6DEBD /* ICEmotionListView.m in Sources */,
 				8D7141EC1EE5334B00AC9CE9 /* PayWaterController.swift in Sources */,
 				8D129A201DD4B5080022F7EA /* LBXPermissions.swift in Sources */,
 				B717E81F1E0BAB5400B6DEBD /* XZGroup.m in Sources */,
 				8D0D69351DDD99A10097038E /* FriendChatCell.swift in Sources */,
-				8D1C66E01DAA3B62008C639F /* OznerManager.m in Sources */,
 				8DA6830C1DFA7714001D1D28 /* LocalNotificationHelper.swift in Sources */,
+				8D36D2F01F06234A0091EB1F /* NSDictionary+ZBKeyMapping.m in Sources */,
 				8D0F63D21DB09DE600FA38BF /* RDVTabBar.m in Sources */,
-				8DC02F7E1DB5F03B007F57DB /* BaseDeviceIO.m in Sources */,
-				8DC02FAC1DB5F03B007F57DB /* EasyLinkSender.m in Sources */,
 				8D17D40B1DC2EA0A002B0F89 /* AgreementController.swift in Sources */,
 				E0745AAE1EE94ED200CB39CC /* UdeskAgentMenuModel.m in Sources */,
 				8D129A231DD4B5080022F7EA /* LBXScanView.swift in Sources */,
 				8D0D69301DDD99A10097038E /* ZGYTableViewController.swift in Sources */,
 				E0745ACB1EE94ED200CB39CC /* UdeskTicketViewController.m in Sources */,
+				8D36D2CE1F06234A0091EB1F /* Cup.swift in Sources */,
 				B7753A941E10F45E00F39427 /* BaseViewController.swift in Sources */,
 				B717E8271E0BAB5400B6DEBD /* MASConstraint.m in Sources */,
 				B717E7F21E0BAB5400B6DEBD /* ICMessageHelper.m in Sources */,
 				E0745ABB1EE94ED200CB39CC /* UdeskTipsCell.m in Sources */,
 				E01C97B91EE96A7B00927574 /* RNMessageViewController.swift in Sources */,
+				8D36D2D61F06234A0091EB1F /* WaterReplenish.swift in Sources */,
 				8D129A261DD4B5080022F7EA /* LBXScanWrapper.swift in Sources */,
 				B717E7EB1E0BAB5400B6DEBD /* ICMessage.m in Sources */,
 				8D117C231D9CFB0D0024187E /* ModelController.m in Sources */,
-				8DC02FAD1DB5F03B007F57DB /* HttpServer.m in Sources */,
 				B717E8221E0BAB5400B6DEBD /* XZNavigationController.m in Sources */,
 				8D103D211DD58DE600291C4F /* WaterPurfierTDSChart.swift in Sources */,
-				8D14A9271DD967AA00920AE9 /* ROWaterPurufier.m in Sources */,
 				8DC02EA71DB5D100007F57DB /* SCLAlertView.swift in Sources */,
-				8DC02FA91DB5F03B007F57DB /* MXChipIOManager.m in Sources */,
 				B717E80C1E0BAB5400B6DEBD /* ICAudioView.m in Sources */,
-				8DC02F6C1DB5F03B007F57DB /* MxChipAirPurifierSensor.m in Sources */,
 				E0745AE81EE94ED200CB39CC /* UdeskViewExt.m in Sources */,
 				B717E8291E0BAB5400B6DEBD /* MASLayoutConstraint.m in Sources */,
 				8D0D692B1DDD99A00097038E /* MySuggestViewController.swift in Sources */,
 				E0745AC41EE94ED200CB39CC /* UdeskMessageTableView.m in Sources */,
 				E0745AAB1EE94ED200CB39CC /* UdeskSearchController.m in Sources */,
-				8DC02FAA1DB5F03B007F57DB /* MXChipPair.m in Sources */,
 				8D0D69261DDD99A00097038E /* MyFriendsVC.swift in Sources */,
 				E0745ADC1EE94ED200CB39CC /* UdeskSDKStyleBlue.m in Sources */,
-				8DC02FA21DB5F03B007F57DB /* time_mosq.c in Sources */,
 				8DAE80721D9A85EC00A9946F /* SelectDeviceTableController.swift in Sources */,
 				E0745ACE1EE94ED200CB39CC /* UdeskShareTransitioningDelegateImpl.m in Sources */,
 				B717E7FE1E0BAB5400B6DEBD /* ICChatMessageVideoCell.m in Sources */,
 				E0745ADF1EE94ED200CB39CC /* UdeskChatAlertController.m in Sources */,
 				B79803DF1DB5C41D001EC5AA /* WaterRefeishView.swift in Sources */,
-				8DC02F961DB5F03B007F57DB /* WaterReplenishmentMeterStatus.m in Sources */,
-				8DC02F781DB5F03B007F57DB /* CupManager.m in Sources */,
-				8DC02F8A1DB5F03B007F57DB /* TapRawRecord.m in Sources */,
 				B717E7EF1E0BAB5400B6DEBD /* ICFaceManager.m in Sources */,
-				8DC02F721DB5F03B007F57DB /* FirmwareTools.m in Sources */,
 				8D113DCB1DB77FB4008CE2C6 /* TapSettingController.swift in Sources */,
 				E0745ABD1EE94ED200CB39CC /* UdeskEmotionManagerView.m in Sources */,
 				B717E81A1E0BAB5400B6DEBD /* NSString+Extension.m in Sources */,
 				8D429A071DCA0D6E0083011C /* TapLvXinController.swift in Sources */,
-				8DC02F681DB5F03B007F57DB /* BluetoothAirPurifierStatus.m in Sources */,
 				B717E8141E0BAB5400B6DEBD /* ICTextField.m in Sources */,
 				8D0E5E701DD2DFA400AFAD23 /* SetReplenishTimeController.swift in Sources */,
 				8DC02FBA1DB623BC007F57DB /* OznerDeviceView.swift in Sources */,
 				B7FAA6BE1E1CA138009042B4 /* GYFadeAnimator.swift in Sources */,
-				8DC02F6D1DB5F03B007F57DB /* MxChipAirPurifierStatus.m in Sources */,
 				8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */,
 				8D14A93C1DD9907000920AE9 /* HSVZB.m in Sources */,
 				B717E8331E0BAB5400B6DEBD /* MJProperty.m in Sources */,
 				8D429A0B1DCA0DDB0083011C /* WaterPurfierTDSController.swift in Sources */,
-				8DC02F9A1DB5F03B007F57DB /* mosquitto.c in Sources */,
 				8D0D69281DDD99A00097038E /* MyLikeViewController.swift in Sources */,
 				B717E8201E0BAB5400B6DEBD /* XZUser.m in Sources */,
 				8D429A0F1DCA0E570083011C /* SkinDetailController.swift in Sources */,
 				8D0E5E6E1DD09C0500AFAD23 /* ChartViewOfSkinDetail.swift in Sources */,
 				8D0D69491DDD99A10097038E /* YanZhengCell.swift in Sources */,
 				8D1C86AE1DD33BEF00B15221 /* TapDatePickerView.swift in Sources */,
+				8D36D2F41F06234A0091EB1F /* OZMxChipIO.swift in Sources */,
 				8D0D681D1DDD5AF50097038E /* CupTDSLineView.swift in Sources */,
-				8DC02F9E1DB5F03B007F57DB /* read_handle_shared.c in Sources */,
 				E0745ADA1EE94ED200CB39CC /* UdeskSDKShow.m in Sources */,
 				B717E7EC1E0BAB5400B6DEBD /* ICMessageFrame.m in Sources */,
 				8DC02E7B1DB5CE91007F57DB /* LineChartView.swift in Sources */,
 				E0745AAA1EE94ED200CB39CC /* UdeskFAQViewController.m in Sources */,
+				8D36D2FE1F06234A0091EB1F /* Helper.m in Sources */,
 				B717E8341E0BAB5400B6DEBD /* MJPropertyKey.m in Sources */,
 				8D184E891DED717D0008047E /* RoWaterPuefierLvXinController.swift in Sources */,
 				B717E81E1E0BAB5400B6DEBD /* UIView+Extension.m in Sources */,
 				8D0D693B1DDD99A10097038E /* FriendZeroBgView.swift in Sources */,
-				8DC02F8F1DB5F03B007F57DB /* WaterPurifier.m in Sources */,
-				8DC02FA11DB5F03B007F57DB /* thread_mosq.c in Sources */,
-				8DC02F671DB5F03B007F57DB /* BluetoothAirPurifierSensor.m in Sources */,
 				B717E80B1E0BAB5400B6DEBD /* ICEmotionPageView.m in Sources */,
+				8D36D2FC1F06234A0091EB1F /* OznerIOManager.swift in Sources */,
 				B717E81D1E0BAB5400B6DEBD /* UIResponder+GXRouter.m in Sources */,
 				E0745AE01EE94ED200CB39CC /* UdeskConfigurationHelper.m in Sources */,
 				E0745ADD1EE94ED200CB39CC /* UdeskCustomNavigation.m in Sources */,
+				8D36D2D31F06234A0091EB1F /* Tap.swift in Sources */,
 				8D14A93B1DD9907000920AE9 /* UIColor+Convert.m in Sources */,
+				8D36D2E11F06234A0091EB1F /* BabyDefine.m in Sources */,
 				B717E7E71E0BAB5400B6DEBD /* ICChatBoxViewController.m in Sources */,
 				8D0D69311DDD99A10097038E /* AddFriendTableViewCell.swift in Sources */,
 				8D1761E31DC83387004A6B90 /* WaterPurfierSettingController.swift in Sources */,
 				E01C97BA1EE96A7B00927574 /* RNUdeskConfig.swift in Sources */,
 				8D0D683C1DDD8A3B0097038E /* RNEmailLoginViewController.swift in Sources */,
 				8D449BD01DCDFB58005998AA /* Air_Wifi_SpeedModel.swift in Sources */,
+				8D36D2D71F06234A0091EB1F /* WaterReplenishStatus.swift in Sources */,
 				E0745AB81EE94ED200CB39CC /* UdeskChatCell.m in Sources */,
-				8DC02F821DB5F03B007F57DB /* IOManager.m in Sources */,
 				8D0D69271DDD99A00097038E /* MyFriendViewController.swift in Sources */,
 				E0745AB41EE94ED200CB39CC /* UdeskStructMessage.m in Sources */,
 				E0745AE21EE94ED200CB39CC /* UdeskBaseModel.m in Sources */,
 				8D0D69411DDD99A10097038E /* MyFriendCenterView.swift in Sources */,
+				8D36D2E21F06234A0091EB1F /* BabyOptions.m in Sources */,
 				B717E7E81E0BAB5400B6DEBD /* ICDocumentViewController.m in Sources */,
-				8DC02F691DB5F03B007F57DB /* AirPurifier_MxChip.m in Sources */,
 				E0745AF31EE94ED200CB39CC /* UdeskPhotoView.m in Sources */,
 				E0745AEC1EE94ED200CB39CC /* UdeskOverlayTransitioningDelegate.m in Sources */,
 				B717E83B1E0BAB5400B6DEBD /* ICAVPlayer.m in Sources */,
 				B717E82A1E0BAB5400B6DEBD /* MASViewAttribute.m in Sources */,
+				8D36D2F81F06234A0091EB1F /* OznerMQTT_V2.swift in Sources */,
 				8D16BC4D1DB8718600CA3A49 /* SetDeviceNameController.swift in Sources */,
+				8D36D2D51F06234A0091EB1F /* WaterPurifier_Wifi.swift in Sources */,
+				8D36D2CF1F06234A0091EB1F /* OznerCupRecords.swift in Sources */,
 				8D0D69451DDD99A10097038E /* MyInfoHeadView.swift in Sources */,
-				8DC02F881DB5F03B007F57DB /* TapFirmware.m in Sources */,
 				8D429A0D1DCA0E3B0083011C /* SkinQueryController.swift in Sources */,
 				E0745AC91EE94ED200CB39CC /* UdeskChatViewController.m in Sources */,
+				8D36D2E31F06234A0091EB1F /* BabyPeripheralManager.m in Sources */,
 				E0745AEF1EE94ED200CB39CC /* UdeskHppleElement.m in Sources */,
 				B717E81B1E0BAB5400B6DEBD /* UIGestureRecognizer+YYAdd.m in Sources */,
+				8D36D2EE1F06234A0091EB1F /* NSData+IPAddress.m in Sources */,
 				8D429A091DCA0D840083011C /* AirLvXinController.swift in Sources */,
 				8D5045C61DB34AA000EAC3B3 /* UIImage+Expand.swift in Sources */,
-				8DC02F731DB5F03B007F57DB /* ScanData.m in Sources */,
+				8D36D2E91F06234A0091EB1F /* GCDAsyncSocket.m in Sources */,
 				B717E8311E0BAB5400B6DEBD /* MJExtensionConst.m in Sources */,
-				8DC02F831DB5F03B007F57DB /* IOManagerList.m in Sources */,
-				8DC02F9B1DB5F03B007F57DB /* net_mosq.c in Sources */,
-				8DC02F811DB5F03B007F57DB /* DeviceSetting.m in Sources */,
 				B717E7F91E0BAB5400B6DEBD /* ICChatMessageFileCell.m in Sources */,
 				E0745AD41EE94ED200CB39CC /* UIImage+UdeskSDK.m in Sources */,
 				E0745AB51EE94ED200CB39CC /* UdeskTipsMessage.m in Sources */,
+				8D36D2FA1F06234A0091EB1F /* Reachability.m in Sources */,
 				8DC02E821DB5CE91007F57DB /* WaterPurifierHeadCircleView.swift in Sources */,
 				E0745AE11EE94ED200CB39CC /* UdeskPhotographyHelper.m in Sources */,
 				E0745ABC1EE94ED200CB39CC /* UdeskAlertController.m in Sources */,
 				B7960BE01E6553D700F02557 /* GYButton.swift in Sources */,
-				8D14A92A1DD967AA00920AE9 /* RO_FilterInfo.m in Sources */,
 				8DC02E781DB5CE91007F57DB /* CupMainView.swift in Sources */,
 				E0745AF41EE94ED200CB39CC /* UdeskReachability.m in Sources */,
 				B73A6D0A1E0BBCFF00590930 /* XZChatViewController.m in Sources */,
 				8D0D69231DDD99A00097038E /* BaseWebView.swift in Sources */,
 				B717E8451E0BAB5400B6DEBD /* XZMessageCell.m in Sources */,
-				8DC02F741DB5F03B007F57DB /* Cup.m in Sources */,
+				8D36D2F71F06234A0091EB1F /* OznerMQTT_V1.swift in Sources */,
+				8D36D2F51F06234A0091EB1F /* OznerEasyLink_V1.swift in Sources */,
+				8D36D2F31F06234A0091EB1F /* ZBBonjourService.m in Sources */,
 				8D113DC51DB710E6008CE2C6 /* CupDrinkingController.swift in Sources */,
 				8D0D692A1DDD99A00097038E /* MySetViewController.swift in Sources */,
 				8D0D69241DDD99A00097038E /* EquidsCollectionViewController.swift in Sources */,
 				B717E80E1E0BAB5400B6DEBD /* ICDetailHeadView.m in Sources */,
 				8D103D231DD5C2B400291C4F /* CupSetDrinkTimeController.swift in Sources */,
+				8D1DBC9A1F07720D0083E1D6 /* ProductInfo.swift in Sources */,
+				8D36D2CD1F06234A0091EB1F /* OznerBaseDevice.swift in Sources */,
 				E0745ACD1EE94ED200CB39CC /* UdeskAnimatorPush.m in Sources */,
 				B7567CA51DB0873B00AA7C91 /* CupMatchView.swift in Sources */,
-				8DC02F8B1DB5F03B007F57DB /* TapRecord.m in Sources */,
+				8D36D2D91F06234A0091EB1F /* OznerDeviceRecordHelper.swift in Sources */,
 				8D109F201DAD081400458171 /* CALayer+Expand.swift in Sources */,
 				8D117C271D9D06730024187E /* LoginViewController.swift in Sources */,
 				8DAE80571D9A097800A9946F /* SlideMenuController.swift in Sources */,
 				B717E8381E0BAB5400B6DEBD /* NSObject+MJKeyValue.m in Sources */,
 				E0745AE71EE94ED200CB39CC /* UdeskUtils.m in Sources */,
 				8D14A9381DD9907000920AE9 /* YJHColorPickerHSWheel.m in Sources */,
+				8D36D2D21F06234A0091EB1F /* OznerDeviceManager.swift in Sources */,
 				E0745AC01EE94ED200CB39CC /* UdeskTimerLabel.m in Sources */,
 				E0745AEB1EE94ED200CB39CC /* UdeskBouncyViewControllerAnimator.m in Sources */,
 				E0745AD51EE94ED200CB39CC /* UITextView+UDTextView.m in Sources */,
-				8DC02F9D1DB5F03B007F57DB /* read_handle_client.c in Sources */,
 				8D12AAC51DAB7350003A09E6 /* PairingController.swift in Sources */,
 				8D0D69291DDD99A00097038E /* MyRankViewController.swift in Sources */,
 				B717E8161E0BAB5400B6DEBD /* ICVideoView.m in Sources */,
 				B717E8051E0BAB5400B6DEBD /* ICChatBoxMenuView.m in Sources */,
 				B717E82C1E0BAB5400B6DEBD /* NSArray+MASAdditions.m in Sources */,
-				8DC02F8E1DB5F03B007F57DB /* TapSettings.m in Sources */,
 				E0745ABF1EE94ED200CB39CC /* UdeskSpectrumView.m in Sources */,
 				8D11A18B1DDB341A002F14D3 /* CupTDSDetailCilcleView.swift in Sources */,
 				8D0D683E1DDD8A3B0097038E /* RNEmailRegisterViewController.swift in Sources */,
 				8D0D693D1DDD99A10097038E /* My_Rank_TDSCell.swift in Sources */,
-				8DC02F871DB5F03B007F57DB /* Tap.m in Sources */,
 				B717E82B1E0BAB5400B6DEBD /* MASViewConstraint.m in Sources */,
 				8D7837141DE2CEB600A3D9E3 /* ShareImageView.swift in Sources */,
 				B717E7E91E0BAB5400B6DEBD /* ICFileScanController.m in Sources */,
-				8DC02F981DB5F03B007F57DB /* memory_mosq.c in Sources */,
-				8D14A9291DD967AA00920AE9 /* RO_WaterInfo.m in Sources */,
+				8D36D2F91F06234A0091EB1F /* OznerMxChipManager.swift in Sources */,
+				8D36D2E81F06234A0091EB1F /* OznerBluetoothManager.swift in Sources */,
 				8D1239A11DCB1681008D2974 /* OznerLibrary+Expand.swift in Sources */,
 				8DC02E931DB5CEFE007F57DB /* WaterReplenishMainView.swift in Sources */,
 				8DC02E7C1DB5CE91007F57DB /* NoDeviceView.swift in Sources */,
 				E0745AB11EE94ED200CB39CC /* UdeskChatMessage.m in Sources */,
-				8D14A9281DD967AA00920AE9 /* ROWaterSettingInfo.m in Sources */,
 				B717E7F11E0BAB5400B6DEBD /* ICMediaManager.m in Sources */,
 				8D14A9401DD9B9E000920AE9 /* CupDrinkingChartView.swift in Sources */,
 				E0745ADE1EE94ED200CB39CC /* UdeskAudioPlayerHelper.m in Sources */,
@@ -3822,34 +3696,30 @@
 				8DAE80861D9B915A00A9946F /* NetworkManager.swift in Sources */,
 				B717E83D1E0BAB5400B6DEBD /* ZacharyPlayManager.m in Sources */,
 				8D123B521DD5EA2C00F424B3 /* CupCustomPickerView.swift in Sources */,
-				8DC02F801DB5F03B007F57DB /* BaseOznerObject.m in Sources */,
 				B717E8191E0BAB5400B6DEBD /* NSDictionary+Extension.m in Sources */,
 				B717E8021E0BAB5400B6DEBD /* ICGroupFileCell.m in Sources */,
 				8DAE80961D9BC51D00A9946F /* User+CoreDataProperties.swift in Sources */,
 				8D113DC31DB710C0008CE2C6 /* CupTDSDetailController.swift in Sources */,
 				B717E7EE1E0BAB5400B6DEBD /* XZEmotion.m in Sources */,
 				8D1C670A1DAA4052008C639F /* SelectDeviceCell.swift in Sources */,
+				8D36D2FD1F06234A0091EB1F /* OznerManager.swift in Sources */,
 				8D0D692C1DDD99A00097038E /* SendYanZHViewController.swift in Sources */,
+				8D36D2DC1F06234A0091EB1F /* BabyBLEHelper.m in Sources */,
 				8DAE80921D9B9A3E00A9946F /* BaseDataObject+CoreDataProperties.swift in Sources */,
 				E0745AC51EE94ED200CB39CC /* UdeskTopAlertView.m in Sources */,
-				8DC02F931DB5F03B007F57DB /* WaterPurifierStatus.m in Sources */,
 				E0745AB21EE94ED200CB39CC /* UdeskChatSend.m in Sources */,
 				B717E80D1E0BAB5400B6DEBD /* ICDetailButton.m in Sources */,
-				8DC02F891DB5F03B007F57DB /* TapManager.m in Sources */,
 				8D129A251DD4B5080022F7EA /* LBXScanViewStyle.swift in Sources */,
 				8D0D69501DDD9A800097038E /* ConsultModel+CoreDataProperties.swift in Sources */,
-				8DC02F911DB5F03B007F57DB /* WaterPurifierManager.m in Sources */,
+				8D36D2F21F06234A0091EB1F /* OznerBonjourDetail.m in Sources */,
 				B717E8131E0BAB5400B6DEBD /* ICShareButton.m in Sources */,
 				B717E81C1E0BAB5400B6DEBD /* UIImage+Extension.m in Sources */,
 				B717E8351E0BAB5400B6DEBD /* MJPropertyType.m in Sources */,
 				8D0D68401DDD8A3B0097038E /* RNModifyPasswordViewController.swift in Sources */,
 				B717E8001E0BAB5400B6DEBD /* ICChatSystemCell.m in Sources */,
 				8D1EF3C51D93F01F0009D034 /* MainTabBarController.swift in Sources */,
-				8DC02FA71DB5F03B007F57DB /* MQTTProxy.m in Sources */,
 				B717E8081E0BAB5400B6DEBD /* ICEmotionButton.m in Sources */,
-				8DC02F701DB5F03B007F57DB /* BluetoothIOMgr.m in Sources */,
 				E0745AB31EE94ED200CB39CC /* UdeskProductMessage.m in Sources */,
-				8DC02F6F1DB5F03B007F57DB /* BluetoothIO.m in Sources */,
 				B717E7ED1E0BAB5400B6DEBD /* ICMessageModel.m in Sources */,
 				8D92F6581D94FAB00068A40A /* MyDevicesController.swift in Sources */,
 				E0745AF01EE94ED200CB39CC /* UdeskXPathQuery.m in Sources */,
@@ -3857,45 +3727,41 @@
 				B717E82D1E0BAB5400B6DEBD /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				B717E7F81E0BAB5400B6DEBD /* ICChatMessageBaseCell.m in Sources */,
 				8DC02E741DB5CE91007F57DB /* Air_BlueMainView.swift in Sources */,
+				8D36D2EA1F06234A0091EB1F /* GCDAsyncUdpSocket.m in Sources */,
+				8D36D2E71F06234A0091EB1F /* OZBluetoothIO.swift in Sources */,
 				8D12AAC71DAB7386003A09E6 /* PairSuccessController.swift in Sources */,
+				8D36D2F11F06234A0091EB1F /* NSMutableDictionary+NilFuckOff.m in Sources */,
 				8D92F65E1D9510450068A40A /* LoginManager.swift in Sources */,
 				E0745AEE1EE94ED200CB39CC /* UdeskHpple.m in Sources */,
 				B717E8071E0BAB5400B6DEBD /* ICChatBoxMoreViewItem.m in Sources */,
 				8D108A8B1DC203A3006BDECD /* MyRegex.swift in Sources */,
 				8D0F63D31DB09DE600FA38BF /* RDVTabBarController.m in Sources */,
-				8DC02F6E1DB5F03B007F57DB /* PowerTimer.m in Sources */,
-				8DC02FA51DB5F03B007F57DB /* will_mosq.c in Sources */,
 				E0745AED1EE94ED200CB39CC /* UDTTTAttributedLabel.m in Sources */,
 				8D0D69371DDD99A10097038E /* FriendRecentView.swift in Sources */,
-				8DC02F7B1DB5F03B007F57DB /* CupRecordList.m in Sources */,
 				B717E7F41E0BAB5400B6DEBD /* ICTools.m in Sources */,
-				8DC02F841DB5F03B007F57DB /* OznerDevice.m in Sources */,
-				8DC02F661DB5F03B007F57DB /* BluetoothAirPurifierFilterStatus.m in Sources */,
-				8DC02F651DB5F03B007F57DB /* AirPurifier_Bluetooth.m in Sources */,
 				B717E7E61E0BAB5400B6DEBD /* ICMessageConst.m in Sources */,
 				8D0D69521DDD9AE80097038E /* String+Expand.swift in Sources */,
 				E0745AEA1EE94ED200CB39CC /* UdeskHPTextViewInternal.m in Sources */,
 				8D0D69331DDD99A10097038E /* EquidsCollectionViewCell.swift in Sources */,
 				8D16BC4F1DB8719F00CA3A49 /* AboutDeviceController.swift in Sources */,
-				8DC02FAB1DB5F03B007F57DB /* ConfigurationDevice.m in Sources */,
+				8D36D2DD1F06234A0091EB1F /* BabyBLEIO.m in Sources */,
 				B7753A921E10F16000F39427 /* GYNavViewController.swift in Sources */,
 				8DC02EA81DB5D100007F57DB /* SCLExtensions.swift in Sources */,
+				8D36D2CA1F06234A0091EB1F /* AirPurifier_Bluetooth.swift in Sources */,
 				E0745AC11EE94ED200CB39CC /* UdeskVoiceRecordHelper.m in Sources */,
-				8DC02F8D1DB5F03B007F57DB /* TapSensor.m in Sources */,
 				B717E8031E0BAB5400B6DEBD /* ICChatBox.m in Sources */,
-				8DC02F771DB5F03B007F57DB /* CupGravity.m in Sources */,
 				E0745AAF1EE94ED200CB39CC /* UdeskAgentSurvey.m in Sources */,
 				B717E7FB1E0BAB5400B6DEBD /* ICChatMessageShareCell.m in Sources */,
 				8D14A93E1DD9B9B900920AE9 /* CupTDSChartContainerView.swift in Sources */,
+				8D36D2FB1F06234A0091EB1F /* OznerBaseIO.swift in Sources */,
+				8D36D2D41F06234A0091EB1F /* WaterPurifier_Blue.swift in Sources */,
 				E0745AF11EE94ED200CB39CC /* UdeskOneScrollView.m in Sources */,
 				8D14A9391DD9907000920AE9 /* YJHColorPickerHSWheel2.m in Sources */,
-				8DC02F8C1DB5F03B007F57DB /* TapRecordList.m in Sources */,
 				B717E7FA1E0BAB5400B6DEBD /* ICChatMessageImageCell.m in Sources */,
 				E0745AD11EE94ED200CB39CC /* NSTimer+UdeskSDK.m in Sources */,
 				B717E8441E0BAB5400B6DEBD /* XZBaseTableViewCell.m in Sources */,
 				8DAE80951D9BC51D00A9946F /* User+CoreDataClass.swift in Sources */,
 				8D0E5E721DD3353300AFAD23 /* ReplenishSexController.swift in Sources */,
-				8DC02F7F1DB5F03B007F57DB /* BaseDeviceManager.m in Sources */,
 				8D12AACB1DAB9A89003A09E6 /* WifiPairingController.swift in Sources */,
 				B717E8261E0BAB5400B6DEBD /* MASCompositeConstraint.m in Sources */,
 				B717E7F31E0BAB5400B6DEBD /* ICRecordManager.m in Sources */,
@@ -3904,17 +3770,17 @@
 				8D0F67C01DD4424500D35CD1 /* AirOutdoorView.swift in Sources */,
 				B717E8011E0BAB5400B6DEBD /* ICDocumentCell.m in Sources */,
 				8D12AAC91DAB739F003A09E6 /* PairFailedController.swift in Sources */,
+				8D36D2DA1F06234A0091EB1F /* OZAylaIO.swift in Sources */,
 				B717E83C1E0BAB5400B6DEBD /* VideoPlayOperation.m in Sources */,
-				8DC02F751DB5F03B007F57DB /* CupDBRecord.m in Sources */,
 				B717E8411E0BAB5400B6DEBD /* VoiceConverter.mm in Sources */,
+				8D36D2EB1F06234A0091EB1F /* AsyncSocket.m in Sources */,
+				8D36D2E41F06234A0091EB1F /* BabyRhythm.m in Sources */,
 				8D0D69471DDD99A10097038E /* MyRankTableViewCell.swift in Sources */,
 				8D0D69221DDD99A00097038E /* AddFriendsTableViewController.swift in Sources */,
-				8DC02FA41DB5F03B007F57DB /* util_mosq.c in Sources */,
 				B703D8ED1E0CF1F90083810A /* XMFaceManager.m in Sources */,
 				B717E80F1E0BAB5400B6DEBD /* ICFileButton.m in Sources */,
 				8D0D695C1DDDB2F70097038E /* OzneriFamilyModel.xcdatamodeld in Sources */,
 				B717E8041E0BAB5400B6DEBD /* ICChatBoxFaceView.m in Sources */,
-				8DC02F971DB5F03B007F57DB /* logging_mosq.c in Sources */,
 				8D92F66F1D95346E0068A40A /* LeftMenuController.swift in Sources */,
 				E0745AD91EE94ED200CB39CC /* UdeskSDKManager.m in Sources */,
 				B7DBCB5B1E5AB2D400C5D7A3 /* OffLineSuggest.swift in Sources */,
@@ -3925,55 +3791,46 @@
 				B717E8371E0BAB5400B6DEBD /* NSObject+MJCoding.m in Sources */,
 				8D0D69211DDD99A00097038E /* AboutUSViewController.swift in Sources */,
 				E0745AC71EE94ED200CB39CC /* UdeskAgentMenuViewController.m in Sources */,
-				8DC02F901DB5F03B007F57DB /* WaterPurifierInfo.m in Sources */,
 				B717E8101E0BAB5400B6DEBD /* ICHeadImageView.m in Sources */,
+				8D36D2DE1F06234A0091EB1F /* BabyBluetooth.m in Sources */,
 				B717E8111E0BAB5400B6DEBD /* ICMessageTopView.m in Sources */,
 				8D0D69251DDD99A00097038E /* MyDeviceRankViewController.swift in Sources */,
 				8D129A241DD4B5080022F7EA /* LBXScanViewController.swift in Sources */,
 				8D113DC91DB71981008CE2C6 /* UINavigationController+Expand.swift in Sources */,
 				E0745ACF1EE94ED200CB39CC /* UdeskTransitioningAnimation.m in Sources */,
 				B727C35D1DACE90000FE990F /* SuccessPairCell.swift in Sources */,
-				8D6BFDC61ED970F000AC849C /* WaterPurifier_1_5.m in Sources */,
-				8DC02F7A1DB5F03B007F57DB /* CupRecord.m in Sources */,
-				8DC02F6A1DB5F03B007F57DB /* AirPurifierInfo.m in Sources */,
+				8D36D2E51F06234A0091EB1F /* BabySpeaker.m in Sources */,
 				B717E8211E0BAB5400B6DEBD /* ICPhotoBrowserController.m in Sources */,
-				8DC02F861DB5F03B007F57DB /* SqlLiteDB.m in Sources */,
 				8D6BFDBD1ED9626E00AC849C /* WaterPur_A8DRF.swift in Sources */,
-				8DC02F711DB5F03B007F57DB /* BluetoothSynchronizedObject.m in Sources */,
 				E0745ABE1EE94ED200CB39CC /* UdeskInputBar.m in Sources */,
-				8DC02F6B1DB5F03B007F57DB /* MxChipAirPurifierFilterStatus.m in Sources */,
 				8D0D692E1DDD99A00097038E /* VerfyViewController.swift in Sources */,
 				8D0D692D1DDD99A00097038E /* SetMeterViewController.swift in Sources */,
 				8D1761EA1DC833F6004A6B90 /* TDSPanSettingController.swift in Sources */,
 				8D4A5E1E1DE419D4008A6960 /* ShareMoneyToWeChat.swift in Sources */,
-				8DC02F9F1DB5F03B007F57DB /* send_client_mosq.c in Sources */,
-				8DC02F9C1DB5F03B007F57DB /* read_handle.c in Sources */,
-				8DC02F761DB5F03B007F57DB /* CupFirmware.m in Sources */,
 				8D0D693F1DDD99A10097038E /* MyFriendCell.swift in Sources */,
+				8D36D2FF1F06234A0091EB1F /* OznerTools.swift in Sources */,
 				8D129A211DD4B5080022F7EA /* LBXScanLineAnimation.swift in Sources */,
 				8D1761E51DC833A8004A6B90 /* AirPurfierSettingController.swift in Sources */,
 				8D0D692F1DDD99A10097038E /* YZNewsTableViewController.swift in Sources */,
 				B717E8181E0BAB5400B6DEBD /* NSDate+Extension.m in Sources */,
 				E0745AE91EE94ED200CB39CC /* UdeskHPGrowingTextView.m in Sources */,
-				8DC02FA31DB5F03B007F57DB /* tls_mosq.c in Sources */,
 				B717E8361E0BAB5400B6DEBD /* NSObject+MJClass.m in Sources */,
 				8D0D68431DDD981D0097038E /* WebShopController.swift in Sources */,
-				8DC02FA81DB5F03B007F57DB /* MXChipIO.m in Sources */,
 				B717E7FF1E0BAB5400B6DEBD /* ICChatMessageVoiceCell.m in Sources */,
+				8D36D2E01F06234A0091EB1F /* BabyCentralManager.m in Sources */,
 				E01C97B81EE96A7B00927574 /* RNChatViewController.swift in Sources */,
+				8D36D2EC1F06234A0091EB1F /* AsyncUdpSocket.m in Sources */,
 				B717E7F61E0BAB5400B6DEBD /* ICBaseMessageCell.m in Sources */,
 				E0745AAD1EE94ED200CB39CC /* UdeskAgentHttpData.m in Sources */,
-				8DC02F851DB5F03B007F57DB /* Helper.m in Sources */,
 				E0745AD71EE94ED200CB39CC /* UdeskLanguageTool.m in Sources */,
 				E0745AE31EE94ED200CB39CC /* UdeskDateFormatter.m in Sources */,
 				8D0D69541DDD9D040097038E /* NSDate+Category.swift in Sources */,
-				8DC02FA01DB5F03B007F57DB /* send_mosq.c in Sources */,
 				E0745AD81EE94ED200CB39CC /* UdeskSDKConfig.m in Sources */,
 				E0745AA91EE94ED200CB39CC /* UdeskContentController.m in Sources */,
 				B717E7F01E0BAB5400B6DEBD /* ICFileTool.m in Sources */,
 				B7DBCB5F1E5AB4BA00C5D7A3 /* WaterPurifierMainView.swift in Sources */,
 				E0745AB61EE94ED200CB39CC /* UdeskChatViewModel.m in Sources */,
-				8DC02F791DB5F03B007F57DB /* CupRawRecord.m in Sources */,
+				8D36D2F61F06234A0091EB1F /* OznerEasyLink_V2.swift in Sources */,
 				8DC02FB81DB61F87007F57DB /* CupSettingController.swift in Sources */,
 				8DC02E761DB5CE91007F57DB /* Air_WifiMainView.swift in Sources */,
 				E0745AD21EE94ED200CB39CC /* UdeskMessage+UdeskChatMessage.m in Sources */,
@@ -3983,7 +3840,6 @@
 				E0745AB01EE94ED200CB39CC /* UdeskBaseMessage.m in Sources */,
 				E0745AF21EE94ED200CB39CC /* UdeskPhotoManeger.m in Sources */,
 				B717E80A1E0BAB5400B6DEBD /* ICEmotionMenuButton.m in Sources */,
-				8DC02F641DB5F03B007F57DB /* AirPurifierManager.m in Sources */,
 				8D7837091DE292B000A3D9E3 /* OznerShareManager.swift in Sources */,
 				E0745ADB1EE94ED200CB39CC /* UdeskSDKStyle.m in Sources */,
 				B7D6E4991DF928CF00D79BFF /* GYConactBook.swift in Sources */,
@@ -3991,15 +3847,15 @@
 				8D109F221DAE1E6700458171 /* UIColor+Expand.swift in Sources */,
 				E0745AC81EE94ED200CB39CC /* UdeskBaseViewController.m in Sources */,
 				8D0D69201DDD99A00097038E /* MyCenterController.swift in Sources */,
-				8DC02F7D1DB5F03B007F57DB /* CupSettings.m in Sources */,
 				8D7141EF1EE536D800AC9CE9 /* PayWaterCell.swift in Sources */,
 				8D0D694B1DDD99A10097038E /* ZanMeTableViewCell.swift in Sources */,
 				8DC02E7E1DB5CE91007F57DB /* TapMainView.swift in Sources */,
-				8DC02F991DB5F03B007F57DB /* messages_mosq.c in Sources */,
 				8DAE806B1D9A600900A9946F /* LeftMenuDeviceCell.swift in Sources */,
 				8D11A1831DDB33D0002F14D3 /* CupTDSDetailLineView.swift in Sources */,
-				8DC02F921DB5F03B007F57DB /* WaterPurifierSensor.m in Sources */,
+				8D36D2DB1F06234A0091EB1F /* OznerAylaManager.swift in Sources */,
 				B717E7F71E0BAB5400B6DEBD /* ICChatForwardCell.m in Sources */,
+				8D36D2E61F06234A0091EB1F /* BabyToy.m in Sources */,
+				8D36D2CC1F06234A0091EB1F /* BaseDeviceSetting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4083,8 +3939,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UZZG6NM74T;
@@ -4137,8 +3993,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UZZG6NM74T;
@@ -4170,7 +4026,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = UZZG6NM74T;
@@ -4189,7 +4045,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = OzneriFamily/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4197,6 +4053,7 @@
 					"$(PROJECT_DIR)/ToolHelper/WeChatSDK",
 					"$(PROJECT_DIR)/OzneriFamily/Counseling/Main/Lib/VoiceConvert/lib",
 					"$(PROJECT_DIR)/ToolHelper/UdeskSDK/SDK",
+					"$(PROJECT_DIR)/ToolHelper/OznerLibrarySwifty/OznerIOManager/MxChip/EasyLink",
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = (
@@ -4206,7 +4063,7 @@
 					"-lxml2",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4225,7 +4082,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Ozner Water Purification Science and Technology Development Co., Ltd (UZZG6NM74T)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = UZZG6NM74T;
@@ -4244,7 +4101,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = OzneriFamily/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4252,6 +4109,7 @@
 					"$(PROJECT_DIR)/ToolHelper/WeChatSDK",
 					"$(PROJECT_DIR)/OzneriFamily/Counseling/Main/Lib/VoiceConvert/lib",
 					"$(PROJECT_DIR)/ToolHelper/UdeskSDK/SDK",
+					"$(PROJECT_DIR)/ToolHelper/OznerLibrarySwifty/OznerIOManager/MxChip/EasyLink",
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = (
@@ -4261,7 +4119,7 @@
 					"-lxml2",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -136,11 +136,11 @@ class LoginManager:NSObject{
         }
     }
     
-    var currentDevice:OznerDevice{
-        return OznerManager.instance().getDevice(LoginManager.instance.currentDeviceIdentifier)
-    }
+//    var currentDevice:OznerBaseDevice{
+//        return OznerManager.instance.getDevice(identifier: LoginManager.instance.currentDeviceIdentifier!)!
+//    }
     
-    var currentDeviceIdentifier:String?=nil//设置和获取当前设备的ID,nil表示无设备
+    //var currentDeviceIdentifier:String?=nil//设置和获取当前设备的ID,nil表示无设备
     func setTabbarSelected(index:Int) {
         mainTabBarController?.selectedIndex=UInt(index)
     }

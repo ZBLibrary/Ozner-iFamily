@@ -22,14 +22,14 @@ class CupColorBoardView: UIView {
         let wheel2 = YJHColorPickerHSWheel2(frame: CGRect(x: width_screen/2-112, y: rect.height/2-112, width: 224, height: 224))
         
         self.colorWheel2 = wheel2
-        let cup = LoginManager.instance.currentDevice as! Cup
+        let cup = OznerManager.instance.currentDevice as! Cup
         wheel2.confirmBlock = {(color) in
             self._colorCenterView.backgroundColor = color
             let components = (color?.cgColor)?.components
             var tmpColor = (components?[0])!*255*256*256
             tmpColor+=(components?[1])!*255*256+(components?[2])!*255
             cup.settings.haloColor=uint(tmpColor)
-            OznerManager.instance().save(cup)
+            OznerManager.instance.saveDevice(device: cup)
             
         }
         wheel2.addSubview(_colorCenterView)

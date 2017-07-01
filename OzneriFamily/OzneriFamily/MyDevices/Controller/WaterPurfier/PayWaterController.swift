@@ -30,8 +30,7 @@ class PayWaterController: UIViewController {
             return
         }
         let alertView=SCLAlertView()
-        if LoginManager.instance.currentDevice.connectStatus() != Connected
-        {
+        if OznerManager.instance.currentDevice?.connectStatus != OznerConnectStatus.Connected       {
             _=alertView.showTitle("", subTitle: "设备已断开!检查设备或手机蓝牙是否链接正常", duration: 3.0, completeText: "确定", style: SCLAlertViewStyle.error)
             return
         }
@@ -41,12 +40,12 @@ class PayWaterController: UIViewController {
         SVProgressHUD.showProgress(0)
         
         let weakSelf=self
-        let RODevice = LoginManager.instance.currentDevice as! ROWaterPurufier
+        let RODevice = OznerManager.instance.currentDevice as! WaterPurifier_Blue
         DispatchQueue.global().async {
-            if RODevice.addWaterDays(Int32(self.dataArr[self.selectRow].Days))
+            if RODevice.addWaterDays(days: Int(self.dataArr[self.selectRow].Days))
             {
                 //设备充值成功
-                User.UseWaterCard(cardinfo: self.dataArr[self.selectRow], Mac: RODevice.identifier, success: { () in
+                User.UseWaterCard(cardinfo: self.dataArr[self.selectRow], Mac: RODevice.deviceInfo.deviceMac, success: { () in
                     //充值成功
                     DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
@@ -64,7 +63,7 @@ class PayWaterController: UIViewController {
                 }, failure: { (error) in
                     //充值失败
                     DispatchQueue.global().async{
-                        RODevice.addWaterDays(-(Int32)(weakSelf.dataArr[weakSelf.selectRow].Days))
+                        RODevice.addWaterDays(days: -Int(weakSelf.dataArr[weakSelf.selectRow].Days))
                     }
 
                     DispatchQueue.main.async {

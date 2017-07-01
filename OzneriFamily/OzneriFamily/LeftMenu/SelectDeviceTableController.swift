@@ -141,7 +141,7 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 8
+        return ProductInfo.products.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -151,7 +151,7 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectdevice", for: indexPath) as! SelectDeviceCell
         
-        cell.setDeviceType(deviceType: [.Water_Bluetooth,OznerDeviceType.Cup,.Tap,.TDSPan,.Water_Wifi,.Air_Blue,.Air_Wifi,.WaterReplenish][indexPath.row])//deviceType=
+        cell.setProductInfo(productInfo: ProductInfo.products["\(indexPath.row)"]!)
         cell.selectionStyle=UITableViewCellSelectionStyle.none
         // Configure the cell...
 
@@ -205,7 +205,7 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {      
         let pair = segue.destination as! PairingController
-        pair.currDeviceType = [.Water_Bluetooth,OznerDeviceType.Cup,.Tap,.TDSPan,.Water_Wifi,.Air_Blue,.Air_Wifi,.WaterReplenish][sender as! Int]
+        pair.productInfo = ProductInfo.products["\(sender as! Int)"]!
 
     }
     

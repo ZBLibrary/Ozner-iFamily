@@ -33,7 +33,7 @@ class CupTemperatureController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = loadLanguage("水温")
-        let device = LoginManager.instance.currentDevice as! Cup
+        let device = OznerManager.instance.currentDevice as! Cup
         zixunBtn.setTitle(loadLanguage("咨询"), for: UIControlState.normal)
         healthyBtn.setTitle(loadLanguage("健康水知道 "), for: UIControlState.normal)
         buyBtn.setTitle(loadLanguage("购买净水器"), for: UIControlState.normal)
@@ -47,7 +47,7 @@ class CupTemperatureController: BaseViewController {
             bootomHideView.isHidden = false
         }
         
-        let temp=device.sensor.temperature==65535 ? 0 :device.sensor.temperature
+        let temp=device.sensor.Temperature
         switch true
         {
         case temp>0&&temp<=temperature_low:

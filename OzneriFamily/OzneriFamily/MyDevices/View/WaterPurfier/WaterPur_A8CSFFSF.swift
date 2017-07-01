@@ -76,11 +76,11 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
         
         switch sender.tag {
         case 0:
-            (self.currentDevice as! WaterPurifier).status.setPower(!operation.power, callback: { (error) in
+            (self.currentDevice as! WaterPurifier_Wifi).status.setPower(!operation.power, callback: { (error) in
             })
         case 1:
             if hotEnable {
-                (self.currentDevice as! WaterPurifier).status.setHot(!operation.hot, callback: { (error) in
+                (self.currentDevice as! WaterPurifier_Wifi).status.setHot(!operation.hot, callback: { (error) in
                 })
             }else{
                 let appearance = SCLAlertView.SCLAppearance(
@@ -94,7 +94,7 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
             
         case 2:
             if coolEnable {
-                (self.currentDevice as! WaterPurifier).status.setCool(!operation.cool, callback: { (error) in
+                (self.currentDevice as! WaterPurifier_Wifi).status.setCool(!operation.cool, callback: { (error) in
                 })
             }else{
                 let appearance = SCLAlertView.SCLAppearance(

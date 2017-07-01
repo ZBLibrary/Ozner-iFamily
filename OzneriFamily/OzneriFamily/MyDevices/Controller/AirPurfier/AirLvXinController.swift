@@ -53,8 +53,9 @@ class AirLvXinController: BaseViewController {
         
         self.title = loadLanguage("室内空气质量详情")
         hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
-        let device=LoginManager.instance.currentDevice
-        if OznerDeviceType.getType(type: device.type)==OznerDeviceType.Air_Blue {//台式
+        let device=OznerManager.instance.currentDevice
+        
+        if ProductInfo.getDeviceClassFromProductID(productID: (device?.deviceInfo.productID)!) == .AirPurifier_Blue {//台式
             reSetLvXinButton.isHidden=false
             vocWidthConstraint.constant = -width_screen/2
             //hiden

@@ -29,7 +29,7 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
         isRemember = !isRemember
         rememberImg.image=UIImage(named: isRemember ? "icon_agree_select":"icon_agree_normal")
     }
-    var wifiDevices=[OznerDevice]()//搜索到的设备数组
+    var wifiDevices=[OznerDeviceInfo]()//搜索到的设备数组
     @IBAction func nextClick(_ sender: AnyObject) {
         if wifiNameText.text=="" {
             _=SCLAlertView().showTitle("", subTitle: loadLanguage("Wifi名称不能为空!"), duration: 2.0, completeText: loadLanguage("完成"), style: SCLAlertViewStyle.notice)
@@ -49,8 +49,8 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
     @IBOutlet var dotImg4: UIImageView!
     @IBOutlet var dotImg5: UIImageView!
     private var myTimer:Timer?
-    var currDeviceType=OznerDeviceType.Water_Wifi
-    var mxChipPair:MXChipPair!
+    var deviceClass:OZDeviceClass!
+    //var mxChipPair:MXChipPair!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +59,11 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
         conWL.text = loadLanguage("选择一个可用的WLAN,让设备接入网络")
         remberPwd.text = loadLanguage("下次记住密码")
         nextBtn.setTitle(loadLanguage("下一步"), for: UIControlState.normal)
-        mxChipPair=MXChipPair()
-        mxChipPair.delegate=self
-        wifiNameText.text=MXChipPair.getWifiSSID()
+        //mxChipPair=MXChipPair()
+        //mxChipPair.delegate=self
+        OznerManager.instance.fetchCurrentSSID(handler: { (ssid) in
+            self.wifiNameText.text = ssid ?? ""
+        })
         let wifiPassWord=UserDefaults.standard.object(forKey: "Wifi_\(wifiNameText.text!)") ?? ""
         wifiPassWordText.text = (wifiPassWord as! String)
         wifiPassWordText.placeholder = loadLanguage("请输入密码")
@@ -82,13 +84,10 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
         //开始动画
         myTimer=Timer.scheduledTimer(timeInterval: 1/2, target: self, selector: #selector(imgAnimal), userInfo: nil, repeats: true)
         //开始调用配对方法
-        mxChipPair.start(wifiNameText.text!, password: wifiPassWordText.text!)
-        
+        OznerManager.instance.starPair(deviceClass: deviceClass, pairDelegate: self, ssid: wifiNameText.text!, password: wifiPassWordText.text!)
     }
     func CancleWifiPairing(){
-        if mxChipPair.isRuning() {
-            mxChipPair.cancel()
-        }
+        OznerManager.instance.canclePair()
         if myTimer != nil {
             myTimer?.invalidate()
             myTimer=nil
@@ -117,7 +116,7 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
         if segue.identifier == "showsuccess" {
             let pair = segue.destination as! PairSuccessController
             pair.deviceArr = wifiDevices
-            pair.CurrDeviceType=currDeviceType
+            pair.deviceClass=deviceClass
         }
         if segue.identifier == "showfailed" {
             let pair = segue.destination as! PairFailedController
@@ -128,30 +127,13 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
  
 
 }
-extension WifiPairingController : MxChipPairDelegate{
-    func mxChipPairSendConfiguration() {
-        
-    }
-    func mxChipFailure() {
-        self.performSegue(withIdentifier: "showfailed", sender: nil)
-    }
-    func mxChipPairActivate() {
-        
-    }
-    func mxChipPairWaitConnectWifi() {
-        
-    }
-    func mxChipComplete(_ io: MXChipIO!) {
-        let tmpDevice=OznerManager.instance().getDeviceBy(io)
-        wifiDevices.append(tmpDevice!)
+extension WifiPairingController : OznerPairDelegate{
+    func OznerPairSucceed(deviceInfo: OznerDeviceInfo) {
+        wifiDevices.append(deviceInfo)
         self.performSegue(withIdentifier: "showsuccess", sender: nil)
-//        if tmpDevice?.type == currDeviceType
-//        {
-//            
-//        }else{
-//            self.performSegue(withIdentifier: "showfailed", sender: nil)
-//        }
-        
+    }
+    func OznerPairFailured(error: Error) {
+        self.performSegue(withIdentifier: "showfailed", sender: nil)
     }
     
 }

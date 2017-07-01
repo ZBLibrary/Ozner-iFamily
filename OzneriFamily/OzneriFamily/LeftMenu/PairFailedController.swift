@@ -15,11 +15,11 @@ class PairFailedController: UIViewController {
         _=self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func rePairClick(_ sender: AnyObject) {
-        if isBlueToothDevice==true {
-            let vcs=self.navigationController?.viewControllers
-            let vc=vcs?[(vcs?.count)!-2] as! PairingController
-            vc.StarBluePair()
-        }
+//        if isBlueToothDevice==true {
+//            let vcs=self.navigationController?.viewControllers
+//            let vc=vcs?[(vcs?.count)!-2] as! PairingController
+//            vc.StarBluePair()
+//        }
         _=self.navigationController?.popViewController(animated: true)
     }
     @IBOutlet var botoomState: UILabel!

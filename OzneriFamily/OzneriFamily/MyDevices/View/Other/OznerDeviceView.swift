@@ -17,18 +17,18 @@ enum DeviceViewStatus {
 class OznerDeviceView: UIView {
 
     var delegate:DeviceViewContainerDelegate!
-    var currentDevice:OznerDevice?
+    //var currentDevice:OznerDevice?
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
     }
     
-    func SensorUpdate(device: OznerDevice!) {
+    func SensorUpdate(identifier: String) {
         
             }
     //连接状态变化
-    func StatusUpdate(device: OznerDevice!,status:DeviceViewStatus) {
+    func StatusUpdate(identifier: String,status:DeviceViewStatus) {
         
     }
     

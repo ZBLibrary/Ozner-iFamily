@@ -18,7 +18,7 @@ class WaterPurfierTDSController: BaseViewController {
     @IBOutlet var tdsStateImg: UIImageView!
     @IBOutlet var tdsStateLabel: UILabel!
     @IBAction func shareClick(_ sender: AnyObject) {
-        let device=LoginManager.instance.currentDevice as! WaterPurifier
+        let device=OznerManager.instance.currentDevice as! WaterPurifier_Wifi
         let tdsValue = min(device.sensor.tds1,device.sensor.tds2)
         var rankValue=0
         var beatValue=0

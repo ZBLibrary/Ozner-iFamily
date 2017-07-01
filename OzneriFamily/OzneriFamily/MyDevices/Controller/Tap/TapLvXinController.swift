@@ -57,16 +57,16 @@ class TapLvXinController: BaseViewController {
         super.viewDidLoad()
         
         self.title = loadLanguage("滤芯状态")
-        let device=LoginManager.instance.currentDevice
+//        let device=OznerManager.instance.currentDevice
         let isBool = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
         
         hideView1.isHidden = isBool
         hideView2.isHidden = isBool
         hideView3.isHidden = isBool
        
-        let deviceType = OznerDeviceType.getType(type: device.type)
-        heightImgConstrant.constant = deviceType==OznerDeviceType.Water_Wifi ? 0:width_screen*613/375
-        if deviceType==OznerDeviceType.Water_Wifi {
+        let deviceType = ProductInfo.getDeviceClassFromProductID(productID: (OznerManager.instance.currentDevice?.deviceInfo.productID)!)
+        heightImgConstrant.constant = deviceType == OZDeviceClass.WaterPurifier_Wifi ? 0:width_screen*613/375
+        if deviceType==OZDeviceClass.WaterPurifier_Wifi {
             scanViewHeightConstraint.constant = (waterPurfierData?["scanEnable"] as! Bool) ? 118:0
             self.setLvXin(stopDate: (waterPurfierData?["lvXinStopDate"] as! NSDate) as NSDate, maxDays: 365)
             buyWaterLvXinUrl=(waterPurfierData?["buyLvXinUrl"] as! String)
@@ -76,7 +76,7 @@ class TapLvXinController: BaseViewController {
         }else{//探头
             //下载滤芯更新
             buyWaterLvXinUrl=(NetworkManager.defaultManager?.UrlNameWithRoot("goodsDetail39"))!
-            User.FilterService(deviceID: (LoginManager.instance?.currentDeviceIdentifier)!, success: { (usedDay, starDate) in
+            User.FilterService(deviceID: (OznerManager.instance.currentDevice?.deviceInfo.deviceMac)!, success: { (usedDay, starDate) in
                 self.setLvXin(stopDate: (starDate as NSDate).addingDays(30) as NSDate, maxDays: 30)
                 }, failure: { (error) in
                     

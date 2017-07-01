@@ -13,11 +13,11 @@ class EquidsCollectionViewController: BaseViewController {
 
     var colltionView: UICollectionView?
     var layout: UICollectionViewFlowLayout?
-    var deviceArrs:[OznerDevice]!
+    var deviceArrs:[OznerBaseDevice]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        deviceArrs = OznerManager.instance().getDevices() as! [OznerDevice]!
+        deviceArrs = OznerManager.instance.getAllDevices()
     
         self.title = loadLanguage("已有设备")
         
@@ -85,7 +85,7 @@ extension EquidsCollectionViewController: UICollectionViewDelegate,UICollectionV
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        LoginManager.instance.currentDeviceIdentifier=deviceArrs[indexPath.row].identifier
+        OznerManager.instance.currentDevice=deviceArrs[indexPath.row]
         LoginManager.instance.setTabbarSelected(index: 0)
     }
     

@@ -17,8 +17,8 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
 
     
     var mainViewController: UINavigationController!//设备视图控制器
-    var deviceArray:NSArray!//设备数组
-    var currentSelectCellIndex:Int=0//当前选中Cell Index
+    var deviceArray:[OznerBaseDevice]!//设备数组
+    //var currentSelectCellIndex:Int=0//当前选中Cell Index
     ///声明一个动画实例
     
     private let transition = GYFadeAnimator()
@@ -63,7 +63,7 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
         view.backgroundColor = UIColor.white
         icon_buble_add_device.image = UIImage(named: loadLanguage("icon_buble_add_device"))
         addDeviceLb.text = loadLanguage("添加新设备")
-        deviceArray=NSArray()
+        deviceArray=[OznerBaseDevice]()
         startLb.text = loadLanguage("开启浩泽智能生活")
         deviceLb.text = loadLanguage("选择智能设备")
         self.tableView.delegate=self
@@ -95,20 +95,10 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        deviceArray=OznerManager.instance().getDevices() as NSArray!
+        deviceArray=OznerManager.instance.getAllDevices()
         tableContainer.isHidden = deviceArray.count==0
-        currentSelectCellIndex=0
-        for i in 0..<deviceArray.count {
-            if (deviceArray[i] as! OznerDevice).identifier==LoginManager.instance.currentDeviceIdentifier
-            {
-                currentSelectCellIndex=i
-                break
-            }
-        }
-        
         self.tableView.reloadData()
-        
-        self.tableView.selectRow(at: IndexPath(row: currentSelectCellIndex, section: 0), animated: false, scrollPosition: .none)
+
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -133,10 +123,7 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
 
 extension LeftMenuController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tmpDevice = deviceArray[indexPath.row] as! OznerDevice
-        LoginManager.instance.currentDeviceIdentifier = tmpDevice.identifier
-        currentSelectCellIndex = indexPath.row
-
+        OznerManager.instance.currentDevice=deviceArray[indexPath.row]
         self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
     }
 }
@@ -150,9 +137,10 @@ extension LeftMenuController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "LeftMenuDeviceCell") as! LeftMenuDeviceCell
-        cell.device = deviceArray[indexPath.row] as! OznerDevice
-        cell.selectionStyle=UITableViewCellSelectionStyle.none
-                return cell
+        cell.device = deviceArray[indexPath.row]
+        cell.selectionStyle =  UITableViewCellSelectionStyle.none
+        cell.setSelected(deviceArray[indexPath.row].isCurrentDevice, animated: false)
+        return cell
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true

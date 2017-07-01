@@ -158,7 +158,7 @@ class CupMainView: OznerDeviceView {
             }
         }
     }
-    override func SensorUpdate(device: OznerDevice!) {
+    override func SensorUpdate(identifier: String) {
         //更新传感器视图
         TDS=Int((device as! Cup).sensor.tds)
         Temperature=Int((device as! Cup).sensor.temperature)
@@ -170,7 +170,7 @@ class CupMainView: OznerDeviceView {
         Drinking = record==nil ? 0:Double((record?.volume)!)
 
     }
-    override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
+    override func StatusUpdate(identifier: String, status: DeviceViewStatus) {
         //更新连接状态视图
     }
 
