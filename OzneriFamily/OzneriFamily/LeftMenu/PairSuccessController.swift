@@ -321,7 +321,14 @@ extension PairSuccessController: UICollectionViewDelegate,UICollectionViewDataSo
                            OznerDeviceType.Water_KitchenBLe:"水芯片配对图标3"][CurrDeviceType]
         
         cell.iconImage.image=UIImage(named: iconImgName!)
-        cell.nameLabel.text=CurrDeviceType.Name()
+        
+        
+        #if DEBUG
+//            cell.nameLabel.text=CurrDeviceType.rawValue
+            cell.nameLabel.text=CurrDeviceType.Name()
+        #else
+            cell.nameLabel.text=CurrDeviceType.Name()
+        #endif
         
         //默认锁定第一个
         cell.finishImage.isHidden = pairModel[indexPath.row].isHidden

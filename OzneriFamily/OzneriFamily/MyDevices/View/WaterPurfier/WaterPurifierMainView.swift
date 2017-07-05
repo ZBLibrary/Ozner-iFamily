@@ -158,19 +158,19 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
             break
         case 6666:
             
-            if (device?.setHotTemp(80))! {
+            if (device?.setHotTemp(85))! {
                 cornerBtn(sender)
-                valueSlider.value = 80
+                valueSlider.value = 85
             }
             break
         case 7777:
-            if (device?.setHotTemp(95))! {
+            if (device?.setHotTemp(99))! {
                 cornerBtn(sender)
-                valueSlider.value = 95
+                valueSlider.value = 99
             }
             break
         case 8888:
-            let value = UserDefaults.standard.value(forKey: "UISliderValue") ?? 44
+            let value = UserDefaults.standard.value(forKey: "UISliderValue") ?? 40
             if (device?.setHotTemp(Int32(value as! Int)))! {
                 cornerBtn(sender)
                 valueSlider.value = value as! Float

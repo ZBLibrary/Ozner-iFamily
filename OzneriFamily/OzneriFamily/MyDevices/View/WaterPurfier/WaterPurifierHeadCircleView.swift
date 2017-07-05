@@ -39,6 +39,7 @@ class WaterPurifierHeadCircleView: UIView {
             context?.addArc(center: CGPoint(x: rect.size.width/2, y: rect.size.width/2), radius: rect.size.width/2-20, startAngle: -CGFloat(M_PI), endAngle: 0, clockwise: false)//clockwise顺时针
             context!.strokePath()
         }
+        
         //TDS线
         for i in 0...1 {
             
