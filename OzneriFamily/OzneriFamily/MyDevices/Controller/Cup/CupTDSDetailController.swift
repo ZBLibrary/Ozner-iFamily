@@ -37,7 +37,7 @@ class CupTDSDetailController: BaseViewController {
     }
     var rankValue = 0 //排名
     var beatValue = 0 //打败了百分之多少的用户
-    var tdsValue=Int32(0)
+    var tdsValue=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +58,8 @@ class CupTDSDetailController: BaseViewController {
             zixunBtn.isHidden = false
         }
 
-        let device = LoginManager.instance.currentDevice as! Cup
-        tdsValue=device.sensor.tds==65535 ? 0 :device.sensor.tds
+        let device = OznerManager.instance.currentDevice as! Cup
+        tdsValue=device.sensor.TDS
         tdsValueLabel.text = tdsValue==0 ? "-":"\(tdsValue)"
         switch true
         {
@@ -78,7 +78,7 @@ class CupTDSDetailController: BaseViewController {
         }
         //TDS排名
         
-        User.TDSSensor(deviceID: device.identifier, type: device.type, tds: Int(tdsValue), beforetds: 0, success: { (rank, total) in
+        User.TDSSensor(deviceID: device.deviceInfo.deviceMac, type: device.deviceInfo.deviceType, tds: tdsValue, beforetds: 0, success: { (rank, total) in
             self.rankValue = rank
             self.beatValue = Int(100*CGFloat(total-rank)/CGFloat(total))
             self.rankLabel.text="\(rank)"
@@ -101,7 +101,7 @@ class CupTDSDetailController: BaseViewController {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        chartCont.InitSetView(volumes: device.volumes, sensorType: 0)
+        chartCont.InitSetView(volumes: device.records, sensorType: 0)
         
         
         

@@ -10,7 +10,7 @@ import UIKit
 
 class CupDrinkingChartView: UIView {
 
-    var volumes:CupRecordList!
+    var volumes:OznerCupRecords!
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -59,36 +59,17 @@ class CupDrinkingChartView: UIView {
         for i in 0..<pointCount {//初始化点
             pointsArr[i]=CGPoint(x: CGFloat(i)*width/CGFloat(pointCount), y: height)
             
-        }
-        let tmpStr=NSDate().formattedDate(withFormat: "YYYY-MM-DD")
-        var date = NSDate(string: tmpStr!+" 00:00:00", formatString: "YYYY-MM-DD hh:mm:ss")
-        if segIndex==1 {
-            let weakIndex=(date?.weekday())!-2
-            date=date?.addingDays(-weakIndex) as NSDate?
-        }else if segIndex==2 {
-            let monthIndex=(date?.day())!-1
-            date=date?.addingDays(-monthIndex) as NSDate?
-        }
-        let arr = volumes.getRecordBy(date as Date!, interval: [Hour,Day,Day][segIndex]) as! [CupRecord]
+        }        
+        let arr = volumes.getRecord(type: [.day,.weak,.month][segIndex])
         
         for item in arr {
-            let tmpDate = item.start as NSDate
-            let volume=item.volume
+            let volume=item.value.Volume
             let maxvolume = [500,3000,3000][segIndex]
             var tmpPercent=CGFloat(volume)/CGFloat(maxvolume)
             tmpPercent=min(tmpPercent, 1.1)
-            var indexOfDay=0
-            switch segIndex {
-            case 0:
-                indexOfDay=tmpDate.hour()
-            case 1:
-                indexOfDay=(tmpDate.weekday()-2) < 0 ? 6:(tmpDate.weekday()-2)
-            case 2:
-                indexOfDay=tmpDate.day()-1
-            default:
-                break
-            }
-            pointsArr[indexOfDay]=CGPoint(x: (pointsArr[indexOfDay]?.x)!, y: (1-tmpPercent)*height)
+            let index=item.key
+            
+            pointsArr[index]=CGPoint(x: (pointsArr[index]?.x)!, y: (1-tmpPercent)*height)
         }
         return pointsArr
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class CupTDSDetailCilcleView: UIView {
 
-    var volumes:CupRecordList!
+    var volumes:OznerCupRecords!
     
     
     @IBOutlet var leftButton: UIButton!
@@ -22,7 +22,7 @@ class CupTDSDetailCilcleView: UIView {
     
     @IBOutlet var circleViewContaniner: UIView!
     var tdsCircleView: CupTDSCircleView!
-    func setInitView(WhitchType:Int,Volumes:CupRecordList!) {
+    func setInitView(WhitchType:Int,Volumes:OznerCupRecords!) {
         tdsCircleView = Bundle.main.loadNibNamed("CupTDSCircleView", owner: nil, options: nil)?.last as! CupTDSCircleView
         tdsCircleView.frame=circleViewContaniner.frame
         circleViewContaniner.addSubview(tdsCircleView)
@@ -54,48 +54,60 @@ class CupTDSDetailCilcleView: UIView {
         didSet{
            leftButton.isHidden = switchDate==0
            rightButton.isHidden = switchDate==2
-            var starDate=NSDate()
-            starDate=NSDate(string: starDate.formattedDate(withFormat: "YYYY-MM-dd")+" 00:00:00", formatString: "YYYY-MM-dd hh:mm:ss")
-            switch switchDate {
-            case 1:
-                let  weakIndex = starDate.weekday()-2 < 0 ? 6:(starDate.weekday()-2)
-                starDate=starDate.addingDays(-weakIndex) as NSDate
-            case 2:
-                let  weakIndex = starDate.day()-1
-                starDate=starDate.addingDays(-weakIndex) as NSDate
-            default:
-                break
-            }
+            
+            
             if volumes==nil {
                 tdsCircleView.UpdateCircle(type: whitchType, state1: 0, state2: 0, state3: 0)
                 return
             }
-            if let record=volumes.getRecordBy(starDate as Date!){
-                
-                let totalCount = record.count
-                if totalCount>0 {
-                    let tmp1=whitchType==0 ? Float(record.tds_Good)/Float(totalCount):Float(record.temperature_Low)/Float(totalCount)
-                    var tmp2=whitchType==0 ? Float(record.tds_Mid)/Float(totalCount):Float(record.temperature_Mid)/Float(totalCount)
-                    
-                    let tmp3=whitchType==0 ? Float(record.tds_Bad)/Float(totalCount):Float(record.temperature_High)/Float(totalCount)
-                    var tmp3need=0
-                    if (100-Int(tmp1*100)-Int(tmp2*100))==1&&tmp3==0
-                    {
-                        tmp3need=0
-                        tmp2+=0.01
+            let record=volumes.getRecord(type: [.day,.weak,.month][switchDate])
+            let totalCount = record.count
+            if totalCount>0 {
+                var tmp1=Float(0)
+                var tmp2=Float(0)
+                var tmp3=Float(0)
+                if whitchType==0 {
+                    for item in record {
+                        switch true {
+                        case item.value.TDS<tds_good:
+                            tmp1+=Float(1)/Float(totalCount)
+                        case item.value.TDS>tds_bad:
+                            tmp3+=Float(1)/Float(totalCount)
+                        default:
+                            tmp2+=Float(1)/Float(totalCount)
+                        }
                     }
-                    else
-                    {
-                        tmp3need=100-Int(tmp1*100)-Int(tmp2*100)
+                }else{
+                    for item in record {
+                        switch true {
+                        case item.value.Temperature<temperature_low:
+                            tmp1+=Float(1)/Float(totalCount)
+                        case item.value.TDS>temperature_high:
+                            tmp3+=Float(1)/Float(totalCount)
+                        default:
+                            tmp2+=Float(1)/Float(totalCount)
+                        }
                     }
-                    topLabel1.text = ( whitchType==0 ? loadLanguage("较差"):loadLanguage("偏烫"))+"(\(tmp3need)%)"
-                    topLabel2.text = (whitchType==0 ? loadLanguage("一般"):loadLanguage("适中"))+"(\(Int(tmp2*100))%)"
-                    topLabel3.text = (whitchType==0 ? loadLanguage("健康"):loadLanguage("偏凉"))+"(\(Int(tmp1*100))%)"
-                    tdsCircleView.UpdateCircle(type: whitchType, state1: tmp3need, state2: Int(tmp2*100), state3: Int(tmp1*100))
-                    return
                 }
                 
+                var tmp3need=0
+                if (100-Int(tmp1*100)-Int(tmp2*100))==1&&tmp3==0
+                {
+                    tmp3need=0
+                    tmp2+=0.01
+                }
+                else
+                {
+                    tmp3need=100-Int(tmp1*100)-Int(tmp2*100)
+                }
+                topLabel1.text = ( whitchType==0 ? loadLanguage("较差"):loadLanguage("偏烫"))+"(\(tmp3need)%)"
+                topLabel2.text = (whitchType==0 ? loadLanguage("一般"):loadLanguage("适中"))+"(\(Int(tmp2*100))%)"
+                topLabel3.text = (whitchType==0 ? loadLanguage("健康"):loadLanguage("偏凉"))+"(\(Int(tmp1*100))%)"
+                tdsCircleView.UpdateCircle(type: whitchType, state1: tmp3need, state2: Int(tmp2*100), state3: Int(tmp1*100))
+                return
             }
+            
+            
             tdsCircleView.UpdateCircle(type: whitchType, state1: 0, state2: 0, state3: 0)
             
             

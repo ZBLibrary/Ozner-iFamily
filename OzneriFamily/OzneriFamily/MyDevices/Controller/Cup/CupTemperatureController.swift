@@ -79,7 +79,7 @@ class CupTemperatureController: BaseViewController {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        chartCont.InitSetView(volumes: device.volumes, sensorType: 1)
+        chartCont.InitSetView(volumes: device.records, sensorType: 1)
         
         // Do any additional setup after loading the view.
     }

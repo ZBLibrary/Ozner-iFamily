@@ -145,8 +145,8 @@ class MyCenterController: BaseViewController {
 //            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"fanhui"), style: UIBarButtonItemStyle.done, target: self, action: #selector(MyCenterController.backAction))
         }
         
-        let devices=OznerManager.instance().getDevices()        
-        headView.infoNumLb.text="\(Int((devices?.count)!))"
+        let devices=OznerManager.instance.getAllDevices()
+        headView.infoNumLb.text="\(devices?.count)"
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

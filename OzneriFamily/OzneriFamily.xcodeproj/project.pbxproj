@@ -140,7 +140,7 @@
 		8D1EF39F1D93DE050009D034 /* OzneriFamilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF39E1D93DE050009D034 /* OzneriFamilyTests.swift */; };
 		8D1EF3AA1D93DE050009D034 /* OzneriFamilyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3A91D93DE050009D034 /* OzneriFamilyUITests.swift */; };
 		8D1EF3C51D93F01F0009D034 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */; };
-		8D36D2CA1F06234A0091EB1F /* AirPurifier_Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2611F06234A0091EB1F /* AirPurifier_Bluetooth.swift */; };
+		8D36D2CA1F06234A0091EB1F /* AirPurifier_Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2611F06234A0091EB1F /* AirPurifier_Blue.swift */; };
 		8D36D2CB1F06234A0091EB1F /* AirPurifier_Wifi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2631F06234A0091EB1F /* AirPurifier_Wifi.swift */; };
 		8D36D2CC1F06234A0091EB1F /* BaseDeviceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2651F06234A0091EB1F /* BaseDeviceSetting.swift */; };
 		8D36D2CD1F06234A0091EB1F /* OznerBaseDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2661F06234A0091EB1F /* OznerBaseDevice.swift */; };
@@ -671,7 +671,7 @@
 		8D1EF3A91D93DE050009D034 /* OzneriFamilyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzneriFamilyUITests.swift; sourceTree = "<group>"; };
 		8D1EF3AB1D93DE050009D034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1EF3C41D93F01F0009D034 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		8D36D2611F06234A0091EB1F /* AirPurifier_Bluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPurifier_Bluetooth.swift; sourceTree = "<group>"; };
+		8D36D2611F06234A0091EB1F /* AirPurifier_Blue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPurifier_Blue.swift; sourceTree = "<group>"; };
 		8D36D2631F06234A0091EB1F /* AirPurifier_Wifi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPurifier_Wifi.swift; sourceTree = "<group>"; };
 		8D36D2651F06234A0091EB1F /* BaseDeviceSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDeviceSetting.swift; sourceTree = "<group>"; };
 		8D36D2661F06234A0091EB1F /* OznerBaseDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerBaseDevice.swift; sourceTree = "<group>"; };
@@ -1620,7 +1620,7 @@
 		8D36D25F1F06234A0091EB1F /* DeviceManager */ = {
 			isa = PBXGroup;
 			children = (
-				8D36D2601F06234A0091EB1F /* AirPurifier_Bluetooth */,
+				8D36D2601F06234A0091EB1F /* AirPurifier_Blue */,
 				8D36D2621F06234A0091EB1F /* AirPurifier_Wifi */,
 				8D36D2641F06234A0091EB1F /* BaseDevice */,
 				8D36D2671F06234A0091EB1F /* Cup */,
@@ -1633,11 +1633,12 @@
 			path = DeviceManager;
 			sourceTree = "<group>";
 		};
-		8D36D2601F06234A0091EB1F /* AirPurifier_Bluetooth */ = {
+		8D36D2601F06234A0091EB1F /* AirPurifier_Blue */ = {
 			isa = PBXGroup;
 			children = (
-				8D36D2611F06234A0091EB1F /* AirPurifier_Bluetooth.swift */,
+				8D36D2611F06234A0091EB1F /* AirPurifier_Blue.swift */,
 			);
+			name = AirPurifier_Blue;
 			path = AirPurifier_Bluetooth;
 			sourceTree = "<group>";
 		};
@@ -3747,7 +3748,7 @@
 				8D36D2DD1F06234A0091EB1F /* BabyBLEIO.m in Sources */,
 				B7753A921E10F16000F39427 /* GYNavViewController.swift in Sources */,
 				8DC02EA81DB5D100007F57DB /* SCLExtensions.swift in Sources */,
-				8D36D2CA1F06234A0091EB1F /* AirPurifier_Bluetooth.swift in Sources */,
+				8D36D2CA1F06234A0091EB1F /* AirPurifier_Blue.swift in Sources */,
 				E0745AC11EE94ED200CB39CC /* UdeskVoiceRecordHelper.m in Sources */,
 				B717E8031E0BAB5400B6DEBD /* ICChatBox.m in Sources */,
 				E0745AAF1EE94ED200CB39CC /* UdeskAgentSurvey.m in Sources */,

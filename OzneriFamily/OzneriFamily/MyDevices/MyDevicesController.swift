@@ -27,20 +27,20 @@ class MyDevicesController: UIViewController {
     
     
     @IBAction func lvXinClick(_ sender: AnyObject) {
-        let device=LoginManager.instance.currentDevice
-        switch  OznerDeviceType.getType(type: device.type) {
-        case OznerDeviceType.Tap:
+        
+        switch  ProductInfo.getCurrDeviceClass() {
+        case .Tap:
            self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
-        case .Water_Wifi:
+        case .WaterPurifier_Wifi:
             let tmpDeviceView = deviceViewContainer.currentDeviceView as! WaterPurifierMainView
             let senderData=["buyLvXinUrl":tmpDeviceView.buyLvXinUrl,
              "scanEnable":tmpDeviceView.scanEnable,
              "lvXinStopDate":tmpDeviceView.lvXinStopDate,
              "lvXinUsedDays":tmpDeviceView.lvXinUsedDays] as [String : Any]
             self.performSegue(withIdentifier: "toTapLvXin", sender: senderData)
-        case .Air_Blue,.Air_Wifi:
+        case .AirPurifier_Wifi,.AirPurifier_Blue:
             self.performSegue(withIdentifier: "showAirLvXin", sender: nil)
-        case .Water_Bluetooth:
+        case .WaterPurifier_Blue:
             let vc = RoWaterPuefierLvXinController()
             self.navigationController?.pushViewController(vc, animated: true)
         default:
@@ -49,17 +49,17 @@ class MyDevicesController: UIViewController {
 
     }
     @IBAction func toDeviceSettingClick(_ sender: AnyObject) {//点击设置按钮事件
-        let device=LoginManager.instance.currentDevice
-        switch  OznerDeviceType.getType(type: device.type) {
-        case OznerDeviceType.Cup:
+        
+        switch  ProductInfo.getCurrDeviceClass() {
+        case .Cup:
             self.performSegue(withIdentifier: "showCupSetting", sender: nil)
         case .Tap:
             self.performSegue(withIdentifier: "showTapSetting", sender: nil)
         case .TDSPan:
             self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
-        case .Water_Wifi,.Water_Bluetooth,.Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
+        case .WaterPurifier_Blue,.WaterPurifier_Wifi:
             self.performSegue(withIdentifier: "showWaterPurfierSetting", sender: nil)
-        case .Air_Blue,.Air_Wifi:
+        case .AirPurifier_Blue,.AirPurifier_Wifi:
             self.performSegue(withIdentifier: "showAirSetting", sender: nil)
         case .WaterReplenish:
             self.performSegue(withIdentifier: "showWaterReplenishSetting", sender: nil)

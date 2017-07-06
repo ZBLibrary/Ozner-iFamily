@@ -9,14 +9,14 @@
 import UIKit
 //TDSPan type:SCP001
 //Tap type:SC001
-extension Tap{
-    override open var type:String{
-        set{}
-        get{
-            let tmpType=self.settings.get("IsTDSPan", default: "false") as! String
-            return tmpType=="true" ? "SCP001":"SC001"
-        }
-    }
-    
-}
+//extension Tap{
+//    override open var type:String{
+//        set{}
+//        get{
+//            let tmpType=self.settings.get("IsTDSPan", default: "false") as! String
+//            return tmpType=="true" ? "SCP001":"SC001"
+//        }
+//    }
+//    
+//}
 

@@ -27,7 +27,8 @@ class TapMainView: OznerDeviceView {
     override func draw(_ rect: CGRect) {
         // Drawing code
         lastDayOfMonth.text="\(NSDate().daysInMonth())"
-        if self.currentDevice?.type==OznerDeviceType.TDSPan.rawValue {//隐藏尾部视图
+        
+        if ProductInfo.getCurrDeviceClass() == .TDSPan {//隐藏尾部视图
             footerContainerView.isHidden=true
         }
     }
@@ -66,14 +67,14 @@ class TapMainView: OznerDeviceView {
                 circleView.updateCircleView(angle: angle)
                 //下载打败了多少人的数据
                 weak var weakself=self
-                User.TDSSensor(deviceID: (self.currentDevice?.identifier)!, type: (self.currentDevice?.type)!, tds: TDS, beforetds: 0, success: { (rank, total) in
+                User.TDSSensor(deviceID: (self.currentDevice?.deviceInfo.deviceMac)!, type: (self.currentDevice?.deviceInfo.deviceType)!, tds: TDS, beforetds: 0, success: { (rank, total) in
                     let beat =  100*CGFloat(total-rank)/CGFloat(total)
                     weakself?.tdsBeatLabel.text=loadLanguage("击败了")+"\(Int(beat))%"+loadLanguage("的用户")
                     }, failure: { (error) in
                         print(error.localizedDescription)
                 })
                 
-                if self.currentDevice?.type != OznerDeviceType.TDSPan.rawValue {
+                if ProductInfo.getCurrDeviceClass() != .TDSPan {
                     SetTapMonthView()
                 }
             }
@@ -82,11 +83,11 @@ class TapMainView: OznerDeviceView {
     private func SetTapMonthView(){
         let nowDate = NSDate()
         let dateStarOfNow = NSDate(string: "\(nowDate.year())-\(nowDate.month())-01 00:00:01", formatString: "yyyy-MM-dd HH:mm:ss")
-        let recordArr=(self.currentDevice as! Tap).recordList.getRecordsBy(dateStarOfNow as Date!) as NSArray
+        let recordArr=(self.currentDevice as! Tap).monthRecords
         chartView.updateCircleView(dataArr: recordArr)
         SetBotoomText(recordArr: recordArr)
     }
-    private func SetBotoomText(recordArr:NSArray)  {
+    private func SetBotoomText(recordArr:[Int:Int])  {
         if recordArr.count==0 {
             goodOfMonthLabel.text=loadLanguage("健康(0%)")
             generalOfMonthLabel.text=loadLanguage("一般(0%)")
@@ -97,9 +98,9 @@ class TapMainView: OznerDeviceView {
         var generalTDSCount = 0
         var badTDSCount = 0
         for item in recordArr {
-            goodTDSCount += (item as! TapRecord).tds<=tds_good ? 1:0
-            generalTDSCount += (item as! TapRecord).tds<=tds_bad ? 1:0
-            badTDSCount += (item as! TapRecord).tds>tds_bad ? 1:0
+            goodTDSCount += item.value<=tds_good ? 1:0
+            generalTDSCount += item.value<=tds_bad ? 1:0
+            badTDSCount += item.value>tds_bad ? 1:0
         }
         generalTDSCount=generalTDSCount-goodTDSCount
         if badTDSCount==0 {
@@ -112,11 +113,11 @@ class TapMainView: OznerDeviceView {
             badOfMonthLabel.text=loadLanguage("较差")+"(\(100-Int(100*goodTDSCount/recordArr.count)-Int(100*generalTDSCount/recordArr.count))%)"
         }
     }
-    override func SensorUpdate(device: OznerDevice!) {
-        //更新传感器视图
-        TDS=Int((device as! Tap).sensor.tds)
+    override func SensorUpdate(identifier: String) {
+        //更新传感器视图        
+        TDS=(OznerManager.instance.currentDevice as! Tap).sensor.TDS
     }
-    override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
+    override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         //更新连接状态视图
     }
 }

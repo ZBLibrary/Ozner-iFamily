@@ -28,7 +28,7 @@ class CupColorBoardView: UIView {
             let components = (color?.cgColor)?.components
             var tmpColor = (components?[0])!*255*256*256
             tmpColor+=(components?[1])!*255*256+(components?[2])!*255
-            cup.settings.haloColor=uint(tmpColor)
+            cup.settings.SetValue(key: "haloColor", value: "\(uint(tmpColor))")
             OznerManager.instance.saveDevice(device: cup)
             
         }
@@ -36,8 +36,8 @@ class CupColorBoardView: UIView {
         self.addSubview(wheel2)
         
         //色环颜色初始化
-        let tmpCgcolor=cup.settings.haloColor
-        self._colorCenterView.backgroundColor = UIColorFromRGB(UInt(tmpCgcolor))
+        let tmpCgcolor=UInt(cup.settings.GetValue(key: "haloColor", defaultValue: "4278255360"))
+        self._colorCenterView.backgroundColor = UIColorFromRGB(tmpCgcolor!)
     }
     
 

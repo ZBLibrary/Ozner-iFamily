@@ -58,7 +58,7 @@ class LeftMenuDeviceCell: UITableViewCell {
         connectLabel.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor(white: 0, alpha: 0.3)
         deviceName.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor(hexString: "#6d85a0")
         deviceAdressLabel.textColor=selected ? UIColor(hexString: "#39a7f2"):UIColor(white: 0, alpha: 0.3)
-        let imgNameStr=imgArr[OznerDeviceType.getType(type: (device?.type)!)]?[selected.hashValue]
+        let imgNameStr=imgArr[ProductInfo.getDeviceClassFromProductID(productID: device.deviceInfo.productID)]?[selected.hashValue]
         deviceImg.image=UIImage(named: imgNameStr as! String)
         // Configure the view for the selected state
         

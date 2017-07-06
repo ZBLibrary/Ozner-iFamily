@@ -74,9 +74,9 @@ class CupDrinkingController: BaseViewController {
         segement.setTitle(loadLanguage("日"), forSegmentAt: 0)
         segement.setTitle(loadLanguage("周"), forSegmentAt: 1)
         segement.setTitle(loadLanguage("月"), forSegmentAt: 2)
-        let device = LoginManager.instance.currentDevice as! Cup
+        let device = OznerManager.instance.currentDevice as! Cup
         let dateStr=NSDate().formattedDate(withFormat: "YYYY-MM-DD")+" 00:00:00"
-        drinkGoal=Int(device.settings.get("drink", default: "2000") as! String)!
+        drinkGoal=Int(device.settings.GetValue(key: "drink", defaultValue: "2000"))!
            zixunBtn.setTitle(loadLanguage("咨询"), for: UIControlState.normal)
         buyBtn.setTitle(loadLanguage("购买净水器"), for: UIControlState.normal)
         healthyBtn.setTitle(loadLanguage("健康水知道 "), for: UIControlState.normal)
@@ -89,18 +89,17 @@ class CupDrinkingController: BaseViewController {
           bootomHideView.isHidden = false
             zixunBtn.isHidden = true
         }
-        if let record = device.volumes.getRecordBy(NSDate(string: dateStr, formatString: "YYYY-MM-DD hh:mm:ss") as Date!)
-        {
-            if drinkGoal==0 {
-                todayDrink=100
-                
-            }else{
-                todayDrink=Int((CGFloat(record.volume)/CGFloat(drinkGoal)) * CGFloat(100))
-            }
-            drinkValueLabel.text="\(todayDrink)%"
-        }else{
-            drinkValueLabel.text="-"
+        let record = device.records.getRecord(type: CupRecordType.day)
+        for item in record {
+            todayDrink+=item.value.Volume
         }
+        if drinkGoal==0 {
+            todayDrink=100
+        }else{
+            todayDrink=Int((CGFloat(todayDrink)/CGFloat(drinkGoal)) * CGFloat(100))
+        }
+        drinkValueLabel.text="\(todayDrink)%"
+
         
         switch true
         {
@@ -128,7 +127,7 @@ class CupDrinkingController: BaseViewController {
         })
         
         //chart
-        chartView.volumes=device.volumes
+        chartView.volumes=device.records
         // Do any additional setup after loading the view.
     }
 

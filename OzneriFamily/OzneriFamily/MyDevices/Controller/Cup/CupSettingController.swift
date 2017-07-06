@@ -33,26 +33,26 @@ class CupSettingController: DeviceSettingController {
     let normalcolor=UIColor(red: 95/255, green: 95/255, blue: 95/255, alpha: 1)
     let selectcolor=UIColor(red: 77/255, green: 145/255, blue: 250/255, alpha: 1)
     @IBAction func todayStateClick(_ sender: UIButton) {
-        let buttonStateIsOn = !((self.deviceSetting.get("todayState\(sender.tag+1)", default: "false") as! String)=="true")
+        let buttonStateIsOn = !(self.deviceSetting.GetValue(key: "todayState\(sender.tag+1)", defaultValue: "false")=="true")
         let imgName = [false:["setmystate1","setmystate2","setmystate3","setmystate4"],
                    true:["setmystate1c","setmystate2c","setmystate3c","setmystate4c"]][buttonStateIsOn]?[sender.tag]
         
         [todayStateButton1,todayStateButton2,todayStateButton3,todayStateButton4][sender.tag]?.setImage(UIImage(named: imgName!), for: .normal)
         [todayStateLabel1,todayStateLabel2,todayStateLabel3,todayStateLabel4][sender.tag]?.textColor = buttonStateIsOn ? selectcolor:normalcolor
-        self.deviceSetting.put("todayState\(sender.tag+1)", value: buttonStateIsOn ? "true":"false")
+        self.deviceSetting.SetValue(key: "todayState\(sender.tag+1)", value: buttonStateIsOn ? "true":"false")
         let drinkValue = Int(drinkingLabel.text!)!+(buttonStateIsOn ? 50:(-50))
         drinkingLabel.text="\(drinkValue)"
-        self.deviceSetting.put("drink", value:"\(drinkValue)")
+        self.deviceSetting.SetValue(key: "drink", value:"\(drinkValue)")
     }
    
     //饮水时间提醒
     @IBOutlet var drinkRemaindTimeLabel: UILabel!
     @IBOutlet var drinkRemindSpaceLabel: UILabel!
     @IBAction func drinkRemindSpaceClick(_ sender: UITapGestureRecognizer) {
-        let timeSpace = Int((self.deviceSetting as! CupSettings).remindInterval)
+        let timeSpace = Int(self.deviceSetting.GetValue(key: "remindInterval", defaultValue: "15"))!
         let index=[15:0,30:1,45:2,60:3,120:4][timeSpace]
         pickDateView.setView(valueIndex: index!, OKClick: { (value) in
-            (self.deviceSetting as! CupSettings).remindInterval=uint(value)
+            self.deviceSetting.SetValue(key: "remindInterval", value: "\(value)")
             self.drinkRemindSpaceLabel.text="\(value%60+value/60)"+(value>=60 ? loadLanguage("小时"):loadLanguage("分钟"))
             self.pickDateView.removeFromSuperview()
         }) {
@@ -61,14 +61,14 @@ class CupSettingController: DeviceSettingController {
         UIApplication.shared.keyWindow?.addSubview(pickDateView)
     }
     @IBAction func cupVoiceSwitch(_ sender: UISwitch) {
-        (self.deviceSetting as! CupSettings).remindEnable=sender.isOn
+        self.deviceSetting.SetValue(key: "remindEnable", value: "\(sender.isOn.hashValue)")
     }
     @IBAction func phoneSwitch(_ sender: UISwitch) {
         if sender.isOn {
-            let repeatInter = Int((self.deviceSetting as! CupSettings).remindInterval)
-            let starTime = Int((self.deviceSetting as! CupSettings).remindStart/60)
-            let endTime = Int((self.deviceSetting as! CupSettings).remindEnd/60)
-            LocalNotificationHelper.addCupNotice(repeatInter: repeatInter, starTime: starTime, endTime: endTime)
+            let repeatInter = Int(self.deviceSetting.GetValue(key: "remindInterval", defaultValue: "15"))
+            let starTime = Int(self.deviceSetting.GetValue(key: "remindStart", defaultValue: "\(9*3600)"))!/60
+            let endTime = Int(self.deviceSetting.GetValue(key: "remindEnd", defaultValue: "\(9*3600)"))!/60
+            LocalNotificationHelper.addCupNotice(repeatInter: repeatInter!, starTime: starTime, endTime: endTime)
         }else{
             LocalNotificationHelper.removeNoticeForKey(key: "CupRemind")
         }
@@ -100,8 +100,8 @@ class CupSettingController: DeviceSettingController {
         deleteBtn.setTitle(loadLanguage("删除此设备"), for: UIControlState.normal)
         tempSegement.setTitle(loadLanguage("饮水温度"), forSegmentAt: 0)
         tempSegement.setTitle(loadLanguage("饮水纯净指数TDS"), forSegmentAt: 1)
-        weightTF.text=self.deviceSetting.get("weight", default: "56") as! String?
-        drinkingLabel.text=self.deviceSetting.get("drink", default: "2000") as! String?
+        weightTF.text=self.deviceSetting.GetValue(key: "weight", defaultValue: "56")
+        drinkingLabel.text=self.deviceSetting.GetValue(key: "drink", defaultValue: "2000")
         
         if !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber) {
             
@@ -111,15 +111,7 @@ class CupSettingController: DeviceSettingController {
         
         for i in 0...3 {
            
-            let v = self.deviceSetting.get("todayState\(i+1)", default: "false")
-            
-            let v1 = v as? String
-            
-            guard v1 != nil else {
-                return
-            }
-            
-            let buttonStateIsOn = (self.deviceSetting.get("todayState\(i+1)", default: "false")  as! String)=="true"
+            let buttonStateIsOn = self.deviceSetting.GetValue(key: "todayState\(i+1)", defaultValue: "false")=="true"
             let imgName = [false:["setmystate1","setmystate2","setmystate3","setmystate4"],
                            true:["setmystate1c","setmystate2c","setmystate3c","setmystate4c"]][buttonStateIsOn]?[i]
             
@@ -128,8 +120,8 @@ class CupSettingController: DeviceSettingController {
         }
         weightTF.addDoneOnKeyboard(withTarget: self, action:  #selector(weightTFDone))
         
-        let starTime=Int((self.deviceSetting as! CupSettings!).remindStart)
-        let endTime=Int((self.deviceSetting as! CupSettings!).remindEnd)
+        let starTime=Int(self.deviceSetting.GetValue(key: "remindStart", defaultValue: "\(9*3600)"))!
+        let endTime=Int(self.deviceSetting.GetValue(key: "remindEnd", defaultValue: "\(19*3600)"))!
         drinkRemaindTimeLabel.text="\(starTime/3600):\(starTime%3600/60)-\(endTime/3600):\(endTime%3600/60)"
         // Do any additional setup after loading the view.
         //饮水时间间隔
@@ -137,7 +129,7 @@ class CupSettingController: DeviceSettingController {
         pickDateView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         pickDateView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
         
-        let timeSpace = Int((self.deviceSetting as! CupSettings).remindInterval)
+        let timeSpace = Int(self.deviceSetting.GetValue(key: "remindInterval", defaultValue: "15"))!
          self.drinkRemindSpaceLabel.text="\(timeSpace%60+timeSpace/60)"+(timeSpace>=60 ? loadLanguage("小时"):loadLanguage("分钟"))
     }
     func weightTFDone(){
@@ -149,8 +141,8 @@ class CupSettingController: DeviceSettingController {
         }else{
             drinkingLabel.text="\(Int(tmpWeightStr)!*2000/56)"
         }
-        self.deviceSetting.put("drink", value: drinkingLabel.text!)
-        self.deviceSetting.put("weight", value: weightTF.text!)
+        self.deviceSetting.SetValue(key: "drink", value: drinkingLabel.text!)
+        self.deviceSetting.SetValue(key: "weight", value: weightTF.text!)
         
         weightTF.resignFirstResponder()
     }
@@ -177,7 +169,7 @@ class CupSettingController: DeviceSettingController {
         }
         if segue.identifier=="showCupSetDrinkTime" {
             let VC=segue.destination as!  CupSetDrinkTimeController
-            VC.currSetting=self.deviceSetting as! CupSettings!
+            VC.currSetting=self.deviceSetting
         }
     }
  

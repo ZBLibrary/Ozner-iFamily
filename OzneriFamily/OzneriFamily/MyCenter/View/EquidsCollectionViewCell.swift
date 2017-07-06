@@ -26,26 +26,28 @@ class EquidsCollectionViewCell: UICollectionViewCell {
     
     
     }
-    func update(device:OznerDevice!)
+    func update(device:OznerBaseDevice!)
     {
-        equipNameLabel.text = loadLanguage(OznerDeviceType.getType(type: device.type).Name())
+        
+        let deviceClass=ProductInfo.getDeviceClassFromProductID(productID: device.deviceInfo.productID)
+        equipNameLabel.text = loadLanguage(ProductInfo.getNameFromProductID(productID: device.deviceInfo.productID))
         var imgwhich=""
-        switch OznerDeviceType.getType(type: device.type) {
-        case OznerDeviceType.Cup:
+        switch deviceClass {
+        case .Cup:
             imgwhich+="My_cup"
         case .Tap:
             imgwhich+="My_tantou"
         case .TDSPan:
             imgwhich+="My_tantou"
-        case .Water_Wifi:
+        case .WaterPurifier_Wifi:
             imgwhich+="My_shuiji"
-        case .Air_Blue:
+        case .AirPurifier_Blue:
             imgwhich+="My_kongjing_small"
-        case .Air_Wifi,.Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
+        case .AirPurifier_Wifi:
             imgwhich+="My_kongjing_big"
         case .WaterReplenish:
             imgwhich+="My_bsy"
-        case .Water_Bluetooth:
+        case .WaterPurifier_Blue:
             imgwhich+="My_shuiji"
 
         }

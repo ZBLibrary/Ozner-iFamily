@@ -89,29 +89,24 @@ class CupTDSLineView: UIView {
         if volumes != nil {
             var starDate=NSDate()
             starDate=NSDate(string: starDate.formattedDate(withFormat: "YYYY-MM-dd")+" 00:00:00", formatString: "YYYY-MM-dd hh:mm:ss")
-            var dataArr=NSArray()
+            var dataArr = [Int:(Temperature:Int,Volume:Int,TDS:Int)]()
             switch dateType {
             case 0:
                 //取这个天的
-                dataArr = volumes.getRecordBy(starDate as Date!, interval: Hour) as NSArray
-            case 1:
-                let index=starDate.weekday()-2<0 ? 6:(starDate.weekday()-2)
-                starDate=starDate.addingDays(-index) as NSDate
-                dataArr = volumes.getRecordBy(starDate as Date!, interval: Day) as NSArray
-            case 2:
-                let index=starDate.day()-1
-                starDate=starDate.addingDays(-index) as NSDate
-                dataArr = volumes.getRecordBy(starDate as Date!, interval: Day) as NSArray
+                dataArr = volumes.getRecord(type: CupRecordType.day)
+            case 1://本周
+                dataArr = volumes.getRecord(type: CupRecordType.weak)
+            case 2://本月
+                dataArr = volumes.getRecord(type: CupRecordType.month)
             default:
                 break
             }
             for item in dataArr {
-                let record = item as! CupRecord
-                
-                let indexOfDay=(record.start as NSDate).daysLaterThan(starDate as Date!)
-                let point = sensorType==0 ? getPointFromTDS(pointX: (pointsArr[indexOfDay]?.x)!, height: height, TDS: Int(record.tds_High)):
-                    getPointFromTemp(pointX: (pointsArr[indexOfDay]?.x)!, height: height, Temp: Int(record.temperature_MAX))
-                pointsArr[indexOfDay]=point
+
+                let index=item.key
+                let point = sensorType==0 ? getPointFromTDS(pointX: (pointsArr[index]?.x)!, height: height, TDS: item.value.TDS):
+                    getPointFromTemp(pointX: (pointsArr[index]?.x)!, height: height, Temp: item.value.Temperature)
+                pointsArr[index]=point
             }
         }
         
@@ -150,10 +145,10 @@ class CupTDSLineView: UIView {
         return CGPoint(x: pointX, y: (1-angle)*height)
     }
     //模拟数据
-    var volumes:CupRecordList!
+    var volumes:OznerCupRecords!
     var sensorType = 0//0 tds,1 temp
     var dateType = 0//0 day,1 weak,2 month
-    func updateCircleView(SensorType:Int,DateType:Int,Volumes:CupRecordList){
+    func updateCircleView(SensorType:Int,DateType:Int,Volumes:OznerCupRecords){
         sensorType=SensorType
         volumes=Volumes
         dateType=DateType

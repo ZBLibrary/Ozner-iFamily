@@ -127,11 +127,11 @@ open class LBXScanViewController: UIViewController, UIImagePickerControllerDeleg
     {
         for result:LBXScanResult in arrayResult
         {
-            print("%@",result.strScanned)
+            print("%@",result.strScanned ?? "")
         }
         
         let result:LBXScanResult = arrayResult[0]
-        User.RenewFilterTime(mac: LoginManager.instance.currentDeviceIdentifier!, type: LoginManager.instance.currentDevice.type, code: result.strScanned!, success: {
+        User.RenewFilterTime(mac: ProductInfo.getCurrDeviceMac(), type: (OznerManager.instance.currentDevice?.deviceInfo.deviceType)!, code: result.strScanned!, success: {
             self.showMsg(title: "", message: "更换滤芯成功")
             _=self.navigationController?.popViewController(animated: true)
             }, failure: { (error) in

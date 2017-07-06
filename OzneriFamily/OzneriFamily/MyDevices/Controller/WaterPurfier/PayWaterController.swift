@@ -63,7 +63,7 @@ class PayWaterController: UIViewController {
                 }, failure: { (error) in
                     //充值失败
                     DispatchQueue.global().async{
-                        RODevice.addWaterDays(days: -Int(weakSelf.dataArr[weakSelf.selectRow].Days))
+                        _=RODevice.addWaterDays(days: -Int(weakSelf.dataArr[weakSelf.selectRow].Days))
                     }
 
                     DispatchQueue.main.async {

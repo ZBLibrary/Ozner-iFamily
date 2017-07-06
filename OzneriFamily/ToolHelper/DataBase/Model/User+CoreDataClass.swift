@@ -776,10 +776,11 @@ public class User: BaseDataObject {
     // 获取设备列表
     class func GetDeviceList(success: @escaping (() -> Void), failure: @escaping ((Error) -> Void)){
         self.fetchDataWithProgress(key: "GetDeviceList", parameters: [:], success: { (json) in
-            for item in json["data"].arrayValue
+            for _ in json["data"].arrayValue
             {
-                let device=OznerDevice(item["Mac"].stringValue, type: item["DeviceType"].stringValue, settings: item["Settings"].stringValue)
-                OznerManager.instance().save(device)
+//                OznerBaseDevice.init(deviceinfo: OznerDeviceInfo, Settings: item["Settings"].stringValue)
+//                let device=OznerBaseDevice(item["Mac"].stringValue, type: item["DeviceType"].stringValue, settings: item["Settings"].stringValue)
+//                OznerManager.instance().save(device)
             }
         }, failure: failure)
         

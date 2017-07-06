@@ -81,18 +81,18 @@ class Air_WifiMainView: OznerDeviceView {
         
         switch sender.tag {
         case 0:
-            (self.currentDevice as! AirPurifier_MxChip).status.setPower(!operation.power, callback: { (error) in
+            (self.currentDevice as! AirPurifier_Wifi).setPower(power: !operation.power, callBack: { (error) in
             })
         case 1:
            //弹出遮盖层
             self.window?.addSubview(speedModelView)
             speedModelView.SetSpeed(speed: operation.speed, speedCallBack: { (Speed) in
-                (self.currentDevice as! AirPurifier_MxChip).status.setSpeed(UInt8(Speed), callback: { (error) in
+                (self.currentDevice as! AirPurifier_Wifi).setSpeed(speed: Speed, callBack: { (error) in
                 })
             })
             
         case 2:
-            (self.currentDevice as! AirPurifier_MxChip).status.setLock(!operation.lock, callback: { (error) in
+            (self.currentDevice as! AirPurifier_Wifi).setLock(lock: !operation.lock, callBack: { (error) in
             })
         default:
             break
@@ -118,12 +118,12 @@ class Air_WifiMainView: OznerDeviceView {
                 PM25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 55*width_screen/375)
                 PM25ValueLabel.format = "%d"
                 PM25ValueLabel.count(from: CGFloat(oldValue==65535 ? 0:oldValue), to: CGFloat(PM25_In))
-                let tmpTmp=(self.currentDevice as! AirPurifier_MxChip).sensor.temperature
+                let tmpTmp=(self.currentDevice as! AirPurifier_Wifi).sensor.Temperature
                 temperatureLabel.text=(tmpTmp==65535 ? "-":"\(tmpTmp)")+"℃"
-                let tmpHumidity=(self.currentDevice as! AirPurifier_MxChip).sensor.humidity
+                let tmpHumidity=(self.currentDevice as! AirPurifier_Wifi).sensor.Humidity
                 humidityLabel.text=(tmpHumidity==65535 ? "-":"\(tmpHumidity)")+"%"
                 
-                let tmpVOCIndex=(self.currentDevice as! AirPurifier_MxChip).sensor.voc
+                let tmpVOCIndex=(self.currentDevice as! AirPurifier_Wifi).sensor.VOC
                 if tmpVOCIndex>=0&&tmpVOCIndex<=3 {
                     let vocStr=[loadLanguage("优"),loadLanguage("良"),loadLanguage("一般"),loadLanguage("差")][Int(tmpVOCIndex)]
                     VOCValueLabel.text=loadLanguage(vocStr)
@@ -180,20 +180,23 @@ class Air_WifiMainView: OznerDeviceView {
             
         }
     }
-    override func SensorUpdate(device: OznerDevice!) {
+    override func SensorUpdate(identifier: String) {
+        let device = self.currentDevice as! AirPurifier_Wifi
+        
         //更新传感器视图
-        if (self.currentDevice as! AirPurifier_MxChip).status.getPower==false
+        if device.status.Power==false
         {
             PM25_In = -1
         }else{
-            PM25_In=Int((self.currentDevice as! AirPurifier_MxChip).sensor.pm25)
+            PM25_In=Int((self.currentDevice as! AirPurifier_Wifi).sensor.PM25)
         }
         
-        operation=((device as! AirPurifier_MxChip).status.getPower,Int((device as! AirPurifier_MxChip).status.speed),(device as! AirPurifier_MxChip).status.getLock)
+        operation=(device.status.Power,device.status.Speed,device.status.Lock)
     }
-    override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
+    override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         //更新连接状态视图
-        if (device as! AirPurifier_MxChip).isOffline
+        let device = self.currentDevice as! AirPurifier_Wifi
+        if device.connectStatus != .Connected
         {
             PM25_In = -2
             operation=(false,0,false)

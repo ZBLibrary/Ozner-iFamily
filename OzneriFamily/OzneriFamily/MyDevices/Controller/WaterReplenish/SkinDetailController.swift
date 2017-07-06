@@ -143,7 +143,7 @@ class SkinDetailController: BaseViewController {
     //下载周月数据
     func getAllWeakAndMonthData()
     {
-        User.GetBuShuiFenBu(mac: ProductInfo.getCurrDeviceMac(), action: currentBody.rawVaue, success: { (_, AvgAndTimes, weakdata, monthdata) in
+        User.GetBuShuiFenBu(mac: ProductInfo.getCurrDeviceMac(), action: currentBody.rawValue, success: { (_, AvgAndTimes, weakdata, monthdata) in
             self.AvgAndTimesArr=AvgAndTimes
             self.WeakData=weakdata
             self.MonthData=monthdata

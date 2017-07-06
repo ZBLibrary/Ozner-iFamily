@@ -115,7 +115,7 @@ class OznerDataManager: NSObject {
         case .WaterReplenish:
             tmpdev = WaterReplenish(deviceinfo: deviceInfo, Settings: setting)
         case .AirPurifier_Blue:
-            tmpdev = AirPurifier_Bluetooth(deviceinfo: deviceInfo, Settings: setting)
+            tmpdev = AirPurifier_Blue(deviceinfo: deviceInfo, Settings: setting)
         case .AirPurifier_Wifi:
             tmpdev = AirPurifier_Wifi(deviceinfo: deviceInfo, Settings: setting)
         }

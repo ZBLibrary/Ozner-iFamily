@@ -28,8 +28,8 @@ class WaterPurfierSettingController: DeviceSettingController {
         self.title = loadLanguage("设置")
         self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
         nameAndAttrLabel.text=self.getNameAndAttr()
-        waterPayViewContainer.isHidden=(LoginManager.instance.currentDevice.type != OznerDeviceType.Water_Bluetooth.rawValue)
-        macAdressLabel.text="mac:"+LoginManager.instance.currentDevice.identifier
+        waterPayViewContainer.isHidden=(ProductInfo.getCurrDeviceClass() != .WaterPurifier_Blue)
+        macAdressLabel.text="mac:"+ProductInfo.getCurrDeviceMac()
         // Do any additional setup after loading the view.
     }
     
@@ -51,7 +51,7 @@ class WaterPurfierSettingController: DeviceSettingController {
             let VC=segue.destination as!  AboutDeviceController
             var url=(NetworkManager.defaultManager?.URL?["AboutWaterPurifer"]?.stringValue)!
             
-            if  LoginManager.instance.currentDevice.type == OznerDeviceType.Water_Bluetooth.rawValue{
+            if  ProductInfo.getCurrDeviceClass() == OZDeviceClass.WaterPurifier_Blue{
                 url=(NetworkManager.defaultManager?.URL?["AboutROWaterPurifer"]?.stringValue)!
             }
             VC.setLoadContent(content: url, Type: 0)

@@ -16,7 +16,7 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
     var buyLvXinUrl = ""
     var lvXinStopDate = NSDate()
     var lvXinUsedDays = 0
-    var isBlueDevice = false
+    //var isBlueDevice = false
     
     func setLvXinAndEnable(scan:Bool,cool:Bool,hot:Bool,buyLvXinUrl:String,lvXinStopDate:NSDate,lvXinUsedDays:Int){
         self.scanEnable=scan
@@ -29,8 +29,8 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
    
     
     @IBAction func toTDSDetailClick(_ sender: UITapGestureRecognizer) {
-        if isBlueDevice==false {//wifi设备
-            if (self.currentDevice as! WaterPurifier).isOffline {//断网状态
+        //if isBlueDevice==false {//wifi设备
+            if (OznerManager.instance.currentDevice as! WaterPurifier_Wifi).connectStatus != .Connected {//断网状态
                 weak var weakself=self
                 offLineSuggestView.updateView(IsAir: false, callback: {
                     weakself?.offLineSuggestView.removeFromSuperview()
@@ -40,7 +40,7 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
                 self.delegate.DeviceViewPerformSegue!(SegueID: "showWaterPurfierTDS", sender: nil)
             }
             
-        }
+       // }
         
     }
     
@@ -57,16 +57,16 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
     }
     @IBAction func operationButtonClick(_ sender: UIButton) {
         
-        if isBlueDevice {
-            let appearance = SCLAlertView.SCLAppearance(
-                showCloseButton: false,
-                dynamicAnimatorActive: true
-            )
-            let alert=SCLAlertView(appearance: appearance)
-            _=alert.addButton(loadLanguage("确定"), action: {return})
-            _=alert.showNotice(loadLanguage("提示"), subTitle: loadLanguage("抱歉，该净水器型号没有提供此项功能！"))
-            return
-        }
+//        if isBlueDevice {
+//            let appearance = SCLAlertView.SCLAppearance(
+//                showCloseButton: false,
+//                dynamicAnimatorActive: true
+//            )
+//            let alert=SCLAlertView(appearance: appearance)
+//            _=alert.addButton(loadLanguage("确定"), action: {return})
+//            _=alert.showNotice(loadLanguage("提示"), subTitle: loadLanguage("抱歉，该净水器型号没有提供此项功能！"))
+//            return
+//        }
         
         sender.isEnabled=false
         Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(setButtonEnable), userInfo: sender, repeats: false)//防止多次连续点击
@@ -76,11 +76,11 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
         
         switch sender.tag {
         case 0:
-            (self.currentDevice as! WaterPurifier_Wifi).status.setPower(!operation.power, callback: { (error) in
+            (OznerManager.instance.currentDevice as! WaterPurifier_Wifi).setPower(Power: !operation.power, callBack: { (error) in
             })
         case 1:
             if hotEnable {
-                (self.currentDevice as! WaterPurifier_Wifi).status.setHot(!operation.hot, callback: { (error) in
+                (OznerManager.instance.currentDevice as! WaterPurifier_Wifi).setHot(Hot: !operation.hot, callBack: { (error) in
                 })
             }else{
                 let appearance = SCLAlertView.SCLAppearance(
@@ -94,7 +94,7 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
             
         case 2:
             if coolEnable {
-                (self.currentDevice as! WaterPurifier_Wifi).status.setCool(!operation.cool, callback: { (error) in
+                (OznerManager.instance.currentDevice as! WaterPurifier_Wifi).setCool(Cool: !operation.cool, callBack: { (error) in
                 })
             }else{
                 let appearance = SCLAlertView.SCLAppearance(
@@ -141,43 +141,44 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
         }
     }
     
-    override func SensorUpdate(device: OznerDevice!) {
+    override func SensorUpdate(identifier: String) {
         //更新传感器视图
-
-            if (device as! WaterPurifier).isOffline
-            {
-                
-                
-                operation=(false,false,false)
-            }else{
-                if (device as! WaterPurifier).status.power==false {
-                   
-                    operation=(false,false,false)
-                }else{
-                    
-                    
-                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
-                }
-                
-            }
-        
+//        let device = currentDevice as! WaterPurifier_Wifi
+//        
+//            if device.connectStatus
+//            {
+//                
+//                
+//                operation=(false,false,false)
+//            }else{
+//                if (device as! WaterPurifier).status.power==false {
+//                   
+//                    operation=(false,false,false)
+//                }else{
+//                    
+//                    
+//                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+//                }
+//                
+//            }
+//        
         
     }
-    override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
+    override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         
-            if (device as! WaterPurifier).isOffline
-            {
-                operation=(false,false,false)
-            }else{
-                if (device as! WaterPurifier).status.power==false {
-                   
-                    operation=(false,false,false)
-                }else{
-                   
-                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
-                }
-                
-            }
+//            if (device as! WaterPurifier).isOffline
+//            {
+//                operation=(false,false,false)
+//            }else{
+//                if (device as! WaterPurifier).status.power==false {
+//                   
+//                    operation=(false,false,false)
+//                }else{
+//                   
+//                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+//                }
+//                
+//            }
         
     }
 }

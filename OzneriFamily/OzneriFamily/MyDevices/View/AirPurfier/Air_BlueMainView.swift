@@ -60,7 +60,7 @@ class Air_BlueMainView: OznerDeviceView {
         let tapGesture=UITapGestureRecognizer(target: self, action: #selector(tapImage))
         tapGesture.numberOfTapsRequired=1//设置点按次数
         sliderTouchView.addGestureRecognizer(tapGesture)
-        var tmpValue=CGFloat((currentDevice as! AirPurifier_Bluetooth).status.rpm)/100
+        var tmpValue=CGFloat((currentDevice as! AirPurifier_Blue).sensor.Speed)/100
         tmpValue=34.5*width_screen/375+tmpValue*264*width_screen/375
         updateSpeed(touchX: tmpValue, isEnd: false)
         outdoorAirView=Bundle.main.loadNibNamed("AirOutdoorView", owner: nil, options: nil)?.first as! AirOutdoorView
@@ -92,7 +92,7 @@ class Air_BlueMainView: OznerDeviceView {
         }
     }
     private func updateSpeed(touchX:CGFloat,isEnd:Bool){
-        if currentDevice?.connectStatus() != Connected {
+        if currentDevice?.connectStatus != .Connected {
             updateSliderView(touchX: 0, isEnd: isEnd)
         }else{
             updateSliderView(touchX: touchX, isEnd: isEnd)
@@ -123,9 +123,10 @@ class Air_BlueMainView: OznerDeviceView {
         }
         if isEnd==true {
             
-            (self.currentDevice as! AirPurifier_Bluetooth).status.setPower(tmpValueInt != 0, callback: { (error) in
+            (self.currentDevice as! AirPurifier_Blue).setPower(power: tmpValueInt != 0, callBack: { (error) in
             })
-            (self.currentDevice as! AirPurifier_Bluetooth).status.setRPM(Int32(tmpValueInt), callback: { (error) in
+            (self.currentDevice as! AirPurifier_Blue).setSpeed(speed: tmpValueInt, callBack: { (error) in
+                
             })
         }
     }
@@ -150,8 +151,8 @@ class Air_BlueMainView: OznerDeviceView {
                 pm25ValueLabel.format = "%d"
                 pm25ValueLabel.count(from: CGFloat(oldValue==65535 ? 0:oldValue), to: CGFloat(PM25_In))
                 
-                temperatureValueLabel.text="\((self.currentDevice as! AirPurifier_Bluetooth).sensor.temperature)℃"
-                humidityValueLabel.text="\((self.currentDevice as! AirPurifier_Bluetooth).sensor.humidity)%"
+                temperatureValueLabel.text="\((self.currentDevice as! AirPurifier_Blue).sensor.Temperature)℃"
+                humidityValueLabel.text="\((self.currentDevice as! AirPurifier_Blue).sensor.Humidity)%"
                 switch true {
                 case PM25_In<=75:
                     
@@ -175,28 +176,28 @@ class Air_BlueMainView: OznerDeviceView {
         }
     }
 
-    override func SensorUpdate(device: OznerDevice!) {
+    override func SensorUpdate(identifier: String) {
         //更新传感器视图
-        if (self.currentDevice as! AirPurifier_Bluetooth).status.power==false
+        if (self.currentDevice as! AirPurifier_Blue).sensor.Power==false
         {
             PM25_In = -1
         }else{
-            PM25_In=Int((self.currentDevice as! AirPurifier_Bluetooth).sensor.pm25)
+            PM25_In=(self.currentDevice as! AirPurifier_Blue).sensor.PM25
         }
         
         
     }
-    var connectChange = Disconnect{
+    var connectChange:OznerConnectStatus = OznerConnectStatus.Disconnect{
         didSet{
             if connectChange==oldValue {
                 return
             }
             var tmpValue=CGFloat(0)
             switch connectChange {
-            case Connected:
-                tmpValue=CGFloat((currentDevice as! AirPurifier_Bluetooth).status.rpm)/100
+            case .Connected:
+                tmpValue=CGFloat((currentDevice as! AirPurifier_Blue).sensor.Speed)/100
                 tmpValue=34.5*width_screen/375+tmpValue*264*width_screen/375
-                PM25_In=Int((self.currentDevice as! AirPurifier_Bluetooth).sensor.pm25)
+                PM25_In=Int((self.currentDevice as! AirPurifier_Blue).sensor.PM25)
             default:
                 PM25_In = -2
                 break
@@ -205,8 +206,8 @@ class Air_BlueMainView: OznerDeviceView {
         }
     }
     
-    override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
+    override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         //更新连接状态视图
-        connectChange=device.connectStatus()
+        connectChange=(OznerManager.instance.currentDevice?.connectStatus)!
     }
 }

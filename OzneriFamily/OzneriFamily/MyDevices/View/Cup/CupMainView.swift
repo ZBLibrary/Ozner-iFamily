@@ -94,7 +94,7 @@ class CupMainView: OznerDeviceView {
                 circleView.updateCircleView(angle: angle)
                 //下载打败了多少人的数据
                 weak var weakself=self
-                User.TDSSensor(deviceID: (self.currentDevice?.identifier)!, type: (self.currentDevice?.type)!, tds: TDS, beforetds: 0, success: { (rank, total) in
+                User.TDSSensor(deviceID: (self.currentDevice?.deviceInfo.deviceMac)!, type: (self.currentDevice?.deviceInfo.deviceType)!, tds: TDS, beforetds: 0, success: { (rank, total) in
                     let beat =  100*CGFloat(total-rank)/CGFloat(total)
                     weakself?.tdsBeatLabel.text=loadLanguage("击败了")+"\(Int(beat))%"+loadLanguage("的用户")
                     }, failure: { (error) in
@@ -106,7 +106,8 @@ class CupMainView: OznerDeviceView {
     private var Drinking = 0.0{
         didSet{
             if Drinking != oldValue   {
-                let drinkGoal=(self.currentDevice as! Cup).settings.get("DrinkGoal", default: 2000) as! Int
+                
+                let drinkGoal=Int((self.currentDevice as! Cup).settings.GetValue(key: "DrinkGoal", defaultValue: "2000") )!
                 let tmpDrinking = Drinking/Double(drinkGoal)
                 drinkingGoalLabel.text=loadLanguage("饮水目标:")+"\(Int(drinkGoal))ml"
                 drinkingValueLabel.text="\(Int(Drinking))ml"
@@ -122,7 +123,7 @@ class CupMainView: OznerDeviceView {
                     break
                 }
                 //上传饮水量到服务器
-                User.VolumeSensor(deviceID: (self.currentDevice?.identifier)!, type: (self.currentDevice?.type)!, volume: Int(Drinking), success: { (rank) in
+                User.VolumeSensor(deviceID: (self.currentDevice?.deviceInfo.deviceMac)!, type: (self.currentDevice?.deviceInfo.deviceType)!, volume: Int(Drinking), success: { (rank) in
                     print("饮水量排名\(rank)")
                     }, failure: { (error) in
                         print("饮水量上传错误:"+error.localizedDescription)
@@ -160,17 +161,24 @@ class CupMainView: OznerDeviceView {
     }
     override func SensorUpdate(identifier: String) {
         //更新传感器视图
-        TDS=Int((device as! Cup).sensor.tds)
-        Temperature=Int((device as! Cup).sensor.temperature)
+        let device = OznerManager.instance.currentDevice as! Cup
+        
+        TDS=device.sensor.TDS
+        Temperature=device.sensor.Temperature
         
         //饮水量
-        let nowDate = NSDate()
-        let dateStarOfNow = NSDate(string: "\(nowDate.year())-\(nowDate.month())-\(nowDate.day()) 00:00:01", formatString: "yyyy-MM-dd HH:mm:ss")
-        let record:CupRecord? = (device as! Cup).volumes.getRecordBy(dateStarOfNow as Date!)
-        Drinking = record==nil ? 0:Double((record?.volume)!)
+        //let nowDate = NSDate()
+        //let dateStarOfNow = NSDate(string: "\(nowDate.year())-\(nowDate.month())-\(nowDate.day()) 00:00:01", formatString: "yyyy-MM-dd HH:mm:ss")
+        let record = device.records.getRecord(type: CupRecordType.day)
+        var volum = 0
+        
+        for item in record {
+            volum+=item.value.Volume
+        }
+        Drinking = Double(volum)
 
     }
-    override func StatusUpdate(identifier: String, status: DeviceViewStatus) {
+    override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         //更新连接状态视图
     }
 

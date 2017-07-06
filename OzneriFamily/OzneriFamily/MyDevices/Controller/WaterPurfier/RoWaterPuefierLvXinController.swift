@@ -106,12 +106,12 @@ class RoWaterPuefierLvXinController: BaseViewController {
         hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
         hideView2.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
         hideImage1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
-        lvxinValueLabelA.text="\(currentDevice.filterInfo.filter_A_Percentage)%"
-        lvxinValueLabelB.text="\(currentDevice.filterInfo.filter_B_Percentage)%"
-        lvxinValueLabelC.text="\(currentDevice.filterInfo.filter_C_Percentage)%"
+        lvxinValueLabelA.text="\(currentDevice.FilterInfo.Filter_A_Percentage)%"
+        lvxinValueLabelB.text="\(currentDevice.FilterInfo.Filter_B_Percentage)%"
+        lvxinValueLabelC.text="\(currentDevice.FilterInfo.Filter_C_Percentage)%"
         
         //timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
-        let minFilter=min(currentDevice.filterInfo.filter_A_Percentage, currentDevice.filterInfo.filter_B_Percentage, currentDevice.filterInfo.filter_C_Percentage)
+        let minFilter=min(currentDevice.FilterInfo.Filter_A_Percentage, currentDevice.FilterInfo.Filter_B_Percentage, currentDevice.FilterInfo.Filter_C_Percentage)
         fuweiButton.isHidden = minFilter>0
         lvxinAlertLabel.text = ""   
         // Do any additional setup after loading the view.

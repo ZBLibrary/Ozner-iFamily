@@ -48,25 +48,25 @@ class SetDeviceNameController: BaseViewController {
         addressLb.text = loadLanguage("使用地点")
         var attri:[Int:String]!
         
-        switch OznerDeviceType.getType(type: LoginManager.instance.currentDevice.type){
-        case OznerDeviceType.Cup:
+        switch ProductInfo.getCurrDeviceClass(){
+        case .Cup:
             attri=[0:loadLanguage("我的水杯"),1:loadLanguage("家人水杯")]
         case .Tap,.TDSPan:
             attri=[0:loadLanguage("洗手间"),1:loadLanguage("厨房")]
-        case .Water_Wifi,.Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
+        case .WaterPurifier_Wifi:
             attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
-        case .Air_Blue,.Air_Wifi:
+        case .AirPurifier_Blue,.AirPurifier_Wifi:
             attri=[0:loadLanguage("客厅"),1:loadLanguage("卧室")]
         case .WaterReplenish:
             attri=[0:loadLanguage("办公室"),1:loadLanguage("家")]
-        case .Water_Bluetooth:
+        case .WaterPurifier_Blue:
             attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
         }
         attributeName0.text=attri[0]
         attributeName1.text=attri[1]
         
-        nameTextFeild.text = LoginManager.instance.currentDevice.settings.name
-        currSelectAttrIndex = (LoginManager.instance.currentDevice.settings.get("usingSite", default: "") as! String)==attri[1] ? 1:0
+        nameTextFeild.text = OznerManager.instance.currentDevice?.settings.name
+        currSelectAttrIndex = (OznerManager.instance.currentDevice?.settings.GetValue(key: "usingSite", defaultValue: ""))==attri[1] ? 1:0
         // Do any additional setup after loading the view.
     }
 

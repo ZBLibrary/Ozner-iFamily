@@ -10,12 +10,13 @@ import UIKit
 
 class SetReplenishTimeController: BaseViewController {
 
-    var currSetting:DeviceSetting!
+    var currSetting:BaseDeviceSetting!
     //带+号表示选中状态，否则，未选中状态
     @IBAction func saveClick(_ sender: AnyObject) {
-        currSetting.put("checktime1", value: timeLabel1.text!+(timeImg1.isHidden ? "":"+"))
-        currSetting.put("checktime2", value: timeLabel2.text!+(timeImg2.isHidden ? "":"+"))
-        currSetting.put("checktime3", value: timeLabel3.text!+(timeImg3.isHidden ? "":"+"))
+        currSetting.SetValue(key: "checktime1", value: timeLabel1.text!+(timeImg1.isHidden ? "":"+"))
+        currSetting.SetValue(key: "checktime1", value: timeLabel2.text!+(timeImg2.isHidden ? "":"+"))
+        currSetting.SetValue(key: "checktime3", value: timeLabel3.text!+(timeImg3.isHidden ? "":"+"))
+
         for i in 0...2 {
             LocalNotificationHelper.removeNoticeForKey(key: "BuShuiYi"+["checktime1","checktime2","checktime3"][i])
             if !([timeImg1,timeImg2,timeImg3][i].isHidden) {
@@ -57,17 +58,17 @@ class SetReplenishTimeController: BaseViewController {
         self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
         
         //带+号表示选中状态，否则，未选中状态
-        let checktime1 = currSetting.get("checktime1", default: "08:00") as! String?
-        timeImg1.isHidden = !(checktime1?.contains("+"))!
-        timeLabel1.text = checktime1?.replacingOccurrences(of: "+", with: "")
+        let checktime1 = currSetting.GetValue(key: "checktime1", defaultValue: "08:00")
+        timeImg1.isHidden = !checktime1.contains("+")
+        timeLabel1.text = checktime1.replacingOccurrences(of: "+", with: "")
         
-        let checktime2 = currSetting.get("checktime2", default: "14:30") as! String?
-        timeImg2.isHidden = !(checktime2?.contains("+"))!
-        timeLabel2.text = checktime2?.replacingOccurrences(of: "+", with: "")
+        let checktime2 = currSetting.GetValue(key: "checktime2", defaultValue: "14:30")
+        timeImg2.isHidden = !checktime2.contains("+")
+        timeLabel2.text = checktime2.replacingOccurrences(of: "+", with: "")
         
-        let checktime3 = currSetting.get("checktime3", default: "21:00") as! String?
-        timeImg3.isHidden = !(checktime3?.contains("+"))!
-        timeLabel3.text = checktime3?.replacingOccurrences(of: "+", with: "")
+        let checktime3 = currSetting.GetValue(key: "checktime3", defaultValue: "21:00")
+        timeImg3.isHidden = !checktime3.contains("+")
+        timeLabel3.text = checktime3.replacingOccurrences(of: "+", with: "")
         
         datePicker.date=NSDate(string: timeLabel1.text!, formatString: "HH:mm") as Date
         currTimeLabel=timeLabel1

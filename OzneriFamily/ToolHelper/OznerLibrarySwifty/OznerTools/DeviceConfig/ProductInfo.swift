@@ -45,6 +45,16 @@ enum OZDeviceClass:String{
     static func getFromString(str:String)->OZDeviceClass{
         return ["WaterPurifier_Blue":.WaterPurifier_Blue,"Cup":.Cup,"Tap":.Tap,"TDSPan":.TDSPan,"WaterPurifier_Wifi":.WaterPurifier_Wifi,"AirPurifier_Blue":.AirPurifier_Blue,"AirPurifier_Wifi":.AirPurifier_Wifi,"WaterReplenish":.WaterReplenish][str]!
     }
+    public var ioType:OZIOType {
+        switch self {
+        case .WaterPurifier_Blue,.Cup,.Tap,.TDSPan,.AirPurifier_Blue,.WaterReplenish:
+            return OZIOType.Blue
+        case .WaterPurifier_Wifi,.AirPurifier_Wifi:
+            return OZIOType.MxChip
+//        default:
+//            return OZIOType.Blue
+        }
+    }
     public var pairID:String {
         var pairStr = ""
         for i in 0..<ProductInfo.products.count {
@@ -90,6 +100,10 @@ struct OznerDeviceInfo {
         return "设备ID:\(self.deviceID)\n设备Mac:\(self.deviceMac)\n设备型号:\(self.deviceType)\n产品ID:\(self.productID)\nWiFi版本:\(self.wifiVersion)"
     }
 }
+let temperature_high=50
+let temperature_low=25
+let tds_bad=200
+let tds_good=50
 class ProductInfo: NSObject {
     static private let info:JSON=JSON(Bundle.main.path(forResource: "ProductInfo", ofType: "plist")!) as JSON
     static var products: [String:JSON] {
@@ -135,6 +149,24 @@ class ProductInfo: NSObject {
         }
         return OZDeviceClass.Cup
     }
+    class func getNameFromProductID(productID:String)->String {
+        var Str = ""
+        
+        for product in products.values {
+            if Str != "" {
+                break
+            }
+            for id in product["ProductIDs"].arrayValue {
+                if productID==id.stringValue {
+                    Str=product["Name"].stringValue
+                    break
+                }
+            }
+            
+        }
+        return Str
+    }
+
     class func getCurrDeviceClass()->OZDeviceClass
     {
         return ProductInfo.getDeviceClassFromProductID(productID: ProductInfo.getCurrDeviceMac())

@@ -7,17 +7,17 @@
 //
 
 import UIKit
-enum DeviceViewStatus {
-    case DisConnect
-    case Connectting
-    case Connectted
-    case offLine
-    case onLine
-}
+//enum DeviceViewStatus {
+//    case DisConnect
+//    case Connectting
+//    case Connectted
+//    case offLine
+//    case onLine
+//}
 class OznerDeviceView: UIView {
 
     var delegate:DeviceViewContainerDelegate!
-    //var currentDevice:OznerDevice?
+    var currentDevice:OznerBaseDevice?
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
@@ -26,9 +26,10 @@ class OznerDeviceView: UIView {
     
     func SensorUpdate(identifier: String) {
         
-            }
+     
+    }
     //连接状态变化
-    func StatusUpdate(identifier: String,status:DeviceViewStatus) {
+    func StatusUpdate(identifier: String,status:OznerConnectStatus) {
         
     }
     

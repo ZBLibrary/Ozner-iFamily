@@ -74,7 +74,7 @@ class LineChartView: UIView {
         
     }
  
-    private func getNeedData(width:CGFloat,height:CGFloat,arr:NSArray)->[Int:CGPoint]{
+    private func getNeedData(width:CGFloat,height:CGFloat,arr:[Int:Int])->[Int:CGPoint]{
         let daysCount=NSDate().daysInMonth()
         var pointsArr:[Int:CGPoint]=[:]
         for i in 0..<daysCount {//初始化点
@@ -82,9 +82,9 @@ class LineChartView: UIView {
             
         }
         for item in arr {
-            let indexOfDay=((item as! TapRecord).time as NSDate).day()-1
-            let point=getPointFromTDS(pointX: (pointsArr[indexOfDay]?.x)!, height: height, TDS: Int((item as! TapRecord).tds))
-            pointsArr[indexOfDay]=point
+            let index=item.key
+            let point=getPointFromTDS(pointX: (pointsArr[index]?.x)!, height: height, TDS: item.value)
+            pointsArr[index]=point
         }
         return pointsArr
     }
@@ -105,9 +105,9 @@ class LineChartView: UIView {
         return CGPoint(x: pointX, y: (1-angle)*height)
     }
     //模拟数据
-    private var MonthData=NSArray()
+    private var MonthData=[Int:Int]()
     
-    func updateCircleView(dataArr:NSArray){
+    func updateCircleView(dataArr:[Int:Int]){
         
         if MonthData != dataArr
         {

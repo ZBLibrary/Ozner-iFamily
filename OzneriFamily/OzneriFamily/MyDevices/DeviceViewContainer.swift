@@ -63,6 +63,7 @@ class DeviceViewContainer: UIView {
         .WaterPurifier_Blue:"WaterPurifierMainView"
     ]
     private func SelectWitchView(device:OznerBaseDevice?)  {
+        
         //测试
         var deviceNibName = "NoDeviceView"//"WaterPur_A8CSFFSF"//
         if device != nil  {//有设备时视图初始化
@@ -114,7 +115,7 @@ class DeviceViewContainer: UIView {
             case .WaterPurifier_Blue:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
                 //隐藏底部按钮
-                (currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
+                //(currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
                 
 //            case .Water_Wifi_JZYA1XBA8CSFFSF:
 //                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:160*k_height)
@@ -123,7 +124,8 @@ class DeviceViewContainer: UIView {
 //                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:220*k_height)
 //                break
             }
-            OznerDeviceSensorUpdate(identifier: OznerManager.instance.currentDevice?.deviceInfo.deviceID)//初始化设备状态
+            currentDeviceView.currentDevice=OznerManager.instance.currentDevice
+            OznerDeviceSensorUpdate(identifier: (OznerManager.instance.currentDevice?.deviceInfo.deviceID)!)//初始化设备状态
         }
         
     }
@@ -143,30 +145,29 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
             case .Tap:
                 self.batteryValue = Int((currentDevice as! Tap).sensor.Battery)
             case .TDSPan:
-                batteryValue = Int((currentDevice as! Tap).sensor.Battery)
+                self.batteryValue = Int((currentDevice as! Tap).sensor.Battery)
             case .AirPurifier_Blue:
                 //设置滤芯
-                let workTime=Int((currentDevice as! AirPurifier_Bluetooth).status.filterStatus.workTime)
+                let workTime=(currentDevice as! AirPurifier_Blue).filterStatus.workTime
                 var lvxinValue=1-CGFloat(workTime)/CGFloat(60000)
                 lvxinValue=min(1, lvxinValue)
                 lvxinValue=max(0, lvxinValue)
                 self.LvXinValue=Int(lvxinValue*100)
             case .AirPurifier_Wifi:
-                if let filterStatus=(currentDevice as! AirPurifier_Wifi).status.filterStatus
-                {
-                    let workTime=Int(filterStatus.workTime)
-                    var lvxinValue=1-CGFloat(workTime)/CGFloat(129600)
-                    lvxinValue=min(1, lvxinValue)
-                    lvxinValue=max(0, lvxinValue)
-                    self.LvXinValue=Int(lvxinValue*100)
-                }
+                
+                let workTime=(currentDevice as! AirPurifier_Wifi).filterStatus.workTime
+                var lvxinValue=1-CGFloat(workTime)/CGFloat(129600)
+                lvxinValue=min(1, lvxinValue)
+                lvxinValue=max(0, lvxinValue)
+                self.LvXinValue=Int(lvxinValue*100)
+                
             case .WaterPurifier_Wifi:
                 break
             case .WaterReplenish:
                 self.batteryValue = Int((currentDevice as! WaterReplenish).status.battery*100)
             case .WaterPurifier_Blue:
                 let tmpDev=currentDevice as! WaterPurifier_Blue
-                let lvxinValue=min(tmpDev.filterInfo.filter_A_Percentage, tmpDev.filterInfo.filter_B_Percentage, tmpDev.filterInfo.filter_C_Percentage)
+                let lvxinValue=min(tmpDev.FilterInfo.Filter_A_Percentage, tmpDev.FilterInfo.Filter_A_Percentage, tmpDev.FilterInfo.Filter_A_Percentage)
                 self.LvXinValue=Int(lvxinValue)
 //            case .Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
 //                break
@@ -189,7 +190,7 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 self.delegate.DeviceConnectStateChange!(stateDes: "")
             }
             //设置主页
-            self.currentDeviceView.StatusUpdate(identifier: identifier, status: DeviceViewStatus.Connectted)
+            self.currentDeviceView.StatusUpdate(identifier: identifier, status: OznerConnectStatus.Connected)
         }
     }
     func OznerDevicefilterUpdate(identifier: String) {

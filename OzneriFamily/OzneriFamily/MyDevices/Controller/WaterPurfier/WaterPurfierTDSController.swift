@@ -19,11 +19,11 @@ class WaterPurfierTDSController: BaseViewController {
     @IBOutlet var tdsStateLabel: UILabel!
     @IBAction func shareClick(_ sender: AnyObject) {
         let device=OznerManager.instance.currentDevice as! WaterPurifier_Wifi
-        let tdsValue = min(device.sensor.tds1,device.sensor.tds2)
+        let tdsValue = device.sensor.TDS_After
         var rankValue=0
         var beatValue=0
         LoginManager.instance.showHud()
-        User.TDSSensor(deviceID: device.identifier, type: device.type, tds: Int(tdsValue), beforetds: 0, success: { (rank, total) in
+        User.TDSSensor(deviceID: device.deviceInfo.deviceMac, type: device.deviceInfo.deviceType, tds: Int(tdsValue), beforetds: 0, success: { (rank, total) in
             SVProgressHUD.dismiss()
             rankValue = rank
             beatValue = Int(100*CGFloat(total-rank)/CGFloat(total))
@@ -94,20 +94,20 @@ class WaterPurfierTDSController: BaseViewController {
         
         self.title = loadLanguage("水质纯净值TDS")
         
-        let device = LoginManager.instance.currentDevice as! WaterPurifier
-        let TDS_BF=max(device.sensor.tds1, device.sensor.tds2)
-        let TDS_AF=min(device.sensor.tds1, device.sensor.tds2)
+        let device = OznerManager.instance.currentDevice as! WaterPurifier_Wifi
+        let TDS_BF=device.sensor.TDS_Before
+        let TDS_AF=device.sensor.TDS_After
         segement.setTitle(loadLanguage("周"), forSegmentAt: 0)
         segement.setTitle(loadLanguage("月"), forSegmentAt: 1)
         tdsValueLabel_BF.text = TDS_BF==0||TDS_BF==65535 ? "-":"\(TDS_BF)"
         tdsValueLabel_AF.text = TDS_AF==0||TDS_AF==65535 ? "-":"\(TDS_AF)"
         // Do any additional setup after loading the view.
-        User.TdsFriendRank(type: device.type, success: { (rank) in
+        User.TdsFriendRank(type: device.deviceInfo.deviceType, success: { (rank) in
             self.rankLabel.text="\(rank)"
         }) { (error) in
             self.rankLabel.text="-"
         }
-        User.GetDeviceTdsFenBu(mac: device.identifier, success: { (WeakData, MonthData) in
+        User.GetDeviceTdsFenBu(mac: device.deviceInfo.deviceMac, success: { (WeakData, MonthData) in
             self.TDSchartView.weakData=WeakData
             self.TDSchartView.monthData=MonthData
             self.TDSchartView.updateView(isWeak: true)

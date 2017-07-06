@@ -100,13 +100,13 @@ class OznerShareManager: NSObject {
         {
             switch true
             {
-            case Int32(value)<tds_good:
+            case value<tds_good:
                 shareView.share_stateImage.image=UIImage(named: "share_TDS3")
                 break
-            case tds_good<Int32(value)&&Int32(value)<tds_bad:
+            case tds_good<value&&value<tds_bad:
                 shareView.share_stateImage.image=UIImage(named: "share_TDS2")
                 break
-            case tds_bad<Int32(value):
+            case tds_bad<value:
                 shareView.share_stateImage.image=UIImage(named: "share_TDS1")
                 break
             default:

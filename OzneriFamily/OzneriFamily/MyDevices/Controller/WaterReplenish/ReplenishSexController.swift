@@ -10,12 +10,12 @@ import UIKit
 
 class ReplenishSexController: BaseViewController {
 
-    var currSetting:DeviceSetting!
+    var currSetting:BaseDeviceSetting!
     @IBAction func saveClick(_ sender: AnyObject) {
         let newSexStr = sexImg1.isHidden ? loadLanguage("男"):loadLanguage("女")
-        let oldSexStr = currSetting.get("sex", default:loadLanguage("女")) as! String
+        let oldSexStr = currSetting.GetValue(key: "sex", defaultValue: loadLanguage("女"))
         if newSexStr != oldSexStr {
-            currSetting.put("sex", value: newSexStr)
+            currSetting.SetValue(key: "sex", value: newSexStr)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "BuShuiYiSexChanged"), object: nil, userInfo: ["sex":newSexStr])
         }
         
@@ -33,7 +33,7 @@ class ReplenishSexController: BaseViewController {
         super.viewDidLoad()
         self.title = loadLanguage("性别")
         self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
-        let sexStr=currSetting.get("sex", default:loadLanguage("女")) as! String
+        let sexStr=currSetting.GetValue(key: "sex", defaultValue: loadLanguage("女"))
         sexImg1.isHidden = sexStr != loadLanguage("女")
         sexImg2.isHidden = !sexImg1.isHidden
         // Do any additional setup after loading the view.

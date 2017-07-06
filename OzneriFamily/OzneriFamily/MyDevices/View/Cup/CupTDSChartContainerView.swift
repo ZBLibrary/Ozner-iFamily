@@ -34,7 +34,7 @@ class CupTDSChartContainerView: UIView {
     }
     
     //SensorType 0TDS,1温度
-    func InitSetView(volumes:CupRecordList,sensorType:Int) {
+    func InitSetView(volumes:OznerCupRecords,sensorType:Int) {
        
         lineView=Bundle.main.loadNibNamed("CupTDSDetailLineView", owner: nil, options: nil)?.last as! CupTDSDetailLineView
         

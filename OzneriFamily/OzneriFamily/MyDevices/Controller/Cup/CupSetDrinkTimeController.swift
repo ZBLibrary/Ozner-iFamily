@@ -10,7 +10,7 @@ import UIKit
 
 class CupSetDrinkTimeController: BaseViewController {
 
-    var currSetting:CupSettings!
+    var currSetting:BaseDeviceSetting!
     @IBAction func saveClick(_ sender: AnyObject) {
         let date1 = NSDate(string: starTimeLabel.text!, formatString: "HH:mm")
         let date2 = NSDate(string: endTimeLabel.text!, formatString: "HH:mm")
@@ -23,8 +23,9 @@ class CupSetDrinkTimeController: BaseViewController {
 //        let time1 = Int(arrDate1[0])!*3600+Int(arrDate1[1])!*60
 //        let time2 = Int(arrDate2[0])!*3600+Int(arrDate2[1])!*60
         
-        currSetting.remindStart=uint(time1)
-        currSetting.remindEnd=uint(time2)
+        currSetting.SetValue(key: "remindStart", value: "\(uint(time1))")
+        currSetting.SetValue(key: "remindEnd", value: "\(uint(time2))")
+        
        let vcs=self.navigationController?.viewControllers
         let vc=vcs?[(vcs?.count)!-2] as! CupSettingController
         vc.drinkRemaindTimeLabel.text=starTimeLabel.text!+"-"+endTimeLabel.text!
@@ -48,11 +49,11 @@ class CupSetDrinkTimeController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let starH=Int(currSetting.remindStart)/3600
-        let starM=(Int(currSetting.remindStart)%3600)/60
+        let starH=Int(currSetting.GetValue(key: "remindStart", defaultValue: "\(9*3600)"))!/3600
+        let starM=Int(currSetting.GetValue(key: "remindStart", defaultValue: "\(9*3600)"))!%3600/60
         starTimeLabel.text = (starH<10 ? "0\(starH)":"\(starH)")+":"+(starM<10 ? "0\(starM)":"\(starM)")
-        let endH=Int(currSetting.remindEnd)/3600
-        let endM=(Int(currSetting.remindEnd)%3600)/60
+        let endH=Int(currSetting.GetValue(key: "remindEnd", defaultValue: "\(19*3600)"))!/3600
+        let endM=Int(currSetting.GetValue(key: "remindEnd", defaultValue: "\(19*3600)"))!%3600/60
         endTimeLabel.text = (endH<10 ? "0\(endH)":"\(endH)")+":"+(endM<10 ? "0\(endM)":"\(endM)")
 //        datePicker.datePickerMode = .time
 //        //设置24小时制

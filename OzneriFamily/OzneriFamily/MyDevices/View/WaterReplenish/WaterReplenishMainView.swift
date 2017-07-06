@@ -180,7 +180,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
                 }
             case 3:
                 resultValueContainView.isHidden=false
-                let testResult=getNeedOilAndWaterValue((self.currentDevice as! WaterReplenishmentMeter).status.oil,moisture: (self.currentDevice as! WaterReplenishmentMeter).status.moisture)
+                let testResult=getNeedOilAndWaterValue((self.currentDevice as! WaterReplenish).status.oil,moisture: (self.currentDevice as! WaterReplenish).status.moisture)
                 valueOfTestLabel.text=testResult.moistureValue
                 stateOfTestLabel.text=WaterType[testResult.TypeIndex]
                 centerCircleView.backgroundColor=ColorType[testResult.TypeIndex]
@@ -314,19 +314,19 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     {
         switch stateOfView {
         case 1:
-            if (self.currentDevice as! WaterReplenishmentMeter).status.testing==true {
+            if (self.currentDevice as! WaterReplenish).status.testing==true {
                 stateOfView=2//检测中
             }
         case 2:
-            if (self.currentDevice as! WaterReplenishmentMeter).status.testing==false {
+            if (self.currentDevice as! WaterReplenish).status.testing==false {
                 let weakSelf=self
-                if (self.currentDevice as! WaterReplenishmentMeter).status.oil==0 {
+                if (self.currentDevice as! WaterReplenish).status.oil==0 {
                     let alertView=SCLAlertView()
                     _=alertView.showTitle("", subTitle: loadLanguage("您的检测时间未满5秒..."), duration: 2.0, completeText: loadLanguage("完成"), style: SCLAlertViewStyle.notice)
                     weakSelf.stateOfView=1
                     weakSelf.alertBeforeTest.text=loadLanguage("检测失败,请重试")
                 }
-                else if ((self.currentDevice as! WaterReplenishmentMeter).status.oil < 0)||((self.currentDevice as! WaterReplenishmentMeter).status.moisture < 0){
+                else if ((self.currentDevice as! WaterReplenish).status.oil < 0)||((self.currentDevice as! WaterReplenish).status.moisture < 0){
                     weakSelf.alertBeforeTest.text=loadLanguage("水分太低")
                     weakSelf.stateOfView=1
                 }else{
@@ -335,7 +335,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
                 
             }
         case 3:
-            if (self.currentDevice as! WaterReplenishmentMeter).status.testing==true {
+            if (self.currentDevice as! WaterReplenish).status.testing==true {
                 stateOfView=2//检测中
             }
         default:
@@ -347,7 +347,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     //初始化视图
     func SetWaterReplenishView()
     {
-        let sexStr=((self.currentDevice as! WaterReplenishmentMeter).settings.get("sex", default: loadLanguage("女")))! as! String
+        let sexStr=(self.currentDevice as! WaterReplenish).settings.GetValue(key: "sex", defaultValue: loadLanguage("女"))
         currentSex = sexStr==loadLanguage("女") ? SexType.WoMan:SexType.Man
         getAllWeakAndMonthData()
     }
@@ -357,7 +357,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     //上传检测数据
     fileprivate func uploadSKinData(_ ynumber:String,snumber:String)
     {
-        User.UpdateBuShuiYiNumber(mac: (self.currentDevice?.identifier)!, ynumber: ynumber, snumber: snumber, action: currentBodyPart.rawValue, success: {
+        User.UpdateBuShuiYiNumber(mac: (self.currentDevice?.deviceInfo.deviceMac)!, ynumber: ynumber, snumber: snumber, action: currentBodyPart.rawValue, success: {
             print("上传检测肤质成功")
             }) { (error) in
                 
@@ -393,7 +393,7 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
     //下载周月数据
     func getAllWeakAndMonthData()
     {
-        User.GetBuShuiFenBu(mac: (self.currentDevice?.identifier)!, action: currentBodyPart.rawValue, success: { (index, AvgAndTimes, _, _) in
+        User.GetBuShuiFenBu(mac: (self.currentDevice?.deviceInfo.deviceMac)!, action: currentBodyPart.rawValue, success: { (index, AvgAndTimes, _, _) in
              self.avgAndTimesArr=AvgAndTimes
             self.currentSkinTypeIndex=index
             }, failure: { (error) in
@@ -401,11 +401,11 @@ class WaterReplenishMainView: OznerDeviceView,UIAlertViewDelegate {
         })
     }
     
-    override func SensorUpdate(device: OznerDevice!) {
+    override func SensorUpdate(identifier: String) {
         //更新传感器视图
         
     }
-    override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
+    override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         //更新连接状态视图
         self.updateViewState()
     }

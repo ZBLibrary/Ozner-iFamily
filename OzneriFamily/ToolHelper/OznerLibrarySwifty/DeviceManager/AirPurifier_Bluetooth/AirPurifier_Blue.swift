@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AirPurifier_Bluetooth: OznerBaseDevice {
+class AirPurifier_Blue: OznerBaseDevice {
 
     //添加个性字段
     //对外只读，对内可读写
@@ -36,6 +36,26 @@ class AirPurifier_Bluetooth: OznerBaseDevice {
     func setSpeed(speed:Int,callBack:((_ error:Error?)->Void)) {
         let tmpData=Data.init(bytes: [UInt8(sensor.Power.hashValue),UInt8(speed)])
         self.SendDataToDevice(sendData: makePacket(code: 0x10, data: tmpData), CallBack: nil)
+    }
+    func resetFilter(callBack:((_ error:Error?)->Void)) {
+        let nowDate = NSDate() as NSDate
+        let stopDate = nowDate.addingMonths(3) as NSDate
+        
+        var tmpData=Data.init(bytes: [UInt8(nowDate.year()-2000),
+                                      UInt8(nowDate.month()),
+                                      UInt8(nowDate.day()),
+                                      UInt8(nowDate.hour()),
+                                      UInt8(nowDate.minute()),
+                                      UInt8(nowDate.second()),
+                                      UInt8(stopDate.year()-2000),
+                                      UInt8(stopDate.month()),
+                                      UInt8(stopDate.day()),
+                                      UInt8(stopDate.hour()),
+                                      UInt8(stopDate.minute()),
+                                      UInt8(stopDate.second())
+                                      ])
+        tmpData.append(OznerTools.dataFromInt(number: 60*1000, length: 4))
+        self.SendDataToDevice(sendData: makePacket(code: 0x41, data: tmpData), CallBack: nil)
     }
     override func OznerBaseIORecvData(recvData: Data) {
         //解析数据并更新个性字段

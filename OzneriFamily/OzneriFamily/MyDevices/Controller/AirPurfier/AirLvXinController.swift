@@ -18,7 +18,6 @@ class AirLvXinController: BaseViewController {
     @IBOutlet var totalValueLabel: UILabel!
     @IBOutlet var reSetLvXinButton: UIButton!
     @IBAction func reSetLvXinClick(_ sender: AnyObject) {
-        
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false,
             dynamicAnimatorActive: true
@@ -27,14 +26,13 @@ class AirLvXinController: BaseViewController {
         _=alert.addButton(loadLanguage("否")) {
         }
         _=alert.addButton(loadLanguage("是")) {
-            let device=LoginManager.instance.currentDevice
-            (device as! AirPurifier_Bluetooth).status.resetFilterStatus({ (error) in
+            let device=OznerManager.instance.currentDevice as! AirPurifier_Blue
+            device.resetFilter(callBack: { (error) in
+                print(error ?? "")
             })
         }
         _=alert.showInfo("", subTitle: loadLanguage("您是否要重置滤芯?"))
-        
-        
-    
+   
     }
     @IBOutlet var lvxinImg: UIImageView!
     @IBOutlet var lvxinValueLabel: UILabel!
@@ -60,25 +58,20 @@ class AirLvXinController: BaseViewController {
             vocWidthConstraint.constant = -width_screen/2
             //hiden
             totalPurificatContainerView.removeFromSuperview()
-            pm25ValueLabel.text="\(Int((device as! AirPurifier_Bluetooth).sensor.pm25))"
-            print((device as! AirPurifier_Bluetooth).status.filterStatus.workTime)
-            SetLvXin(workTime: Int((device as! AirPurifier_Bluetooth).status.filterStatus.workTime), maxUseMM: 60000)
+            pm25ValueLabel.text="\(Int((device as! AirPurifier_Blue).sensor.PM25))"
+            SetLvXin(workTime: Int((device as! AirPurifier_Blue).filterStatus.workTime), maxUseMM: 60000)
         }else{//立式空净
             reSetLvXinButton.isHidden=true
             vocWidthConstraint.constant = 0
             totalPurificatContainerView.isHidden=false
-            pm25ValueLabel.text="\(Int((device as! AirPurifier_MxChip).sensor.pm25))"
-            var vocValue = (device as! AirPurifier_MxChip).sensor.voc
+            pm25ValueLabel.text="\((device as! AirPurifier_Wifi).sensor.PM25)"
+            var vocValue = (device as! AirPurifier_Wifi).sensor.VOC
             vocValue = vocValue<0||vocValue>3 ? 4:vocValue
             vocValueLabel.text=[loadLanguage("优"),loadLanguage("良"),loadLanguage("一般"),loadLanguage("差"),"-"][Int(vocValue)]
-            totalValueLabel.text="\((device as! AirPurifier_MxChip).sensor.totalClean/1000)"
-            if let filter=(device as! AirPurifier_MxChip).status.filterStatus {
-                SetLvXin(workTime: Int(filter.workTime), maxUseMM: 129600)
-            }
-            else{
-                SetLvXin(workTime: -1, maxUseMM: 129600)
-            }
+            totalValueLabel.text="\((device as! AirPurifier_Wifi).sensor.TotalClean/1000)"
             
+            SetLvXin(workTime: (device as! AirPurifier_Wifi).filterStatus.workTime, maxUseMM: 129600)
+                
         }
         
         // Do any additional setup after loading the view.
