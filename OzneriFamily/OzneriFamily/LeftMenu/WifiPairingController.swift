@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class WifiPairingController: UIViewController,UITextFieldDelegate {
 
     @IBAction func backClick(_ sender: AnyObject) {
@@ -49,7 +49,7 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
     @IBOutlet var dotImg4: UIImageView!
     @IBOutlet var dotImg5: UIImageView!
     private var myTimer:Timer?
-    var deviceClass:OZDeviceClass!
+    var productInfo:JSON!
     //var mxChipPair:MXChipPair!
     
     override func viewDidLoad() {
@@ -84,6 +84,7 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
         //开始动画
         myTimer=Timer.scheduledTimer(timeInterval: 1/2, target: self, selector: #selector(imgAnimal), userInfo: nil, repeats: true)
         //开始调用配对方法
+        let deviceClass = OZDeviceClass.getFromString(str: productInfo["ClassName"].stringValue)        
         OznerManager.instance.starPair(deviceClass: deviceClass, pairDelegate: self, ssid: wifiNameText.text!, password: wifiPassWordText.text!)
     }
     func CancleWifiPairing(){
@@ -116,7 +117,7 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
         if segue.identifier == "showsuccess" {
             let pair = segue.destination as! PairSuccessController
             pair.deviceArr = wifiDevices
-            pair.deviceClass=deviceClass
+            pair.productInfo=productInfo
         }
         if segue.identifier == "showfailed" {
             let pair = segue.destination as! PairFailedController

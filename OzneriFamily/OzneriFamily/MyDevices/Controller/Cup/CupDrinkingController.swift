@@ -75,7 +75,6 @@ class CupDrinkingController: BaseViewController {
         segement.setTitle(loadLanguage("周"), forSegmentAt: 1)
         segement.setTitle(loadLanguage("月"), forSegmentAt: 2)
         let device = OznerManager.instance.currentDevice as! Cup
-        let dateStr=NSDate().formattedDate(withFormat: "YYYY-MM-DD")+" 00:00:00"
         drinkGoal=Int(device.settings.GetValue(key: "drink", defaultValue: "2000"))!
            zixunBtn.setTitle(loadLanguage("咨询"), for: UIControlState.normal)
         buyBtn.setTitle(loadLanguage("购买净水器"), for: UIControlState.normal)

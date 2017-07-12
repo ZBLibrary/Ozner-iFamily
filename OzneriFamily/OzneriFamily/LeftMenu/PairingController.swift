@@ -24,9 +24,9 @@ class PairingController: UIViewController,OznerPairDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = loadLanguage("正在配对")
-        deviceImg.image = UIImage(named: productInfo["pairing"]["pairingImg"].stringValue)
-        typeState.text = productInfo["pairing"]["pairingState"].stringValue
-        deviceState.text = loadLanguage(["Ayla":"正在进行Wifi配对","MxChip":"正在进行Wifi配对","Blue":"正在进行蓝牙配对","BlueMxChip":"","AylaMxChip":"正在进行Wifi配对"][productInfo["IOType"].stringValue]!)
+        deviceImg.image = UIImage(named: productInfo["pairing"]["pairingImg2"].stringValue)
+        typeState.text = productInfo["pairing"]["pairingText1"].stringValue
+        deviceState.text = loadLanguage(["Ayla":"正在进行Wifi配对","MxChip":"正在进行Wifi配对","Blue":"正在进行蓝牙配对","BlueMxChip":"正在进行配对","AylaMxChip":"正在进行Wifi配对"][productInfo["IOType"].stringValue]!)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -92,15 +92,16 @@ class PairingController: UIViewController,OznerPairDelegate {
         switch (segue.identifier)! {
         case "showsuccess":
             let pair = segue.destination as! PairSuccessController
+            pair.productInfo=productInfo
             pair.deviceArr = scanDeviceInfo
-            pair.deviceClass=OZDeviceClass.getFromString(str: productInfo["ClassName"].stringValue)
+            
         case "showfailed":
             let pair = segue.destination as! PairFailedController
             
             pair.isBlueToothDevice = true
         case "showWifiPair":
             let pair = segue.destination as! WifiPairingController
-            pair.deviceClass = OZDeviceClass.getFromString(str: productInfo["ClassName"].stringValue)
+            pair.productInfo=productInfo
         default:
             break
         }

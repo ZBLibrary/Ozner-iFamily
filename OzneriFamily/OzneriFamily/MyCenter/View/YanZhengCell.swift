@@ -83,9 +83,7 @@ class YanZhengCell: UITableViewCell {
        
             
         }) { (error) in
-            
-            print(error)
-            
+            print(error ?? "")
         }
 
         

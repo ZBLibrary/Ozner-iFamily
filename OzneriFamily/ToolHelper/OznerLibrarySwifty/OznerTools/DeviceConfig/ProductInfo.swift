@@ -105,13 +105,13 @@ let temperature_low=25
 let tds_bad=200
 let tds_good=50
 class ProductInfo: NSObject {
-    static private let info:JSON=JSON(Bundle.main.path(forResource: "ProductInfo", ofType: "plist")!) as JSON
+    
+    static private let info:JSON=JSON(NSDictionary(contentsOfFile: Bundle.main.path(forResource: "ProductInfo", ofType: "plist")!)!) as JSON
     static var products: [String:JSON] {
         return info["Products"].dictionaryValue
     }
     class func getIOTypeFromProductID(productID:String)->OZIOType {
         var IOStr = ""
-        
         for product in products.values {
             if IOStr != "" {
                 break
@@ -149,6 +149,25 @@ class ProductInfo: NSObject {
         }
         return OZDeviceClass.Cup
     }
+    class func getProductInfoFromProductID(productID:String)->JSON! {
+        var tmpinfo:JSON!
+        
+        for product in products.values {
+            if tmpinfo != nil {
+                break
+            }
+            for id in product["ProductIDs"].arrayValue {
+                if productID==id.stringValue {
+                    tmpinfo=product
+                    break
+                }
+            }
+        }
+        if tmpinfo != nil {
+            return tmpinfo
+        }
+        return products["0"]
+    }
     class func getNameFromProductID(productID:String)->String {
         var Str = ""
         
@@ -169,7 +188,7 @@ class ProductInfo: NSObject {
 
     class func getCurrDeviceClass()->OZDeviceClass
     {
-        return ProductInfo.getDeviceClassFromProductID(productID: ProductInfo.getCurrDeviceMac())
+        return ProductInfo.getDeviceClassFromProductID(productID: (OznerManager.instance.currentDevice?.deviceInfo.productID)!)
     }
     class func getCurrDeviceMac()->String
     {

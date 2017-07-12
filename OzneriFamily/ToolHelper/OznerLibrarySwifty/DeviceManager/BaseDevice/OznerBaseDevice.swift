@@ -84,15 +84,12 @@ class OznerBaseDevice: NSObject,OznerBaseIODelegate {
     func doWillInit() {
     }
     
-    
-    
     //OznerBaseIODelegate
     //收到传感器变化数据
     func OznerBaseIORecvData(recvData: Data) {
     }
     //连接状态变化
     func OznerBaseIOStatusUpdate(status: OznerConnectStatus) {
-        
         if status==OznerConnectStatus.IOIsReadly {
             connectStatus=OznerConnectStatus.Connected
             self.doWillInit()

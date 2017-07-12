@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Spring
+import SwiftyJSON
 import SnapKit
 
 class PairModle: NSObject {
@@ -27,8 +27,8 @@ class PairSuccessController: UIViewController {
 
         }
     }
-    var  deviceClass=OZDeviceClass.Cup
-    var settings:[String:String] = ["name":"","usingSite":loadLanguage("办公室"),"sex":"","weight":"","IsTDSPan":"false"]
+    var productInfo:JSON!
+    var settings:[String:String] = ["name":"","usingSite":loadLanguage("办公室"),"sex":"","weight":""]
     
     
     @IBAction func backClick(_ sender: AnyObject) {
@@ -71,67 +71,27 @@ class PairSuccessController: UIViewController {
     
     private func loadImageandLb() {
         
-        switch deviceClass {
+        switch OZDeviceClass.getFromString(str: productInfo["ClassName"].stringValue) {
         case .Cup:
             mainMatchView = UINib.init(nibName: "CupMatchView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! CupMatchView
             (mainMatchView as! CupMatchView).cupNameLb.delegate=self
             (mainMatchView as! CupMatchView).weightLb.delegate=self
             (mainMatchView as! CupMatchView).sucessBtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
-            successImage.image=UIImage(named: "icon_peidui_select_cup")
-          
-        case .Tap:
-            mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
-            (mainMatchView as! SmallAriClearView).placeLb.text = loadLanguage("办公室")
-            (mainMatchView as! SmallAriClearView).nameLb.placeholder = loadLanguage("输入水探头名称")
-            (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
-            (mainMatchView as! SmallAriClearView).nameLb.delegate=self
-            successImage.image=UIImage(named: "icon_peidui_select_tan_tou")
- 
-        case .TDSPan:
-            mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
-            (mainMatchView as! SmallAriClearView).placeLb.text = loadLanguage("办公室")
-            (mainMatchView as! SmallAriClearView).nameLb.placeholder = loadLanguage("输入检测笔名称")
-            (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
-            (mainMatchView as! SmallAriClearView).nameLb.delegate=self
-            successImage.image=UIImage(named: "icon_peidui_select_TDSPan")
-   
-        case .WaterPurifier_Wifi:
-            mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
-            (mainMatchView as! SmallAriClearView).placeLb.text = loadLanguage("办公室")
-            (mainMatchView as! SmallAriClearView).nameLb.placeholder = loadLanguage("净水器名称")
-            (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
-            (mainMatchView as! SmallAriClearView).nameLb.delegate=self
-            successImage.image=UIImage(named: "icon_peidui_select_jingshuiqi")
-      
-        case .AirPurifier_Blue:
-            //小空净
-            mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
-            (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
-            (mainMatchView as! SmallAriClearView).nameLb.delegate=self
-            successImage.image=UIImage(named: "icon_peidui_select_smallAir")
-            
-        case .AirPurifier_Wifi:
-            mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
-            (mainMatchView as! SmallAriClearView).placeLb.text = loadLanguage("办公室")
-            (mainMatchView as! SmallAriClearView).nameLb.placeholder = loadLanguage("立式空净名称")
-            (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
-            (mainMatchView as! SmallAriClearView).nameLb.delegate=self
-            successImage.image=UIImage(named: "icon_peidui_select_bigAir")
             
         case .WaterReplenish:
             mainMatchView = UINib.init(nibName: "WaterRefeishView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! WaterRefeishView
             (mainMatchView as! WaterRefeishView).sucessAction.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             (mainMatchView as! WaterRefeishView).placeName.delegate=self
-            successImage.image=UIImage(named: "WaterReplenish4")
-        case .WaterPurifier_Blue:
+            
+        
+        default:
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).placeLb.text = loadLanguage("办公室")
-            (mainMatchView as! SmallAriClearView).nameLb.placeholder = loadLanguage("净水器名称")
+            (mainMatchView as! SmallAriClearView).nameLb.placeholder = loadLanguage(productInfo["Name"].stringValue+"名称")
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             (mainMatchView as! SmallAriClearView).nameLb.delegate=self
-            successImage.image=UIImage(named: "水芯片配对图标3")
-        
         }
+        successImage.image=UIImage(named: productInfo["pairing"]["pairingImg3"].stringValue)
         view.addSubview(mainMatchView)
         mainMatchView.snp.makeConstraints { (make) in
             make.top.equalTo(scrollerView.snp.bottom)
@@ -188,14 +148,11 @@ class PairSuccessController: UIViewController {
     {
         var isSuccess = true
         
-        switch deviceClass {
+        switch OZDeviceClass.getFromString(str: productInfo["ClassName"].stringValue) {
         case .Cup:
             settings["name"]=(mainMatchView as! CupMatchView).cupNameLb.text!
             settings["weight"]=(mainMatchView as! CupMatchView).weightLb.text!
             isSuccess = settings["weight"]=="" ? false:isSuccess
-        case .TDSPan:
-            settings["IsTDSPan"]="true"
-            settings["name"]=(mainMatchView as! SmallAriClearView).nameLb.text!
         case .WaterReplenish:
             
             settings["name"]=(mainMatchView as! WaterRefeishView).placeName.text!
@@ -308,17 +265,8 @@ extension PairSuccessController: UICollectionViewDelegate,UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pairsuccessCellID", for: indexPath) as! SuccessPairCell
-
-        let iconImgName = [.Cup:"icon_peidui_select_cup",
-                           .Tap:"icon_peidui_select_tan_tou",
-                           .TDSPan:"icon_peidui_select_TDSPan",
-                           .WaterPurifier_Wifi:"icon_peidui_select_jingshuiqi",
-                           .AirPurifier_Blue:"icon_peidui_select_smallair",
-                           .AirPurifier_Wifi:"icon_peidui_select_bigair",
-                           .WaterReplenish:"WaterReplenish4",
-                           .WaterPurifier_Blue:"水芯片配对图标3"][deviceClass]
-        cell.iconImage.image=UIImage(named: iconImgName!)
-        cell.nameLabel.text=deviceClass.name
+        cell.iconImage.image=UIImage(named: productInfo["pairing"]["pairingImg3"].stringValue)
+        cell.nameLabel.text=productInfo["Name"].stringValue
         
         //默认锁定第一个
         cell.finishImage.isHidden = pairModel[indexPath.row].isHidden

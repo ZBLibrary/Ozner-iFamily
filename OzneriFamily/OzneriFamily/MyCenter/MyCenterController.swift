@@ -146,7 +146,7 @@ class MyCenterController: BaseViewController {
         }
         
         let devices=OznerManager.instance.getAllDevices()
-        headView.infoNumLb.text="\(devices?.count)"
+        headView.infoNumLb.text="\(Int((devices?.count)!))"
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

@@ -31,8 +31,8 @@ class SelectDeviceCell: UITableViewCell {
             break
         }
 
-        deviceImg.image=UIImage(named: productInfo["pairing"]["selectDevice"].stringValue)
-        deviceName.text=productInfo["IOType"].stringValue
+        deviceImg.image=UIImage(named: productInfo["pairing"]["pairingImg1"].stringValue)
+        deviceName.text=productInfo["Name"].stringValue
     }
 
     override func awakeFromNib() {
