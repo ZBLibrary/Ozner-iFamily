@@ -123,11 +123,17 @@ class Air_BlueMainView: OznerDeviceView {
         }
         if isEnd==true {
             
+            if tmpValueInt != 0 {
+                (self.currentDevice as! AirPurifier_Blue).setSpeed(speed: tmpValueInt, callBack: { (error) in
+                    
+                })
+            } else {
+               PM25_In = -1
+            }
+            
             (self.currentDevice as! AirPurifier_Blue).setPower(power: tmpValueInt != 0, callBack: { (error) in
             })
-            (self.currentDevice as! AirPurifier_Blue).setSpeed(speed: tmpValueInt, callBack: { (error) in
-                
-            })
+
         }
     }
     
@@ -135,11 +141,11 @@ class Air_BlueMainView: OznerDeviceView {
         didSet{
             if PM25_In != oldValue   {
                 if PM25_In == -1 || PM25_In == -2 {//-1 已关机,-2 已断开
+                    FLZLabel.isHidden=true
+                    
                     pm25ValueLabel.text = PM25_In == -2 ? loadLanguage("设备已断开"):loadLanguage("设备已关机")
                     pm25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 35*width_screen/375)
-                    FLZLabel.isHidden=true
                     updateSpeed(touchX: 0, isEnd: true)
-               
 //                    self.currentDevice?.connectStatus = OznerConnectStatus.Disconnect
                     return
                 }
