@@ -62,7 +62,7 @@ class Air_BlueMainView: OznerDeviceView {
         sliderTouchView.addGestureRecognizer(tapGesture)
         var tmpValue=CGFloat((currentDevice as! AirPurifier_Blue).sensor.Speed)/100
         tmpValue=34.5*width_screen/375+tmpValue*264*width_screen/375
-        updateSpeed(touchX: tmpValue, isEnd: false)
+        updateSpeed(touchX: tmpValue, isEnd: true)
         outdoorAirView=Bundle.main.loadNibNamed("AirOutdoorView", owner: nil, options: nil)?.first as! AirOutdoorView
         outdoorAirView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         outdoorAirView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
@@ -138,7 +138,9 @@ class Air_BlueMainView: OznerDeviceView {
                     pm25ValueLabel.text = PM25_In == -2 ? loadLanguage("设备已断开"):loadLanguage("设备已关机")
                     pm25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 35*width_screen/375)
                     FLZLabel.isHidden=true
-                    updateSpeed(touchX: 0, isEnd: false)
+                    updateSpeed(touchX: 0, isEnd: true)
+               
+//                    self.currentDevice?.connectStatus = OznerConnectStatus.Disconnect
                     return
                 }
                 if PM25_In < -2 || PM25_In == 0 || PM25_In == 65535 {//暂无数据
@@ -202,7 +204,10 @@ class Air_BlueMainView: OznerDeviceView {
                 PM25_In = -2
                 break
             }
-            updateSpeed(touchX: tmpValue, isEnd: false)
+            if connectChange == OznerConnectStatus.Connected {
+                updateSpeed(touchX: tmpValue, isEnd: true)
+            }
+            
         }
     }
     

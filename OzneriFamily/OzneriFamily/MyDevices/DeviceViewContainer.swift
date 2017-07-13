@@ -105,6 +105,8 @@ class DeviceViewContainer: UIView {
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
                 //设置滤芯及功能
                 SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac())
+                (currentDeviceView as! WaterPurifierMainView).kitChenView.isHidden = true
+           
             case .AirPurifier_Blue:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
             case .AirPurifier_Wifi:
@@ -114,6 +116,28 @@ class DeviceViewContainer: UIView {
                 
             case .WaterPurifier_Blue:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
+                let currentDevice=OznerManager.instance.currentDevice
+                
+                if currentDevice?.deviceInfo.deviceType == "RO Comml" {
+                    (currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
+                    (currentDeviceView as! WaterPurifierMainView).kitChenView.isHidden = false
+                    (currentDeviceView as! WaterPurifierMainView).waterDaysLabel.isHidden = true
+                    (currentDeviceView as! WaterPurifierMainView).valueSlider.block = { [weak self]() ->Void in
+                        let device = currentDevice as? WaterPurifier_Blue
+                        _ = device?.setHotTemp(Int(round((self?.currentDeviceView as! WaterPurifierMainView).valueSlider.value)))
+                        (self?.currentDeviceView as! WaterPurifierMainView).currentBtn?.layer.masksToBounds = false
+                        (self?.currentDeviceView as! WaterPurifierMainView).currentBtn?.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+                        (self?.currentDeviceView as! WaterPurifierMainView).currentBtn?.layer.borderWidth = 0
+                        
+                    }
+                    
+                } else {
+                    //隐藏底部按钮
+                    (currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
+                    (currentDeviceView as! WaterPurifierMainView).kitChenView.isHidden = true
+                    (currentDeviceView as! WaterPurifierMainView).waterDaysLabel.isHidden = false
+                }
+                
                 //隐藏底部按钮
                 //(currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
                 
@@ -167,8 +191,10 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 self.batteryValue = Int((currentDevice as! WaterReplenish).status.battery*100)
             case .WaterPurifier_Blue:
                 let tmpDev=currentDevice as! WaterPurifier_Blue
-                let lvxinValue=min(tmpDev.FilterInfo.Filter_A_Percentage, tmpDev.FilterInfo.Filter_A_Percentage, tmpDev.FilterInfo.Filter_A_Percentage)
+                let lvxinValue=min(tmpDev.FilterInfo.Filter_A_Percentage, tmpDev.FilterInfo.Filter_B_Time, tmpDev.FilterInfo.Filter_C_Time)
                 self.LvXinValue=Int(lvxinValue)
+//                let currentDevice=OznerManager.instance.currentDevice
+//                (self.currentDeviceView as? WaterPurifierMainView)?.waterStopDate = (currentDevice as! WaterPurifier_Blue).WaterSettingInfo.waterDate
 //            case .Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
 //                break
             }

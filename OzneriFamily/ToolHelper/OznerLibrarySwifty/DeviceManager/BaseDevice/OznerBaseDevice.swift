@@ -82,6 +82,7 @@ class OznerBaseDevice: NSObject,OznerBaseIODelegate {
     }
     //io 发送初始化数据
     func doWillInit() {
+
     }
     
     //OznerBaseIODelegate
