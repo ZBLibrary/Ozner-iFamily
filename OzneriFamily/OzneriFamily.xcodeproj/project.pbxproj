@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		683D3EE91F1708DC0010E708 /* GYValueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D3EE71F1708DC0010E708 /* GYValueSlider.swift */; };
+		683D3EEA1F1708DC0010E708 /* GYTempValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D3EE81F1708DC0010E708 /* GYTempValueView.swift */; };
+		683D3EED1F170A8B0010E708 /* WaterPurifierMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D3EEB1F170A8B0010E708 /* WaterPurifierMainView.swift */; };
+		683D3EEE1F170A8B0010E708 /* WaterPurifierMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 683D3EEC1F170A8B0010E708 /* WaterPurifierMainView.xib */; };
 		7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */; };
 		8D0D681B1DDD5AE90097038E /* CupTDSLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0D681A1DDD5AE90097038E /* CupTDSLineView.xib */; };
 		8D0D681D1DDD5AF50097038E /* CupTDSLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0D681C1DDD5AF50097038E /* CupTDSLineView.swift */; };
@@ -391,8 +395,6 @@
 		B7D8C73B1E5EBC7E0015AAD3 /* GYLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8C73A1E5EBC7E0015AAD3 /* GYLabel.swift */; };
 		B7DBCB5B1E5AB2D400C5D7A3 /* OffLineSuggest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DBCB591E5AB2D400C5D7A3 /* OffLineSuggest.swift */; };
 		B7DBCB5C1E5AB2D400C5D7A3 /* OffLineSuggest.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7DBCB5A1E5AB2D400C5D7A3 /* OffLineSuggest.xib */; };
-		B7DBCB5F1E5AB4BA00C5D7A3 /* WaterPurifierMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DBCB5D1E5AB4BA00C5D7A3 /* WaterPurifierMainView.swift */; };
-		B7DBCB601E5AB4BA00C5D7A3 /* WaterPurifierMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7DBCB5E1E5AB4BA00C5D7A3 /* WaterPurifierMainView.xib */; };
 		B7EF061C1DB8A357008BE7D4 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EF061A1DB8A346008BE7D4 /* WebImage.framework */; };
 		B7EF061D1DB8A357008BE7D4 /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7EF061A1DB8A346008BE7D4 /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7F9D5441DE40B7500678317 /* GYShareImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F9D5431DE40B7500678317 /* GYShareImage.swift */; };
@@ -518,6 +520,10 @@
 
 /* Begin PBXFileReference section */
 		3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OzneriFamily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		683D3EE71F1708DC0010E708 /* GYValueSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYValueSlider.swift; sourceTree = "<group>"; };
+		683D3EE81F1708DC0010E708 /* GYTempValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTempValueView.swift; sourceTree = "<group>"; };
+		683D3EEB1F170A8B0010E708 /* WaterPurifierMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurifierMainView.swift; sourceTree = "<group>"; };
+		683D3EEC1F170A8B0010E708 /* WaterPurifierMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterPurifierMainView.xib; sourceTree = "<group>"; };
 		8D0D681A1DDD5AE90097038E /* CupTDSLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupTDSLineView.xib; sourceTree = "<group>"; };
 		8D0D681C1DDD5AF50097038E /* CupTDSLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupTDSLineView.swift; sourceTree = "<group>"; };
 		8D0D68361DDD8A3B0097038E /* RNEmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNEmailLoginViewController.swift; sourceTree = "<group>"; };
@@ -1058,8 +1064,6 @@
 		B7D8C73A1E5EBC7E0015AAD3 /* GYLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYLabel.swift; sourceTree = "<group>"; };
 		B7DBCB591E5AB2D400C5D7A3 /* OffLineSuggest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffLineSuggest.swift; sourceTree = "<group>"; };
 		B7DBCB5A1E5AB2D400C5D7A3 /* OffLineSuggest.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffLineSuggest.xib; sourceTree = "<group>"; };
-		B7DBCB5D1E5AB4BA00C5D7A3 /* WaterPurifierMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurifierMainView.swift; sourceTree = "<group>"; };
-		B7DBCB5E1E5AB4BA00C5D7A3 /* WaterPurifierMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterPurifierMainView.xib; sourceTree = "<group>"; };
 		B7EF061A1DB8A346008BE7D4 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		B7F9D5431DE40B7500678317 /* GYShareImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYShareImage.swift; sourceTree = "<group>"; };
 		B7FAA6BD1E1CA138009042B4 /* GYFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYFadeAnimator.swift; sourceTree = "<group>"; };
@@ -2101,12 +2105,14 @@
 		8DC02E6D1DB5CE91007F57DB /* WaterPurfier */ = {
 			isa = PBXGroup;
 			children = (
+				683D3EE71F1708DC0010E708 /* GYValueSlider.swift */,
+				683D3EE81F1708DC0010E708 /* GYTempValueView.swift */,
 				8D6BFDB91ED9626E00AC849C /* WaterPur_A8DRF.swift */,
 				8D6BFDBA1ED9626E00AC849C /* WaterPur_A8DRF.xib */,
 				8D6BFDBB1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift */,
 				8D6BFDBC1ED9626E00AC849C /* WaterPur_A8CSFFSF.xib */,
-				B7DBCB5D1E5AB4BA00C5D7A3 /* WaterPurifierMainView.swift */,
-				B7DBCB5E1E5AB4BA00C5D7A3 /* WaterPurifierMainView.xib */,
+				683D3EEB1F170A8B0010E708 /* WaterPurifierMainView.swift */,
+				683D3EEC1F170A8B0010E708 /* WaterPurifierMainView.xib */,
 				8DC02E6E1DB5CE91007F57DB /* WaterPurifierHeadCircleView.swift */,
 				8D103D201DD58DE600291C4F /* WaterPurfierTDSChart.swift */,
 				8D7141ED1EE536D800AC9CE9 /* PayWaterCell.swift */,
@@ -3296,7 +3302,6 @@
 				8D1397311DDC7819006FB239 /* CupTDSChartContainerView.xib in Resources */,
 				8D0D69341DDD99A10097038E /* EquidsCollectionViewCell.xib in Resources */,
 				8D92F65A1D94FAC70068A40A /* MyDevices.storyboard in Resources */,
-				B7DBCB601E5AB4BA00C5D7A3 /* WaterPurifierMainView.xib in Resources */,
 				B717E8251E0BAB5400B6DEBD /* Info.plist in Resources */,
 				8DC02E771DB5CE91007F57DB /* Air_WifiMainView.xib in Resources */,
 				B717E8491E0BAB7100B6DEBD /* normal_face.plist in Resources */,
@@ -3340,6 +3345,7 @@
 				B7227A6F1E0138050007ADE4 /* gyGift.plist in Resources */,
 				8D4A5E1D1DE419D4008A6960 /* ShareMoneyToWeChat.xib in Resources */,
 				8D5045C81DB34AD700EAC3B3 /* Airgif_blue.gif in Resources */,
+				683D3EEE1F170A8B0010E708 /* WaterPurifierMainView.xib in Resources */,
 				8D0D694C1DDD99A10097038E /* ZanMeTableViewCell.xib in Resources */,
 				B717E8301E0BAB5400B6DEBD /* Info.plist in Resources */,
 				8D11A1891DDB340B002F14D3 /* CupTDSDetailCilcleView.xib in Resources */,
@@ -3632,6 +3638,7 @@
 				B717E81B1E0BAB5400B6DEBD /* UIGestureRecognizer+YYAdd.m in Sources */,
 				8D36D2EE1F06234A0091EB1F /* NSData+IPAddress.m in Sources */,
 				8D429A091DCA0D840083011C /* AirLvXinController.swift in Sources */,
+				683D3EED1F170A8B0010E708 /* WaterPurifierMainView.swift in Sources */,
 				8D5045C61DB34AA000EAC3B3 /* UIImage+Expand.swift in Sources */,
 				8D36D2E91F06234A0091EB1F /* GCDAsyncSocket.m in Sources */,
 				B717E8311E0BAB5400B6DEBD /* MJExtensionConst.m in Sources */,
@@ -3653,6 +3660,7 @@
 				8D36D2F31F06234A0091EB1F /* ZBBonjourService.m in Sources */,
 				8D113DC51DB710E6008CE2C6 /* CupDrinkingController.swift in Sources */,
 				8D0D692A1DDD99A00097038E /* MySetViewController.swift in Sources */,
+				683D3EEA1F1708DC0010E708 /* GYTempValueView.swift in Sources */,
 				8D0D69241DDD99A00097038E /* EquidsCollectionViewController.swift in Sources */,
 				B717E80E1E0BAB5400B6DEBD /* ICDetailHeadView.m in Sources */,
 				8D103D231DD5C2B400291C4F /* CupSetDrinkTimeController.swift in Sources */,
@@ -3728,6 +3736,7 @@
 				B717E82D1E0BAB5400B6DEBD /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				B717E7F81E0BAB5400B6DEBD /* ICChatMessageBaseCell.m in Sources */,
 				8DC02E741DB5CE91007F57DB /* Air_BlueMainView.swift in Sources */,
+				683D3EE91F1708DC0010E708 /* GYValueSlider.swift in Sources */,
 				8D36D2EA1F06234A0091EB1F /* GCDAsyncUdpSocket.m in Sources */,
 				8D36D2E71F06234A0091EB1F /* OZBluetoothIO.swift in Sources */,
 				8D12AAC71DAB7386003A09E6 /* PairSuccessController.swift in Sources */,
@@ -3829,7 +3838,6 @@
 				E0745AD81EE94ED200CB39CC /* UdeskSDKConfig.m in Sources */,
 				E0745AA91EE94ED200CB39CC /* UdeskContentController.m in Sources */,
 				B717E7F01E0BAB5400B6DEBD /* ICFileTool.m in Sources */,
-				B7DBCB5F1E5AB4BA00C5D7A3 /* WaterPurifierMainView.swift in Sources */,
 				E0745AB61EE94ED200CB39CC /* UdeskChatViewModel.m in Sources */,
 				8D36D2F61F06234A0091EB1F /* OznerEasyLink_V2.swift in Sources */,
 				8DC02FB81DB61F87007F57DB /* CupSettingController.swift in Sources */,

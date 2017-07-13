@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WaterPurifierMainView: OznerDeviceView {
+class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
 
     var scanEnable = true
     var coolEnable = true
@@ -16,7 +16,8 @@ class WaterPurifierMainView: OznerDeviceView {
     var buyLvXinUrl = ""
     var lvXinStopDate = NSDate()
     var lvXinUsedDays = 0
-    //var isBlueDevice = false
+    var isBlueDevice = false
+    var currentBtn:UIButton?
     
     func setLvXinAndEnable(scan:Bool,cool:Bool,hot:Bool,buyLvXinUrl:String,lvXinStopDate:NSDate,lvXinUsedDays:Int){
         self.scanEnable=scan
@@ -29,6 +30,7 @@ class WaterPurifierMainView: OznerDeviceView {
     @IBOutlet var waterDaysLabel: UILabel!//水值
     @IBOutlet var circleView: WaterPurifierHeadCircleView!
     
+    @IBOutlet weak var kitChenView: UIView!
     //header
     @IBOutlet var tdsImg: UIImageView!
     @IBOutlet var tdsStateLabel: UILabel!
@@ -60,6 +62,16 @@ class WaterPurifierMainView: OznerDeviceView {
     @IBOutlet var hotButton: UIButton!
     @IBOutlet var coolLabel: UILabel!
     @IBOutlet var coolButton: UIButton!
+    
+    //1
+    
+    @IBOutlet weak var valueSlider: GYValueSlider!
+    @IBOutlet weak var sumwaterLb: UILabel!
+    @IBOutlet weak var lowBtn: UIButton!
+    @IBOutlet weak var centerBtn: UIButton!
+    
+    @IBOutlet weak var customerBtn: UIButton!
+    @IBOutlet weak var highBtn: UIButton!
     func setButtonEnable(timer:Timer) {
         (timer.userInfo as! UIButton).isEnabled=true
     }
@@ -121,6 +133,125 @@ class WaterPurifierMainView: OznerDeviceView {
     }
     
     
+    
+    @IBAction func tempAction(_ sender: UIButton) {
+        
+        let device = currentDevice as? WaterPurifier_Blue
+        if device?.connectStatus != OznerConnectStatus.Connected {
+            valueSlider.isEnabled = false
+            return
+        } else {
+            valueSlider.isEnabled = true
+        }
+        lowBtn.isEnabled = false
+        centerBtn.isEnabled = false
+        highBtn.isEnabled = false
+        customerBtn.isEnabled = false
+        currentBtn?.isEnabled = false
+        switch sender.tag {
+        case 5555:
+            
+            if (device?.setHotTemp(55))! {
+                
+                cornerBtn(sender)
+                valueSlider.value = 55
+                
+            }
+            break
+        case 6666:
+            
+            if (device?.setHotTemp(85))! {
+                cornerBtn(sender)
+                valueSlider.value = 85
+            }
+            break
+        case 7777:
+            if (device?.setHotTemp(99))! {
+                cornerBtn(sender)
+                valueSlider.value = 99
+            }
+            break
+        case 8888:
+            let value = UserDefaults.standard.value(forKey: "UISliderValue") ?? 40
+            if (device?.setHotTemp(value as! Int))! {
+                cornerBtn(sender)
+                valueSlider.value = Float(value as! Int)
+            }
+            
+            break
+        default:
+            break
+        }
+        
+        if valueSlider.previewView != nil {
+            
+            valueSlider.previewView?.frame = canclueFrame()
+            valueSlider.previewView?.changeValue(String.init(format: "%.0f", valueSlider.value) + "℃")
+            
+        } else {
+            
+            valueSlider.addSubview(valueSlider.creatGYTmpView(canclueFrame()))
+            valueSlider.previewView?.changeValue(String.init(format: "%.0f",valueSlider.value) + "℃")
+
+        }
+        
+        lowBtn.isEnabled = true
+        centerBtn.isEnabled = true
+        highBtn.isEnabled = true
+        customerBtn.isEnabled = true
+        currentBtn?.isEnabled = true
+        
+        if currentBtn != sender {
+            if currentBtn != nil {
+                
+                btnBackColor(currentBtn!)
+
+            }
+            currentBtn = sender
+
+        }
+        
+    }
+    
+    func endTrackingSetValue() {
+        
+        let device = currentDevice as? WaterPurifier_Blue
+        _ =  device?.setHotTemp(Int(valueSlider.value))
+        
+    }
+    
+    
+    
+    fileprivate func canclueFrame() -> CGRect{
+        let rect = valueSlider.thumbRect(forBounds: valueSlider.bounds, trackRect: valueSlider.bounds, value: valueSlider.value)
+        let rect1 = rect.insetBy(dx: -8, dy: -8)
+        
+        let rect2 = rect1.offsetBy(dx: 0, dy: -30)
+        return rect2
+    }
+    
+    fileprivate func btnBackColor(_ sender:UIButton) {
+        
+        sender.layer.masksToBounds = false
+        sender.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+        sender.layer.borderWidth = 0
+    
+    }
+    
+    fileprivate func cornerBtn(_ sender:UIButton) {
+        
+        UIView.animate(withDuration: 1) {
+           
+            sender.layer.cornerRadius = 15
+            sender.layer.masksToBounds = true
+            sender.layer.borderWidth = 2
+            sender.layer.borderColor = UIColor.init(hex: "48c2fa").cgColor
+            sender.setTitleColor(UIColor.init(hex: "48c2fa"), for: UIControlState.normal)
+            
+        }
+        
+    }
+    
    
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -144,9 +275,9 @@ class WaterPurifierMainView: OznerDeviceView {
             let tdsAF=min(tmptdsBF, tmptdsAF)
             
             tdsValueLabel_BF.text = tdsBF==0 ? loadLanguage("暂无"):"\(tdsBF)"
-            tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:48)*width_screen/375)
+            tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:45)*width_screen/375)
             tdsValueLabel_AF.text = tdsAF==0 ? loadLanguage("暂无"):"\(tdsAF)"
-            tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:48)*width_screen/375)
+            tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:45)*width_screen/375)
             
             var angleBF = CGFloat(0)
             switch true {
@@ -194,6 +325,13 @@ class WaterPurifierMainView: OznerDeviceView {
             }
         }
     }
+    var sumWater:String = "0ml" {
+        didSet {
+            if sumWater != oldValue {
+                sumwaterLb.text = sumWater
+            }
+        }
+    }
     
     let color_normol=UIColor(red: 177.0/255.0, green: 178.0/255.0, blue: 179.0/255.0, alpha: 1)
     let color_select=UIColor(red: 63.0/255.0, green: 135.0/255.0, blue: 237.0/255.0, alpha: 1)
@@ -212,14 +350,39 @@ class WaterPurifierMainView: OznerDeviceView {
         }
     }
     
+    
+    
     override func SensorUpdate(identifier: String) {
         //更新传感器视图
         if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue {
+            let currentDevice=OznerManager.instance.currentDevice
+            valueSlider.isEnabled = currentDevice?.connectStatus == OznerConnectStatus.Connected
             tdsContainerView.isHidden=false
             offLineLabel.isHidden=true
             tds=(Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS1),Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS2))
             
             waterStopDate=(currentDevice as! WaterPurifier_Blue).WaterSettingInfo.waterDate
+            
+//            if currentDevice?.deviceInfo.deviceType == "RO Comml" {
+//                sumWater = canclueWater(Int((currentDevice as! WaterPurifier_Blue).WaterInfo.waterml))
+//                
+//                if valueSlider.previewView != nil {
+//                    
+//                    valueSlider.value = Float((currentDevice as! WaterPurifier_Blue).TwoInfo.hottempSet)
+//                    valueSlider.previewView?.frame = canclueFrame()
+//                    valueSlider.previewView?.changeValue(String.init(format: "%.0f", round(valueSlider.value)) + "℃")
+//                    
+//                } else {
+//                    valueSlider.value = Float((currentDevice as! WaterPurifier_Blue).TwoInfo.hottempSet)
+//                    valueSlider.addSubview(valueSlider.creatGYTmpView(canclueFrame()))
+//                    
+//                    valueSlider.previewView?.changeValue(String.init(format: "%.0f", round(valueSlider.value)) + "℃")
+//                    
+//                }
+//                
+//            }
+
+            
         }else{
             let device = currentDevice as! WaterPurifier_Wifi
             
@@ -246,12 +409,13 @@ class WaterPurifierMainView: OznerDeviceView {
         }
         
     }
+    
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         //更新连接状态视图
         if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue {
             tdsContainerView.isHidden=false
             offLineLabel.isHidden=true
-           tds=(Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS1),Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS2))
+            tds=(Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS1),Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS2))
         }else{
             let device = currentDevice as! WaterPurifier_Wifi
             
@@ -276,5 +440,105 @@ class WaterPurifierMainView: OznerDeviceView {
                 
             }
         }
+    }
+    /*
+    override func SensorUpdate(device: OznerDevice!) {
+        //更新传感器视图
+        if isBlueDevice {
+            valueSlider.isEnabled = device.connectStatus() == Connected
+            tdsContainerView.isHidden=false
+            offLineLabel.isHidden=true
+            tds=(Int((device as! ROWaterPurufier).waterInfo.tds1),Int((device as! ROWaterPurufier).waterInfo.tds2))
+            print((device as! ROWaterPurufier).settingInfo.waterStopDate)
+            if device.type == "Ozner RO" {
+                waterDays=Int((device as! ROWaterPurufier).settingInfo.waterRemindDays)
+            }
+            if device.type == "RO Comml" {
+                sumWater = canclueWater(Int((device as! ROWaterPurufier).waterInfo.waterml))
+                
+                if valueSlider.previewView != nil {
+                    
+                    valueSlider.value = Float((device as! ROWaterPurufier).twoInfo.hottempSet)
+                    valueSlider.previewView?.frame = canclueFrame()
+                    valueSlider.previewView?.changeValue(String.init(format: "%.0f", round(valueSlider.value)) + "℃")
+                    
+                } else {
+                    valueSlider.value = Float((device as! ROWaterPurufier).twoInfo.hottempSet)
+                    valueSlider.addSubview(valueSlider.creatGYTmpView(canclueFrame()))
+                   
+                    valueSlider.previewView?.changeValue(String.init(format: "%.0f", round(valueSlider.value)) + "℃")
+                    
+                }
+
+            }
+            
+        }else{
+            if (device as! WaterPurifier).isOffline
+            {
+                tdsContainerView.isHidden=true
+                offLineLabel.isHidden=false
+                offLineLabel.text=loadLanguage("设备云已断开")
+                operation=(false,false,false)
+            }else{
+                if (device as! WaterPurifier).status.power==false {
+                    tdsContainerView.isHidden=true
+                    offLineLabel.isHidden=false
+                    offLineLabel.text=loadLanguage("设备已关机")
+                    operation=(false,false,false)
+                }else{
+                    tdsContainerView.isHidden=false
+                    offLineLabel.isHidden=true
+                    tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
+                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+                }
+                
+            }
+        }
+        
+    }
+    override func StatusUpdate(device: OznerDevice!, status: DeviceViewStatus) {
+        //更新连接状态视图
+        if isBlueDevice {
+            tdsContainerView.isHidden=false
+            offLineLabel.isHidden=true
+            tds=(Int((device as! ROWaterPurufier).waterInfo.tds1),Int((device as! ROWaterPurufier).waterInfo.tds2))
+        }else{
+            if (device as! WaterPurifier).isOffline
+            {
+                tdsContainerView.isHidden=true
+                offLineLabel.isHidden=false
+                offLineLabel.text=loadLanguage("设备云已断开")
+                operation=(false,false,false)
+            }else{
+                if (device as! WaterPurifier).status.power==false {
+                    tdsContainerView.isHidden=true
+                    self.offLineLabel.isHidden=false
+                    self.offLineLabel.text=loadLanguage("设备已关机")
+                    operation=(false,false,false)
+                }else{
+                    tdsContainerView.isHidden=false
+                    self.offLineLabel.isHidden=true
+                    tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
+                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
+                }
+                
+            }
+        }
+    }
+ */
+    
+    fileprivate func canclueWater(_ water:Int) -> String{
+        
+        switch water {
+        case 0...1000:
+            return "\(water)ml"
+        case 1000...1000000:
+            return String(format: "%.2f", Float(water)/1000.0) + "L"
+        case 1000000...Int.max:
+            return String(format: "%.2f", Float(water)/1000000.0) + "m³"
+        default:
+            break
+        }
+        return "0ml"
     }
 }

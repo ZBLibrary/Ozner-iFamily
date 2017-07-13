@@ -88,8 +88,10 @@ class AirPurifier_Blue: OznerBaseDevice {
         self.requestSensor()
         self.requestStatus()
     }
+    var i = 0
     override func repeatFunc() {
-        NSDate().second()%2==0 ? self.requestSensor():self.requestStatus()
+        i%2==0 ? self.requestSensor():self.requestStatus()
+        i += 1
     }
     
     

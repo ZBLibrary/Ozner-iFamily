@@ -28,8 +28,15 @@ class WaterPurfierSettingController: DeviceSettingController {
         self.title = loadLanguage("设置")
         self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
         nameAndAttrLabel.text=self.getNameAndAttr()
+        
         waterPayViewContainer.isHidden=(ProductInfo.getCurrDeviceClass() != .WaterPurifier_Blue)
+        let currentDevice=OznerManager.instance.currentDevice
+        if currentDevice?.deviceInfo.deviceType == "RO Comml" {
+             waterPayViewContainer.isHidden = true
+        }
+        
         macAdressLabel.text="mac:"+ProductInfo.getCurrDeviceMac()
+                
         // Do any additional setup after loading the view.
     }
     

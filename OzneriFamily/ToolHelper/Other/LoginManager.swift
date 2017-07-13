@@ -163,3 +163,5 @@ class LoginManager:NSObject{
 let cureentIphoneType: EnumIphoneType = LoginManager.currenIphoneType()
 
 
+
+
