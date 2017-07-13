@@ -191,7 +191,7 @@ class Air_WifiMainView: OznerDeviceView {
             PM25_In=Int((self.currentDevice as! AirPurifier_Wifi).sensor.PM25)
         }
         
-        operation=(device.status.Power,device.status.Speed,device.status.Lock)
+        //operation=(device.status.Power,device.status.Speed,device.status.Lock)
     }
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         //更新连接状态视图
@@ -201,8 +201,7 @@ class Air_WifiMainView: OznerDeviceView {
             PM25_In = -2
             operation=(false,0,false)
         }else{
-           // PM25_In=Int((self.currentDevice as! AirPurifier_MxChip).sensor.pm25)
-            //operation=((device as! AirPurifier_MxChip).status.getPower,Int((device as! AirPurifier_MxChip).status.speed),(device as! AirPurifier_MxChip).status.getLock)
+           operation=(device.status.Power,device.status.Speed,device.status.Lock)
         }
         
         

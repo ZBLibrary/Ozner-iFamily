@@ -43,8 +43,10 @@ class LeftMenuDeviceCell: UITableViewCell {
         
         // Initialization code
     }
-    func setSelectedgy(_ selected: Bool, animated: Bool) {
 
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
         bgView.backgroundColor = selected ? UIColor(hexString: "#f3f8fb"):UIColor(hexString: "#e1ebf4")
         connectLabel.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor(white: 0, alpha: 0.3)
         deviceName.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor(hexString: "#6d85a0")
@@ -52,26 +54,8 @@ class LeftMenuDeviceCell: UITableViewCell {
         let productInfo=ProductInfo.getProductInfoFromProductID(productID: device.deviceInfo.productID)
         let imgNameStr=[productInfo?["pairing"]["pairingImg4"].stringValue,productInfo?["pairing"]["pairingImg5"].stringValue][selected.hashValue]
         deviceImg.image=UIImage(named: imgNameStr!)
+        // Configure the view for the selected state
         
     }
-    
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        
-//        if self.tag == currenttag {
-//            return
-//        }
-//        currenttag = self.tag
-//        super.setSelected(selected, animated: animated)
-//        
-//        bgView.backgroundColor = selected ? UIColor(hexString: "#f3f8fb"):UIColor(hexString: "#e1ebf4")
-//        connectLabel.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor(white: 0, alpha: 0.3)
-//        deviceName.textColor = selected ? UIColor(hexString: "#39a7f2"):UIColor(hexString: "#6d85a0")
-//        deviceAdressLabel.textColor=selected ? UIColor(hexString: "#39a7f2"):UIColor(white: 0, alpha: 0.3)
-//        let productInfo=ProductInfo.getProductInfoFromProductID(productID: device.deviceInfo.productID)
-//        let imgNameStr=[productInfo?["pairing"]["pairingImg4"].stringValue,productInfo?["pairing"]["pairingImg5"].stringValue][selected.hashValue]
-//        deviceImg.image=UIImage(named: imgNameStr!)
-//        // Configure the view for the selected state
-//        
-//    }
     
 }
