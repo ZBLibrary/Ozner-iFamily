@@ -145,7 +145,7 @@ class Air_BlueMainView: OznerDeviceView {
                     
                     pm25ValueLabel.text = PM25_In == -2 ? loadLanguage("设备已断开"):loadLanguage("设备已关机")
                     pm25ValueLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 35*width_screen/375)
-                    updateSpeed(touchX: 0, isEnd: true)
+//                    updateSpeed(touchX: 0, isEnd: true)
 //                    self.currentDevice?.connectStatus = OznerConnectStatus.Disconnect
                     return
                 }
