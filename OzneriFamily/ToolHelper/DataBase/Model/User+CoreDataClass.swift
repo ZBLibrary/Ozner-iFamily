@@ -796,7 +796,7 @@ public class User: BaseDataObject {
         let manager = AFHTTPSessionManager.init()
         manager.responseSerializer = AFHTTPResponseSerializer()
         manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
-        manager.get("http://tests.oznerwater.com:8888/api/order/GetUserOnlineRechargeWaterOrderList", parameters:["mobile":User.currentUser?.phone], progress: { (progress) in
+        manager.get("http://www.oznerwater.com:8888/api/order/GetUserOnlineRechargeWaterOrderList", parameters:["mobile":User.currentUser?.phone], progress: { (progress) in
             //Update the progress view
             DispatchQueue.main.async(execute: {
                 if Float(progress.fractionCompleted)<1{
@@ -860,7 +860,7 @@ public class User: BaseDataObject {
         let manager = AFHTTPSessionManager.init()
         manager.responseSerializer = AFHTTPResponseSerializer()
         manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
-        manager.post("http://tests.oznerwater.com:8888/api/order/OnlineRechargeWaterOrderConfirm", parameters:["ProductId":cardinfo.ProductId,"OrderId":cardinfo.OrderId,"OrderDtlId":cardinfo.OrderDtlId,"OrginOrderCode":cardinfo.OrginOrderCode,"Mac":Mac,"UCode":cardinfo.UCode], progress: { (progress) in
+        manager.post("http://www.oznerwater.com:8888/api/order/OnlineRechargeWaterOrderConfirm", parameters:["ProductId":cardinfo.ProductId,"OrderId":cardinfo.OrderId,"OrderDtlId":cardinfo.OrderDtlId,"OrginOrderCode":cardinfo.OrginOrderCode,"Mac":Mac,"UCode":cardinfo.UCode], progress: { (progress) in
             //Update the progress view
             DispatchQueue.main.async(execute: {
                 if Float(progress.fractionCompleted)<1{

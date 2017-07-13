@@ -139,8 +139,10 @@ extension LeftMenuController:UITableViewDataSource{
         let cell=tableView.dequeueReusableCell(withIdentifier: "LeftMenuDeviceCell") as! LeftMenuDeviceCell
         cell.device = deviceArray[indexPath.row]
         cell.selectionStyle =  UITableViewCellSelectionStyle.none
-        cell.setSelected(deviceArray[indexPath.row].isCurrentDevice, animated: false)
-        return cell
+        cell.tag = indexPath.row
+//        cell.setSelected(deviceArray[indexPath.row].isCurrentDevice, animated: false)
+        cell.setSelectedgy(deviceArray[indexPath.row].isCurrentDevice, animated: false)
+               return cell
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
