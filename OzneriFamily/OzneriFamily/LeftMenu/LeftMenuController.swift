@@ -98,7 +98,18 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
         deviceArray=OznerManager.instance.getAllDevices()
         tableContainer.isHidden = deviceArray.count==0
         self.tableView.reloadData()
-
+        var index = 0        
+        for i in 0..<deviceArray.count {
+            if deviceArray[i].isCurrentDevice
+            {
+                index=i
+                break
+            }
+        }
+        if deviceArray.count>0 {
+            self.tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .none)
+        }
+        
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -138,11 +149,8 @@ extension LeftMenuController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "LeftMenuDeviceCell") as! LeftMenuDeviceCell
         cell.device = deviceArray[indexPath.row]
-        cell.selectionStyle =  UITableViewCellSelectionStyle.none
-        cell.tag = indexPath.row
-//        cell.setSelected(deviceArray[indexPath.row].isCurrentDevice, animated: false)
-        cell.setSelectedgy(deviceArray[indexPath.row].isCurrentDevice, animated: false)
-               return cell
+        
+        return cell
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
