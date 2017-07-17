@@ -133,14 +133,13 @@ class Cup: OznerBaseDevice {
         data.append(0)
         self.SendDataToDevice(sendData: data) { (error) in}
     }
-    var i = 0
+
     override func repeatFunc() {
-        if i%2==0 {
+        if Int(arc4random()%2)==0 {
             self.SendDataToDevice(sendData: Data.init(bytes: [0x14])) { (error) in}//opCode_ReadTapRecord
         }else{
             self.SendDataToDevice(sendData: Data.init(bytes: [0x12])) { (error) in}//opCode_ReadSensor
         }
-        i += 1
     }
     override func describe() -> String {
         return "name:\(self.settings.name!)\n connectStatus:\(self.connectStatus)\n sensor:\(self.sensor)\n"

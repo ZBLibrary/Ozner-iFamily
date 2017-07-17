@@ -47,7 +47,6 @@ class WaterPurifier_Blue: OznerBaseDevice {
         }
         
     }
-    var i = 0
     
     func setHotTemp(_ temp:Int) -> Bool {
         
@@ -145,14 +144,13 @@ class WaterPurifier_Blue: OznerBaseDevice {
     override func doWillInit(){}
     override func repeatFunc() {
         
-        if i%2==0 {
+        if Int(arc4random()%2)==0 {
             requestFilterInfo()
             requestSettingInfo()
         }else{
             requestWaterInfo()
             requestSetting()
         }
-        i += 1
         
     }
     

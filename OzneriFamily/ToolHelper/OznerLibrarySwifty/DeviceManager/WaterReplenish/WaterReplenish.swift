@@ -39,12 +39,11 @@ class WaterReplenish: OznerBaseDevice {
     override func doWillInit() {
 
     }
-     var i = 0
+   
     override func repeatFunc() {
-        if i%2==0 {
+        if Int(arc4random()%2)==0 {
             requestStatus()
         }
-        i += 1
     }
     private func requestStatus() {
         self.SendDataToDevice(sendData: Data.init(bytes: [0x20])) { (error) in
