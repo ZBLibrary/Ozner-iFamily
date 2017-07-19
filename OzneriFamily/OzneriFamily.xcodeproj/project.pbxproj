@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682C705F1F1EE73600B0A6E6 /* Electrickettle_Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C705D1F1EE73600B0A6E6 /* Electrickettle_Blue.swift */; };
+		682C70621F1EFEA300B0A6E6 /* ElectrickettleMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C70611F1EFEA300B0A6E6 /* ElectrickettleMainView.swift */; };
+		682C70641F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 682C70631F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib */; };
+		682C70A61F1F57E000B0A6E6 /* GYProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C70A51F1F57E000B0A6E6 /* GYProgressView.swift */; };
 		683D3EE91F1708DC0010E708 /* GYValueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D3EE71F1708DC0010E708 /* GYValueSlider.swift */; };
 		683D3EEA1F1708DC0010E708 /* GYTempValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D3EE81F1708DC0010E708 /* GYTempValueView.swift */; };
 		683D3EED1F170A8B0010E708 /* WaterPurifierMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D3EEB1F170A8B0010E708 /* WaterPurifierMainView.swift */; };
@@ -520,6 +524,10 @@
 
 /* Begin PBXFileReference section */
 		3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OzneriFamily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		682C705D1F1EE73600B0A6E6 /* Electrickettle_Blue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Electrickettle_Blue.swift; sourceTree = "<group>"; };
+		682C70611F1EFEA300B0A6E6 /* ElectrickettleMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElectrickettleMainView.swift; sourceTree = "<group>"; };
+		682C70631F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ElectrickettleMainView.xib; sourceTree = "<group>"; };
+		682C70A51F1F57E000B0A6E6 /* GYProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYProgressView.swift; sourceTree = "<group>"; };
 		683D3EE71F1708DC0010E708 /* GYValueSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYValueSlider.swift; sourceTree = "<group>"; };
 		683D3EE81F1708DC0010E708 /* GYTempValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTempValueView.swift; sourceTree = "<group>"; };
 		683D3EEB1F170A8B0010E708 /* WaterPurifierMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurifierMainView.swift; sourceTree = "<group>"; };
@@ -1320,6 +1328,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		682C705C1F1EE73600B0A6E6 /* Electrickettle */ = {
+			isa = PBXGroup;
+			children = (
+				682C705D1F1EE73600B0A6E6 /* Electrickettle_Blue.swift */,
+			);
+			path = Electrickettle;
+			sourceTree = "<group>";
+		};
+		682C70601F1EFE4400B0A6E6 /* Electrickettle */ = {
+			isa = PBXGroup;
+			children = (
+				682C70A51F1F57E000B0A6E6 /* GYProgressView.swift */,
+				682C70611F1EFEA300B0A6E6 /* ElectrickettleMainView.swift */,
+				682C70631F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib */,
+			);
+			path = Electrickettle;
+			sourceTree = "<group>";
+		};
 		8D0D68F11DDD99A00097038E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1624,6 +1650,7 @@
 		8D36D25F1F06234A0091EB1F /* DeviceManager */ = {
 			isa = PBXGroup;
 			children = (
+				682C705C1F1EE73600B0A6E6 /* Electrickettle */,
 				8D36D26D1F06234A0091EB1F /* OznerDeviceManager.swift */,
 				8D36D2601F06234A0091EB1F /* AirPurifier_Blue */,
 				8D36D2621F06234A0091EB1F /* AirPurifier_Wifi */,
@@ -1987,6 +2014,7 @@
 		8D9951361DACE2E80050FB19 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				682C70601F1EFE4400B0A6E6 /* Electrickettle */,
 				8DC02E601DB5CE91007F57DB /* Cup */,
 				8DC02E681DB5CE91007F57DB /* Tap */,
 				8DC02E5B1DB5CE91007F57DB /* AirPurfier */,
@@ -3328,6 +3356,7 @@
 				B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */,
 				8DC02E7F1DB5CE91007F57DB /* TapMainView.xib in Resources */,
 				8D1DBC991F07720D0083E1D6 /* ProductInfo.plist in Resources */,
+				682C70641F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib in Resources */,
 				8D0D683F1DDD8A3B0097038E /* RNEmailRegisterViewController.xib in Resources */,
 				8D0D69441DDD99A10097038E /* MyInfoCell.xib in Resources */,
 				8D7141F01EE536D800AC9CE9 /* PayWaterCell.xib in Resources */,
@@ -3725,10 +3754,13 @@
 				B717E81C1E0BAB5400B6DEBD /* UIImage+Extension.m in Sources */,
 				B717E8351E0BAB5400B6DEBD /* MJPropertyType.m in Sources */,
 				8D0D68401DDD8A3B0097038E /* RNModifyPasswordViewController.swift in Sources */,
+				682C70621F1EFEA300B0A6E6 /* ElectrickettleMainView.swift in Sources */,
 				B717E8001E0BAB5400B6DEBD /* ICChatSystemCell.m in Sources */,
 				8D1EF3C51D93F01F0009D034 /* MainTabBarController.swift in Sources */,
+				682C705F1F1EE73600B0A6E6 /* Electrickettle_Blue.swift in Sources */,
 				B717E8081E0BAB5400B6DEBD /* ICEmotionButton.m in Sources */,
 				E0745AB31EE94ED200CB39CC /* UdeskProductMessage.m in Sources */,
+				682C70A61F1F57E000B0A6E6 /* GYProgressView.swift in Sources */,
 				B717E7ED1E0BAB5400B6DEBD /* ICMessageModel.m in Sources */,
 				8D92F6581D94FAB00068A40A /* MyDevicesController.swift in Sources */,
 				E0745AF01EE94ED200CB39CC /* UdeskXPathQuery.m in Sources */,

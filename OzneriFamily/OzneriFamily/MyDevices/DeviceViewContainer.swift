@@ -60,7 +60,8 @@ class DeviceViewContainer: UIView {
         .AirPurifier_Blue:"Air_BlueMainView",
         .AirPurifier_Wifi:"Air_WifiMainView",
         .WaterReplenish:"WaterReplenishMainView",
-        .WaterPurifier_Blue:"WaterPurifierMainView"
+        .WaterPurifier_Blue:"WaterPurifierMainView",
+        .Electrickettle_Blue:"ElectrickettleMainView"
     ]
     private func SelectWitchView(device:OznerBaseDevice?)  {
         
@@ -138,6 +139,11 @@ class DeviceViewContainer: UIView {
                     (currentDeviceView as! WaterPurifierMainView).waterDaysLabel.isHidden = false
                 }
                 
+                
+// MARK: - TODO:
+            case .Electrickettle_Blue:
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:225*k_height)
+                break
                 //隐藏底部按钮
                 //(currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
                 
@@ -197,6 +203,9 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
 //                (self.currentDeviceView as? WaterPurifierMainView)?.waterStopDate = (currentDevice as! WaterPurifier_Blue).WaterSettingInfo.waterDate
 //            case .Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
 //                break
+                //MARK: - TODO
+            case .Electrickettle_Blue:
+                break
             }
         }
         

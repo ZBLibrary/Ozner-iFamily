@@ -9,6 +9,18 @@
 import UIKit
 
 class OznerTools: NSObject {
+    
+    class func dataFromInt16(number:UInt16)->Data {
+        
+        let data = NSMutableData()
+        //        var val = CFSwapInt16HostToBig(number)
+        var val = CFSwapInt16LittleToHost(number)
+        
+        data.append(&val, length: MemoryLayout<UInt16>.size)
+        
+        return data as Data
+    }
+    
     class func dataFromInt(number:CLongLong,length:Int)->Data{
         var data=Data()
         if length<1 {
@@ -23,6 +35,7 @@ class OznerTools: NSObject {
         }
         return data
     }
+    
     class func hexStringFromData(data:Data)->String{
         var hexStr=""
         for i in 0..<data.count {
@@ -33,6 +46,7 @@ class OznerTools: NSObject {
         }
         return hexStr
     }
+    
     class func hexStringToData(strHex:String)->Data{
         var data=Data()
         if strHex.characters.count%2 != 0 {
@@ -48,6 +62,7 @@ class OznerTools: NSObject {
         }
         return data
     }
+    
     class func publicString(payload:Data,deviceid:String,callback:((Int32)->Void)!){
         let payloadStr=OznerTools.hexStringFromData(data: payload)
         let params = ["username" : "bing.zhao@cftcn.com","password" : "l5201314","deviceid" : deviceid,"payload" : payloadStr]//设置参数
@@ -60,6 +75,7 @@ class OznerTools: NSObject {
     
 }
 extension Data{
+    
     func subInt(starIndex:Int,count:Int) -> Int {
         if starIndex+count>self.count {
             return 0
@@ -70,6 +86,7 @@ extension Data{
         }
         return dataValue
     }
+    
     func subString(starIndex:Int,count:Int) -> String {
         if starIndex+count>self.count {
             return ""
@@ -79,6 +96,7 @@ extension Data{
         let valueData=self.subdata(in: Range(range1..<range2))
         return String.init(data: valueData, encoding: String.Encoding.utf8)!
     }
+    
     func subData(starIndex:Int,count:Int) -> Data {
         if starIndex+count>self.count {
             return Data.init()

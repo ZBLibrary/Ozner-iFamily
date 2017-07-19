@@ -12,6 +12,7 @@ import UserNotifications
 import WebImage
 import SwiftyJSON
 import CoreLocation
+import Bugly
 
 var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
@@ -81,9 +82,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         
         // 初始化 Udesk
         UdeskManager.initWithAppKey("4ddf84becfd2320bca9f183136574c0f", appId: "f633b561471be762", domain: "ozner.udesk.cn")
+        updateversion()
+        Bugly.start(withAppId: "900019591")
         
         
-        Thread.sleep(forTimeInterval: 2)
+        
+        Thread.sleep(forTimeInterval: 1)
         return true
     }
     //微信 delegate---->
