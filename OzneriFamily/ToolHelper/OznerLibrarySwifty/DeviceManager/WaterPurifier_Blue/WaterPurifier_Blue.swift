@@ -11,7 +11,8 @@ import UIKit
 class WaterPurifier_Blue: OznerBaseDevice {
     
     //对外只读，对内可读写
-    private(set) var WaterSettingInfo:(rtc:Date,Ozone_WorkTime:Int,Ozone_Interval:Int,waterDate:Date)=(Date(timeIntervalSince1970: 0),0,0,Date(timeIntervalSince1970: 0)){
+    private(set) var WaterSettingInfo:(rtc:Date,Ozone_WorkTime:Int,Ozone_Interval:Int,waterDate:Date,waterModel:Int)=(Date(timeIntervalSince1970: 0),0,0,Date(timeIntervalSince1970: 0),-1){
+        //waterModel ===> -1:初始状态，0x1688:滤芯,0x8816:滤芯+计时,其它数字:未激活。
         didSet{
             if WaterSettingInfo != oldValue {
                 self.delegate?.OznerDeviceRecordUpdate?(identifier: self.deviceInfo.deviceID)
@@ -112,9 +113,15 @@ class WaterPurifier_Blue: OznerBaseDevice {
         switch UInt8(recvData[0]) {
         case 0x21://opCode_respone_setting
             if recvData.count>8 {
-                let tmpStarDate=NSDate(year: Int(recvData[1])+2000, month: Int(recvData[2]), day: Int(recvData[3]), hour: Int(recvData[4]), minute: Int(recvData[5]), second: Int(recvData[6])) as Date
-                let tmpWaterDate=NSDate(year: Int(recvData[9])+2000, month: Int(recvData[10]), day: Int(recvData[11]), hour: Int(recvData[12]), minute: Int(recvData[13]), second: Int(recvData[14])) as Date
-                WaterSettingInfo=(tmpStarDate,Int(recvData[8]),Int(recvData[7]),tmpWaterDate)
+                var tmpinfo = WaterSettingInfo
+                tmpinfo.rtc=NSDate(year: Int(recvData[1])+2000, month: Int(recvData[2]), day: Int(recvData[3]), hour: Int(recvData[4]), minute: Int(recvData[5]), second: Int(recvData[6])) as Date
+                tmpinfo.Ozone_Interval=Int(recvData[7])
+                tmpinfo.Ozone_WorkTime=Int(recvData[8])
+                if recvData.count>16{
+                    tmpinfo.waterDate=NSDate(year: Int(recvData[9])+2000, month: Int(recvData[10]), day: Int(recvData[11]), hour: Int(recvData[12]), minute: Int(recvData[13]), second: Int(recvData[14])) as Date
+                    tmpinfo.waterModel=recvData.subInt(starIndex: 15, count: 2)
+                }
+                WaterSettingInfo=tmpinfo
             }
         case 0x22://opCode_respone_water
             WaterInfo=(recvData.subInt(starIndex: 1, count: 2),recvData.subInt(starIndex: 3, count: 2),recvData.subInt(starIndex: 5, count: 2),recvData.subInt(starIndex: 7, count: 2),recvData.subInt(starIndex: 9, count: 2),CLongLong(recvData.subInt(starIndex: 11, count: 4)))
@@ -201,10 +208,10 @@ class WaterPurifier_Blue: OznerBaseDevice {
         data.append(tmpByte)
         self.SendDataToDevice(sendData: data) { (error) in}
     }
-    func reset(){
-        let tmpBytes = calcSum(data: Data.init(bytes: [0xa0]))
-        self.SendDataToDevice(sendData: Data.init(bytes: [0xa0,tmpBytes]), CallBack: nil)
-    }
+//    func reset(){
+//        let tmpBytes = calcSum(data: Data.init(bytes: [0xa0]))
+//        self.SendDataToDevice(sendData: Data.init(bytes: [0xa0,tmpBytes]), CallBack: nil)
+//    }
     
     //重置滤芯时间
     func resetFilter(){
