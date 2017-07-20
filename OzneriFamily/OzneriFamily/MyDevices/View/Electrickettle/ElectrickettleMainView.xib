@@ -251,6 +251,18 @@
                                             <color key="minimumTrackTintColor" red="0.70459271275484514" green="0.49622040137704299" blue="0.99144405126571655" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="thumbTintColor" red="0.70459271280000002" green="0.49622040140000001" blue="0.99144405130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </slider>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmw-3p-o1v">
+                                            <rect key="frame" x="10" y="90" width="9" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="una-fX-QSI">
+                                            <rect key="frame" x="328" y="90" width="16" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -258,10 +270,14 @@
                                         <constraint firstAttribute="trailing" secondItem="AZG-z5-g5b" secondAttribute="trailing" constant="10" id="7ZA-vW-ZDw"/>
                                         <constraint firstItem="OgU-U1-71t" firstAttribute="top" secondItem="UZC-Xz-TWH" secondAttribute="top" constant="10" id="7w5-yZ-YO7"/>
                                         <constraint firstItem="AZG-z5-g5b" firstAttribute="leading" secondItem="UZC-Xz-TWH" secondAttribute="leading" constant="10" id="8IN-EQ-BNi"/>
+                                        <constraint firstItem="una-fX-QSI" firstAttribute="top" secondItem="AZG-z5-g5b" secondAttribute="bottom" constant="-10" id="ACn-6U-zIm"/>
+                                        <constraint firstItem="fmw-3p-o1v" firstAttribute="leading" secondItem="AZG-z5-g5b" secondAttribute="leading" id="FuY-yu-ZWq"/>
                                         <constraint firstItem="9bU-gW-MDL" firstAttribute="leading" secondItem="OgU-U1-71t" secondAttribute="trailing" constant="10" id="J6x-VW-PmG"/>
                                         <constraint firstItem="kki-6p-VTs" firstAttribute="leading" secondItem="OgU-U1-71t" secondAttribute="leading" id="MsV-Wc-Paw"/>
+                                        <constraint firstItem="fmw-3p-o1v" firstAttribute="top" secondItem="AZG-z5-g5b" secondAttribute="bottom" constant="-10" id="Oso-Ks-6zM"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="S7e-QD-D1s"/>
                                         <constraint firstAttribute="height" constant="120" id="TBH-uJ-15q"/>
+                                        <constraint firstItem="una-fX-QSI" firstAttribute="trailing" secondItem="AZG-z5-g5b" secondAttribute="trailing" id="XFB-rE-7YP"/>
                                         <constraint firstAttribute="bottom" secondItem="AZG-z5-g5b" secondAttribute="bottom" constant="20" id="Zia-bX-UVK"/>
                                         <constraint firstItem="kki-6p-VTs" firstAttribute="top" secondItem="OgU-U1-71t" secondAttribute="bottom" constant="10" id="c2M-ij-kkm"/>
                                         <constraint firstItem="9bU-gW-MDL" firstAttribute="centerY" secondItem="OgU-U1-71t" secondAttribute="centerY" id="nN4-kk-0H6"/>
@@ -500,9 +516,11 @@
             <connections>
                 <outlet property="headView" destination="BjO-DF-JHE" id="bqM-ie-51L"/>
                 <outlet property="lineView" destination="Zc4-Fu-zUW" id="zRo-02-tCD"/>
+                <outlet property="patternLb" destination="AJB-t6-CX1" id="JBJ-6S-hME"/>
                 <outlet property="progressView" destination="zYj-2u-GlM" id="t98-Xf-s4p"/>
                 <outlet property="scrollerView" destination="Xq0-L5-GPX" id="S9Q-oz-7fY"/>
                 <outlet property="segement" destination="Wi3-ZI-SzO" id="ail-1B-K8h"/>
+                <outlet property="tmepLb" destination="1El-Bm-HBl" id="FGY-iQ-8TF"/>
             </connections>
             <point key="canvasLocation" x="54.5" y="135.5"/>
         </view>
