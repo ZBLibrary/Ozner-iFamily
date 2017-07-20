@@ -11,6 +11,7 @@
 		682C70621F1EFEA300B0A6E6 /* ElectrickettleMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C70611F1EFEA300B0A6E6 /* ElectrickettleMainView.swift */; };
 		682C70641F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 682C70631F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib */; };
 		682C70A61F1F57E000B0A6E6 /* GYProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C70A51F1F57E000B0A6E6 /* GYProgressView.swift */; };
+		682C70A91F1F8D5200B0A6E6 /* ElectrickettleSettingVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C70A81F1F8D5200B0A6E6 /* ElectrickettleSettingVc.swift */; };
 		683D3EE91F1708DC0010E708 /* GYValueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D3EE71F1708DC0010E708 /* GYValueSlider.swift */; };
 		683D3EEA1F1708DC0010E708 /* GYTempValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D3EE81F1708DC0010E708 /* GYTempValueView.swift */; };
 		683D3EED1F170A8B0010E708 /* WaterPurifierMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D3EEB1F170A8B0010E708 /* WaterPurifierMainView.swift */; };
@@ -528,6 +529,7 @@
 		682C70611F1EFEA300B0A6E6 /* ElectrickettleMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElectrickettleMainView.swift; sourceTree = "<group>"; };
 		682C70631F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ElectrickettleMainView.xib; sourceTree = "<group>"; };
 		682C70A51F1F57E000B0A6E6 /* GYProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYProgressView.swift; sourceTree = "<group>"; };
+		682C70A81F1F8D5200B0A6E6 /* ElectrickettleSettingVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElectrickettleSettingVc.swift; sourceTree = "<group>"; };
 		683D3EE71F1708DC0010E708 /* GYValueSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYValueSlider.swift; sourceTree = "<group>"; };
 		683D3EE81F1708DC0010E708 /* GYTempValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTempValueView.swift; sourceTree = "<group>"; };
 		683D3EEB1F170A8B0010E708 /* WaterPurifierMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurifierMainView.swift; sourceTree = "<group>"; };
@@ -1346,6 +1348,14 @@
 			path = Electrickettle;
 			sourceTree = "<group>";
 		};
+		682C70A71F1F8D2C00B0A6E6 /* Electrickettle */ = {
+			isa = PBXGroup;
+			children = (
+				682C70A81F1F8D5200B0A6E6 /* ElectrickettleSettingVc.swift */,
+			);
+			path = Electrickettle;
+			sourceTree = "<group>";
+		};
 		8D0D68F11DDD99A00097038E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -2000,6 +2010,7 @@
 		8D9951351DACE2E80050FB19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				682C70A71F1F8D2C00B0A6E6 /* Electrickettle */,
 				8DC02FB21DB61F87007F57DB /* Cup */,
 				8DC02FB51DB61F87007F57DB /* Tap */,
 				8D1761E81DC833DD004A6B90 /* TDSPan */,
@@ -3699,6 +3710,7 @@
 				B7567CA51DB0873B00AA7C91 /* CupMatchView.swift in Sources */,
 				8D36D2D91F06234A0091EB1F /* OznerDeviceRecordHelper.swift in Sources */,
 				8D109F201DAD081400458171 /* CALayer+Expand.swift in Sources */,
+				682C70A91F1F8D5200B0A6E6 /* ElectrickettleSettingVc.swift in Sources */,
 				8D117C271D9D06730024187E /* LoginViewController.swift in Sources */,
 				8DAE80571D9A097800A9946F /* SlideMenuController.swift in Sources */,
 				B717E8381E0BAB5400B6DEBD /* NSObject+MJKeyValue.m in Sources */,

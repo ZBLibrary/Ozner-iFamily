@@ -195,6 +195,14 @@
                                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                         </button>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6bf-ny-FjX">
+                                            <rect key="frame" x="228" y="50" width="37" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUN-vE-14h">
+                                            <rect key="frame" x="295" y="10" width="51" height="31"/>
+                                        </switch>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -202,7 +210,9 @@
                                         <constraint firstItem="H3v-KB-XhI" firstAttribute="leading" secondItem="h3X-zm-vSl" secondAttribute="leading" constant="10" id="DwV-aW-Fcl"/>
                                         <constraint firstAttribute="height" constant="120" id="LcE-vj-gup"/>
                                         <constraint firstItem="5No-z4-NL9" firstAttribute="centerY" secondItem="H3v-KB-XhI" secondAttribute="centerY" id="SQ4-rK-gul"/>
+                                        <constraint firstAttribute="trailing" secondItem="ZUN-vE-14h" secondAttribute="trailing" constant="10" id="aik-3I-q4A"/>
                                         <constraint firstItem="wS1-wJ-gIV" firstAttribute="centerX" secondItem="h3X-zm-vSl" secondAttribute="centerX" id="bDL-97-tks"/>
+                                        <constraint firstItem="ZUN-vE-14h" firstAttribute="top" secondItem="h3X-zm-vSl" secondAttribute="top" constant="10" id="bxn-WJ-q4b"/>
                                         <constraint firstItem="H3v-KB-XhI" firstAttribute="top" secondItem="h3X-zm-vSl" secondAttribute="top" constant="10" id="cl3-vG-cyx"/>
                                         <constraint firstItem="5No-z4-NL9" firstAttribute="leading" secondItem="H3v-KB-XhI" secondAttribute="trailing" constant="10" id="m0G-2d-V5u"/>
                                     </constraints>
@@ -277,7 +287,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3er-wj-XeL">
+                                        <button opaque="NO" tag="90" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3er-wj-XeL">
                                             <rect key="frame" x="15" y="55" width="67" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="Chj-i8-KBr"/>
@@ -288,8 +298,11 @@
                                             <state key="normal" title="90℃" image="咖啡">
                                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="tempChange:" destination="iN0-l3-epB" eventType="touchUpInside" id="fjq-Mh-pTV"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr2-vE-kaC">
+                                        <button opaque="NO" tag="80" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr2-vE-kaC">
                                             <rect key="frame" x="82" y="55" width="67" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="3kK-ST-72s"/>
@@ -300,8 +313,11 @@
                                             <state key="normal" title="80℃" image="茶叶">
                                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="tempChange:" destination="iN0-l3-epB" eventType="touchUpInside" id="r2j-of-xuJ"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcG-bp-nXm">
+                                        <button opaque="NO" tag="70" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcG-bp-nXm">
                                             <rect key="frame" x="149" y="55" width="67" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="TaQ-Er-AvE"/>
@@ -312,8 +328,11 @@
                                             <state key="normal" title="70℃" image="米粉">
                                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="tempChange:" destination="iN0-l3-epB" eventType="touchUpInside" id="jHX-ok-AoT"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydx-Ki-ueg">
+                                        <button opaque="NO" tag="60" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydx-Ki-ueg">
                                             <rect key="frame" x="216" y="55" width="67" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="URO-cY-zXI"/>
@@ -324,8 +343,11 @@
                                             <state key="normal" title="60℃" image="牛奶">
                                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="tempChange:" destination="iN0-l3-epB" eventType="touchUpInside" id="9Hm-WJ-iAq"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Kk-dQ-51Q">
+                                        <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Kk-dQ-51Q">
                                             <rect key="frame" x="272" y="55" width="67" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="iWN-CW-UCk"/>
@@ -336,6 +358,9 @@
                                             <state key="normal" title="自定义" image="自由调节">
                                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="tempChange:" destination="iN0-l3-epB" eventType="touchUpInside" id="jMu-eX-l3U"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -383,7 +408,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sV-lb-B4V">
+                                        <button opaque="NO" tag="777" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sV-lb-B4V">
                                             <rect key="frame" x="30" y="70" width="120" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="HWd-ve-fbo"/>
@@ -393,8 +418,11 @@
                                             <state key="normal" title="煮沸降至保温" image="煮沸降至保温">
                                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="hotAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="5oY-Tk-IaL"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLD-4B-LWX">
+                                        <button opaque="NO" tag="888" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLD-4B-LWX">
                                             <rect key="frame" x="204" y="70" width="120" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Yab-Qp-ymB"/>
@@ -404,6 +432,9 @@
                                             <state key="normal" title="加热升至保温" image="加热升至保温">
                                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="hotAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="GKs-Z8-xqm"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

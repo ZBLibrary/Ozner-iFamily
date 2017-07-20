@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CCQ-KV-qqu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CCQ-KV-qqu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -212,6 +211,7 @@
                         <segue destination="hqs-RD-39H" kind="show" identifier="showSeeSkin" id="dEd-DO-D7Q"/>
                         <segue destination="aGC-dU-WII" kind="show" identifier="showBuyLvXin" id="BXe-Ml-x0S"/>
                         <segue destination="1E5-IJ-tIV" kind="show" identifier="showTDSPanSetting" id="VMN-X8-q8u"/>
+                        <segue destination="LRU-8U-mU5" kind="show" identifier="ShowElectrickettleSetting" id="4Us-Xr-KO4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6B-00-A3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6960,6 +6960,25 @@
             </objects>
             <point key="canvasLocation" x="11629.6" y="1158.1709145427287"/>
         </scene>
+        <!--设置-->
+        <scene sceneID="ap5-Xc-Wbd">
+            <objects>
+                <viewController id="LRU-8U-mU5" customClass="ElectrickettleSettingVc" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oBE-Ae-ERk"/>
+                        <viewControllerLayoutGuide type="bottom" id="iWm-S0-Wjc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N1a-Qh-oZI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="设置" id="D5O-Wo-8FS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jR3-ul-Ex4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7865" y="-211"/>
+        </scene>
         <!--滤芯状态-->
         <scene sceneID="Zu8-x8-wJA">
             <objects>
@@ -7955,7 +7974,7 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aaL-mh-gXA"/>
-        <segue reference="CmY-Qv-lV2"/>
+        <segue reference="J5r-TH-hkc"/>
+        <segue reference="vlV-TW-9kk"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -65,7 +65,7 @@ class MyDevicesController: UIViewController {
             self.performSegue(withIdentifier: "showWaterReplenishSetting", sender: nil)
             //MARK: - TODO:
         case .Electrickettle_Blue:
-            self.performSegue(withIdentifier: "showWaterReplenishSetting", sender: nil)
+            self.performSegue(withIdentifier: "ShowElectrickettleSetting", sender: nil)
         }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮

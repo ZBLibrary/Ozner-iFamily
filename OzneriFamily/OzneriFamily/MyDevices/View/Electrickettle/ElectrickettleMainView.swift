@@ -22,6 +22,9 @@ class ElectrickettleMainView: OznerDeviceView {
     @IBOutlet weak var progressView: GYProgressView!
     @IBOutlet weak var headView: UIView!
     @IBOutlet weak var segement: UISegmentedControl!
+    
+    var currentTempBtn:UIButton?
+    var currentHotBtn:UIButton?
     override func awakeFromNib() {
         super.awakeFromNib()
         lineView.isHidden = true
@@ -30,6 +33,55 @@ class ElectrickettleMainView: OznerDeviceView {
         scrollerView.bounces = true
         progressView.startAnimation()
         segement.addTarget(self, action: #selector(ElectrickettleMainView.segmentedChanged(_:)), for: UIControlEvents.valueChanged)
+        
+    }
+    
+    
+    @IBAction func tempChange(_ sender: UIButton) {
+        
+        if currentTempBtn?.tag == sender.tag {
+            return
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+        
+        self.currentTempBtn?.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0)
+        self.currentTempBtn?.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+            
+        }
+        currentTempBtn = sender
+        
+        UIView.animate(withDuration: 0.5) { 
+            
+            sender.transform = CGAffineTransform(a: 1.3, b: 0, c: 0, d: 1.3, tx: 0, ty: 0)
+            sender.setTitleColor(UIColor.init(red: 168/255.0, green: 40/255.0, blue: 102/255.0, alpha: 1.0), for: UIControlState.normal)
+        }
+        
+        
+    }
+    
+ 
+    @IBAction func hotAction(_ sender: UIButton) {
+        
+        
+        if currentHotBtn?.tag == sender.tag {
+            return
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            
+            self.currentHotBtn?.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0)
+            self.currentHotBtn?.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+            
+        }
+        currentHotBtn = sender
+        
+        UIView.animate(withDuration: 0.5) {
+            
+            sender.transform = CGAffineTransform(a: 1.3, b: 0, c: 0, d: 1.3, tx: 0, ty: 0)
+            sender.setTitleColor(UIColor.init(red: 168/255.0, green: 40/255.0, blue: 102/255.0, alpha: 1.0), for: UIControlState.normal)
+        }
+        
         
     }
     
