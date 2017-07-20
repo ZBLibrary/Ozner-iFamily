@@ -17,7 +17,7 @@ import UIKit
 
 class Electrickettle_Blue: OznerBaseDevice {
     
-    private(set)  var settingInfo:(isHot:Int,temp:Int,tds:Int,orderFunction:Int,orderSec:Int,orderTemp:Int,hotPattern:Int,hotTemp:Int,hotTime:Int) = (0,0,0,0,0,0,0,0,0) {
+    private(set)  var settingInfo:(isHot:Int,temp:Int,tds:Int,orderFunction:Int,orderSec:Int,orderTemp:Int,hotPattern:Int,hotTemp:Int,hotTime:Int) = (-1,-1,-1,-1,-1,-1,-1,-1,-1) {
         
         didSet {
             
@@ -59,8 +59,9 @@ class Electrickettle_Blue: OznerBaseDevice {
                 
 //                settingInfo = (Int(isHot),Int(temp),tds,Int(orderFunction),orderSec,Int(orderTemp),Int(hotPattern),Int(hotTemp),hotTime)
                 settingInfo = (isHot,temp,tds,orderFunction,orderSec,orderTemp,hotPattern,hotTemp,hotTime)
-                
-                break
+                self.delegate?.OznerDeviceSensorUpdate!(identifier: self.deviceInfo.deviceID)
+
+            break
 //            case 0x33:
 //                break
             default:

@@ -25,6 +25,88 @@ class ElectrickettleMainView: OznerDeviceView {
     
     var currentTempBtn:UIButton?
     var currentHotBtn:UIButton?
+    
+    
+    @IBOutlet weak var tmepLb: UILabel!
+    
+    @IBOutlet weak var patternLb: UILabel!
+    
+    @IBOutlet weak var circleView: CupHeadCircleView!
+    @IBOutlet weak var tdsImg: UIImageView!
+    @IBOutlet var tdsStateLabel: UILabel!
+    @IBOutlet var tdsValueLabel: UILabel!
+    @IBOutlet var tdsBeatLabel: UILabel!
+
+    
+    var tempLbtext:(temp:Int,pattern:Int) = (-1,-1) {
+        
+        didSet {
+            
+            if tempLbtext != oldValue {
+                
+                tmepLb.text = String(tempLbtext.temp) + "℃"
+                
+                switch tempLbtext.pattern {
+                case 0:
+                    patternLb.text = "待机中"
+                    break
+                case 1:
+                    patternLb.text = "加热中"
+                    break
+                case 2:
+                    patternLb.text = "保温中"
+                    break
+                default:
+                    patternLb.text = "未知"
+                    break
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    private var TDS = 0{
+        didSet{
+            if TDS != oldValue   {
+                if TDS<=0 || TDS == 65535 {//暂无
+                    tdsImg.image=UIImage(named: "baobiao")
+                    tdsStateLabel.text="-"
+                    tdsValueLabel.text=loadLanguage("暂无")
+                    tdsBeatLabel.text=""
+                    return
+                }
+                tdsValueLabel.text="\(TDS)"
+                var angle = CGFloat(0)
+                switch true {
+                case TDS<=Int(tds_good):
+                    tdsImg.image=UIImage(named: "baobiao")
+                    tdsStateLabel.text=loadLanguage("好")
+                    angle=CGFloat(TDS)/CGFloat(tds_good*3)
+                case TDS>Int(tds_good)&&TDS<=Int(tds_bad):
+                    tdsImg.image=UIImage(named: "yiban")
+                    tdsStateLabel.text=loadLanguage("一般")
+                    angle=CGFloat(TDS-Int(tds_good))/CGFloat((tds_bad-tds_good)*3)+0.33
+                case TDS>Int(tds_bad)&&TDS<Int(tds_bad+50):
+                    tdsImg.image=UIImage(named: "cha")
+                    tdsStateLabel.text=loadLanguage("偏差")
+                    angle=CGFloat(TDS-Int(tds_bad))/CGFloat(50*3)+0.66
+                default:
+                    tdsImg.image=UIImage(named: "cha")
+                    tdsStateLabel.text=loadLanguage("偏差")
+                    angle=1.0
+                    break
+                }
+                circleView.updateCircleView(angle: angle)
+          
+            }
+        }
+    }
+
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         lineView.isHidden = true
@@ -119,6 +201,25 @@ class ElectrickettleMainView: OznerDeviceView {
         
     }
 
+    override func SensorUpdate(identifier: String) {
+        
+        let currentDevice=OznerManager.instance.currentDevice as! Electrickettle_Blue
+        
+        tempLbtext = (currentDevice.settingInfo.temp,currentDevice.settingInfo.hotPattern)
+        
+        TDS = currentDevice.settingInfo.tds
+        
+        print(currentDevice.settingInfo)
+        
+    }
+    
+    override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
+        
+        
+        
+        
+    }
+    
 
     /*
     // Only override draw() if you perform custom drawing.
