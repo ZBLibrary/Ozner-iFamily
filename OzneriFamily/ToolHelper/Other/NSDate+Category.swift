@@ -8,6 +8,31 @@
 
 import UIKit
 
+public extension Date {
+    
+    
+    /// 返回日期字符串
+    ///
+    /// - parameter dateFormat: 日期格式化 默认格式:"yyyy-MM-dd hh:mm:ss"
+    ///
+    /// - returns: 日期字符串
+    func gy_stringFromDate(dateFormat: String?) ->String {
+        
+        let dateFormatter = DateFormatter()
+        
+        if dateFormat != nil {
+            
+            dateFormatter.dateFormat = dateFormat
+            
+        } else {
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        }
+        
+        return dateFormatter.string(from: self)
+        
+    }
+}
+
 extension NSDate {
     
     class func  dateWithStr(time: String) -> NSDate{

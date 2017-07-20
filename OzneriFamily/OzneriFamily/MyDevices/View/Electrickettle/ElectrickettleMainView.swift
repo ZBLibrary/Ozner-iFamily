@@ -25,10 +25,16 @@ class ElectrickettleMainView: OznerDeviceView {
     
     var currentTempBtn:UIButton?
     var currentHotBtn:UIButton?
+    var pickDateView:TapDatePickerView?
     
-    
+    @IBOutlet weak var valuelb: UILabel!
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var switchlb: UISwitch!
+    @IBOutlet weak var firstContraint: NSLayoutConstraint!
     @IBOutlet weak var tmepLb: UILabel!
+    @IBOutlet weak var secondContrains: NSLayoutConstraint!
     
+    @IBOutlet weak var tempValue: GYValueElectSlider!
     @IBOutlet weak var patternLb: UILabel!
     
     @IBOutlet weak var circleView: CupHeadCircleView!
@@ -37,6 +43,7 @@ class ElectrickettleMainView: OznerDeviceView {
     @IBOutlet var tdsValueLabel: UILabel!
     @IBOutlet var tdsBeatLabel: UILabel!
 
+    @IBOutlet weak var settimeBtn: UIButton!
     
     var tempLbtext:(temp:Int,pattern:Int) = (-1,-1) {
         
@@ -104,26 +111,63 @@ class ElectrickettleMainView: OznerDeviceView {
         }
     }
 
-    
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        lineView.isHidden = true
-        lineView.layer.masksToBounds = true
-        lineView.layer.cornerRadius = 10
-        scrollerView.bounces = true
-        progressView.startAnimation()
-        segement.addTarget(self, action: #selector(ElectrickettleMainView.segmentedChanged(_:)), for: UIControlEvents.valueChanged)
+    @IBAction func setTimeAction(_ sender: UIButton) {
         
+        pickDateView=Bundle.main.loadNibNamed("TapDatePickerView", owner: nil, options: nil)?.last as? TapDatePickerView
+        pickDateView?.datePicker.minimumDate = Date.init()
+        pickDateView?.datePicker.maximumDate = Date.init(timeIntervalSinceNow: 24 * 60 * 60)
+        pickDateView?.datePicker.datePickerMode = .dateAndTime
+        pickDateView?.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
+        pickDateView?.cancelButton.addTarget(self, action: #selector(pickerCancle), for: .touchUpInside)
+        pickDateView?.OKButton.addTarget(self, action: #selector(pickerOK), for: .touchUpInside)
+        self.addSubview(pickDateView!)
     }
     
+    func pickerCancle()  {
+        pickDateView?.removeFromSuperview()
+    }
+    
+    func pickerOK()  {
+        let date = pickDateView?.datePicker.date
+        
+        settimeBtn.setTitle((date?.gy_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date?.gy_stringFromDate(dateFormat: " HH:mm") ?? ""), for: UIControlState.normal)
+        
+        let time = date?.timeIntervalSinceNow
+        print(lround(time!/60))
+        pickDateView?.removeFromSuperview()
+    }
     
     @IBAction func tempChange(_ sender: UIButton) {
         
         if currentTempBtn?.tag == sender.tag {
+            UIView.animate(withDuration: 0.5) {
+                
+                self.currentTempBtn?.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0)
+                self.currentTempBtn?.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+                self.currentTempBtn = nil
+            }
+            
+            if sender.tag == 666 {
+                
+                secondContrains.constant = 120
+                tempValue.isHidden = true
+            }
+            
             return
         }
+        
+        if sender.tag == 666{
+            
+            secondContrains.constant = 170
+            tempValue.isHidden = false
+            let value = UserDefaults.standard.value(forKey: "UISliderValueElectrickettle") ?? 0
+            tempValue.value = Float(value as! Int)
+
+        } else {
+            tempValue.isHidden = true
+            secondContrains.constant = 120
+        }
+        
         
         UIView.animate(withDuration: 0.5) {
         
@@ -147,6 +191,7 @@ class ElectrickettleMainView: OznerDeviceView {
         
         
         if currentHotBtn?.tag == sender.tag {
+   
             return
         }
         
@@ -166,6 +211,14 @@ class ElectrickettleMainView: OznerDeviceView {
         
         
     }
+    
+    func sliderValueChanged(_ sender:UISlider) {
+        
+        valuelb.text = "持续保温\(lround(Double(sender.value)))小时"
+        
+    }
+    
+    
     
     func segmentedChanged(_ sender: UISegmentedControl) {
         
@@ -200,6 +253,24 @@ class ElectrickettleMainView: OznerDeviceView {
         }
         
     }
+    
+    func switchChanged(_ sender:UISwitch) {
+        
+        settimeBtn.isHidden = !sender.isOn
+        if sender.isOn {
+            
+            firstContraint.constant = 120
+            
+        } else {
+            
+            firstContraint.constant = 60
+            
+        }
+        
+        self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
+        
+    }
+    
 
     override func SensorUpdate(identifier: String) {
         
@@ -215,11 +286,34 @@ class ElectrickettleMainView: OznerDeviceView {
     
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         
+                
+    }
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        lineView.isHidden = true
+        lineView.layer.masksToBounds = true
+        lineView.layer.cornerRadius = 10
+        scrollerView.bounces = true
+        progressView.startAnimation()
+        segement.addTarget(self, action: #selector(ElectrickettleMainView.segmentedChanged(_:)), for: UIControlEvents.valueChanged)
+        switchlb.addTarget(self, action:#selector(ElectrickettleMainView.switchChanged(_:)), for: UIControlEvents.valueChanged)
+
+        slider.addTarget(self, action: #selector(ElectrickettleMainView.sliderValueChanged(_:)), for: UIControlEvents.valueChanged)
         
-        
+        tempValue.minimumValue = 0
+        tempValue.maximumValue = 100
+        tempValue.isEnabled = true
+        tempValue.layer.sublayers?.removeAll()
         
     }
     
+     func gylayoutSubviews() {
+        
+        scrollerView.contentSize = CGSize(width: width_screen, height: 560)
+        
+    }
 
     /*
     // Only override draw() if you perform custom drawing.
