@@ -64,15 +64,21 @@ class WaterPurifier_Wifi: OznerBaseDevice {
             var tmpSensor = sensor
             switch opCode {
             case 0x01://Opcode_RespondStatus
+                
                 tmpStatus.Hot = Int(recvData[12])==1
                 tmpStatus.Cool = Int(recvData[13])==1
                 tmpStatus.Power = Int(recvData[14])==1
                 tmpStatus.Sterilization = Int(recvData[15])==1
-                let tds1 = (Int(recvData[16])<0 || Int(recvData[16])==65535) ? 0:Int(recvData[16])
-                let tds2 = (Int(recvData[18])<0 || Int(recvData[18])==65535) ? 0:Int(recvData[18])
+                
+                var tds1 = recvData.subInt(starIndex: 16, count: 2)
+                tds1 = tds1<0||tds1==65535 ? 0:tds1
+                var tds2 = recvData.subInt(starIndex: 18, count: 2)
+                tds2 = tds2<0||tds2==65535 ? 0:tds2
+                
                 tmpSensor.TDS_Before = max(tds1, tds2)
                 tmpSensor.TDS_After = min(tds1, tds2)
-                tmpSensor.Temperature = Float(Int(recvData[10])+256*Int(recvData[11]))/10.0
+                tmpSensor.Temperature = Float(recvData.subInt(starIndex: 10, count: 2))/10.0
+                
             case 0x03://Opcode_DeviceInfo
                 break
             default:
@@ -106,10 +112,8 @@ class WaterPurifier_Wifi: OznerBaseDevice {
     {
         let len = 13+data.count
         var dataNeed = Data.init(bytes: [code,UInt8(len%256),UInt8(len/256),Opcode])
-        var macData=Helper.string(toHexData: self.deviceInfo.deviceID.replacingOccurrences(of: ":", with: "").lowercased())
-        if self.deviceInfo.wifiVersion==2 {
-            macData=Helper.string(toHexData: self.deviceInfo.deviceMac.replacingOccurrences(of: ":", with: "").lowercased())
-        }
+        let macData=Helper.string(toHexData: self.deviceInfo.deviceMac.replacingOccurrences(of: ":", with: "").lowercased())
+        
         
         dataNeed.append(macData!)
         dataNeed.insert(UInt8(0), at: 10)
