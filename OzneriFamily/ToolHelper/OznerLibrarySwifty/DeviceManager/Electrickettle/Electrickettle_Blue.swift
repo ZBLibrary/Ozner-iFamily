@@ -17,7 +17,7 @@ import UIKit
 
 class Electrickettle_Blue: OznerBaseDevice {
     
-    private(set)  var settingInfo:(isHot:Int,temp:Int,tds:Int,orderFunction:Int,orderSec:Int,orderTemp:Int,hotPattern:Int,hotTemp:Int,hotTime:Int) = (-1,-1,-1,-1,-1,-1,-1,-1,-1) {
+    private(set)  var settingInfo:(isHot:Int,temp:Int,tds:Int,orderFunction:Int,orderSec:Int,orderTemp:Int,hotPattern:Int,hotTemp:Int,hotTime:Int) = (0,0,0,0,0,0,0,0,0) {
         
         didSet {
             
@@ -59,7 +59,7 @@ class Electrickettle_Blue: OznerBaseDevice {
                 
 //                settingInfo = (Int(isHot),Int(temp),tds,Int(orderFunction),orderSec,Int(orderTemp),Int(hotPattern),Int(hotTemp),hotTime)
                 settingInfo = (isHot,temp,tds,orderFunction,orderSec,orderTemp,hotPattern,hotTemp,hotTime)
-                self.delegate?.OznerDeviceSensorUpdate!(identifier: self.deviceInfo.deviceID)
+//                self.delegate?.OznerDeviceSensorUpdate!(identifier: self.deviceInfo.deviceID)
 
             break
 //            case 0x33:
@@ -140,6 +140,6 @@ class Electrickettle_Blue: OznerBaseDevice {
 
 public func !=<A, B, C, D, E,F,G,H,I>(lhs: (A, B, C, D, E,F,G,H,I), rhs: (A, B, C, D, E,F,G,H,I)) -> Bool where A : Equatable, B : Equatable, C : Equatable, D : Equatable, E : Equatable,F : Equatable, G : Equatable, H : Equatable , I : Equatable{
     
-    return lhs.0 != rhs.0 && lhs.1 != rhs.1 && lhs.2 != rhs.2 && lhs.3 != rhs.3 && lhs.4 != rhs.4 && lhs.5 != rhs.5 && lhs.6 != rhs.6 && lhs.7 != rhs.7 && lhs.8 != rhs.8
+    return lhs.0 != rhs.0 || lhs.1 != rhs.1 || lhs.2 != rhs.2 || lhs.3 != rhs.3 || lhs.4 != rhs.4 || lhs.5 != rhs.5 || lhs.6 != rhs.6 || lhs.7 != rhs.7 || lhs.8 != rhs.8
     
 }

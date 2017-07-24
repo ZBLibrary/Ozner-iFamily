@@ -19,17 +19,72 @@ class ElectrickettleSettingVc: DeviceSettingController {
     
     //MARK: - Attributes
 
+    @IBOutlet weak var nameLb: GYLabel!
+    
+    @IBOutlet weak var gySwitch: UISwitch!
+    
+    @IBOutlet weak var timeConstranit: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameLb.text=self.getNameAndAttr()
+        
+         gySwitch.addTarget(self, action:#selector(ElectrickettleSettingVc.switchChanged(_:)), for: UIControlEvents.valueChanged)
+        
+    }
+    
+    func switchChanged(_ sender:UISwitch) {
+    
+        if sender.isOn {
+            timeConstranit.constant = 115
+        } else {
+            timeConstranit.constant = 48
+        }
     }
     
     //MARK: - Override
     
     
+    override func nameChange(name:String,attr:String) {
+        super.nameChange(name: name, attr: attr)
+        nameLb.text="\(name)(\(attr))"
+        
+    }
+    
     //MARK: - Initial Methods
     
+    @IBAction func saveAction(_ sender: UIBarButtonItem) {
+        
+        self.saveDevice()
+
+    }
+        
+    @IBAction func deleteAction(_ sender: Any) {
+        
+        super.deleteDevice()
+        
+    }
     
+    @IBAction func btnAction(_ sender: UIButton) {
+        
+        switch sender.tag {
+            
+        case 666:
+            
+            self.performSegue(withIdentifier: "ElectriketIdentifier", sender: nil)
+            break
+        case 777:
+            
+            self.performSegue(withIdentifier: "ElectricketTimeIdener", sender: nil)
+            break
+        case 888:
+            
+            self.performSegue(withIdentifier: "ElectricketTimeIdener", sender: nil)
+            break
+        default:
+            break
+        }
+        
+    }
     //MARK: - Delegate
     
     

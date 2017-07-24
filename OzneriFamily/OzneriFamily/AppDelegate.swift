@@ -196,11 +196,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
             
         }
 
-            if action_baidu == "chat" {
-                AudioServicesPlaySystemSound(1007)
-                loadKeFuMessage(data_baidu!)
+        if action_baidu == "chat" {
+            AudioServicesPlaySystemSound(1007)
+            loadKeFuMessage(data_baidu!)
             
-            }
+        }
         
 //        if application.applicationState ==  UIApplicationState.active {
 //            //不做任何处理
