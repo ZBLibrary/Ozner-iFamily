@@ -92,7 +92,7 @@ class WaterPurifier_Blue: OznerBaseDevice {
             UInt8(stopDate.hour()),
             UInt8(stopDate.minute()),
             UInt8(stopDate.second()),0x88,
-            0x16,            
+            0x16
             ])
         let tmpByte = calcSum(data: data)
         data.append(tmpByte)
@@ -192,6 +192,16 @@ class WaterPurifier_Blue: OznerBaseDevice {
         self.SendDataToDevice(sendData: Data.init(bytes: [0x20,UInt8(3),tmpBytes]), CallBack: nil)
     }
     private func updateSetting(interval:Int,worktime:Int,reset:Bool){
+        var stopDate=WaterSettingInfo.waterDate as NSDate
+        
+        let model = WaterSettingInfo.waterModel
+        if model==Int(0x1688) {
+            stopDate=NSDate() as NSDate
+        }else if model==Int(0x8816){
+            if stopDate.timeIntervalSince1970==0 {
+                return
+            }
+        }        
         var data = Data.init(bytes: [
             0x40,
             UInt8(NSDate().year()-2000),
@@ -202,8 +212,14 @@ class WaterPurifier_Blue: OznerBaseDevice {
             UInt8(NSDate().second()),
             UInt8(interval),
             UInt8(worktime),
-            UInt8(reset.hashValue)
-            ])
+            UInt8(reset.hashValue),
+            UInt8(abs(stopDate.year()-2000)),
+            UInt8(stopDate.month()),
+            UInt8(stopDate.day()),
+            UInt8(stopDate.hour()),
+            UInt8(stopDate.minute()),
+            UInt8(stopDate.second())])
+        data.append(OznerTools.dataFromInt(number: CLongLong(model), length: 2))
         let tmpByte = calcSum(data: data)
         data.append(tmpByte)
         self.SendDataToDevice(sendData: data) { (error) in}

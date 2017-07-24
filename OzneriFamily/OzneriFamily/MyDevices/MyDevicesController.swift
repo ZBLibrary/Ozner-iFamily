@@ -83,11 +83,11 @@ class MyDevicesController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         //。因为在autolayout下，页面会在viewDidAppear之前根据subview的constraint重新计算scrollview的contentsize。 这就是为什么，在viewdidload里面手动设置了contentsize没用。因为在后面，会再重新计算一次，前面手动设置的值会被覆盖掉。 
-        if ProductInfo.getCurrDeviceClass() == .Electrickettle_Blue {
-            
-            (deviceViewContainer.currentDeviceView as! ElectrickettleMainView).scrollerView.contentSize = CGSize(width: width_screen, height: 550)
-            
-        }
+//        if ProductInfo.getCurrDeviceClass() == .Electrickettle_Blue {
+//            
+//            (deviceViewContainer.currentDeviceView as! ElectrickettleMainView).scrollerView.contentSize = CGSize(width: width_screen, height: 550)
+//            
+//        }
         
     }
 

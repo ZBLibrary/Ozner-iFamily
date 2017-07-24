@@ -137,10 +137,8 @@ class WaterPurifier_Wifi: OznerBaseDevice {
     {
         let len = 13+data.count
         var dataNeed = Data.init(bytes: [0xfa,UInt8(len%256),UInt8(len/256),0x1])
-        var macData=Helper.string(toHexData: self.deviceInfo.deviceID.replacingOccurrences(of: ":", with: "").lowercased())
-        if self.deviceInfo.wifiVersion==2 {
-            macData=Helper.string(toHexData: self.deviceInfo.deviceMac.replacingOccurrences(of: ":", with: "").lowercased())
-        }
+        let  macData=Helper.string(toHexData: self.deviceInfo.deviceMac.replacingOccurrences(of: ":", with: "").lowercased())
+        
         dataNeed.append(macData!)
         dataNeed.insert(UInt8(0), at: 10)
         dataNeed.insert(UInt8(0), at: 11)

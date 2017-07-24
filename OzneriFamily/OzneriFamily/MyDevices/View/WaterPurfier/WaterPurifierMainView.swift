@@ -233,7 +233,6 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
             sender.layer.borderColor = UIColor.init(hex: "48c2fa").cgColor
             sender.setTitleColor(UIColor.init(hex: "48c2fa"), for: UIControlState.normal)
         }
-        
     }
     
    
@@ -335,7 +334,6 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
             hotButton.setImage( UIImage(named: operation.power&&operation.hot ? "icon_jiare":"icon_jiare_normal"), for: .normal)
             coolLabel.textColor=operation.power&&operation.cool ? color_select:color_normol
             coolButton.setImage( UIImage(named: operation.power&&operation.cool ? "icon_zhileng":"icon_zhileng_normal"), for: .normal)
-            
         }
     }
     
