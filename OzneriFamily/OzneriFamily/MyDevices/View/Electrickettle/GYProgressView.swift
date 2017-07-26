@@ -20,8 +20,10 @@ class GYProgressView: UIView {
     var progressLayer:CAShapeLayer?
     var progressLayer1:CAShapeLayer?
     var progressGradientLayer:CAGradientLayer?
+    var progressGradientLayer2:CAGradientLayer?
     
     var upperShapeLayer:CAShapeLayer?
+    var upperShapeLayer1:CAShapeLayer?
     var timer:Timer?
     var startAngle = CGFloat(Double.pi) - 0.2
     var endAngle:CGFloat = CGFloat(Double.pi) + 3.4
@@ -45,11 +47,14 @@ class GYProgressView: UIView {
         
         drawProgressLayer()
         drawUpperLayer()
-
+        drawUpperLayerTwo()
         drawProgressGradientLayer()
+        drawProgressGradientLayer2()
         progressLayer?.addSublayer(progressGradientLayer!)
-//        progressLayer1?.addSublayer(progressGradientLayer!)
+        progressLayer?.addSublayer(progressGradientLayer2!)
+//        progressLayer1?.addSublayer(progressGradientLayer2!)
         progressGradientLayer?.mask = upperShapeLayer
+        progressGradientLayer2?.mask = upperShapeLayer1
         self.layer.addSublayer(progressLayer!)
 //        self.layer.addSublayer(progressLayer1!)
 
@@ -79,6 +84,7 @@ class GYProgressView: UIView {
             CATransaction.setDisableActions(false)
             CATransaction.setAnimationTimingFunction(CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear))
             CATransaction.setAnimationDuration(3)
+            self.upperShapeLayer1?.strokeEnd = 1
             self.upperShapeLayer?.strokeEnd = 1
             CATransaction.commit()
         }
@@ -120,6 +126,7 @@ class GYProgressView: UIView {
             CATransaction.setAnimationTimingFunction(CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear))
             CATransaction.setAnimationDuration(0)
             self.upperShapeLayer?.strokeEnd = 0
+            self.upperShapeLayer1?.strokeEnd = 0
             CATransaction.commit()
             
             //
@@ -129,6 +136,7 @@ class GYProgressView: UIView {
             CATransaction.setAnimationTimingFunction(CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear))
             CATransaction.setAnimationDuration(3)
             self.upperShapeLayer?.strokeEnd = 1
+            self.upperShapeLayer1?.strokeEnd = 1
             CATransaction.commit()
             
         }
@@ -145,12 +153,38 @@ class GYProgressView: UIView {
         
         upperShapeLayer?.strokeStart = 0
         upperShapeLayer?.strokeEnd = 0
-        
+        upperShapeLayer?.lineJoin = kCALineJoinRound
         upperShapeLayer?.lineWidth = 25
+        upperShapeLayer?.cornerRadius = 2.5
+        upperShapeLayer?.masksToBounds = true
         upperShapeLayer?.lineCap = kCALineCapButt
-        upperShapeLayer?.lineDashPattern = [5,20]
+        upperShapeLayer?.lineDashPattern = [5,40]
         upperShapeLayer?.strokeColor = UIColor.red.cgColor
         upperShapeLayer?.fillColor = UIColor.clear.cgColor
+        
+        
+    }
+    
+    fileprivate func drawUpperLayerTwo() {
+        
+        upperShapeLayer1 = CAShapeLayer()
+        upperShapeLayer1?.frame = self.bounds
+        
+        let bezierPath = UIBezierPath(arcCenter:CGPoint(x: self.frame.width / 2 , y: self.frame.height / 2 + 35) , radius: (self.bounds.size.width - 100)/1.5 + 5, startAngle: startAngle , endAngle: endAngle, clockwise: true)
+        upperShapeLayer1?.path = bezierPath.cgPath
+        
+        upperShapeLayer1?.strokeStart = 0
+        upperShapeLayer1?.strokeEnd = 0
+        
+        upperShapeLayer1?.lineWidth = 18
+        upperShapeLayer1?.lineJoin = kCALineJoinRound
+        upperShapeLayer1?.lineCap = kCALineCapButt
+        upperShapeLayer1?.lineDashPattern = [5,20,5,40,5,40,5,40,5,40,5,24,5,20,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40]
+        upperShapeLayer1?.cornerRadius = 2.5
+        upperShapeLayer1?.masksToBounds = true
+        
+        upperShapeLayer1?.strokeColor = UIColor.red.cgColor
+        upperShapeLayer1?.fillColor = UIColor.clear.cgColor
         
     }
     
@@ -165,9 +199,11 @@ class GYProgressView: UIView {
         progressLayer?.path = bezierPath.cgPath
     
         progressLayer?.lineCap = kCALineCapButt
-        progressLayer?.lineDashPattern = [5,10]
+        progressLayer?.lineDashPattern = [5,40]
         progressLayer?.lineWidth = 25
-
+        progressLayer?.cornerRadius = 2.5
+        progressLayer?.masksToBounds = true
+        progressLayer?.lineJoin = kCALineJoinRound
         progressLayer?.strokeColor = UIColor.clear.cgColor
         progressLayer?.fillColor = UIColor.clear.cgColor
         
@@ -179,8 +215,8 @@ class GYProgressView: UIView {
 //        progressLayer1?.path = bezierPath1.cgPath
 //        
 //        progressLayer1?.lineCap = kCALineCapButt
-//        progressLayer1?.lineDashPattern = [3,10]
-//        progressLayer1?.lineWidth = 25
+//        progressLayer1?.lineDashPattern = [5,25]
+//        progressLayer1?.lineWidth = 15
 //        
 //        progressLayer1?.strokeColor = UIColor.clear.cgColor
 //        progressLayer1?.fillColor = UIColor.clear.cgColor
@@ -205,6 +241,25 @@ class GYProgressView: UIView {
         ]
         
     }
+    
+    fileprivate func drawProgressGradientLayer2() {
+        
+        let path = UIBezierPath(arcCenter:CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + 35), radius: (self.bounds.size.width - 100)/1.5, startAngle: startAngle , endAngle: endAngle , clockwise: true)
+        
+        progressGradientLayer2 = CAGradientLayer()
+        progressGradientLayer2?.shadowPath = path.cgPath
+        progressGradientLayer2?.frame = self.bounds
+        progressGradientLayer2?.startPoint = CGPoint(x: 0, y: 0.5)
+        progressGradientLayer2?.endPoint = CGPoint(x: 1, y: 0)
+        progressGradientLayer2?.colors = [
+            UIColor(colorLiteralRed: 9.0/255, green: 142.0/255, blue: 254.0/255, alpha: 1.0).cgColor,
+            UIColor(colorLiteralRed: 134.0/255, green: 102.0/255, blue: 255.0/255, alpha: 1.0).cgColor,
+            UIColor(colorLiteralRed: 215.0/255, green: 67.0/255, blue: 113.0/255, alpha: 1.0).cgColor
+        ]
+        
+    }
+    
+
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
