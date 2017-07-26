@@ -40,6 +40,7 @@ class CupCustomPickerView: UIView,UIPickerViewDelegate {
     }
     
     var pickerData = [15,30,45,60,120]
+    var units = "分钟"
     
     func numberOfComponentsInPickerView(_ pickerView: UIPickerView) -> Int {
         return 1
@@ -49,7 +50,7 @@ class CupCustomPickerView: UIView,UIPickerViewDelegate {
         return pickerData.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(pickerData[row])" + loadLanguage("分钟")
+        return "\(pickerData[row])" + loadLanguage(units)
     }
     var currRow = 0
     

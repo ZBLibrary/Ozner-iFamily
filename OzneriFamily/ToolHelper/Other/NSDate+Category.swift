@@ -19,7 +19,7 @@ public extension Date {
     func gy_stringFromDate(dateFormat: String?) ->String {
         
         let dateFormatter = DateFormatter()
-        
+//        dateFormatter.timeZone = TimeZone.init(identifier: "GMT")
         if dateFormat != nil {
             
             dateFormatter.dateFormat = dateFormat
@@ -31,6 +31,23 @@ public extension Date {
         return dateFormatter.string(from: self)
         
     }
+    
+    func gy2_stringFromDate(dateFormat: String?) ->String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.init(identifier: "GMT")
+        if dateFormat != nil {
+            
+            dateFormatter.dateFormat = dateFormat
+            
+        } else {
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        }
+        
+        return dateFormatter.string(from: self)
+        
+    }
+
 }
 
 extension NSDate {

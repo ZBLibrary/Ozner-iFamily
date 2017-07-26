@@ -22,14 +22,25 @@ class CupSetDrinkTimeController: BaseViewController {
 //        let arrDate2 = endTimeLabel.text!.components(separatedBy: ":")
 //        let time1 = Int(arrDate1[0])!*3600+Int(arrDate1[1])!*60
 //        let time2 = Int(arrDate2[0])!*3600+Int(arrDate2[1])!*60
-        
-        currSetting.SetValue(key: "remindStart", value: "\(uint(time1))")
-        currSetting.SetValue(key: "remindEnd", value: "\(uint(time2))")
-        
-       let vcs=self.navigationController?.viewControllers
-        let vc=vcs?[(vcs?.count)!-2] as! CupSettingController
-        vc.drinkRemaindTimeLabel.text=starTimeLabel.text!+"-"+endTimeLabel.text!
-        _=self.navigationController?.popViewController(animated: true)
+        if OznerManager.instance.currentDevice?.deviceInfo.deviceType == "Ozner Cup" {
+
+            currSetting.SetValue(key: "remindStart", value: "\(uint(time1))")
+            currSetting.SetValue(key: "remindEnd", value: "\(uint(time2))")
+            let vcs=self.navigationController?.viewControllers
+            let vc=vcs?[(vcs?.count)!-2] as! CupSettingController
+            vc.drinkRemaindTimeLabel.text=starTimeLabel.text!+"-"+endTimeLabel.text!
+            _=self.navigationController?.popViewController(animated: true)
+            
+        } else {
+            currSetting.SetValue(key: "ElStartTiemKey", value: "\(uint(time1))")
+            currSetting.SetValue(key: "ElEndTiemKey", value: "\(uint(time2))")
+            let vcs=self.navigationController?.viewControllers
+            let vc=vcs?[(vcs?.count)!-2] as! ElectrickettleSettingVc
+            vc.timeLb.text=starTimeLabel.text!+"-"+endTimeLabel.text!
+            _=self.navigationController?.popViewController(animated: true)
+
+        }
+
     }
     @IBOutlet var starTimeLabel: UILabel!
     @IBOutlet var endTimeLabel: UILabel!
@@ -49,6 +60,9 @@ class CupSetDrinkTimeController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if OznerManager.instance.currentDevice?.deviceInfo.deviceType == "Ozner Cup" {
+        
         let starH=Int(currSetting.GetValue(key: "remindStart", defaultValue: "\(9*3600)"))!/3600
         let starM=Int(currSetting.GetValue(key: "remindStart", defaultValue: "\(9*3600)"))!%3600/60
         starTimeLabel.text = (starH<10 ? "0\(starH)":"\(starH)")+":"+(starM<10 ? "0\(starM)":"\(starM)")
@@ -62,6 +76,18 @@ class CupSetDrinkTimeController: BaseViewController {
         
         datePicker.date=NSDate(string: starTimeLabel.text!, formatString: "HH:mm") as Date
         currTimeLabel=starTimeLabel
+        } else {
+            let starH=Int(currSetting.GetValue(key: "ElStartTiemKey", defaultValue: "\(9*3600)"))!/3600
+            let starM=Int(currSetting.GetValue(key: "ElStartTiemKey", defaultValue: "\(9*3600)"))!%3600/60
+            
+            starTimeLabel.text = (starH<10 ? "0\(starH)":"\(starH)")+":"+(starM<10 ? "0\(starM)":"\(starM)")
+
+            let endH=Int(currSetting.GetValue(key: "ElEndTiemKey", defaultValue: "\(19*3600)"))!/3600
+            let endM=Int(currSetting.GetValue(key: "ElEndTiemKey", defaultValue: "\(19*3600)"))!%3600/60
+            
+            endTimeLabel.text = (endH<10 ? "0\(endH)":"\(endH)")+":"+(endM<10 ? "0\(endM)":"\(endM)")
+            currTimeLabel=starTimeLabel
+        }
         // Do any additional setup after loading the view.
     }
 

@@ -18,6 +18,7 @@ import UIKit
 class GYProgressView: UIView {
 
     var progressLayer:CAShapeLayer?
+    var progressLayer1:CAShapeLayer?
     var progressGradientLayer:CAGradientLayer?
     
     var upperShapeLayer:CAShapeLayer?
@@ -47,8 +48,10 @@ class GYProgressView: UIView {
 
         drawProgressGradientLayer()
         progressLayer?.addSublayer(progressGradientLayer!)
+//        progressLayer1?.addSublayer(progressGradientLayer!)
         progressGradientLayer?.mask = upperShapeLayer
         self.layer.addSublayer(progressLayer!)
+//        self.layer.addSublayer(progressLayer1!)
 
 //        d(1, b: 2,3,4)
         
@@ -137,7 +140,6 @@ class GYProgressView: UIView {
         upperShapeLayer = CAShapeLayer()
         upperShapeLayer?.frame = self.bounds
         
-        
         let bezierPath = UIBezierPath(arcCenter:CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + 35) , radius: (self.bounds.size.width - 100)/1.5, startAngle: startAngle , endAngle: endAngle, clockwise: true)
         upperShapeLayer?.path = bezierPath.cgPath
         
@@ -146,7 +148,7 @@ class GYProgressView: UIView {
         
         upperShapeLayer?.lineWidth = 25
         upperShapeLayer?.lineCap = kCALineCapButt
-        upperShapeLayer?.lineDashPattern = [5,10]
+        upperShapeLayer?.lineDashPattern = [5,20]
         upperShapeLayer?.strokeColor = UIColor.red.cgColor
         upperShapeLayer?.fillColor = UIColor.clear.cgColor
         
@@ -169,6 +171,20 @@ class GYProgressView: UIView {
         progressLayer?.strokeColor = UIColor.clear.cgColor
         progressLayer?.fillColor = UIColor.clear.cgColor
         
+//        progressLayer1 = CAShapeLayer()
+//        progressLayer1?.frame = self.bounds
+//        
+//        let bezierPath1 = UIBezierPath(arcCenter:CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + 35) , radius: (self.bounds.size.width - 100)/1.5, startAngle: startAngle + 0.5 , endAngle: endAngle - 0.5, clockwise: true)
+//        
+//        progressLayer1?.path = bezierPath1.cgPath
+//        
+//        progressLayer1?.lineCap = kCALineCapButt
+//        progressLayer1?.lineDashPattern = [3,10]
+//        progressLayer1?.lineWidth = 25
+//        
+//        progressLayer1?.strokeColor = UIColor.clear.cgColor
+//        progressLayer1?.fillColor = UIColor.clear.cgColor
+        
         
     }
     
@@ -180,7 +196,7 @@ class GYProgressView: UIView {
         progressGradientLayer = CAGradientLayer()
         progressGradientLayer?.shadowPath = path.cgPath
         progressGradientLayer?.frame = self.bounds
-        progressGradientLayer?.startPoint = CGPoint(x: 0, y: 1)
+        progressGradientLayer?.startPoint = CGPoint(x: 0, y: 0.5)
         progressGradientLayer?.endPoint = CGPoint(x: 1, y: 0)
         progressGradientLayer?.colors = [
             UIColor(colorLiteralRed: 9.0/255, green: 142.0/255, blue: 254.0/255, alpha: 1.0).cgColor,

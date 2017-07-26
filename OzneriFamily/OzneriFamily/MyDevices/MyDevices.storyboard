@@ -7078,7 +7078,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提醒时间间隔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGe-Iu-VUG" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                        <rect key="frame" x="4" y="84" width="80" height="16"/>
+                                        <rect key="frame" x="4" y="89" width="80" height="16"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7092,49 +7092,52 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 分钟" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBl-D1-dHu" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                        <rect key="frame" x="275" y="83" width="53" height="18"/>
+                                        <rect key="frame" x="285" y="88" width="53" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.33725490200000002" green="0.60784313729999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14:00-18:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbc-EG-NZw" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                        <rect key="frame" x="243.5" y="52" width="84.5" height="18"/>
+                                        <rect key="frame" x="253.5" y="52" width="84.5" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.33725490200000002" green="0.60784313729999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="777" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpA-Yv-Bm4">
-                                        <rect key="frame" x="0.0" y="42" width="343" height="35"/>
+                                        <rect key="frame" x="0.0" y="42" width="343" height="36"/>
                                         <connections>
                                             <action selector="btnAction:" destination="LRU-8U-mU5" eventType="touchUpInside" id="jMJ-ip-3lb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="888" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnF-Eo-tAN">
-                                        <rect key="frame" x="0.0" y="77" width="343" height="37"/>
+                                    <button opaque="NO" tag="999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7S-jo-uDz">
+                                        <rect key="frame" x="0.0" y="78" width="343" height="37"/>
+                                        <connections>
+                                            <action selector="btnAction:" destination="LRU-8U-mU5" eventType="touchUpInside" id="mLl-2o-w6I"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="CGe-Iu-VUG" firstAttribute="leading" secondItem="vDx-fJ-I4M" secondAttribute="leading" id="0Dz-zi-inw"/>
-                                    <constraint firstItem="avd-73-TlN" firstAttribute="top" secondItem="hnF-Eo-tAN" secondAttribute="bottom" id="22q-Nw-UzL"/>
                                     <constraint firstAttribute="trailing" secondItem="avd-73-TlN" secondAttribute="trailing" constant="-20" id="2LS-ua-Pnz"/>
                                     <constraint firstItem="wRf-WB-AFa" firstAttribute="top" secondItem="Tjt-4U-uzd" secondAttribute="top" constant="16" id="36p-Li-RcU"/>
+                                    <constraint firstAttribute="trailing" secondItem="o7S-jo-uDz" secondAttribute="trailing" id="5DI-oL-1eA"/>
                                     <constraint firstAttribute="trailing" secondItem="GpA-Yv-Bm4" secondAttribute="trailing" id="7YA-JS-gl9"/>
                                     <constraint firstAttribute="height" constant="115" id="Cxk-vS-7Kg"/>
                                     <constraint firstItem="avd-73-TlN" firstAttribute="leading" secondItem="wRf-WB-AFa" secondAttribute="leading" id="ENu-RF-LWQ"/>
                                     <constraint firstItem="vDx-fJ-I4M" firstAttribute="top" secondItem="wRf-WB-AFa" secondAttribute="bottom" constant="20" id="EOQ-BG-VuL"/>
-                                    <constraint firstAttribute="trailing" secondItem="VBl-D1-dHu" secondAttribute="trailing" constant="15" id="FJN-N6-ozP"/>
+                                    <constraint firstAttribute="trailing" secondItem="VBl-D1-dHu" secondAttribute="trailing" constant="5" id="FJN-N6-ozP"/>
                                     <constraint firstItem="GpA-Yv-Bm4" firstAttribute="leading" secondItem="Tjt-4U-uzd" secondAttribute="leading" id="Fxj-dt-hYp"/>
                                     <constraint firstAttribute="bottom" secondItem="avd-73-TlN" secondAttribute="bottom" id="I5N-cH-LtR"/>
                                     <constraint firstItem="1ad-bd-Mde" firstAttribute="centerY" secondItem="wRf-WB-AFa" secondAttribute="centerY" id="QZw-gi-54i"/>
                                     <constraint firstItem="GpA-Yv-Bm4" firstAttribute="top" secondItem="1ad-bd-Mde" secondAttribute="bottom" constant="2" id="UdA-rT-zag"/>
-                                    <constraint firstAttribute="trailing" secondItem="Nbc-EG-NZw" secondAttribute="trailing" constant="15" id="VyV-59-Lxf"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nbc-EG-NZw" secondAttribute="trailing" constant="5" id="VyV-59-Lxf"/>
+                                    <constraint firstItem="o7S-jo-uDz" firstAttribute="top" secondItem="GpA-Yv-Bm4" secondAttribute="bottom" id="XET-xx-zQu"/>
                                     <constraint firstItem="Nbc-EG-NZw" firstAttribute="centerY" secondItem="vDx-fJ-I4M" secondAttribute="centerY" id="Zp3-W1-8Ty"/>
-                                    <constraint firstItem="hnF-Eo-tAN" firstAttribute="top" secondItem="GpA-Yv-Bm4" secondAttribute="bottom" id="a35-fL-xgo"/>
-                                    <constraint firstItem="hnF-Eo-tAN" firstAttribute="leading" secondItem="Tjt-4U-uzd" secondAttribute="leading" id="aFJ-9k-u7g"/>
-                                    <constraint firstItem="VBl-D1-dHu" firstAttribute="top" secondItem="GpA-Yv-Bm4" secondAttribute="bottom" constant="6" id="evn-Js-6n9"/>
-                                    <constraint firstItem="CGe-Iu-VUG" firstAttribute="top" secondItem="vDx-fJ-I4M" secondAttribute="bottom" constant="15" id="fhc-oc-En2"/>
-                                    <constraint firstAttribute="trailing" secondItem="hnF-Eo-tAN" secondAttribute="trailing" id="q2T-Li-10d"/>
+                                    <constraint firstItem="VBl-D1-dHu" firstAttribute="top" secondItem="GpA-Yv-Bm4" secondAttribute="bottom" constant="10" id="evn-Js-6n9"/>
+                                    <constraint firstItem="CGe-Iu-VUG" firstAttribute="top" secondItem="vDx-fJ-I4M" secondAttribute="bottom" constant="20" id="fhc-oc-En2"/>
+                                    <constraint firstItem="o7S-jo-uDz" firstAttribute="leading" secondItem="Tjt-4U-uzd" secondAttribute="leading" id="osC-3B-aCS"/>
+                                    <constraint firstAttribute="bottom" secondItem="o7S-jo-uDz" secondAttribute="bottom" id="ox1-lj-ZVG"/>
                                     <constraint firstItem="VBl-D1-dHu" firstAttribute="centerY" secondItem="CGe-Iu-VUG" secondAttribute="centerY" id="v8A-jE-dW6"/>
                                     <constraint firstItem="vDx-fJ-I4M" firstAttribute="leading" secondItem="wRf-WB-AFa" secondAttribute="leading" id="xh2-cc-Xg7"/>
                                 </constraints>
@@ -7162,14 +7165,24 @@
                                         <color key="textColor" red="0.33725490200000002" green="0.60784313729999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" tag="1111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3S-ty-gGX">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="47"/>
+                                        <connections>
+                                            <action selector="btnAction:" destination="LRU-8U-mU5" eventType="touchUpInside" id="JrD-4b-YlJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="u3S-ty-gGX" secondAttribute="trailing" id="5Cb-Gc-Jr3"/>
                                     <constraint firstAttribute="height" constant="48" id="Eb3-qc-2hw"/>
                                     <constraint firstItem="9xx-Ds-gbe" firstAttribute="centerY" secondItem="5Xw-z5-Xda" secondAttribute="centerY" id="Hbs-v7-cAn"/>
                                     <constraint firstItem="9xx-Ds-gbe" firstAttribute="leading" secondItem="5Xw-z5-Xda" secondAttribute="leading" constant="4" id="N2P-QF-Mab"/>
                                     <constraint firstAttribute="trailing" secondItem="EnY-PZ-Npb" secondAttribute="trailing" constant="-20" id="S4p-jJ-XiJ"/>
+                                    <constraint firstItem="u3S-ty-gGX" firstAttribute="top" secondItem="5Xw-z5-Xda" secondAttribute="top" id="Xcg-cf-EUy"/>
+                                    <constraint firstItem="u3S-ty-gGX" firstAttribute="leading" secondItem="5Xw-z5-Xda" secondAttribute="leading" id="kLU-Zc-YcD"/>
                                     <constraint firstItem="efm-uv-DDB" firstAttribute="centerY" secondItem="9xx-Ds-gbe" secondAttribute="centerY" id="mSr-ks-Guf"/>
+                                    <constraint firstItem="EnY-PZ-Npb" firstAttribute="top" secondItem="u3S-ty-gGX" secondAttribute="bottom" id="szc-dT-iuw"/>
                                     <constraint firstAttribute="bottom" secondItem="EnY-PZ-Npb" secondAttribute="bottom" id="t8K-zN-9VT"/>
                                     <constraint firstItem="EnY-PZ-Npb" firstAttribute="leading" secondItem="9xx-Ds-gbe" secondAttribute="leading" id="zyv-9k-ryW"/>
                                 </constraints>
@@ -7235,8 +7248,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="gySwitch" destination="1ad-bd-Mde" id="7Xo-re-r36"/>
+                        <outlet property="intervalLb" destination="VBl-D1-dHu" id="6AF-ua-8xz"/>
                         <outlet property="nameLb" destination="Ke8-04-XdS" id="gaj-TN-RXB"/>
                         <outlet property="timeConstranit" destination="Cxk-vS-7Kg" id="Eoe-SE-FDe"/>
+                        <outlet property="timeLb" destination="Nbc-EG-NZw" id="cdU-x9-iaM"/>
+                        <outlet property="tmepLb" destination="efm-uv-DDB" id="vyE-vA-hfi"/>
                         <segue destination="GRq-nX-7ST" kind="show" identifier="ElectriketIdentifier" id="kPL-av-rgP"/>
                         <segue destination="mSq-x3-veU" kind="show" identifier="ElectricketTimeIdener" id="avB-qO-o0y"/>
                     </connections>
@@ -8240,8 +8256,8 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="uGt-BJ-6eU"/>
         <segue reference="kPL-av-rgP"/>
         <segue reference="avB-qO-o0y"/>
-        <segue reference="vlV-TW-9kk"/>
     </inferredMetricsTieBreakers>
 </document>
