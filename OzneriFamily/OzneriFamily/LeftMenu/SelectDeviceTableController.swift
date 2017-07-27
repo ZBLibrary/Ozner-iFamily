@@ -21,8 +21,8 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
         super.viewDidLoad()
 
         self.title = loadLanguage("选择设备")
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.handlePanGesture(_:)))
-        self.view.addGestureRecognizer(panGesture!)
+//        panGesture = UIPanGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.handlePanGesture(_:)))
+//        self.view.addGestureRecognizer(panGesture!)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -125,7 +125,7 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -135,7 +135,7 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectdevice", for: indexPath) as! SelectDeviceCell
         
-        cell.setDeviceType(deviceType: [OznerDeviceType.Tap,.Water_Wifi,.Air_Wifi,.WaterReplenish][indexPath.row])//deviceType=
+        cell.setDeviceType(deviceType: [OznerDeviceType.Tap,.Water_Wifi,.Air_Wifi,.WaterReplenish,.Water_Bluetooth][indexPath.row])//deviceType=
         cell.selectionStyle=UITableViewCellSelectionStyle.none
         // Configure the cell...
 
@@ -189,7 +189,7 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {      
         let pair = segue.destination as! PairingController
-        pair.currDeviceType = [OznerDeviceType.Tap,.Water_Wifi,.Air_Wifi,.WaterReplenish][sender as! Int]
+        pair.currDeviceType = [OznerDeviceType.Tap,.Water_Wifi,.Air_Wifi,.WaterReplenish,.Water_Bluetooth][sender as! Int]
 
     }
     

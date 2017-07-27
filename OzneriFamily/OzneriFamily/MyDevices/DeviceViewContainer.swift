@@ -150,10 +150,10 @@ class DeviceViewContainer: UIView {
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:170*k_height)
                 
             case .Water_Bluetooth:
-                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:180*k_height)
                 //隐藏底部按钮
                 (currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
-                (currentDeviceView as! WaterPurifierMainView).footerContainer.isHidden=true
+//                (currentDeviceView as! WaterPurifierMainView).footerContainer.isHidden=true
             }
             oznerDeviceStatusUpdate(currentDevice)//初始化设备状态
         }

@@ -173,6 +173,8 @@ extension MyDevicesController : DeviceViewContainerDelegate{
              deviceNameLabel.text = "智能立式空气净化器"
         case .WaterReplenish:
              deviceNameLabel.text = "智能补水仪"
+        case .Water_Bluetooth:
+             deviceNameLabel.text = "水芯片净水器"
             
         default:
            
