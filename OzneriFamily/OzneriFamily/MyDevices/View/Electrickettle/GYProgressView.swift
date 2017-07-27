@@ -178,7 +178,7 @@ class GYProgressView: UIView {
         
         upperShapeLayer1?.lineWidth = 18
         upperShapeLayer1?.lineJoin = kCALineJoinRound
-        upperShapeLayer1?.lineCap = kCALineCapButt
+        upperShapeLayer1?.lineCap = kCAFillRuleNonZero
         upperShapeLayer1?.lineDashPattern = [5,20,5,40,5,40,5,40,5,40,5,24,5,20,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40,5,40]
         upperShapeLayer1?.cornerRadius = 2.5
         upperShapeLayer1?.masksToBounds = true
