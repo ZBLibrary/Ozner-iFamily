@@ -113,24 +113,48 @@ class ElectrickettleMainView: OznerDeviceView {
 
     @IBAction func setTimeAction(_ sender: UIButton) {
         
-        pickDateView=Bundle.main.loadNibNamed("TapDatePickerView", owner: nil, options: nil)?.last as? TapDatePickerView
-        pickDateView?.datePicker.minimumDate = Date.init()
-        pickDateView?.datePicker.maximumDate = Date.init(timeIntervalSinceNow: 24 * 60 * 60)
-        pickDateView?.datePicker.datePickerMode = .dateAndTime
-        pickDateView?.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
-        pickDateView?.cancelButton.addTarget(self, action: #selector(pickerCancle), for: .touchUpInside)
-        pickDateView?.OKButton.addTarget(self, action: #selector(pickerOK), for: .touchUpInside)
-        self.addSubview(pickDateView!)
+        UIApplication.shared.keyWindow?.addSubview(datePick)
+        let device = currentDevice as? Electrickettle_Blue
+
+        datePick.didFinishSelect = { [weak self] (date) in
+            print(date)
+//            let /date1 = date as NSDate
+//            print("\(date1.day()),\(date1.hour()),\(date1.minute())")
+            self?.settimeBtn.setTitle((date.gy2_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date.gy2_stringFromDate(dateFormat: " HH:mm") ), for: UIControlState.normal)
+            
+//            let time = date.timeIntervalSinceNow
+            let time = date.timeIntervalSinceNow
+            let seconds = lround(time/60)  - (60 * 8)
+//            print(seconds)
+            
+            
+            _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: seconds))
+
+        }
+        
+        
+        datePick.showInView()
+        
+//        pickDateView=Bundle.main.loadNibNamed("TapDatePickerView", owner: nil, options: nil)?.last as? TapDatePickerView
+//        pickDateView?.datePicker.minimumDate = Date.init()
+//        pickDateView?.datePicker.datePickerMode = .time
+//        
+//        pickDateView?.datePicker.maximumDate = Date.init(timeIntervalSinceNow: 24 * 60 * 60)
+//        pickDateView?.datePicker.datePickerMode = .dateAndTime
+//        pickDateView?.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
+//        pickDateView?.cancelButton.addTarget(self, action: #selector(pickerCancle), for: .touchUpInside)
+//        pickDateView?.OKButton.addTarget(self, action: #selector(pickerOK), for: .touchUpInside)
+//        self.addSubview(pickDateView!)
     }
     
-    func pickerCancle()  {
-        pickDateView?.removeFromSuperview()
-    }
+//    func pickerCancle()  {
+//        pickDateView?.removeFromSuperview()
+//    }
     
-    func pickerOK()  {
+    func pickerOK() {
         let date = pickDateView?.datePicker.date
         
-        settimeBtn.setTitle((date?.gy_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date?.gy_stringFromDate(dateFormat: " HH:mm") ?? ""), for: UIControlState.normal)
+        settimeBtn.setTitle((date?.gy2_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date?.gy2_stringFromDate(dateFormat: " HH:mm") ?? ""), for: UIControlState.normal)
         
         let time = date?.timeIntervalSinceNow
         print(lround(time!/60))
@@ -138,6 +162,12 @@ class ElectrickettleMainView: OznerDeviceView {
     }
     
     @IBAction func tempChange(_ sender: UIButton) {
+        
+        let device = currentDevice as? Electrickettle_Blue
+        
+        if device?.connectStatus != OznerConnectStatus.Connected {
+            return
+        }
         
         if currentTempBtn?.tag == sender.tag {
             UIView.animate(withDuration: 0.5) {
@@ -162,17 +192,25 @@ class ElectrickettleMainView: OznerDeviceView {
             tempValue.isHidden = false
             let value = UserDefaults.standard.value(forKey: "UISliderValueElectrickettle") ?? 0
             tempValue.value = Float(value as! Int)
-
+            
         } else {
             tempValue.isHidden = true
             secondContrains.constant = 120
         }
         
+        if sender.tag != 666 {
+            
+            let device = currentDevice as? Electrickettle_Blue
+            
+            _ = device?.setSetting((hotTemp: sender.tag , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+            
+        }
+        
         
         UIView.animate(withDuration: 0.5) {
         
-        self.currentTempBtn?.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0)
-        self.currentTempBtn?.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+            self.currentTempBtn?.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0)
+            self.currentTempBtn?.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
             
         }
         currentTempBtn = sender
@@ -183,17 +221,35 @@ class ElectrickettleMainView: OznerDeviceView {
             sender.setTitleColor(UIColor.init(red: 168/255.0, green: 40/255.0, blue: 102/255.0, alpha: 1.0), for: UIControlState.normal)
         }
         
-        
     }
-    
  
     @IBAction func hotAction(_ sender: UIButton) {
         
+        let device = currentDevice as? Electrickettle_Blue
+        
+        if device?.connectStatus != OznerConnectStatus.Connected {
+            
+            return
+        }
         
         if currentHotBtn?.tag == sender.tag {
    
             return
         }
+        
+        switch sender.tag {
+        case 777:
+            _ = device?.setHotFunction(0)
+
+            break
+        case 888:
+            _ = device?.setHotFunction(1)
+            
+            break
+        default:
+            break
+        }
+        
         
         UIView.animate(withDuration: 0.5) {
             
@@ -209,16 +265,25 @@ class ElectrickettleMainView: OznerDeviceView {
             sender.setTitleColor(UIColor.init(red: 168/255.0, green: 40/255.0, blue: 102/255.0, alpha: 1.0), for: UIControlState.normal)
         }
         
-        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gylayoutSubviews()
     }
     
     func sliderValueChanged(_ sender:UISlider) {
         
         valuelb.text = "持续保温\(lround(Double(sender.value)))小时"
+        let device = currentDevice as? Electrickettle_Blue
+        
+        if device?.settingInfo.hotTemp == -1{
+            return
+        }
+        
+        _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: lround(Double(sender.value)) * 60, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
         
     }
-    
-    
     
     func segmentedChanged(_ sender: UISegmentedControl) {
         
@@ -257,13 +322,17 @@ class ElectrickettleMainView: OznerDeviceView {
     func switchChanged(_ sender:UISwitch) {
         
         settimeBtn.isHidden = !sender.isOn
+        let device = currentDevice as? Electrickettle_Blue
+
         if sender.isOn {
             
             firstContraint.constant = 120
+            _ =  device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: 5, orderSec: device?.settingInfo.orderSec ?? 0))
             
         } else {
             
             firstContraint.constant = 60
+            _ =  device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: 0, orderSec: device?.settingInfo.orderSec ?? 0))
             
         }
         
@@ -276,9 +345,21 @@ class ElectrickettleMainView: OznerDeviceView {
         
         let currentDevice=OznerManager.instance.currentDevice as! Electrickettle_Blue
         
-        tempLbtext = (currentDevice.settingInfo.temp,currentDevice.settingInfo.hotPattern)
+        tempLbtext = (currentDevice.settingInfo.temp,currentDevice.settingInfo.isHot)
         
         TDS = currentDevice.settingInfo.tds
+        
+        switchlb.isOn = !(currentDevice.settingInfo.orderFunction == 0 || currentDevice.settingInfo.orderFunction == -1)
+        switchChanged(switchlb)
+        slider.isEnabled = (currentDevice.connectStatus == .Connected)
+
+//         settimeBtn.setTitle((date?.gy_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date?.gy_stringFromDate(dateFormat: " HH:mm") ?? ""), for: UIControlState.normal)
+        
+        if switchlb.isOn {
+            
+           settimeBtn.setTitle((Date().gy_stringFromDate(dateFormat: "dd") == Date().addingTimeInterval(60 * 60).gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + Date().addingTimeInterval(60 * 60).gy_stringFromDate(dateFormat: " HH:mm"), for: UIControlState.normal)
+           
+        }
         
         print(currentDevice.settingInfo)
         
@@ -299,13 +380,18 @@ class ElectrickettleMainView: OznerDeviceView {
         progressView.startAnimation()
         segement.addTarget(self, action: #selector(ElectrickettleMainView.segmentedChanged(_:)), for: UIControlEvents.valueChanged)
         switchlb.addTarget(self, action:#selector(ElectrickettleMainView.switchChanged(_:)), for: UIControlEvents.valueChanged)
+        
+//        slider.addTarget(self, action: #selector(ElectrickettleMainView.sliderValueChangedEnd), for: UIControlEvents.touchCancel)
 
-        slider.addTarget(self, action: #selector(ElectrickettleMainView.sliderValueChanged(_:)), for: UIControlEvents.valueChanged)
+        slider.addTarget(self, action: #selector(ElectrickettleMainView.sliderValueChanged(_:)), for: UIControlEvents.touchUpInside)
         
         tempValue.minimumValue = 0
         tempValue.maximumValue = 100
         tempValue.isEnabled = true
         tempValue.layer.sublayers?.removeAll()
+        switchlb.isEnabled = false
+     
+
         
     }
     
@@ -314,6 +400,14 @@ class ElectrickettleMainView: OznerDeviceView {
         scrollerView.contentSize = CGSize(width: width_screen, height: 560)
         
     }
+    
+    fileprivate lazy var datePick:AbbDatePickView = {
+        let minDate = Date.init()
+        let maxDate = Date.init(timeIntervalSinceNow: 24 * 60 * 60)
+        let dp = AbbDatePickView(cornorType: CornorType.circle, minDate: minDate, maxDate: maxDate, showOnlyValidDates: true)
+        return dp
+    }()
+
 
     /*
     // Only override draw() if you perform custom drawing.

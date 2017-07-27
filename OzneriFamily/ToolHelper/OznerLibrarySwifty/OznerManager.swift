@@ -60,7 +60,6 @@ class OznerManager: NSObject {
 //            name: NSNotification.Name.reachabilityChanged,
 //            object: nil
 //        )
-        
        
         //Owner：数据库名称,userToken：ayla会用到
         owner=Owner

@@ -15,14 +15,20 @@ class TapDatePickerView: UIView {
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var OKButton: UIButton!
    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        datePicker.backgroundColor=UIColor.white
+//        datePicker.delegate = self
+        cancelButton.setTitle(loadLanguage("取消"), for: UIControlState())
+        OKButton.setTitle(loadLanguage("确定"), for: UIControlState())
+
+    }
+    
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
-        datePicker.backgroundColor=UIColor.white
-        cancelButton.setTitle(loadLanguage("取消"), for: UIControlState())
-        OKButton.setTitle(loadLanguage("确定"), for: UIControlState())
-         
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

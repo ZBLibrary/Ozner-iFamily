@@ -108,12 +108,15 @@ class MyDevicesController: UIViewController {
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleBottomMargin]
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.addLeftGestures()
+  
+        
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: animated)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {

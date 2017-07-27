@@ -107,9 +107,16 @@ class GYValueElectSlider: UISlider {
             UserDefaults.standard.setValue(Int32(String.init(format: "%.0f", self.value)), forKey: "UISliderValueElectrickettle")
             UserDefaults.standard.synchronize()
             
-            if block != nil {
-                block!()
-            }
+            let device = OznerManager.instance.currentDevice as? Electrickettle_Blue
+            
+            _ = device?.setSetting((hotTemp: lround(Double(self.value)), hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+            previewView?.valueLb.text = String.init(format: "%d", lround(Double(self.value))) + "℃"
+
+            
+//            _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+//            if block != nil {
+//                block!()
+//            }
             
             //            removeFromGYSlider()
             
@@ -137,9 +144,6 @@ class GYValueElectSlider: UISlider {
                 
             }
         }
-        
-        
-        
         
     }
     
