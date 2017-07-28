@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
  
         
-        
         window?.backgroundColor = UIColor.white
         
         User.loginWithLocalUserInfo(success: { (user) in

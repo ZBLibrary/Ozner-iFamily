@@ -20,6 +20,7 @@ class MySetViewController: BaseViewController {
     @IBAction func logOutAction(_ sender: AnyObject) {
         
         LoginManager.instance.LoginOut()
+        OznerManager.instance.currentDevice = nil
     }
     
     override func viewDidLoad() {
