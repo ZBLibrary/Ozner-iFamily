@@ -79,7 +79,7 @@ class ElectrickettleSettingVc: DeviceSettingController {
 
         } else {
             timeConstranit.constant = 48
-            self.deviceSetting.SetValue(key: "ELTimeSender", value: "1")
+            self.deviceSetting.SetValue(key: "ELTimeSender", value: "0")
 
         }
     }
@@ -117,7 +117,6 @@ class ElectrickettleSettingVc: DeviceSettingController {
         } else {
 
             LocalNotificationHelper.removeNoticeForKey(key: "ElectrickettleRemind")
-            
         }
         
         let timeSpace = Int(self.deviceSetting.GetValue(key: "ELTempSet", defaultValue: "0"))!
