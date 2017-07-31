@@ -8,6 +8,10 @@
 //
 import UIKit
 
+enum GYError:Error {
+    case errorsleep
+}
+
 class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
     
     var deviceInfo:OznerDeviceInfo!
@@ -60,8 +64,8 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
         print("开始进行WIFI1.0配对")
         
         
-        do {
-            try easylink_config.transmitSettings()
+        DispatchQueue.main.async {
+             self.easylink_config.transmitSettings()
         }
         
         
@@ -69,9 +73,14 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
     
     func canclePair() {//取消配对
         if (easylink_config != nil) {
-            do {
-                try easylink_config.stopTransmitting()
-            }
+//            do {
+                DispatchQueue.main.async {
+                    self.easylink_config.stopTransmitting()
+ 
+                }
+//            }catch {
+//                print(1)
+//            }
         }
     }
     @objc private func pairFailed() {
