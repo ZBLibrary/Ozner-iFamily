@@ -16,7 +16,7 @@ class Air_WifiMainView: OznerDeviceView {
     @IBOutlet var VOCValueLabel: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var humidityLabel: UILabel!
-    @IBOutlet var circleBGimg: UIImageView!
+    @IBOutlet var circleBGImg: UIImageView!
     
     //center
     @IBOutlet var cityLabel: UILabel!
@@ -134,15 +134,15 @@ class Air_WifiMainView: OznerDeviceView {
                 switch true {
                 case PM25_In<=75:
                     
-                    circleBGimg.image=UIImage(named: "GuangHuanbg")
+                    circleBGImg.image=UIImage(named: "GuangHuanbg")
                     PM25StateLabel.text=loadLanguage("优")
                     self.backgroundColor=UIColor(red: 94/255, green: 207/255, blue: 254/255, alpha: 1)
                 case PM25_In>75&&PM25_In<=150:
-                    circleBGimg.image=UIImage(named: "GuangHuanbg2")
+                    circleBGImg.image=UIImage(named: "GuangHuanbg2")
                     PM25StateLabel.text=loadLanguage("良")
                     self.backgroundColor=UIColor(red: 163/255, green: 129/255, blue: 251/255, alpha: 1)
                 case PM25_In>150:
-                    circleBGimg.image=UIImage(named: "GuangHuanbg3")
+                    circleBGImg.image=UIImage(named: "GuangHuanbg3")
                     PM25StateLabel.text=loadLanguage("差")
                     self.backgroundColor=UIColor(red: 254/255, green: 101/255, blue: 101/255, alpha: 1)
                 default:
@@ -181,35 +181,39 @@ class Air_WifiMainView: OznerDeviceView {
         }
     }
     override func SensorUpdate(identifier: String) {
-        let device = self.currentDevice as! AirPurifier_Wifi
         
-        //更新传感器视图
-        if device.status.Power==false
-        {
-            PM25_In = -1
-        }else{
-            PM25_In=Int((self.currentDevice as! AirPurifier_Wifi).sensor.PM25)
-        }
         
-        if device.connectStatus != .Connected
-        {
-            PM25_In = -2
-            operation=(false,0,false)
-        }else{
-            operation=(device.status.Power,device.status.Speed,device.status.Lock)
-        }
+            let device = self.currentDevice as! AirPurifier_Wifi
+            //更新传感器视图
+            if device.status.Power==false
+            {
+                self.PM25_In = -1
+            }else{
+                self.PM25_In=Int((self.currentDevice as! AirPurifier_Wifi).sensor.PM25)
+            }
+            
+            if device.connectStatus != .Connected
+            {
+                self.PM25_In = -2
+                self.operation=(false,0,false)
+            }else{
+                self.operation=(device.status.Power,device.status.Speed,device.status.Lock)
+            }
+        
+        
     }
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         //更新连接状态视图
-        let device = self.currentDevice as! AirPurifier_Wifi
-        if device.connectStatus != .Connected
-        {
-            PM25_In = -2
-            operation=(false,0,false)
-        }else{
-           operation=(device.status.Power,device.status.Speed,device.status.Lock)
-        }
         
+            let device = self.currentDevice as! AirPurifier_Wifi
+            if device.connectStatus != .Connected
+            {
+                self.PM25_In = -2
+                self.operation=(false,0,false)
+            }else{
+                self.operation=(device.status.Power,device.status.Speed,device.status.Lock)
+            }
+            
         
     }
 }
