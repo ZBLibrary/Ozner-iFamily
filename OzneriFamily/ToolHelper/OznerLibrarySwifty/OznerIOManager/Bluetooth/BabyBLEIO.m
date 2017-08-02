@@ -41,6 +41,10 @@ NSString* idString;
     
     if (baby.centralManager.state==CBManagerStatePoweredOn) {
         self.currPeripheral=[baby retrievePeripheralWithUUIDString:idString];//获取外设
+        if (self.currPeripheral==nil) {
+            _babyBLEStatusBlock(-1);
+            return;
+        }
         _babyBLEStatusBlock(2);
         switch (self.currPeripheral.state) {//初始化设备状态
             case CBPeripheralStateConnected:
