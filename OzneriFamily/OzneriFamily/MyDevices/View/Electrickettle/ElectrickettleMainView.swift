@@ -348,7 +348,7 @@ class ElectrickettleMainView: OznerDeviceView {
         tempLbtext = (currentDevice.settingInfo.temp,currentDevice.settingInfo.isHot)
         
         TDS = currentDevice.settingInfo.tds
-        
+        switchlb.isEnabled = (currentDevice.connectStatus == .Connected)
         switchlb.isOn = !(currentDevice.settingInfo.orderFunction == 0 || currentDevice.settingInfo.orderFunction == -1)
         switchChanged(switchlb)
         slider.isEnabled = (currentDevice.connectStatus == .Connected)

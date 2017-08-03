@@ -139,7 +139,8 @@ class Air_BlueMainView: OznerDeviceView {
     
     private var PM25_In = 0{//头部视图
         didSet{
-            if PM25_In != oldValue   {
+            
+            if PM25_In != oldValue  {
                 if PM25_In == -1 || PM25_In == -2 {//-1 已关机,-2 已断开
                     FLZLabel.isHidden=true
                     
