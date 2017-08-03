@@ -28,7 +28,15 @@ class RoWaterPuefierLvXinController: BaseViewController {
     @IBOutlet var lvxinValueLabelB: UILabel!
     @IBOutlet var lvxinValueLabelC: UILabel!
     @IBAction func zixunClick(sender: AnyObject) {
-        LoginManager.instance.setTabbarSelected(index: 2)
+//        LoginManager.instance.setTabbarSelected(index: 2)
+        
+        let urlStr = NSMutableString.init(string: "tel:4008209667")
+        
+        let callWebView = UIWebView()
+        callWebView.loadRequest(URLRequest(url: URL(string: urlStr as String)!))
+        
+        self.view.addSubview(callWebView)
+
     }
     
     @IBAction func buyLvXinClick(sender: AnyObject) {
@@ -94,7 +102,7 @@ class RoWaterPuefierLvXinController: BaseViewController {
         lvxinValueLabelC.text="\(currentDevice.filterInfo.filter_C_Percentage)%"
         
         timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
-        fuweiButton.isHidden = !currentDevice.isEnableFilterReset()
+//        fuweiButton.isHidden = !currentDevice.isEnableFilterReset()
         // Do any additional setup after loading the view.
     }
     var istrue = true
