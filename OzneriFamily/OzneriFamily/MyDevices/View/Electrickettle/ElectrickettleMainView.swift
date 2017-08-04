@@ -27,6 +27,7 @@ class ElectrickettleMainView: OznerDeviceView {
     var currentHotBtn:UIButton?
     var pickDateView:TapDatePickerView?
     
+    @IBOutlet weak var currentTemp: UILabel!
     @IBOutlet weak var valuelb: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var switchlb: UISwitch!
