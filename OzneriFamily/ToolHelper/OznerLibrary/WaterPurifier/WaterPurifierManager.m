@@ -63,11 +63,41 @@
         return [[ScanData alloc] init:@"Ozner RO" platform:platform firmware:firmware mainboardPlatform:mainbroadPlatform mainboardFirmware:mainbroadFirmware advertisement:data scanResponesType:0x11];
         
     }
+    
+    
+    if ([peripheral.name isEqualToString:@"RO Comml"]) {
+        
+        NSLog(@"RO Comml");
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+        [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        
+        
+        Byte* bytes=(Byte*)[data bytes];
+        
+        NSString* platform=[[NSString alloc] initWithData:[NSData dataWithBytes:bytes length:3] encoding:NSASCIIStringEncoding];
+        
+        
+        NSDate* firmware=[formatter dateFromString:[NSString stringWithFormat:@"%d-%d-%d %d:%d:%d",
+                                                    bytes[3],bytes[4],bytes[5],
+                                                    bytes[6],bytes[7],bytes[8]]];
+        
+        NSString* mainbroadPlatform=[[NSString alloc] initWithData:[NSData dataWithBytes:(bytes+9) length:3] encoding:NSASCIIStringEncoding];
+        
+        NSDate* mainbroadFirmware=[formatter dateFromString:[NSString stringWithFormat:@"%d-%d-%d %d:%d:%d",
+                                                             bytes[12],bytes[13],bytes[14],
+                                                             bytes[15],bytes[16],bytes[17]]];
+        
+        NSData* data=[NSData dataWithBytes:bytes+18 length:7];
+        return [[ScanData alloc] init:@"RO Comml" platform:platform firmware:firmware mainboardPlatform:mainbroadPlatform mainboardFirmware:mainbroadFirmware advertisement:data scanResponesType:0x11];
+        
+    }
+
+    
     return NULL;
 }
 +(BOOL)isWaterPurifier:(NSString*)type
 {
-    return ([type isEqualToString:@"MXCHIP_HAOZE_Water"] || [type isEqualToString:@"16a21bd6"] || [type isEqualToString:@"Ozner RO"]);
+    return ([type isEqualToString:@"MXCHIP_HAOZE_Water"] || [type isEqualToString:@"16a21bd6"] || [type isEqualToString:@"Ozner RO"]) || ([type isEqualToString:@"RO Comml"]);
 }
 
 -(BOOL)isMyDevice:(NSString *)type
@@ -76,7 +106,7 @@
 }
 -(BOOL)isBluetoothDevice:(NSString *)type
 {
-    return ([type isEqualToString:@"Ozner RO"]);
+    return ([type isEqualToString:@"Ozner RO"])  || ([type isEqualToString:@"RO Comml"]);
 }
 
 - (BOOL)checkBindMode:(BaseDeviceIO *)io

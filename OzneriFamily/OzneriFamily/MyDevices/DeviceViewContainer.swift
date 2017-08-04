@@ -274,39 +274,74 @@ extension DeviceViewContainer{
 //    }
     //设置净水器滤芯、型号、链接地址、是否提醒
     
-    
     func SetWaterPurifer(devID:String){
-        if self.currentDevice==nil {
-            return
+        weak var weakSelf=self
+        User.GetMachineType(deviceID: devID, success: { (scanEnable, coolEnable, hotEnable, machineType, buyURL, alertDays) in
+            let url = buyURL=="" ? NetworkManager.defaultManager?.URL?["goodsDetail9"]?.stringValue:buyURL
+            
+            User.GetMachineLifeOutTime(deviceID: devID, success: { (usedDays, stopDate) in
+                let useValue=ceil(Double(100*(365-usedDays)/365))
+                
+                guard (weakSelf?.currentDevice?.isKind(of: WaterPurifierMainView.self))! else {
+                    return
+                }
+                
+                (weakSelf?.currentDeviceView as! WaterPurifierMainView).setLvXinAndEnable(scan: scanEnable, cool: coolEnable, hot: hotEnable, buyLvXinUrl: url!, lvXinStopDate: stopDate as NSDate, lvXinUsedDays: Int(useValue))
+                self.LvXinValue=Int(useValue)
+                if useValue<10//小于10%提醒及时更换滤芯
+                {
+                    let appearance = SCLAlertView.SCLAppearance(
+                        showCloseButton: false,
+                        dynamicAnimatorActive: true
+                    )
+                    let alert=SCLAlertView(appearance: appearance)
+                    _=alert.addButton(loadLanguage(loadLanguage("现在去购买滤芯"))) {
+                        //跳到购买滤芯的页面
+                        weakSelf?.delegate.DeviceViewPerformSegue!(SegueID: "showBuyLvXin", sender: ["title":loadLanguage("净水器滤芯"),"url":NetworkManager.defaultManager?.UrlWithRoot(url!)])
+                    }
+                    _=alert.addButton(loadLanguage("我知道了"), action:{})
+                    _=alert.showInfo("", subTitle: loadLanguage("你的滤芯即将到期，请及时更换滤芯，以免耽误您的使用"))
+                }
+            }, failure: { (error) in
+                self.LvXinValue = -2
+            })
+        }) { (error) in
+            self.LvXinValue = -2
         }
-        let url = NetworkManager.defaultManager?.URL?["goodsDetail9"]?.stringValue
-        var remindDays=Int((self.currentDevice as! WaterPurifier).sensor.filterRemindDays)
-        remindDays=max(remindDays, 0)
-        remindDays = remindDays==65535 ? 0:remindDays
-        if oldRemindDays == remindDays  {
-            return
-        }
-        oldRemindDays = remindDays
-        
-        let useValue=ceil(Double(100*(remindDays)/180))
-        (self.currentDeviceView as? WaterPurifierMainView)?.setLvXinAndEnable(scan: false, cool: false, hot: true, buyLvXinUrl: url!, lvXinStopDate: NSDate(), lvXinUsedDays: Int(useValue))
-        self.LvXinValue=Int(useValue)
-        if useValue<10//小于10%提醒及时更换滤芯
-        {
-            let appearance = SCLAlertView.SCLAppearance(
-                showCloseButton: false,
-                dynamicAnimatorActive: true
-            )
-            let alert=SCLAlertView(appearance: appearance)
-            _=alert.addButton(loadLanguage(loadLanguage("现在去购买滤芯"))) {
-                //跳到购买滤芯的页面
-                self.delegate.DeviceViewPerformSegue!(SegueID: "showBuyLvXin", sender: ["title":"净水器滤芯","url":NetworkManager.defaultManager?.UrlWithRoot(url!)])
-            }
-            _=alert.addButton(loadLanguage("我知道了"), action:{})
-            _=alert.showInfo("", subTitle: loadLanguage("你的滤芯即将到期，请及时更换滤芯，以免耽误您的使用"))
-        }
-        
     }
+    
+//    func SetWaterPurifer(devID:String){
+//        if self.currentDevice==nil {
+//            return
+//        }
+//        let url = NetworkManager.defaultManager?.URL?["goodsDetail9"]?.stringValue
+//        var remindDays=Int((self.currentDevice as! WaterPurifier).sensor.filterRemindDays)
+//        remindDays=max(remindDays, 0)
+//        remindDays = remindDays==65535 ? 0:remindDays
+//        if oldRemindDays == remindDays  {
+//            return
+//        }
+//        oldRemindDays = remindDays
+//        
+//        let useValue=ceil(Double(100*(remindDays)/180))
+//        (self.currentDeviceView as? WaterPurifierMainView)?.setLvXinAndEnable(scan: false, cool: false, hot: true, buyLvXinUrl: url!, lvXinStopDate: NSDate(), lvXinUsedDays: Int(useValue))
+//        self.LvXinValue=Int(useValue)
+//        if useValue<10//小于10%提醒及时更换滤芯
+//        {
+//            let appearance = SCLAlertView.SCLAppearance(
+//                showCloseButton: false,
+//                dynamicAnimatorActive: true
+//            )
+//            let alert=SCLAlertView(appearance: appearance)
+//            _=alert.addButton(loadLanguage(loadLanguage("现在去购买滤芯"))) {
+//                //跳到购买滤芯的页面
+//                self.delegate.DeviceViewPerformSegue!(SegueID: "showBuyLvXin", sender: ["title":"净水器滤芯","url":NetworkManager.defaultManager?.UrlWithRoot(url!)])
+//            }
+//            _=alert.addButton(loadLanguage("我知道了"), action:{})
+//            _=alert.showInfo("", subTitle: loadLanguage("你的滤芯即将到期，请及时更换滤芯，以免耽误您的使用"))
+//        }
+//        
+//    }
 
 //    //设置净水器滤芯、型号、链接地址、是否提醒
 //    func SetWaterPurifer(devID:String){

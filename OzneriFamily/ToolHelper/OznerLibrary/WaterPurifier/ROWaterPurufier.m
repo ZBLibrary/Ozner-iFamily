@@ -8,7 +8,7 @@
 
 #import "ROWaterPurufier.h"
 #import "../Device/OznerDevice.hpp"
-
+#import "DateTools/DateTools.h"
 @implementation ROWaterPurufier
 
 
@@ -18,6 +18,16 @@
 #define opCode_respone_water 0x22
 #define opCode_respone_filter 0x23
 #define opCode_update_setting 0x40
+#define opCode_respone_filterTime 0x24
+#define opCode_respone_SettingInfo 0x25
+#define opCode_update_Temp 0x41
+
+#define type_status  1
+#define type_sensor  2
+#define type_filter  3
+#define type_a2dp  4
+#define type_SettingTwo 5
+
 
 -(instancetype)init:(NSString *)identifier Type:(NSString *)type Settings:(NSString *)json
 {
@@ -26,15 +36,21 @@
         _filterInfo=[[RO_FilterInfo alloc] init];
         _settingInfo=[[ROWaterSettingInfo alloc] init];
         _waterInfo=[[RO_WaterInfo alloc] init];
+        _twoInfo = [[ROWaterSettingTwoInfo alloc] init];
+
     }
     return self;
 }
 
--(void)DeviceIODidDisconnected:(BaseDeviceIO *)io
+-(void)DeviceIODidDisconnected:(BaseDeviceIO *)Io
 {
-    [_filterInfo reset];
+    [self stop_auto_update];
+    [super DeviceIODidDisconnected:Io];
+    //[_filterInfo reset];
     [_settingInfo reset];
-    [_filterInfo reset];
+    //[_filterInfo reset];
+    [_twoInfo rest];
+
 }
 
 
@@ -84,6 +100,31 @@ Byte calcSum(Byte* data,int size)
     
     [io send:data];
 }
+
+- (BOOL)requestFilterTime {
+    
+    NSMutableData* data=[[NSMutableData alloc] init];
+    Byte bytes[3];
+    bytes[0]=opCode_request_info;
+    bytes[1]=4;
+    bytes[2]=calcSum(bytes,2);
+    [data appendBytes:bytes length:3];
+    
+    return [io send:data];
+}
+
+- (BOOL)requestSetting {
+    
+    NSMutableData* data=[[NSMutableData alloc] init];
+    Byte bytes[3];
+    bytes[0]=opCode_request_info;
+    bytes[1]=5;
+    bytes[2]=calcSum(bytes,2);
+    [data appendBytes:bytes length:3];
+    
+    return [io send:data];
+}
+
 
 /*!
  滤芯历史信息
@@ -145,8 +186,11 @@ Byte calcSum(Byte* data,int size)
 }
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"%@\n%@\n%@",[_settingInfo description],
-            [_waterInfo description],[_filterInfo description]];
+//    return [NSString stringWithFormat:@"%@\n%@\n%@",[_settingInfo description],
+//            [_waterInfo description],[_filterInfo description]];
+    return [NSString stringWithFormat:@"%@\n%@\n%@\n%@",[_settingInfo description],
+            [_waterInfo description],[_filterInfo description],[_twoInfo description]];
+
     //return [NSString stringWithFormat:@"status:%@",[_status description]];
 }
 
@@ -155,25 +199,36 @@ Byte calcSum(Byte* data,int size)
     if (data==nil) return;
     if (data.length<1) return;
     BytePtr bytes=(BytePtr)[data bytes];
+    NSData* needData=[NSData dataWithBytes:bytes+1 length:data.length-1];
     Byte opCode=bytes[0];
     lastDataTime=[NSDate dateWithTimeIntervalSinceNow:0];
     switch (opCode) {
         case opCode_respone_setting:
-            [_settingInfo load:data];
+            [_settingInfo load:needData];
             [self doSensorUpdate];
             //settingInfo.fromBytes(data);
             break;
         case opCode_respone_water:
-            [_waterInfo load:data];
+            [_waterInfo load:needData];
             [self doSensorUpdate];
             //waterInfo.fromBytes(data);
             break;
         case opCode_respone_filter:
-            [_filterInfo load:data];
+            [_filterInfo load:needData];
             [self doSensorUpdate];
             
             //filterInfo.fromBytes(data);
             break;
+        case opCode_respone_filterTime:
+            break;
+        case opCode_respone_SettingInfo:
+             {
+              
+             [_twoInfo load:data];
+             [self doSensorUpdate];
+             }
+            break;
+
     }
 }
 
@@ -201,6 +256,7 @@ Byte calcSum(Byte* data,int size)
         updateTimer=[NSTimer scheduledTimerWithTimeInterval:3 target:self
                                                    selector:@selector(auto_update)
                                                    userInfo:nil repeats:YES];
+        
         [updateTimer fire];
     }
 }
@@ -211,10 +267,95 @@ Byte calcSum(Byte* data,int size)
     if ((requestCount%2)==0)
     {
         [self requestFilterInfo];
+        [self requestSettingInfo];
     }else
         [self requestWaterInfo];
+        [self requestSetting];
+
     requestCount++;
 }
+//冲水
+-(BOOL)addWaterDays:(int)days{
+    if (!io) return false;
+    NSDate* curWaterDate = _settingInfo.WaterStopDate;
+    if ([curWaterDate timeIntervalSince1970]==0) {//没有获取到水值信息
+        [self requestSettingInfo];
+        return false;
+    }
+    
+    NSMutableData* data=[[NSMutableData alloc] init];
+    Byte bytes[19];
+    bytes[0]=opCode_update_setting;
+    NSDate* time=[NSDate dateWithTimeIntervalSinceNow:0];
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *dateComps = [cal components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond fromDate:time];
+    
+    bytes[1]=[dateComps year]-2000;
+    bytes[2]=[dateComps month];
+    bytes[3]=[dateComps day];
+    bytes[4]=[dateComps hour];
+    bytes[5]=[dateComps minute];
+    bytes[6]=[dateComps second];
+    
+    bytes[7]=_settingInfo.Ozone_Interval;
+    bytes[8]=_settingInfo.Ozone_WorkTime;
+    bytes[9]=0;
+    NSDate* stopDate=[[NSDate alloc] init];
+    if ([_settingInfo.WaterStopDate timeIntervalSinceDate:stopDate]>0) {
+        stopDate=_settingInfo.WaterStopDate;
+    }
+    stopDate=[stopDate dateByAddingDays:days];
+    bytes[10]=[stopDate year]-2000;
+    bytes[11]=[stopDate month];
+    bytes[12]=[stopDate day];
+    bytes[13]=[stopDate hour];
+    bytes[14]=[stopDate minute];
+    bytes[15]=[stopDate second];
+    bytes[16]=0x88;
+    bytes[17]=0x16;
+    bytes[18]=calcSum(bytes,18);
+    [data appendBytes:bytes length:19];
+    [io send:data];
+    sleep(1);
+    [self requestSettingInfo];
+    sleep(2);
+    if ([stopDate month]==[_settingInfo.WaterStopDate month]&&[stopDate year]==[_settingInfo.WaterStopDate year]) {
+        return true;
+    }
+    else{
+        return false;
+    }
+    
+}
+
+
+/**
+ 设置加热温度 （厨上式水机）
+ 
+ @return return value description
+ */
+-(BOOL)setHotTemp:(int)temp {
+    
+    if (temp == _twoInfo.hottempSet) return true;
+    
+    NSMutableData* data=[[NSMutableData alloc] init];
+    Byte bytes[10];
+    bytes[0]=opCode_update_Temp;
+    bytes[1]=temp;
+    bytes[2]=_twoInfo.isPower?1:0;
+    bytes[3]=_twoInfo.openPowerTime;
+    bytes[4]=_twoInfo.closePowerTime;
+    bytes[5]=_twoInfo.isHot;
+    bytes[6]=_twoInfo.startHotTime;
+    bytes[7]=_twoInfo.endHotTime;
+    bytes[8]=_twoInfo.isCold;
+    bytes[9]=calcSum(bytes, 9);
+    [data appendBytes:bytes length:10];
+    [io send:data];
+    return true;
+    
+}
+
 
 //重置滤芯时间
 -(BOOL) resetFilter
@@ -233,6 +374,18 @@ Byte calcSum(Byte* data,int size)
 
 +(BOOL)isBindMode:(BluetoothIO*)io
 {
-    return true;
+    if (io)
+    {
+        if (io.scanResponseData)
+        {
+            
+            Byte flag=((Byte*)[io.scanResponseData bytes])[0];
+//            return flag == 0;
+            return flag || flag == 0;
+        }
+        return false;
+    }
+    else
+        return false;
 }
 @end

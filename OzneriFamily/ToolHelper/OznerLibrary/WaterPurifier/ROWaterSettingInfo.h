@@ -20,6 +20,8 @@
  @discussion 臭氧工作间隔;
  */
 @property (readonly) int Ozone_Interval;
+@property (strong,readonly) NSDate* WaterStopDate;//水值到期日
+@property (readonly) int WaterRemindDays;//水值剩余天数
 -(void)load:(NSData*)data;
 -(void)reset;
 
