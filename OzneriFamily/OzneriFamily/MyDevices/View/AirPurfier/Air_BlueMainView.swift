@@ -121,6 +121,7 @@ class Air_BlueMainView: OznerDeviceView {
         default:
             sliderValueStateLabel.text=loadLanguage("高速")
         }
+        
         if isEnd==true {
             
             if tmpValueInt != 0 {
@@ -129,10 +130,11 @@ class Air_BlueMainView: OznerDeviceView {
                 })
             } else {
                PM25_In = -1
+                (self.currentDevice as! AirPurifier_Blue).setPower(power: false, callBack: { (error) in
+                })
             }
             
-            (self.currentDevice as! AirPurifier_Blue).setPower(power: tmpValueInt != 0, callBack: { (error) in
-            })
+            
 
         }
     }
@@ -187,6 +189,8 @@ class Air_BlueMainView: OznerDeviceView {
 
     override func SensorUpdate(identifier: String) {
         //更新传感器视图
+        
+        print("空净时时风速：\((self.currentDevice as! AirPurifier_Blue).sensor.Speed)")
         if (self.currentDevice as! AirPurifier_Blue).sensor.Power==false
         {
             PM25_In = -1
