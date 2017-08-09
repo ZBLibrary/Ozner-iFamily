@@ -33,6 +33,17 @@ class AirPurifier_Blue: OznerBaseDevice {
         let tmpData=Data.init(bytes: [UInt8(power.hashValue),UInt8(sensor.Speed)])
         self.SendDataToDevice(sendData: makePacket(code: 0x10, data: tmpData), CallBack: nil)
     }
+    
+    func startPower(power:Bool,speed:Int,callBack:((_ error:Error?)->Void)) {
+        let tmpData=Data.init(bytes: [UInt8(power.hashValue),UInt8(speed)])
+        self.SendDataToDevice(sendData: makePacket(code: 0x10, data: tmpData), CallBack: nil)
+    }
+    
+    func closePower(power:Bool,callBack:((_ error:Error?)->Void)) {
+        let tmpData=Data.init(bytes: [UInt8(0),UInt8(0)])
+        self.SendDataToDevice(sendData: makePacket(code: 0x10, data: tmpData), CallBack: nil)
+    }
+    
     func setSpeed(speed:Int,callBack:((_ error:Error?)->Void)) {
         print("发送风速：\(speed)")
         let tmpData=Data.init(bytes: [UInt8(1),UInt8(speed)])

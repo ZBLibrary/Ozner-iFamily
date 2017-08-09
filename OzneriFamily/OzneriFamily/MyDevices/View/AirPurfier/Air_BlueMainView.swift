@@ -124,19 +124,51 @@ class Air_BlueMainView: OznerDeviceView {
         
         if isEnd==true {
             
+            if tmpValueInt == 0 {
+                PM25_In = -1
+            }
+            
             if tmpValueInt != 0 {
+                
+                if PM25_In == -1 {
+                    (self.currentDevice as! AirPurifier_Blue).startPower(power: true, speed: tmpValueInt, callBack: { (error) in
+                        
+                    })
+                } else {
+                
                 (self.currentDevice as! AirPurifier_Blue).setSpeed(speed: tmpValueInt, callBack: { (error) in
                     
                 })
+                }
+                PM25_In = (self.currentDevice as! AirPurifier_Blue).sensor.PM25
             } else {
-               PM25_In = -1
-                (self.currentDevice as! AirPurifier_Blue).setPower(power: false, callBack: { (error) in
-                })
+//                self.perform(#selector(Air_BlueMainView.closeed), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
+                
+                if PM25_In != -1 {
+                    return
+                }
+                
+               (self.currentDevice as! AirPurifier_Blue).closePower(power: false, callBack: { (eror) in
+                
+               })
+                
+
+                return
             }
             
-            
+           
 
         }
+    }
+    
+    func closeed() {
+
+        DispatchQueue.main.async {
+            (self.currentDevice as! AirPurifier_Blue).setPower(power: false,    callBack: { (error) in
+            })
+        }
+        
+    
     }
     
     private var PM25_In = 0{//头部视图
