@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682B8A8B1F3ADBD100CBE821 /* WashDush_Wifi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682B8A8A1F3ADBD100CBE821 /* WashDush_Wifi.swift */; };
+		682B8A8E1F3ADDFC00CBE821 /* WashDush_WifiMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682B8A8D1F3ADDFC00CBE821 /* WashDush_WifiMainView.swift */; };
+		682B8A901F3ADF3F00CBE821 /* WashDush_WifiMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 682B8A8F1F3ADF3F00CBE821 /* WashDush_WifiMainView.xib */; };
 		682C705F1F1EE73600B0A6E6 /* Electrickettle_Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C705D1F1EE73600B0A6E6 /* Electrickettle_Blue.swift */; };
 		682C70621F1EFEA300B0A6E6 /* ElectrickettleMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C70611F1EFEA300B0A6E6 /* ElectrickettleMainView.swift */; };
 		682C70641F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 682C70631F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib */; };
@@ -527,6 +530,9 @@
 
 /* Begin PBXFileReference section */
 		3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OzneriFamily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		682B8A8A1F3ADBD100CBE821 /* WashDush_Wifi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WashDush_Wifi.swift; sourceTree = "<group>"; };
+		682B8A8D1F3ADDFC00CBE821 /* WashDush_WifiMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WashDush_WifiMainView.swift; sourceTree = "<group>"; };
+		682B8A8F1F3ADF3F00CBE821 /* WashDush_WifiMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WashDush_WifiMainView.xib; sourceTree = "<group>"; };
 		682C705D1F1EE73600B0A6E6 /* Electrickettle_Blue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Electrickettle_Blue.swift; sourceTree = "<group>"; };
 		682C70611F1EFEA300B0A6E6 /* ElectrickettleMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElectrickettleMainView.swift; sourceTree = "<group>"; };
 		682C70631F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ElectrickettleMainView.xib; sourceTree = "<group>"; };
@@ -1334,6 +1340,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		682B8A891F3ADBD100CBE821 /* WashDush */ = {
+			isa = PBXGroup;
+			children = (
+				682B8A8A1F3ADBD100CBE821 /* WashDush_Wifi.swift */,
+			);
+			path = WashDush;
+			sourceTree = "<group>";
+		};
+		682B8A8C1F3ADDED00CBE821 /* WaterDush */ = {
+			isa = PBXGroup;
+			children = (
+				682B8A8D1F3ADDFC00CBE821 /* WashDush_WifiMainView.swift */,
+				682B8A8F1F3ADF3F00CBE821 /* WashDush_WifiMainView.xib */,
+			);
+			path = WaterDush;
+			sourceTree = "<group>";
+		};
 		682C705C1F1EE73600B0A6E6 /* Electrickettle */ = {
 			isa = PBXGroup;
 			children = (
@@ -1666,6 +1689,7 @@
 		8D36D25F1F06234A0091EB1F /* DeviceManager */ = {
 			isa = PBXGroup;
 			children = (
+				682B8A891F3ADBD100CBE821 /* WashDush */,
 				682C705C1F1EE73600B0A6E6 /* Electrickettle */,
 				8D36D26D1F06234A0091EB1F /* OznerDeviceManager.swift */,
 				8D36D2601F06234A0091EB1F /* AirPurifier_Blue */,
@@ -2031,6 +2055,7 @@
 		8D9951361DACE2E80050FB19 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				682B8A8C1F3ADDED00CBE821 /* WaterDush */,
 				682C70601F1EFE4400B0A6E6 /* Electrickettle */,
 				8DC02E601DB5CE91007F57DB /* Cup */,
 				8DC02E681DB5CE91007F57DB /* Tap */,
@@ -3284,7 +3309,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = UZZG6NM74T;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3372,6 +3397,7 @@
 				8DC02E941DB5CEFE007F57DB /* WaterReplenishMainView.xib in Resources */,
 				B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */,
 				8DC02E7F1DB5CE91007F57DB /* TapMainView.xib in Resources */,
+				682B8A901F3ADF3F00CBE821 /* WashDush_WifiMainView.xib in Resources */,
 				8D1DBC991F07720D0083E1D6 /* ProductInfo.plist in Resources */,
 				682C70641F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib in Resources */,
 				8D0D683F1DDD8A3B0097038E /* RNEmailRegisterViewController.xib in Resources */,
@@ -3641,6 +3667,7 @@
 				B717E7EC1E0BAB5400B6DEBD /* ICMessageFrame.m in Sources */,
 				8DC02E7B1DB5CE91007F57DB /* LineChartView.swift in Sources */,
 				E0745AAA1EE94ED200CB39CC /* UdeskFAQViewController.m in Sources */,
+				682B8A8E1F3ADDFC00CBE821 /* WashDush_WifiMainView.swift in Sources */,
 				8D36D2FE1F06234A0091EB1F /* Helper.m in Sources */,
 				B717E8341E0BAB5400B6DEBD /* MJPropertyKey.m in Sources */,
 				8D184E891DED717D0008047E /* RoWaterPuefierLvXinController.swift in Sources */,
@@ -3665,6 +3692,7 @@
 				8D0D69271DDD99A00097038E /* MyFriendViewController.swift in Sources */,
 				E0745AB41EE94ED200CB39CC /* UdeskStructMessage.m in Sources */,
 				E0745AE21EE94ED200CB39CC /* UdeskBaseModel.m in Sources */,
+				682B8A8B1F3ADBD100CBE821 /* WashDush_Wifi.swift in Sources */,
 				8D0D69411DDD99A10097038E /* MyFriendCenterView.swift in Sources */,
 				8D36D2E21F06234A0091EB1F /* BabyOptions.m in Sources */,
 				B717E7E81E0BAB5400B6DEBD /* ICDocumentViewController.m in Sources */,
@@ -4088,9 +4116,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = UZZG6NM74T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4126,8 +4154,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d207a61f-a0d8-47a0-84ec-8a21fd991504";
-				PROVISIONING_PROFILE_SPECIFIER = Distri_OzneriFamily;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -4144,9 +4172,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = UZZG6NM74T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4182,8 +4210,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d207a61f-a0d8-47a0-84ec-8a21fd991504";
-				PROVISIONING_PROFILE_SPECIFIER = Distri_OzneriFamily;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

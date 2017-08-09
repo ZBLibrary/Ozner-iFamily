@@ -63,6 +63,8 @@ class SetDeviceNameController: BaseViewController {
             attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
         case .Electrickettle_Blue:
             attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
+        case .WashDush_Wifi:
+            attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
         }
         attributeName0.text=attri[0]
         attributeName1.text=attri[1]
