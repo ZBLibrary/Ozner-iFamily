@@ -121,20 +121,54 @@ class Air_BlueMainView: OznerDeviceView {
         default:
             sliderValueStateLabel.text=loadLanguage("高速")
         }
+        
         if isEnd==true {
             
+            if tmpValueInt == 0 {
+                PM25_In = -1
+            }
+            
             if tmpValueInt != 0 {
+                
+                if PM25_In == -1 {
+                    (self.currentDevice as! AirPurifier_Blue).startPower(power: true, speed: tmpValueInt, callBack: { (error) in
+                        
+                    })
+                } else {
+                
                 (self.currentDevice as! AirPurifier_Blue).setSpeed(speed: tmpValueInt, callBack: { (error) in
                     
                 })
+                }
+                PM25_In = (self.currentDevice as! AirPurifier_Blue).sensor.PM25
             } else {
-               PM25_In = -1
+//                self.perform(#selector(Air_BlueMainView.closeed), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
+                
+                if PM25_In != -1 {
+                    return
+                }
+                
+               (self.currentDevice as! AirPurifier_Blue).closePower(power: false, callBack: { (eror) in
+                
+               })
+                
+
+                return
             }
             
-            (self.currentDevice as! AirPurifier_Blue).setPower(power: tmpValueInt != 0, callBack: { (error) in
-            })
+           
 
         }
+    }
+    
+    func closeed() {
+
+        DispatchQueue.main.async {
+            (self.currentDevice as! AirPurifier_Blue).setPower(power: false,    callBack: { (error) in
+            })
+        }
+        
+    
     }
     
     private var PM25_In = 0{//头部视图
@@ -187,6 +221,8 @@ class Air_BlueMainView: OznerDeviceView {
 
     override func SensorUpdate(identifier: String) {
         //更新传感器视图
+        
+        print("空净时时风速：\((self.currentDevice as! AirPurifier_Blue).sensor.Speed)")
         if (self.currentDevice as! AirPurifier_Blue).sensor.Power==false
         {
             PM25_In = -1
