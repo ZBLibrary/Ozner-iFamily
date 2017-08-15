@@ -61,7 +61,9 @@ class DeviceViewContainer: UIView {
         .AirPurifier_Wifi:"Air_WifiMainView",
         .WaterReplenish:"WaterReplenishMainView",
         .WaterPurifier_Blue:"WaterPurifierMainView",
-        .Electrickettle_Blue:"ElectrickettleMainView"
+        .Electrickettle_Blue:"ElectrickettleMainView",
+        .WashDush_Wifi:"WashDush_WifiMainView"
+        
     ]
     private func SelectWitchView(device:OznerBaseDevice?)  {
         
@@ -144,6 +146,9 @@ class DeviceViewContainer: UIView {
             case .Electrickettle_Blue:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:225*k_height)
                 break
+            case .WashDush_Wifi:
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:225*k_height)
+                break
                 //隐藏底部按钮
                 //(currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
                 
@@ -205,6 +210,8 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
 //                break
                 //MARK: - TODO
             case .Electrickettle_Blue:
+                break
+            case .WashDush_Wifi:
                 break
             }
         }

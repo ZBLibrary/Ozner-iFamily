@@ -51,6 +51,8 @@ class EquidsCollectionViewCell: UICollectionViewCell {
             imgwhich+="My_shuiji"
         case .Electrickettle_Blue:
             imgwhich += "icon_cup_on"
+        case .WashDush_Wifi:
+            imgwhich += "icon_cup_on"
 
         }
         equipImage.image=UIImage(named: imgwhich)
