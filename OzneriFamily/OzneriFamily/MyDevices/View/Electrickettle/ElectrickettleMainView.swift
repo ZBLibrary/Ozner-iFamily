@@ -207,6 +207,23 @@ class ElectrickettleMainView: OznerDeviceView {
             
         }
         
+        switch sender.tag {
+        case 90:
+            currentTemp.text = "90℃适合泡咖啡"
+            break
+        case 80:
+            currentTemp.text = "80℃适合泡绿茶"
+            break
+        case 70:
+            currentTemp.text = "70℃适合冲米粉"
+            break
+        case 60:
+            currentTemp.text = "60℃适合泡牛奶"
+            break
+        default:
+            currentTemp.text = ""
+            break
+        }
         
         UIView.animate(withDuration: 0.5) {
         
