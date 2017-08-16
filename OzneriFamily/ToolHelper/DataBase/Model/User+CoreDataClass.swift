@@ -563,14 +563,20 @@ public class User: BaseDataObject {
     class func GetMachineType(deviceID:String,success: @escaping ((_ ScanEnable:Bool,_ CoolEnable:Bool,_ HotEnable:Bool,_ MachineType:String,_ BuyUrl:String,_ AlertDays:Int) -> Void), failure: @escaping ((Error) -> Void)){
         self.fetchData(key: "GetMachineType", parameters: ["type":deviceID], success: { (json) in
             let tmpData=json["data"].dictionary
+            //print(tmpData)
+            if tmpData==nil{
+                failure(NSError.init(domain: "", code: 1, userInfo: nil))
+            }
+            else{
+                success(
+                    (tmpData?["boolshow"]?.intValue==1 ? true:false),
+                    (tmpData?["Attr"]?.stringValue.contains("cool:true")) ?? false,
+                    (tmpData?["Attr"]?.stringValue.contains("hot:true")) ?? false,
+                    (tmpData?["MachineType"]?.stringValue)!,
+                    (tmpData?["buylinkurl"]?.stringValue)!,
+                    (tmpData?["days"]?.intValue)!)                
+            }
             
-            success(
-                (tmpData?["boolshow"]?.intValue==1 ? true:false),
-                (tmpData?["Attr"]?.stringValue.contains("cool:true")) ?? false,
-                (tmpData?["Attr"]?.stringValue.contains("hot:true")) ?? false,
-                (tmpData?["MachineType"]?.stringValue)!,
-                (tmpData?["buylinkurl"]?.stringValue)!,
-                (tmpData?["days"]?.intValue)!)
             }, failure: failure)
         
     }
