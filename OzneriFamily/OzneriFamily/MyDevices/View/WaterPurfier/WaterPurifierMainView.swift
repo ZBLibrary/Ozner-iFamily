@@ -77,7 +77,7 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
     }
     @IBAction func operationButtonClick(_ sender: UIButton) {
         
-        if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue {
+        if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue || (currentDevice as! WaterPurifier_Wifi).deviceInfo.productID == "adf69dce-5baa-11e7-9baf-00163e120d98" {
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false,
                 dynamicAnimatorActive: true
