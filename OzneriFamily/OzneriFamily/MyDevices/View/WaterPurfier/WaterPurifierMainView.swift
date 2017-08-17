@@ -337,8 +337,6 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
         }
     }
     
-    
-    
     override func SensorUpdate(identifier: String) {
         //更新传感器视图
         if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue {
