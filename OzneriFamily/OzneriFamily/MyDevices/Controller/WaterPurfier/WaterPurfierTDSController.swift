@@ -95,8 +95,18 @@ class WaterPurfierTDSController: BaseViewController {
         self.title = loadLanguage("水质纯净值TDS")
         
         let device = OznerManager.instance.currentDevice as! WaterPurifier_Wifi
-        let TDS_BF=device.sensor.TDS_Before
-        let TDS_AF=device.sensor.TDS_After
+        var TDS_BF:Int = 0
+        var TDS_AF:Int = 0
+        if device.deviceInfo.productID == "adf69dce-5baa-11e7-9baf-00163e120d98" {
+
+            TDS_BF=device.filterStates.TDS_Before
+            TDS_AF=device.filterStates.TDS_After
+        } else {
+            
+            TDS_BF=device.sensor.TDS_Before
+            TDS_AF=device.sensor.TDS_After
+        }
+        
         segement.setTitle(loadLanguage("周"), forSegmentAt: 0)
         segement.setTitle(loadLanguage("月"), forSegmentAt: 1)
         tdsValueLabel_BF.text = TDS_BF==0||TDS_BF==65535 ? "-":"\(TDS_BF)"

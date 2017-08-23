@@ -27,6 +27,14 @@ class WaterPurifier_Wifi: OznerBaseDevice {
         }
     }
     
+    private(set) var filterStates:(filterA:Int,filterB:Int,filterC:Int,TDS_Before:Int,TDS_After:Int)=(0,0,0,0,0){
+        didSet {
+            if filterStates != oldValue {
+                self.delegate?.OznerDeviceStatusUpdate!(identifier: self.deviceInfo.deviceID)
+            }
+        }
+    }
+    
     func setPower(Power:Bool,callBack:((_ error:Error?)->Void)) {
         setStatus(data: Data.init(bytes: [UInt8(status.Hot.hashValue),UInt8(status.Cool.hashValue),UInt8(Power.hashValue),UInt8(status.Sterilization.hashValue)]))
     }
@@ -62,6 +70,7 @@ class WaterPurifier_Wifi: OznerBaseDevice {
         if group == Int(0xFB) {
             var tmpStatus = status
             var tmpSensor = sensor
+
             switch opCode {
             case 0x01://Opcode_RespondStatus
                 
@@ -80,6 +89,13 @@ class WaterPurifier_Wifi: OznerBaseDevice {
                 tmpSensor.Temperature = Float(recvData.subInt(starIndex: 10, count: 2))/10.0
                 
             case 0x03://Opcode_DeviceInfo
+                
+                let tds1 = Int(recvData.subInt(starIndex: 71, count: 2))
+                let tds2 = Int(recvData.subInt(starIndex: 73, count: 2))
+                filterStates = (Int(recvData[116]),Int(recvData[117]),Int(recvData[118]),max(tds1, tds2),min(tds1, tds2))
+                break
+            case 0x05:
+                
                 break
             default:
                 break
@@ -89,7 +105,7 @@ class WaterPurifier_Wifi: OznerBaseDevice {
         }
     }
     override func doWillInit() {
-        let needData=self.MakeWoodyBytes(code: 0xfa, Opcode: 0x01, data: Data())
+        let needData=self.MakeWoodyBytes(code: 0xfa, Opcode: 0x05, data: Data())
         self.SendDataToDevice(sendData: needData, CallBack: nil)
     }
     var requestCount = 0//请求三次没反应代表机器断网
@@ -103,6 +119,15 @@ class WaterPurifier_Wifi: OznerBaseDevice {
         }
     }
     func reqeusetStatus() {
+        
+        if self.deviceInfo.productID == "adf69dce-5baa-11e7-9baf-00163e120d98" {
+            
+            let needData=self.MakeWoodyBytes(code: 0xfa, Opcode: 0x03, data: Data())
+            self.SendDataToDevice(sendData: needData, CallBack: nil)
+            
+            return
+        }
+        
         let needData=self.MakeWoodyBytes(code: 0xfa, Opcode: 0x01, data: Data())
         self.SendDataToDevice(sendData: needData, CallBack: nil)
     }

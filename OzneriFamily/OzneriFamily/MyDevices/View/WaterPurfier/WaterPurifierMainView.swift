@@ -77,7 +77,7 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
     }
     @IBAction func operationButtonClick(_ sender: UIButton) {
         
-        if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue {
+        if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue || (currentDevice as! WaterPurifier_Wifi).deviceInfo.productID == "adf69dce-5baa-11e7-9baf-00163e120d98" {
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false,
                 dynamicAnimatorActive: true
@@ -336,8 +336,6 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
             coolButton.setImage( UIImage(named: operation.power&&operation.cool ? "icon_zhileng":"icon_zhileng_normal"), for: .normal)
         }
     }
-    
-    
     
     override func SensorUpdate(identifier: String) {
         //更新传感器视图

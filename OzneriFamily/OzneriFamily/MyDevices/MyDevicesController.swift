@@ -32,6 +32,15 @@ class MyDevicesController: UIViewController {
         case .Tap:
            self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
         case .WaterPurifier_Wifi:
+            
+            if (OznerManager.instance.currentDevice as? WaterPurifier_Wifi)?.deviceInfo.productID == "adf69dce-5baa-11e7-9baf-00163e120d98" {
+                let vc = RoWaterPuefierLvXinController()
+                vc.typeBLE = false
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+               return
+            }
+            
             let tmpDeviceView = deviceViewContainer.currentDeviceView as! WaterPurifierMainView
             let senderData=["buyLvXinUrl":tmpDeviceView.buyLvXinUrl,
              "scanEnable":tmpDeviceView.scanEnable,

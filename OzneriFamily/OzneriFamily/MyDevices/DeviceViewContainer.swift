@@ -197,6 +197,16 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 self.LvXinValue=Int(lvxinValue*100)
                 
             case .WaterPurifier_Wifi:
+                
+                if (currentDevice as! WaterPurifier_Wifi).deviceInfo.productID == "adf69dce-5baa-11e7-9baf-00163e120d98" {
+                    let filterA = (currentDevice as! WaterPurifier_Wifi).filterStates.filterA
+                    let filterB = (currentDevice as! WaterPurifier_Wifi).filterStates.filterB
+                    let filterC = (currentDevice as! WaterPurifier_Wifi).filterStates.filterC
+                    
+                    self.LvXinValue = min(filterA, filterB, filterC)
+                    
+                }
+                
                 break
             case .WaterReplenish:
                 self.batteryValue = Int((currentDevice as! WaterReplenish).status.battery*100)

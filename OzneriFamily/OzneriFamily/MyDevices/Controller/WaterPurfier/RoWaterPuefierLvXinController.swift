@@ -11,6 +11,7 @@ import UIKit
 class RoWaterPuefierLvXinController: BaseViewController {
 
     var currentDevice:WaterPurifier_Blue!
+    var typeBLE:Bool = true
     @IBOutlet var fuweiButton: UIButton!
     @IBAction func fuweiClick(sender: UIButton) {
         
@@ -100,6 +101,27 @@ class RoWaterPuefierLvXinController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if !typeBLE {
+            
+            let device = OznerManager.instance.currentDevice as! WaterPurifier_Wifi
+            
+            self.title=loadLanguage("当前滤芯状态")
+            lvxinAlertLabel.text = loadLanguage("清\n洗\n水\n路\n保\n护\n器")
+            hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+            hideView2.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+            hideImage1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+            lvxinValueLabelA.text="\(device.filterStates.filterA)%"
+            lvxinValueLabelB.text="\(device.filterStates.filterB)%"
+            lvxinValueLabelC.text="\(device.filterStates.filterC)%"
+            
+            //timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
+//            let minFilter=min(device.filterStates.filterA, device.filterStates.filterB, device.filterStates.filterC)
+            fuweiButton.isHidden = true
+            lvxinAlertLabel.text = ""
+
+            
+        } else {
+        
         currentDevice=OznerManager.instance.currentDevice as! WaterPurifier_Blue
         self.title=loadLanguage("当前滤芯状态")
         lvxinAlertLabel.text = loadLanguage("清\n洗\n水\n路\n保\n护\n器")
@@ -113,7 +135,8 @@ class RoWaterPuefierLvXinController: BaseViewController {
         //timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
         let minFilter=min(currentDevice.FilterInfo.Filter_A_Percentage, currentDevice.FilterInfo.Filter_B_Percentage, currentDevice.FilterInfo.Filter_C_Percentage)
         fuweiButton.isHidden = minFilter>0
-        lvxinAlertLabel.text = ""   
+        lvxinAlertLabel.text = ""
+        }
         // Do any additional setup after loading the view.
     }
 //    var istrue = true
