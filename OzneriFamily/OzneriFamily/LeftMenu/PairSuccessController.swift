@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 import SnapKit
-
+import SVProgressHUD
 class PairModle: NSObject {
     var isHidden: Bool=true
 }

@@ -53,8 +53,6 @@
 #import "WXApi.h"
 #import <CommonCrypto/CommonDigest.h>
 
-#import "XZGroup.h"
-#import "XZChatViewController.h"
 
 // UDesk
 #import "Udesk.h"

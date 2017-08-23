@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 struct WaterCardStruct {
     var ProductId:Int
     var OrderId:Int

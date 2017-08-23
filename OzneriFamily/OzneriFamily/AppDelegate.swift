@@ -9,10 +9,11 @@
 import UIKit
 import IQKeyboardManager
 import UserNotifications
-import WebImage
+import SDWebImage
 import SwiftyJSON
 import CoreLocation
 import Bugly
+import AudioToolbox
 
 var appDelegate: AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
@@ -197,6 +198,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
 
         if action_baidu == "chat" {
             AudioServicesPlaySystemSound(1007)
+            
             loadKeFuMessage(data_baidu!)
             
         }

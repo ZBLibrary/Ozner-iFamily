@@ -1,32 +1,66 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - Bugly (2.4.8)
   - DateTools (2.0.0)
   - IQKeyboardManager (4.0.10)
   - KMNavigationBarTransition (1.0.0)
   - MQTTKit (0.1.0)
+  - MTBBarcodeScanner (5.0.1)
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
+  - SnapKit (3.2.0)
   - SQLite.swift (0.11.3):
     - SQLite.swift/standard (= 0.11.3)
   - SQLite.swift/standard (0.11.3)
+  - SVProgressHUD (2.1.2)
+  - SwiftyJSON (3.1.4)
   - UICountingLabel (1.4.0)
 
 DEPENDENCIES:
+  - AFNetworking (~> 3.1.0)
   - Bugly (~> 2.4.8)
   - DateTools
   - IQKeyboardManager (~> 4.0.8)
   - KMNavigationBarTransition (~> 1.0.0)
   - MQTTKit
+  - MTBBarcodeScanner
+  - SDWebImage (~> 4.1.0)
+  - SnapKit (~> 3.2.0)
   - SQLite.swift (~> 0.11.3)
+  - SVProgressHUD (~> 2.1.2)
+  - SwiftyJSON (~> 3.1.4)
   - UICountingLabel (~> 1.4.0)
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bugly: da3c02408c14838d498429320545a8e439392978
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
   KMNavigationBarTransition: b3fb8337f7a1e4542add07fd6c45fb9980794d59
   MQTTKit: a4e6b8aa92db1aeae917d2b773fd72a7749937c4
+  MTBBarcodeScanner: 66c75f40cbac5986c97634a0775bfe7f92243e7c
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SQLite.swift: 99b36c22084427f0abbeb957556ce1528cf10bb3
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   UICountingLabel: ed5ce5b6d5ef278ff40d99cfa49577a30ab0c87b
 
-PODFILE CHECKSUM: 1af58717888bab66a97812ba0bd9fa624a090db2
+PODFILE CHECKSUM: 639411101f4f6be0ee50fc7f93c6e36327e67965
 
 COCOAPODS: 1.2.1

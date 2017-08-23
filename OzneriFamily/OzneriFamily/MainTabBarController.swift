@@ -28,12 +28,9 @@ class MainTabBarController: RDVTabBarController {
         
         let c2=WebShopController()
       
-        let group = XZGroup()
-        group.gName = "咨询"
+
         let chatVc = XZChatViewController()
-        chatVc.group = group
-        group.unReadCount = 2;
-        group.lastMsgString = "你等着!"
+     
         
         //        let config =  UdeskSDKConfig.init()
         //        let setting = UdeskSetting.init()

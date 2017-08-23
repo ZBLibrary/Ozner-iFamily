@@ -8,7 +8,9 @@
 
 import UIKit
 
-import WebImage
+import SDWebImage
+import SVProgressHUD
+
 //添加好友
 //struct myFriend {
 //    var isExist=false

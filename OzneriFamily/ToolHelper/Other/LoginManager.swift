@@ -8,6 +8,7 @@
 
 
 import UIKit
+import SVProgressHUD
 //默认尺寸
 let height_tabBar:CGFloat = 64
 let height_navBar:CGFloat = 64

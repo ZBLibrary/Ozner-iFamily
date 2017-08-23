@@ -9,7 +9,8 @@
 import UIKit
 import AddressBook
 import AddressBookUI
-//import WebImage
+import SVProgressHUD
+//import SDWebImage
 ////添加好友
 struct myFriend {
     var isExist=false

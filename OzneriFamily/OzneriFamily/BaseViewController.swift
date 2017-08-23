@@ -14,7 +14,7 @@
 //  Real developers ship.
 
 import UIKit
-
+import SVProgressHUD
 class BaseViewController: UIViewController {
     
     //MARK: - Attributes

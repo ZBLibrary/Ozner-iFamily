@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 import SwiftyJSON
+import AFNetworking
+import SVProgressHUD
 let UserDefaultsUserTokenKey = "usertoken"
 let UserDefaultsUserIDKey = "userid"
 let CurrentUserDidChangeNotificationName = "CurrentUserDidChangeNotificatiovarme"
