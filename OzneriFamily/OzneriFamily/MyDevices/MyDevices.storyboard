@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CCQ-KV-qqu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CCQ-KV-qqu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -166,13 +166,12 @@
                             <constraint firstItem="lB7-oh-d8a" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="0ks-cR-Idz"/>
                             <constraint firstItem="tCG-qZ-itE" firstAttribute="top" secondItem="zJ2-FC-Lhq" secondAttribute="top" id="5ZD-jX-wmk"/>
                             <constraint firstItem="lB7-oh-d8a" firstAttribute="height" secondItem="DOi-Yu-rVo" secondAttribute="height" multiplier="65:667" id="9ZV-Cn-Lky"/>
-                            <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="DOi-Yu-rVo" secondAttribute="bottom" id="AyK-Lo-9la"/>
-                            <constraint firstItem="Sgw-je-ShT" firstAttribute="top" secondItem="oIP-dQ-VF9" secondAttribute="bottom" id="IjQ-ME-TfS"/>
+                            <constraint firstItem="Sgw-je-ShT" firstAttribute="top" secondItem="oIP-dQ-VF9" secondAttribute="bottom" id="LoV-Li-TOl"/>
                             <constraint firstAttribute="trailing" secondItem="lB7-oh-d8a" secondAttribute="trailing" id="SAi-UU-Dhv"/>
+                            <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="DOi-Yu-rVo" secondAttribute="bottom" id="Whs-NJ-MAl"/>
+                            <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="lB7-oh-d8a" secondAttribute="bottom" constant="200" id="aGJ-MZ-rdk"/>
                             <constraint firstItem="DOi-Yu-rVo" firstAttribute="top" secondItem="zJ2-FC-Lhq" secondAttribute="top" id="cq4-Tb-3yC"/>
-                            <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="lB7-oh-d8a" secondAttribute="bottom" constant="200" id="hD5-Kj-HDm"/>
                             <constraint firstItem="cvC-av-l96" firstAttribute="top" secondItem="Sgw-je-ShT" secondAttribute="bottom" id="iRR-Vh-H4d"/>
-                            <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="tCG-qZ-itE" secondAttribute="bottom" id="jmQ-nd-mFC"/>
                             <constraint firstAttribute="trailing" secondItem="tCG-qZ-itE" secondAttribute="trailing" id="lNk-8B-a2m"/>
                             <constraint firstAttribute="trailing" secondItem="DOi-Yu-rVo" secondAttribute="trailing" id="n2c-gh-Aoo"/>
                             <constraint firstItem="cvC-av-l96" firstAttribute="centerX" secondItem="zJ2-FC-Lhq" secondAttribute="centerX" id="p8g-sQ-3oH"/>
@@ -180,6 +179,7 @@
                             <constraint firstItem="Sgw-je-ShT" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="uQw-XS-WPe"/>
                             <constraint firstItem="DOi-Yu-rVo" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="wRX-Qz-ebK"/>
                             <constraint firstItem="tCG-qZ-itE" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="xd4-pq-2n1"/>
+                            <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="tCG-qZ-itE" secondAttribute="bottom" id="yam-uQ-8Cq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VZ5-Gy-EUM"/>
@@ -187,7 +187,6 @@
                         <outlet property="batteryImg" destination="k5L-Rz-s3e" id="Lqs-6Q-nw7"/>
                         <outlet property="batteryValueLabel" destination="KDP-F2-LHx" id="Nh2-Be-oGY"/>
                         <outlet property="batteryViewContainer" destination="er2-gy-r2M" id="mAz-Do-VbY"/>
-                        <outlet property="bottomOfCenterViewContainer" destination="hD5-Kj-HDm" id="402-8r-bSh"/>
                         <outlet property="deviceConnectStateLabel" destination="cvC-av-l96" id="yxI-Uu-ywU"/>
                         <outlet property="deviceNameLabel" destination="EGq-1s-VFZ" id="9Ca-ec-69y"/>
                         <outlet property="deviceViewContainer" destination="tCG-qZ-itE" id="kbg-kX-1nW"/>
@@ -8256,7 +8255,7 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uGt-BJ-6eU"/>
+        <segue reference="BXe-Ml-x0S"/>
         <segue reference="kPL-av-rgP"/>
         <segue reference="avB-qO-o0y"/>
     </inferredMetricsTieBreakers>
