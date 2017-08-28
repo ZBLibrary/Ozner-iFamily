@@ -32,6 +32,7 @@ class SelectDeviceCell: UITableViewCell {
         }
 
         deviceImg.image=UIImage(named: productInfo["pairing"]["pairingImg1"].stringValue)
+        deviceImg.contentMode = .scaleToFill
         deviceName.text=productInfo["Name"].stringValue
     }
 

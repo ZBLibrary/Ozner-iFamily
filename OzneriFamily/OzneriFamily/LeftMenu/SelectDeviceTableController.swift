@@ -125,7 +125,6 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
         self.navigationController!.navigationBar .setBackgroundImage(UIImage(named: "bg_clear_addDevice"), for: UIBarMetrics.default)
         self.navigationController!.navigationBar.shadowImage = UIImage(named: "bg_clear_addDevice")
         
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -141,8 +140,8 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-//        return ProductInfo.products.count
-        return 8
+        return ProductInfo.products.count
+//        return 8
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

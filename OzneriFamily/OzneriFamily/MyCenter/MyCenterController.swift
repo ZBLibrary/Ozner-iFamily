@@ -35,7 +35,6 @@ class MyCenterController: BaseViewController {
     
     func setupUI() {
         
-        
         let infoHeadView = UINib.init(nibName: "MyInfoHeadView", bundle: nil).instantiate(withOwner: self, options: nil).first as! MyInfoHeadView
         
         infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (3.3/7))
