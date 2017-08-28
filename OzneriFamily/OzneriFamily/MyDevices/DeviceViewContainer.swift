@@ -72,6 +72,16 @@ class DeviceViewContainer: UIView {
         if device != nil  {//有设备时视图初始化
             let tmpType=ProductInfo.getCurrDeviceClass()
             deviceNibName=DeviceNibName[tmpType]!
+            if tmpType == .WaterPurifier_Wifi {
+                switch (device?.deviceInfo.productID)! {
+                case "2821b472-5263-11e7-9baf-00163e120d98":
+                    deviceNibName="WaterPur_A8DRF"
+                case "b5d03ee4-549b-11e7-9baf-00163e120d98":
+                    deviceNibName="WaterPur_A8CSFFSF"
+                default:
+                    deviceNibName="WaterPurifierMainView"
+                }
+            }
             device?.delegate=self
             delegate.DeviceNameChange!(name: (device?.settings.name)!)
         }
@@ -105,10 +115,19 @@ class DeviceViewContainer: UIView {
             case .TDSPan:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:0)
             case .WaterPurifier_Wifi:
-                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
-                //设置滤芯及功能
-                SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac())
-                (currentDeviceView as! WaterPurifierMainView).kitChenView.isHidden = true
+                
+                if currentDeviceView.isKind(of: WaterPurifierMainView.classForCoder()) {
+                    delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
+                    //设置滤芯及功能
+                    SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac())
+                    (currentDeviceView as! WaterPurifierMainView).kitChenView.isHidden = true
+                }else if currentDeviceView.isKind(of: WaterPur_A8CSFFSF.classForCoder()){
+                    delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:160*k_height)
+                }else if currentDeviceView.isKind(of: WaterPur_A8DRF.classForCoder()){
+                    delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
+                    SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac())
+                }
+                
            
             case .AirPurifier_Blue:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
