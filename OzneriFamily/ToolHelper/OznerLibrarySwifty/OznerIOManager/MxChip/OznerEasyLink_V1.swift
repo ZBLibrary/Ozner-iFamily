@@ -68,7 +68,6 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
              self.easylink_config.transmitSettings()
         }
         
-        
     }
     
     func canclePair() {//取消配对
