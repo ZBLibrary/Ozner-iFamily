@@ -41,7 +41,7 @@ class MyCenterController: BaseViewController {
         infoHeadView.frame = CGRect(x: 0, y: 0, width: width_screen, height: (height_screen  - 64) * (3.3/7))
         
         //
-        if LoginManager.instance.currentLoginType != .ByPhoneNumber {
+        if LoginManager.instance.currentLoginType == .ByPhoneNumber {
             infoHeadView.hideView.isHidden = true
             var frame = infoHeadView.hideView.frame
             frame.size.height = 0
@@ -98,7 +98,7 @@ class MyCenterController: BaseViewController {
     
     func setData() {
         switch LoginManager.instance.currentLoginType! {
-        case .ByPhoneNumber:
+        case .ByEmail:
             
             dataArr = NSMutableArray(capacity: 7)
             
@@ -119,7 +119,7 @@ class MyCenterController: BaseViewController {
             dataArr!.add(six)
             dataArr!.add(seven)
             
-        case .ByEmail:
+        case .ByPhoneNumber:
             dataArr = NSMutableArray(capacity: 3)
             let one = MyInfoStrcut.init(imageName: "My_share", nameLb: loadLanguage("我的设备"))
             let six = MyInfoStrcut.init(imageName: "My_suggest", nameLb: loadLanguage("我要提意见"))
@@ -127,7 +127,7 @@ class MyCenterController: BaseViewController {
             dataArr!.add(one)
             dataArr!.add(six)
             dataArr!.add(seven)
-            headView.nameLb.text = User.currentUser?.email
+            headView.nameLb.text = User.currentUser?.phone
         }
      
         
@@ -138,9 +138,9 @@ class MyCenterController: BaseViewController {
 //        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
 
         switch LoginManager.instance.currentLoginType! {
-        case .ByPhoneNumber:
-            navigationController?.setNavigationBarHidden(true, animated: animated)
         case .ByEmail:
+            navigationController?.setNavigationBarHidden(true, animated: animated)
+        case .ByPhoneNumber:
             navigationController?.navigationBar.isHidden = false
 //            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"fanhui"), style: UIBarButtonItemStyle.done, target: self, action: #selector(MyCenterController.backAction))
         }
@@ -187,9 +187,9 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch LoginManager.instance.currentLoginType! {
-        case .ByPhoneNumber:
-            return 7
         case .ByEmail:
+            return 7
+        case .ByPhoneNumber:
             return 3
         }
     }
@@ -231,17 +231,15 @@ extension MyCenterController: UITableViewDelegate,UITableViewDataSource {
         default:
             break
         }
-
-       
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         switch LoginManager.instance.currentLoginType! {
-        case .ByPhoneNumber:
-            return (height_screen - 64) * (3.7/7) / 7
         case .ByEmail:
+            return (height_screen - 64) * (3.7/7) / 7
+        case .ByPhoneNumber:
             return 50
         }
         
