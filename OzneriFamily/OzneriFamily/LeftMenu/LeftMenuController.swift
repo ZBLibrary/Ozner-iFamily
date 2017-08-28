@@ -72,19 +72,19 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
         self.tableView.register(UINib(nibName: "LeftMenuDeviceCell", bundle: nil), forCellReuseIdentifier: "LeftMenuDeviceCell")
         if LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber
         {
-            heightConstraintOfNoDevice.constant=50
-            heightConstraintOfHaveDevice.constant=50
-            imgButtonOfNoDevice.isHidden=true
-            ImgButtonOfHaveDevice.isHidden=true
-            nameLabelOfNoDevice.text=""
-            nameLabelOfHaveDevice.text=""
-        }else{
+//            heightConstraintOfNoDevice.constant=50
+//            heightConstraintOfHaveDevice.constant=50
+//            imgButtonOfNoDevice.isHidden=true
+//            ImgButtonOfHaveDevice.isHidden=true
+//            nameLabelOfNoDevice.text=""
+//            nameLabelOfHaveDevice.text=""
+//        }else{
             heightConstraintOfNoDevice.constant=110
             heightConstraintOfHaveDevice.constant=110
             imgButtonOfNoDevice.isHidden=false
             ImgButtonOfHaveDevice.isHidden=false
-            nameLabelOfNoDevice.text=User.currentUser?.email
-            nameLabelOfHaveDevice.text=User.currentUser?.email
+            nameLabelOfNoDevice.text=User.currentUser?.phone
+            nameLabelOfHaveDevice.text=User.currentUser?.phone
         }
         // Do any additional setup after loading the view.
     }

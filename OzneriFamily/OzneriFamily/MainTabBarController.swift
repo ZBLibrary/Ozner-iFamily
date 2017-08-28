@@ -59,8 +59,7 @@ class MainTabBarController: RDVTabBarController {
     }
     private var CustomTabBarIsHidden:Bool!//系统tabbar是不是隐藏的
     override func setTabBarHidden(_ hidden: Bool, animated: Bool) {
-        super.setTabBarHidden(CustomTabBarIsHidden||hidden, animated:animated)
+        super.setTabBarHidden(true, animated:animated)
     }
     
-
 }

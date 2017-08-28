@@ -70,12 +70,12 @@ class LoginManager:NSObject{
         set{
         }
         get{
-            var isPhoneLogin=LoginManager.instance.isChinese_Simplified
-            if LoginManager.instance.currentLoginType != nil
-            {
-                isPhoneLogin=LoginManager.instance.currentLoginType==OznerLoginType.ByPhoneNumber
-            }
-            return isPhoneLogin ? loginViewController_Phone:loginViewController_Email
+//            var isPhoneLogin=LoginManager.instance.isChinese_Simplified
+//            if LoginManager.instance.currentLoginType != nil
+//            {
+//                isPhoneLogin=LoginManager.instance.currentLoginType==OznerLoginType.ByPhoneNumber
+//            }
+            return  loginViewController_Phone
         }
         
         
