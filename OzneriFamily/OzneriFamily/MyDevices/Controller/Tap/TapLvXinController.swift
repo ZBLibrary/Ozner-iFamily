@@ -25,7 +25,10 @@ class TapLvXinController: BaseViewController {
     @IBOutlet var stopDateLabel: UILabel!
     //咨询购买
     @IBAction func consultingClick(_ sender: AnyObject) {
-         LoginManager.instance.setTabbarSelected(index: 2)
+//         LoginManager.instance.setTabbarSelected(index: 2)
+        
+        HelperTools.callMobile(self.view)
+        
     }
    
     //扫码
@@ -58,9 +61,9 @@ class TapLvXinController: BaseViewController {
         
         self.title = loadLanguage("滤芯状态")
 //        let device=OznerManager.instance.currentDevice
-        let isBool = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        let isBool = LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber
         
-        hideView1.isHidden = isBool
+        hideView1.isHidden = false
         hideView2.isHidden = isBool
         hideView3.isHidden = isBool
        

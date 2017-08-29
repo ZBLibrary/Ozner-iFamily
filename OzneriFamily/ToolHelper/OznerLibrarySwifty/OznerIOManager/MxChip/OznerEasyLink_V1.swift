@@ -144,30 +144,30 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
     //EasyLinkFTCDelegate 代理方法
     func onFound(_ client: NSNumber!, withName name: String!, mataData mataDataDict: [AnyHashable : Any]!) {
         print(mataDataDict)
-        if let tmptype =  mataDataDict["FW"] as? String
+        if let _ =  mataDataDict["FW"] as? String
         {
-            var productID = "16a21bd6"
-            if tmptype.contains("FOG_HAOZE_AIR") {
-                productID="580c2783"
-            }
-            if deviceType.pairID.contains(productID) {
+//            var productID = "16a21bd6"
+//            if tmptype.contains("FOG_HAOZE_AIR") {
+//                productID="580c2783"
+//            }
+//            if deviceType.pairID.contains(productID) {
                 self.pairSuccessed(configDict: mataDataDict)
-            }
+//            }
         }
         
         
     }
     func onFound(byFTC client: NSNumber!, withConfiguration configDict: [AnyHashable : Any]!) {
         print(configDict)
-        if let tmptype =  configDict["FW"] as? String
+        if let _ =  configDict["FW"] as? String
         {
-            var productID = "16a21bd6"
-            if tmptype.contains("FOG_HAOZE_AIR") {
-                productID="580c2783"
-            }
-            if deviceType.pairID.contains(productID) {
+//            var productID = "16a21bd6"
+//            if tmptype.contains("FOG_HAOZE_AIR") {
+//                productID="580c2783"
+//            }
+//            if deviceType.pairID.contains(productID) {
                 self.pairSuccessed(configDict: configDict)
-            }
+//            }
         }
         
     }

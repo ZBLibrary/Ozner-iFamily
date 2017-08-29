@@ -157,6 +157,8 @@ class LoginManager:NSObject{
         SVProgressHUD.show()
         
     }
+    
+    
 }
 
 

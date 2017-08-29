@@ -7240,7 +7240,7 @@
                                                                         <rect key="frame" x="67.5" y="48" width="240" height="40"/>
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KdE-Tp-jcT" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="90" height="40"/>
+                                                                                <rect key="frame" x="75" y="0.0" width="90" height="40"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="90" id="1is-Zd-3TW"/>
                                                                                     <constraint firstAttribute="height" constant="40" id="F8o-su-Nn3"/>
@@ -7267,7 +7267,7 @@
                                                                                     <action selector="consultingClick:" destination="f3R-LE-xjw" eventType="touchUpInside" id="bft-a6-aMv"/>
                                                                                 </connections>
                                                                             </button>
-                                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fS8-7R-hBh" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
+                                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fS8-7R-hBh" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
                                                                                 <rect key="frame" x="120" y="0.0" width="120" height="40"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <color key="backgroundColor" red="0.88064116239547729" green="0.93244922161102295" blue="0.99489527940750122" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -7296,9 +7296,9 @@
                                                                         </subviews>
                                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
+                                                                            <constraint firstItem="KdE-Tp-jcT" firstAttribute="centerX" secondItem="S4K-sZ-sjq" secondAttribute="centerX" id="PPN-XE-43K"/>
                                                                             <constraint firstAttribute="width" constant="240" id="a6E-4m-NJC"/>
                                                                             <constraint firstItem="KdE-Tp-jcT" firstAttribute="top" secondItem="S4K-sZ-sjq" secondAttribute="top" id="rKF-pv-fjy"/>
-                                                                            <constraint firstItem="KdE-Tp-jcT" firstAttribute="leading" secondItem="S4K-sZ-sjq" secondAttribute="leading" id="sWt-p1-qJP"/>
                                                                             <constraint firstAttribute="bottom" secondItem="KdE-Tp-jcT" secondAttribute="bottom" id="uP1-9Z-Vmz"/>
                                                                             <constraint firstAttribute="height" constant="40" id="vPR-rz-MET"/>
                                                                         </constraints>
@@ -7322,7 +7322,7 @@
                                                                     </mask>
                                                                 </variation>
                                                             </view>
-                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yO-t9-0Kp">
+                                                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yO-t9-0Kp">
                                                                 <rect key="frame" x="0.0" y="325" width="375" height="118"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫描包装上的二维码，激活APP并启动滤芯复位。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JE-WJ-mCj" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
@@ -7551,7 +7551,7 @@
                                                                     <constraint firstItem="7l1-TD-Cjf" firstAttribute="top" secondItem="VCE-LT-2hs" secondAttribute="top" id="tqH-wk-Num"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hV-Cz-QoK">
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hV-Cz-QoK">
                                                                 <rect key="frame" x="0.0" y="463" width="375" height="202"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多产品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAd-Xs-NQQ" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
@@ -7640,7 +7640,7 @@
                                                             <constraint firstItem="cZU-Gn-QfG" firstAttribute="leading" secondItem="2lm-7I-wKt" secondAttribute="leading" id="lz7-v8-osV"/>
                                                         </constraints>
                                                     </view>
-                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="WaterPurLvXinService" translatesAutoresizingMaskIntoConstraints="NO" id="MnJ-zR-dyK">
+                                                    <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="WaterPurLvXinService" translatesAutoresizingMaskIntoConstraints="NO" id="MnJ-zR-dyK">
                                                         <rect key="frame" x="0.0" y="685" width="375" height="613"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="MnJ-zR-dyK" secondAttribute="height" multiplier="375:613" id="dbO-ri-aZ8"/>
@@ -8195,8 +8195,8 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="szW-Mm-7nO"/>
         <segue reference="avB-qO-o0y"/>
         <segue reference="aaL-mh-gXA"/>
-        <segue reference="uTu-U7-iUE"/>
     </inferredMetricsTieBreakers>
 </document>

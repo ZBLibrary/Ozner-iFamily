@@ -42,3 +42,20 @@ class GYLabel: UILabel {
     }
     
 }
+
+class HelperTools: NSObject {
+    
+    class func callMobile(_ view:UIView) {
+       
+        let urlStr = NSMutableString.init(string: "tel:4008209667")
+        
+        let callWebView = UIWebView()
+        callWebView.loadRequest(URLRequest(url: URL(string: urlStr as String)!))
+        
+        view.addSubview(callWebView)
+        
+        
+    }
+    
+    
+}
