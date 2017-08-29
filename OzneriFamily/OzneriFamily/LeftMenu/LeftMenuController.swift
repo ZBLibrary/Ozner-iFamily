@@ -64,7 +64,7 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
         icon_buble_add_device.image = UIImage(named: loadLanguage("icon_buble_add_device"))
         addDeviceLb.text = loadLanguage("添加新设备")
         deviceArray=[OznerBaseDevice]()
-        startLb.text = loadLanguage("开启浩泽智能生活")
+        startLb.text = loadLanguage("开启浩泽伊泉净品智慧生活")
         deviceLb.text = loadLanguage("选择智能设备")
         self.tableView.delegate=self
         self.tableView.dataSource=self
@@ -88,6 +88,7 @@ class LeftMenuController: UIViewController ,UIViewControllerTransitioningDelegat
         }
         // Do any additional setup after loading the view.
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
