@@ -95,7 +95,7 @@ class DeviceViewContainer: UIView {
             case .Cup:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:160*k_height)
             case .Tap:
-                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: false,BottomValue:211*k_height)
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: false,BottomValue:222*k_height)
                 //下载滤芯更新
                 User.FilterService(deviceID: ProductInfo.getCurrDeviceMac(), success: { (usedDay, _) in
                     self.LvXinValue=Int(ceil(100.0*(30.0-Float(usedDay))/30.0))
@@ -115,7 +115,7 @@ class DeviceViewContainer: UIView {
             case .AirPurifier_Wifi:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
             case .WaterReplenish:
-                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:156*k_height)
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:180*k_height)
                 
             case .WaterPurifier_Blue:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)

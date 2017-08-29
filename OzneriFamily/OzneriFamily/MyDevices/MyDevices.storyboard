@@ -6630,7 +6630,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WxY-gQ-hr0" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
-                                                <rect key="frame" x="117.5" y="425.5" width="140" height="40"/>
+                                                <rect key="frame" x="117.5" y="331.5" width="140" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="140" id="6wn-zF-MFX"/>
                                                     <constraint firstAttribute="height" constant="40" id="a0B-mY-RnQ"/>
@@ -6745,40 +6745,8 @@
                                                     <constraint firstItem="H9r-81-ZT8" firstAttribute="leading" secondItem="Uo6-kB-TKv" secondAttribute="leading" id="xW8-iI-ueD"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWA-b7-B7n">
-                                                <rect key="frame" x="0.0" y="243.5" width="375" height="48"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买精华水" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pT-z2-EaV" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="15" y="16" width="66.5" height="16"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="M2C-d2-pmG">
-                                                        <rect key="frame" x="352" y="15.5" width="8" height="17"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFQ-Wh-IgO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
-                                                        <connections>
-                                                            <segue destination="aGC-dU-WII" kind="show" identifier="showBuyWater" id="C5x-Zg-Kwq"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="M2C-d2-pmG" firstAttribute="centerY" secondItem="LWA-b7-B7n" secondAttribute="centerY" id="698-hx-xdc"/>
-                                                    <constraint firstItem="wFQ-Wh-IgO" firstAttribute="top" secondItem="LWA-b7-B7n" secondAttribute="top" id="6pz-SW-1uw"/>
-                                                    <constraint firstItem="0pT-z2-EaV" firstAttribute="leading" secondItem="LWA-b7-B7n" secondAttribute="leading" constant="15" id="8jz-Pv-rUD"/>
-                                                    <constraint firstItem="0pT-z2-EaV" firstAttribute="centerY" secondItem="LWA-b7-B7n" secondAttribute="centerY" id="Hs1-nf-9BA"/>
-                                                    <constraint firstAttribute="trailing" secondItem="wFQ-Wh-IgO" secondAttribute="trailing" id="LyS-jC-VKN"/>
-                                                    <constraint firstAttribute="bottom" secondItem="wFQ-Wh-IgO" secondAttribute="bottom" id="Qxr-Ok-VtI"/>
-                                                    <constraint firstAttribute="trailing" secondItem="M2C-d2-pmG" secondAttribute="trailing" constant="15" id="dkj-IR-oPL"/>
-                                                    <constraint firstItem="wFQ-Wh-IgO" firstAttribute="leading" secondItem="LWA-b7-B7n" secondAttribute="leading" id="fgb-40-MJa"/>
-                                                    <constraint firstAttribute="height" constant="48" id="xLX-7c-APt"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4d-IN-VA5">
-                                                <rect key="frame" x="0.0" y="333.5" width="375" height="48"/>
+                                                <rect key="frame" x="0.0" y="239.5" width="375" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="补水仪使用说明" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXJ-4B-axR" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                         <rect key="frame" x="15" y="16" width="93" height="16"/>
@@ -6840,29 +6808,11 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="setmystate5" translatesAutoresizingMaskIntoConstraints="NO" id="L1V-Yk-930">
-                                                <rect key="frame" x="15" y="299.5" width="16" height="16"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="坚持使用精华水，能有效改善皮肤状态。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8J-4n-czz" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                <rect key="frame" x="39" y="293" width="202.5" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="4ix-7n-zhR"/>
-                                                    <constraint firstAttribute="height" constant="30" id="Fzy-9p-I4D"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="4ix-7n-zhR"/>
-                                                    </mask>
-                                                </variation>
-                                            </label>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="setmystate5" translatesAutoresizingMaskIntoConstraints="NO" id="npr-wV-j1x">
-                                                <rect key="frame" x="15" y="389.5" width="16" height="16"/>
+                                                <rect key="frame" x="15" y="295.5" width="16" height="16"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当电量低于15%时，app会进行提示！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLD-Pw-oiq" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                <rect key="frame" x="39" y="389.5" width="187" height="16"/>
+                                                <rect key="frame" x="39" y="295.5" width="187" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="MxU-F4-189"/>
                                                     <constraint firstAttribute="height" constant="16" id="zta-3x-iVA"/>
@@ -6881,38 +6831,30 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="sDq-Pu-yIJ" secondAttribute="trailing" id="2xF-Bu-ayA"/>
                                             <constraint firstItem="jYC-eo-F62" firstAttribute="leading" secondItem="FI9-9f-wu4" secondAttribute="leading" id="3n9-G7-sGN"/>
-                                            <constraint firstItem="LWA-b7-B7n" firstAttribute="top" secondItem="Uo6-kB-TKv" secondAttribute="bottom" constant="42" id="7nn-Yj-m5D"/>
                                             <constraint firstItem="WxY-gQ-hr0" firstAttribute="top" secondItem="wLD-Pw-oiq" secondAttribute="bottom" constant="20" id="9m2-NV-yad"/>
                                             <constraint firstItem="Xtr-xS-i1m" firstAttribute="leading" secondItem="FI9-9f-wu4" secondAttribute="leading" constant="15" id="9zw-Yn-0Tr"/>
-                                            <constraint firstItem="LWA-b7-B7n" firstAttribute="leading" secondItem="FI9-9f-wu4" secondAttribute="leading" id="BOV-K3-H0e"/>
                                             <constraint firstItem="npr-wV-j1x" firstAttribute="leading" secondItem="FI9-9f-wu4" secondAttribute="leading" constant="15" id="IUh-7R-Cdu"/>
-                                            <constraint firstItem="L1V-Yk-930" firstAttribute="top" secondItem="LWA-b7-B7n" secondAttribute="bottom" constant="8" id="Iui-uj-eEz"/>
                                             <constraint firstItem="WxY-gQ-hr0" firstAttribute="top" secondItem="B1n-EL-PNy" secondAttribute="bottom" priority="250" constant="10" id="J6L-e4-1c3"/>
-                                            <constraint firstItem="W8J-4n-czz" firstAttribute="leading" secondItem="L1V-Yk-930" secondAttribute="trailing" constant="8" id="JIj-UO-Wm3"/>
                                             <constraint firstItem="sDq-Pu-yIJ" firstAttribute="leading" secondItem="FI9-9f-wu4" secondAttribute="leading" id="Jod-3E-lfj"/>
                                             <constraint firstItem="f4d-IN-VA5" firstAttribute="leading" secondItem="FI9-9f-wu4" secondAttribute="leading" id="KhT-ZY-e3R"/>
                                             <constraint firstItem="Xtr-xS-i1m" firstAttribute="top" secondItem="Uo6-kB-TKv" secondAttribute="bottom" constant="8" id="Lqd-gU-Q3D"/>
                                             <constraint firstItem="jYC-eo-F62" firstAttribute="top" secondItem="sDq-Pu-yIJ" secondAttribute="bottom" constant="0.5" id="Oc6-IV-lNw"/>
-                                            <constraint firstItem="f4d-IN-VA5" firstAttribute="top" secondItem="LWA-b7-B7n" secondAttribute="bottom" constant="42" id="ZXE-qO-8tQ"/>
                                             <constraint firstAttribute="height" constant="540" id="b3y-gt-tqB"/>
                                             <constraint firstItem="npr-wV-j1x" firstAttribute="top" secondItem="f4d-IN-VA5" secondAttribute="bottom" constant="8" id="dH1-YL-QAN"/>
-                                            <constraint firstItem="L1V-Yk-930" firstAttribute="leading" secondItem="FI9-9f-wu4" secondAttribute="leading" constant="15" id="daY-4P-RpF"/>
                                             <constraint firstItem="bys-Qj-KJB" firstAttribute="leading" secondItem="FI9-9f-wu4" secondAttribute="leading" constant="15" id="dmC-MU-eiq"/>
+                                            <constraint firstItem="f4d-IN-VA5" firstAttribute="top" secondItem="Uo6-kB-TKv" secondAttribute="top" constant="86" id="fwL-6V-TOm"/>
                                             <constraint firstItem="wLD-Pw-oiq" firstAttribute="leading" secondItem="npr-wV-j1x" secondAttribute="trailing" constant="8" id="k5N-dR-C6T"/>
                                             <constraint firstItem="Uo6-kB-TKv" firstAttribute="top" secondItem="jYC-eo-F62" secondAttribute="bottom" constant="42" id="ksY-ch-jdM"/>
                                             <constraint firstItem="sDq-Pu-yIJ" firstAttribute="top" secondItem="FI9-9f-wu4" secondAttribute="top" constant="15" id="l8a-Ur-NXa"/>
                                             <constraint firstAttribute="trailing" secondItem="Uo6-kB-TKv" secondAttribute="trailing" id="lmn-dS-ALC"/>
                                             <constraint firstItem="Uo6-kB-TKv" firstAttribute="top" secondItem="bys-Qj-KJB" secondAttribute="bottom" constant="8" id="luT-No-RB6"/>
                                             <constraint firstItem="WxY-gQ-hr0" firstAttribute="centerX" secondItem="FI9-9f-wu4" secondAttribute="centerX" id="mUw-Ch-jZI"/>
-                                            <constraint firstItem="W8J-4n-czz" firstAttribute="centerY" secondItem="L1V-Yk-930" secondAttribute="centerY" id="qHQ-bE-iKz"/>
                                             <constraint firstAttribute="trailing" secondItem="jYC-eo-F62" secondAttribute="trailing" id="rBr-Q2-kdY"/>
                                             <constraint firstItem="Uo6-kB-TKv" firstAttribute="leading" secondItem="FI9-9f-wu4" secondAttribute="leading" id="rz7-7d-iEM"/>
                                             <constraint firstAttribute="trailing" secondItem="f4d-IN-VA5" secondAttribute="trailing" id="sHJ-Z5-7OA"/>
                                             <constraint firstItem="B1n-EL-PNy" firstAttribute="leading" secondItem="Xtr-xS-i1m" secondAttribute="trailing" constant="8" id="sid-I3-F5z"/>
                                             <constraint firstItem="wLD-Pw-oiq" firstAttribute="centerY" secondItem="npr-wV-j1x" secondAttribute="centerY" id="uRa-op-OQ2"/>
                                             <constraint firstItem="B1n-EL-PNy" firstAttribute="centerY" secondItem="Xtr-xS-i1m" secondAttribute="centerY" id="wMH-KN-bZo"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W8J-4n-czz" secondAttribute="trailing" constant="15" id="yVN-Ly-88h"/>
-                                            <constraint firstAttribute="trailing" secondItem="LWA-b7-B7n" secondAttribute="trailing" id="ztF-rJ-xsY"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -6946,11 +6888,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="hideimage1" destination="L1V-Yk-930" id="PKi-Yz-hxV"/>
-                        <outlet property="hideimage2" destination="W8J-4n-czz" id="u7L-o3-8d5"/>
                         <outlet property="hidelb1" destination="wLD-Pw-oiq" id="RPC-5m-edO"/>
                         <outlet property="hidelb2" destination="npr-wV-j1x" id="eAX-Yt-cKD"/>
-                        <outlet property="hideview1" destination="LWA-b7-B7n" id="b9S-iy-x6V"/>
                         <outlet property="hideview2" destination="f4d-IN-VA5" id="oCT-jO-gAi"/>
                         <outlet property="nameAndAttrLabel" destination="rGc-63-Owk" id="U5b-6z-pTp"/>
                         <outlet property="sexLabel" destination="2Ad-UX-961" id="cKY-w7-6Rz"/>
@@ -8256,8 +8195,8 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BXe-Ml-x0S"/>
-        <segue reference="kPL-av-rgP"/>
         <segue reference="avB-qO-o0y"/>
+        <segue reference="aaL-mh-gXA"/>
+        <segue reference="uTu-U7-iUE"/>
     </inferredMetricsTieBreakers>
 </document>
