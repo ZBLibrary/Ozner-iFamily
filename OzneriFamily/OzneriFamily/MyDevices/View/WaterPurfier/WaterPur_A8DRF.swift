@@ -107,7 +107,7 @@ class WaterPur_A8DRF: OznerDeviceView {
             tdsValueLabel_BF.text = tdsBF==0 ? loadLanguage("暂无"):"\(tdsBF)"
             tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:52)*width_screen/375)
             tdsValueLabel_AF.text = tdsAF==0 ? loadLanguage("暂无"):"\(tdsAF)"
-            tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:52)*width_screen/375)
+            tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:46)*width_screen/375)
             
             var angleBF = CGFloat(0)
             switch true {

@@ -81,6 +81,9 @@ class AirPurifier_Wifi: OznerBaseDevice {
                 p+=1
                 let size = Int(recvData[p])
                 p+=1
+                if p+size>recvData.count {
+                    return
+                }
                 let range1 = recvData.index(recvData.startIndex, offsetBy: p)
                 let range2 = recvData.index(recvData.startIndex, offsetBy: p+size)
                 let valueData=recvData.subdata(in: Range(range1..<range2))

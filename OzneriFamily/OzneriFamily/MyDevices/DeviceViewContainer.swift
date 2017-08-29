@@ -124,8 +124,8 @@ class DeviceViewContainer: UIView {
                 }else if currentDeviceView.isKind(of: WaterPur_A8CSFFSF.classForCoder()){
                     delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:160*k_height)
                 }else if currentDeviceView.isKind(of: WaterPur_A8DRF.classForCoder()){
-                    delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
-                    SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac())
+                    delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:230*k_height)
+                    //SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac())
                 }
                 
            

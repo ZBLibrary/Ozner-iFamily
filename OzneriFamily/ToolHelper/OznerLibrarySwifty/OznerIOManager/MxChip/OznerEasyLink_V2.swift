@@ -98,6 +98,7 @@ class OznerEasyLink_V2: NSObject,ZBBonjourServiceDelegate,GCDAsyncSocketDelegate
                         let myQueue = DispatchQueue.init(label: "come.ozner.GCDAsyncSocket")
                         gcdAsyncSocket=GCDAsyncSocket.init(delegate: self, delegateQueue: myQueue)
                         do {
+                            print("\ngcdAsyncSocket?.connect")
                             try gcdAsyncSocket?.connect(toHost: hostIP, onPort: 8002)
                         } catch let error {
                             print("\n激活设备失败!")
