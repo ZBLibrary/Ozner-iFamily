@@ -44,7 +44,8 @@ class AirLvXinController: BaseViewController {
     @IBOutlet weak var hideView1: UIView!
     
     @IBAction func consultingClick(_ sender: AnyObject) {
-         LoginManager.instance.setTabbarSelected(index: 2)
+//         LoginManager.instance.setTabbarSelected(index: 2)
+        HelperTools.callMobile(self.view)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
