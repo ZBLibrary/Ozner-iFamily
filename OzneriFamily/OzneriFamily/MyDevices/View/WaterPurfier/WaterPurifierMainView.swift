@@ -358,6 +358,15 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
                 offLineLabel.text=loadLanguage("设备云已断开")
                 operation=(false,false,false)
             }else{
+                
+                if (currentDevice as! WaterPurifier_Wifi).deviceInfo.productID == "adf69dce-5baa-11e7-9baf-00163e120d98" {
+                    
+                    tdsContainerView.isHidden=false
+                    offLineLabel.isHidden=true
+                    tds=(device.filterStates.TDS_Before,device.filterStates.TDS_After)
+                    return
+                }
+                
                 if device.status.Power==false {
                     tdsContainerView.isHidden=true
                     offLineLabel.isHidden=false
