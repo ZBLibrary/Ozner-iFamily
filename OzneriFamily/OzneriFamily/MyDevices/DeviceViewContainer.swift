@@ -203,7 +203,7 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                     let filterB = (currentDevice as! WaterPurifier_Wifi).filterStates.filterB
                     let filterC = (currentDevice as! WaterPurifier_Wifi).filterStates.filterC
                     
-                    self.LvXinValue = min(filterA, filterB, filterC)
+                    self.LvXinValue = lroundf(Float(min(filterA, filterB, filterC)/10)) * 10 * 100
                     
                 }
                 
