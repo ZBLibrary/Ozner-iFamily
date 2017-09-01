@@ -19,6 +19,16 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
     var isBlueDevice = false
     var currentBtn:UIButton?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        btnBackColor(lowBtn)
+        btnBackColor(centerBtn)
+        btnBackColor(highBtn)
+        btnBackColor(customerBtn)
+        
+    }
+    
     func setLvXinAndEnable(scan:Bool,cool:Bool,hot:Bool,buyLvXinUrl:String,lvXinStopDate:NSDate,lvXinUsedDays:Int){
         self.scanEnable=scan
         self.coolEnable=cool
@@ -220,17 +230,21 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
     }
     
     fileprivate func btnBackColor(_ sender:UIButton) {
-        sender.layer.masksToBounds = false
+        sender.titleLabel?.layer.masksToBounds = true
+        sender.titleLabel?.layer.borderWidth = 2
+        sender.titleLabel?.layer.cornerRadius = 15
+        sender.titleLabel?.layer.borderColor = UIColor.lightGray.cgColor
         sender.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
-        sender.layer.borderWidth = 0
+        
     }
     
     fileprivate func cornerBtn(_ sender:UIButton) {
         UIView.animate(withDuration: 1) {
-            sender.layer.cornerRadius = 15
-            sender.layer.masksToBounds = true
-            sender.layer.borderWidth = 2
-            sender.layer.borderColor = UIColor.init(hex: "48c2fa").cgColor
+            
+            sender.titleLabel?.layer.cornerRadius = 15
+            sender.titleLabel?.layer.masksToBounds = true
+            sender.titleLabel?.layer.borderWidth = 2
+            sender.titleLabel?.layer.borderColor = UIColor.init(hex: "48c2fa").cgColor
             sender.setTitleColor(UIColor.init(hex: "48c2fa"), for: UIControlState.normal)
         }
     }
