@@ -52,7 +52,8 @@ class WaterPurfierTDSController: BaseViewController {
 //        OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title: "浩泽净水家", shareImg: img)
     }
     @IBAction func ConsultingClick(_ sender: AnyObject) {
-        LoginManager.instance.setTabbarSelected(index: 2)
+//        LoginManager.instance.setTabbarSelected(index: 2)
+        HelperTools.callMobile(self.view)
     }
     //center
     @IBOutlet var TDSchartView: WaterPurfierTDSChart!
@@ -77,9 +78,7 @@ class WaterPurfierTDSController: BaseViewController {
     @IBOutlet weak var hideView1: UIView!
     @IBOutlet weak var hideBtn1: GYButton!
     //footer
-    @IBAction func buyDeviceClick(_ sender: AnyObject) {
-        LoginManager.instance.setTabbarSelected(index: 1)
-    }
+
     
     
     override func viewDidLoad() {
