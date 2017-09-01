@@ -922,7 +922,7 @@
                                                 <rect key="frame" x="60.5" y="669" width="254" height="42"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F9-AY-JRU" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="93" height="42"/>
+                                                        <rect key="frame" x="80.5" y="0.0" width="93" height="42"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="93" id="oNN-gA-TMK"/>
@@ -948,7 +948,7 @@
                                                             <action selector="ConsultingClick:" destination="Xci-YO-YQk" eventType="touchUpInside" id="frO-0M-w9O"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTn-F2-PXC" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTn-F2-PXC" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
                                                         <rect key="frame" x="108" y="0.0" width="146" height="42"/>
                                                         <color key="backgroundColor" red="0.84945362810000002" green="0.89295941590000005" blue="0.96779614690000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -977,8 +977,8 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="42" id="EFR-aT-jC2"/>
                                                     <constraint firstItem="2F9-AY-JRU" firstAttribute="top" secondItem="nIa-BE-NLH" secondAttribute="top" id="IDf-VL-Bpu"/>
-                                                    <constraint firstItem="2F9-AY-JRU" firstAttribute="leading" secondItem="nIa-BE-NLH" secondAttribute="leading" id="L78-Bh-6PK"/>
                                                     <constraint firstAttribute="trailing" secondItem="oTn-F2-PXC" secondAttribute="trailing" id="PEV-8K-PaN"/>
+                                                    <constraint firstItem="2F9-AY-JRU" firstAttribute="centerX" secondItem="nIa-BE-NLH" secondAttribute="centerX" id="SWd-gC-olO"/>
                                                     <constraint firstItem="oTn-F2-PXC" firstAttribute="top" secondItem="nIa-BE-NLH" secondAttribute="top" id="aaU-zj-WwB"/>
                                                     <constraint firstAttribute="bottom" secondItem="2F9-AY-JRU" secondAttribute="bottom" id="ami-1i-I1e"/>
                                                     <constraint firstAttribute="bottom" secondItem="oTn-F2-PXC" secondAttribute="bottom" id="cYt-St-7Me"/>
@@ -1017,13 +1017,7 @@
                             <constraint firstItem="Lh9-KN-yuC" firstAttribute="top" secondItem="lD3-3Y-GRc" secondAttribute="top" id="wnj-1e-NYZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="智能补水仪详情" id="clj-bW-cvm">
-                        <barButtonItem key="rightBarButtonItem" image="device_share" id="vl0-OY-tLM">
-                            <connections>
-                                <action selector="shareClick:" destination="Xci-YO-YQk" id="ART-hR-6pf"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="智能补水仪详情" id="clj-bW-cvm"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="826"/>
                     <connections>
@@ -1290,7 +1284,7 @@
                                                     <constraint firstItem="C4b-AX-jKD" firstAttribute="top" secondItem="xj0-y3-Cgq" secondAttribute="top" constant="10" id="lJK-PF-CzO"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55o-xI-C0R" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55o-xI-C0R" customClass="GYButton" customModule="OzneriFamily" customModuleProvider="target">
                                                 <rect key="frame" x="114.5" y="842.5" width="146" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="146" id="5dD-Kk-yNj"/>
@@ -8131,8 +8125,8 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bDU-2Y-kqE"/>
-        <segue reference="aaL-mh-gXA"/>
         <segue reference="avB-qO-o0y"/>
+        <segue reference="aaL-mh-gXA"/>
+        <segue reference="LEZ-NI-Oij"/>
     </inferredMetricsTieBreakers>
 </document>

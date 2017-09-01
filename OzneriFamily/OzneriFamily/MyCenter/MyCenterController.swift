@@ -121,10 +121,10 @@ class MyCenterController: BaseViewController {
         case .ByPhoneNumber:
             dataArr = NSMutableArray(capacity: 3)
             let one = MyInfoStrcut.init(imageName: "My_share", nameLb: loadLanguage("我的设备"))
-            let six = MyInfoStrcut.init(imageName: "My_suggest", nameLb: loadLanguage("我要提意见"))
+            let four = MyInfoStrcut.init(imageName: "My_friends", nameLb: loadLanguage("我的好友"))
             let seven = MyInfoStrcut.init(imageName: "My_set", nameLb: loadLanguage("设置"))
             dataArr!.add(one)
-            dataArr!.add(six)
+            dataArr!.add(four)
             dataArr!.add(seven)
             headView.nameLb.text = User.currentUser?.phone
         }

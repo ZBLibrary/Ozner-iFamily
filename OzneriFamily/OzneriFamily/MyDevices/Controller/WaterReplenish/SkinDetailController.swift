@@ -13,8 +13,7 @@ class SkinDetailController: BaseViewController {
     var currentBody=BodyParts.Face
     
     //header
-    @IBAction func shareClick(_ sender: AnyObject) {
-    }
+
     @IBOutlet var bodyPartButton1: UIButton!
     @IBOutlet var bodyPartButton2: UIButton!
     @IBOutlet var bodyPartButton3: UIButton!
@@ -90,7 +89,8 @@ class SkinDetailController: BaseViewController {
     @IBOutlet weak var hideView: UIView!
     //footer
     @IBAction func ConsultingClick(_ sender: AnyObject) {
-        LoginManager.instance.setTabbarSelected(index: 2)
+//        LoginManager.instance.setTabbarSelected(index: 2)
+        HelperTools.callMobile(self.view)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,14 +168,14 @@ class SkinDetailController: BaseViewController {
         {
             let vc=segue.destination as! AboutDeviceController
             
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?[loadLanguage("什么是水分 ")]?.stringValue)!, Type: 2)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?[loadLanguage("什么是水分")]?.stringValue)!, Type: 2)
             vc.title=loadLanguage("什么是水分")
         }
         if segue.identifier=="showWhatIsOil"
         {
             let vc=segue.destination as! AboutDeviceController
             
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?[loadLanguage("什么是油分 ")]?.stringValue)!, Type: 2)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是油分"]?.stringValue)!, Type: 2)
             vc.title=loadLanguage("什么是油分")
         }
         // Get the new view controller using segue.destinationViewController.
