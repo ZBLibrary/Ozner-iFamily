@@ -20,6 +20,10 @@ class WaterPurfierSettingController: DeviceSettingController {
     @IBOutlet var macAdressLabel: GYLabel!
     @IBOutlet var waterPayViewContainer: UIView!
 
+    @IBAction func taishi(_ sender: Any) {
+        
+        
+    }
     @IBAction func deleteClick(_ sender: AnyObject) {
         super.deleteDevice()
     }
@@ -29,13 +33,13 @@ class WaterPurfierSettingController: DeviceSettingController {
         self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
         nameAndAttrLabel.text=self.getNameAndAttr()
         
-        waterPayViewContainer.isHidden=(ProductInfo.getCurrDeviceClass() != .WaterPurifier_Blue)
+        waterPayViewContainer.isHidden=true
         let currentDevice=OznerManager.instance.currentDevice
         if currentDevice?.deviceInfo.deviceType == "RO Comml" {
              waterPayViewContainer.isHidden = true
         }
         
-        macAdressLabel.text="mac:"+ProductInfo.getCurrDeviceMac()
+//        macAdressLabel.text="mac:"+ProductInfo.getCurrDeviceMac()
                 
         // Do any additional setup after loading the view.
     }
@@ -56,12 +60,25 @@ class WaterPurfierSettingController: DeviceSettingController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="showAboutDevice" {
             let VC=segue.destination as!  AboutDeviceController
+            let url=(NetworkManager.defaultManager?.URL?["AboutLishi"]?.stringValue)!
+            
+//            if  ProductInfo.getCurrDeviceClass() == OZDeviceClass.WaterPurifier_Blue{
+//                url=(NetworkManager.defaultManager?.URL?["AboutROWaterPurifer"]?.stringValue)!
+//            }
+            VC.setLoadContent(content: url, Type: 0)
+        }
+        
+        if segue.identifier=="Aboutlishi" {
+            
+            let VC=segue.destination as!  AboutDeviceController
             var url=(NetworkManager.defaultManager?.URL?["AboutWaterPurifer"]?.stringValue)!
             
             if  ProductInfo.getCurrDeviceClass() == OZDeviceClass.WaterPurifier_Blue{
-                url=(NetworkManager.defaultManager?.URL?["AboutROWaterPurifer"]?.stringValue)!
+                url=(NetworkManager.defaultManager?.URL?["AboutWaterPurifer"]?.stringValue)!
             }
             VC.setLoadContent(content: url, Type: 0)
+            
+            
         }
     }
     

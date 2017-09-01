@@ -105,7 +105,7 @@ class DeviceViewContainer: UIView {
             case .TDSPan:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:0)
             case .WaterPurifier_Wifi:
-                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:180*k_height)
                 //设置滤芯及功能
                 SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac())
                 (currentDeviceView as! WaterPurifierMainView).kitChenView.isHidden = true

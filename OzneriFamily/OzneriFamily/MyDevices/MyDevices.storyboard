@@ -5196,25 +5196,41 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SoK-0k-vte">
                                                 <rect key="frame" x="0.0" y="64" width="375" height="48"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mac地址:3e:4e:12:6f:4a:7c" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aM-zs-nob" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="15" y="16" width="159.5" height="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于净水器(台式)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aM-zs-nob" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                        <rect key="frame" x="15" y="16" width="102" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="zxL-xV-96F">
+                                                        <rect key="frame" x="352" y="15.5" width="8" height="17"/>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bf-WE-b1h">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                                                        <connections>
+                                                            <action selector="taishi:" destination="0RJ-al-8HV" eventType="touchUpInside" id="ABd-ea-93N"/>
+                                                            <segue destination="aGC-dU-WII" kind="show" identifier="Aboutlishi" id="DyL-bG-gJD"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="F5l-01-aNf"/>
+                                                    <constraint firstItem="zxL-xV-96F" firstAttribute="centerY" secondItem="7aM-zs-nob" secondAttribute="centerY" id="P7t-vD-fPI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9bf-WE-b1h" secondAttribute="trailing" id="S5n-HD-AeH"/>
                                                     <constraint firstItem="7aM-zs-nob" firstAttribute="centerY" secondItem="SoK-0k-vte" secondAttribute="centerY" id="Tpx-1D-SUw"/>
+                                                    <constraint firstAttribute="bottom" secondItem="9bf-WE-b1h" secondAttribute="bottom" id="UGA-lJ-hoL"/>
+                                                    <constraint firstAttribute="trailing" secondItem="zxL-xV-96F" secondAttribute="trailing" constant="15" id="auL-0U-qTq"/>
+                                                    <constraint firstItem="9bf-WE-b1h" firstAttribute="leading" secondItem="SoK-0k-vte" secondAttribute="leading" id="b9X-Ag-mM9"/>
+                                                    <constraint firstItem="9bf-WE-b1h" firstAttribute="top" secondItem="SoK-0k-vte" secondAttribute="top" id="l5u-gS-GRM"/>
                                                     <constraint firstItem="7aM-zs-nob" firstAttribute="leading" secondItem="SoK-0k-vte" secondAttribute="leading" constant="15" id="s8E-Qi-jYd"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHS-j4-MeY">
                                                 <rect key="frame" x="0.0" y="114" width="375" height="48"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于净水器" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mi-O8-jZz" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="15" y="16" width="66.5" height="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于净水器(立式)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mi-O8-jZz" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                        <rect key="frame" x="15" y="16" width="102" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -5352,12 +5368,12 @@
                     <connections>
                         <outlet property="macAdressLabel" destination="7aM-zs-nob" id="b9Y-4P-Nhe"/>
                         <outlet property="nameAndAttrLabel" destination="VhK-JP-755" id="yJl-AI-5Id"/>
-                        <outlet property="waterPayViewContainer" destination="zxj-9O-JCo" id="iX7-QX-q6v"/>
+                        <outlet property="waterPayViewContainer" destination="zxj-9O-JCo" id="ufC-eX-5bp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cmr-Gn-vLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10158" y="1159"/>
+            <point key="canvasLocation" x="10157.5" y="1158.5"/>
         </scene>
         <!--设置-->
         <scene sceneID="CiE-L0-bah">
@@ -8125,8 +8141,8 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="DyL-bG-gJD"/>
+        <segue reference="9TT-wP-6Ha"/>
         <segue reference="avB-qO-o0y"/>
-        <segue reference="aaL-mh-gXA"/>
-        <segue reference="LEZ-NI-Oij"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -42,7 +42,7 @@ class SkinQueryController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = loadLanguage("肤质查询")
-        buybTN.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+        buybTN.isHidden = LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber
         segementO.setTitle(loadLanguage("干性"), forSegmentAt: 0)
         segementO.setTitle(loadLanguage("油性"), forSegmentAt: 1)
         segementO.setTitle(loadLanguage("中性"), forSegmentAt: 2)
