@@ -28,6 +28,7 @@ class BaseViewController: UIViewController {
         backBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
         backBtn.addTarget(self, action: #selector(BaseViewController.backAction), for: UIControlEvents.touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+        
 
     }
     

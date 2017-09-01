@@ -299,27 +299,27 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCm-ap-oVA">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="制水量" translatesAutoresizingMaskIntoConstraints="NO" id="d6l-wK-uJR">
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="制水量" translatesAutoresizingMaskIntoConstraints="NO" id="d6l-wK-uJR">
                                     <rect key="frame" x="78" y="20" width="35" height="35"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="35" id="DbD-hK-nau"/>
                                         <constraint firstAttribute="height" constant="35" id="HNY-Sc-9fe"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总制水量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOH-zR-fJg">
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总制水量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOH-zR-fJg">
                                     <rect key="frame" x="123" y="20" width="69.5" height="35"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ile-hX-FBD">
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ile-hX-FBD">
                                     <rect key="frame" x="202.5" y="20" width="26.5" height="35"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                     <color key="textColor" red="0.99607843137254903" green="0.53725490196078429" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YuA-RS-ykC">
-                                    <rect key="frame" x="0.0" y="72" width="375" height="30"/>
+                                    <rect key="frame" x="0.0" y="70" width="375" height="30"/>
                                     <subviews>
                                         <button opaque="NO" tag="5555" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DH-O1-5MS">
                                             <rect key="frame" x="0.0" y="0.0" width="94" height="30"/>
@@ -384,7 +384,7 @@
                                     </constraints>
                                 </view>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="40" maxValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="sul-5u-Oek" customClass="GYValueSlider" customModule="OzneriFamily" customModuleProvider="target">
-                                    <rect key="frame" x="28" y="117" width="319" height="41"/>
+                                    <rect key="frame" x="28" y="115" width="319" height="41"/>
                                     <accessibility key="accessibilityConfiguration">
                                         <bool key="isElement" value="NO"/>
                                     </accessibility>
@@ -392,19 +392,36 @@
                                         <constraint firstAttribute="height" constant="40" id="YAY-xV-WMq"/>
                                     </constraints>
                                 </slider>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ro_comm_temp" translatesAutoresizingMaskIntoConstraints="NO" id="NVQ-D7-O2b">
+                                    <rect key="frame" x="6" y="15" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="Hw5-hf-Sgs"/>
+                                        <constraint firstAttribute="width" constant="40" id="yvF-Da-dwV"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="调温" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JS5-am-UC9">
+                                    <rect key="frame" x="49" y="24.5" width="35" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="YuA-RS-ykC" firstAttribute="leading" secondItem="qCm-ap-oVA" secondAttribute="leading" id="1aO-62-1Qv"/>
+                                <constraint firstItem="JS5-am-UC9" firstAttribute="centerY" secondItem="NVQ-D7-O2b" secondAttribute="centerY" id="4tq-7C-Uzd"/>
                                 <constraint firstItem="QOH-zR-fJg" firstAttribute="height" secondItem="d6l-wK-uJR" secondAttribute="height" id="FR6-YD-Pst"/>
                                 <constraint firstItem="ile-hX-FBD" firstAttribute="leading" secondItem="QOH-zR-fJg" secondAttribute="trailing" constant="10" id="HcH-M6-BZh"/>
                                 <constraint firstItem="d6l-wK-uJR" firstAttribute="top" secondItem="qCm-ap-oVA" secondAttribute="top" constant="20" id="JAN-1E-bZK"/>
                                 <constraint firstAttribute="trailing" secondItem="YuA-RS-ykC" secondAttribute="trailing" id="NQV-7R-eJT"/>
                                 <constraint firstItem="QOH-zR-fJg" firstAttribute="top" secondItem="d6l-wK-uJR" secondAttribute="top" id="PRG-fF-RBp"/>
                                 <constraint firstItem="ile-hX-FBD" firstAttribute="top" secondItem="d6l-wK-uJR" secondAttribute="top" id="QtO-t4-soY"/>
+                                <constraint firstItem="JS5-am-UC9" firstAttribute="leading" secondItem="NVQ-D7-O2b" secondAttribute="trailing" constant="3" id="RWU-kB-55d"/>
                                 <constraint firstItem="sul-5u-Oek" firstAttribute="leading" secondItem="qCm-ap-oVA" secondAttribute="leading" constant="30" id="UmD-Yd-Juc"/>
+                                <constraint firstItem="NVQ-D7-O2b" firstAttribute="leading" secondItem="qCm-ap-oVA" secondAttribute="leading" constant="6" id="aTx-LG-r44"/>
                                 <constraint firstItem="sul-5u-Oek" firstAttribute="top" secondItem="YuA-RS-ykC" secondAttribute="bottom" constant="15" id="atE-TT-zrL"/>
-                                <constraint firstItem="YuA-RS-ykC" firstAttribute="top" secondItem="ile-hX-FBD" secondAttribute="bottom" constant="17" id="diJ-Wl-nYR"/>
+                                <constraint firstItem="YuA-RS-ykC" firstAttribute="top" secondItem="ile-hX-FBD" secondAttribute="bottom" constant="15" id="diJ-Wl-nYR"/>
+                                <constraint firstItem="NVQ-D7-O2b" firstAttribute="top" secondItem="qCm-ap-oVA" secondAttribute="top" constant="15" id="jee-PL-sAX"/>
                                 <constraint firstItem="QOH-zR-fJg" firstAttribute="centerX" secondItem="qCm-ap-oVA" secondAttribute="centerX" constant="-30" id="ksV-iC-end"/>
                                 <constraint firstItem="ile-hX-FBD" firstAttribute="height" secondItem="d6l-wK-uJR" secondAttribute="height" id="qbA-Rh-FP8"/>
                                 <constraint firstItem="QOH-zR-fJg" firstAttribute="leading" secondItem="d6l-wK-uJR" secondAttribute="trailing" constant="10" id="rXz-fN-ba1"/>
@@ -472,6 +489,7 @@
         <image name="icon_jiare_normal" width="60" height="60"/>
         <image name="icon_power_normal" width="60" height="60"/>
         <image name="icon_zhileng_normal" width="60" height="60"/>
+        <image name="ro_comm_temp" width="64" height="64"/>
         <image name="制水量" width="38" height="38"/>
     </resources>
 </document>
