@@ -62,6 +62,8 @@ class MyDevicesController: UIViewController {
         switch  ProductInfo.getCurrDeviceClass() {
         case .Cup:
             self.performSegue(withIdentifier: "showCupSetting", sender: nil)
+        case .TwoCup:
+            self.performSegue(withIdentifier: "ShowElectrickettleSetting", sender: nil)
         case .Tap:
             self.performSegue(withIdentifier: "showTapSetting", sender: nil)
         case .TDSPan:
@@ -77,6 +79,7 @@ class MyDevicesController: UIViewController {
             self.performSegue(withIdentifier: "ShowElectrickettleSetting", sender: nil)
         case .WashDush_Wifi:
             self.performSegue(withIdentifier: "ShowElectrickettleSetting", sender: nil)
+        
         }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮

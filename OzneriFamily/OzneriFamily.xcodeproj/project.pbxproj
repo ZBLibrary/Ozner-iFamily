@@ -20,6 +20,10 @@
 		683D3EED1F170A8B0010E708 /* WaterPurifierMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D3EEB1F170A8B0010E708 /* WaterPurifierMainView.swift */; };
 		683D3EEE1F170A8B0010E708 /* WaterPurifierMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 683D3EEC1F170A8B0010E708 /* WaterPurifierMainView.xib */; };
 		6874DA2A1F209A610022A346 /* GYValueElectSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6874DA291F209A610022A346 /* GYValueElectSlider.swift */; };
+		6876B5561F5D2E7500E20ECE /* TwoCup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6876B5551F5D2E7500E20ECE /* TwoCup.swift */; };
+		6876B5591F5D312400E20ECE /* TwoCupMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6876B5581F5D312400E20ECE /* TwoCupMainView.swift */; };
+		6876B55B1F5D314800E20ECE /* TwoCupMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6876B55A1F5D314800E20ECE /* TwoCupMainView.xib */; };
+		6876B55D1F5D3A7000E20ECE /* GYCirclePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6876B55C1F5D3A7000E20ECE /* GYCirclePoint.swift */; };
 		688080241F274ABA00E06404 /* AbbDatePickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688080231F274ABA00E06404 /* AbbDatePickView.swift */; };
 		68BA2DC91F4D7D630033E45F /* XZChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA2DC81F4D7D630033E45F /* XZChatViewController.swift */; };
 		7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */; };
@@ -417,6 +421,10 @@
 		683D3EEB1F170A8B0010E708 /* WaterPurifierMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurifierMainView.swift; sourceTree = "<group>"; };
 		683D3EEC1F170A8B0010E708 /* WaterPurifierMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterPurifierMainView.xib; sourceTree = "<group>"; };
 		6874DA291F209A610022A346 /* GYValueElectSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYValueElectSlider.swift; sourceTree = "<group>"; };
+		6876B5551F5D2E7500E20ECE /* TwoCup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoCup.swift; sourceTree = "<group>"; };
+		6876B5581F5D312400E20ECE /* TwoCupMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoCupMainView.swift; sourceTree = "<group>"; };
+		6876B55A1F5D314800E20ECE /* TwoCupMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoCupMainView.xib; sourceTree = "<group>"; };
+		6876B55C1F5D3A7000E20ECE /* GYCirclePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCirclePoint.swift; sourceTree = "<group>"; };
 		688080231F274ABA00E06404 /* AbbDatePickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbbDatePickView.swift; sourceTree = "<group>"; };
 		68BA2DC81F4D7D630033E45F /* XZChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZChatViewController.swift; sourceTree = "<group>"; };
 		8D0D681A1DDD5AE90097038E /* CupTDSLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupTDSLineView.xib; sourceTree = "<group>"; };
@@ -1046,6 +1054,16 @@
 			path = Electrickettle;
 			sourceTree = "<group>";
 		};
+		6876B5571F5D311C00E20ECE /* TwoCup */ = {
+			isa = PBXGroup;
+			children = (
+				6876B55C1F5D3A7000E20ECE /* GYCirclePoint.swift */,
+				6876B5581F5D312400E20ECE /* TwoCupMainView.swift */,
+				6876B55A1F5D314800E20ECE /* TwoCupMainView.xib */,
+			);
+			path = TwoCup;
+			sourceTree = "<group>";
+		};
 		8D0D68F11DDD99A00097038E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1394,6 +1412,7 @@
 		8D36D2671F06234A0091EB1F /* Cup */ = {
 			isa = PBXGroup;
 			children = (
+				6876B5551F5D2E7500E20ECE /* TwoCup.swift */,
 				8D36D2681F06234A0091EB1F /* Cup.swift */,
 				8D36D2691F06234A0091EB1F /* OznerCupRecords.swift */,
 			);
@@ -1787,6 +1806,7 @@
 		8DC02E601DB5CE91007F57DB /* Cup */ = {
 			isa = PBXGroup;
 			children = (
+				6876B5571F5D311C00E20ECE /* TwoCup */,
 				8D14A92D1DD9905D00920AE9 /* CupColorExtral */,
 				8DC02E611DB5CE91007F57DB /* CupMainView.swift */,
 				8DC02E621DB5CE91007F57DB /* CupMainView.xib */,
@@ -2639,6 +2659,7 @@
 				B727C35E1DACE90000FE990F /* SuccessPairCell.xib in Resources */,
 				8D1C670B1DAA4052008C639F /* SelectDeviceCell.xib in Resources */,
 				8D92F6711D9534890068A40A /* LeftMenu.storyboard in Resources */,
+				6876B55B1F5D314800E20ECE /* TwoCupMainView.xib in Resources */,
 				8D0D69321DDD99A10097038E /* AddFriendTableViewCell.xib in Resources */,
 				8D0D693C1DDD99A10097038E /* FriendZeroBgView.xib in Resources */,
 				8D6BFDBE1ED9626E00AC849C /* WaterPur_A8DRF.xib in Resources */,
@@ -2831,6 +2852,7 @@
 				E0745AD01EE94ED200CB39CC /* NSArray+UdeskSDK.m in Sources */,
 				68BA2DC91F4D7D630033E45F /* XZChatViewController.swift in Sources */,
 				E0745AC21EE94ED200CB39CC /* UdeskVoiceRecordHUD.m in Sources */,
+				6876B5561F5D2E7500E20ECE /* TwoCup.swift in Sources */,
 				B7D8C73B1E5EBC7E0015AAD3 /* GYLabel.swift in Sources */,
 				8D1761E71DC833C8004A6B90 /* WaterReplenishSettingController.swift in Sources */,
 				B79803DB1DB5B14A001EC5AA /* SmallAriClearView.swift in Sources */,
@@ -2953,6 +2975,7 @@
 				8D36D2D91F06234A0091EB1F /* OznerDeviceRecordHelper.swift in Sources */,
 				8D109F201DAD081400458171 /* CALayer+Expand.swift in Sources */,
 				682C70A91F1F8D5200B0A6E6 /* ElectrickettleSettingVc.swift in Sources */,
+				6876B5591F5D312400E20ECE /* TwoCupMainView.swift in Sources */,
 				8D117C271D9D06730024187E /* LoginViewController.swift in Sources */,
 				8DAE80571D9A097800A9946F /* SlideMenuController.swift in Sources */,
 				E0745AE71EE94ED200CB39CC /* UdeskUtils.m in Sources */,
@@ -3000,6 +3023,7 @@
 				E0745AF01EE94ED200CB39CC /* UdeskXPathQuery.m in Sources */,
 				8DC02E741DB5CE91007F57DB /* Air_BlueMainView.swift in Sources */,
 				683D3EE91F1708DC0010E708 /* GYValueSlider.swift in Sources */,
+				6876B55D1F5D3A7000E20ECE /* GYCirclePoint.swift in Sources */,
 				8D36D2EA1F06234A0091EB1F /* GCDAsyncUdpSocket.m in Sources */,
 				8D36D2E71F06234A0091EB1F /* OZBluetoothIO.swift in Sources */,
 				8D12AAC71DAB7386003A09E6 /* PairSuccessController.swift in Sources */,

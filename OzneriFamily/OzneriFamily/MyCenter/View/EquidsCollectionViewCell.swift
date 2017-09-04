@@ -33,7 +33,7 @@ class EquidsCollectionViewCell: UICollectionViewCell {
         equipNameLabel.text = loadLanguage(ProductInfo.getNameFromProductID(productID: device.deviceInfo.productID))
         var imgwhich=""
         switch deviceClass {
-        case .Cup:
+        case .Cup,.TwoCup:
             imgwhich+="My_cup"
         case .Tap:
             imgwhich+="My_tantou"

@@ -49,7 +49,7 @@ class SetDeviceNameController: BaseViewController {
         var attri:[Int:String]!
         
         switch ProductInfo.getCurrDeviceClass(){
-        case .Cup:
+        case .Cup,.TwoCup:
             attri=[0:loadLanguage("我的水杯"),1:loadLanguage("家人水杯")]
         case .Tap,.TDSPan:
             attri=[0:loadLanguage("洗手间"),1:loadLanguage("厨房")]

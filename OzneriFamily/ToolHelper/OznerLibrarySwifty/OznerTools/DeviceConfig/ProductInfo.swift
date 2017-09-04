@@ -36,6 +36,7 @@ enum OZIOType{
 enum OZDeviceClass:String{
     case WaterPurifier_Blue="WaterPurifier_Blue"
     case Cup="Cup"
+    case TwoCup="TwoCup"
     case Tap="Tap"
     case TDSPan="TDSPan"
     case WaterPurifier_Wifi="WaterPurifier_Wifi"
@@ -45,11 +46,11 @@ enum OZDeviceClass:String{
     case Electrickettle_Blue="Electrickettle_Blue"
     case WashDush_Wifi="WashDush_Wifi"
     static func getFromString(str:String)->OZDeviceClass{
-        return ["WaterPurifier_Blue":.WaterPurifier_Blue,"Cup":.Cup,"Tap":.Tap,"TDSPan":.TDSPan,"WaterPurifier_Wifi":.WaterPurifier_Wifi,"AirPurifier_Blue":.AirPurifier_Blue,"AirPurifier_Wifi":.AirPurifier_Wifi,"WaterReplenish":.WaterReplenish,"Electrickettle_Blue":.Electrickettle_Blue,"WashDush_Wifi":.WashDush_Wifi][str]!
+        return ["WaterPurifier_Blue":.WaterPurifier_Blue,"Cup":.Cup,"TwoCup":.TwoCup,"Tap":.Tap,"TDSPan":.TDSPan,"WaterPurifier_Wifi":.WaterPurifier_Wifi,"AirPurifier_Blue":.AirPurifier_Blue,"AirPurifier_Wifi":.AirPurifier_Wifi,"WaterReplenish":.WaterReplenish,"Electrickettle_Blue":.Electrickettle_Blue,"WashDush_Wifi":.WashDush_Wifi][str]!
     }
     public var ioType:OZIOType {
         switch self {
-        case .WaterPurifier_Blue,.Cup,.Tap,.TDSPan,.AirPurifier_Blue,.WaterReplenish,.Electrickettle_Blue:
+        case .WaterPurifier_Blue,.Cup,.TwoCup,.Tap,.TDSPan,.AirPurifier_Blue,.WaterReplenish,.Electrickettle_Blue:
             return OZIOType.Blue
         case .WaterPurifier_Wifi,.AirPurifier_Wifi,.WashDush_Wifi:
             return OZIOType.MxChip
@@ -141,6 +142,11 @@ class ProductInfo: NSObject {
             for id in product["ProductIDs"].arrayValue {
                 if productID==id.stringValue {
                     classStr=product["ClassName"].stringValue
+                    
+                    if productID == "智能水杯" {
+                        classStr = "TwoCup"
+                    }
+                    
                     break
                 }
             }

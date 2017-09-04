@@ -54,6 +54,7 @@ class DeviceViewContainer: UIView {
     }
     private let DeviceNibName:[OZDeviceClass:String]=[
         .Cup:"CupMainView",
+        .TwoCup:"TwoCupMainView",
         .Tap:"TapMainView",
         .TDSPan:"TapMainView",
         .WaterPurifier_Wifi:"WaterPurifierMainView",
@@ -103,6 +104,8 @@ class DeviceViewContainer: UIView {
             
             switch  ProductInfo.getCurrDeviceClass() {
             case .Cup:
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:160*k_height)
+            case .TwoCup:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:160*k_height)
             case .Tap:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: false,BottomValue:211*k_height)
@@ -197,6 +200,8 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
             switch ProductInfo.getCurrDeviceClass() {
             case .Cup:
                 self.batteryValue = Int((currentDevice as! Cup).sensor.Battery)
+            case .TwoCup:
+                break
             case .Tap:
                 self.batteryValue = Int((currentDevice as! Tap).sensor.Battery)
             case .TDSPan:
