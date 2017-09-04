@@ -120,8 +120,13 @@ class MyDevicesController: UIViewController {
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleBottomMargin]
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.addLeftGestures()
-  
         
+        if  OznerManager.instance.currentDevice != nil && OznerManager.instance.currentDevice?.connectStatus !=  OznerConnectStatus.Connected {
+            
+            filterImg.image=UIImage(named: "airLvxinState0")
+            filterValueLabel.text="-"
+            deviceViewContainer.LvXinValue = -1
+        }
         
     }
     
@@ -238,6 +243,9 @@ extension MyDevicesController : DeviceViewContainerDelegate{
             break
         }
         filterStateLabel.text = value<30 ? loadLanguage("请及时更换滤芯"):loadLanguage("滤芯状态")
+        
+    
+        
     }//0-100，<0表示无
     
     //页面跳转

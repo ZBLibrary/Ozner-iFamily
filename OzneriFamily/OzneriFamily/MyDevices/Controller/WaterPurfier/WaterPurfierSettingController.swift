@@ -23,6 +23,7 @@ class WaterPurfierSettingController: DeviceSettingController {
     @IBAction func taishi(_ sender: Any) {
         
         
+        
     }
     @IBAction func deleteClick(_ sender: AnyObject) {
         super.deleteDevice()
