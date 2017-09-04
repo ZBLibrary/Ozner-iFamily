@@ -217,7 +217,9 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
     
     func endTrackingSetValue() {
         let device = currentDevice as? WaterPurifier_Blue
-        _ =  device?.setHotTemp(Int(valueSlider.value))
+        valueSlider.value = Float(Int(valueSlider.value / 10) * 10)
+        _ =  device?.setHotTemp(Int(valueSlider.value / 10) * 10)
+        
     }
     
     
@@ -239,9 +241,9 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
     fileprivate func cornerBtn(_ sender:UIButton) {
         UIView.animate(withDuration: 1) {
             
-            sender.titleLabel?.layer.cornerRadius = 15
-            sender.titleLabel?.layer.masksToBounds = true
-            sender.titleLabel?.layer.borderWidth = 2
+            sender.layer.cornerRadius = 15
+            sender.layer.masksToBounds = true
+            sender.layer.borderWidth = 2
 
             sender.layer.borderColor = UIColor.init(hex: "48c2fa").cgColor
             sender.setTitleColor(UIColor.init(hex: "48c2fa"), for: UIControlState.normal)
@@ -355,6 +357,13 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
         if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue {
             let currentDevice=OznerManager.instance.currentDevice as! WaterPurifier_Blue
             valueSlider.isEnabled = currentDevice.connectStatus == .Connected
+            
+            //实时显示数据
+//            if currentDevice.connectStatus == .Connected && currentDevice.deviceInfo.deviceType == "RO Comml" {
+//                valueSlider.value = Float(currentDevice.TwoInfo.hottempSet)
+//                valueSlider.previewView?.valueLb.text = String.init(format: "%.0f", Float(currentDevice.TwoInfo.hottempSet)) + "℃"
+//            }
+            
             tdsContainerView.isHidden=false
             offLineLabel.isHidden=true
             tds=(currentDevice.WaterInfo.TDS1,currentDevice.WaterInfo.TDS2)
