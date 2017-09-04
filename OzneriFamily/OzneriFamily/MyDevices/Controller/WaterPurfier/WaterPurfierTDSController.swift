@@ -12,6 +12,7 @@ import SVProgressHUD
 
 class WaterPurfierTDSController: BaseViewController {
 
+    @IBOutlet weak var shareBtn: UIBarButtonItem!
     //header
     @IBOutlet weak var segement: UISegmentedControl!
     @IBOutlet var tdsValueLabel_BF: UILabel!
@@ -20,34 +21,34 @@ class WaterPurfierTDSController: BaseViewController {
     @IBOutlet var tdsStateImg: UIImageView!
     @IBOutlet var tdsStateLabel: UILabel!
     @IBAction func shareClick(_ sender: AnyObject) {
-        let device=OznerManager.instance.currentDevice as! WaterPurifier_Wifi
-        let tdsValue = device.sensor.TDS_After
-        var rankValue=0
-        var beatValue=0
-        LoginManager.instance.showHud()
-        User.TDSSensor(deviceID: device.deviceInfo.deviceMac, type: device.deviceInfo.deviceType, tds: Int(tdsValue), beforetds: 0, success: { (rank, total) in
-            SVProgressHUD.dismiss()
-            rankValue = rank
-            beatValue = Int(100*CGFloat(total-rank)/CGFloat(total))
-            
-            let img=OznerShareManager.getshareImage(rankValue, type: 1, value: Int(tdsValue), beat: beatValue, maxWater: 0)
-            OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title:loadLanguage("浩泽伊泉净品"), shareImg: img)
-            
-            }, failure: { (error) in
-                
-                let appearance = SCLAlertView.SCLAppearance(
-                    showCloseButton: false,
-                    dynamicAnimatorActive: true
-                )
-                let alert=SCLAlertView(appearance: appearance)
-                _=alert.addButton(loadLanguage("否")) {
-                }
-                _=alert.addButton(loadLanguage("是")) {
-                   
-                }
-                _=alert.showInfo("", subTitle: loadLanguage("请求失败,请重试?"))
-                
-        })
+//        let device=OznerManager.instance.currentDevice as! WaterPurifier_Wifi
+//        let tdsValue = device.sensor.TDS_After
+//        var rankValue=0
+//        var beatValue=0
+//        LoginManager.instance.showHud()
+//        User.TDSSensor(deviceID: device.deviceInfo.deviceMac, type: device.deviceInfo.deviceType, tds: Int(tdsValue), beforetds: 0, success: { (rank, total) in
+//            SVProgressHUD.dismiss()
+//            rankValue = rank
+//            beatValue = Int(100*CGFloat(total-rank)/CGFloat(total))
+//            
+//            let img=OznerShareManager.getshareImage(rankValue, type: 1, value: Int(tdsValue), beat: beatValue, maxWater: 0)
+//            OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title:loadLanguage("浩泽伊泉净品"), shareImg: img)
+//            
+//            }, failure: { (error) in
+//                
+//                let appearance = SCLAlertView.SCLAppearance(
+//                    showCloseButton: false,
+//                    dynamicAnimatorActive: true
+//                )
+//                let alert=SCLAlertView(appearance: appearance)
+//                _=alert.addButton(loadLanguage("否")) {
+//                }
+//                _=alert.addButton(loadLanguage("是")) {
+//                   
+//                }
+//                _=alert.showInfo("", subTitle: loadLanguage("请求失败,请重试?"))
+//                
+//        })
 //        let img=OznerShareManager.getshareImage(rankValue, type: 1, value: Int(tdsValue), beat: beatValue, maxWater: 0)
 //        OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title: "浩泽净水家", shareImg: img)
     }
@@ -88,7 +89,7 @@ class WaterPurfierTDSController: BaseViewController {
         hideBtn1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
         hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
         
-        if !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber) {
+        if (LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber) {
             self.navigationItem.rightBarButtonItem = nil
            
         }

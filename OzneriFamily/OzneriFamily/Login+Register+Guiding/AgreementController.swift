@@ -16,7 +16,7 @@ class AgreementController: UIViewController {
     @IBOutlet var webView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView.loadRequest(URLRequest(url: URL(string: "http://cup.ozner.net/app/cn/mzsm.html")!))
+        webView.loadRequest(URLRequest(url: URL(string: "http://app.joyro.com.cn:8282/jrAPPterm.html")!))
         // Do any additional setup after loading the view.
     }
 
