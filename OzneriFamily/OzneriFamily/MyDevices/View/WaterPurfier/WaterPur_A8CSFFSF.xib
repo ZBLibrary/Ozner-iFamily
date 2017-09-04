@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -181,6 +180,7 @@
                 <constraint firstAttribute="bottom" secondItem="LSG-4S-hcX" secondAttribute="bottom" id="wD3-YB-r4n"/>
             </constraints>
             <connections>
+                <outlet property="TemperatLabel" destination="GxB-FH-VDr" id="rh4-yk-VOw"/>
                 <outlet property="coolButton" destination="xhd-wG-8TV" id="uHg-qw-4gC"/>
                 <outlet property="coolLabel" destination="RAx-bE-v06" id="i41-dI-5II"/>
                 <outlet property="footerContainer" destination="NPO-OZ-3k6" id="S1p-dZ-uYC"/>

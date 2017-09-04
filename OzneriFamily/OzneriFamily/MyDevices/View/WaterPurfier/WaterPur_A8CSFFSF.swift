@@ -11,8 +11,6 @@ import UIKit
 class WaterPur_A8CSFFSF: OznerDeviceView {
 
     var scanEnable = true
-    var coolEnable = true
-    var hotEnable = true
     var buyLvXinUrl = ""
     var lvXinStopDate = NSDate()
     var lvXinUsedDays = 0
@@ -20,31 +18,14 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
     
     func setLvXinAndEnable(scan:Bool,cool:Bool,hot:Bool,buyLvXinUrl:String,lvXinStopDate:NSDate,lvXinUsedDays:Int){
         self.scanEnable=scan
-        self.coolEnable=cool
-        self.hotEnable=hot
         self.buyLvXinUrl=buyLvXinUrl
         self.lvXinStopDate=lvXinStopDate
         self.lvXinUsedDays=lvXinUsedDays
     }
    
     
-    @IBAction func toTDSDetailClick(_ sender: UITapGestureRecognizer) {
-        //if isBlueDevice==false {//wifi设备
-            if (OznerManager.instance.currentDevice as! WaterPurifier_Wifi).connectStatus != .Connected {//断网状态
-                weak var weakself=self
-                offLineSuggestView.updateView(IsAir: false, callback: {
-                    weakself?.offLineSuggestView.removeFromSuperview()
-                })
-                self.window?.addSubview(offLineSuggestView)
-            }else{
-                self.delegate.DeviceViewPerformSegue!(SegueID: "showWaterPurfierTDS", sender: nil)
-            }
-            
-       // }
-        
-    }
-    
     //footer
+    @IBOutlet var TemperatLabel: UILabel!
     @IBOutlet var footerContainer: UIView!
     @IBOutlet var powerLabel: UILabel!
     @IBOutlet var powerButton: UIButton!
@@ -57,17 +38,6 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
     }
     @IBAction func operationButtonClick(_ sender: UIButton) {
         
-//        if isBlueDevice {
-//            let appearance = SCLAlertView.SCLAppearance(
-//                showCloseButton: false,
-//                dynamicAnimatorActive: true
-//            )
-//            let alert=SCLAlertView(appearance: appearance)
-//            _=alert.addButton(loadLanguage("确定"), action: {return})
-//            _=alert.showNotice(loadLanguage("提示"), subTitle: loadLanguage("抱歉，该净水器型号没有提供此项功能！"))
-//            return
-//        }
-        
         sender.isEnabled=false
         Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(setButtonEnable), userInfo: sender, repeats: false)//防止多次连续点击
         if sender.tag != 0 && operation.power==false {
@@ -79,33 +49,14 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
             (OznerManager.instance.currentDevice as! WaterPurifier_Wifi).setPower(Power: !operation.power, callBack: { (error) in
             })
         case 1:
-            if hotEnable {
                 (OznerManager.instance.currentDevice as! WaterPurifier_Wifi).setHot(Hot: !operation.hot, callBack: { (error) in
                 })
-            }else{
-                let appearance = SCLAlertView.SCLAppearance(
-                    showCloseButton: false,
-                    dynamicAnimatorActive: true
-                )
-                let alert=SCLAlertView(appearance: appearance)
-                _=alert.addButton(loadLanguage("确定"), action: {return})
-                _=alert.showNotice(loadLanguage("提示"), subTitle: loadLanguage("抱歉，该净水器型号没有提供此项功能！"))
-            }
-            
+                
         case 2:
-            if coolEnable {
-                (OznerManager.instance.currentDevice as! WaterPurifier_Wifi).setCool(Cool: !operation.cool, callBack: { (error) in
-                })
-            }else{
-                let appearance = SCLAlertView.SCLAppearance(
-                    showCloseButton: false,
-                    dynamicAnimatorActive: true
-                )
-                let alert=SCLAlertView(appearance: appearance)
-                _=alert.addButton(loadLanguage("确定"), action: {return})
-                _=alert.showNotice(loadLanguage("提示"), subTitle: loadLanguage("抱歉，该净水器型号没有提供此项功能！"))
-            }
             
+            (OznerManager.instance.currentDevice as! WaterPurifier_Wifi).setCool(Cool: !operation.cool, callBack: { (error) in
+                })
+                
         default:
             break
         }
@@ -121,6 +72,7 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
         offLineSuggestView=Bundle.main.loadNibNamed("OffLineSuggest", owner: nil, options: nil)?.first as! OffLineSuggest
         offLineSuggestView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         offLineSuggestView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
+        TemperatLabel.text="-"
     }
     
     //                (currentDeviceView as! WaterPurifierMainView).circleView.updateCircleView(angleBefore: 0.7, angleAfter: 0.5)
@@ -140,45 +92,50 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
             
         }
     }
-    
+    var temperature:Float = -1{
+        didSet{
+            if temperature==oldValue {
+                return
+            }
+            TemperatLabel.text="\(temperature)"
+        }
+    }
     override func SensorUpdate(identifier: String) {
-        //更新传感器视图
-//        let device = currentDevice as! WaterPurifier_Wifi
-//        
-//            if device.connectStatus
-//            {
-//                
-//                
-//                operation=(false,false,false)
-//            }else{
-//                if (device as! WaterPurifier).status.power==false {
-//                   
-//                    operation=(false,false,false)
-//                }else{
-//                    
-//                    
-//                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
-//                }
-//                
-//            }
-//        
+        let device = currentDevice as! WaterPurifier_Wifi
         
+        if device.connectStatus != OznerConnectStatus.Connected
+        {
+            
+            operation=(false,false,false)
+        }else{
+            temperature=device.sensor.Temperature
+            if device.status.Power==false {
+            
+                operation=(false,false,false)
+            }else{
+                operation=(device.status.Power,device.status.Hot,device.status.Cool)
+            }
+            
+        }
     }
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         
-//            if (device as! WaterPurifier).isOffline
-//            {
-//                operation=(false,false,false)
-//            }else{
-//                if (device as! WaterPurifier).status.power==false {
-//                   
-//                    operation=(false,false,false)
-//                }else{
-//                   
-//                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
-//                }
-//                
-//            }
+        let device = currentDevice as! WaterPurifier_Wifi
+        
+        if device.connectStatus != OznerConnectStatus.Connected
+        {
+            
+            operation=(false,false,false)
+        }else{
+            temperature=device.sensor.Temperature
+            if device.status.Power==false {
+                
+                operation=(false,false,false)
+            }else{
+                operation=(device.status.Power,device.status.Hot,device.status.Cool)
+            }
+            
+        }
         
     }
 }

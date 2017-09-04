@@ -11,8 +11,7 @@ import UIKit
 class WaterPur_A8DRF: OznerDeviceView {
 
     var scanEnable = true
-    var coolEnable = true
-    var hotEnable = true
+   
     var buyLvXinUrl = ""
     var lvXinStopDate = NSDate()
     var lvXinUsedDays = 0
@@ -20,8 +19,6 @@ class WaterPur_A8DRF: OznerDeviceView {
     
     func setLvXinAndEnable(scan:Bool,cool:Bool,hot:Bool,buyLvXinUrl:String,lvXinStopDate:NSDate,lvXinUsedDays:Int){
         self.scanEnable=scan
-        self.coolEnable=cool
-        self.hotEnable=hot
         self.buyLvXinUrl=buyLvXinUrl
         self.lvXinStopDate=lvXinStopDate
         self.lvXinUsedDays=lvXinUsedDays
@@ -36,22 +33,22 @@ class WaterPur_A8DRF: OznerDeviceView {
     @IBOutlet var offLineLabel: UILabel!//断网提示Label
     @IBOutlet var tdsContainerView: UIView!
     @IBAction func toTDSDetailClick(_ sender: UITapGestureRecognizer) {
-//        if isBlueDevice==false {//wifi设备
-//            if (self.currentDevice as! WaterPurifier).isOffline {//断网状态
-//                weak var weakself=self
-//                offLineSuggestView.updateView(IsAir: false, callback: {
-//                    weakself?.offLineSuggestView.removeFromSuperview()
-//                })
-//                self.window?.addSubview(offLineSuggestView)
-//            }else{
-//                self.delegate.DeviceViewPerformSegue!(SegueID: "showWaterPurfierTDS", sender: nil)
-//            }
-//            
-//        }
+            if (self.currentDevice as! WaterPurifier_Wifi).connectStatus != OznerConnectStatus.Connected{//断网状态
+                weak var weakself=self
+                offLineSuggestView.updateView(IsAir: false, callback: {
+                    weakself?.offLineSuggestView.removeFromSuperview()
+                })
+                self.window?.addSubview(offLineSuggestView)
+            }else{
+                self.delegate.DeviceViewPerformSegue!(SegueID: "showWaterPurfierTDS", sender: nil)
+            }
+            
+        
         
     }
     
     //footer
+    @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var footerContainer: UIView!
     @IBOutlet var powerLabel: UILabel!
     @IBOutlet var powerButton: UIButton!
@@ -63,47 +60,21 @@ class WaterPur_A8DRF: OznerDeviceView {
         (timer.userInfo as! UIButton).isEnabled=true
     }
     @IBAction func operationButtonClick(_ sender: UIButton) {
-        
-
-        
         sender.isEnabled=false
         Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(setButtonEnable), userInfo: sender, repeats: false)//防止多次连续点击
         if sender.tag != 0 && operation.power==false {
             return
         }
-        
         switch sender.tag {
         case 0:
             (self.currentDevice as! WaterPurifier_Wifi).setPower(Power: !operation.power, callBack: { (error) in
             })
         case 1:
-            if hotEnable {
-                (self.currentDevice as! WaterPurifier_Wifi).setHot(Hot: !operation.hot, callBack: { (error) in
+            (self.currentDevice as! WaterPurifier_Wifi).setHot(Hot: !operation.hot, callBack: { (error) in
                 })
-            }else{
-                let appearance = SCLAlertView.SCLAppearance(
-                    showCloseButton: false,
-                    dynamicAnimatorActive: true
-                )
-                let alert=SCLAlertView(appearance: appearance)
-                _=alert.addButton(loadLanguage("确定"), action: {return})
-                _=alert.showNotice(loadLanguage("提示"), subTitle: loadLanguage("抱歉，该净水器型号没有提供此项功能！"))
-            }
-            
         case 2:
-            if coolEnable {
-                (self.currentDevice as! WaterPurifier_Wifi).setCool(Cool: !operation.cool, callBack: { (error) in
+            (self.currentDevice as! WaterPurifier_Wifi).setCool(Cool: !operation.cool, callBack: { (error) in
                 })
-            }else{
-                let appearance = SCLAlertView.SCLAppearance(
-                    showCloseButton: false,
-                    dynamicAnimatorActive: true
-                )
-                let alert=SCLAlertView(appearance: appearance)
-                _=alert.addButton(loadLanguage("确定"), action: {return})
-                _=alert.showNotice(loadLanguage("提示"), subTitle: loadLanguage("抱歉，该净水器型号没有提供此项功能！"))
-            }
-            
         default:
             break
         }
@@ -122,11 +93,12 @@ class WaterPur_A8DRF: OznerDeviceView {
     }
     
     //                (currentDeviceView as! WaterPurifierMainView).circleView.updateCircleView(angleBefore: 0.7, angleAfter: 0.5)
-    var tds:(tds1:Int,tds2:Int)=(0,-1){
+    var tds:(tds1:Int,tds2:Int,temperature:Float)=(0,-1,-1){
         didSet{
             if tds==oldValue {
                 return
             }
+            temperatureLabel.text="\(tds.temperature)"
             let tmptdsBF = (tds.tds1==65535 || tds.tds1<0) ? 0:tds.tds1
             let tmptdsAF = (tds.tds2==65535 || tds.tds2<0) ? 0:tds.tds2
             let tdsBF=max(tmptdsBF, tmptdsAF)
@@ -135,7 +107,7 @@ class WaterPur_A8DRF: OznerDeviceView {
             tdsValueLabel_BF.text = tdsBF==0 ? loadLanguage("暂无"):"\(tdsBF)"
             tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:52)*width_screen/375)
             tdsValueLabel_AF.text = tdsAF==0 ? loadLanguage("暂无"):"\(tdsAF)"
-            tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:52)*width_screen/375)
+            tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:46)*width_screen/375)
             
             var angleBF = CGFloat(0)
             switch true {
@@ -193,62 +165,52 @@ class WaterPur_A8DRF: OznerDeviceView {
     }
     
     override func SensorUpdate(identifier: String) {
-        //更新传感器视图
-//        if isBlueDevice {
-//            tdsContainerView.isHidden=false
-//            offLineLabel.isHidden=true
-//            tds=(Int((device as! ROWaterPurufier).waterInfo.tds1),Int((device as! ROWaterPurufier).waterInfo.tds2))
-//        }else{
-//            if (device as! WaterPurifier).isOffline
-//            {
-//                tdsContainerView.isHidden=true
-//                offLineLabel.isHidden=false
-//                offLineLabel.text=loadLanguage("设备云已断开")
-//                operation=(false,false,false)
-//            }else{
-//                if (device as! WaterPurifier).status.power==false {
-//                    tdsContainerView.isHidden=true
-//                    offLineLabel.isHidden=false
-//                    offLineLabel.text=loadLanguage("设备已关机")
-//                    operation=(false,false,false)
-//                }else{
-//                    tdsContainerView.isHidden=false
-//                    offLineLabel.isHidden=true
-//                    tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
-//                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
-//                }
-//                
-//            }
-//        }
+        let device = currentDevice as! WaterPurifier_Wifi
+        
+        if device.connectStatus != OznerConnectStatus.Connected
+        {
+            tdsContainerView.isHidden=true
+            offLineLabel.isHidden=false
+            offLineLabel.text=loadLanguage("设备云已断开")
+            operation=(false,false,false)
+        }else{
+            if device.status.Power==false {
+                tdsContainerView.isHidden=true
+                offLineLabel.isHidden=false
+                offLineLabel.text=loadLanguage("设备已关机")
+                operation=(false,false,false)
+            }else{
+                tdsContainerView.isHidden=false
+                offLineLabel.isHidden=true
+                tds=(device.sensor.TDS_Before,device.sensor.TDS_After,device.sensor.Temperature)
+                operation=(device.status.Power,device.status.Hot,device.status.Cool)
+            }
+            
+        }
         
     }
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
-//        //更新连接状态视图
-//        if isBlueDevice {
-//            tdsContainerView.isHidden=false
-//            offLineLabel.isHidden=true
-//            tds=(Int((device as! ROWaterPurufier).waterInfo.tds1),Int((device as! ROWaterPurufier).waterInfo.tds2))
-//        }else{
-//            if (device as! WaterPurifier).isOffline
-//            {
-//                tdsContainerView.isHidden=true
-//                offLineLabel.isHidden=false
-//                offLineLabel.text=loadLanguage("设备云已断开")
-//                operation=(false,false,false)
-//            }else{
-//                if (device as! WaterPurifier).status.power==false {
-//                    tdsContainerView.isHidden=true
-//                    self.offLineLabel.isHidden=false
-//                    self.offLineLabel.text=loadLanguage("设备已关机")
-//                    operation=(false,false,false)
-//                }else{
-//                    tdsContainerView.isHidden=false
-//                    self.offLineLabel.isHidden=true
-//                    tds=(Int((device as! WaterPurifier).sensor.tds1),Int((device as! WaterPurifier).sensor.tds2))
-//                    operation=((device as! WaterPurifier).status.power,(device as! WaterPurifier).status.hot,(device as! WaterPurifier).status.cool)
-//                }
-//                
-//            }
-//        }
+        let device = currentDevice as! WaterPurifier_Wifi
+        
+        if device.connectStatus != OznerConnectStatus.Connected
+        {
+            tdsContainerView.isHidden=true
+            offLineLabel.isHidden=false
+            offLineLabel.text=loadLanguage("设备云已断开")
+            operation=(false,false,false)
+        }else{
+            if device.status.Power==false {
+                tdsContainerView.isHidden=true
+                offLineLabel.isHidden=false
+                offLineLabel.text=loadLanguage("设备已关机")
+                operation=(false,false,false)
+            }else{
+                tdsContainerView.isHidden=false
+                offLineLabel.isHidden=true
+                tds=(device.sensor.TDS_Before,device.sensor.TDS_After,device.sensor.Temperature)
+                operation=(device.status.Power,device.status.Hot,device.status.Cool)
+            }
+            
+        }
     }
 }

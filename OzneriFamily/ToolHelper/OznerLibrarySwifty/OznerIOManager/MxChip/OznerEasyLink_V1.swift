@@ -146,13 +146,13 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
         print(mataDataDict)
         if let tmptype =  mataDataDict["FW"] as? String
         {
-            var productID = "16a21bd6"
-            if tmptype.contains("FOG_HAOZE_AIR") {
-                productID="580c2783"
-            }
-            if deviceType.pairID.contains(productID) {
+            //var productID = "16a21bd6"
+//            if tmptype.contains("FOG_HAOZE_AIR") {
+//                productID="580c2783"
+//            }
+            //if deviceType.pairID.contains(productID) {
                 self.pairSuccessed(configDict: mataDataDict)
-            }
+            //}
         }
         
         
@@ -161,13 +161,13 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
         print(configDict)
         if let tmptype =  configDict["FW"] as? String
         {
-            var productID = "16a21bd6"
-            if tmptype.contains("FOG_HAOZE_AIR") {
-                productID="580c2783"
-            }
-            if deviceType.pairID.contains(productID) {
+//            var productID = "16a21bd6"
+//            if tmptype.contains("FOG_HAOZE_AIR") {
+//                productID="580c2783"
+//            }
+            //if deviceType.pairID.contains(productID) {
                 self.pairSuccessed(configDict: configDict)
-            }
+            //}
         }
         
     }
