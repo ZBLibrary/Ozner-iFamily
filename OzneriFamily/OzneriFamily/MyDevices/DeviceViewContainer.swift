@@ -130,6 +130,7 @@ class DeviceViewContainer: UIView {
                         _ = device?.setHotTemp(Int(round((self?.currentDeviceView as! WaterPurifierMainView).valueSlider.value)))
                         (self?.currentDeviceView as! WaterPurifierMainView).currentBtn?.layer.masksToBounds = false
                         (self?.currentDeviceView as! WaterPurifierMainView).currentBtn?.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+                        (self?.currentDeviceView as! WaterPurifierMainView).valueSlider.previewView?.valueLb.text = String.init(format: "%.0f", Float(round((self?.currentDeviceView as! WaterPurifierMainView).valueSlider.value))) + "℃" 
                         (self?.currentDeviceView as! WaterPurifierMainView).currentBtn?.layer.borderWidth = 0
                         
                     }

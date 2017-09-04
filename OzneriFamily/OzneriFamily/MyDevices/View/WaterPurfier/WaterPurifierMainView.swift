@@ -217,7 +217,9 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
     
     func endTrackingSetValue() {
         let device = currentDevice as? WaterPurifier_Blue
-        _ =  device?.setHotTemp(Int(valueSlider.value))
+        valueSlider.value = Float(Int(valueSlider.value / 10) * 10)
+        _ =  device?.setHotTemp(Int(valueSlider.value / 10) * 10)
+        
     }
     
     

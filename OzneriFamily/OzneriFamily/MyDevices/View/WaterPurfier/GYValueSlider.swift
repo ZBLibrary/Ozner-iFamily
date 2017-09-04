@@ -47,6 +47,7 @@ class GYValueSlider: UISlider {
         self.isEnabled = false
         self.minimumValue = 40
         self.maximumValue = 99
+        
         self.setMaximumTrackImage(imageFromColor(UIColor.clear), for: UIControlState.normal)
         self.setMaximumTrackImage(imageFromColor(UIColor.clear), for: UIControlState.normal)
 
