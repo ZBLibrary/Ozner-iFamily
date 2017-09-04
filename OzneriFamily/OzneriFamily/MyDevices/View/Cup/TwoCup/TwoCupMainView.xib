@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,16 +28,18 @@
                             <color key="tintColor" red="0.19298838235764751" green="0.61818955185192159" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </segmentedControl>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBp-m5-jh4" customClass="GYCirclePoint" customModule="OzneriFamily" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="133" width="375" height="290.5"/>
+                            <rect key="frame" x="40" y="148" width="295" height="295"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="sBp-m5-jh4" secondAttribute="height" multiplier="1:1" id="mln-Fc-79W"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="sBp-m5-jh4" firstAttribute="leading" secondItem="lqC-ml-Tae" secondAttribute="leading" id="1c2-NE-fDM"/>
-                        <constraint firstItem="sBp-m5-jh4" firstAttribute="top" secondItem="zgB-DI-0kB" secondAttribute="bottom" constant="15" id="TAc-bj-voK"/>
-                        <constraint firstAttribute="trailing" secondItem="sBp-m5-jh4" secondAttribute="trailing" id="bxz-9z-Ozu"/>
-                        <constraint firstAttribute="bottom" secondItem="sBp-m5-jh4" secondAttribute="bottom" constant="10" id="iV3-Np-HiQ"/>
+                        <constraint firstAttribute="trailing" secondItem="sBp-m5-jh4" secondAttribute="trailing" constant="40" id="Hrk-H8-iN3"/>
+                        <constraint firstItem="sBp-m5-jh4" firstAttribute="top" secondItem="zgB-DI-0kB" secondAttribute="bottom" constant="30" id="TAc-bj-voK"/>
+                        <constraint firstItem="sBp-m5-jh4" firstAttribute="leading" secondItem="lqC-ml-Tae" secondAttribute="leading" constant="40" id="Zgk-aG-qUn"/>
                         <constraint firstItem="zgB-DI-0kB" firstAttribute="top" secondItem="lqC-ml-Tae" secondAttribute="top" constant="90" id="s2C-Il-WEz"/>
                         <constraint firstItem="zgB-DI-0kB" firstAttribute="centerX" secondItem="lqC-ml-Tae" secondAttribute="centerX" id="wKN-qX-Xu5"/>
                     </constraints>

@@ -18,7 +18,7 @@ import UIKit
 class GYCirclePoint: UIView {
     
     var image:UIImage!
-    var currenTemp:Float = 50
+    var currenTemp:Float = 30
     var tmepLb:UILabel!
     var stateLb:UILabel!
     
@@ -35,23 +35,29 @@ class GYCirclePoint: UIView {
     private func initUI() {
         
         let lb1 = UILabel(frame: CGRect(x: 0, y: 30, width: 100, height: 20))
-        lb1.center.x = self.frame.maxX/2
+        lb1.center.x = self.frame.width/2
         lb1.text = "水温"
         lb1.textAlignment = .center
         lb1.textColor = UIColor.white
         self.addSubview(lb1)
         
-        tmepLb = UILabel(frame: CGRect(x: 0, y:lb1.frame.maxY + 5, width: 200, height: 45))
-        tmepLb.center.x = self.frame.maxX/2 + 10
+        tmepLb = UILabel(frame: CGRect(x: 0, y:lb1.frame.maxY + 5, width: 200, height: 50))
+        tmepLb.center.x = self.frame.width/2 + 10
         tmepLb.text = String.init(format: "%0.f", currenTemp) + "°"
         tmepLb.textAlignment = .center
-        tmepLb.font = UIFont.systemFont(ofSize: 48)
+        tmepLb.font = UIFont.systemFont(ofSize: 50)
         self.addSubview(tmepLb)
         
-        tempLoad()
-        stateLb = UILabel(frame: CGRect(x: 0, y:tmepLb.frame.maxY + 5, width: 200, height: 45))
-        stateLb.text = ""
+        stateLb = UILabel(frame: CGRect(x: 0, y:tmepLb.frame.maxY + 5, width: 200, height: 30))
+        stateLb.text = "--"
+        stateLb.font = UIFont.systemFont(ofSize: 20)
+        stateLb.center.x = self.frame.width/2
+        stateLb.textAlignment = .center
+        stateLb.textColor = UIColor.white
+        self.addSubview(stateLb)
         
+        tempLoad()
+
     }
     
     
@@ -60,12 +66,15 @@ class GYCirclePoint: UIView {
         switch currenTemp {
         case 0...25:
             tmepLb.textColor = UIColor.blue
+            stateLb.text = "偏凉"
             break
         case 26...50:
             tmepLb.textColor = UIColor.yellow
+            stateLb.text = "适中"
             break
         case 50...100:
             tmepLb.textColor = UIColor.red
+            stateLb.text = "偏烫"
             break
         default:
             break
@@ -98,7 +107,7 @@ class GYCirclePoint: UIView {
             radious = maxWidth/2.0 - 5 - 1
         }
         
-        let starAnagel = 3.1
+        let starAnagel = -Double.pi
         let endAnagel = 0
         let strokenWidth:CGFloat = 10
         
