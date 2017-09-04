@@ -31,7 +31,7 @@ class WaterPurfierTDSController: BaseViewController {
             beatValue = Int(100*CGFloat(total-rank)/CGFloat(total))
             
             let img=OznerShareManager.getshareImage(rankValue, type: 1, value: Int(tdsValue), beat: beatValue, maxWater: 0)
-            OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title:loadLanguage("浩泽净水家"), shareImg: img)
+            OznerShareManager.ShareImgToWeChat(sence: WXSceneTimeline, url: "", title:loadLanguage("浩泽伊泉净品"), shareImg: img)
             
             }, failure: { (error) in
                 

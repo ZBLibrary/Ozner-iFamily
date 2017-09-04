@@ -20,15 +20,15 @@ class AboutUSViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         currenLb.text = loadLanguage("当前版本")
-     self.title=loadLanguage("关于浩泽净水家" )
+     self.title=loadLanguage("关于浩泽伊泉净品")
         //UpdateLable.text=loadLanguage("检查更新版本" )
         ScoreLable.text=loadLanguage("评个分吧")
-        HaozeLable.text=loadLanguage("浩泽净水家")
+        HaozeLable.text=loadLanguage("浩泽伊泉净品")
         versionLb.text = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
     }
     //评个分吧
     @IBAction func GiveScore(sender: AnyObject) {
-        let str = "itms-apps://itunes.apple.com/app/id955305764"
+        let str = "itms-apps://itunes.apple.com/app/id1153485553"
         UIApplication.shared.openURL(NSURL(string: str)! as URL)
     }
 
