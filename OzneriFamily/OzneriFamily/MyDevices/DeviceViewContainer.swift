@@ -68,7 +68,7 @@ class DeviceViewContainer: UIView {
     private func SelectWitchView(device:OznerBaseDevice?)  {
         
         //测试
-        var deviceNibName = "NoDeviceView"//"WaterPur_A8CSFFSF"//
+        var deviceNibName = "NoDeviceView"//"WashDush_WifiMainView"//
         if device != nil  {//有设备时视图初始化
             let tmpType=ProductInfo.getCurrDeviceClass()
             deviceNibName=DeviceNibName[tmpType]!
@@ -167,7 +167,7 @@ class DeviceViewContainer: UIView {
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:225*k_height)
                 break
             case .WashDush_Wifi:
-                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:225*k_height)
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:230*k_height)
                 break
                 //隐藏底部按钮
                 //(currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
