@@ -24,7 +24,7 @@ class SelectDeviceCell: UITableViewCell {
             typeState.text = loadLanguage("蓝牙连接")
         case .MxChip,.Ayla,.AylaMxChip://Wifi
             typeImg.image=UIImage(named: "select_device_4")
-            typeState.text = loadLanguage("Wifi连接")
+            typeState.text = loadLanguage("WiFi连接")
         default://Wifi
             typeImg.image=UIImage(named: "")
             typeState.text = loadLanguage("")

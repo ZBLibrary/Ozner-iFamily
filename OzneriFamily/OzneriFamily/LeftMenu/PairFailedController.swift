@@ -35,7 +35,7 @@ class PairFailedController: UIViewController {
         self.pairLb.text = loadLanguage("重新配对")
         self.pairBtn.setTitle(loadLanguage("重新配对"), for: UIControlState.normal)
         self.problmLb.text = loadLanguage("常见问题")
-        botoomState.text = isBlueToothDevice==true ?  loadLanguage("您可以检查设备和手机蓝牙连接状态后再进行配对"): loadLanguage("您可以检查设备和手机Wifi连接状态后再进行配对")
+        botoomState.text = isBlueToothDevice==true ?  loadLanguage("您可以检查设备和手机蓝牙连接状态后再进行配对"): loadLanguage("您可以检查设备和手机WiFi连接状态后再进行配对")
         // Do any additional setup after loading the view.
     }
 
