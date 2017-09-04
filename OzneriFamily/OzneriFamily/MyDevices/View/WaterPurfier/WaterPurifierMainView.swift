@@ -357,6 +357,13 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
         if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue {
             let currentDevice=OznerManager.instance.currentDevice as! WaterPurifier_Blue
             valueSlider.isEnabled = currentDevice.connectStatus == .Connected
+            
+            //实时显示数据
+//            if currentDevice.connectStatus == .Connected && currentDevice.deviceInfo.deviceType == "RO Comml" {
+//                valueSlider.value = Float(currentDevice.TwoInfo.hottempSet)
+//                valueSlider.previewView?.valueLb.text = String.init(format: "%.0f", Float(currentDevice.TwoInfo.hottempSet)) + "℃"
+//            }
+            
             tdsContainerView.isHidden=false
             offLineLabel.isHidden=true
             tds=(currentDevice.WaterInfo.TDS1,currentDevice.WaterInfo.TDS2)
