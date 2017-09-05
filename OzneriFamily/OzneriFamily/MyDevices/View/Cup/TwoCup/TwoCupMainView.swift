@@ -24,6 +24,51 @@ class TwoCupMainView: OznerDeviceView {
     @IBOutlet weak var batteryLb: UILabel!
     @IBOutlet weak var batteryImage: UIImageView!
 
+    @IBOutlet weak var tdsView: CupHeadCircleView!
+    @IBOutlet weak var segement: UISegmentedControl!
+    
+    @IBOutlet weak var tempView: GYCirclePoint!
+    
+   
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        tdsView.isHidden = true
+        tempView.isHidden = false
+        segement.addTarget(self, action:  #selector(TwoCupMainView.segmentedChanged(_:)), for: UIControlEvents.valueChanged)
+        
+    }
+    
+    
+    func segmentedChanged(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            
+            UIView.transition(with: tempView, duration: 0.35, options: UIViewAnimationOptions.transitionFlipFromLeft, animations: {
+                self.tdsView.isHidden = true
+                self.tempView.isHidden = false
+                
+            }, completion: { (finished) in
+                
+            })
+            
+            break
+        case 1:
+            UIView.transition(with: tdsView, duration: 0.35, options: UIViewAnimationOptions.transitionFlipFromLeft, animations: {
+                self.tempView.isHidden = true
+                self.tdsView.isHidden = false
+            }, completion: { (finished) in
+                
+            })
+            
+            break
+        default:
+            break
+        }
+        
+    }
+
+    
     
 //    override func draw(_ rect: CGRect) {
 //        
@@ -51,16 +96,9 @@ class TwoCupMainView: OznerDeviceView {
 //        ctx?.addPath(path)
 //        ctx?.strokePath()
 //    
-//        
+//
 //        
 //    }
-//    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+//
 
 }

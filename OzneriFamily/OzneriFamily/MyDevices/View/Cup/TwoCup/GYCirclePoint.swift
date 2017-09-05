@@ -41,11 +41,11 @@ class GYCirclePoint: UIView {
         lb1.textColor = UIColor.white
         self.addSubview(lb1)
         
-        tmepLb = UILabel(frame: CGRect(x: 0, y:lb1.frame.maxY + 5, width: 200, height: 50))
+        tmepLb = UILabel(frame: CGRect(x: 0, y:lb1.frame.maxY + 5, width: 200, height: 70))
         tmepLb.center.x = self.frame.width/2 + 10
         tmepLb.text = String.init(format: "%0.f", currenTemp) + "°"
         tmepLb.textAlignment = .center
-        tmepLb.font = UIFont.systemFont(ofSize: 50)
+        tmepLb.font = UIFont.systemFont(ofSize: 65)
         self.addSubview(tmepLb)
         
         stateLb = UILabel(frame: CGRect(x: 0, y:tmepLb.frame.maxY + 5, width: 200, height: 30))
