@@ -113,6 +113,10 @@ class GYCirclePoint: UIView {
         
         let basePath = UIBezierPath(arcCenter: center, radius: radious, startAngle: CGFloat(starAnagel), endAngle: CGFloat(endAnagel), clockwise: true)
         
+//        let pathAnimation = CAKeyframeAnimation(keyPath: "position")
+//        pathAnimation.path = basePath.cgPath
+//        pathAnimation.duration = 4
+//        self.layer.add(pathAnimation, forKey: "PathAnimation")
         ctx?.setLineWidth(strokenWidth)
         //设置线条顶端
         ctx?.setLineCap(CGLineCap.round)

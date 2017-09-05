@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqC-ml-Tae">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="433.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                     <subviews>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zgB-DI-0kB">
                             <rect key="frame" x="119" y="90" width="137" height="29"/>
@@ -44,13 +44,21 @@
                         <constraint firstItem="zgB-DI-0kB" firstAttribute="centerX" secondItem="lqC-ml-Tae" secondAttribute="centerX" id="wKN-qX-Xu5"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zh5-qN-xiX">
+                    <rect key="frame" x="0.0" y="400" width="375" height="267"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="lqC-ml-Tae" secondAttribute="trailing" id="0zc-tf-LeG"/>
-                <constraint firstItem="lqC-ml-Tae" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.65" id="Am5-St-LiI"/>
+                <constraint firstItem="lqC-ml-Tae" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.6" id="Am5-St-LiI"/>
+                <constraint firstAttribute="bottom" secondItem="zh5-qN-xiX" secondAttribute="bottom" id="afE-8k-6Ti"/>
+                <constraint firstAttribute="trailing" secondItem="zh5-qN-xiX" secondAttribute="trailing" id="fBF-HW-lgP"/>
+                <constraint firstItem="zh5-qN-xiX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hfK-CU-TN7"/>
                 <constraint firstItem="lqC-ml-Tae" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lOW-nf-1mm"/>
                 <constraint firstItem="lqC-ml-Tae" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mK5-lQ-SE7"/>
+                <constraint firstItem="zh5-qN-xiX" firstAttribute="top" secondItem="lqC-ml-Tae" secondAttribute="bottom" id="r1l-2Y-zSc"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
