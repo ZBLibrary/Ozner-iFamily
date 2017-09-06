@@ -32,7 +32,7 @@ class TwoCup: OznerBaseDevice {
         
     }
     
-    private(set) var senSorTwo:(TDS:Int,Temperature:Int) = (0,0) {
+    private(set) var senSorTwo:(TDS:Int,Temperature:Int) = (0,-1) {
         
         didSet {
             

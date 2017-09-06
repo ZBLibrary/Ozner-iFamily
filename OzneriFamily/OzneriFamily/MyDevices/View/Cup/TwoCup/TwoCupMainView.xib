@@ -42,7 +42,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfw-Yt-szE">
                                             <rect key="frame" x="0.0" y="14" width="100.5" height="42.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
-                                            <color key="textColor" red="0.22552007439999999" green="0.44347250459999998" blue="0.86721867320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.22745098039215686" green="0.44313725490196076" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
@@ -114,16 +114,24 @@
                                 <constraint firstItem="gU8-9V-870" firstAttribute="width" secondItem="Y8q-OL-xB6" secondAttribute="width" multiplier="120:310" id="fdw-hd-jYU"/>
                                 <constraint firstItem="v1E-Kp-01e" firstAttribute="top" secondItem="yp7-wk-2Cd" secondAttribute="bottom" id="oyi-00-SAY"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="0fk-yq-O1N" appends="YES" id="pC1-Ga-lS0"/>
+                            </connections>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBp-m5-jh4" customClass="GYCirclePoint" customModule="OzneriFamily" customModuleProvider="target">
                             <rect key="frame" x="40" y="148" width="295" height="295"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="sBp-m5-jh4" secondAttribute="height" multiplier="1:1" id="mln-Fc-79W"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="07o-mr-wOA" appends="YES" id="TN2-hE-vch"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Y8q-OL-xB6" secondAttribute="trailing" constant="40" id="1RT-P5-HBX"/>
                         <constraint firstAttribute="trailing" secondItem="sBp-m5-jh4" secondAttribute="trailing" constant="40" id="Hrk-H8-iN3"/>
@@ -148,9 +156,9 @@
                                         <constraint firstAttribute="height" constant="25" id="x5s-G8-myw"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amz-0R-BgD">
-                                    <rect key="frame" x="186.5" y="35" width="32" height="19.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amz-0R-BgD">
+                                    <rect key="frame" x="194.5" y="34" width="16.5" height="21.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -245,12 +253,26 @@
                 <outlet property="lb2" destination="eqP-2E-B8C" id="z7k-On-jXh"/>
                 <outlet property="secondRemindLb" destination="ern-UR-7ac" id="DjG-v3-1hz"/>
                 <outlet property="segement" destination="zgB-DI-0kB" id="PSC-lx-H1e"/>
+                <outlet property="tdsBeatLabel" destination="v1E-Kp-01e" id="AUe-3e-01r"/>
+                <outlet property="tdsImg" destination="EQy-wo-j38" id="zIJ-Lf-rgf"/>
+                <outlet property="tdsLb" destination="Tfw-Yt-szE" id="gU4-dl-R7M"/>
+                <outlet property="tdsState" destination="7r8-aB-cS9" id="2QO-NT-i92"/>
                 <outlet property="tdsView" destination="Y8q-OL-xB6" id="ANM-mD-g9r"/>
                 <outlet property="tempView" destination="sBp-m5-jh4" id="ZRK-Wy-m4L"/>
                 <outlet property="timeRemindLb" destination="Nu9-8E-7C5" id="2lJ-Et-w8O"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="94.5"/>
         </view>
+        <tapGestureRecognizer id="0fk-yq-O1N">
+            <connections>
+                <action selector="tdsAction:" destination="iN0-l3-epB" id="qY3-cc-B0G"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="07o-mr-wOA">
+            <connections>
+                <action selector="tempAction:" destination="iN0-l3-epB" id="ke0-Mu-pKw"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="baobiao" width="16" height="16"/>

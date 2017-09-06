@@ -105,7 +105,7 @@ class CupMainView: OznerDeviceView {
     }
     private var Drinking = 0.0{
         didSet{
-            if Drinking != oldValue   {
+            if Drinking != oldValue {
                 
                 let drinkGoal=Int((self.currentDevice as! Cup).settings.GetValue(key: "DrinkGoal", defaultValue: "2000") )!
                 let tmpDrinking = Drinking/Double(drinkGoal)

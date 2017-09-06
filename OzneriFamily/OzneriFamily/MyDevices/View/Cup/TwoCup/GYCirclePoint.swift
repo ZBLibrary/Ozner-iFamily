@@ -18,7 +18,7 @@ import UIKit
 class GYCirclePoint: UIView {
     
     var image:UIImage!
-    var currenTemp:Float = 30
+    var currenTemp:Float = -1
     var tmepLb:UILabel!
     var stateLb:UILabel!
     
@@ -34,18 +34,20 @@ class GYCirclePoint: UIView {
     
     private func initUI() {
         
-        let lb1 = UILabel(frame: CGRect(x: 0, y: 30, width: 100, height: 20))
+        let lb1 = UILabel(frame: CGRect(x: 0, y: 40, width: 100, height: 20))
         lb1.center.x = self.frame.width/2
         lb1.text = "水温"
         lb1.textAlignment = .center
         lb1.textColor = UIColor.white
         self.addSubview(lb1)
-        
+                
         tmepLb = UILabel(frame: CGRect(x: 0, y:lb1.frame.maxY + 5, width: 200, height: 70))
         tmepLb.center.x = self.frame.width/2 + 10
-        tmepLb.text = String.init(format: "%0.f", currenTemp) + "°"
+        tmepLb.text = "暂无"
         tmepLb.textAlignment = .center
-        tmepLb.font = UIFont.systemFont(ofSize: 65)
+        //".SF UI Display"
+        tmepLb.font = UIFont.init(name: ".SFUIDisplay-Thin", size: 50)
+
         self.addSubview(tmepLb)
         
         stateLb = UILabel(frame: CGRect(x: 0, y:tmepLb.frame.maxY + 5, width: 200, height: 30))
@@ -64,8 +66,9 @@ class GYCirclePoint: UIView {
     fileprivate func tempLoad() {
         
         switch currenTemp {
+
         case 0...25:
-            tmepLb.textColor = UIColor.blue
+            tmepLb.textColor = UIColor.init(hexString: "3A71DD")
             stateLb.text = "偏凉"
             break
         case 26...50:
@@ -78,6 +81,12 @@ class GYCirclePoint: UIView {
             break
         default:
             break
+        }
+        
+        tmepLb.text = String.init(format: "%0.f", currenTemp) + "°"
+        if Int(currenTemp) == -1 {
+            tmepLb.textColor = UIColor.init(hexString: "3A71DD")
+            tmepLb.text = "暂无"
         }
         
     }
@@ -127,14 +136,17 @@ class GYCirclePoint: UIView {
         var x:Float = 0
         var y:Float = 0
         
+        if Int(currenTemp) != -1{
+         
         // 0.11 * currenTemp
         x = Float(center.x) - Float(maxWidth/2) * sinf(Float(raidanstoDegress(90 + Double(currenTemp * 1.8)))) -  0.14 * currenTemp     // - 13 * 50/100
         y = Float(center.y) + Float(maxWidth/2) * cosf(Float(raidanstoDegress(90 + Double(currenTemp * 1.8))))
         
         ctx?.draw(image.cgImage!, in: CGRect(x: Double(x), y: Double(y), width: 17.0, height: 17.0))
+        
+        }
    
     }
-    
     
     func currentTemp(_ temp:Int) {
         
@@ -154,7 +166,6 @@ class GYCirclePoint: UIView {
         
         image = UIImage(named: "circle_point1")
 
-        initUI()
     }
 
 }
