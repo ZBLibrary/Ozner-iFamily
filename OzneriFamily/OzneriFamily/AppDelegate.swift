@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
  
         
         window?.backgroundColor = UIColor.white
+        LoginManager.instance.currentLoginType = .ByPhoneNumber
         
         User.loginWithLocalUserInfo(success: { (user) in
             LoginManager.instance.mainTabBarController = MainTabBarController()
@@ -83,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         // 初始化 Udesk
         UdeskManager.initWithAppKey("4ddf84becfd2320bca9f183136574c0f", appId: "f633b561471be762", domain: "ozner.udesk.cn")
 //        updateversion()
-        Bugly.start(withAppId: "900019591")
+        Bugly.start(withAppId: "78bbbe1a43")
                 
         Thread.sleep(forTimeInterval: 1)
         return true
