@@ -10,8 +10,6 @@ import UIKit
 import SnapKit
 
 class CupTDSChartContainerView: UIView {
-
-   
     
     var lineView:CupTDSDetailLineView!
     var tdsCircleView:CupTDSDetailCilcleView!
