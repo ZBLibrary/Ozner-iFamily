@@ -162,6 +162,14 @@ class MyDevicesController: UIViewController {
             let vc = segue.destination as! TapLvXinController
             vc.waterPurfierData=sender as! [String : Any]?
             break
+        case "showCupTDSDetail":
+            let vc = segue.destination as! CupTDSDetailController
+            vc.isOneCup = false
+            break
+        case "showCupTemperatureDetail":
+            let vc = segue.destination as! CupTemperatureController
+            vc.isOneCup = false
+            break
             
         default:
             break

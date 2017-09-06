@@ -10,6 +10,7 @@ import UIKit
 
 class CupTDSDetailController: BaseViewController {
 
+    var isOneCup:Bool = true
 
     @IBAction func shareClick(_ sender: UIBarButtonItem) {
         let img = OznerShareManager.getshareImage(rankValue, type: 1, value: 1, beat: beatValue, maxWater: 0)
@@ -57,10 +58,38 @@ class CupTDSDetailController: BaseViewController {
             bootomHideView.isHidden = false
             zixunBtn.isHidden = false
         }
+        
+        //chart
+        let chartCont=Bundle.main.loadNibNamed("CupTDSChartContainerView", owner: nil, options: nil)?.last as! CupTDSChartContainerView
+        chartContainerView.addSubview(chartCont)
+        chartCont.translatesAutoresizingMaskIntoConstraints = false
+        chartCont.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
 
-        let device = OznerManager.instance.currentDevice as! Cup
-        tdsValue=device.sensor.TDS
-        tdsValueLabel.text = tdsValue==0 ? "-":"\(tdsValue)"
+        if isOneCup {
+         
+            let device = OznerManager.instance.currentDevice as! Cup
+
+            tdsValue=device.sensor.TDS
+            tdsValueLabel.text = tdsValue==0 ? "-":"\(tdsValue)"
+            
+            loadDevice(device)
+            chartCont.InitSetView(volumes: device.records, sensorType: 0)
+            
+        } else {
+            
+            let device = OznerManager.instance.currentDevice as! TwoCup
+            
+            tdsValue=device.senSorTwo.TDS
+            tdsValueLabel.text = tdsValue==0 ? "-":"\(tdsValue)"
+            loadDevice(device)
+        }
+        
+        
         switch true
         {
         case tdsValue>0&&tdsValue<=tds_good:
@@ -76,7 +105,11 @@ class CupTDSDetailController: BaseViewController {
             tdsStateLabel.text="-"
             break
         }
-        //TDS排名
+        
+    }
+
+    
+    fileprivate func loadDevice(_ device: OznerBaseDevice) {
         
         User.TDSSensor(deviceID: device.deviceInfo.deviceMac, type: device.deviceInfo.deviceType, tds: tdsValue, beforetds: 0, success: { (rank, total) in
             self.rankValue = rank
@@ -87,26 +120,12 @@ class CupTDSDetailController: BaseViewController {
             fontSize=min(32, fontSize)
             fontSize=max(12, fontSize)
             self.rankLabel.font=UIFont.init(name: ".SFUIDisplay-Thin", size:fontSize)
-            }, failure: { (error) in
-                self.rankLabel.text="-"
+        }, failure: { (error) in
+            self.rankLabel.text="-"
         })
         
-        //chart
-        let chartCont=Bundle.main.loadNibNamed("CupTDSChartContainerView", owner: nil, options: nil)?.last as! CupTDSChartContainerView
-        chartContainerView.addSubview(chartCont)
-        chartCont.translatesAutoresizingMaskIntoConstraints = false
-        chartCont.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview()
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-        }
-        chartCont.InitSetView(volumes: device.records, sensorType: 0)
-        
-        
-        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

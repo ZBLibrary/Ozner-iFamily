@@ -9,6 +9,8 @@
 import UIKit
 
 class CupTemperatureController: BaseViewController {
+    
+    var isOneCup:Bool = true
 
     @IBOutlet var tempValueLabel: UILabel!
 
@@ -33,7 +35,7 @@ class CupTemperatureController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = loadLanguage("水温")
-        let device = OznerManager.instance.currentDevice as! Cup
+        
         zixunBtn.setTitle(loadLanguage("咨询"), for: UIControlState.normal)
         healthyBtn.setTitle(loadLanguage("健康水知道 "), for: UIControlState.normal)
         buyBtn.setTitle(loadLanguage("购买净水器"), for: UIControlState.normal)
@@ -46,8 +48,30 @@ class CupTemperatureController: BaseViewController {
             zixunBtn.isHidden = false
             bootomHideView.isHidden = false
         }
+
+        let chartCont=Bundle.main.loadNibNamed("CupTDSChartContainerView", owner: nil, options: nil)?.last as! CupTDSChartContainerView
+        chartCont.titleLabel.text = "水温分布"
+        chartContainerview.addSubview(chartCont)
+        chartCont.translatesAutoresizingMaskIntoConstraints = false
+        chartCont.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
         
-        let temp=device.sensor.Temperature
+        var temp:Int = 0
+        if isOneCup {
+            let device = OznerManager.instance.currentDevice as! Cup
+            temp = device.sensor.Temperature
+            chartCont.InitSetView(volumes: device.records, sensorType: 1)
+
+        } else {
+            let device = OznerManager.instance.currentDevice as! TwoCup
+            temp = device.senSorTwo.Temperature
+        }
+        
+        
         switch true
         {
         case temp>0&&temp<=temperature_low:
@@ -69,17 +93,7 @@ class CupTemperatureController: BaseViewController {
         }
         
         
-        let chartCont=Bundle.main.loadNibNamed("CupTDSChartContainerView", owner: nil, options: nil)?.last as! CupTDSChartContainerView
-        chartCont.titleLabel.text = "水温分布"
-        chartContainerview.addSubview(chartCont)
-        chartCont.translatesAutoresizingMaskIntoConstraints = false
-        chartCont.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview()
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-        }
-        chartCont.InitSetView(volumes: device.records, sensorType: 1)
+
         
         // Do any additional setup after loading the view.
     }
