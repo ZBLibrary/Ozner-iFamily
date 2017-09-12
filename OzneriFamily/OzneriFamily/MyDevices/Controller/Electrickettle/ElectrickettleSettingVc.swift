@@ -15,10 +15,14 @@
 
 import UIKit
 
+
+
 class ElectrickettleSettingVc: DeviceSettingController {
     
     //MARK: - Attributes
 
+    @IBOutlet weak var hideViewContranist: NSLayoutConstraint!
+    @IBOutlet weak var hideView: UIView!
     @IBOutlet weak var nameLb: GYLabel!
     
     @IBOutlet weak var gySwitch: UISwitch!
@@ -28,12 +32,33 @@ class ElectrickettleSettingVc: DeviceSettingController {
     @IBOutlet weak var timeLb: GYLabel!
     @IBOutlet weak var timeConstranit: NSLayoutConstraint!
     
+    var currentRemindType: RemindStructs!
     var pickDateView:CupCustomPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLb.text=self.getNameAndAttr()
         
-        if self.deviceSetting.GetValue(key: "ELTimeSender", defaultValue: "0") == "0" {
+        switch OznerManager.instance.currentDevice?.deviceInfo.deviceType ?? "" {
+        case "Ozner Cup":
+            currentRemindType = RemindStructs(startTime: "remindStart", endTime: "remindEnd", remindInterval: "", timeSender: "", remindNotification: "")
+            
+            break
+        case "NMQ_BLE":
+            currentRemindType = RemindStructs(startTime: "ElStartTiemKey", endTime: "ElEndTiemKey", remindInterval: "ELremindInterval", timeSender: "ELTimeSender", remindNotification: "ElectrickettleRemind")
+        
+            
+            break
+        case "智能水杯" :
+            currentRemindType = RemindStructs(startTime: "SmartCupStartTiemKey", endTime: "SmartCupEndTiemKey", remindInterval: "SmartCupRemindInterval", timeSender: "SmartCupRemindSender", remindNotification: "SmartCupRemind")
+            hideView.isHidden = true
+            hideViewContranist.constant = 0
+            
+            break
+        default:
+            break
+        }
+
+        if self.deviceSetting.GetValue(key: currentRemindType.timeSender, defaultValue: "0") == "0" {
             gySwitch.isOn = false
             timeConstranit.constant = 48
 
@@ -42,20 +67,12 @@ class ElectrickettleSettingVc: DeviceSettingController {
             timeConstranit.constant = 115
 
         }
-        
-//        let start = self.deviceSetting.GetValue(key: "ElStartTiemKey", defaultValue: "14:00")
-//        let end = self.deviceSetting.GetValue(key: "ElEndTiemKey", defaultValue: "18:00")
-//        
-//        if start == "14:00" && end == "18:00"{
-//            self.deviceSetting.SetValue(key: "ElStartTiemKey", value: "14:00")
-//            self.deviceSetting.SetValue(key: "ElEndTiemKey", value: "18:00")
-//        }
-//        
-        let starTime=Int(self.deviceSetting.GetValue(key: "ElStartTiemKey", defaultValue: "\(9*3600)"))!
-        let endTime=Int(self.deviceSetting.GetValue(key: "ElEndTiemKey", defaultValue: "\(19*3600)"))!
+
+        let starTime=Int(self.deviceSetting.GetValue(key: currentRemindType.startTime, defaultValue: "\(9*3600)"))!
+        let endTime=Int(self.deviceSetting.GetValue(key: currentRemindType.endTime, defaultValue: "\(19*3600)"))!
         timeLb.text="\(starTime/3600):\(starTime%3600/60)-\(endTime/3600):\(endTime%3600/60)"
 
-        let timeSpace = Int(self.deviceSetting.GetValue(key: "ELremindInterval", defaultValue: "15")) ?? 15
+        let timeSpace = Int(self.deviceSetting.GetValue(key: currentRemindType.remindInterval, defaultValue: "15")) ?? 15
         
         intervalLb.text = "\(timeSpace%60+timeSpace/60)"+(timeSpace>=60 ? loadLanguage("小时"):loadLanguage("分钟"))
         
@@ -68,18 +85,17 @@ class ElectrickettleSettingVc: DeviceSettingController {
         pickDateView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         pickDateView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
         
-        
     }
     
     func switchChanged(_ sender:UISwitch) {
     
         if sender.isOn {
             timeConstranit.constant = 115
-            self.deviceSetting.SetValue(key: "ELTimeSender", value: "1")
+            self.deviceSetting.SetValue(key: currentRemindType.timeSender, value: "1")
 
         } else {
             timeConstranit.constant = 48
-            self.deviceSetting.SetValue(key: "ELTimeSender", value: "0")
+            self.deviceSetting.SetValue(key: currentRemindType.timeSender, value: "0")
 
         }
     }
@@ -101,22 +117,14 @@ class ElectrickettleSettingVc: DeviceSettingController {
         //ElectrickettelAlert
         if gySwitch.isOn {
             
-//            let starTime = self.deviceSetting.GetValue(key: "ElStartTiemKey", defaultValue: "14:00")
-//            let endTime = self.deviceSetting.GetValue(key: "ElEndTiemKey", defaultValue: "18:00")
+            let repeatInter = Int(self.deviceSetting.GetValue(key: currentRemindType.remindInterval, defaultValue: "15"))
+            let starTime = Int(self.deviceSetting.GetValue(key: currentRemindType.startTime, defaultValue: "\(9*3600)"))!/60
+            let endTime = Int(self.deviceSetting.GetValue(key: currentRemindType.endTime, defaultValue: "\(9*3600)"))!/60
             
-//            let date1 = NSDate(string: starTime, formatString: "HH:mm")
-//            let date2 = NSDate(string: endTime, formatString: "HH:mm")
-//            let time1 = Int((date1?.hour())!)*3600+Int((date1?.minute())!)*60
-//            let time2 = Int((date2?.hour())!)*3600+Int((date2?.minute())!)*60
-            
-            let repeatInter = Int(self.deviceSetting.GetValue(key: "ELremindInterval", defaultValue: "15"))
-            let starTime = Int(self.deviceSetting.GetValue(key: "ElStartTiemKey", defaultValue: "\(9*3600)"))!/60
-            let endTime = Int(self.deviceSetting.GetValue(key: "ElEndTiemKey", defaultValue: "\(9*3600)"))!/60
-            
-            LocalNotificationHelper.addeElectricketNotice(repeatInter: repeatInter!, starTime: starTime, endTime: endTime)
+            LocalNotificationHelper.addeDeviceNotice(repeatInter: repeatInter!, starTime: starTime, endTime: endTime,notiInfo:currentRemindType.remindNotification)
         } else {
 
-            LocalNotificationHelper.removeNoticeForKey(key: "ElectrickettleRemind")
+            LocalNotificationHelper.removeNoticeForKey(key: currentRemindType.remindNotification)
         }
         
         let timeSpace = Int(self.deviceSetting.GetValue(key: "ELTempSet", defaultValue: "0"))!
@@ -138,7 +146,6 @@ class ElectrickettleSettingVc: DeviceSettingController {
         
         super.deleteDevice()
         
-        
     }
     
     @IBAction func btnAction(_ sender: UIButton) {
@@ -158,11 +165,11 @@ class ElectrickettleSettingVc: DeviceSettingController {
             pickDateView.pickerData = [15,30,45,60,120]
             pickDateView.units = "分钟"
             pickDateView.pickerView.reloadAllComponents()
-            let timeSpace = Int(self.deviceSetting.GetValue(key: "ELremindInterval", defaultValue: "15"))!
+            let timeSpace = Int(self.deviceSetting.GetValue(key: currentRemindType.remindInterval, defaultValue: "15"))!
             let index=[15:0,30:1,45:2,60:3,120:4][timeSpace]
             pickDateView.setView(valueIndex: index!, OKClick: { (value) in
                 self.intervalLb.text="\(value%60+value/60)"+(value>=60 ? loadLanguage("小时"):loadLanguage("分钟"))
-                self.deviceSetting.SetValue(key: "ELremindInterval", value: "\(value)")
+                self.deviceSetting.SetValue(key: self.currentRemindType.remindInterval, value: "\(value)")
 
                 self.pickDateView.removeFromSuperview()
             }) {

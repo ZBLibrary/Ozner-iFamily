@@ -87,8 +87,9 @@ class CupTDSDetailController: BaseViewController {
             tdsValue=device.senSorTwo.TDS
             tdsValueLabel.text = tdsValue==0 ? "-":"\(tdsValue)"
             loadDevice(device)
+            chartCont.InitSetView(volumes: device.records, sensorType: 0)
+
         }
-        
         
         switch true
         {

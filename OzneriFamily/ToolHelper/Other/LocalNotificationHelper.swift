@@ -40,7 +40,7 @@ class LocalNotificationHelper: NSObject {
         
     }
     
-    class func addeElectricketNotice(repeatInter:Int,starTime:Int,endTime:Int) {
+    class func addeDeviceNotice(repeatInter:Int,starTime:Int,endTime:Int,notiInfo:String) {
         if endTime<starTime
         {
             return
@@ -61,7 +61,7 @@ class LocalNotificationHelper: NSObject {
             // 通知被触发时播放的声音
             notification.soundName = UILocalNotificationDefaultSoundName
             // 通知参数
-            notification.userInfo = ["ElectrickettleRemind":""]
+            notification.userInfo = [notiInfo:""]
             // 通知重复提示的单位，可以是天、周、月
             notification.repeatInterval = NSCalendar.Unit.day
             // 执行通知注册

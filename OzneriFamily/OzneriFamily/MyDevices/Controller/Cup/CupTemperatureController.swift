@@ -69,6 +69,7 @@ class CupTemperatureController: BaseViewController {
         } else {
             let device = OznerManager.instance.currentDevice as! TwoCup
             temp = device.senSorTwo.Temperature
+            chartCont.InitSetView(volumes: device.records, sensorType: 1)
         }
         
         
@@ -92,8 +93,6 @@ class CupTemperatureController: BaseViewController {
             break
         }
         
-        
-
         
         // Do any additional setup after loading the view.
     }

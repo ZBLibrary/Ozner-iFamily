@@ -124,6 +124,7 @@ class OznerEasyLink_V2: NSObject,ZBBonjourServiceDelegate,GCDAsyncSocketDelegate
         }
         do {
             try gcdAsyncSocket?.connect(toHost: hostIP, onPort: 8002)
+         
         } catch let error {
             print("\n激活设备失败!\(error)")
             pairFailed()
@@ -139,6 +140,7 @@ class OznerEasyLink_V2: NSObject,ZBBonjourServiceDelegate,GCDAsyncSocketDelegate
         // 开始发送消息 这里不需要知道对象的ip地址和端口
         gcdAsyncSocket?.write(sPostdata, withTimeout: 10, tag: 100)
     }
+    
     func socket(_ sock: GCDAsyncSocket!, didRead data: Data!, withTag tag: Int) {
         isneedReconnectHost=false
         let stringFromData = String.init(data: data, encoding: String.Encoding.utf8)

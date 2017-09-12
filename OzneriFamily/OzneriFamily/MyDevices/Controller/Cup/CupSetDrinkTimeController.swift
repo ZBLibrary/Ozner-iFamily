@@ -8,32 +8,44 @@
 
 import UIKit
 
+//var 
+
+struct RemindStructs {
+    
+    var startTime:String = ""
+    var endTime:String = ""
+    var remindInterval = ""
+    var timeSender = ""
+    var remindNotification = ""
+}
+
 class CupSetDrinkTimeController: BaseViewController {
 
     var currSetting:BaseDeviceSetting!
+    var currentRemindType:RemindStructs!
     @IBAction func saveClick(_ sender: AnyObject) {
         let date1 = NSDate(string: starTimeLabel.text!, formatString: "HH:mm")
         let date2 = NSDate(string: endTimeLabel.text!, formatString: "HH:mm")
         let time1 = Int((date1?.hour())!)*3600+Int((date1?.minute())!)*60
         let time2 = Int((date2?.hour())!)*3600+Int((date2?.minute())!)*60
         
+        
         //解决iOS 10.1.1 时间处理的Bug
 //        let arrDate1 = starTimeLabel.text!.components(separatedBy: ":")
 //        let arrDate2 = endTimeLabel.text!.components(separatedBy: ":")
 //        let time1 = Int(arrDate1[0])!*3600+Int(arrDate1[1])!*60
 //        let time2 = Int(arrDate2[0])!*3600+Int(arrDate2[1])!*60
+        currSetting.SetValue(key: currentRemindType.startTime, value: "\(uint(time1))")
+        currSetting.SetValue(key: currentRemindType.endTime, value: "\(uint(time2))")
         if OznerManager.instance.currentDevice?.deviceInfo.deviceType == "Ozner Cup" {
 
-            currSetting.SetValue(key: "remindStart", value: "\(uint(time1))")
-            currSetting.SetValue(key: "remindEnd", value: "\(uint(time2))")
             let vcs=self.navigationController?.viewControllers
             let vc=vcs?[(vcs?.count)!-2] as! CupSettingController
             vc.drinkRemaindTimeLabel.text=starTimeLabel.text!+"-"+endTimeLabel.text!
             _=self.navigationController?.popViewController(animated: true)
             
         } else {
-            currSetting.SetValue(key: "ElStartTiemKey", value: "\(uint(time1))")
-            currSetting.SetValue(key: "ElEndTiemKey", value: "\(uint(time2))")
+            
             let vcs=self.navigationController?.viewControllers
             let vc=vcs?[(vcs?.count)!-2] as! ElectrickettleSettingVc
             vc.timeLb.text=starTimeLabel.text!+"-"+endTimeLabel.text!
@@ -61,34 +73,33 @@ class CupSetDrinkTimeController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if OznerManager.instance.currentDevice?.deviceInfo.deviceType == "Ozner Cup" {
+        switch OznerManager.instance.currentDevice?.deviceInfo.deviceType ?? "" {
+        case "Ozner Cup":
+            currentRemindType = RemindStructs(startTime: "remindStart", endTime: "remindEnd", remindInterval: "", timeSender: "", remindNotification: "")
+
+            break
+        case "NMQ_BLE":
+            currentRemindType = RemindStructs(startTime: "ElStartTiemKey", endTime: "ElEndTiemKey", remindInterval: "", timeSender: "", remindNotification: "")
+
+            break
+        case "智能水杯" :
+            currentRemindType = RemindStructs(startTime: "SmartCupStartTiemKey", endTime: "SmartCupEndTiemKey", remindInterval: "SmartCupRemindInterval", timeSender: "SmartCupRemindSender", remindNotification: "SmartCupRemind")
+
+            break
+        default:
+            break
+        }
         
-        let starH=Int(currSetting.GetValue(key: "remindStart", defaultValue: "\(9*3600)"))!/3600
-        let starM=Int(currSetting.GetValue(key: "remindStart", defaultValue: "\(9*3600)"))!%3600/60
+        let starH=Int(currSetting.GetValue(key: currentRemindType.startTime, defaultValue: "\(9*3600)"))!/3600
+        let starM=Int(currSetting.GetValue(key: currentRemindType.startTime, defaultValue: "\(9*3600)"))!%3600/60
         starTimeLabel.text = (starH<10 ? "0\(starH)":"\(starH)")+":"+(starM<10 ? "0\(starM)":"\(starM)")
-        let endH=Int(currSetting.GetValue(key: "remindEnd", defaultValue: "\(19*3600)"))!/3600
-        let endM=Int(currSetting.GetValue(key: "remindEnd", defaultValue: "\(19*3600)"))!%3600/60
+        let endH=Int(currSetting.GetValue(key: currentRemindType.endTime, defaultValue: "\(19*3600)"))!/3600
+        let endM=Int(currSetting.GetValue(key: currentRemindType.endTime, defaultValue: "\(19*3600)"))!%3600/60
         endTimeLabel.text = (endH<10 ? "0\(endH)":"\(endH)")+":"+(endM<10 ? "0\(endM)":"\(endM)")
-//        datePicker.datePickerMode = .time
-//        //设置24小时制
-//        let local = NSLocale.init(localeIdentifier: "en_GB")
-//        datePicker.locale = local as Locale
-        
+
         datePicker.date=NSDate(string: starTimeLabel.text!, formatString: "HH:mm") as Date
         currTimeLabel=starTimeLabel
-        } else {
-            let starH=Int(currSetting.GetValue(key: "ElStartTiemKey", defaultValue: "\(9*3600)"))!/3600
-            let starM=Int(currSetting.GetValue(key: "ElStartTiemKey", defaultValue: "\(9*3600)"))!%3600/60
-            
-            starTimeLabel.text = (starH<10 ? "0\(starH)":"\(starH)")+":"+(starM<10 ? "0\(starM)":"\(starM)")
-
-            let endH=Int(currSetting.GetValue(key: "ElEndTiemKey", defaultValue: "\(19*3600)"))!/3600
-            let endM=Int(currSetting.GetValue(key: "ElEndTiemKey", defaultValue: "\(19*3600)"))!%3600/60
-            
-            endTimeLabel.text = (endH<10 ? "0\(endH)":"\(endH)")+":"+(endM<10 ? "0\(endM)":"\(endM)")
-            currTimeLabel=starTimeLabel
-        }
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {

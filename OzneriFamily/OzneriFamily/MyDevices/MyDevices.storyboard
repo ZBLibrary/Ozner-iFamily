@@ -7188,7 +7188,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMP-aR-wCU">
-                                <rect key="frame" x="0.0" y="275" width="375" height="48"/>
+                                <rect key="frame" x="0.0" y="275" width="375" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于智能杯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQg-Nj-Se7">
                                         <rect key="frame" x="20" y="16" width="66.5" height="16"/>
@@ -7200,20 +7200,20 @@
                                         <rect key="frame" x="347" y="15.5" width="8" height="17"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bN-1g-7LO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="9bN-1g-7LO" firstAttribute="leading" secondItem="sMP-aR-wCU" secondAttribute="leading" id="61n-wN-hZD"/>
-                                    <constraint firstItem="qs8-2z-nOd" firstAttribute="centerY" secondItem="sMP-aR-wCU" secondAttribute="centerY" id="WjF-7D-fcm"/>
+                                    <constraint firstItem="pQg-Nj-Se7" firstAttribute="top" secondItem="sMP-aR-wCU" secondAttribute="top" constant="16" id="7WK-BO-Fez"/>
                                     <constraint firstAttribute="bottom" secondItem="9bN-1g-7LO" secondAttribute="bottom" id="YuI-pZ-zjS"/>
                                     <constraint firstAttribute="trailing" secondItem="9bN-1g-7LO" secondAttribute="trailing" id="du8-n8-IbB"/>
-                                    <constraint firstAttribute="height" constant="48" id="eqE-ck-w2B"/>
-                                    <constraint firstItem="pQg-Nj-Se7" firstAttribute="centerY" secondItem="sMP-aR-wCU" secondAttribute="centerY" id="g25-0B-HP3"/>
+                                    <constraint firstAttribute="height" constant="70" id="eqE-ck-w2B"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="kWN-CY-O6q"/>
                                     <constraint firstItem="pQg-Nj-Se7" firstAttribute="leading" secondItem="sMP-aR-wCU" secondAttribute="leading" constant="20" id="oRt-wN-gnw"/>
                                     <constraint firstAttribute="trailing" secondItem="qs8-2z-nOd" secondAttribute="trailing" constant="20" id="rnc-IX-zet"/>
+                                    <constraint firstItem="qs8-2z-nOd" firstAttribute="centerY" secondItem="pQg-Nj-Se7" secondAttribute="centerY" id="v4g-uR-Sv5"/>
                                     <constraint firstItem="9bN-1g-7LO" firstAttribute="top" secondItem="sMP-aR-wCU" secondAttribute="top" id="xvW-CZ-5fZ"/>
                                 </constraints>
                             </view>
@@ -7248,6 +7248,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="gySwitch" destination="1ad-bd-Mde" id="7Xo-re-r36"/>
+                        <outlet property="hideView" destination="5Xw-z5-Xda" id="jkN-bV-iT1"/>
+                        <outlet property="hideViewContranist" destination="Eb3-qc-2hw" id="cNu-Io-ZUt"/>
                         <outlet property="intervalLb" destination="VBl-D1-dHu" id="6AF-ua-8xz"/>
                         <outlet property="nameLb" destination="Ke8-04-XdS" id="gaj-TN-RXB"/>
                         <outlet property="timeConstranit" destination="Cxk-vS-7Kg" id="Eoe-SE-FDe"/>

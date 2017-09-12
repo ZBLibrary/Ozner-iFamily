@@ -46,7 +46,24 @@ class TwoCup: OznerBaseDevice {
         
     }
 
+    private(set) var records:OznerCupRecords!{//day:tds
+        didSet{
+            if records != oldValue {
+                self.delegate?.OznerDeviceRecordUpdate?(identifier: self.deviceInfo.deviceID)
+            }
+        }
+    }
     
+    required init(deviceinfo: OznerDeviceInfo, Settings settings: String?) {
+        super.init(deviceinfo: deviceinfo, Settings: settings)
+        records=OznerCupRecords(Identifier: deviceinfo.deviceID)//初始化水杯记录
+        //饮水量记录
+        var tmpVolume = 0
+        for item in records.getRecord(type: CupRecordType.day) {
+            tmpVolume+=item.value.Volume
+        }
+        
+    }
     
     override func OznerBaseIORecvData(recvData: Data) {
         switch UInt8(recvData[0]) {
@@ -64,7 +81,43 @@ class TwoCup: OznerBaseDevice {
             senSorTwo = (Int(recvData[1]),Int(recvData[2]))
             print(senSorTwo)
         case 0x42://获取历史记录
-            print(recvData)
+            
+            let time1 = Int(recvData[2]) + 256 * Int(recvData[3]) + 256 * 256 * Int(recvData[4]) + 256 * 256 * 256 * Int(recvData[5])
+            
+            if time1 != 0 {
+                
+                let timeDate = secsToData(time1)
+                let tds = Int(recvData[6])
+                let temp = Int(recvData[7])
+                print("第一条数据timeDate：\(timeDate)，tds:\(tds)，temp:\(temp)")
+                
+                OznerDeviceRecordHelper.instance.addRecordToSQL(Identifier: self.deviceInfo.deviceID, Tdate: timeDate, Tds: tds, Temperature: temp, Volume: 0, Updated: false)
+            }
+            
+            let time2 = Int(recvData[8]) + 256 * Int(recvData[9]) + 256 * 256 * Int(recvData[10]) + 256 * 256 * 256 * Int(recvData[11])
+            print("第二条时间戳:\(time2)" + "时间:\(secondstoString(time2))")
+            
+            if time2 != 0 {
+                
+                let timeDate = secsToData(time2)
+                let tds = Int(recvData[12])
+                let temp = Int(recvData[13])
+                
+                OznerDeviceRecordHelper.instance.addRecordToSQL(Identifier: self.deviceInfo.deviceID, Tdate: timeDate, Tds: tds, Temperature: temp, Volume: 0, Updated: false)
+            }
+            
+            let time3 = Int(recvData[14]) + 256 * Int(recvData[15]) + 256 * 256 * Int(recvData[16]) + 256 * 256 * 256 * Int(recvData[17])
+            print("第三条时间戳:\(time3)" + "时间:\(secondstoString(time3))")
+            
+            if time3 != 0 {
+                
+                let timeDate = secsToData(time3)
+                let tds = Int(recvData[18])
+                let temp = Int(recvData[19])
+                
+                OznerDeviceRecordHelper.instance.addRecordToSQL(Identifier: self.deviceInfo.deviceID, Tdate: timeDate, Tds: tds, Temperature: temp, Volume: 0, Updated: false)
+            }
+            
         case 0x43://历史记录数量
             print(recvData)
 
@@ -79,16 +132,17 @@ class TwoCup: OznerBaseDevice {
         
         print("智能水杯")
         readDeviceInfo()
+        Thread.sleep(forTimeInterval: 0.1)
         calibrationTime()
+        Thread.sleep(forTimeInterval: 0.1)
+        getHistory()
 
         
     }
     
     override func repeatFunc() {
         
-        //            readDeviceInfo()
         readDeviceInfo()
-        getHistory()
   
     }
     
@@ -97,6 +151,25 @@ class TwoCup: OznerBaseDevice {
         return "name:\(self.settings.name!)\n connectStatus:\(self.connectStatus)\n sensor:\(self.senSorTwo)\n,CupState:\(self.cupState)"
     
     }
+    
+    private func secsToData(_ secs:Int) -> Date {
+        
+        return Date.init(timeIntervalSince1970: TimeInterval(secs))
+        
+    }
+    
+    private func secondstoString(_ seconds:Int) -> String{
+        
+        let data = Date.init(timeIntervalSince1970: TimeInterval(seconds))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.locale = NSLocale(localeIdentifier: "en") as Locale!
+        
+        return formatter.string(from: data)
+        
+    }
+    
+
     
     
     //MARK: - 二代水杯相关
@@ -117,14 +190,6 @@ class TwoCup: OznerBaseDevice {
         var data = Data.init(bytes: [
             0x40])
         data.append(OznerTools.dataFromInt(number: time, length: 4))
-        //        let data = Data.init(bytes: [
-        //            0x40,
-        //            UInt8(NSDate().year()-2000),
-        //            UInt8(NSDate().month()),
-        //            UInt8(NSDate().day()),
-        //            UInt8(NSDate().hour()),
-        //            UInt8(NSDate().minute()),
-        //            UInt8(NSDate().second())])
         
         self.SendDataToDevice(sendData: data) { (error) in}
         
@@ -133,26 +198,9 @@ class TwoCup: OznerBaseDevice {
     //获取历史记录
     private func getHistory() {
         
-        //        let data = Data.init(bytes: [
-        //            0x41,
-        //            UInt8(NSDate().year()-2000),
-        //            UInt8(NSDate().month()),
-        //            UInt8(NSDate().day()),
-        //            UInt8(NSDate().hour()),
-        //            UInt8(NSDate().minute()),
-        //            UInt8(NSDate().second()),
-        //            UInt8(NSDate().year()-2000),
-        //            UInt8(NSDate().month()),
-        //            UInt8(NSDate().day() - 7),
-        //            UInt8(NSDate().hour()),
-        //            UInt8(NSDate().minute()),
-        //            UInt8(NSDate().second())])
-        //
-        //        self.SendDataToDevice(sendData: data) { (error) in}
-        
         let endtime = CLongLong(Date().timeIntervalSince1970)
         
-        let startTime = CLongLong(Date().timeIntervalSince1970 - 60 * 60 * 24 * 7)
+        let startTime = CLongLong(Date().timeIntervalSince1970 - 60 * 60 * 24 * 32)
         
         var data = Data.init(bytes: [
             0x41])

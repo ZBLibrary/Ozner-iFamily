@@ -115,14 +115,12 @@ class TwoCupMainView: OznerDeviceView {
 
     @IBAction func tempAction(_ sender: UITapGestureRecognizer) {
         
-        print("点击了")
          self.delegate.DeviceViewPerformSegue!(SegueID: "showCupTemperatureDetail", sender: nil)
     }
     
     
     @IBAction func tdsAction(_ sender: UITapGestureRecognizer) {
         
-        print("点击了123")
          self.delegate.DeviceViewPerformSegue!(SegueID: "showCupTDSDetail", sender: nil)
         
     }
@@ -135,8 +133,41 @@ class TwoCupMainView: OznerDeviceView {
         tempView.isHidden = false
         segement.addTarget(self, action:  #selector(TwoCupMainView.segmentedChanged(_:)), for: UIControlEvents.valueChanged)
         
+      
+        if OznerManager.instance.currentDevice?.settings.GetValue(key: "SmartCupRemindSender", defaultValue: "0") == "0" {
+          
+            timeRemindLb.text = "未设置"
+            secondRemindLb.text = "未设置"
+            
+        } else {
+        
+            let starTime=Int((OznerManager.instance.currentDevice?.settings.GetValue(key: "SmartCupStartTiemKey", defaultValue: "\(9*3600)"))!)!
+            let endTime=Int((OznerManager.instance.currentDevice?.settings.GetValue(key: "SmartCupEndTiemKey", defaultValue: "\(19*3600)"))!)!
+            
+            timeRemindLb.text="\(timeCheck(starTime)):\(sec(starTime))-\(timeCheck(endTime)):\(sec(endTime))"
+            let timeSpace = Int((OznerManager.instance.currentDevice?.settings.GetValue(key: "SmartCupRemindInterval", defaultValue: "15"))!)!
+            secondRemindLb.text="\(timeSpace%60+timeSpace/60)"+(timeSpace>=60 ? loadLanguage("小时"):loadLanguage("分钟"))
+        }
+        
     }
     
+    func timeCheck(_ hour:Int) -> String {
+        
+        if hour/3600 >= 10 {
+           return String(hour/3600)
+        }
+        return "0" + "\(hour/3600)"
+        
+    }
+    
+    func sec(_ hour:Int) -> String {
+        
+        if (hour%3600)/60 >= 10 {
+            return String((hour%3600)/60)
+        }
+        return "0" + "\((hour%3600)/60)"
+        
+    }
     
     func segmentedChanged(_ sender: UISegmentedControl) {
         
