@@ -33,4 +33,9 @@ class OznerDeviceView: UIView {
         
     }
     
+    func FilterUpdate(identifier: String)  {
+        
+    }
+    func RecordUpdate(identifier: String){
+    }
 }

@@ -98,6 +98,8 @@ class OznerDataManager: NSObject {
             let deviceinfo=OznerDeviceInfo(deviceID: dev[deviceID], deviceMac: dev[deviceMac], deviceType: dev[deviceType], productID: dev[productID], wifiVersion: dev[wifiVersion])
             tmpDevices[deviceinfo.deviceID]=createDevice(deviceInfo: deviceinfo, setting: dev[setting])
         }
+//        let deviceinfo=OznerDeviceInfo(deviceID: "337c67a4-8300-11e7-9baf-00163e120d98", deviceMac: "B0F893105FD6", deviceType: "edb7b978-6aca-11e7-9baf-00163e120d98", productID: "edb7b978-6aca-11e7-9baf-00163e120d98", wifiVersion: 2)
+//        tmpDevices["337c67a4-8300-11e7-9baf-00163e120d98"]=createDevice(deviceInfo: deviceinfo, setting: nil)
         return tmpDevices
     }
     func createDevice(deviceInfo:OznerDeviceInfo,setting:String?) -> OznerBaseDevice {
@@ -122,7 +124,6 @@ class OznerDataManager: NSObject {
             tmpdev = Electrickettle_Blue(deviceinfo: deviceInfo, Settings: setting)
         case .WashDush_Wifi:
             tmpdev = WashDush_Wifi(deviceinfo: deviceInfo, Settings: setting)
-
         }
         return tmpdev
     }

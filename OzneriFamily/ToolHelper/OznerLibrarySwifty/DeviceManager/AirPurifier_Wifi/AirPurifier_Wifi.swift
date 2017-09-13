@@ -55,11 +55,9 @@ class AirPurifier_Wifi: OznerBaseDevice {
     }
     override func OznerBaseIORecvData(recvData: Data) {
         //解析数据并更新个性字段
-        requestCount=0
-        if self.connectStatus != .Connected
-        {
-            self.connectStatus = .Connected
-        }
+        requestCount=0        
+        self.connectStatus = .Connected
+        
         if (UInt8(recvData[0]) != 0xFA )
         {
             return
@@ -146,7 +144,7 @@ class AirPurifier_Wifi: OznerBaseDevice {
     override func repeatFunc() {
         
         if Int(arc4random()%2)==0 {
-            self.reqesutProperty(data: Data.init(bytes: [0x15,0x11,0x14,0x12,0x13,0x18,0x00,0x01,0x02,0x03]))
+            self.reqesutProperty(data: Data.init(bytes: [0x15,0x11,0x14,0x12,0x13,0x18,0x00,0x01,0x02,0x03,0x19,0x26]))
             requestCount=(requestCount+1)
             if requestCount>=3 {
                 self.connectStatus = .Disconnect
