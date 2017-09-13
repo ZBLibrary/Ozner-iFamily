@@ -190,11 +190,24 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 self.LvXinValue=Int(lvxinValue*100)
             case .AirPurifier_Wifi:
                 
-                let workTime=(currentDevice as! AirPurifier_Wifi).filterStatus.workTime
-                var lvxinValue=1-CGFloat(workTime)/CGFloat(129600)
-                lvxinValue=min(1, lvxinValue)
-                lvxinValue=max(0, lvxinValue)
-                self.LvXinValue=Int(lvxinValue*100)
+                if (currentDevice as! AirPurifier_Wifi).deviceInfo.productID == "580c2783" {
+                    
+                    let workTime=(currentDevice as! AirPurifier_Wifi).filterStatus.workTime
+                    var lvxinValue=1-CGFloat(workTime)/CGFloat((currentDevice as! AirPurifier_Wifi).filterStatus.maxWorkTime)
+                    lvxinValue=min(1, lvxinValue)
+                    lvxinValue=max(0, lvxinValue)
+                    self.LvXinValue=Int(lvxinValue*100)
+                    
+                } else {
+                    
+                    let workTime=(currentDevice as! AirPurifier_Wifi).filterStatus.workTime
+                    var lvxinValue=1-CGFloat(workTime)/CGFloat(129600)
+                    lvxinValue=min(1, lvxinValue)
+                    lvxinValue=max(0, lvxinValue)
+                    self.LvXinValue=Int(lvxinValue*100)
+                    
+                }
+                 
                 
             case .WaterPurifier_Wifi:
                 
