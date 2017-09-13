@@ -27,9 +27,9 @@ class AirOutdoorView: UIView {
     }
     */
     var callBack:(()->Void)!
-    func updateView(city:String,pm25:String,AQI:String,temp:String,himit:String,from:String,callback:@escaping (()->Void)){
+    func updateView(city:String,pm25:Int,AQI:String,temp:String,himit:String,from:String,callback:@escaping (()->Void)){
         cityNameLabel.text=city
-        pm25Label.text=pm25+"ug/m3"
+        pm25Label.text = (pm25==0 ? "-":"\(pm25)")+"ug/m3"
         AQILabel.text=AQI
         tempLabel.text=temp+"℃"
         himitLabel.text=himit+"%"

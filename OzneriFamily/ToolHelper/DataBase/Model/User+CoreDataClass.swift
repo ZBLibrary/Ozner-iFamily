@@ -681,7 +681,7 @@ public class User: BaseDataObject {
             }, failure: failure)
     }
     //空气净化器获取室外空气数据
-    class func GetWeather(success: @escaping ((_ pollution:String,_ cityname:String,_ PM25:String,_ AQI:String,_ temperature:String,_ humidity:String,_ dataFrom:String) -> Void), failure: @escaping ((Error) -> Void)){
+    class func GetWeather(success: @escaping ((_ pollution:String,_ cityname:String,_ PM25:Int,_ AQI:String,_ temperature:String,_ humidity:String,_ dataFrom:String) -> Void), failure: @escaping ((Error) -> Void)){
         let city = UserDefaults.standard.value(forKey: "GYCITY") as? String ?? ""
         self.fetchData(key: "GetWeather", parameters: ["city":city], success: { (json) in
             var dataFrom=json["weatherform"].stringValue
@@ -705,12 +705,12 @@ public class User: BaseDataObject {
             let temperature=jsonDic["now"]?["tmp"].stringValue ?? loadLanguage("暂无")
             
             guard let _ = tmpdic else {
-                success(loadLanguage("暂无"),loadLanguage(cityname),loadLanguage("暂无"),loadLanguage("暂无"),temperature,humidity,dataFrom)
+                success(loadLanguage("暂无"),loadLanguage(cityname),0,loadLanguage("暂无"),temperature,humidity,dataFrom)
                 return
             }
             let pollution=tmpdic?["qlty"].stringValue ?? loadLanguage("暂无")//中度污染
             let AQI=tmpdic?["aqi"].stringValue ?? loadLanguage("暂无")
-            let PM25=tmpdic?["pm25"].stringValue ?? loadLanguage("暂无")
+            let PM25=tmpdic?["pm25"].intValue ?? 0
             success(loadLanguage(pollution),loadLanguage(cityname),PM25,AQI,temperature,humidity,dataFrom)
         }, failure: failure)
 

@@ -148,7 +148,7 @@ class AirPurifier_Wifi: OznerBaseDevice {
     override func repeatFunc() {
         
         if Int(arc4random()%2)==0 {
-            self.reqesutProperty(data: Data.init(bytes: [0x15,0x11,0x14,0x12,0x13,0x18,0x00,0x01,0x02,0x03]))
+            self.reqesutProperty(data: Data.init(bytes: [0x15,0x11,0x14,0x12,0x13,0x18,0x00,0x01,0x02,0x03,0x19]))
             requestCount=(requestCount+1)
             if requestCount>=3 {
                 self.connectStatus = .Disconnect

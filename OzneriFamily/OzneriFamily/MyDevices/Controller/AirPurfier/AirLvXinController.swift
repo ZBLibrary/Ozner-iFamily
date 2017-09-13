@@ -69,7 +69,7 @@ class AirLvXinController: BaseViewController {
             var vocValue = (device as! AirPurifier_Wifi).sensor.VOC
             vocValue = vocValue<0||vocValue>3 ? 4:vocValue
             vocValueLabel.text=[loadLanguage("优"),loadLanguage("良"),loadLanguage("一般"),loadLanguage("差"),"-"][Int(vocValue)]
-            totalValueLabel.text="\((device as! AirPurifier_Wifi).sensor.TotalClean/1000)"
+            totalValueLabel.text="\((device as! AirPurifier_Wifi).sensor.TotalClean)"
             
             SetLvXin(workTime: (device as! AirPurifier_Wifi).filterStatus.workTime, maxUseMM: 129600)
                 
