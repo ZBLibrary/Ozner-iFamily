@@ -125,6 +125,11 @@ class TwoCupMainView: OznerDeviceView {
         
     }
     
+    @IBAction func timeSetAction(_ sender: UITapGestureRecognizer) {
+        
+        
+        
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -26,6 +26,7 @@ class ElectrickettleMainView: OznerDeviceView {
     var currentTempBtn:UIButton?
     var currentHotBtn:UIButton?
     var pickDateView:TapDatePickerView?
+    var isFirst:Bool = true
     
     @IBOutlet weak var currentTemp: UILabel!
     @IBOutlet weak var valuelb: UILabel!
@@ -118,16 +119,11 @@ class ElectrickettleMainView: OznerDeviceView {
         let device = currentDevice as? Electrickettle_Blue
 
         datePick.didFinishSelect = { [weak self] (date) in
-            print(date)
-//            let /date1 = date as NSDate
-//            print("\(date1.day()),\(date1.hour()),\(date1.minute())")
+
             self?.settimeBtn.setTitle((date.gy2_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date.gy2_stringFromDate(dateFormat: " HH:mm") ), for: UIControlState.normal)
             
-//            let time = date.timeIntervalSinceNow
             let time = date.timeIntervalSinceNow
             let seconds = lround(time/60)  - (60 * 8)
-//            print(seconds)
-            
             
             _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: seconds))
 
@@ -324,6 +320,7 @@ class ElectrickettleMainView: OznerDeviceView {
                 self.progressView.stopanimation()
                 self.progressView.isHidden = true
                 self.progressView.upperShapeLayer?.strokeEnd = 0
+                self.progressView.upperShapeLayer1?.strokeEnd = 0
                 self.lineView.isHidden = false
                 
             }, completion: { (finished) in
@@ -344,14 +341,16 @@ class ElectrickettleMainView: OznerDeviceView {
 
         if sender.isOn {
             
+            self.noticeOnlyText("请设置预约时间")
             firstContraint.constant = 120
-            _ =  device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: 5, orderSec: device?.settingInfo.orderSec ?? 0))
             
         } else {
             
             firstContraint.constant = 60
-            _ =  device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: 0, orderSec: device?.settingInfo.orderSec ?? 0))
-            
+            _ =  device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: 0, orderSec: 0))
+            settimeBtn.setTitle("--:--", for: UIControlState.normal)
+         
+            self.noticeOnlyText("预约时间已取消")
         }
         
         self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
@@ -367,21 +366,27 @@ class ElectrickettleMainView: OznerDeviceView {
         
         TDS = currentDevice.settingInfo.tds
         switchlb.isEnabled = (currentDevice.connectStatus == .Connected)
-        switchlb.isOn = !(currentDevice.settingInfo.orderFunction == 0 || currentDevice.settingInfo.orderFunction == -1)
-        switchChanged(switchlb)
-        slider.isEnabled = (currentDevice.connectStatus == .Connected)
 
-//         settimeBtn.setTitle((date?.gy_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date?.gy_stringFromDate(dateFormat: " HH:mm") ?? ""), for: UIControlState.normal)
+        slider.isEnabled = (currentDevice.connectStatus == .Connected)
         
-        if switchlb.isOn {
+        if isFirst && currentDevice.settingInfo.orderSec > 0 && (currentDevice.connectStatus == .Connected) {
             
-           settimeBtn.setTitle((Date().gy_stringFromDate(dateFormat: "dd") == Date().addingTimeInterval(60 * 60).gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + Date().addingTimeInterval(60 * 60).gy_stringFromDate(dateFormat: " HH:mm"), for: UIControlState.normal)
-           
+            isFirst = false
+            switchlb.isEnabled = true
+            switchlb.isOn = true
+            settimeBtn.isHidden = false
+            firstContraint.constant = 120
+            
+            let date = Date(timeIntervalSinceNow: TimeInterval(currentDevice.settingInfo.orderSec * 60))
+            settimeBtn.setTitle((date.gy_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date.gy_stringFromDate(dateFormat: " HH:mm")), for: UIControlState.normal)
+            
         }
         
         print(currentDevice.settingInfo)
         
     }
+    
+    
     
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         

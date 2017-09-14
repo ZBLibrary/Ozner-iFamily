@@ -224,6 +224,9 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                 <userDefinedRuntimeAttribute type="string" keyPath="cornerRadius" value="10"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="bFF-Ox-s8T" appends="YES" id="iGL-j3-4kO"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -277,6 +280,11 @@
         <tapGestureRecognizer id="07o-mr-wOA">
             <connections>
                 <action selector="tempAction:" destination="iN0-l3-epB" id="ke0-Mu-pKw"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="bFF-Ox-s8T">
+            <connections>
+                <action selector="timeSetAction:" destination="iN0-l3-epB" id="Qol-GW-LuG"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

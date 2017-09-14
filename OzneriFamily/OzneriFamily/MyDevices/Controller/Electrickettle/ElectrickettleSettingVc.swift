@@ -76,7 +76,7 @@ class ElectrickettleSettingVc: DeviceSettingController {
         
         intervalLb.text = "\(timeSpace%60+timeSpace/60)"+(timeSpace>=60 ? loadLanguage("小时"):loadLanguage("分钟"))
         
-        let timeSpac1e = self.deviceSetting.GetValue(key: "ELTempSet", defaultValue: "0")
+        let timeSpac1e = self.deviceSetting.GetValue(key: "ELTempSet", defaultValue: "100")
         tmepLb.text = timeSpac1e + "℃"
         
         gySwitch.addTarget(self, action:#selector(ElectrickettleSettingVc.switchChanged(_:)), for: UIControlEvents.valueChanged)

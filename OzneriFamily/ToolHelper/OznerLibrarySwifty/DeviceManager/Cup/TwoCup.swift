@@ -81,7 +81,7 @@ class TwoCup: OznerBaseDevice {
             senSorTwo = (Int(recvData[1]),Int(recvData[2]))
             print(senSorTwo)
         case 0x42://获取历史记录
-            
+            print("0x42历史记录条数\(recvData[1])")
             let time1 = Int(recvData[2]) + 256 * Int(recvData[3]) + 256 * 256 * Int(recvData[4]) + 256 * 256 * 256 * Int(recvData[5])
             
             if time1 != 0 {
@@ -89,37 +89,37 @@ class TwoCup: OznerBaseDevice {
                 let timeDate = secsToData(time1)
                 let tds = Int(recvData[6])
                 let temp = Int(recvData[7])
-                print("第一条数据timeDate：\(timeDate)，tds:\(tds)，temp:\(temp)")
+                print("第一条数据timeDate：\(secondstoString(time1))，tds:\(tds)，temp:\(temp)")
                 
                 OznerDeviceRecordHelper.instance.addRecordToSQL(Identifier: self.deviceInfo.deviceID, Tdate: timeDate, Tds: tds, Temperature: temp, Volume: 0, Updated: false)
             }
             
             let time2 = Int(recvData[8]) + 256 * Int(recvData[9]) + 256 * 256 * Int(recvData[10]) + 256 * 256 * 256 * Int(recvData[11])
-            print("第二条时间戳:\(time2)" + "时间:\(secondstoString(time2))")
             
             if time2 != 0 {
                 
                 let timeDate = secsToData(time2)
                 let tds = Int(recvData[12])
                 let temp = Int(recvData[13])
-                
+                print("第二条时间戳:\(time2)" + "时间:\(secondstoString(time2))，tds:\(tds)，temp:\(temp)")
+
                 OznerDeviceRecordHelper.instance.addRecordToSQL(Identifier: self.deviceInfo.deviceID, Tdate: timeDate, Tds: tds, Temperature: temp, Volume: 0, Updated: false)
             }
             
             let time3 = Int(recvData[14]) + 256 * Int(recvData[15]) + 256 * 256 * Int(recvData[16]) + 256 * 256 * 256 * Int(recvData[17])
-            print("第三条时间戳:\(time3)" + "时间:\(secondstoString(time3))")
             
             if time3 != 0 {
                 
                 let timeDate = secsToData(time3)
                 let tds = Int(recvData[18])
                 let temp = Int(recvData[19])
-                
+                print("第三条时间戳:\(time3)" + "时间:\(secondstoString(time3))，tds:\(tds)，temp:\(temp)")
+
                 OznerDeviceRecordHelper.instance.addRecordToSQL(Identifier: self.deviceInfo.deviceID, Tdate: timeDate, Tds: tds, Temperature: temp, Volume: 0, Updated: false)
             }
             
         case 0x43://历史记录数量
-            print(recvData)
+            print("0x43总历史记录条数:\(Int(recvData[1]) + 256 * Int(recvData[2]) + 256 * 256 * Int(recvData[3]) + 256 * 256 * 256 * Int(recvData[4]))")
 
         default:
             break
@@ -132,9 +132,10 @@ class TwoCup: OznerBaseDevice {
         
         print("智能水杯")
         readDeviceInfo()
-        Thread.sleep(forTimeInterval: 0.1)
+        sleep(1)
         calibrationTime()
-        Thread.sleep(forTimeInterval: 0.1)
+
+        sleep(1)
         getHistory()
 
         
@@ -200,7 +201,7 @@ class TwoCup: OznerBaseDevice {
         
         let endtime = CLongLong(Date().timeIntervalSince1970)
         
-        let startTime = CLongLong(Date().timeIntervalSince1970 - 60 * 60 * 24 * 32)
+        let startTime = CLongLong(Date().timeIntervalSince1970 - 60 * 60 * 24 * 3200)
         
         var data = Data.init(bytes: [
             0x41])
