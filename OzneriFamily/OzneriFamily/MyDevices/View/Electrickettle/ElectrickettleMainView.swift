@@ -143,11 +143,7 @@ class ElectrickettleMainView: OznerDeviceView {
 //        pickDateView?.OKButton.addTarget(self, action: #selector(pickerOK), for: .touchUpInside)
 //        self.addSubview(pickDateView!)
     }
-    
-//    func pickerCancle()  {
-//        pickDateView?.removeFromSuperview()
-//    }
-    
+        
     func pickerOK() {
         let date = pickDateView?.datePicker.date
         

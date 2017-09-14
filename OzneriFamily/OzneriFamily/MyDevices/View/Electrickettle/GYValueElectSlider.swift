@@ -104,7 +104,7 @@ class GYValueElectSlider: UISlider {
         super.endTracking(touch, with: event)
         
         if previewView !=  nil {
-            UserDefaults.standard.setValue(Int32(String.init(format: "%.0f", self.value)), forKey: "UISliderValueElectrickettle")
+            UserDefaults.standard.setValue(Int32(String.init(format: "%d", lround(Double(self.value)))), forKey: "UISliderValueElectrickettle")
             UserDefaults.standard.synchronize()
             
             let device = OznerManager.instance.currentDevice as? Electrickettle_Blue
@@ -151,7 +151,7 @@ class GYValueElectSlider: UISlider {
         
         previewView = GYTempValueView(frame: frame)
         //        String(Double(self.value) * 100.0)
-        previewView?.valueLb.text = String.init(format: "%.0f", self.value) + "℃"
+        previewView?.valueLb.text = String.init(format: "%d", lround(Double(self.value))) + "℃"
         previewView?.valueLb.textColor = UIColor.init(hexString: "a63765")
         previewView?.layer.cornerRadius = (previewView?.frame.height)! / 2
         previewView?.alpha = 1.0

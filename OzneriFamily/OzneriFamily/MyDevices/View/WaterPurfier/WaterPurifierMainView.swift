@@ -368,6 +368,13 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
             offLineLabel.isHidden=true
             tds=(currentDevice.WaterInfo.TDS1,currentDevice.WaterInfo.TDS2)
             
+            if currentDevice.connectStatus == .Connected && currentDevice.deviceInfo.deviceType == "RO Comml" {
+                
+                valueSlider.value = Float(currentDevice.TwoInfo.hottempSet)
+                valueSlider.previewView?.valueLb.text = String.init(format: "%d℃", currentDevice.TwoInfo.hottempSet)
+            
+            }
+            
             waterStopDate=currentDevice.WaterSettingInfo.waterDate
             
         }else{
@@ -412,6 +419,7 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
             tdsContainerView.isHidden=false
             offLineLabel.isHidden=true
             tds=(Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS1),Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS2))
+            
         }else{
             let device = currentDevice as! WaterPurifier_Wifi
             
