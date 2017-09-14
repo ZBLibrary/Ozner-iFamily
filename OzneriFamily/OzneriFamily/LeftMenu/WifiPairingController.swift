@@ -54,7 +54,7 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = loadLanguage("Wifi配对")
+        self.title = loadLanguage("WiFi配对")
         connectWl.text = loadLanguage("连接WLAN")
         conWL.text = loadLanguage("选择一个可用的WLAN,让设备接入网络")
         remberPwd.text = loadLanguage("下次记住密码")

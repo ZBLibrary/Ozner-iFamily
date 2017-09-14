@@ -26,7 +26,7 @@ class PairingController: UIViewController,OznerPairDelegate {
         self.title = loadLanguage("正在配对")
         deviceImg.image = UIImage(named: productInfo["pairing"]["pairingImg2"].stringValue)
         typeState.text = productInfo["pairing"]["pairingText1"].stringValue
-        deviceState.text = loadLanguage(["Ayla":"正在进行Wifi配对","MxChip":"正在进行Wifi配对","Blue":"正在进行蓝牙配对","BlueMxChip":"正在进行配对","AylaMxChip":"正在进行Wifi配对"][productInfo["IOType"].stringValue]!)
+        deviceState.text = loadLanguage(["Ayla":"正在进行WiFi配对","MxChip":"正在进行WiFi配对","Blue":"正在进行蓝牙配对","BlueMxChip":"正在进行配对","AylaMxChip":"正在进行WiFi配对"][productInfo["IOType"].stringValue]!)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -56,7 +56,7 @@ class PairingController: UIViewController,OznerPairDelegate {
         case .Blue://蓝牙配对
             scanDeviceInfo=[OznerDeviceInfo]()
             OznerManager.instance.starPair(deviceClass: OZDeviceClass.getFromString(str: productInfo["ClassName"].stringValue), pairDelegate: self, ssid: "", password: "")
-        case .MxChip,.Ayla,.AylaMxChip://Wifi配对
+        case .MxChip,.Ayla,.AylaMxChip://WiFi配对
             self.performSegue(withIdentifier: "showWifiPair", sender: nil)
             break
         case .BlueMxChip:

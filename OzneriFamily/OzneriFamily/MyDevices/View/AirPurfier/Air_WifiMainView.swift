@@ -42,8 +42,18 @@ class Air_WifiMainView: OznerDeviceView {
         outdoorAirView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
         User.GetWeather(success: { (pollution, city, pm25, _, _, _, _) in
             self.cityLabel.text=city
-            self.polutionLabel.text=pollution
-            self.pm25Label_Out.text=pm25
+            self.pm25Label_Out.text="\(pm25)"
+            if pm25==0{
+                self.pm25Label_Out.text="-"
+                self.polutionLabel.text="-"
+            }else if pm25<75{
+                self.polutionLabel.text="优"
+            }else if pm25>150{
+                self.polutionLabel.text="差"
+            }else{
+                self.polutionLabel.text="良"
+            }
+            
             }, failure: { (error) in
                 
         })
@@ -58,7 +68,7 @@ class Air_WifiMainView: OznerDeviceView {
         User.GetWeather(success: { (pollution, city, pm25, aqi, temp, himid, dataFrom) in
             weakself?.cityLabel.text=city
             weakself?.polutionLabel.text=pollution
-            weakself?.pm25Label_Out.text=pm25
+            weakself?.pm25Label_Out.text = pm25==0 ? "-":"\(pm25)"
             
             weakself?.outdoorAirView.updateView(city: city, pm25: pm25, AQI: aqi, temp: temp, himit: himid, from: dataFrom, callback: {
                 weakself?.outdoorAirView.removeFromSuperview()

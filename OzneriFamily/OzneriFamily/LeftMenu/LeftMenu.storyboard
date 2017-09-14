@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iE5-ne-iDo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iE5-ne-iDo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -593,7 +592,7 @@
             </objects>
             <point key="canvasLocation" x="1754" y="1837"/>
         </scene>
-        <!--Wifi配对-->
+        <!--WiFi配对-->
         <scene sceneID="itB-PK-8wB">
             <objects>
                 <viewController id="aOn-2l-qaw" customClass="WifiPairingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
@@ -865,7 +864,7 @@
                             <constraint firstItem="hmr-R9-JD4" firstAttribute="top" secondItem="4TO-Qn-Rpa" secondAttribute="bottom" multiplier="667:567" id="xwi-G6-jJi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Wifi配对" id="Rww-Ee-oS3">
+                    <navigationItem key="navigationItem" title="WiFi配对" id="Rww-Ee-oS3">
                         <barButtonItem key="leftBarButtonItem" image="icon_back" id="j5Y-tS-WFN">
                             <connections>
                                 <action selector="backClick:" destination="aOn-2l-qaw" id="aFG-nQ-IVO"/>
@@ -921,8 +920,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您可以检查净水器Wifi连接状态后再进行配对" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KU-yt-dQa">
-                                <rect key="frame" x="76" y="633" width="223" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您可以检查净水器WiFi连接状态后再进行配对" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KU-yt-dQa">
+                                <rect key="frame" x="75.5" y="633" width="224.5" height="14"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1042,7 +1041,7 @@
         <image name="zuo1" width="14" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mnx-mC-lsK"/>
         <segue reference="9J8-o2-sth"/>
+        <segue reference="Qdq-gX-CEZ"/>
     </inferredMetricsTieBreakers>
 </document>
