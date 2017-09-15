@@ -372,6 +372,8 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
                 
                 valueSlider.value = Float(currentDevice.TwoInfo.hottempSet)
                 valueSlider.previewView?.valueLb.text = String.init(format: "%d℃", currentDevice.TwoInfo.hottempSet)
+                valueSlider.beginAdd()
+                valueSlider.chageValueFrame()
             
             }
             

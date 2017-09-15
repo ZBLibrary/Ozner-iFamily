@@ -55,6 +55,8 @@ class WaterPurifier_Blue: OznerBaseDevice {
             return true
         }
         
+        TwoInfo.hottempSet = temp
+        
         var data = Data.init(bytes: [0x41,UInt8(temp),UInt8(TwoInfo.isPower),UInt8(TwoInfo.openPowerTime),UInt8(TwoInfo.closePowerTime),UInt8(TwoInfo.isHot),UInt8(TwoInfo.startHotTime),UInt8(TwoInfo.endHotTime),UInt8(TwoInfo.isCold)])
         let tmpByte = calcSum(data: data)
         data.append(tmpByte)
@@ -130,7 +132,7 @@ class WaterPurifier_Blue: OznerBaseDevice {
             let B_Time = recvData.subInt(starIndex: 5, count: 4)
             let C_Time = recvData.subInt(starIndex: 9, count: 4)
             FilterInfo=(A_Time,B_Time,C_Time,Int(recvData[13]),Int(recvData[14]),Int(recvData[15]))
-        case 0x25:
+        case 0x26:
             let hottempSet = recvData.subInt(starIndex: 1, count: 1)
             let isPower = recvData.subInt(starIndex: 2, count: 1)
             let openPowerTime = recvData.subInt(starIndex: 3, count: 1)
@@ -141,6 +143,7 @@ class WaterPurifier_Blue: OznerBaseDevice {
             let isCold  = recvData.subInt(starIndex: 8, count: 1)
             
             TwoInfo = (hottempSet,isPower,openPowerTime,closePowerTime,isHot,startHotTime,endHotTime,isCold)
+            print(TwoInfo)
             
             break
         default:
@@ -150,13 +153,14 @@ class WaterPurifier_Blue: OznerBaseDevice {
     
     override func doWillInit(){}
     override func repeatFunc() {
-        
+
+        requestSetting()
+
         if Int(arc4random()%2)==0 {
             requestFilterInfo()
             requestSettingInfo()
         }else{
             requestWaterInfo()
-            requestSetting()
         }
         
     }
@@ -181,8 +185,8 @@ class WaterPurifier_Blue: OznerBaseDevice {
         self.SendDataToDevice(sendData: Data.init(bytes: [0x20,UInt8(3),tmpBytes]), CallBack: nil)
     }
     private func requestSetting(){
-        let tmpBytes = calcSum(data: Data.init(bytes: [0x20,UInt8(5)]))
-        self.SendDataToDevice(sendData: Data.init(bytes: [0x20,UInt8(5),tmpBytes]), CallBack: nil)
+        let tmpBytes = calcSum(data: Data.init(bytes: [0x20,UInt8(6)]))
+        self.SendDataToDevice(sendData: Data.init(bytes: [0x20,UInt8(6),tmpBytes]), CallBack: nil)
     }
     /*!
      滤芯历史信息

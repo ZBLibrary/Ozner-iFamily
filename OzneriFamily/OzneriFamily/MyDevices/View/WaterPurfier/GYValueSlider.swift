@@ -83,32 +83,8 @@ class GYValueSlider: UISlider {
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         
         let tracking = super.beginTracking(touch, with: event)
-        let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
-        let rect1 = rect.insetBy(dx: -8, dy: -8)
         
-        let rect2 = rect1.offsetBy(dx: 0, dy: -30)
-        
-        if previewView == nil {
-            
-//            let rect = CGRect.offsetBy(CGRect.insetBy(self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)))
-         
-            
-            addSubview(creatGYTmpView(rect2))
-            
-            UIView.animate(withDuration: 0.08, animations: { 
-                self.previewView?.alpha = 1
-            })
-            
-        } else {
-            
-//            let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
-//            let rect1 = rect.insetBy(dx: -8, dy: -8)
-//            let rect2 = rect1.offsetBy(dx: 0, dy: -20)
-            previewView?.frame = rect2
-            
-        }
-        
-        
+        beginAdd()
         return tracking
         
     }
@@ -130,6 +106,16 @@ class GYValueSlider: UISlider {
         
     }
     
+    func chageValueFrame() {
+        
+        var rect = previewView?.frame
+        
+        rect?.origin.x = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value).midX - ((rect?.width)! / 2)
+        previewView?.frame = rect!
+        
+        
+    }
+    
     override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         
         super.endTracking(touch, with: event)
@@ -137,6 +123,8 @@ class GYValueSlider: UISlider {
         if previewView !=  nil {
             UserDefaults.standard.setValue(Int32(String.init(format: "%.0f", self.value)), forKey: "UISliderValue")
             UserDefaults.standard.synchronize()
+            
+//            let currentDevice = OznerManager.instance.currentDevice as! WaterPurifier_Blue
             
             if block != nil {
                 block!()
@@ -169,20 +157,39 @@ class GYValueSlider: UISlider {
             }
         }
     
-        
-        
-        
     }
     
     func creatGYTmpView(_ frame: CGRect) -> GYTempValueView{
         
         previewView = GYTempValueView(frame: frame)
-//        String(Double(self.value) * 100.0)
         previewView?.valueLb.text = String.init(format: "%.0f", self.value) + "℃"
         previewView?.layer.cornerRadius = (previewView?.frame.height)! / 2
         previewView?.alpha = 1.0
         previewView?.backgroundColor = UIColor.clear
         return previewView!
+        
+    }
+    
+    func beginAdd() {
+        
+        let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
+        let rect1 = rect.insetBy(dx: -8, dy: -8)
+        
+        let rect2 = rect1.offsetBy(dx: 0, dy: -30)
+        
+        if previewView == nil {
+    
+            addSubview(creatGYTmpView(rect2))
+            
+            UIView.animate(withDuration: 0.08, animations: {
+                self.previewView?.alpha = 1
+            })
+            
+        } else {
+            
+            previewView?.frame = rect2
+            
+        }
         
     }
     
@@ -208,7 +215,6 @@ class GYValueSlider: UISlider {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initUI()
-//        fatalError("init(coder:) has not been implemented")
         
     }
     
