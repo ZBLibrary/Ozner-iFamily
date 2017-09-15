@@ -376,8 +376,10 @@ class ElectrickettleMainView: OznerDeviceView {
             let date = Date(timeIntervalSinceNow: TimeInterval(currentDevice.settingInfo.orderSec * 60))
             settimeBtn.setTitle((date.gy_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date.gy_stringFromDate(dateFormat: " HH:mm")), for: UIControlState.normal)
             
+              self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
+            
         }
-        
+//
         print(currentDevice.settingInfo)
         
     }
@@ -385,8 +387,8 @@ class ElectrickettleMainView: OznerDeviceView {
     
     
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
-        
-                
+
+    
     }
     
     

@@ -37,9 +37,9 @@ class OznerBaseDevice: NSObject,OznerBaseIODelegate {
     var settings:BaseDeviceSetting!
     var connectStatus=OznerConnectStatus.Connecting{
         didSet{
-            if connectStatus==oldValue {
-                return
-            }
+//            if connectStatus==oldValue {
+//                return
+//            }
             delegate?.OznerDeviceStatusUpdate?(identifier: deviceInfo.deviceID)
         }
     }
@@ -85,8 +85,8 @@ class OznerBaseDevice: NSObject,OznerBaseIODelegate {
     }
     //io 发送初始化数据
     func doWillInit() {
-        let time=Timer.init(timeInterval: 3, target: self, selector: #selector(setConnect), userInfo: nil, repeats: false)
-        time.fire()
+//        let time=Timer.init(timeInterval: 3, target: self, selector: #selector(setConnect), userInfo: nil, repeats: false)
+//        time.fire()
     }
     func setConnect(){
         self.connectStatus = .Connecting

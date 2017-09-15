@@ -23,6 +23,7 @@ class Electrickettle_Blue: OznerBaseDevice {
             
             if settingInfo != oldValue {
                 self.delegate?.OznerDeviceSensorUpdate!(identifier: self.deviceInfo.deviceID)
+                self.delegate?.OznerDeviceStatusUpdate!(identifier: self.deviceInfo.deviceID)
             }
             
         }
