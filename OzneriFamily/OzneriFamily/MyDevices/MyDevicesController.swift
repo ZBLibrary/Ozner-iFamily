@@ -76,7 +76,7 @@ class MyDevicesController: UIViewController {
         case .Electrickettle_Blue:
             self.performSegue(withIdentifier: "ShowElectrickettleSetting", sender: nil)
         case .WashDush_Wifi:
-            self.performSegue(withIdentifier: "ShowElectrickettleSetting", sender: nil)
+            self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
         }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮
@@ -115,7 +115,7 @@ class MyDevicesController: UIViewController {
         super.viewWillAppear(animated)
         deviceViewContainer.SetDeviceAndView()
 //        self.navigationController?.navigationBar.isHidden=true
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
 //        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleBottomMargin]
         self.slideMenuController()?.removeLeftGestures()
@@ -127,7 +127,7 @@ class MyDevicesController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: animated)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
 
     }
     

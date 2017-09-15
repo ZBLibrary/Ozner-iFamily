@@ -29,32 +29,9 @@ class EquidsCollectionViewCell: UICollectionViewCell {
     func update(device:OznerBaseDevice!)
     {
         
-        let deviceClass=ProductInfo.getDeviceClassFromProductID(productID: device.deviceInfo.productID)
-        equipNameLabel.text = loadLanguage(ProductInfo.getNameFromProductID(productID: device.deviceInfo.productID))
-        var imgwhich=""
-        switch deviceClass {
-        case .Cup:
-            imgwhich+="My_cup"
-        case .Tap:
-            imgwhich+="My_tantou"
-        case .TDSPan:
-            imgwhich+="My_tantou"
-        case .WaterPurifier_Wifi:
-            imgwhich+="My_shuiji"
-        case .AirPurifier_Blue:
-            imgwhich+="My_kongjing_small"
-        case .AirPurifier_Wifi:
-            imgwhich+="My_kongjing_big"
-        case .WaterReplenish:
-            imgwhich+="My_bsy"
-        case .WaterPurifier_Blue:
-            imgwhich+="My_shuiji"
-        case .Electrickettle_Blue:
-            imgwhich += "icon_cup_on"
-        case .WashDush_Wifi:
-            imgwhich += "icon_cup_on"
-
-        }
-        equipImage.image=UIImage(named: imgwhich)
+        let productInfo=ProductInfo.getProductInfoFromProductID(productID: device.deviceInfo.productID)
+        equipNameLabel.text = device.settings.name
+        let imgNameStr=productInfo?["pairing"]["pairingImg5"].stringValue
+        equipImage.image=UIImage(named: imgNameStr!)
     }
 }

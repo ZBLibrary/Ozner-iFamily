@@ -18,6 +18,7 @@ class WaterReplenish: OznerBaseDevice {
     }
     
     override func OznerBaseIORecvData(recvData: Data) {
+        super.OznerBaseIORecvData(recvData: recvData)
 
         switch UInt8(recvData[0]) {
         case 0x21://opCode_StatusResp
@@ -37,6 +38,7 @@ class WaterReplenish: OznerBaseDevice {
         }
     }
     override func doWillInit() {
+        super.doWillInit()
 
     }
    

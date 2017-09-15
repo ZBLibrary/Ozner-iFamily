@@ -20,29 +20,56 @@ class WashDush_Wifi: OznerBaseDevice {
     //对外只读，对内可读写
     private(set) var sensor:(ErrorState:Int,WashState:Int,RemindTime:Int,RemindPercent:Int,Temperature:Int,lastWashData:Data)=(0,0,-1,-1,-1,Data()){
         didSet{
-            if sensor != oldValue {
+            //if sensor != oldValue {
                 self.delegate?.OznerDeviceSensorUpdate?(identifier: self.deviceInfo.deviceID)
-            }
+            //}
         }
     }
     //控制开关、模式
     private(set) var status:(Power:Bool,OnOff:Bool,Lock:Bool,NewTrend:Bool,Door:Bool,WashModel:Int)=(false,false,false,false,false,0){
         didSet{
-            if status != oldValue {
+            //if status != oldValue {
+            
                 self.delegate?.OznerDeviceStatusUpdate!(identifier: self.deviceInfo.deviceID)
-            }
+            //}
         }
     }
     //耗材、预约
-    private(set) var filterStatus:(jingshui:Int,ruanshui:Int,jingjie:Int,liangdie:Int,AppointTime:Int,AppointModel:Int) = (-1,-1,-1,-1,-1,-1){
+    private(set) var filterStatus:(jingshui:Int,ruanshui:Int,jingjie:Int,liangdie:Int,AppointTime:Int,AppointModel:Int) = (-1,-1,-1,-1,0,0){
         didSet{
-            if filterStatus != oldValue {
+            //if filterStatus != oldValue {
                 self.delegate?.OznerDevicefilterUpdate?(identifier: self.deviceInfo.deviceID)
-            }
+            //}
             
         }
     }
     func setControl(controlkey:Int,callBack:((_ error:Error?)->Void)) {
+        var errorstr = ""
+        
+        switch controlkey {
+        case 1:
+            if status.Lock == true {
+                errorstr="童锁未关"
+            }
+        case 2:
+            if !(status.Lock==false&&status.Door==false&&(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20)||sensor.WashState==Int(0x30))&&(status.WashModel != 0)) {
+                errorstr="不符合启动暂停条件"
+            }
+        case 3:
+            if status.Door == true {
+                errorstr="门未关"
+            }
+        case 4:
+            if !(status.Lock==false&&status.Door==false&&(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20))) {
+                errorstr="不符合模式选择条件"
+            }
+        default:
+            break
+        }
+        if errorstr != "" {
+            print(errorstr)
+            return
+        }
         let controlID=UInt8([1:0x01,2:0x02,3:0x0D,4:0x04][controlkey]!)
          let controlValue = !([1:status.Power,2:status.OnOff,3:status.Lock,4:status.NewTrend][controlkey]!)
         var data = Data.init(bytes: [controlID,0x01,UInt8(controlValue.hashValue)])
@@ -54,20 +81,25 @@ class WashDush_Wifi: OznerBaseDevice {
         setProperty(data: data, propertyCount: 1)
     }
     func setModel(Model:Int,callBack:((_ error:Error?)->Void)) {
+        if !(status.Lock==false&&status.Door==false&&(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20))) {
+            print("不符合模式选择条件")
+            return
+        }
         let needModel = Model==status.WashModel ? 0:Model
         setProperty(data: Data.init(bytes: [0x03,0x01,UInt8(needModel)]), propertyCount: 1)
     }
     func setAppoint(IsOpen:Bool,time:Int,model:Int,callBack:((_ error:Error?)->Void)) {
+        if !(status.Lock==false&&status.Door==false&&(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20))) {
+            print("不符合预约条件")
+            return
+        }
         setProperty(data: Data.init(bytes: [0x05,0x04,UInt8(IsOpen.hashValue),UInt8(time%60),UInt8(time/60),UInt8(model)]), propertyCount: 1)
     }
 
     override func OznerBaseIORecvData(recvData: Data) {
+        super.OznerBaseIORecvData(recvData: recvData)
         //解析数据并更新个性字段
         requestCount=0
-        if self.connectStatus != .Connected
-        {
-            self.connectStatus = .Connected
-        }
         if (UInt8(recvData[0]) != 0xFB )
         {
             return
@@ -82,6 +114,9 @@ class WashDush_Wifi: OznerBaseDevice {
         tmpStatus.Power = (tmpSensor.WashState != 0)
         
         tmpStatus.WashModel=Int(recvData[recvData.count-4])%8//8自定义洗还没有//program
+        if tmpStatus.Power==false {
+            tmpStatus.WashModel=0
+        }
         var flage = Int(recvData[recvData.count-3])//flage
         tmpStatus.NewTrend = flage%2 != 0
         flage=flage-flage%2
@@ -91,12 +126,9 @@ class WashDush_Wifi: OznerBaseDevice {
         flage=flage-flage%8
         tmpStatus.OnOff = flage%16 != 0
         
-        
         if UInt8(recvData[11]) == 0xB0 {
-            print(recvData)
         }
         if UInt8(recvData[11]) == 0xB1 {
-            
             var p = 13
             for _ in 0..<Int(recvData[12]) {
                 
@@ -144,9 +176,12 @@ class WashDush_Wifi: OznerBaseDevice {
 //                case 0x12:////门状态：bit_0:0-关闭，bit_0:1-打开
 //                    break
                 case 0x06://完成时间
+                    print(valueData.count)
                     tmpSensor.RemindTime=Int(valueData[0])
-                    tmpSensor.RemindPercent=Int(valueData[1])*5
-                    break
+                    if valueData.count>1 {
+                        tmpSensor.RemindPercent=Int(valueData[1])*5
+                    }
+                    
                 case 0x05://预约功能
                     tmpFilterStatus.AppointTime = -1
                     tmpFilterStatus.AppointModel = -1
@@ -154,27 +189,26 @@ class WashDush_Wifi: OznerBaseDevice {
                         tmpFilterStatus.AppointTime = Int(valueData[1])+Int(valueData[2])*60
                         tmpFilterStatus.AppointModel = Int(valueData[3])
                     }
-                    break
+                    
                 case 0x0F://洗涤温度
                     tmpSensor.Temperature=Int(valueData[0])
-                    break
+                    
                 case 0x10://单次洗涤结束时状态
-                    tmpSensor.lastWashData=valueData
-                    break
+                    let dateData=Data.init(bytes: [UInt8(NSDate().year()-2000),UInt8(NSDate().month()),UInt8(NSDate().day()),UInt8(NSDate().hour()),UInt8(NSDate().minute()),UInt8(NSDate().second())])
+                    tmpSensor.lastWashData.append(dateData)
+                    tmpSensor.lastWashData.append(valueData)
+                    
                 case 0x11://错误代码
                     tmpSensor.ErrorState=Int(valueData[0])+Int(valueData[4])*256
                     break
                 default:
                     break
                 }
-                
             }
-            
-            status = tmpStatus
-            sensor = tmpSensor
-            filterStatus = tmpFilterStatus
         }
-        
+        status = tmpStatus
+        sensor = tmpSensor
+        filterStatus = tmpFilterStatus
         
     }
     
@@ -202,6 +236,7 @@ class WashDush_Wifi: OznerBaseDevice {
     
     
     override func doWillInit() {
+        super.doWillInit()
         //self.setTime()
         sleep(1)
         self.reqesutProperty()

@@ -28,7 +28,7 @@ class WashAppointTime: UIView,UIPickerViewDelegate,UIPickerViewDataSource{
     }
     var setModel = 0{
         didSet{
-            pickerView.selectRow(setModel-1, inComponent: 0, animated: true)
+            pickerView.selectRow(max(setModel-1,0), inComponent: 0, animated: true)
         }
     }
     

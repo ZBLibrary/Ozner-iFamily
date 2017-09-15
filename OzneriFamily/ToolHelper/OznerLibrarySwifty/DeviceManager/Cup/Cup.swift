@@ -56,6 +56,7 @@ class Cup: OznerBaseDevice {
         
     }
     override func OznerBaseIORecvData(recvData: Data) {
+        super.OznerBaseIORecvData(recvData: recvData)
         switch UInt8(recvData[0]) {
         case 0x82://opCode_ReadInfoRet
             _=recvData.base64EncodedString()
@@ -86,6 +87,7 @@ class Cup: OznerBaseDevice {
         }
     }
     override func doWillInit() {
+        super.doWillInit()
         sendTime()
         sendReadInfo()
         sendSetting()

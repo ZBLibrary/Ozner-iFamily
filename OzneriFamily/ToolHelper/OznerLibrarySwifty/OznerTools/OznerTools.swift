@@ -66,7 +66,7 @@ class OznerTools: NSObject {
     class func publicString(payload:Data,deviceid:String,callback:((Int32)->Void)!){
         let payloadStr=OznerTools.hexStringFromData(data: payload)
         let params = ["username" : "bing.zhao@cftcn.com","password" : "l5201314","deviceid" : deviceid,"payload" : payloadStr]//设置参数
-        print("2.0发送指令："+payloadStr)
+        //print("2.0发送指令："+payloadStr)
         Helper.post("https://v2.fogcloud.io/enduser/sendCommandHz/", requestParams: params) { (response, data, error) in
             print(error ?? "")
         }
