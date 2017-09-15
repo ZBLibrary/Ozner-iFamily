@@ -17,7 +17,7 @@ import UIKit
 
 class Electrickettle_Blue: OznerBaseDevice {
     
-    private(set)  var settingInfo:(isHot:Int,temp:Int,tds:Int,orderFunction:Int,orderSec:Int,orderTemp:Int,hotPattern:Int,hotTemp:Int,hotTime:Int) = (0,0,0,0,0,0,0,0,0) {
+    private(set)  var settingInfo:(isHot:Int,temp:Int,tds:Int,orderFunction:Int,orderSec:Int,orderTemp:Int,hotPattern:Int,hotTemp:Int,hotTime:Int,hotSurplusTime:Int) = (0,0,0,0,0,0,0,0,0,0) {
         
         didSet {
             
@@ -30,11 +30,14 @@ class Electrickettle_Blue: OznerBaseDevice {
         
     }
     
+    var isFirst:Bool = true
+    
     override func OznerBaseIORecvData(recvData: Data) {
         
         switch UInt8(recvData[0]) {
             
             case 0x21:
+                
                 let isHot = recvData.subInt(starIndex: 1, count: 1)
                 let temp = recvData.subInt(starIndex: 2, count: 1)
                 let tds = recvData.subInt(starIndex: 3, count: 2)
@@ -46,21 +49,19 @@ class Electrickettle_Blue: OznerBaseDevice {
                 let hotPattern = recvData.subInt(starIndex: 9, count: 1)
                 let hotTemp = recvData.subInt(starIndex: 10, count: 1)
                 let hotTime = recvData.subInt(starIndex: 11, count: 2)
-
-//                let isHot = UInt8(recvData[1])
-//                let temp = UInt8(recvData[2])
-//                let tds = recvData.subInt(starIndex: 3, count: 2)
-//                
-//                let orderFunction = UInt8( recvData[5])
-//                let orderSec = recvData.subInt(starIndex: 7, count: 2)
-//                let orderTemp = UInt8( recvData[9])
-//                let hotPattern = UInt8( recvData[10])
-//                let hotTemp = UInt8( recvData[11])
-//                let hotTime = recvData.subInt(starIndex: 12, count: 2)
+                let hotSurplusTime = recvData.subInt(starIndex: 13, count: 2)
                 
-//                settingInfo = (Int(isHot),Int(temp),tds,Int(orderFunction),orderSec,Int(orderTemp),Int(hotPattern),Int(hotTemp),hotTime)
-                settingInfo = (isHot,temp,tds,orderFunction,orderSec,orderTemp,hotPattern,hotTemp,hotTime)
-//                self.delegate?.OznerDeviceSensorUpdate!(identifier: self.deviceInfo.deviceID)
+                let errorCode = recvData[17]
+                
+                print("电热壶错误码:\(Int(errorCode))")
+                
+                if isFirst {
+                    
+                    isFirst = false
+                    appDelegate.window?.noticeOnlyText("请检查水壶是否放置好")
+                }
+
+                settingInfo = (isHot,temp,tds,orderFunction,orderSec,orderTemp,hotPattern,hotTemp,hotTime,hotSurplusTime)
 
             break
 //            case 0x33:
@@ -139,8 +140,8 @@ class Electrickettle_Blue: OznerBaseDevice {
 
 }
 
-public func !=<A, B, C, D, E,F,G,H,I>(lhs: (A, B, C, D, E,F,G,H,I), rhs: (A, B, C, D, E,F,G,H,I)) -> Bool where A : Equatable, B : Equatable, C : Equatable, D : Equatable, E : Equatable,F : Equatable, G : Equatable, H : Equatable , I : Equatable{
+public func !=<A, B, C, D, E,F,G,H,I,J>(lhs: (A, B, C, D, E,F,G,H,I,J), rhs: (A, B, C, D, E,F,G,H,I,J)) -> Bool where A : Equatable, B : Equatable, C : Equatable, D : Equatable, E : Equatable,F : Equatable, G : Equatable, H : Equatable , I : Equatable, J: Equatable{
     
-    return lhs.0 != rhs.0 || lhs.1 != rhs.1 || lhs.2 != rhs.2 || lhs.3 != rhs.3 || lhs.4 != rhs.4 || lhs.5 != rhs.5 || lhs.6 != rhs.6 || lhs.7 != rhs.7 || lhs.8 != rhs.8
+    return lhs.0 != rhs.0 || lhs.1 != rhs.1 || lhs.2 != rhs.2 || lhs.3 != rhs.3 || lhs.4 != rhs.4 || lhs.5 != rhs.5 || lhs.6 != rhs.6 || lhs.7 != rhs.7 || lhs.8 != rhs.8 || lhs.9 != rhs.9
     
 }
