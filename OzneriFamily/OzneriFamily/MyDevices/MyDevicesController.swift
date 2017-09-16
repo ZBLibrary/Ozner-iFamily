@@ -79,8 +79,7 @@ class MyDevicesController: UIViewController {
         case .Electrickettle_Blue:
             self.performSegue(withIdentifier: "ShowElectrickettleSetting", sender: nil)
         case .WashDush_Wifi:
-            self.performSegue(withIdentifier: "ShowElectrickettleSetting", sender: nil)
-        
+            self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
         }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮
