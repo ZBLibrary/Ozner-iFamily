@@ -138,6 +138,9 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dz3-ul-oKg">
                                                                     <rect key="frame" x="228" y="39" width="120.5" height="120"/>
                                                                     <subviews>
+                                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="washTemperature" translatesAutoresizingMaskIntoConstraints="NO" id="BsA-nO-Shg">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="120.5" height="120"/>
+                                                                        </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sg3-3u-nba">
                                                                             <rect key="frame" x="41" y="55" width="39" height="30"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
@@ -150,14 +153,40 @@
                                                                             <color key="textColor" red="0.99961632489999996" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRY-pR-FJL">
+                                                                            <rect key="frame" x="50" y="50" width="20" height="20"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" secondItem="aRY-pR-FJL" secondAttribute="height" id="kZR-kC-Ekn"/>
+                                                                                <constraint firstAttribute="width" constant="20" id="n0J-Rg-dmu"/>
+                                                                            </constraints>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                    <integer key="value" value="10"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                                    <integer key="value" value="5"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                                                                    <color key="value" red="0.96692019701004028" green="0.32592582702636719" blue="0.043600887060165405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </view>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
+                                                                        <constraint firstItem="aRY-pR-FJL" firstAttribute="centerY" secondItem="Dz3-ul-oKg" secondAttribute="centerY" id="4em-Eo-PnA"/>
                                                                         <constraint firstItem="0vT-XK-LVD" firstAttribute="centerX" secondItem="Dz3-ul-oKg" secondAttribute="centerX" id="Am1-xL-8nn"/>
                                                                         <constraint firstAttribute="width" secondItem="Dz3-ul-oKg" secondAttribute="height" id="Glf-zz-bHc"/>
+                                                                        <constraint firstItem="aRY-pR-FJL" firstAttribute="centerX" secondItem="Dz3-ul-oKg" secondAttribute="centerX" id="U6Q-lM-aoL"/>
+                                                                        <constraint firstItem="BsA-nO-Shg" firstAttribute="top" secondItem="Dz3-ul-oKg" secondAttribute="top" id="V5w-3L-8wx"/>
+                                                                        <constraint firstItem="BsA-nO-Shg" firstAttribute="leading" secondItem="Dz3-ul-oKg" secondAttribute="leading" id="afb-Vs-ALY"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="BsA-nO-Shg" secondAttribute="bottom" id="b5b-lP-ZXB"/>
                                                                         <constraint firstItem="Sg3-3u-nba" firstAttribute="top" secondItem="0vT-XK-LVD" secondAttribute="bottom" constant="5" id="bfJ-R2-naD"/>
                                                                         <constraint firstItem="Sg3-3u-nba" firstAttribute="centerY" secondItem="Dz3-ul-oKg" secondAttribute="centerY" constant="10" id="c4l-ib-FTU"/>
                                                                         <constraint firstItem="Sg3-3u-nba" firstAttribute="centerX" secondItem="Dz3-ul-oKg" secondAttribute="centerX" id="kCh-MH-ge0"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="BsA-nO-Shg" secondAttribute="trailing" id="rfv-fd-vgT"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -512,10 +541,10 @@
                                 <constraint firstItem="6hy-qz-LP5" firstAttribute="leading" secondItem="j7Y-1D-GVE" secondAttribute="trailing" id="ar2-vk-o4D"/>
                                 <constraint firstAttribute="bottom" secondItem="UV5-AT-tzV" secondAttribute="bottom" constant="5" id="cig-ME-v5R"/>
                                 <constraint firstAttribute="bottom" secondItem="KsI-fH-KVz" secondAttribute="bottom" constant="5" id="in3-vh-DF0"/>
-                                <constraint firstItem="j7Y-1D-GVE" firstAttribute="width" secondItem="6hy-qz-LP5" secondAttribute="width" id="pJV-SM-CG0"/>
                                 <constraint firstItem="j7Y-1D-GVE" firstAttribute="leading" secondItem="KsI-fH-KVz" secondAttribute="trailing" id="qov-3l-oxL"/>
                                 <constraint firstAttribute="trailing" secondItem="6hy-qz-LP5" secondAttribute="trailing" id="rVZ-d1-Lbk"/>
                                 <constraint firstAttribute="bottom" secondItem="6hy-qz-LP5" secondAttribute="bottom" constant="5" id="s0y-em-JKA"/>
+                                <constraint firstItem="j7Y-1D-GVE" firstAttribute="width" secondItem="jh9-he-diB" secondAttribute="width" multiplier="1:4" id="tvJ-nh-QoC"/>
                                 <constraint firstAttribute="bottom" secondItem="j7Y-1D-GVE" secondAttribute="bottom" constant="5" id="wxS-r3-jgN"/>
                                 <constraint firstItem="6hy-qz-LP5" firstAttribute="top" secondItem="jh9-he-diB" secondAttribute="top" constant="5" id="z1P-2j-m37"/>
                             </constraints>
@@ -779,8 +808,8 @@
                 <outlet property="controlButton2" destination="DE2-dK-p23" id="dux-Xk-w1D"/>
                 <outlet property="controlButton3" destination="spQ-4p-aHR" id="LpB-t2-Heu"/>
                 <outlet property="controlButton4" destination="c9h-jm-7XX" id="bPk-W0-ABk"/>
-                <outlet property="controlWidth" destination="Ruz-SQ-2AP" id="Kr1-KH-DWE"/>
                 <outlet property="errorButton" destination="LuU-Fy-8bY" id="gbJ-Kb-ZLV"/>
+                <outlet property="lockWidth" destination="tvJ-nh-QoC" id="GTW-gG-2rT"/>
                 <outlet property="model5Width" destination="g6o-Us-DH6" id="c38-YE-GWD"/>
                 <outlet property="pageControl" destination="zKz-Xg-82i" id="YtT-db-RuL"/>
                 <outlet property="remindTimeValue" destination="TQN-J3-9vK" id="BLe-UG-C4j"/>
@@ -788,6 +817,9 @@
                 <outlet property="remindTimeView2" destination="i04-bx-yfp" id="WCh-wl-nBE"/>
                 <outlet property="remindTimeView3" destination="jh4-L6-aln" id="HxQ-IZ-p5d"/>
                 <outlet property="scrollView" destination="JhW-w3-nD7" id="HED-Tb-1wF"/>
+                <outlet property="smallCircleView" destination="6ja-xc-Ntc" id="81e-Vd-VeD"/>
+                <outlet property="smallCircleX" destination="U6Q-lM-aoL" id="tWE-lR-m53"/>
+                <outlet property="smallCircleY" destination="4em-Eo-PnA" id="aju-mx-A28"/>
                 <outlet property="tdsAFLabel" destination="4T8-1j-olc" id="FSD-aF-Wmh"/>
                 <outlet property="tdsBFLabel" destination="8ko-Z3-XdA" id="nNj-Pc-2xV"/>
                 <outlet property="tdsCircleView" destination="LPR-ea-2Uo" id="5FH-LE-p97"/>
@@ -801,6 +833,7 @@
                 <outlet property="washModel6" destination="TxQ-GZ-OdW" id="n2f-ss-lPD"/>
                 <outlet property="washModel7" destination="tNK-fX-AJy" id="Az5-GU-Akz"/>
                 <outlet property="washTitleLabel" destination="eJb-oT-7X5" id="K5e-Fh-af4"/>
+                <outlet property="xinfengWidth" destination="Ruz-SQ-2AP" id="bju-qP-YzV"/>
             </connections>
             <point key="canvasLocation" x="-108" y="-109.5"/>
         </view>
@@ -808,6 +841,7 @@
     <resources>
         <image name="Rank_toright" width="8" height="17"/>
         <image name="device_setting_icon" width="20" height="20"/>
+        <image name="washTemperature" width="108" height="108"/>
         <image name="奶瓶洗" width="29" height="29"/>
         <image name="开启暂停" width="40" height="40"/>
         <image name="强劲洗" width="29" height="29"/>

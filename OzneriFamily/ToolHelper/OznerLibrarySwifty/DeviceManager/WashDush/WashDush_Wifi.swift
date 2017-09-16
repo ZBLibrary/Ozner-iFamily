@@ -44,30 +44,42 @@ class WashDush_Wifi: OznerBaseDevice {
         }
     }
     func setControl(controlkey:Int,callBack:((_ error:Error?)->Void)) {
-        var errorstr = ""
+        var errorCode = -1
         
         switch controlkey {
         case 1:
             if status.Lock == true {
-                errorstr="童锁未关"
+                errorCode=0
             }
         case 2:
-            if !(status.Lock==false&&status.Door==false&&(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20)||sensor.WashState==Int(0x30))&&(status.WashModel != 0)) {
-                errorstr="不符合启动暂停条件"
+            if status.Lock {
+                errorCode=0
+            }else if status.Door {
+                errorCode=1
+            }else if status.WashModel == 0 {
+                errorCode=4
+            }else if !(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20)||sensor.WashState==Int(0x30)) {
+                errorCode=2
             }
+
         case 3:
             if status.Door == true {
-                errorstr="门未关"
+                errorCode=1
             }
         case 4:
-            if !(status.Lock==false&&status.Door==false&&(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20))) {
-                errorstr="不符合模式选择条件"
+            if status.Lock {
+                errorCode=0
+            }else if status.Door {
+                errorCode=1
+            }else if !(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20)||sensor.WashState==Int(0x30)) {
+                errorCode=2
             }
+
         default:
             break
         }
-        if errorstr != "" {
-            print(errorstr)
+        if errorCode != -1 {
+            callBack(NSError.init(domain: "", code: errorCode, userInfo: nil))
             return
         }
         let controlID=UInt8([1:0x01,2:0x02,3:0x0D,4:0x04][controlkey]!)
@@ -81,18 +93,22 @@ class WashDush_Wifi: OznerBaseDevice {
         setProperty(data: data, propertyCount: 1)
     }
     func setModel(Model:Int,callBack:((_ error:Error?)->Void)) {
-        if !(status.Lock==false&&status.Door==false&&(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20))) {
-            print("不符合模式选择条件")
+        var errorCode = -1
+        if status.Lock {
+            errorCode=0            
+        }else if status.Door {
+            errorCode=1
+        }else if !(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20)) {
+            errorCode=3
+        }
+        if errorCode != -1 {
+            callBack(NSError.init(domain: "", code: errorCode, userInfo: nil))
             return
         }
         let needModel = Model==status.WashModel ? 0:Model
         setProperty(data: Data.init(bytes: [0x03,0x01,UInt8(needModel)]), propertyCount: 1)
     }
     func setAppoint(IsOpen:Bool,time:Int,model:Int,callBack:((_ error:Error?)->Void)) {
-        if !(status.Lock==false&&status.Door==false&&(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20))) {
-            print("不符合预约条件")
-            return
-        }
         setProperty(data: Data.init(bytes: [0x05,0x04,UInt8(IsOpen.hashValue),UInt8(time%60),UInt8(time/60),UInt8(model)]), propertyCount: 1)
     }
 
@@ -153,22 +169,22 @@ class WashDush_Wifi: OznerBaseDevice {
                     tmpFilterStatus.liangdie=0
                     var tmpFilter=Int(valueData[0])
                     if tmpFilter%2 == 0 {
-                        tmpFilterStatus.jingshui=Int(valueData[1])
+                        tmpFilterStatus.jingshui=min(Int(valueData[1]),100)
                     }
                     tmpFilter=tmpFilter-tmpFilter%2
                     
                     if tmpFilter%4 == 0 {
-                        tmpFilterStatus.ruanshui=Int(valueData[2])
+                        tmpFilterStatus.ruanshui=min(Int(valueData[2]),100)
                     }
                     tmpFilter=tmpFilter-tmpFilter%4
                     
                     if tmpFilter%8 == 0 {
-                        tmpFilterStatus.jingjie=Int(valueData[3])
+                        tmpFilterStatus.jingjie=min(Int(valueData[3]),100)
                     }
                     tmpFilter=tmpFilter-tmpFilter%8
                     
                     if tmpFilter%16 == 0 {
-                        tmpFilterStatus.jingjie=Int(valueData[4])
+                        tmpFilterStatus.liangdie=min(Int(valueData[4]),100)
                     }
                     break
                 //case 0x04://保管功能

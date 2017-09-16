@@ -24,6 +24,19 @@ class WashHaoCaiController: BaseViewController {
     @IBOutlet var animalView3: UIView!
     @IBOutlet var animalView4: UIView!
     
+    @IBAction func bugHaoCaiClick(_ sender: Any) {
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false,
+            dynamicAnimatorActive: true
+        )
+        let alert=SCLAlertView(appearance: appearance)
+        _=alert.addButton("取消") {
+        }
+        _=alert.addButton("拨打") {
+            UIApplication.shared.openURL(URL.init(string: "telprompt://4009209667")!)
+        }
+        _=alert.showInfo("", subTitle: "请拨打400 920 9667电话补充耗材")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let filterStatus=(OznerManager.instance.currentDevice as! WashDush_Wifi).filterStatus

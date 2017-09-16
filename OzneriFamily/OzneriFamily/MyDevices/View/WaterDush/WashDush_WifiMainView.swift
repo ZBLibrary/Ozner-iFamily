@@ -14,7 +14,7 @@
 //  Real developers ship.
 
 import UIKit
-
+import SVProgressHUD
 class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
     
     
@@ -30,9 +30,19 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
     @IBOutlet var washTitleLabel: UILabel!
     @IBOutlet var appointButton: UIButton!
     @IBAction func appointClick(_ sender: UIButton) {
+        if  self.currentDevice?.connectStatus != OznerConnectStatus.Connected{
+            alertError(code: 6)
+            return
+        }
         let device=self.currentDevice as! WashDush_Wifi
-        if !(device.status.Lock==false&&device.status.Door==false&&(device.sensor.WashState==Int(0x10)||device.sensor.WashState==Int(0x20))) {
-            print("不符合条件")
+        if device.status.Lock {
+            alertError(code: 0)
+            return
+        }else if device.status.Door {
+            alertError(code: 1)
+            return
+        }else if !(device.sensor.WashState==Int(0x10)||device.sensor.WashState==Int(0x20)) {
+            alertError(code: 3)
             return
         }
         let weakSelf=self
@@ -41,6 +51,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         washAppointTime.setModel=device.filterStatus.AppointModel
         washAppointTime.callBack={( appoint:(model:Int,time:Int)?)->() in
             if appoint==nil {
+                
                 device.setAppoint(IsOpen: false, time: 0, model: 0, callBack: { (error) in
                     
                 })
@@ -49,7 +60,8 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
                     
                 })
             }
-            
+            SVProgressHUD.show(withStatus: "发送中...")
+            SVProgressHUD.dismiss(withDelay: 2)
             weakSelf.washAppointTime.removeFromSuperview()
         }
         self.window?.addSubview(washAppointTime)
@@ -60,6 +72,9 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
     @IBOutlet var remindTimeValue: UILabel!//min
 
     @IBOutlet var temperatView: UIView!//动画
+    @IBOutlet var smallCircleView: UIView!
+    @IBOutlet var smallCircleX: NSLayoutConstraint!
+    @IBOutlet var smallCircleY: NSLayoutConstraint!
     @IBOutlet var temperatureLabel: UILabel!//温度
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var tdsCircleView: WaterPurifierHeadCircleView!//tds圆环
@@ -69,6 +84,10 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
     
     @IBOutlet var consumableButton: UIButton!
     @IBAction func consumableClick(_ sender: Any) {//耗材界面
+        if  self.currentDevice?.connectStatus != OznerConnectStatus.Connected{
+            alertError(code: 6)
+            return
+        }
         self.delegate.DeviceViewPerformSegue!(SegueID: "showWashHaoCai", sender: nil)
     }
     @IBAction func DeviceSettingClick(_ sender: UIButton) {
@@ -79,7 +98,15 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
     @IBOutlet var controlButton3: UIButton!//童锁
     @IBOutlet var controlButton4: UIButton!//新风
     @IBAction func controlClick(_ sender: UIButton) {//控制按钮单机
+        if  self.currentDevice?.connectStatus != OznerConnectStatus.Connected{
+            alertError(code: 6)
+            return
+        }
+        SVProgressHUD.show(withStatus: "发送中...")
+        SVProgressHUD.dismiss(withDelay: 2)
         (self.currentDevice as! WashDush_Wifi).setControl(controlkey: sender.tag) { (error) in
+            SVProgressHUD.dismiss()
+            alertError(code: (error as! NSError).code)
         }
     }
     
@@ -92,23 +119,49 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
     @IBOutlet var washModel6: UIButton!//奶瓶
     @IBOutlet var washModel7: UIButton!//清洁
     @IBAction func washModelClick(_ sender: UIButton) {
-        (self.currentDevice as! WashDush_Wifi).setModel(Model: sender.tag) { (error) in            
+        if  self.currentDevice?.connectStatus != OznerConnectStatus.Connected{
+            alertError(code: 6)
+            return
+        }
+        SVProgressHUD.show(withStatus: "发送中...")
+        SVProgressHUD.dismiss(withDelay: 2)
+        (self.currentDevice as! WashDush_Wifi).setModel(Model: sender.tag) { (error) in
+            SVProgressHUD.dismiss()
+            alertError(code: (error as! NSError).code)
         }
     }
     @IBAction func lastWashReport(_ sender: Any) {//上次洗涤报告
+        if  self.currentDevice?.connectStatus != OznerConnectStatus.Connected{
+            alertError(code: 6)
+            return
+        }
         self.delegate.DeviceViewPerformSegue!(SegueID: "showWashReport", sender: nil)
     }
-    @IBOutlet var controlWidth: NSLayoutConstraint!
+    func alertError(code:Int) {
+        let errorMsg=["请先关闭童锁",
+                      "请先将门关闭",
+                      "必须在待机、预约或运行状态下操作",
+                      "必须在待机或预约状态下操作",
+                      "不能空挡启动",
+                      "必须在待机、预约或运行状态下操作",
+                      "设备已断开连接"][code]
+        let alertView=SCLAlertView()
+        _=alertView.showTitle("", subTitle: errorMsg, duration: 2.0, completeText: "完成", style: SCLAlertViewStyle.notice)
+    }
+    @IBOutlet var lockWidth: NSLayoutConstraint!
+    
+    @IBOutlet var xinfengWidth: NSLayoutConstraint!
     @IBOutlet var model5Width: NSLayoutConstraint!
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     var washAppointTime:WashAppointTime!
-    
+    var remind1H:CGFloat!
+    var cicleR:CGFloat!
     override func draw(_ rect: CGRect) {
         // Drawing code
-        let remind1H = ((height_screen-height_tabBar)*720/1166-214)/2
-        
-       temperatView.layer.cornerRadius=remind1H*125/205
+        remind1H = ((height_screen-height_tabBar)*720/1166-214)/2
+        cicleR = remind1H*125/205*86/108
+        temperatView.layer.cornerRadius=remind1H*125/205
         remindTimeView1.layer.cornerRadius=remind1H
         remindTimeView2.layer.cornerRadius=remind1H*140/205
         remindTimeView3.layer.cornerRadius=remind1H*105/205
@@ -117,27 +170,73 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         washAppointTime.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         washAppointTime.backgroundColor=UIColor.black.withAlphaComponent(0.5)
         
+        xinfengWidth.constant = -width_screen/4
+        controlButton4.isHidden=true
+        
         switch (self.currentDevice?.deviceInfo.productID)! {
         case "edb7b978-6aca-11e7-9baf-00163e120d98":
             controlButton3.isHidden=true
-            controlButton4.isHidden=true
+            lockWidth.constant = -width_screen/4
             appointButton.isHidden=true
             washModel5.isHidden=true
-            controlWidth.constant = -width_screen/4
             model5Width.constant=0
+            washModel7.isHidden=true
+            
             break
         case "151e571a-6acb-11e7-9baf-00163e120d98":
-            
+            lockWidth.constant = width_screen/12
             break
         default:
             break
         }
+        
+        
         self.setNeedsDisplay()
+        let ovalRadius = 172.5*remind1H/205//半径
+        let layer = CAShapeLayer()
+        layer.lineWidth = 6
+        //圆环的颜色
+        layer.strokeColor = UIColor.black.cgColor
+        //背景填充色
+        layer.fillColor = UIColor.clear.cgColor
+        layer.lineCap = kCALineCapRound
+        //初始化一个路径
+        let path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(M_PI), endAngle: 2.4*CGFloat(M_PI), clockwise: true)
+        layer.path = path.cgPath
+        remindTimeView1.layer.addSublayer(layer)
+        timeShapeLayer = CAShapeLayer()
+        timeShapeLayer.lineWidth = 6
+        //圆环的颜色
+        timeShapeLayer.strokeColor = UIColor.orange.cgColor
+        //背景填充色
+        timeShapeLayer.fillColor = UIColor.clear.cgColor
+        timeShapeLayer.lineCap = kCALineCapRound
+        //初始化一个路径
+        timeShapeLayer.path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(M_PI), endAngle: 0.6*CGFloat(M_PI), clockwise: true).cgPath
+        remindTimeView1.layer.addSublayer(timeShapeLayer)
+//        if #available(iOS 10.0, *) {
+//            let timeee=Timer.init(timeInterval: 2, repeats: true, block: { (timer) in
+//                self.remindTime=(Int(arc4random()%100),Int(arc4random()%100))
+//                
+//            })
+//           RunLoop.main.add(timeee, forMode: RunLoopMode.commonModes)
+//        } else {
+//            // Fallback on earlier versions
+//        }
+    }
+    var timeShapeLayer:CAShapeLayer!
+    func setTimeCircle(progress:CGFloat) {
+        let ovalRadius = 172.5*remind1H/205//半径
+        let endangle = 0.6*CGFloat(M_PI)+progress*1.8*CGFloat(M_PI)
+        timeShapeLayer.removeFromSuperlayer()
+        timeShapeLayer.path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(M_PI), endAngle: endangle, clockwise: true).cgPath
+        remindTimeView1.layer.addSublayer(timeShapeLayer)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let page = Int((scrollView.contentOffset.x)/scrollView.frame.size.width);
         pageControl.currentPage = page
     }
+    
     
     
     var temperature = -1{
@@ -147,6 +246,10 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             }
             temperatureLabel.text="\(temperature)"
             //加载温度动画temperatView
+            smallCircleView.isHidden=false
+            let angle=CGFloat(M_PI)*(2.7*CGFloat(temperature)+45)/180.0
+            smallCircleY.constant = cicleR*cos(angle)
+            smallCircleX.constant = -cicleR*sin(angle)
             
         }
     }
@@ -157,7 +260,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             }
             remindTimeValue.text="\(remindTime.timeMin)"
             //加载remindTimeView1动画
-            
+            setTimeCircle(progress: CGFloat(remindTime.timePercent)/100.0)
         }
     }
     let unselectColor = UIColor.init(hex: "bebdbe")
@@ -276,8 +379,9 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         let device = self.currentDevice as! WashDush_Wifi
         temperature = device.sensor.Temperature
         remindTime=(device.sensor.RemindTime,device.sensor.RemindPercent)
-        washTitleLabel.text="洗碗机  "+washState[device.sensor.WashState]!
+        washTitleLabel.text="洗碗  "+washState[device.sensor.WashState]!
         error=device.sensor.ErrorState
+        
     }
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         let device = self.currentDevice as! WashDush_Wifi

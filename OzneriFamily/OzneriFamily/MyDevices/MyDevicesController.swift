@@ -27,7 +27,9 @@ class MyDevicesController: UIViewController {
     
     
     @IBAction func lvXinClick(_ sender: AnyObject) {
-        
+        if  OznerManager.instance.currentDevice?.connectStatus != OznerConnectStatus.Connected{
+            return
+        }
         switch  ProductInfo.getCurrDeviceClass() {
         case .Tap:
            self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
@@ -58,7 +60,6 @@ class MyDevicesController: UIViewController {
 
     }
     @IBAction func toDeviceSettingClick(_ sender: AnyObject) {//点击设置按钮事件
-        
         switch  ProductInfo.getCurrDeviceClass() {
         case .Cup:
             self.performSegue(withIdentifier: "showCupSetting", sender: nil)
@@ -181,7 +182,7 @@ extension MyDevicesController : DeviceViewContainerDelegate{
         }
     }
     func DeviceNameChange(name: String) {
-        deviceNameLabel.text=name
+        deviceNameLabel.text=OznerManager.instance.currentDevice?.deviceInfo.deviceMac//name
     }
     func DeviceConnectStateChange(stateDes: String) {
         deviceConnectStateLabel.text=stateDes

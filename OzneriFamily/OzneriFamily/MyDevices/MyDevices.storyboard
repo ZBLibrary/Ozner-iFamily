@@ -683,7 +683,7 @@
                                                                         <color key="textColor" red="0.28541392090000001" green="0.78290158509999996" blue="0.92131656409999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亮碟芯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOW-pw-7KE">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亮洁芯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOW-pw-7KE">
                                                                         <rect key="frame" x="0.0" y="233" width="94" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="textColor" red="0.82520884275436401" green="0.77999013662338257" blue="0.51480454206466675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -757,7 +757,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="aGC-dU-WII" kind="show" identifier="washBugLink" id="QKP-2Z-6pp"/>
+                                                    <action selector="bugHaoCaiClick:" destination="vmI-Za-rQX" eventType="touchUpInside" id="Gdw-96-4PI"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -8853,8 +8853,8 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QKP-2Z-6pp"/>
         <segue reference="9TT-wP-6Ha"/>
+        <segue reference="vlV-TW-9kk"/>
         <segue reference="Gen-3d-KrW"/>
     </inferredMetricsTieBreakers>
 </document>
