@@ -11,6 +11,8 @@ import UIKit
 class TDSPanSettingController: DeviceSettingController {
 
    
+    @IBOutlet var nameTitleLabel: GYLabel!
+    @IBOutlet var aboutTitleLabel: GYLabel!
     @IBAction func backClick(_ sender: AnyObject) {
         super.back()
     }
@@ -26,6 +28,12 @@ class TDSPanSettingController: DeviceSettingController {
         self.title = loadLanguage("设置")
         self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
         nameAndAttrLabel.text=self.getNameAndAttr()
+        let productID=OznerManager.instance.currentDevice?.deviceInfo.productID
+        if productID != "Ozner TDSPan"
+        {
+            nameTitleLabel.text="我的洗碗机"
+            aboutTitleLabel.text="关于洗碗机"
+        }
         // Do any additional setup after loading the view.
     }
 

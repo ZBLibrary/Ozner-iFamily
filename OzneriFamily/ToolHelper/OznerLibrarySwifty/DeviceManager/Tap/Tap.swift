@@ -28,6 +28,7 @@ class Tap: OznerBaseDevice {
         }
     }
     override func OznerBaseIORecvData(recvData: Data) {
+        super.OznerBaseIORecvData(recvData: recvData)
         switch UInt8(recvData[0]) {
         case 0xA2://opCode_ReadSensorRet
             let tmpBattery = Int(recvData[3])+256*Int(recvData[4])
@@ -64,6 +65,7 @@ class Tap: OznerBaseDevice {
         }
     }
     override func doWillInit() {
+        super.doWillInit()
         //初始化本地月数据记录
         let tmpMonth=OznerDeviceRecordHelper.instance.getRecords(Identifier: self.deviceInfo.deviceID)
         var tmpmonth = [Int:Int]()

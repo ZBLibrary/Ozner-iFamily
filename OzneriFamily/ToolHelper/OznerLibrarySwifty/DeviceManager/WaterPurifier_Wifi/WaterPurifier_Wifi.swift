@@ -54,13 +54,10 @@ class WaterPurifier_Wifi: OznerBaseDevice {
     }
     
     override func OznerBaseIORecvData(recvData: Data) {
+        super.OznerBaseIORecvData(recvData: recvData)
         //解析数据并更新个性字段
         requestCount=0
-        if self.connectStatus != .Connected
-        {
-            self.connectStatus = .Connected
-        }
-        if (recvData.count < 10 )
+       if (recvData.count < 10 )
         {
             return
         }
@@ -105,6 +102,7 @@ class WaterPurifier_Wifi: OznerBaseDevice {
         }
     }
     override func doWillInit() {
+        super.doWillInit()
         let needData=self.MakeWoodyBytes(code: 0xfa, Opcode: 0x05, data: Data())
         self.SendDataToDevice(sendData: needData, CallBack: nil)
     }

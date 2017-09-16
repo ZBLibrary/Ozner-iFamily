@@ -70,6 +70,7 @@ class AirPurifier_Blue: OznerBaseDevice {
         self.SendDataToDevice(sendData: makePacket(code: 0x41, data: tmpData), CallBack: nil)
     }
     override func OznerBaseIORecvData(recvData: Data) {
+        super.OznerBaseIORecvData(recvData: recvData)
         //解析数据并更新个性字段
         switch UInt8(recvData[0]) {
         case 0x21://statussensor
@@ -95,6 +96,7 @@ class AirPurifier_Blue: OznerBaseDevice {
         
     }
     override func doWillInit() {
+        super.doWillInit()
         self.sendTime()
         self.requestFilter()
         self.requestSensor()

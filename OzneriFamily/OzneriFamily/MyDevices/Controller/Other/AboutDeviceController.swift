@@ -16,7 +16,7 @@ class AboutDeviceController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = ""
+        //self.title = ""
         switch type {
         case 0:
             webView.loadRequest(URLRequest(url: URL(string: Content)!))

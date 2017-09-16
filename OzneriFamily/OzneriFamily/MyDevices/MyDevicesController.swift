@@ -27,7 +27,9 @@ class MyDevicesController: UIViewController {
     
     
     @IBAction func lvXinClick(_ sender: AnyObject) {
-        
+        if  OznerManager.instance.currentDevice?.connectStatus != OznerConnectStatus.Connected{
+            return
+        }
         switch  ProductInfo.getCurrDeviceClass() {
         case .Tap:
            self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
@@ -58,7 +60,6 @@ class MyDevicesController: UIViewController {
 
     }
     @IBAction func toDeviceSettingClick(_ sender: AnyObject) {//点击设置按钮事件
-        
         switch  ProductInfo.getCurrDeviceClass() {
         case .Cup:
             self.performSegue(withIdentifier: "showCupSetting", sender: nil)
@@ -118,7 +119,7 @@ class MyDevicesController: UIViewController {
         super.viewWillAppear(animated)
         deviceViewContainer.SetDeviceAndView()
 //        self.navigationController?.navigationBar.isHidden=true
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
 //        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleBottomMargin]
         self.slideMenuController()?.removeLeftGestures()
@@ -130,7 +131,7 @@ class MyDevicesController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: animated)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
 
     }
     
@@ -192,7 +193,7 @@ extension MyDevicesController : DeviceViewContainerDelegate{
         }
     }
     func DeviceNameChange(name: String) {
-        deviceNameLabel.text=name
+        deviceNameLabel.text=OznerManager.instance.currentDevice?.deviceInfo.deviceMac//name
     }
     func DeviceConnectStateChange(stateDes: String) {
         deviceConnectStateLabel.text=stateDes
