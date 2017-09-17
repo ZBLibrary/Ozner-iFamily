@@ -263,8 +263,6 @@
 		8DAE80921D9B9A3E00A9946F /* BaseDataObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80901D9B9A3E00A9946F /* BaseDataObject+CoreDataProperties.swift */; };
 		8DAE80951D9BC51D00A9946F /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80931D9BC51D00A9946F /* User+CoreDataClass.swift */; };
 		8DAE80961D9BC51D00A9946F /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE80941D9BC51D00A9946F /* User+CoreDataProperties.swift */; };
-		8DAF9DCB1F6D8B21009B6A92 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF9DC81F6D8B21009B6A92 /* DACircularProgressView.m */; };
-		8DAF9DCC1F6D8B21009B6A92 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF9DCA1F6D8B21009B6A92 /* DALabeledCircularProgressView.m */; };
 		8DAF9DCE1F6D8B70009B6A92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DAF9DCD1F6D8B70009B6A92 /* QuartzCore.framework */; };
 		8DC02E741DB5CE91007F57DB /* Air_BlueMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC02E5C1DB5CE91007F57DB /* Air_BlueMainView.swift */; };
 		8DC02E751DB5CE91007F57DB /* Air_BlueMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DC02E5D1DB5CE91007F57DB /* Air_BlueMainView.xib */; };
@@ -719,10 +717,6 @@
 		8DAE80901D9B9A3E00A9946F /* BaseDataObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseDataObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8DAE80931D9BC51D00A9946F /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8DAE80941D9BC51D00A9946F /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8DAF9DC71F6D8B21009B6A92 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
-		8DAF9DC81F6D8B21009B6A92 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
-		8DAF9DC91F6D8B21009B6A92 /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
-		8DAF9DCA1F6D8B21009B6A92 /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
 		8DAF9DCD1F6D8B70009B6A92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8DC02E5C1DB5CE91007F57DB /* Air_BlueMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Air_BlueMainView.swift; sourceTree = "<group>"; };
 		8DC02E5D1DB5CE91007F57DB /* Air_BlueMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Air_BlueMainView.xib; sourceTree = "<group>"; };
@@ -1311,7 +1305,6 @@
 		8D1EF3BB1D93DFE30009D034 /* ToolHelper */ = {
 			isa = PBXGroup;
 			children = (
-				8DAF9DC61F6D8B21009B6A92 /* DACircularProgress */,
 				8DC02EB01DB5E755007F57DB /* OzneriFamily-Bridging-Header.h */,
 				8D36D25E1F06234A0091EB1F /* OznerLibrarySwifty */,
 				E07459DD1EE94ED200CB39CC /* UdeskSDK */,
@@ -1798,17 +1791,6 @@
 				8DAE80901D9B9A3E00A9946F /* BaseDataObject+CoreDataProperties.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		8DAF9DC61F6D8B21009B6A92 /* DACircularProgress */ = {
-			isa = PBXGroup;
-			children = (
-				8DAF9DC71F6D8B21009B6A92 /* DACircularProgressView.h */,
-				8DAF9DC81F6D8B21009B6A92 /* DACircularProgressView.m */,
-				8DAF9DC91F6D8B21009B6A92 /* DALabeledCircularProgressView.h */,
-				8DAF9DCA1F6D8B21009B6A92 /* DALabeledCircularProgressView.m */,
-			);
-			path = DACircularProgress;
 			sourceTree = "<group>";
 		};
 		8DC02E5B1DB5CE91007F57DB /* AirPurfier */ = {
@@ -2929,7 +2911,6 @@
 				8D0D69491DDD99A10097038E /* YanZhengCell.swift in Sources */,
 				8D1C86AE1DD33BEF00B15221 /* TapDatePickerView.swift in Sources */,
 				8D36D2F41F06234A0091EB1F /* OZMxChipIO.swift in Sources */,
-				8DAF9DCC1F6D8B21009B6A92 /* DALabeledCircularProgressView.m in Sources */,
 				8D0D681D1DDD5AF50097038E /* CupTDSLineView.swift in Sources */,
 				E0745ADA1EE94ED200CB39CC /* UdeskSDKShow.m in Sources */,
 				8DC02E7B1DB5CE91007F57DB /* LineChartView.swift in Sources */,
@@ -3090,7 +3071,6 @@
 				E0745AD91EE94ED200CB39CC /* UdeskSDKManager.m in Sources */,
 				B7DBCB5B1E5AB2D400C5D7A3 /* OffLineSuggest.swift in Sources */,
 				8D129A221DD4B5080022F7EA /* LBXScanNetAnimation.swift in Sources */,
-				8DAF9DCB1F6D8B21009B6A92 /* DACircularProgressView.m in Sources */,
 				E0745AD61EE94ED200CB39CC /* UIViewController+UdeskKeyboardAnimation.m in Sources */,
 				6874DA2A1F209A610022A346 /* GYValueElectSlider.swift in Sources */,
 				E0745AC31EE94ED200CB39CC /* UdeskVoiceRecordView.m in Sources */,

@@ -8,7 +8,6 @@
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "BPush.h"
 #import "UICountingLabel/UICountingLabel.h"
-#import "DACircularProgressView.h"
 
 //OznerLibrarySwifty 浩泽库
 #import "BabyBLEHelper.h"
