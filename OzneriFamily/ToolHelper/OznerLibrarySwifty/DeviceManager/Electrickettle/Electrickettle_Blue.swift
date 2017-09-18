@@ -55,6 +55,19 @@ class Electrickettle_Blue: OznerBaseDevice {
                 
                 print("电热壶错误码:\(Int(errorCode))")
                 
+                switch errorCode {
+                case 2:
+                    break
+                case 4:
+                    break
+                case 8:
+                    break
+                case 16:
+                    break
+                default:
+                    break
+                }
+                
                 if isFirst {
                     
                     isFirst = false

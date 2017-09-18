@@ -125,7 +125,7 @@ class ElectrickettleMainView: OznerDeviceView {
             let time = date.timeIntervalSinceNow
             let seconds = lround(time/60)  - (60 * 8)
             
-            _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: seconds))
+            _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: 1, orderSec: seconds))
 
         }
         
@@ -249,11 +249,13 @@ class ElectrickettleMainView: OznerDeviceView {
         
         switch sender.tag {
         case 777:
-            _ = device?.setHotFunction(0)
+//            _ = device?.setHotFunction(0)
+             _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 40 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
 
             break
         case 888:
-            _ = device?.setHotFunction(1)
+//            _ = device?.setHotFunction(1)
+             _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 40 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: 1 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
             
             break
         default:
@@ -284,14 +286,16 @@ class ElectrickettleMainView: OznerDeviceView {
     
     func sliderValueChanged(_ sender:UISlider) {
         
-        valuelb.text = "持续保温\(lround(Double(sender.value)))小时"
+//        String.init(format: "%0.1f", sender.value)
+        
+        valuelb.text = "持续保温\(String.init(format: "%0.1f", sender.value))小时"
         let device = currentDevice as? Electrickettle_Blue
         
         if device?.settingInfo.hotTemp == -1{
             return
         }
         
-        _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: lround(Double(sender.value)) * 60, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+        _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: Int(sender.value * 60.0), boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
         
     }
     
@@ -343,7 +347,7 @@ class ElectrickettleMainView: OznerDeviceView {
         } else {
             
             firstContraint.constant = 60
-            _ =  device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: 0, orderSec: 0))
+            _ =  device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: 0 , orderFunction: 0, orderSec: 0))
             settimeBtn.setTitle("--:--", for: UIControlState.normal)
          
             self.noticeOnlyText("预约时间已取消")

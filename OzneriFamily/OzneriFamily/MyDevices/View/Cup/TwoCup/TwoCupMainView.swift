@@ -127,7 +127,7 @@ class TwoCupMainView: OznerDeviceView {
     
     @IBAction func timeSetAction(_ sender: UITapGestureRecognizer) {
         
-        
+        self.delegate.DeviceViewPerformSegue!(SegueID: "ShowElectrickettleSetting", sender: nil)
         
     }
     
