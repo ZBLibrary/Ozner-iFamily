@@ -369,7 +369,7 @@ class ElectrickettleMainView: OznerDeviceView {
 
         slider.isEnabled = (currentDevice.connectStatus == .Connected)
         
-        if isFirst && currentDevice.settingInfo.orderSec > 0 && (currentDevice.connectStatus == .Connected) {
+        if isFirst && currentDevice.settingInfo.orderFunction ==  1 && (currentDevice.connectStatus == .Connected) {
             
             isFirst = false
             switchlb.isEnabled = true
@@ -383,7 +383,28 @@ class ElectrickettleMainView: OznerDeviceView {
               self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
             
         }
-//
+        //Value设置
+        
+        if currentDevice.settingInfo.orderFunction == 0   {
+            valuelb.text = "持续保温0小时"
+            slider.value = 0.0
+        } else if currentDevice.settingInfo.orderSec > 0 {
+            let time = String.init(format: "%.1f",currentDevice.settingInfo.hotTime/60)
+            
+            valuelb.text = "持续保温\(time))小时"
+            slider.value = Float(time)!
+        } else {
+            
+            let time = String.init(format: "%.1f",currentDevice.settingInfo.hotSurplusTime/60)
+            
+            valuelb.text = "持续保温\(time))小时"
+            slider.value = Float(time)!
+            
+        }
+        
+        
+        
+        
         print(currentDevice.settingInfo)
         
     }
