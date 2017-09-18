@@ -369,6 +369,14 @@ class ElectrickettleMainView: OznerDeviceView {
 
         slider.isEnabled = (currentDevice.connectStatus == .Connected)
         
+        setUIInfo(currentDevice)
+        
+        print(currentDevice.settingInfo)
+        
+    }
+    
+    private func setUIInfo(_ currentDevice:Electrickettle_Blue) {
+     
         if isFirst && currentDevice.settingInfo.orderFunction ==  1 && (currentDevice.connectStatus == .Connected) {
             
             isFirst = false
@@ -380,11 +388,10 @@ class ElectrickettleMainView: OznerDeviceView {
             let date = Date(timeIntervalSinceNow: TimeInterval(currentDevice.settingInfo.orderSec * 60))
             settimeBtn.setTitle((date.gy_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date.gy_stringFromDate(dateFormat: " HH:mm")), for: UIControlState.normal)
             
-              self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
+            self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
             
         }
         //Value设置
-        
         if currentDevice.settingInfo.orderFunction == 0   {
             valuelb.text = "持续保温0小时"
             slider.value = 0.0
@@ -402,13 +409,7 @@ class ElectrickettleMainView: OznerDeviceView {
             
         }
         
-        
-        
-        
-        print(currentDevice.settingInfo)
-        
     }
-    
     
     
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
