@@ -356,7 +356,6 @@ class ElectrickettleMainView: OznerDeviceView {
         self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
         
     }
-    
 
     override func SensorUpdate(identifier: String) {
         
@@ -391,6 +390,7 @@ class ElectrickettleMainView: OznerDeviceView {
             self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
             
         }
+        
         //Value设置
         if currentDevice.settingInfo.orderFunction == 0   {
             valuelb.text = "持续保温0小时"

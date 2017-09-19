@@ -53,9 +53,9 @@ public class User: BaseDataObject {
     class func loginWithLocalUserInfo(success: ((User) -> Void), failure: ((NSError) -> Void)) {
         
         let UserToken = UserDefaults.standard.object(forKey: UserDefaultsUserTokenKey) as? NSString
-        print("UserToken:\(UserToken!)")
+        print("UserToken:\(UserToken ?? "")")
         let UserID = UserDefaults.standard.object(forKey: UserDefaultsUserIDKey) as? NSString
-        print("UserID:\(UserID)")
+        print("UserID:\(UserID ?? "")")
         var error: NSError? = nil
         if UserToken == nil || UserID==nil  {
             failure(NSError())

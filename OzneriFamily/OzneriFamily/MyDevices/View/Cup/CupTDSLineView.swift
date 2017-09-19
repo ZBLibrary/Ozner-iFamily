@@ -25,6 +25,7 @@ class CupTDSLineView: UIView {
         let linePath=UIBezierPath()
         linePath.move(to: CGPoint(x: 0, y: heightOfSelf))
         for i in 0..<pointsArr.count {
+            
             linePath.addLine(to: pointsArr[i]!)
         }
         linePath.addLine(to: CGPoint(x: widthOfSelf, y: heightOfSelf))
@@ -103,7 +104,7 @@ class CupTDSLineView: UIView {
             }
             for item in dataArr {
 
-                let index=item.key
+                let index=(item.key - 2) >= 0 ? item.key - 2 : 0
                 let point = sensorType==0 ? getPointFromTDS(pointX: (pointsArr[index]?.x)!, height: height, TDS: item.value.TDS):
                     getPointFromTemp(pointX: (pointsArr[index]?.x)!, height: height, Temp: item.value.Temperature)
                 pointsArr[index]=point
