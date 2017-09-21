@@ -45,7 +45,6 @@ class ElectrickettleSettingVc: DeviceSettingController {
             break
         case "NMQ_BLE":
             currentRemindType = RemindStructs(startTime: "ElStartTiemKey", endTime: "ElEndTiemKey", remindInterval: "ELremindInterval", timeSender: "ELTimeSender", remindNotification: "ElectrickettleRemind")
-        
             
             break
         case "智能水杯" :

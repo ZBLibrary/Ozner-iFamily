@@ -120,7 +120,7 @@ class PairSuccessController: UIViewController {
             _=alert.showInfo("", subTitle: loadLanguage("信息不能为空"))
             return
         }
-   let device=OznerManager.instance.createDevice(scanDeviceInfo: deviceArr[0], setting: nil)
+        let device=OznerManager.instance.createDevice(scanDeviceInfo: deviceArr[0], setting: nil)
         for (key,value) in settings {
             if value != "" {
                 device.settings.SetValue(key: key, value: value)
