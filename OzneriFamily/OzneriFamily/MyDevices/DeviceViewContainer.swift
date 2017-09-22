@@ -170,8 +170,9 @@ class DeviceViewContainer: UIView {
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:225*k_height)
                 break
             case .WashDush_Wifi:
-                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:230*k_height)
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: true, BateryIsHiden: true, FilterIsHiden: true,BottomValue:height_screen*k_height)
                 break
+                
                 //隐藏底部按钮
                 //(currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
                 

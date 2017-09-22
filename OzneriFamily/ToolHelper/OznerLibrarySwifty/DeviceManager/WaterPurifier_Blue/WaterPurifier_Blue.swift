@@ -112,6 +112,7 @@ class WaterPurifier_Blue: OznerBaseDevice {
         
     }
     override func OznerBaseIORecvData(recvData: Data) {
+        super.OznerBaseIORecvData(recvData: recvData)
         switch UInt8(recvData[0]) {
         case 0x21://opCode_respone_setting
             if recvData.count>8 {
@@ -151,7 +152,9 @@ class WaterPurifier_Blue: OznerBaseDevice {
         }
     }
     
-    override func doWillInit(){}
+    override func doWillInit(){
+        super.doWillInit()
+    }
     override func repeatFunc() {
 
         requestSetting()
