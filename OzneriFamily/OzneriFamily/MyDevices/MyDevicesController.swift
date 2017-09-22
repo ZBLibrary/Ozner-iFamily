@@ -192,7 +192,7 @@ extension MyDevicesController : DeviceViewContainerDelegate{
         }
     }
     func DeviceNameChange(name: String) {
-        deviceNameLabel.text=OznerManager.instance.currentDevice?.deviceInfo.deviceMac//name
+        deviceNameLabel.text=name//name
     }
     func DeviceConnectStateChange(stateDes: String) {
         deviceConnectStateLabel.text=stateDes

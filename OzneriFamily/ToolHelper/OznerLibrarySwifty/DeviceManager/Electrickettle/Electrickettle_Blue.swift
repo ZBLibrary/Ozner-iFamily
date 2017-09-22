@@ -17,7 +17,7 @@ import UIKit
 
 class Electrickettle_Blue: OznerBaseDevice {
     
-    private(set)  var settingInfo:(isHot:Int,temp:Int,tds:Int,orderFunction:Int,orderSec:Int,orderTemp:Int,hotPattern:Int,hotTemp:Int,hotTime:Int,hotSurplusTime:Int) = (0,0,0,0,0,0,0,0,0,0) {
+    private(set)  var settingInfo:(isHot:Int,temp:Int,tds:Int,orderFunction:Int,orderSec:Int,orderTemp:Int,hotPattern:Int,hotTemp:Int,hotTime:Int,hotSurplusTime:Int) = (-1,-1,0,0,0,0,0,0,0,0) {
         
         didSet {
             
