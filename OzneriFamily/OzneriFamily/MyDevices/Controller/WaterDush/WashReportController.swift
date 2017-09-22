@@ -26,18 +26,19 @@ class WashReportController: BaseViewController {
         let device=OznerManager.instance.currentDevice as! WashDush_Wifi
         let lastData = device.sensor.lastWashData
         if lastData.count>=16 {
+            let report = lastData.subData(starIndex: 6, count: 10)
             var textStr="\(Int(lastData[0])+2000).\(Int(lastData[1])).\(Int(lastData[2])) "
             textStr+=" \(Int(lastData[3])):\(Int(lastData[4])):\(Int(lastData[5]))"
-            valueLabel1.text=textStr
-            let report = lastData.subData(starIndex: 6, count: 10)
-            valueLabel2.text="\(Int(report[1]))"+".\(Int(report[0])) L"
-            valueLabel3.text="\(Int(report[3]))"+".\(Int(report[2])) KWH"
-            valueLabel4.text="\(Int(report[4])) min"
-            valueLabel5.text="\(Int(report[5])) min"
-            valueLabel6.text="\(Int(report[6])) ℃"
-            valueLabel7.text=Int(report[7])==0 ? "-":"\(Int(report[7]))"
-            valueLabel8.text=Int(report[8])==0 ? "-":"\(Int(report[8]))"
-            valueLabel9.text=Int(report[9])==0 ? "-":"\(Int(report[9]))"
+            valueLabel1.text=Int(report[4])==0 ? "--/--/-- --:--:--":textStr
+            
+            valueLabel2.text=(Int(report[4])==0 ? "-.- L":("\(Int(report[1]))"+".\(Int(report[0])) L"))
+            valueLabel3.text=(Int(report[4])==0 ? "-.- KWH":("\(Int(report[3]))"+".\(Int(report[2])) KWH"))
+            valueLabel4.text=(Int(report[4])==0 ? "-":"\(Int(report[4]))")+" min"
+            valueLabel5.text=(Int(report[5])==0 ? "-":"\(Int(report[5]))")+" min"
+            valueLabel6.text=(Int(report[6])==0 ? "-":"\(Int(report[6]))")+" ℃"
+            valueLabel7.text = Int(report[7])==0 ? "-":"\(Int(report[7]))"
+            valueLabel8.text = Int(report[8])==0 ? "-":"\(Int(report[8]))"
+            valueLabel9.text = Int(report[9])==0 ? "-":"\(Int(report[9]))"
             
         }
         // Do any additional setup after loading the view.
@@ -63,3 +64,5 @@ class WashReportController: BaseViewController {
     */
 
 }
+ 
+   

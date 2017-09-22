@@ -62,8 +62,6 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
             wlanConfig[KEY_DNS1]=EASYLINK.getGatewayAddress()
             easylink_config.prepareEasyLink_(withFTC: wlanConfig, info: "".data(using: String.Encoding.utf8), mode: EASYLINK_V2_PLUS)
         print("开始进行WIFI1.0配对")
-        
-        
         DispatchQueue.main.async {
              self.easylink_config.transmitSettings()
         }

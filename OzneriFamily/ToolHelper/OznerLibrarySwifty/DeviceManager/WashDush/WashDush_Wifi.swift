@@ -52,10 +52,10 @@ class WashDush_Wifi: OznerBaseDevice {
                 errorCode=0
             }
         case 2:
-            if status.Lock {
-                errorCode=0
-            }else if status.Door {
+            if status.Door {
                 errorCode=1
+            }else if status.Lock {
+                errorCode=2
             }else if status.WashModel == 0 {
                 errorCode=4
             }else if !(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20)||sensor.WashState==Int(0x30)) {
@@ -67,10 +67,10 @@ class WashDush_Wifi: OznerBaseDevice {
                 errorCode=1
             }
         case 4:
-            if status.Lock {
-                errorCode=0
-            }else if status.Door {
+            if status.Door {
                 errorCode=1
+            }else if status.Lock {
+                errorCode=2
             }else if !(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20)||sensor.WashState==Int(0x30)) {
                 errorCode=2
             }
@@ -94,10 +94,10 @@ class WashDush_Wifi: OznerBaseDevice {
     }
     func setModel(Model:Int,callBack:((_ error:Error?)->Void)) {
         var errorCode = -1
-        if status.Lock {
-            errorCode=0            
-        }else if status.Door {
+        if status.Door {
             errorCode=1
+        }else if status.Lock {
+            errorCode=2
         }else if !(sensor.WashState==Int(0x10)||sensor.WashState==Int(0x20)) {
             errorCode=3
         }
@@ -269,7 +269,7 @@ class WashDush_Wifi: OznerBaseDevice {
     }
     private func reqesutProperty()
     {
-        let data = Data.init(bytes: [0x04,0x03,0x06,0x05,0x0D,0x02,0x01,0x0E,0x0F,0x0B,0x10,0x12,0x11])
+        let data = Data.init(bytes: [0x04,0x03,0x06,0x05,0x0C,0x0D,0x02,0x01,0x0E,0x0F,0x0B,0x10,0x12,0x11])
         
         let len = 15+data.count
         var dataNeed = Data.init(bytes: [0xfa,UInt8(len%256),UInt8(len/256),0xD0])

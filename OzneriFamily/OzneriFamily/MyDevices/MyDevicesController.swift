@@ -69,7 +69,7 @@ class MyDevicesController: UIViewController {
             self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
         case .WaterPurifier_Blue,.WaterPurifier_Wifi:
             self.performSegue(withIdentifier: "showWaterPurfierSetting", sender: nil)
-        case .AirPurifier_Blue,.AirPurifier_Wifi:
+        case .AirPurifier_Blue,.AirPurifier_Wifi,.NewTrendAir_Wifi:
             self.performSegue(withIdentifier: "showAirSetting", sender: nil)
         case .WaterReplenish:
             self.performSegue(withIdentifier: "showWaterReplenishSetting", sender: nil)
@@ -182,7 +182,7 @@ extension MyDevicesController : DeviceViewContainerDelegate{
         }
     }
     func DeviceNameChange(name: String) {
-        deviceNameLabel.text=OznerManager.instance.currentDevice?.deviceInfo.deviceMac//name
+        deviceNameLabel.text=name
     }
     func DeviceConnectStateChange(stateDes: String) {
         deviceConnectStateLabel.text=stateDes
