@@ -63,8 +63,8 @@ class DeviceViewContainer: UIView {
         .WaterReplenish:"WaterReplenishMainView",
         .WaterPurifier_Blue:"WaterPurifierMainView",
         .Electrickettle_Blue:"ElectrickettleMainView",
-        .WashDush_Wifi:"WashDush_WifiMainView"
-        
+        .WashDush_Wifi:"WashDush_WifiMainView",
+        .NewTrendAir_Wifi:"NewTrendAirMainView"
     ]
     private func SelectWitchView(device:OznerBaseDevice?)  {
         
@@ -132,9 +132,7 @@ class DeviceViewContainer: UIView {
                 }
                 
            
-            case .AirPurifier_Blue:
-                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
-            case .AirPurifier_Wifi:
+            case .AirPurifier_Blue,.AirPurifier_Wifi,.NewTrendAir_Wifi:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:200*k_height)
             case .WaterReplenish:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: false, FilterIsHiden: true,BottomValue:156*k_height)
@@ -164,8 +162,6 @@ class DeviceViewContainer: UIView {
                     (currentDeviceView as! WaterPurifierMainView).waterDaysLabel.isHidden = false
                 }
                 
-                
-// MARK: - TODO:
             case .Electrickettle_Blue:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:225*k_height)
                 break
@@ -173,15 +169,7 @@ class DeviceViewContainer: UIView {
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: true, BateryIsHiden: true, FilterIsHiden: true,BottomValue:height_screen*k_height)
                 break
                 
-                //隐藏底部按钮
-                //(currentDeviceView as! WaterPurifierMainView).isBlueDevice=true
-                
-//            case .Water_Wifi_JZYA1XBA8CSFFSF:
-//                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:160*k_height)
-//                break
-//            case .Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
-//                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:220*k_height)
-//                break
+
             }
             currentDeviceView.currentDevice=OznerManager.instance.currentDevice
             OznerDeviceSensorUpdate(identifier: (OznerManager.instance.currentDevice?.deviceInfo.deviceID)!)//初始化设备状态
@@ -221,16 +209,19 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 lvxinValue=min(1, lvxinValue)
                 lvxinValue=max(0, lvxinValue)
                 self.LvXinValue=Int(lvxinValue*100)
-                
+            case .NewTrendAir_Wifi:
+                let workTime=(currentDevice as! NewTrendAir_Wifi).filterStatus.workTime
+                var lvxinValue=1-CGFloat(workTime)/CGFloat(129600)
+                lvxinValue=min(1, lvxinValue)
+                lvxinValue=max(0, lvxinValue)
+                self.LvXinValue=Int(lvxinValue*100)
             case .WaterPurifier_Wifi:
                 
                 if (currentDevice as! WaterPurifier_Wifi).deviceInfo.productID == "adf69dce-5baa-11e7-9baf-00163e120d98" {
                     let filterA = (currentDevice as! WaterPurifier_Wifi).filterStates.filterA
                     let filterB = (currentDevice as! WaterPurifier_Wifi).filterStates.filterB
-                    let filterC = (currentDevice as! WaterPurifier_Wifi).filterStates.filterC
-                    
+                    let filterC = (currentDevice as! WaterPurifier_Wifi).filterStates.filterC                    
                     self.LvXinValue = lroundf(Float(min(filterA, filterB, filterC)/10)) * 10 * 100
-                    
                 }
                 
                 break
@@ -240,15 +231,9 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 let tmpDev=currentDevice as! WaterPurifier_Blue
                 let lvxinValue=min(tmpDev.FilterInfo.Filter_A_Percentage, tmpDev.FilterInfo.Filter_B_Time, tmpDev.FilterInfo.Filter_C_Time)
                 self.LvXinValue=Int(lvxinValue)
-//                let currentDevice=OznerManager.instance.currentDevice
-//                (self.currentDeviceView as? WaterPurifierMainView)?.waterStopDate = (currentDevice as! WaterPurifier_Blue).WaterSettingInfo.waterDate
-//            case .Water_Wifi_JZYA1XBA8CSFFSF,.Water_Wifi_JZYA1XBA8DRF,.Water_Wifi_JZYA1XBLG_DRF:
-//                break
-                //MARK: - TODO
-            case .Electrickettle_Blue:
-                break
-            case .WashDush_Wifi:
-                break
+
+            default:
+            break
             }
         }
         

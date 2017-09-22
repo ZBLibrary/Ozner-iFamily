@@ -53,18 +53,11 @@ class SetDeviceNameController: BaseViewController {
             attri=[0:loadLanguage("我的水杯"),1:loadLanguage("家人水杯")]
         case .Tap,.TDSPan:
             attri=[0:loadLanguage("洗手间"),1:loadLanguage("厨房")]
-        case .WaterPurifier_Wifi:
-            attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
-        case .AirPurifier_Blue,.AirPurifier_Wifi:
+        case .AirPurifier_Blue,.AirPurifier_Wifi,.NewTrendAir_Wifi:
             attri=[0:loadLanguage("客厅"),1:loadLanguage("卧室")]
-        case .WaterReplenish:
-            attri=[0:loadLanguage("办公室"),1:loadLanguage("家")]
-        case .WaterPurifier_Blue:
+        default:
             attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
-        case .Electrickettle_Blue:
-            attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
-        case .WashDush_Wifi:
-            attri=[0:loadLanguage("家"),1:loadLanguage("办公室")]
+            break
         }
         attributeName0.text=attri[0]
         attributeName1.text=attri[1]
