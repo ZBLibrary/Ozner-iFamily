@@ -173,22 +173,22 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         xinfengWidth.constant = -width_screen/4
         controlButton4.isHidden=true
         appointButton.isHidden=true
-//        switch (self.currentDevice?.deviceInfo.productID)! {
-//        case "edb7b978-6aca-11e7-9baf-00163e120d98":
-//            controlButton3.isHidden=true
-//            lockWidth.constant = -width_screen/4
-//            
-//            washModel5.isHidden=true
-//            model5Width.constant=0
-//            washModel7.isHidden=true
-//            
-//            break
-//        case "151e571a-6acb-11e7-9baf-00163e120d98":
-//            lockWidth.constant = width_screen/12
-//            break
-//        default:
-//            break
-//        }
+        switch (self.currentDevice?.deviceInfo.productID)! {
+        case "edb7b978-6aca-11e7-9baf-00163e120d98":
+            controlButton3.isHidden=true
+            lockWidth.constant = -width_screen/4
+            
+            washModel5.isHidden=true
+            model5Width.constant=0
+            washModel7.isHidden=true
+            
+            break
+        case "151e571a-6acb-11e7-9baf-00163e120d98":
+            lockWidth.constant = width_screen/12
+            break
+        default:
+            break
+        }
         
         
         self.setNeedsDisplay()
