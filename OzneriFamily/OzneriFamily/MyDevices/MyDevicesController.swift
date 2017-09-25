@@ -49,7 +49,7 @@ class MyDevicesController: UIViewController {
              "lvXinStopDate":tmpDeviceView.lvXinStopDate,
              "lvXinUsedDays":tmpDeviceView.lvXinUsedDays] as [String : Any]
             self.performSegue(withIdentifier: "toTapLvXin", sender: senderData)
-        case .AirPurifier_Wifi,.AirPurifier_Blue:
+        case .AirPurifier_Wifi,.AirPurifier_Blue,.NewTrendAir_Wifi:
             self.performSegue(withIdentifier: "showAirLvXin", sender: nil)
         case .WaterPurifier_Blue:
             let vc = RoWaterPuefierLvXinController()
@@ -71,7 +71,7 @@ class MyDevicesController: UIViewController {
             self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
         case .WaterPurifier_Blue,.WaterPurifier_Wifi:
             self.performSegue(withIdentifier: "showWaterPurfierSetting", sender: nil)
-        case .AirPurifier_Blue,.AirPurifier_Wifi,.NewTrendAir_Wifi:
+        case .AirPurifier_Blue,.AirPurifier_Wifi:
             self.performSegue(withIdentifier: "showAirSetting", sender: nil)
         case .WaterReplenish:
             self.performSegue(withIdentifier: "showWaterReplenishSetting", sender: nil)
@@ -80,6 +80,9 @@ class MyDevicesController: UIViewController {
             self.performSegue(withIdentifier: "ShowElectrickettleSetting", sender: nil)
         case .WashDush_Wifi:
             self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
+        case .NewTrendAir_Wifi:
+            self.performSegue(withIdentifier: "showNewAirSetting", sender: nil)
+            
         }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮

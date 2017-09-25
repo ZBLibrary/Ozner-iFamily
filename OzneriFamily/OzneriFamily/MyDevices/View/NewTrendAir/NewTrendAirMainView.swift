@@ -13,6 +13,12 @@ class NewTrendAirMainView: OznerDeviceView {
     
    
     @IBAction func AppointTimeCLick(_ sender: UIButton) {//定时开关机
+        //showNewAirAppoint
+        if  self.currentDevice?.connectStatus != OznerConnectStatus.Connected{
+            showMSG(msg: "设备已断开连接")
+            return
+        }
+        self.delegate.DeviceViewPerformSegue!(SegueID: "showNewAirAppoint", sender: nil)
     }
     @IBOutlet var PM25Label_Out: UICountingLabel!
     @IBOutlet var PM25Label_In: UICountingLabel!
