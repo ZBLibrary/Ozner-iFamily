@@ -172,12 +172,12 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         
         xinfengWidth.constant = -width_screen/4
         controlButton4.isHidden=true
-        
+        appointButton.isHidden=true
         switch (self.currentDevice?.deviceInfo.productID)! {
         case "edb7b978-6aca-11e7-9baf-00163e120d98":
             controlButton3.isHidden=true
             lockWidth.constant = -width_screen/4
-            appointButton.isHidden=true
+            
             washModel5.isHidden=true
             model5Width.constant=0
             washModel7.isHidden=true
@@ -214,15 +214,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         //初始化一个路径
         timeShapeLayer.path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(M_PI), endAngle: 0.6*CGFloat(M_PI), clockwise: true).cgPath
         remindTimeView1.layer.addSublayer(timeShapeLayer)
-//        if #available(iOS 10.0, *) {
-//            let timeee=Timer.init(timeInterval: 2, repeats: true, block: { (timer) in
-//                self.remindTime=(Int(arc4random()%100),Int(arc4random()%100))
-//                
-//            })
-//           RunLoop.main.add(timeee, forMode: RunLoopMode.commonModes)
-//        } else {
-//            // Fallback on earlier versions
-//        }
+        temperature=0
     }
     var timeShapeLayer:CAShapeLayer!
     func setTimeCircle(progress:CGFloat) {
@@ -244,9 +236,9 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             if temperature==oldValue {
                 return
             }
-            temperatureLabel.text="\(temperature)"
+            temperatureLabel.text = temperature==0 || temperature == -1 ? "-":"\(temperature)"
             //加载温度动画temperatView
-            smallCircleView.isHidden=false
+            //smallCircleView.isHidden=false
             let angle=CGFloat(M_PI)*(2.7*CGFloat(temperature)+45)/180.0
             smallCircleY.constant = cicleR*cos(angle)
             smallCircleX.constant = -cicleR*sin(angle)
@@ -260,7 +252,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             }
             remindTimeValue.text="\(remindTime.timeMin)"
             //加载remindTimeView1动画
-            setTimeCircle(progress: CGFloat(remindTime.timePercent)/100.0)
+            setTimeCircle(progress: 1-CGFloat(remindTime.timePercent)/100.0)
         }
     }
     let unselectColor = UIColor.init(hex: "bebdbe")
@@ -351,11 +343,8 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             if filterValue==oldValue {
                 return
             }
-            if filterValue<=0 {
-                stopfilterAnimal()
-            }else{
-                starfilterAnimal()
-            }
+            consumableButton.setImage(UIImage.init(named: filterValue<=0 ? "滤芯及耗材":"滤芯及耗材缺乏"), for: .normal)
+            filterValue<=0 ? stopfilterAnimal():starfilterAnimal()
         }
     }
     var filterTimer:Timer?

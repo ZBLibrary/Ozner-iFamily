@@ -22,17 +22,10 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
         super.viewDidLoad()
 
         self.title = loadLanguage("选择设备")
-//        panGesture = UIPanGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.handlePanGesture(_:)))
-//        self.view.addGestureRecognizer(panGesture!)
-        
+       
         leftPanGesture = UISwipeGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.leftHandPanGesture(_:)))
         self.view.addGestureRecognizer(leftPanGesture!)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.tableView.rowHeight=120*height_screen/667
+         self.tableView.rowHeight=120*height_screen/667
     }
     
     func leftHandPanGesture(_ panGesture: UISwipeGestureRecognizer) {
@@ -52,10 +45,6 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
         if panGesture.state == UIGestureRecognizerState.began {
             
             let point_inView = panGesture.translation(in: self.view)
-            print(point_inView.x)
-            
-            //            self.dismiss(animated: false, completion: nil)
-            
         } else if panGesture.state == .changed {
             let point_inView = panGesture.translation(in: self.view)
             
@@ -65,56 +54,7 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
             
             
         }
-
-            /*
-        let presentVc = panGesture.view
-        var rootView:UIViewController?
-        
-        if panGesture.state == UIGestureRecognizerState.began {
-            appDelegate.window?.rootViewController = LoginManager.instance.mainTabBarController
-            rootView = (appDelegate.window?.rootViewController)!
-            var frame = rootView?.view.frame
-            frame = CGRect(x: -appDelegate.window!.frame.width, y: 0, width: (appDelegate.window?.frame.width)!, height: (appDelegate.window?.frame.height)!)
-            rootView?.view.frame = frame!
-            appDelegate.window?.insertSubview((rootView?.view!)!, at: 0)
-            
-        } else if panGesture.state == .changed {
-            let point_inView = panGesture.translation(in: self.view)
-            
-            if point_inView.x >= 10 {
-                presentVc?.transform = CGAffineTransform.init(translationX: point_inView.x - 10, y: 0)
-                rootView?.view.transform = CGAffineTransform.init(translationX: point_inView.x, y: 0)
-            }
-            
-        } else if panGesture.state == .ended {
-            
-            let point_inView = panGesture.translation(in: self.view)
-            
-            if (point_inView.x > 100) {
-                
-                UIView.animate(withDuration: 0.3, animations: { 
-                    
-                    presentVc?.transform = CGAffineTransform.init(translationX: self.view.width, y: 0)
-                    
-                }, completion: { (finished) in
-                    rootView?.view.frame = CGRect(x: 0, y: 0, width: (appDelegate.window?.frame.width)!, height: (appDelegate.window?.frame.height)!)
-//                    appDelegate.window?.willRemoveSubview((rootView?.view)!)
-                    self.dismiss(animated: false, completion: nil)
-                    presentVc?.transform = CGAffineTransform.identity
-                })
-                
-            } else {
-                UIView.animate(withDuration: 0.3, animations: {
-                      presentVc?.transform = CGAffineTransform.identity
-                }, completion: { (finished) in
-                    
-                })
-            }
-            
-            
-        }
-        */
-        
+       
     }
     
 
@@ -151,7 +91,6 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectdevice", for: indexPath) as! SelectDeviceCell
-        
         cell.setProductInfo(productInfo: ProductInfo.products["\(indexPath.row)"]!)
         cell.selectionStyle=UITableViewCellSelectionStyle.none
         // Configure the cell...
@@ -160,47 +99,18 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        //deviceType = [OznerDeviceType.Cup,.Tap,.TDSPan,.Water_Wifi,.Air_Blue,.Air_Wifi,.WaterReplenish][indexPath.row]
-        self.performSegue(withIdentifier: "pushPairID", sender: indexPath.row)
+        let className=ProductInfo.products["\(indexPath.row)"]!["ClassName"].stringValue
+        switch className {
+        case OZDeviceClass.NewTrendAir_Wifi.rawValue://扫码配网
+            let vc = PairingScanViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        default:
+            self.performSegue(withIdentifier: "pushPairID", sender: indexPath.row)
+        }
+        
 
     }
-    /*
-     Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-         Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

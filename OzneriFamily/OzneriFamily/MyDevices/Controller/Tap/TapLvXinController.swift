@@ -30,22 +30,8 @@ class TapLvXinController: BaseViewController {
    
     //扫码
     @IBOutlet var scanViewHeightConstraint: NSLayoutConstraint!
-    @IBAction func scanCodeClick(_ sender: AnyObject) {
-        //设置扫码区域参数
-        var style = LBXScanViewStyle()
-        style.centerUpOffset = 44;
-        style.photoframeAngleStyle = LBXScanViewPhotoframeAngleStyle.On;
-        style.photoframeLineW = 6;
-        style.photoframeAngleW = 24;
-        style.photoframeAngleH = 24;
-        style.isNeedShowRetangle = true;       
-        style.anmiationStyle = LBXScanViewAnimationStyle.NetGrid;
-
-        //使用的支付宝里面网格图片
-        style.animationImage = UIImage(named: "CodeScan.bundle/qrcode_scan_part_net");
-        
-        let vc = LBXScanViewController();
-        vc.scanStyle = style
+    @IBAction func scanCodeClick(_ sender: AnyObject) {        
+        let vc = LVXinScanViewController();
         self.navigationController?.pushViewController(vc, animated: true)
     }
     //更多产品
