@@ -26,7 +26,7 @@ enum OZIOType{
         case "BlueMxChip":
             return .BlueMxChip
         case "AylaMxChip":
-            return .AylaMxChip            
+            return .AylaMxChip
         default:
             return .Blue
         }
