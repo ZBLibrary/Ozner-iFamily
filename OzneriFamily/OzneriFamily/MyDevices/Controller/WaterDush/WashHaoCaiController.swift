@@ -51,7 +51,10 @@ class WashHaoCaiController: BaseViewController {
             var titleStr = ""
             var imgStr = "wash_"+["P","R","S","D"][index]
             switch true {
-            case value>66&&value<=100:
+            case value>=100:
+                titleStr="充足"
+                imgStr+="5"
+            case value>66&&value<100:
                 titleStr="充足"
                 imgStr+="4"
             case value>33&&value<=66:

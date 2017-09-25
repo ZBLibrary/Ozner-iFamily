@@ -69,7 +69,7 @@ class DeviceViewContainer: UIView {
     private func SelectWitchView(device:OznerBaseDevice?)  {
         
         //测试
-        var deviceNibName = "NoDeviceView"//"WashDush_WifiMainView"//NoDeviceView
+        var deviceNibName = "WashDush_WifiMainView"//NoDeviceView
         if device != nil  {//有设备时视图初始化
             let tmpType=ProductInfo.getCurrDeviceClass()
             deviceNibName=DeviceNibName[tmpType]!

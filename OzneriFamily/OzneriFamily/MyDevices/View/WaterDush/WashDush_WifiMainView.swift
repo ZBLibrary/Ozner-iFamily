@@ -172,23 +172,23 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         
         xinfengWidth.constant = -width_screen/4
         controlButton4.isHidden=true
-        
-        switch (self.currentDevice?.deviceInfo.productID)! {
-        case "edb7b978-6aca-11e7-9baf-00163e120d98":
-            controlButton3.isHidden=true
-            lockWidth.constant = -width_screen/4
-            appointButton.isHidden=true
-            washModel5.isHidden=true
-            model5Width.constant=0
-            washModel7.isHidden=true
-            
-            break
-        case "151e571a-6acb-11e7-9baf-00163e120d98":
-            lockWidth.constant = width_screen/12
-            break
-        default:
-            break
-        }
+        appointButton.isHidden=true
+//        switch (self.currentDevice?.deviceInfo.productID)! {
+//        case "edb7b978-6aca-11e7-9baf-00163e120d98":
+//            controlButton3.isHidden=true
+//            lockWidth.constant = -width_screen/4
+//            
+//            washModel5.isHidden=true
+//            model5Width.constant=0
+//            washModel7.isHidden=true
+//            
+//            break
+//        case "151e571a-6acb-11e7-9baf-00163e120d98":
+//            lockWidth.constant = width_screen/12
+//            break
+//        default:
+//            break
+//        }
         
         
         self.setNeedsDisplay()
@@ -343,11 +343,8 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             if filterValue==oldValue {
                 return
             }
-            if filterValue<=0 {
-                stopfilterAnimal()
-            }else{
-                starfilterAnimal()
-            }
+            consumableButton.setImage(UIImage.init(named: filterValue<=0 ? "滤芯及耗材":"滤芯及耗材缺乏"), for: .normal)
+            filterValue<=0 ? stopfilterAnimal():starfilterAnimal()
         }
     }
     var filterTimer:Timer?
