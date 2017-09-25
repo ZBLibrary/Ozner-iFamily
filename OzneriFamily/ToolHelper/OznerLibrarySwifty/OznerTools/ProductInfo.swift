@@ -143,6 +143,11 @@ class ProductInfo: NSObject {
             for id in product["ProductIDs"].arrayValue {
                 if productID==id.stringValue {
                     classStr=product["ClassName"].stringValue
+                    
+                    if productID == "智能水杯" {
+                        classStr = "TwoCup"
+                    }
+                    
                     break
                 }
             }

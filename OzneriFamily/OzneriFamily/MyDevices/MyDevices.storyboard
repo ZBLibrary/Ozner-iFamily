@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CCQ-KV-qqu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CCQ-KV-qqu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -7792,6 +7792,9 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bN-1g-7LO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                        <connections>
+                                            <action selector="aboutDeviceInfo:" destination="LRU-8U-mU5" eventType="touchUpInside" id="U2X-Ln-YDe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -7838,16 +7841,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="aboutNameLb" destination="pQg-Nj-Se7" id="zDr-BN-cHs"/>
                         <outlet property="gySwitch" destination="1ad-bd-Mde" id="7Xo-re-r36"/>
                         <outlet property="hideView" destination="5Xw-z5-Xda" id="jkN-bV-iT1"/>
                         <outlet property="hideViewContranist" destination="Eb3-qc-2hw" id="cNu-Io-ZUt"/>
                         <outlet property="intervalLb" destination="VBl-D1-dHu" id="6AF-ua-8xz"/>
+                        <outlet property="myNameLb" destination="n5F-Uv-KuV" id="vI9-3x-KWT"/>
                         <outlet property="nameLb" destination="Ke8-04-XdS" id="gaj-TN-RXB"/>
                         <outlet property="timeConstranit" destination="Cxk-vS-7Kg" id="Eoe-SE-FDe"/>
                         <outlet property="timeLb" destination="Nbc-EG-NZw" id="cdU-x9-iaM"/>
                         <outlet property="tmepLb" destination="efm-uv-DDB" id="vyE-vA-hfi"/>
                         <segue destination="GRq-nX-7ST" kind="show" identifier="ElectriketIdentifier" id="kPL-av-rgP"/>
                         <segue destination="mSq-x3-veU" kind="show" identifier="ElectricketTimeIdener" id="avB-qO-o0y"/>
+                        <segue destination="aGC-dU-WII" kind="show" identifier="showAboutDevice" id="LHg-bI-rNo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jR3-ul-Ex4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -8556,7 +8562,7 @@
                         <viewControllerLayoutGuide type="bottom" id="aii-Yz-1eV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mWu-PM-bne">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1325"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="maB-Fd-2l7">
@@ -8855,8 +8861,8 @@
         <image name="zixunIconzb" width="23" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tbJ-jG-BG0"/>
-        <segue reference="9TT-wP-6Ha"/>
-        <segue reference="Gen-3d-KrW"/>
+        <segue reference="LHg-bI-rNo"/>
+        <segue reference="kPL-av-rgP"/>
+        <segue reference="avB-qO-o0y"/>
     </inferredMetricsTieBreakers>
 </document>
