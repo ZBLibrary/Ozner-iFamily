@@ -164,7 +164,7 @@ open class PairingScanViewController: UIViewController, UIImagePickerControllerD
                 }
                 if deviceInfo.deviceMac != "" && deviceInfo.deviceID != "" && deviceInfo.productID != "" {
                     let device=OznerManager.instance.createDevice(scanDeviceInfo: deviceInfo, setting: nil)
-                    device.settings.name="新设备"
+                    device.settings.name="智能设备"
                     OznerManager.instance.saveDevice(device: device)
                     OznerManager.instance.currentDevice=device
                     //上传到服务器

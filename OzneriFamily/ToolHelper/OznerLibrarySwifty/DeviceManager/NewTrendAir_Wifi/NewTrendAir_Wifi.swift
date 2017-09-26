@@ -127,6 +127,7 @@ class NewTrendAir_Wifi: OznerBaseDevice {
         data.append(OznerTools.dataFromInt(number: CLongLong(offEveryDay), length: 2))
         data.append(OznerTools.dataFromInt(number: CLongLong(offOnce), length: 2))
         setSwitchData(code: 0x04, data:data)
+        callBack(NSError.init(domain: "数据发送成功", code: 0, userInfo: nil))
     }
     private func setSwitchData(code:UInt8,data:Data) {
         self.SendDataToDevice(sendData: setProperty(code: code, data: data), CallBack: nil)

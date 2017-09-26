@@ -7139,7 +7139,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OnV-DI-bAD">
                                 <rect key="frame" x="0.0" y="114" width="375" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开机时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnG-57-zUf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关机时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnG-57-zUf">
                                         <rect key="frame" x="15" y="0.0" width="61.5" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="Pfc-P5-s43"/>
@@ -7154,7 +7154,7 @@
                                             <!--2017-09-25 04:36:53 +0000-->
                                         </date>
                                         <connections>
-                                            <action selector="PowerOnDateClick:" destination="rWv-vc-sXq" eventType="valueChanged" id="F0i-Ru-QuB"/>
+                                            <action selector="PowerOffDateClick:" destination="rWv-vc-sXq" eventType="valueChanged" id="wuD-cb-oHB"/>
                                         </connections>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbm-ek-Ywb">
@@ -7167,7 +7167,7 @@
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="PowerOnClick:" destination="rWv-vc-sXq" eventType="touchUpInside" id="wSf-bb-QNH"/>
+                                            <action selector="PowerOffClick:" destination="rWv-vc-sXq" eventType="touchUpInside" id="tP8-lK-RbQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -7187,7 +7187,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="km6-uL-b4X">
                                 <rect key="frame" x="0.0" y="264" width="375" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关机时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckc-Et-Qwb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开机时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckc-Et-Qwb">
                                         <rect key="frame" x="15" y="0.0" width="61.5" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="SJh-V9-Ggz"/>
@@ -7202,7 +7202,7 @@
                                             <!--2017-09-25 04:36:53 +0000-->
                                         </date>
                                         <connections>
-                                            <action selector="PowerOffDateClick:" destination="rWv-vc-sXq" eventType="valueChanged" id="6Ys-4B-u49"/>
+                                            <action selector="PowerOnDateClick:" destination="rWv-vc-sXq" eventType="valueChanged" id="1aS-cQ-SVI"/>
                                         </connections>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQe-Mr-uDO">
@@ -7215,7 +7215,7 @@
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="PowerOffClick:" destination="rWv-vc-sXq" eventType="touchUpInside" id="eOF-Ke-X5U"/>
+                                            <action selector="PowerOnClick:" destination="rWv-vc-sXq" eventType="touchUpInside" id="Yid-hG-h7k"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -7269,10 +7269,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="PowerOffButton" destination="aQe-Mr-uDO" id="PyO-2f-0Lp"/>
-                        <outlet property="PowerOffDatePicker" destination="0EC-v1-LSs" id="2eE-VD-EAw"/>
-                        <outlet property="PowerOnButton" destination="tbm-ek-Ywb" id="4Cb-R4-293"/>
-                        <outlet property="PowerOnDatePicker" destination="h84-Js-gAu" id="RDg-ib-dS7"/>
+                        <outlet property="PowerOffButton" destination="tbm-ek-Ywb" id="vly-71-sjS"/>
+                        <outlet property="PowerOffDatePicker" destination="h84-Js-gAu" id="oOZ-uC-sZG"/>
+                        <outlet property="PowerOnButton" destination="aQe-Mr-uDO" id="4A9-4S-G06"/>
+                        <outlet property="PowerOnDatePicker" destination="0EC-v1-LSs" id="P0J-9i-is1"/>
                         <outlet property="containerHeight" destination="aii-R2-4mF" id="gej-sr-Lxg"/>
                         <outlet property="segmentButton" destination="aJf-eh-Tbd" id="OUj-UE-kIU"/>
                     </connections>

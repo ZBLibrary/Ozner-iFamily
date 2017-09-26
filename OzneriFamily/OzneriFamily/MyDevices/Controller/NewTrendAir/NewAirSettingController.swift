@@ -26,6 +26,7 @@ class NewAirSettingController: DeviceSettingController {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem?.title = loadLanguage("保存")
         self.title = loadLanguage("设置")
+        nameAndAttrLabel.text=self.getNameAndAttr()
 
     }
     
