@@ -28,9 +28,17 @@ class NewTrendAir_Wifi: OznerBaseDevice {
     }
     private(set) var filterStatus:(starDate:Date,stopDate:Date,workTime:Int,maxWorkTime:Int) = (Date(timeIntervalSinceNow: 0),Date(timeIntervalSinceNow: 0),0,129600){
         didSet{
-            if filterStatus != oldValue {
+            //if filterStatus != oldValue {
                 self.delegate?.OznerDevicefilterUpdate?(identifier: self.deviceInfo.deviceID)
-            }
+            //}
+            
+        }
+    }
+    private(set) var appointTime:(onOffType:Int,onEveryDay:Int,offEveryDay:Int,offOnce:Int) = (0,0,0,0){
+        didSet{
+            //if filterStatus != oldValue {
+            self.delegate?.OznerDevicefilterUpdate?(identifier: self.deviceInfo.deviceID)
+            //}
             
         }
     }
@@ -40,7 +48,6 @@ class NewTrendAir_Wifi: OznerBaseDevice {
             return
         }
         if self.connectStatus != .Connected {
-            
             callBack(NSError.init(domain: "设备已断开连接", code: -1, userInfo: nil))
             return
         }
@@ -106,10 +113,7 @@ class NewTrendAir_Wifi: OznerBaseDevice {
         setSwitchData(code: 0x29, data: data)
     }
     //设置开关机时间,Type:0单次，1每天
-    func setAppoint(IsOpen:Bool,OnTime:Int,OffTime:Int,Type:Int,callBack:((_ error:Error?)->Void)) {
-        if Type>1 || Type<0{
-            return
-        }
+    func setAppoint(onOffType:Int,onEveryDay:Int,offEveryDay:Int,offOnce:Int,callBack:((_ error:Error?)->Void)) {
         if self.connectStatus != .Connected {
             callBack(NSError.init(domain: "设备已断开连接", code: -1, userInfo: nil))
             return
@@ -118,15 +122,16 @@ class NewTrendAir_Wifi: OznerBaseDevice {
             callBack(NSError.init(domain: "电源开关未打开", code: -2, userInfo: nil))
             return
         }
-        var data = Data.init(bytes: [UInt8(IsOpen.hashValue)])
-        data.append(OznerTools.dataFromInt(number: CLongLong(OnTime), length: 2))
-        data.append(OznerTools.dataFromInt(number: CLongLong(OffTime), length: 2))
-        data.append(UInt8(Type))
+        var data = Data.init(bytes: [UInt8(onOffType)])
+        data.append(OznerTools.dataFromInt(number: CLongLong(onEveryDay), length: 2))
+        data.append(OznerTools.dataFromInt(number: CLongLong(offEveryDay), length: 2))
+        data.append(OznerTools.dataFromInt(number: CLongLong(offOnce), length: 2))
         setSwitchData(code: 0x04, data:data)
+        callBack(NSError.init(domain: "数据发送成功", code: 0, userInfo: nil))
     }
     private func setSwitchData(code:UInt8,data:Data) {
         self.SendDataToDevice(sendData: setProperty(code: code, data: data), CallBack: nil)
-        self.reqesutProperty(data: Data.init(bytes: [0x15,0x11,0x14,0x12,0x13,0x18,0x00,0x01,0x02,0x03,0x19,0x26,0x27,0x28,0x29,0x2A,0x2B]))
+        self.reqesutProperty(data: Data.init(bytes: [0x15,0x11,0x14,0x12,0x13,0x18,0x00,0x01,0x02,0x03,0x19,0x26,0x27,0x28,0x29,0x2A,0x2B,0x04]))
     }
     override func OznerBaseIORecvData(recvData: Data) {
         super.OznerBaseIORecvData(recvData: recvData)
@@ -143,6 +148,7 @@ class NewTrendAir_Wifi: OznerBaseDevice {
             var tmpStatus = status
             var tmpSensor = sensor
             var tmpFilterStatus = filterStatus
+            var tmpAppointTime = appointTime
             var p = 13
             if recvData.count<16{
                 return
@@ -156,15 +162,17 @@ class NewTrendAir_Wifi: OznerBaseDevice {
                 if p+size>recvData.count {
                     return
                 }
-                let range1 = recvData.index(recvData.startIndex, offsetBy: p)
-                let range2 = recvData.index(recvData.startIndex, offsetBy: p+size)
-                let valueData=recvData.subdata(in: Range(range1..<range2))
+                let valueData=recvData.subData(starIndex: p, count: size)
                 p+=size
                 if valueData.count<=0 {
                     continue
                 }
                 switch keyOfData {
                 case 0x04://PROPERTY_POWER_TIMER
+                    tmpAppointTime.onOffType=Int(valueData[0])
+                    tmpAppointTime.onEveryDay=valueData.subInt(starIndex: 1, count: 2)
+                    tmpAppointTime.offEveryDay=valueData.subInt(starIndex: 3, count: 2)
+                    tmpAppointTime.offOnce=valueData.subInt(starIndex: 5, count: 2)
                     break
                 case 0x00://PROPERTY_POWER
                     tmpStatus.Power=(Int(valueData[0]) != 0)
@@ -207,8 +215,12 @@ class NewTrendAir_Wifi: OznerBaseDevice {
                     tmpSensor.CO2=Int(valueData[0])+256*Int(valueData[1])
                     tmpSensor.CO2 = tmpSensor.CO2==65535 ? 0:tmpSensor.CO2
                 case 0x29:
-                    tmpStatus.AirAndSpeed=Int(valueData[0])
-                    tmpStatus.NewAndSpeed=Int(valueData[1])
+                    if valueData.count>=2
+                    {
+                        tmpStatus.AirAndSpeed=Int(valueData[0])
+                        tmpStatus.NewAndSpeed=Int(valueData[1])
+                    }
+                    
     
 //                case 0x2A://
 //                    tmpStatus.Power_New=Int(valueData[0])==1
@@ -222,6 +234,7 @@ class NewTrendAir_Wifi: OznerBaseDevice {
             if tmpStatus.Power==false {
                 tmpStatus=(false,false,0,0)
             }
+            appointTime = tmpAppointTime
             status = tmpStatus
             sensor = tmpSensor
             filterStatus = tmpFilterStatus
@@ -233,14 +246,14 @@ class NewTrendAir_Wifi: OznerBaseDevice {
         super.doWillInit()
         self.setTime()
         sleep(1)
-        let data = Data.init(bytes: [0x15,0x11,0x14,0x12,0x13,0x18,0x00,0x01,0x02,0x03,0x19,0x26,0x27,0x28,0x29,0x2A,0x2B])
+        let data = Data.init(bytes: [0x15,0x11,0x14,0x12,0x13,0x18,0x00,0x01,0x02,0x03,0x19,0x26,0x27,0x28,0x29,0x2A,0x2B,0x04])
         self.reqesutProperty(data: data)
     }
     var requestCount = 0//请求三次没反应代表机器断网
     override func repeatFunc() {
         
         if Int(arc4random()%2)==0 {
-            self.reqesutProperty(data: Data.init(bytes: [0x15,0x11,0x14,0x12,0x13,0x18,0x00,0x01,0x02,0x03,0x19,0x26,0x27,0x28,0x29,0x2A,0x2B]))
+            self.reqesutProperty(data: Data.init(bytes: [0x15,0x11,0x14,0x12,0x13,0x18,0x00,0x01,0x02,0x03,0x19,0x26,0x27,0x28,0x29,0x2A,0x2B,0x04]))
             requestCount=(requestCount+1)
             if requestCount>=3 {
                 self.connectStatus = .Disconnect
