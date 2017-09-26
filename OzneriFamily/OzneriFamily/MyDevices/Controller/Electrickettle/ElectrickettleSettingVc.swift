@@ -21,6 +21,8 @@ class ElectrickettleSettingVc: DeviceSettingController {
     
     //MARK: - Attributes
 
+    @IBOutlet weak var aboutNameLb: UILabel!
+    @IBOutlet weak var myNameLb: GYLabel!
     @IBOutlet weak var hideViewContranist: NSLayoutConstraint!
     @IBOutlet weak var hideView: UIView!
     @IBOutlet weak var nameLb: GYLabel!
@@ -38,6 +40,8 @@ class ElectrickettleSettingVc: DeviceSettingController {
         super.viewDidLoad()
         nameLb.text=self.getNameAndAttr()
         
+        myNameLb.text = "我的智能杯"
+        aboutNameLb.text = "关于智能杯"
         switch OznerManager.instance.currentDevice?.deviceInfo.deviceType ?? "" {
         case "Ozner Cup":
             currentRemindType = RemindStructs(startTime: "remindStart", endTime: "remindEnd", remindInterval: "", timeSender: "", remindNotification: "")
@@ -45,7 +49,8 @@ class ElectrickettleSettingVc: DeviceSettingController {
             break
         case "NMQ_BLE":
             currentRemindType = RemindStructs(startTime: "ElStartTiemKey", endTime: "ElEndTiemKey", remindInterval: "ELremindInterval", timeSender: "ELTimeSender", remindNotification: "ElectrickettleRemind")
-            
+            myNameLb.text = "我的电热壶"
+            aboutNameLb.text = "关于电热壶"
             break
         case "智能水杯" :
             currentRemindType = RemindStructs(startTime: "SmartCupStartTiemKey", endTime: "SmartCupEndTiemKey", remindInterval: "SmartCupRemindInterval", timeSender: "SmartCupRemindSender", remindNotification: "SmartCupRemind")
@@ -210,6 +215,22 @@ class ElectrickettleSettingVc: DeviceSettingController {
     
     //MARK: - Target Methods
     
+    @IBAction func aboutDeviceInfo(_ sender: UIButton) {
+        switch OznerManager.instance.currentDevice?.deviceInfo.deviceType ?? "" {
+            
+        case "NMQ_BLE":
+            self.performSegue(withIdentifier: "showAboutDevice", sender: nil)
+            break
+        case "智能水杯" :
+            //                let VC=segue.destination as!  AboutDeviceController
+            //                VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutTDSPan"]?.stringValue)!, Type: 0)
+            break
+        default:
+            break
+        }
+        
+        
+    }
     
     //MARK: - Notification Methods
     
@@ -255,6 +276,27 @@ class ElectrickettleSettingVc: DeviceSettingController {
             
             let VC=segue.destination as!  CupSetDrinkTimeController
             VC.currSetting = self.deviceSetting
+        }
+        
+        if segue.identifier == "showAboutDevice" {
+            
+        switch OznerManager.instance.currentDevice?.deviceInfo.deviceType ?? "" {
+   
+            case "NMQ_BLE":
+                let VC=segue.destination as!  AboutDeviceController
+                VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutEletrict"]?.stringValue)!, Type: 0)
+                break
+            case "智能水杯" :
+//                let VC=segue.destination as!  AboutDeviceController
+//                VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutTDSPan"]?.stringValue)!, Type: 0)
+                break
+            default:
+                break
+        }
+            
+            
+   
+            
         }
         
     }
