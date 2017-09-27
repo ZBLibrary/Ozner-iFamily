@@ -167,11 +167,11 @@ class MyDevicesController: UIViewController {
             break
         case "showCupTDSDetail":
             let vc = segue.destination as! CupTDSDetailController
-            vc.isOneCup = false
+            vc.isOneCup = (OznerManager.instance.currentDevice?.deviceInfo.deviceType == "智能水杯" ? false :true)
             break
         case "showCupTemperatureDetail":
             let vc = segue.destination as! CupTemperatureController
-            vc.isOneCup = false
+            vc.isOneCup = (OznerManager.instance.currentDevice?.deviceInfo.deviceType == "智能水杯" ? false :true)
             break
             
         default:
