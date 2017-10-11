@@ -1,5 +1,5 @@
 //
-//  UINavigationController+KMNavigationBarTransition_internal.h
+//  UIScrollView+KMNavigationBarTransition.m
 //
 //  Copyright (c) 2017 Zhouqi Mo (https://github.com/MoZhouqi)
 //
@@ -21,12 +21,28 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "UIScrollView+KMNavigationBarTransition.h"
+#import <objc/runtime.h>
+#import "KMSwizzle.h"
 
-@interface UINavigationController (KMNavigationBarTransition_internal)
+@implementation UIScrollView (KMNavigationBarTransition)
 
-@property (nonatomic, assign) BOOL km_backgroundViewHidden;
-@property (nonatomic, weak) UIViewController *km_transitionContextToViewController;
+#ifdef __IPHONE_11_0
+- (UIScrollViewContentInsetAdjustmentBehavior)km_originalContentInsetAdjustmentBehavior {
+    return [objc_getAssociatedObject(self, _cmd) integerValue];
+}
+
+- (void)setKm_originalContentInsetAdjustmentBehavior:(UIScrollViewContentInsetAdjustmentBehavior)contentInsetAdjustmentBehavior {
+    objc_setAssociatedObject(self, @selector(km_originalContentInsetAdjustmentBehavior), @(contentInsetAdjustmentBehavior), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)km_shouldRestoreContentInsetAdjustmentBehavior {
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
+}
+
+- (void)setKm_shouldRestoreContentInsetAdjustmentBehavior:(BOOL)isShould {
+    objc_setAssociatedObject(self, @selector(km_shouldRestoreContentInsetAdjustmentBehavior), @(isShould), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+#endif
 
 @end
-

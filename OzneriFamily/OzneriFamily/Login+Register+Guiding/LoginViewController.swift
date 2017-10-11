@@ -42,7 +42,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     var remainTime:Int=60
     func timerDown() {
         
-        YZMTextLabel.text=loadLanguage("倒计时")+"\(remainTime)"+loadLanguage("秒")
+        let str = loadLanguage("倒计时")+"\(remainTime)"+loadLanguage("秒")
+        
+        YZMTextLabel.text=str
         if remainTime<=0 {
             setYZMNormal()
             if (YZMTimer?.isValid)! {

@@ -1,5 +1,5 @@
 //
-//  UINavigationController+KMNavigationBarTransition_internal.h
+//  NSObject+KMNavigationBarTransition.h
 //
 //  Copyright (c) 2017 Zhouqi Mo (https://github.com/MoZhouqi)
 //
@@ -23,10 +23,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UINavigationController (KMNavigationBarTransition_internal)
-
-@property (nonatomic, assign) BOOL km_backgroundViewHidden;
-@property (nonatomic, weak) UIViewController *km_transitionContextToViewController;
+@interface NSObject (KMNavigationBarTransition)
 
 @end
-

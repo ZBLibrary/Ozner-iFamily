@@ -1,5 +1,5 @@
 //
-//  UINavigationController+KMNavigationBarTransition_internal.h
+//  UINavigationBar+KMNavigationBarTransition.m
 //
 //  Copyright (c) 2017 Zhouqi Mo (https://github.com/MoZhouqi)
 //
@@ -21,12 +21,38 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "UINavigationBar+KMNavigationBarTransition.h"
+#import <objc/runtime.h>
+#import "KMSwizzle.h"
 
-@interface UINavigationController (KMNavigationBarTransition_internal)
+@implementation UINavigationBar (KMNavigationBarTransition)
 
-@property (nonatomic, assign) BOOL km_backgroundViewHidden;
-@property (nonatomic, weak) UIViewController *km_transitionContextToViewController;
+#ifdef __IPHONE_11_0
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        KMSwizzleMethod([self class],
+                        @selector(layoutSubviews),
+                        [self class],
+                        @selector(km_layoutSubviews));
+    });
+}
+#endif
+
+- (void)km_layoutSubviews {
+    [self km_layoutSubviews];
+    UIView *backgroundView = [self valueForKey:@"_backgroundView"];
+    CGRect frame = backgroundView.frame;
+    frame.size.height = self.frame.size.height + fabs(frame.origin.y);
+    backgroundView.frame = frame;
+}
+
+- (BOOL)km_isFakeBar {
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
+}
+
+- (void)setKm_isFakeBar:(BOOL)hidden {
+    objc_setAssociatedObject(self, @selector(km_isFakeBar), @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 @end
-

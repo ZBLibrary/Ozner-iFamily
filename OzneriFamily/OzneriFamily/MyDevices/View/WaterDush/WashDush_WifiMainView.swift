@@ -310,7 +310,8 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         
     }
     
-    let washState = [Int(0x00):"关机",Int(0x10):"待机",Int(0x20):"预约",Int(0x30):"运行",Int(0x40):"故障",Int(0x50):"预留",Int(0x60):"预留",Int(0x70):"预留",Int(0x80):"在线检1",Int(0x90):"在线检2"]
+    
+    let washState:[Int:String] = [Int(0x00):"关机",Int(0x10):"待机",Int(0x20):"预约",Int(0x30):"运行",Int(0x40):"故障",Int(0x50):"预留",Int(0x60):"预留",Int(0x70):"预留",Int(0x80):"在线检1",Int(0x90):"在线检2"]
     var error = -1{
         didSet{
             if error==oldValue {

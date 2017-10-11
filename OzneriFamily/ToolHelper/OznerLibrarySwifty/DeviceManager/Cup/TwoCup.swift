@@ -82,11 +82,12 @@ class TwoCup: OznerBaseDevice {
             print(senSorTwo)
         case 0x42://获取历史记录
             print("0x42历史记录条数\(recvData[1])")
-            let time1 = Int(recvData[2]) + 256 * Int(recvData[3]) + 256 * 256 * Int(recvData[4]) + 256 * 256 * 256 * Int(recvData[5])
+            
+            let time1 = Int(recvData[2]) + (256 * Int(recvData[3])) + (256 * 256 * Int(recvData[4]))
             
             if time1 != 0 {
                 
-                let timeDate = secsToData(time1)
+                let timeDate = secsToData(time1  + (256 * 256 * 256 * Int(recvData[5])))
                 let tds = Int(recvData[6]) + Int(recvData[7]) * 256
                 let temp = Int(recvData[8])
                 print("第一条数据timeDate：\(secondstoString(time1))，tds:\(tds)，temp:\(temp)")
@@ -94,11 +95,11 @@ class TwoCup: OznerBaseDevice {
                 OznerDeviceRecordHelper.instance.addRecordToSQL(Identifier: self.deviceInfo.deviceID, Tdate: timeDate, Tds: tds, Temperature: temp, Volume: 0, Updated: false)
             }
             
-            let time2 = Int(recvData[9]) + 256 * Int(recvData[10]) + 256 * 256 * Int(recvData[11]) + 256 * 256 * 256 * Int(recvData[12])
+            let time2:Int = Int(recvData[9]) + 256 * Int(recvData[10]) + 256 * 256 * Int(recvData[11])
             
             if time2 != 0 {
                 
-                let timeDate = secsToData(time2)
+                let timeDate = secsToData(time2 + 256 * 256 * 256 * Int(recvData[12]))
                 let tds = Int(recvData[13]) + 256 * Int(recvData[14])
                 let temp = Int(recvData[15])
                 print("第二条时间戳:\(time2)" + "时间:\(secondstoString(time2))，tds:\(tds)，temp:\(temp)")
@@ -119,7 +120,8 @@ class TwoCup: OznerBaseDevice {
 //            }
 //            
         case 0x43://历史记录数量
-            print("0x43总历史记录条数:\(Int(recvData[1]) + 256 * Int(recvData[2]) + 256 * 256 * Int(recvData[3]) + 256 * 256 * 256 * Int(recvData[4]))")
+            break
+//            print("0x43总历史记录条数:\(Int(recvData[1]) + 256 * Int(recvData[2]) + 256 * 256 * Int(recvData[3]) + 256 * 256 * 256 * Int(recvData[4]))")
 
         default:
             break

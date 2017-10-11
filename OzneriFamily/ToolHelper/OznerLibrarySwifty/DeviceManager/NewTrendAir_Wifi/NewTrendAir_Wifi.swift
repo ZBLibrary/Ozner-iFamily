@@ -186,10 +186,14 @@ class NewTrendAir_Wifi: OznerBaseDevice {
 
                 case 0x15://PROPERTY_FILTER
                     if valueData.count>=16 {
-                        tmpFilterStatus.starDate=Date(timeIntervalSince1970: TimeInterval(Int(valueData[0])+256*Int(valueData[1])+256*256*Int(valueData[2])+256*256*256*Int(valueData[3])))
-                        tmpFilterStatus.workTime=Int(valueData[4])+256*Int(valueData[5])+256*256*Int(valueData[6])+256*256*256*Int(valueData[7])
-                        tmpFilterStatus.stopDate=Date(timeIntervalSince1970: TimeInterval(Int(valueData[8])+256*Int(valueData[9])+256*256*Int(valueData[10])+256*256*256*Int(valueData[11])))
-                        tmpFilterStatus.maxWorkTime=Int(valueData[12])+256*Int(valueData[13])+256*256*Int(valueData[14])+256*256*256*Int(valueData[15])
+                        let startInt = Int(valueData[0])+256*Int(valueData[1])+256*256*Int(valueData[2])
+                        tmpFilterStatus.starDate=Date(timeIntervalSince1970: TimeInterval(startInt+256*256*256*Int(valueData[3])))
+                        let workInt = Int(valueData[4])+256*Int(valueData[5])+256*256*Int(valueData[6])
+                        tmpFilterStatus.workTime=workInt+256*256*256*Int(valueData[7])
+                        let stopInt = Int(valueData[8])+256*Int(valueData[9])+256*256*Int(valueData[10])
+                        tmpFilterStatus.stopDate=Date(timeIntervalSince1970: TimeInterval(stopInt+256*256*256*Int(valueData[11])))
+                        let maxInt = Int(valueData[12])+256*Int(valueData[13])+256*256*Int(valueData[14])
+                        tmpFilterStatus.maxWorkTime=maxInt+256*256*256*Int(valueData[15])
                     }
                 case 0x11://PROPERTY_PM25
                     tmpSensor.PM25_In=Int(valueData[0])+256*Int(valueData[1])
@@ -207,7 +211,8 @@ class NewTrendAir_Wifi: OznerBaseDevice {
                 case 0x14://PROPERTY_LIGHT_SENSOR
                     break
                 case 0x19://PROPERTY_TOTAL_CLEAN
-                    tmpSensor.TotalClean=(Int(valueData[0])+256*Int(valueData[1])+256*256*Int(valueData[2])+256*256*256*Int(valueData[3]))/1000
+                    let cleanValue = Int(valueData[0])+256*Int(valueData[1])+256*256*Int(valueData[2])
+                    tmpSensor.TotalClean=(cleanValue + 256*256*256*Int(valueData[3]))/1000
                 case 0x27://
                     tmpSensor.PM25_Out=Int(valueData[0])+256*Int(valueData[1])
                     tmpSensor.PM25_Out = tmpSensor.PM25_Out==65535 ? 0:tmpSensor.PM25_Out

@@ -1,5 +1,5 @@
 //
-//  UINavigationController+KMNavigationBarTransition_internal.h
+//  UIScrollView+KMNavigationBarTransition.h
 //
 //  Copyright (c) 2017 Zhouqi Mo (https://github.com/MoZhouqi)
 //
@@ -23,10 +23,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UINavigationController (KMNavigationBarTransition_internal)
+@interface UIScrollView (KMNavigationBarTransition)
 
-@property (nonatomic, assign) BOOL km_backgroundViewHidden;
-@property (nonatomic, weak) UIViewController *km_transitionContextToViewController;
+#ifdef __IPHONE_11_0
+@property (nonatomic, assign) UIScrollViewContentInsetAdjustmentBehavior km_originalContentInsetAdjustmentBehavior NS_AVAILABLE_IOS(11_0);
+@property (nonatomic, assign) BOOL km_shouldRestoreContentInsetAdjustmentBehavior NS_AVAILABLE_IOS(11_0);
+#endif
 
 @end
-

@@ -23,6 +23,17 @@ class GYNavViewController: UINavigationController ,UIGestureRecognizerDelegate{
         super.viewDidLoad()
         
         self.interactivePopGestureRecognizer?.delegate = self
+                
+
+//        #ifdef __IPHONE_11_0
+//
+//        if (@available(iOS 11.0, *)) {
+//
+//            self.navigationBar.frame = CGRectMake(0, STATUSBAR_HEIGHT,ScreenWidth, NAVIGATION_HEIGHT);
+//
+//}
+//
+//#endif
 
     }
     
