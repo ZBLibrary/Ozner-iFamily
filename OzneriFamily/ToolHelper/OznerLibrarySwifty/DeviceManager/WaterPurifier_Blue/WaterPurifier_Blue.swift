@@ -77,7 +77,7 @@ class WaterPurifier_Blue: OznerBaseDevice {
             stopDate=curWaterDate as NSDate
         }
         stopDate = stopDate.addingDays(days) as NSDate
-        var data = Data.init(bytes: [
+        let bytes:[UInt8] = [
             0x40,UInt8(NSDate().year()-2000),
             UInt8(NSDate().month()),
             UInt8(NSDate().day()),
@@ -93,7 +93,9 @@ class WaterPurifier_Blue: OznerBaseDevice {
             UInt8(stopDate.minute()),
             UInt8(stopDate.second()),0x88,
             0x16
-            ])
+        ]
+        
+        var data = Data.init(bytes: bytes)
         let tmpByte = calcSum(data: data)
         data.append(tmpByte)
         self.SendDataToDevice(sendData: data) { (error) in}
@@ -201,8 +203,8 @@ class WaterPurifier_Blue: OznerBaseDevice {
             if stopDate.timeIntervalSince1970==0 {
                 return
             }
-        }        
-        var data = Data.init(bytes: [
+        }
+        let bytes:[UInt8] = [
             0x40,
             UInt8(NSDate().year()-2000),
             UInt8(NSDate().month()),
@@ -218,7 +220,9 @@ class WaterPurifier_Blue: OznerBaseDevice {
             UInt8(stopDate.day()),
             UInt8(stopDate.hour()),
             UInt8(stopDate.minute()),
-            UInt8(stopDate.second())])
+            UInt8(stopDate.second())]
+        
+        var data = Data.init(bytes: bytes)
         data.append(OznerTools.dataFromInt(number: CLongLong(model), length: 2))
         let tmpByte = calcSum(data: data)
         data.append(tmpByte)
