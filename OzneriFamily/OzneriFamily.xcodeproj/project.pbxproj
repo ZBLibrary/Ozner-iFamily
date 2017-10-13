@@ -2636,7 +2636,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = UZZG6NM74T;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3389,7 +3389,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = UZZG6NM74T;
 				ENABLE_BITCODE = NO;
@@ -3427,8 +3428,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "be3b86c4-1d16-4841-887a-4f0a112a0827";
+				PROVISIONING_PROFILE_SPECIFIER = Distri_OzneriFamily;
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -3444,7 +3445,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = UZZG6NM74T;
 				ENABLE_BITCODE = NO;
@@ -3482,8 +3484,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "be3b86c4-1d16-4841-887a-4f0a112a0827";
+				PROVISIONING_PROFILE_SPECIFIER = Distri_OzneriFamily;
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
