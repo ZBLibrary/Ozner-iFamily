@@ -16,8 +16,12 @@ class WebShopController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         urlstr=NetworkManager.defaultManager?.UrlNameWithRoot("WebStore")
-
-        let frame = CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
+        
+        var frame = CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
+        
+        if #available(iOS 11.0, *) {
+            frame = CGRect(x: 0, y: -20, width: width_screen, height: height_screen - 64)
+        }
         
         webView = UIWebView(frame: frame)
         
