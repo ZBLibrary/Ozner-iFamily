@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JwU-Uc-kl0">
+                    <rect key="frame" x="25" y="0.0" width="62" height="53"/>
                     <state key="normal" title="我的排名">
                         <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     </state>
@@ -22,6 +26,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4CV-lK-l9O">
+                    <rect key="frame" x="137" y="0.0" width="62" height="53"/>
                     <state key="normal" title="我的好友">
                         <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     </state>
@@ -30,12 +35,14 @@
                     </state>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="551-iZ-Fyo">
+                    <rect key="frame" x="25" y="49" width="62" height="3"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="3" id="GOu-oc-6aE"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySD-sH-9a4">
+                    <rect key="frame" x="137" y="49" width="62" height="3"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="3" id="7yJ-We-MdS"/>
@@ -54,6 +61,8 @@
                 <constraint firstItem="ySD-sH-9a4" firstAttribute="centerX" secondItem="4CV-lK-l9O" secondAttribute="centerX" id="Gcf-M1-Eyc"/>
                 <constraint firstItem="ySD-sH-9a4" firstAttribute="width" secondItem="4CV-lK-l9O" secondAttribute="width" id="Pco-58-qYx"/>
                 <constraint firstItem="551-iZ-Fyo" firstAttribute="centerX" secondItem="JwU-Uc-kl0" secondAttribute="centerX" id="RZV-ti-4Aa"/>
+                <constraint firstItem="551-iZ-Fyo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="SOC-lE-rBq"/>
+                <constraint firstAttribute="trailing" secondItem="ySD-sH-9a4" secondAttribute="trailing" constant="25" id="TtP-qS-JvG"/>
                 <constraint firstItem="551-iZ-Fyo" firstAttribute="width" secondItem="JwU-Uc-kl0" secondAttribute="width" id="VVM-BO-NuI"/>
                 <constraint firstItem="4CV-lK-l9O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.5" id="VXg-WU-mn9"/>
                 <constraint firstAttribute="bottom" secondItem="ySD-sH-9a4" secondAttribute="bottom" constant="1" id="teg-d9-RTE"/>

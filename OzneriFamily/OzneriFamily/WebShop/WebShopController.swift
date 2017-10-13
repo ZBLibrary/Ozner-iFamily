@@ -20,7 +20,7 @@ class WebShopController: UIViewController {
         var frame = CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
         
         if #available(iOS 11.0, *) {
-            frame = CGRect(x: 0, y: -20, width: width_screen, height: height_screen - 64)
+            frame = CGRect(x: 0, y: -20, width: width_screen, height: height_screen - 44)
         }
         
         webView = UIWebView(frame: frame)
