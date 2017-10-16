@@ -168,14 +168,14 @@ class SkinDetailController: BaseViewController {
         {
             let vc=segue.destination as! AboutDeviceController
             
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?[loadLanguage("什么是水分 ")]?.stringValue)!, Type: 2)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?[loadLanguage("什么是水分")]?.stringValue)!, Type: 2)
             vc.title=loadLanguage("什么是水分")
         }
         if segue.identifier=="showWhatIsOil"
         {
             let vc=segue.destination as! AboutDeviceController
             
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?[loadLanguage("什么是油分 ")]?.stringValue)!, Type: 2)
+            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?[loadLanguage("什么是油分")]?.stringValue)!, Type: 2)
             vc.title=loadLanguage("什么是油分")
         }
         // Get the new view controller using segue.destinationViewController.
