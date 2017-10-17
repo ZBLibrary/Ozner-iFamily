@@ -52,15 +52,15 @@ class AirLvXinController: BaseViewController {
         self.title = loadLanguage("室内空气质量详情")
         hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
         let device=OznerManager.instance.currentDevice
-        
-        if ProductInfo.getDeviceClassFromProductID(productID: (device?.deviceInfo.productID)!) == .AirPurifier_Blue {//台式
+        switch ProductInfo.getDeviceClassFromProductID(productID: (device?.deviceInfo.productID)!) {
+        case .AirPurifier_Blue:
             reSetLvXinButton.isHidden=false
             vocWidthConstraint.constant = -width_screen/2
             //hiden
             totalPurificatContainerView.removeFromSuperview()
             pm25ValueLabel.text="\(Int((device as! AirPurifier_Blue).sensor.PM25))"
             SetLvXin(workTime: Int((device as! AirPurifier_Blue).filterStatus.workTime), maxUseMM: 60000)
-        }else{//立式空净
+        case .AirPurifier_Wifi:
             reSetLvXinButton.isHidden=true
             vocWidthConstraint.constant = 0
             totalPurificatContainerView.isHidden=false
@@ -71,7 +71,19 @@ class AirLvXinController: BaseViewController {
             totalValueLabel.text="\((device as! AirPurifier_Wifi).sensor.TotalClean)"
             print((device as! AirPurifier_Wifi).sensor.TotalClean)
             SetLvXin(workTime: (device as! AirPurifier_Wifi).filterStatus.workTime, maxUseMM: 129600)
-                
+        case .NewTrendAir_Wifi:
+            
+            vocWidthConstraint.constant = 0
+            totalPurificatContainerView.isHidden=false
+            pm25ValueLabel.text="\((device as! AirPurifier_Wifi).sensor.PM25)"
+            var vocValue = (device as! AirPurifier_Wifi).sensor.VOC
+            vocValue = vocValue<0||vocValue>3 ? 4:vocValue
+            vocValueLabel.text=[loadLanguage("优"),loadLanguage("良"),loadLanguage("一般"),loadLanguage("差"),"-"][Int(vocValue)]
+            totalValueLabel.text="\((device as! AirPurifier_Wifi).sensor.TotalClean)"
+            print((device as! AirPurifier_Wifi).sensor.TotalClean)
+            SetLvXin(workTime: (device as! AirPurifier_Wifi).filterStatus.workTime, maxUseMM: 129600)
+        default:
+            break
         }
         
         // Do any additional setup after loading the view.

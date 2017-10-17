@@ -101,7 +101,7 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let className=ProductInfo.products["\(indexPath.row)"]!["ClassName"].stringValue
         switch className {
-        case OZDeviceClass.NewTrendAir_Wifi.rawValue://扫码配网
+        case OZDeviceClass.NewTrendAir_Wifi.rawValue://扫码配网,OZDeviceClass.WashDush_Wifi.rawValue
             let vc = PairingScanViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         default:
