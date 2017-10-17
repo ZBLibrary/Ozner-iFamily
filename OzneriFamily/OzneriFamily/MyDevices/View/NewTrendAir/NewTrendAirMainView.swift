@@ -30,7 +30,7 @@ class NewTrendAirMainView: OznerDeviceView {
         if sender.state==UIGestureRecognizerState.ended{
             let point=sender.translation(in: nil)
             (self.currentDevice as! NewTrendAir_Wifi).setSpeed(key: (sender.view?.tag)!, value: point.y<0 ? +1:-1, callBack: { (error) in
-                showMSG(msg: (error as! NSError).domain)
+                showMSG(msg: (error! as NSError).domain)
             })
         }
         
@@ -46,7 +46,7 @@ class NewTrendAirMainView: OznerDeviceView {
     @IBAction func controlClick(_ sender: UIButton) {
         let device = (self.currentDevice as! NewTrendAir_Wifi)
         device.setControl(key: sender.tag) { (error) in
-            showMSG(msg: (error as! NSError).domain)
+            showMSG(msg: (error! as NSError).domain)
         }
     }
     // Only override draw() if you perform custom drawing.
@@ -77,7 +77,7 @@ class NewTrendAirMainView: OznerDeviceView {
             if control.NewAndSpeed != oldValue.NewAndSpeed {
                 controlButton2.setImage(UIImage.init(named: control.NewAndSpeed>0 ? "新风新风ED":"新风新风"), for: .normal)
                 let imgStr = ["新风右0","新风右1","新风右2"][control.NewAndSpeed]
-                leftSpeedImg.image=UIImage.init(named: imgStr)
+                rightSpeedImg.image=UIImage.init(named: imgStr)
                 
             }
             if control.Lock != oldValue.Lock {

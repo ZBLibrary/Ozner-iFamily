@@ -12,7 +12,7 @@ class NewTrendAir_Wifi: OznerBaseDevice {
 
     //添加个性字段
     //对外只读，对内可读写
-    private(set) var sensor:(Temperature:Int,Humidity:Int,PM25_In:Int,PM25_Out:Int,CO2:Int,TVOC:Int,TotalClean:Int)=(0,0,0,0,0,0,0){
+    private(set) var sensor:(Temperature:Int,Humidity:Int,PM25_In:Int,PM25_Out:Int,CO2:Int,TVOC:Int,TotalClean:Int)=(0,0,0,0,0,-1,0){
         didSet{
             //if sensor != oldValue {
                 self.delegate?.OznerDeviceSensorUpdate?(identifier: self.deviceInfo.deviceID)
@@ -96,14 +96,14 @@ class NewTrendAir_Wifi: OznerBaseDevice {
         if key == 0 && status.AirAndSpeed==0{
             callBack(NSError.init(domain: "净化开关未打开", code: -3, userInfo: nil))
             return
-        }else{
+        }else if key == 1 && status.NewAndSpeed==0{
+            callBack(NSError.init(domain: "新风开关未打开", code: -4, userInfo: nil))
+            return
+        }
+        if key == 0{
             currValue=min(3, currValue)
             data.append(UInt8(currValue))
             data.append(UInt8(status.NewAndSpeed))
-        }
-        if key == 1 && status.NewAndSpeed==0{
-            callBack(NSError.init(domain: "新风开关未打开", code: -4, userInfo: nil))
-            return
         }else{
             currValue=min(2, currValue)
             data.append(UInt8(status.AirAndSpeed))
@@ -170,9 +170,10 @@ class NewTrendAir_Wifi: OznerBaseDevice {
                 switch keyOfData {
                 case 0x04://PROPERTY_POWER_TIMER
                     tmpAppointTime.onOffType=Int(valueData[0])
-                    tmpAppointTime.onEveryDay=valueData.subInt(starIndex: 1, count: 2)
-                    tmpAppointTime.offEveryDay=valueData.subInt(starIndex: 3, count: 2)
-                    tmpAppointTime.offOnce=valueData.subInt(starIndex: 5, count: 2)
+                    
+                    tmpAppointTime.onEveryDay=min(1439, valueData.subInt(starIndex: 1, count: 2))
+                    tmpAppointTime.offEveryDay=min(1439, valueData.subInt(starIndex: 3, count: 2))
+                    tmpAppointTime.offOnce=min(1439, valueData.subInt(starIndex: 5, count: 2))
                     break
                 case 0x00://PROPERTY_POWER
                     tmpStatus.Power=(Int(valueData[0]) != 0)
@@ -186,38 +187,36 @@ class NewTrendAir_Wifi: OznerBaseDevice {
 
                 case 0x15://PROPERTY_FILTER
                     if valueData.count>=16 {
-                        let startInt = Int(valueData[0])+256*Int(valueData[1])+256*256*Int(valueData[2])
-                        tmpFilterStatus.starDate=Date(timeIntervalSince1970: TimeInterval(startInt+256*256*256*Int(valueData[3])))
-                        let workInt = Int(valueData[4])+256*Int(valueData[5])+256*256*Int(valueData[6])
-                        tmpFilterStatus.workTime=workInt+256*256*256*Int(valueData[7])
-                        let stopInt = Int(valueData[8])+256*Int(valueData[9])+256*256*Int(valueData[10])
-                        tmpFilterStatus.stopDate=Date(timeIntervalSince1970: TimeInterval(stopInt+256*256*256*Int(valueData[11])))
-                        let maxInt = Int(valueData[12])+256*Int(valueData[13])+256*256*Int(valueData[14])
-                        tmpFilterStatus.maxWorkTime=maxInt+256*256*256*Int(valueData[15])
+                        let startInt = valueData.subInt(starIndex: 0, count: 4)
+                        tmpFilterStatus.starDate=Date(timeIntervalSince1970: TimeInterval(startInt))
+                        let workInt = valueData.subInt(starIndex: 4, count: 4)
+                        tmpFilterStatus.workTime=workInt
+                        let stopInt = valueData.subInt(starIndex: 8, count: 4)
+                        tmpFilterStatus.stopDate=Date(timeIntervalSince1970: TimeInterval(stopInt))
+                        tmpFilterStatus.maxWorkTime=valueData.subInt(starIndex: 12, count: 4)
                     }
                 case 0x11://PROPERTY_PM25
-                    tmpSensor.PM25_In=Int(valueData[0])+256*Int(valueData[1])
+                    tmpSensor.PM25_In=valueData.subInt(starIndex: 0, count: 2)
                     tmpSensor.PM25_In = tmpSensor.PM25_In==65535 ? 0:tmpSensor.PM25_In
                     tmpSensor.PM25_In=min(999, tmpSensor.PM25_In)
                 case 0x12://PROPERTY_TEMPERATURE
-                    tmpSensor.Temperature=Int(valueData[0])+256*Int(valueData[1])
+                    tmpSensor.Temperature=valueData.subInt(starIndex: 0, count: 2)
                     tmpSensor.Temperature = tmpSensor.Temperature==65535 ? 0:tmpSensor.Temperature
                 case 0x13://PROPERTY_VOC
-                    tmpSensor.TVOC=Int(valueData[0])+256*Int(valueData[1])
-                    tmpSensor.TVOC = tmpSensor.TVOC==65535 ? 0:tmpSensor.TVOC
+                    tmpSensor.TVOC=valueData.subInt(starIndex: 0, count: 2)
+                    tmpSensor.TVOC = tmpSensor.TVOC==65535 ? -1:tmpSensor.TVOC
                 case 0x18://PROPERTY_HUMIDITY
-                    tmpSensor.Humidity=Int(valueData[0])+256*Int(valueData[1])
+                    tmpSensor.Humidity=valueData.subInt(starIndex: 0, count: 2)
                     tmpSensor.Humidity = tmpSensor.Humidity==65535 ? 0:tmpSensor.Humidity
                 case 0x14://PROPERTY_LIGHT_SENSOR
                     break
                 case 0x19://PROPERTY_TOTAL_CLEAN
-                    let cleanValue = Int(valueData[0])+256*Int(valueData[1])+256*256*Int(valueData[2])
-                    tmpSensor.TotalClean=(cleanValue + 256*256*256*Int(valueData[3]))/1000
+                    tmpSensor.TotalClean=valueData.subInt(starIndex: 0, count: 4)/1000
                 case 0x27://
-                    tmpSensor.PM25_Out=Int(valueData[0])+256*Int(valueData[1])
+                    tmpSensor.PM25_Out=valueData.subInt(starIndex: 0, count: 2)
                     tmpSensor.PM25_Out = tmpSensor.PM25_Out==65535 ? 0:tmpSensor.PM25_Out
                 case 0x28://
-                    tmpSensor.CO2=Int(valueData[0])+256*Int(valueData[1])
+                    tmpSensor.CO2=valueData.subInt(starIndex: 0, count: 2)
                     tmpSensor.CO2 = tmpSensor.CO2==65535 ? 0:tmpSensor.CO2
                 case 0x29:
                     if valueData.count>=2
