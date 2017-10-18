@@ -104,6 +104,9 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
         case OZDeviceClass.NewTrendAir_Wifi.rawValue://扫码配网,OZDeviceClass.WashDush_Wifi.rawValue
             let vc = PairingScanViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+//        case OZDeviceClass.AirPurifier_Wifi.rawValue://汉枫测试
+//            let vc = HFPairingViewController()
+//            self.navigationController?.pushViewController(vc, animated: true)
         default:
             self.performSegue(withIdentifier: "pushPairID", sender: indexPath.row)
         }

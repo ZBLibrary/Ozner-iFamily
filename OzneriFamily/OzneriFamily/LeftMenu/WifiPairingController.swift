@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 class WifiPairingController: UIViewController,UITextFieldDelegate {
 
+    var productInfo:JSON!
     @IBAction func backClick(_ sender: AnyObject) {
         _=self.navigationController?.popToRootViewController(animated: true)
     }
@@ -37,7 +38,18 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
         }
         
         UserDefaults.standard.set(wifiPassWordText.text!, forKey: "Wifi_"+wifiNameText.text!)//保存密码
-        StarWifiPairing()
+        let className=productInfo["ClassName"].stringValue
+        switch className {
+        case OZDeviceClass.AirPurifier_Wifi.rawValue://汉枫测试
+            let vc = HFPairingViewController()
+            vc.ssid=wifiNameText.text!
+            vc.password=wifiPassWordText.text!
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        default:
+            StarWifiPairing()
+        }
+
     }
     
     @IBOutlet weak var nextBtn: UIButton!
@@ -49,8 +61,6 @@ class WifiPairingController: UIViewController,UITextFieldDelegate {
     @IBOutlet var dotImg4: UIImageView!
     @IBOutlet var dotImg5: UIImageView!
     private var myTimer:Timer?
-    var productInfo:JSON!
-    //var mxChipPair:MXChipPair!
     
     override func viewDidLoad() {
         super.viewDidLoad()

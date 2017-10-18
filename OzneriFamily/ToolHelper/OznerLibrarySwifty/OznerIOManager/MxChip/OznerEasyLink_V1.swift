@@ -142,7 +142,7 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
     //EasyLinkFTCDelegate 代理方法
     func onFound(_ client: NSNumber!, withName name: String!, mataData mataDataDict: [AnyHashable : Any]!) {
         print(mataDataDict)
-        if let tmptype =  mataDataDict["FW"] as? String
+        if (mataDataDict["FW"] as? String) != nil
         {
             //var productID = "16a21bd6"
 //            if tmptype.contains("FOG_HAOZE_AIR") {
@@ -157,7 +157,7 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
     }
     func onFound(byFTC client: NSNumber!, withConfiguration configDict: [AnyHashable : Any]!) {
         print(configDict)
-        if let tmptype =  configDict["FW"] as? String
+        if (configDict["FW"] as? String) != nil
         {
 //            var productID = "16a21bd6"
 //            if tmptype.contains("FOG_HAOZE_AIR") {

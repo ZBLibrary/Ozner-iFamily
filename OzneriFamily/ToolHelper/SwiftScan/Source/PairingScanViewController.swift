@@ -195,48 +195,48 @@ open class PairingScanViewController: UIViewController, UIImagePickerControllerD
         scanObj?.stop()
     }
     
-    open func openPhotoAlbum()
-    {
-        if(!LBXPermissions.isGetPhotoPermission())
-        {
-            showMsg(title: "提示", message: "没有相册权限，请到设置->隐私中开启本程序相册权限")
-        }
-        
-        let picker = UIImagePickerController()
-        
-        picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
-        picker.delegate = self;
-        
-        picker.allowsEditing = true
-        
-        present(picker, animated: true, completion: nil)
-    }
-    
-    //MARK: -----相册选择图片识别二维码 （条形码没有找到系统方法）
-    @nonobjc open func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
-    {
-        picker.dismiss(animated: true, completion: nil)
-        
-        var image:UIImage? = info[UIImagePickerControllerEditedImage] as? UIImage
-        
-        if (image == nil )
-        {
-            image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        }
-        
-        if(image != nil)
-        {
-            let arrayResult = LBXScanWrapper.recognizeQRImage(image: image!)
-            if arrayResult.count > 0
-            {
-                handleCodeResult(arrayResult: arrayResult)
-                return
-            }
-        }
-      
-        showMsg(title: "", message: "识别失败")
-    }
+//    open func openPhotoAlbum()
+//    {
+//        if(!LBXPermissions.isGetPhotoPermission())
+//        {
+//            showMsg(title: "提示", message: "没有相册权限，请到设置->隐私中开启本程序相册权限")
+//        }
+//        
+//        let picker = UIImagePickerController()
+//        
+//        picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+//        
+//        picker.delegate = self;
+//        
+//        picker.allowsEditing = true
+//        
+//        present(picker, animated: true, completion: nil)
+//    }
+//    
+//    //MARK: -----相册选择图片识别二维码 （条形码没有找到系统方法）
+//    @nonobjc open func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+//    {
+//        picker.dismiss(animated: true, completion: nil)
+//        
+//        var image:UIImage? = info[UIImagePickerControllerEditedImage] as? UIImage
+//        
+//        if (image == nil )
+//        {
+//            image = info[UIImagePickerControllerOriginalImage] as? UIImage
+//        }
+//        
+//        if(image != nil)
+//        {
+//            let arrayResult = LBXScanWrapper.recognizeQRImage(image: image!)
+//            if arrayResult.count > 0
+//            {
+//                handleCodeResult(arrayResult: arrayResult)
+//                return
+//            }
+//        }
+//      
+//        showMsg(title: "", message: "识别失败")
+//    }
     
     func showMsg(title:String?,message:String?)
     {

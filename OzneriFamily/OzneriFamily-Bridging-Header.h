@@ -8,7 +8,8 @@
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "BPush.h"
 #import "UICountingLabel/UICountingLabel.h"
-
+#import "HFSmartLink.h"
+#import "HFSmartLinkDeviceInfo.h"
 //OznerLibrarySwifty 浩泽库
 #import "BabyBLEHelper.h"
 #import "BabyBLEIO.h"
