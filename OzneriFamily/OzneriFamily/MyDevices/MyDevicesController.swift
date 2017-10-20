@@ -83,6 +83,7 @@ class MyDevicesController: UIViewController {
         case .NewTrendAir_Wifi:
             self.performSegue(withIdentifier: "showNewAirSetting", sender: nil)
             
+            
         }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮

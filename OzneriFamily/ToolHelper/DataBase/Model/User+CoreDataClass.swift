@@ -886,4 +886,18 @@ public class User: BaseDataObject {
             failure(error)
         })
     }
+    
+    //获取GPRS初始化信息
+    class func getGPRSInfo(deviceType:String,deviceID:String,success: @escaping ((Any) -> Void)) {
+     
+        let manager = AFHTTPSessionManager.init()
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
+        manager.get("http://iot.ozner.net:1885/service/query.do", parameters: ["deviceType":deviceType,"deviceId":deviceID], progress: nil, success: { (_, data) in
+            print(data)
+            success(data)
+        }, failure: nil)
+        
+    }
+        
 }

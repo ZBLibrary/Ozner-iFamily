@@ -99,11 +99,20 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == ProductInfo.products.count - 1 {
+            
+            let vc = WaterGPRSScanVc()
+            self.navigationController?.pushViewController(vc, animated: true)
+            return
+        }
+        
         let className=ProductInfo.products["\(indexPath.row)"]!["ClassName"].stringValue
         switch className {
         case OZDeviceClass.NewTrendAir_Wifi.rawValue://扫码配网
             let vc = PairingScanViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+            
         default:
             self.performSegue(withIdentifier: "pushPairID", sender: indexPath.row)
         }

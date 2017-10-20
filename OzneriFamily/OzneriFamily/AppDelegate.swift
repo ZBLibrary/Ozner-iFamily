@@ -85,8 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         updateversion()
         Bugly.start(withAppId: "900019591")
         
-        
-        
+
         Thread.sleep(forTimeInterval: 1)
         return true
     }
