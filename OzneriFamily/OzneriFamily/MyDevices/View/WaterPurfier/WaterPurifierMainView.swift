@@ -424,7 +424,7 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
             
         }else{
             let device = currentDevice as! WaterPurifier_Wifi
-            
+//            device.connectStatus = .Connected
             if device.connectStatus != OznerConnectStatus.Connected
             {
                 tdsContainerView.isHidden=true
