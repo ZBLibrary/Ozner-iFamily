@@ -56,6 +56,7 @@ class AirPurifier_Wifi: OznerBaseDevice {
     override func OznerBaseIORecvData(recvData: Data) {
         super.OznerBaseIORecvData(recvData: recvData)
         //解析数据并更新个性字段
+
         requestCount=0                
         if (UInt8(recvData[0]) != 0xFA )
         {
