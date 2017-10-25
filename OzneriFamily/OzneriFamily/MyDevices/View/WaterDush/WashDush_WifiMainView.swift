@@ -173,7 +173,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         xinfengWidth.constant = -width_screen/4
         controlButton4.isHidden=true
         appointButton.isHidden=true
-        switch (self.currentDevice?.deviceInfo.productID)! {
+        switch (self.currentDevice?.deviceInfo.productID ?? "")! {
         case "edb7b978-6aca-11e7-9baf-00163e120d98":
             controlButton3.isHidden=true
             lockWidth.constant = -width_screen/4
@@ -201,7 +201,8 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         layer.fillColor = UIColor.clear.cgColor
         layer.lineCap = kCALineCapRound
         //初始化一个路径
-        let path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(M_PI), endAngle: 2.4*CGFloat(M_PI), clockwise: true)
+        let path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(Double.pi), endAngle: 2.4*CGFloat(Double.pi), clockwise: true)
+        
         layer.path = path.cgPath
         remindTimeView1.layer.addSublayer(layer)
         timeShapeLayer = CAShapeLayer()

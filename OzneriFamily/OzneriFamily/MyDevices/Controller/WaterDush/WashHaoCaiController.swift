@@ -25,17 +25,10 @@ class WashHaoCaiController: BaseViewController {
     @IBOutlet var animalView4: UIView!
     
     @IBAction func bugHaoCaiClick(_ sender: Any) {
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false,
-            dynamicAnimatorActive: true
-        )
-        let alert=SCLAlertView(appearance: appearance)
-        _=alert.addButton("取消") {
-        }
-        _=alert.addButton("拨打") {
-            UIApplication.shared.openURL(URL.init(string: "telprompt://4009209667")!)
-        }
-        _=alert.showInfo("", subTitle: "请拨打400 920 9667电话补充耗材")
+        let vc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "AboutDeviceController") as! AboutDeviceController
+        vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("BuyWashHaoCai"))!, Type: 0)
+        vc.title=""
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
