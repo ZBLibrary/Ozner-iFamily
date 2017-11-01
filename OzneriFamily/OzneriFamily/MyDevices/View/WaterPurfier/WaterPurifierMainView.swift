@@ -470,7 +470,7 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
                     tdsContainerView.isHidden=false
                     offLineLabel.isHidden=true
                     tds=(device.sensor.TDS_Before,device.sensor.TDS_After)
-                    operation=(device.status.Power,device.status.Hot,device.status.Cool)
+                    operation=(false,device.status.Hot,device.status.Cool)
                 }
                 
                 return
