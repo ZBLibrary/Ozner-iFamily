@@ -104,7 +104,7 @@ class WaterPurifier_Wifi: OznerBaseDevice {
                     filterStates.filterC = item["value"].intValue
                     break
                 case "PowerOn":
-                    tmpStatus.Power = item["value"].intValue == 1 ? true : false
+                    tmpStatus.Power = item["value"].boolValue 
                     break
                 case "CHILDLOCK":
 //                    tmpStatus.Lock = item["value"].intValue==1
@@ -116,6 +116,10 @@ class WaterPurifier_Wifi: OznerBaseDevice {
                     break
                 }
             }
+            
+            status = tmpStatus
+            sensor = tmpSensor
+
         } else {
             //解析数据并更新个性字段
             requestCount=0
@@ -169,7 +173,7 @@ class WaterPurifier_Wifi: OznerBaseDevice {
         
         if self.deviceInfo.wifiVersion == 3 {
            
-            User.getGPRSInfo(deviceType: "RoWater", deviceID: "866873022333770") { (data) in
+            User.getGPRSInfo(deviceType: "RoWater", deviceID: self.deviceInfo.deviceID) { (data) in
                 //            let json = data as! [String:AnyObject]
                 let json = try! JSONSerialization.jsonObject(with: data as! Data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
                 print(json)
@@ -185,6 +189,10 @@ class WaterPurifier_Wifi: OznerBaseDevice {
     }
     var requestCount = 0//请求三次没反应代表机器断网
     override func repeatFunc() {
+        if self.deviceInfo.wifiVersion == 3 {
+            return
+        }
+        
         if Int(arc4random()%2)==0 {
             requestCount+=1
             if requestCount>=3 {

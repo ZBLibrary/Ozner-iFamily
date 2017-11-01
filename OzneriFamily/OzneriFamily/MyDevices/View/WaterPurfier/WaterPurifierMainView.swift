@@ -382,6 +382,31 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
         }else{
             let device = currentDevice as! WaterPurifier_Wifi
             
+            if device.deviceInfo.wifiVersion == 3 {
+                
+                if device.connectStatus != OznerConnectStatus.Connected
+                {
+                    tdsContainerView.isHidden=true
+                    offLineLabel.isHidden=false
+                    offLineLabel.text=loadLanguage("设备云已断开")
+                    operation=(false,false,false)
+                }
+                
+                if device.status.Power==false {
+                    tdsContainerView.isHidden=true
+                    offLineLabel.isHidden=false
+                    offLineLabel.text=loadLanguage("设备已关机")
+                    operation=(false,false,false)
+                }else{
+                    tdsContainerView.isHidden=false
+                    offLineLabel.isHidden=true
+                    tds=(device.sensor.TDS_Before,device.sensor.TDS_After)
+                    operation=(false,device.status.Hot,device.status.Cool)
+                }
+                
+                return
+            }
+            
             if device.connectStatus != OznerConnectStatus.Connected
             {
                 tdsContainerView.isHidden=true
@@ -419,12 +444,38 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
         //更新连接状态视图
         if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue {
             tdsContainerView.isHidden=false
+            
             offLineLabel.isHidden=true
             tds=(Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS1),Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS2))
             
         }else{
             let device = currentDevice as! WaterPurifier_Wifi
-//            device.connectStatus = .Connected
+            
+            if device.deviceInfo.wifiVersion == 3 {
+                
+                if device.connectStatus != OznerConnectStatus.Connected
+                {
+                    tdsContainerView.isHidden=true
+                    offLineLabel.isHidden=false
+                    offLineLabel.text=loadLanguage("设备云已断开")
+                    operation=(false,false,false)
+                }
+                
+                if device.status.Power==false {
+                    tdsContainerView.isHidden=true
+                    offLineLabel.isHidden=false
+                    offLineLabel.text=loadLanguage("设备已关机")
+                    operation=(false,false,false)
+                }else{
+                    tdsContainerView.isHidden=false
+                    offLineLabel.isHidden=true
+                    tds=(device.sensor.TDS_Before,device.sensor.TDS_After)
+                    operation=(device.status.Power,device.status.Hot,device.status.Cool)
+                }
+                
+                return
+            }
+            
             if device.connectStatus != OznerConnectStatus.Connected
             {
                 tdsContainerView.isHidden=true
