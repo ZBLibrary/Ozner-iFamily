@@ -23,6 +23,10 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
 
         self.title = loadLanguage("选择设备")
        
+        if #available(iOS 11.0, *) {
+           self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.scrollableAxes
+        } 
+        
         leftPanGesture = UISwipeGestureRecognizer(target: self, action: #selector(SelectDeviceTableController.leftHandPanGesture(_:)))
         self.view.addGestureRecognizer(leftPanGesture!)
          self.tableView.rowHeight=120*height_screen/667

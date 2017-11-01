@@ -73,7 +73,19 @@ class MyCenterController: BaseViewController {
         infoHeadView.moneyLb.text = User.currentUser?.score
         headView = infoHeadView
         
-        tableView = UITableView(frame: CGRect(x: 0, y: -20, width: width_screen, height: (height_screen + 20 )))
+        
+        if LoginManager.isIphoneX() {
+            tableView = UITableView(frame: CGRect(x: 0, y: 0, width: width_screen, height: (height_screen )))
+
+            if #available(iOS 11.0, *) {
+                tableView.contentInsetAdjustmentBehavior = .never
+            } else {
+                // Fallback on earlier versions
+            }
+        } else {
+             tableView = UITableView(frame: CGRect(x: 0, y: -20, width: width_screen, height: (height_screen + 20)))
+        }
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableHeaderView = headView

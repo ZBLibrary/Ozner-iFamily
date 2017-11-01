@@ -85,7 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         updateversion()
         Bugly.start(withAppId: "900019591")
         
-
+//        if #available(iOS 11.0, *) {
+//            UIScrollView.appearance().
+//        }
         Thread.sleep(forTimeInterval: 1)
         return true
     }
