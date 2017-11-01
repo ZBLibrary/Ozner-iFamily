@@ -12,6 +12,8 @@ class RoWaterPuefierLvXinController: BaseViewController {
 
     var currentDevice:WaterPurifier_Blue!
     var typeBLE:Bool = true
+    
+    @IBOutlet weak var flagLb: UILabel!
     @IBOutlet var fuweiButton: UIButton!
     @IBAction func fuweiClick(sender: UIButton) {
         
@@ -111,11 +113,18 @@ class RoWaterPuefierLvXinController: BaseViewController {
             hideView2.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
             hideImage1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
             
+//            UIView.animate(withDuration: 0.5, animations: {
+//                self.flagLb.isHidden = !self.flagLb.isHidden
+//            }, completion: { (_) in
+//                
+//            })
+            
             if device.deviceInfo.wifiVersion == 3 {
                
                 lvxinValueLabelA.text="\(lroundf(Float(device.filterStates.filterA)))%"
                 lvxinValueLabelB.text="\(lroundf(Float(device.filterStates.filterB)))%"
                 lvxinValueLabelC.text="\(lroundf(Float(device.filterStates.filterC)))%"
+                
                 
             } else {
                 
