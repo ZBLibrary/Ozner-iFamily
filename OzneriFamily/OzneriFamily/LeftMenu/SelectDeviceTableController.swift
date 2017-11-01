@@ -113,7 +113,7 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
         
         let className=ProductInfo.products["\(indexPath.row)"]!["ClassName"].stringValue
         switch className {
-        case OZDeviceClass.NewTrendAir_Wifi.rawValue://扫码配网
+        case OZDeviceClass.NewTrendAir_Wifi.rawValue://扫码配网,OZDeviceClass.WashDush_Wifi.rawValue
             let vc = PairingScanViewController()
             self.navigationController?.pushViewController(vc, animated: true)
             
