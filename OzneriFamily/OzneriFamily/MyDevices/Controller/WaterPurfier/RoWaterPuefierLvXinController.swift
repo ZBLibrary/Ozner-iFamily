@@ -116,7 +116,7 @@ class RoWaterPuefierLvXinController: BaseViewController {
 //            UIView.animate(withDuration: 0.5, animations: {
 //                self.flagLb.isHidden = !self.flagLb.isHidden
 //            }, completion: { (_) in
-//                
+//
 //            })
             
             if device.deviceInfo.wifiVersion == 3 {
@@ -128,9 +128,9 @@ class RoWaterPuefierLvXinController: BaseViewController {
                 
             } else {
                 
-            lvxinValueLabelA.text="\(lroundf(Float(device.filterStates.filterA/10)) * 10)%"
-            lvxinValueLabelB.text="\(lroundf(Float(device.filterStates.filterB/10)) * 10)%"
-            lvxinValueLabelC.text="\(lroundf(Float(device.filterStates.filterC/10)) * 10)%"
+                lvxinValueLabelA.text="\(lroundf(Float(device.filterStates.filterA/10)) * 10)%"
+                lvxinValueLabelB.text="\(lroundf(Float(device.filterStates.filterB/10)) * 10)%"
+                lvxinValueLabelC.text="\(lroundf(Float(device.filterStates.filterC/10)) * 10)%"
             }
             
             //timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
