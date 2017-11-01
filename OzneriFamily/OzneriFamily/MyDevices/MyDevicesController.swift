@@ -35,12 +35,18 @@ class MyDevicesController: UIViewController {
            self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
         case .WaterPurifier_Wifi:
             
+            if (OznerManager.instance.currentDevice as? WaterPurifier_Wifi)?.deviceInfo.wifiVersion == 3 {
+                let vc = RoWaterPuefierLvXinController()
+                vc.typeBLE = false
+                self.navigationController?.pushViewController(vc, animated: true)
+                return
+            }
+            
             if (OznerManager.instance.currentDevice as? WaterPurifier_Wifi)?.deviceInfo.productID == "adf69dce-5baa-11e7-9baf-00163e120d98" {
                 let vc = RoWaterPuefierLvXinController()
                 vc.typeBLE = false
                 self.navigationController?.pushViewController(vc, animated: true)
-                
-               return
+                return
             }
             
             let tmpDeviceView = deviceViewContainer.currentDeviceView as! WaterPurifierMainView

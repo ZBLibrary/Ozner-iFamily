@@ -110,9 +110,19 @@ class RoWaterPuefierLvXinController: BaseViewController {
             hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
             hideView2.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
             hideImage1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
+            
+            if device.deviceInfo.wifiVersion == 3 {
+               
+                lvxinValueLabelA.text="\(lroundf(Float(device.filterStates.filterA)))%"
+                lvxinValueLabelB.text="\(lroundf(Float(device.filterStates.filterB)))%"
+                lvxinValueLabelC.text="\(lroundf(Float(device.filterStates.filterC)))%"
+                
+            } else {
+                
             lvxinValueLabelA.text="\(lroundf(Float(device.filterStates.filterA/10)) * 10)%"
             lvxinValueLabelB.text="\(lroundf(Float(device.filterStates.filterB/10)) * 10)%"
             lvxinValueLabelC.text="\(lroundf(Float(device.filterStates.filterC/10)) * 10)%"
+            }
             
             //timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
 //            let minFilter=min(device.filterStates.filterA, device.filterStates.filterB, device.filterStates.filterC)
