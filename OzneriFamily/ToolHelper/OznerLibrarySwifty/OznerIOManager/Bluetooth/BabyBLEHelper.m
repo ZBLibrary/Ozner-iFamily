@@ -140,7 +140,6 @@ NSString* deviceName=nil;
     }];
     
     
-    
     //设置查找设备的过滤器
     [baby setFilterOnDiscoverPeripherals:^BOOL(NSString *peripheralName, NSDictionary *advertisementData, NSNumber *RSSI) {
         
@@ -159,8 +158,6 @@ NSString* deviceName=nil;
         }
         return NO;
     }];
-    
-    
     
     
     [baby setBlockOnCancelScanBlock:^(CBCentralManager *centralManager) {

@@ -23,6 +23,10 @@ class WebShopController: UIViewController {
             frame = CGRect(x: 0, y: -20, width: width_screen, height: height_screen - 44)
         }
         
+        if LoginManager.isIphoneX() {
+            frame = CGRect(x: 0, y: -44, width: width_screen, height: height_screen - 44)
+        }
+        
         webView = UIWebView(frame: frame)
         
         webView.scalesPageToFit = true
