@@ -35,14 +35,14 @@ class WashHaoCaiController: BaseViewController {
         let filterStatus=(OznerManager.instance.currentDevice as! WashDush_Wifi).filterStatus
         let valueArr = [0:filterStatus.jingshui,
                         1:filterStatus.ruanshui,
-                        2:filterStatus.liangdie,
+                        2:filterStatus.liangjie,
                         3:filterStatus.jingjie]
         let titles = [PTitleLabel,RTitleLabel,STitleLabel,DTitleLabel]
         let Imgs = [PImg,RImg,SImg,DImg]
         for (index,value) in valueArr {
             IsAnimals[index]=false
             var titleStr = ""
-            var imgStr = "wash_"+["P","R","S","D"][index]
+            var imgStr = "wash_"+["P","S","R","D"][index]
             switch true {
             case value>=100:
                 titleStr="充足"

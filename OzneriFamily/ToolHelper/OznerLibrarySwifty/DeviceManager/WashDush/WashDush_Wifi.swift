@@ -35,7 +35,7 @@ class WashDush_Wifi: OznerBaseDevice {
         }
     }
     //耗材、预约
-    private(set) var filterStatus:(jingshui:Int,ruanshui:Int,jingjie:Int,liangdie:Int,AppointTime:Int,AppointModel:Int) = (-1,-1,-1,-1,0,0){
+    private(set) var filterStatus:(jingshui:Int,ruanshui:Int,liangjie:Int,jingjie:Int,AppointTime:Int,AppointModel:Int) = (-1,-1,-1,-1,0,0){
         didSet{
             //if filterStatus != oldValue {
                 self.delegate?.OznerDevicefilterUpdate?(identifier: self.deviceInfo.deviceID)
@@ -165,8 +165,9 @@ class WashDush_Wifi: OznerBaseDevice {
                 case 0x0C://耗材状态
                     tmpFilterStatus.jingshui=0
                     tmpFilterStatus.ruanshui=0
+                    tmpFilterStatus.liangjie=0
                     tmpFilterStatus.jingjie=0
-                    tmpFilterStatus.liangdie=0
+                    
                     var tmpFilter=Int(valueData[0])
                     if tmpFilter%2 == 0 {
                         tmpFilterStatus.jingshui=min(Int(valueData[1]),100)
@@ -184,7 +185,7 @@ class WashDush_Wifi: OznerBaseDevice {
                     tmpFilter=tmpFilter-tmpFilter%8
                     
                     if tmpFilter%16 == 0 {
-                        tmpFilterStatus.liangdie=min(Int(valueData[4]),100)
+                        tmpFilterStatus.liangjie=min(Int(valueData[4]),100)
                     }
                     break
                 //case 0x04://保管功能
