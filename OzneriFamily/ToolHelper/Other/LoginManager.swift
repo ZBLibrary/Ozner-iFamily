@@ -35,6 +35,7 @@ enum EnumIphoneType {
     case Ipone5
     case Iphone6
     case Iphone6p
+    case IphoneX
 }
 //登陆控制类
 class LoginManager:NSObject{
@@ -123,6 +124,11 @@ class LoginManager:NSObject{
             return  NSLocalizedString("isChinese_Simplified", comment: "false")=="true"
     }()
     
+    
+    class func isIphoneX() -> Bool{
+
+        return height_screen == 812
+    }
     
     class func currenIphoneType() -> EnumIphoneType{
         switch width_screen {

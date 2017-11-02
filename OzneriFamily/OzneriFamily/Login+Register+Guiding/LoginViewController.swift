@@ -155,6 +155,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     let blueColor = UIColor(red: 74/255, green: 180/255, blue: 233/255, alpha: 1)
     let grayColor = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
     private func initSetView(){
+        
         errorLabel.text=""
         //phoneTextField.text=""
         //YZMTextField.text=""

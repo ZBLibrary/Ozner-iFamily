@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class WaterPurifier_Wifi: OznerBaseDevice {
     
     //添加个性字段
@@ -36,13 +36,36 @@ class WaterPurifier_Wifi: OznerBaseDevice {
     }
     
     func setPower(Power:Bool,callBack:((_ error:Error?)->Void)) {
-        setStatus(data: Data.init(bytes: [UInt8(status.Hot.hashValue),UInt8(status.Cool.hashValue),UInt8(Power.hashValue),UInt8(status.Sterilization.hashValue)]))
+        
+        if self.deviceInfo.wifiVersion == 3 {
+            
+            DispatchQueue.main.async {
+                appDelegate.window?.noticeOnlyText("此机型暂无此功能")
+            }
+            
+        } else {
+                setStatus(data: Data.init(bytes: [UInt8(status.Hot.hashValue),UInt8(status.Cool.hashValue),UInt8(Power.hashValue),UInt8(status.Sterilization.hashValue)]))
+        }
+        
+ 
     }
     func setCool(Cool:Bool,callBack:((_ error:Error?)->Void)) {
+        if self.deviceInfo.wifiVersion == 3 {
+            DispatchQueue.main.async {
+                appDelegate.window?.noticeOnlyText("此机型暂无此功能")
+            }
+        } else {
         setStatus(data: Data.init(bytes: [UInt8(status.Hot.hashValue),UInt8(Cool.hashValue),UInt8(status.Power.hashValue),UInt8(status.Sterilization.hashValue)]))
+        }
     }
     func setHot(Hot:Bool,callBack:((_ error:Error?)->Void)) {
+        if self.deviceInfo.wifiVersion == 3 {
+            DispatchQueue.main.async {
+                appDelegate.window?.noticeOnlyText("此机型暂无此功能")
+            }
+        } else {
         setStatus(data: Data.init(bytes: [UInt8(Hot.hashValue),UInt8(status.Cool.hashValue),UInt8(status.Power.hashValue),UInt8(status.Sterilization.hashValue)]))
+        }
     }
     func setSterilization(Sterilization:Bool,callBack:((_ error:Error?)->Void)) {
        setStatus(data: Data.init(bytes: [UInt8(status.Hot.hashValue),UInt8(status.Cool.hashValue),UInt8(status.Power.hashValue),UInt8(Sterilization.hashValue)]))
@@ -55,59 +78,121 @@ class WaterPurifier_Wifi: OznerBaseDevice {
     
     override func OznerBaseIORecvData(recvData: Data) {
         super.OznerBaseIORecvData(recvData: recvData)
-        //解析数据并更新个性字段
-        requestCount=0
-       if (recvData.count < 10 )
-        {
-            return
-        }
-
-        let group = Int(recvData[0])
-        let opCode = UInt8(recvData[3])
-        if group == Int(0xFB) {
-            var tmpStatus = status
-            var tmpSensor = sensor
-
-            switch opCode {
-            case 0x01://Opcode_RespondStatus
-                
-                tmpStatus.Hot = Int(recvData[12])==1
-                tmpStatus.Cool = Int(recvData[13])==1
-                tmpStatus.Power = Int(recvData[14])==1
-                tmpStatus.Sterilization = Int(recvData[15])==1
-                
-                var tds1 = recvData.subInt(starIndex: 16, count: 2)
-                tds1 = tds1<0||tds1==65535 ? 0:tds1
-                var tds2 = recvData.subInt(starIndex: 18, count: 2)
-                tds2 = tds2<0||tds2==65535 ? 0:tds2
-                
-                tmpSensor.TDS_Before = max(tds1, tds2)
-                tmpSensor.TDS_After = min(tds1, tds2)
-                tmpSensor.Temperature = Float(recvData.subInt(starIndex: 10, count: 2))/10.0
-                
-            case 0x03://Opcode_DeviceInfo
-                
-                let tds1 = Int(recvData.subInt(starIndex: 71, count: 2))
-                let tds2 = Int(recvData.subInt(starIndex: 73, count: 2))
-                filterStates = (Int(recvData[116]),Int(recvData[117]),Int(recvData[118]),max(tds1, tds2),min(tds1, tds2))
-                break
-            case 0x05:
-                
-                break
-            default:
-                break
+        var tmpStatus = status
+        var tmpSensor = sensor
+        if self.deviceInfo.wifiVersion == 3 {//汉枫解析
+            let recvDic = try! JSONSerialization.jsonObject(with: recvData, options: JSONSerialization.ReadingOptions.allowFragments) as! [Dictionary<String, Any>]
+            
+            for item in JSON.init(recvDic).arrayValue {
+                switch item["key"].stringValue {
+                case "TDS1":
+//                    tmpSensor.PM25 = item["value"].intValue
+                    tmpSensor.TDS_Before = item["value"].intValue
+                    break
+                case "TDS2":
+                    tmpSensor.TDS_After = item["value"].intValue
+                    break
+                case "Online":
+                    self.connectStatus = item["value"].intValue==1 ? OznerConnectStatus.Connected:OznerConnectStatus.Disconnect
+                case "APercent":
+                    filterStates.filterA = item["value"].intValue
+                    break
+                case "BPercent":
+                    filterStates.filterB = item["value"].intValue
+                    break
+                case "CPercent":
+                    filterStates.filterC = item["value"].intValue
+                    break
+                case "PowerOn":
+                    tmpStatus.Power = item["value"].boolValue 
+                    break
+                case "CHILDLOCK":
+//                    tmpStatus.Lock = item["value"].intValue==1
+                    break
+//                case "POWER":
+//                    tmpStatus.Power = item["value"].intValue==1
+//                    break
+                default:
+                    break
+                }
             }
+            
             status = tmpStatus
             sensor = tmpSensor
+
+        } else {
+            //解析数据并更新个性字段
+            requestCount=0
+            if (recvData.count < 10 )
+            {
+                return
+            }
+            
+            let group = Int(recvData[0])
+            let opCode = UInt8(recvData[3])
+            if group == Int(0xFB) {
+               
+                
+                switch opCode {
+                case 0x01://Opcode_RespondStatus
+                    
+                    tmpStatus.Hot = Int(recvData[12])==1
+                    tmpStatus.Cool = Int(recvData[13])==1
+                    tmpStatus.Power = Int(recvData[14])==1
+                    tmpStatus.Sterilization = Int(recvData[15])==1
+                    
+                    var tds1 = recvData.subInt(starIndex: 16, count: 2)
+                    tds1 = tds1<0||tds1==65535 ? 0:tds1
+                    var tds2 = recvData.subInt(starIndex: 18, count: 2)
+                    tds2 = tds2<0||tds2==65535 ? 0:tds2
+                    
+                    tmpSensor.TDS_Before = max(tds1, tds2)
+                    tmpSensor.TDS_After = min(tds1, tds2)
+                    tmpSensor.Temperature = Float(recvData.subInt(starIndex: 10, count: 2))/10.0
+                    
+                case 0x03://Opcode_DeviceInfo
+                    
+                    let tds1 = Int(recvData.subInt(starIndex: 71, count: 2))
+                    let tds2 = Int(recvData.subInt(starIndex: 73, count: 2))
+                    filterStates = (Int(recvData[116]),Int(recvData[117]),Int(recvData[118]),max(tds1, tds2),min(tds1, tds2))
+                    break
+                case 0x05:
+                    
+                    break
+                default:
+                    break
+                }
+                status = tmpStatus
+                sensor = tmpSensor
+            }
         }
+       
     }
     override func doWillInit() {
         super.doWillInit()
+        
+        if self.deviceInfo.wifiVersion == 3 {
+           
+            User.getGPRSInfo(deviceType: "RoWater", deviceID: self.deviceInfo.deviceID) { (data) in
+                //            let json = data as! [String:AnyObject]
+                let json = try! JSONSerialization.jsonObject(with: data as! Data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
+                print(json)
+                let needData = try! JSONSerialization.data(withJSONObject: json["values"] ?? "", options: JSONSerialization.WritingOptions.prettyPrinted)
+                self.OznerBaseIORecvData(recvData: needData)
+            }
+
+        }else{
+        
         let needData=self.MakeWoodyBytes(code: 0xfa, Opcode: 0x05, data: Data())
         self.SendDataToDevice(sendData: needData, CallBack: nil)
+        }
     }
     var requestCount = 0//请求三次没反应代表机器断网
     override func repeatFunc() {
+        if self.deviceInfo.wifiVersion == 3 {
+            return
+        }
+        
         if Int(arc4random()%2)==0 {
             requestCount+=1
             if requestCount>=3 {

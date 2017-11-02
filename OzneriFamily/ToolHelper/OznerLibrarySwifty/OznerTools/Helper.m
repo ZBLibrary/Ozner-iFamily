@@ -247,4 +247,29 @@ bool StringIsNullOrEmpty(NSString* str)
     
 }
 
++ (void)getGPRSRequestParams:(NSDictionary *)params FinishBlock:(void (^)(NSURLResponse *, NSData *, NSError *))block{
+    
+    //把传进来的URL字符串转变为URL地址
+    NSURL *url = [NSURL URLWithString:@"http://iot.ozner.net:1885/service/query.do"];
+    //请求初始化，可以在这针对缓存，超时做出一些设置
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                                       timeoutInterval:20];
+    //解析请求参数，用NSDictionary来存参数，通过自定义的函数parseParams把它解析成一个post格式的字符串
+    NSString *parseParamsResult = [self parseParams:params];
+    NSData *postData = [parseParamsResult dataUsingEncoding:NSUTF8StringEncoding];
+    
+    [request setHTTPMethod:@"GET"];
+    [request setHTTPBody:postData];
+    
+    //创建一个新的队列（开启新线程）
+    NSOperationQueue *queue = [NSOperationQueue new];
+    //发送异步请求，请求完以后返回的数据，通过completionHandler参数来调用
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:queue
+                           completionHandler:block];
+    
+    
+}
+
 @end
