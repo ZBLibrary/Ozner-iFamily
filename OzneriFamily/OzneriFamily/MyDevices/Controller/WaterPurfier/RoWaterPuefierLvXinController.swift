@@ -12,6 +12,8 @@ class RoWaterPuefierLvXinController: BaseViewController {
 
     var currentDevice:WaterPurifier_Blue!
     var typeBLE:Bool = true
+    
+    @IBOutlet weak var flagLb: UILabel!
     @IBOutlet var fuweiButton: UIButton!
     @IBAction func fuweiClick(sender: UIButton) {
         
@@ -110,9 +112,26 @@ class RoWaterPuefierLvXinController: BaseViewController {
             hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
             hideView2.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
             hideImage1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
-            lvxinValueLabelA.text="\(lroundf(Float(device.filterStates.filterA/10)) * 10)%"
-            lvxinValueLabelB.text="\(lroundf(Float(device.filterStates.filterB/10)) * 10)%"
-            lvxinValueLabelC.text="\(lroundf(Float(device.filterStates.filterC/10)) * 10)%"
+            
+//            UIView.animate(withDuration: 0.5, animations: {
+//                self.flagLb.isHidden = !self.flagLb.isHidden
+//            }, completion: { (_) in
+//
+//            })
+            
+            if device.deviceInfo.wifiVersion == 3 {
+               
+                lvxinValueLabelA.text="\(lroundf(Float(device.filterStates.filterA)))%"
+                lvxinValueLabelB.text="\(lroundf(Float(device.filterStates.filterB)))%"
+                lvxinValueLabelC.text="\(lroundf(Float(device.filterStates.filterC)))%"
+                
+                
+            } else {
+                
+                lvxinValueLabelA.text="\(lroundf(Float(device.filterStates.filterA/10)) * 10)%"
+                lvxinValueLabelB.text="\(lroundf(Float(device.filterStates.filterB/10)) * 10)%"
+                lvxinValueLabelC.text="\(lroundf(Float(device.filterStates.filterC/10)) * 10)%"
+            }
             
             //timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(alertLabelShanShuo), userInfo: nil, repeats: true)
 //            let minFilter=min(device.filterStates.filterA, device.filterStates.filterB, device.filterStates.filterC)

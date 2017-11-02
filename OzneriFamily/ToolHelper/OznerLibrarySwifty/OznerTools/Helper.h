@@ -19,4 +19,7 @@ bool StringIsNullOrEmpty(NSString* str);
 + (NSData *) stringToHexData:(NSString*)str;
 + (NSString *) getDeviceIDFromService:(NSString*)ipAdress Login_id:(NSString*)login_id PassWord:(NSString*)passWord;
 + (void)post:(NSString *)URL RequestParams:(NSDictionary *)params FinishBlock:(void (^)(NSURLResponse *response, NSData *data, NSError *connectionError)) block;
+
++ (void)getGPRSRequestParams:(NSDictionary *)params FinishBlock:(void (^)(NSURLResponse *response, NSData *data, NSError *connectionError)) block;
+
 @end

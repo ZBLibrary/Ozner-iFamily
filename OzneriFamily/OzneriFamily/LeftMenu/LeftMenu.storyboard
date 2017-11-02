@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iE5-ne-iDo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iE5-ne-iDo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -27,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icon_no_device_logo" translatesAutoresizingMaskIntoConstraints="NO" id="kVn-eS-OOo">
-                                        <rect key="frame" x="46" y="152" width="283" height="283"/>
+                                        <rect key="frame" x="46.5" y="152.5" width="282" height="282"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="kVn-eS-OOo" secondAttribute="height" multiplier="1:1" id="aOl-E5-L2M"/>
                                         </constraints>
@@ -253,7 +254,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9OJ-w5-NpA" id="4Sb-Dz-LdH">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWh-ro-DsT">
@@ -416,7 +417,7 @@
         <!--配对成功-->
         <scene sceneID="kXf-9J-BAP">
             <objects>
-                <viewController id="WzG-Ym-y9N" customClass="PairSuccessController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PairSuccessController" id="WzG-Ym-y9N" customClass="PairSuccessController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B8n-xz-9rs"/>
                         <viewControllerLayoutGuide type="bottom" id="12C-5D-JjF"/>
@@ -426,7 +427,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CBe-Sg-tit">
-                                <rect key="frame" x="123" y="186" width="130" height="130"/>
+                                <rect key="frame" x="122.5" y="186" width="130" height="130"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="4MF-nc-WYZ"/>
@@ -440,7 +441,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icon_peidui_select_bigair" translatesAutoresizingMaskIntoConstraints="NO" id="uVz-5q-5T3">
-                                <rect key="frame" x="123" y="186" width="130" height="130"/>
+                                <rect key="frame" x="122.5" y="186" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uVz-5q-5T3" secondAttribute="height" id="B68-vV-mPx"/>
                                 </constraints>
@@ -540,7 +541,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已搜索到的设备" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcn-r8-kAf">
-                                <rect key="frame" x="127" y="384" width="122" height="21"/>
+                                <rect key="frame" x="126.5" y="384" width="122" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -605,16 +606,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="jingshuiqi_wifi" translatesAutoresizingMaskIntoConstraints="NO" id="JH5-v0-cT8">
-                                <rect key="frame" x="123" y="158" width="130" height="130"/>
+                                <rect key="frame" x="122.5" y="158" width="130" height="130"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="路由器正在尝试与云端建立联系" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4TO-Qn-Rpa">
-                                <rect key="frame" x="95" y="551" width="186" height="16"/>
+                                <rect key="frame" x="94.5" y="551" width="186" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-Jh-ZIU">
-                                <rect key="frame" x="74" y="479" width="228" height="48"/>
+                                <rect key="frame" x="73.5" y="479" width="228" height="48"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icon_luyouqi" translatesAutoresizingMaskIntoConstraints="NO" id="htR-Ew-cti">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -635,13 +636,13 @@
                                                 <rect key="frame" x="0.0" y="5" width="6" height="6"/>
                                             </imageView>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon_circle_gray" translatesAutoresizingMaskIntoConstraints="NO" id="U15-jg-C72">
-                                                <rect key="frame" x="26.5" y="5" width="6" height="6"/>
+                                                <rect key="frame" x="27" y="5" width="6" height="6"/>
                                             </imageView>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon_circle_gray" translatesAutoresizingMaskIntoConstraints="NO" id="viJ-zU-OSu">
                                                 <rect key="frame" x="53.5" y="5" width="6" height="6"/>
                                             </imageView>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon_circle_select" translatesAutoresizingMaskIntoConstraints="NO" id="Mkm-ah-oI9">
-                                                <rect key="frame" x="81" y="5" width="6" height="6"/>
+                                                <rect key="frame" x="80.5" y="5" width="6" height="6"/>
                                             </imageView>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon_circle_gray" translatesAutoresizingMaskIntoConstraints="NO" id="l8X-O5-tje">
                                                 <rect key="frame" x="106" y="5" width="6" height="6"/>
@@ -717,10 +718,10 @@
                                         <rect key="frame" x="31" y="57" width="314" height="246"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyT-0I-UV4">
-                                                <rect key="frame" x="0.0" y="66" width="314" height="114"/>
+                                                <rect key="frame" x="0.0" y="66.5" width="314" height="113.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHT-L0-TN8">
-                                                        <rect key="frame" x="0.0" y="79" width="314" height="35"/>
+                                                        <rect key="frame" x="0.0" y="78.5" width="314" height="35"/>
                                                         <subviews>
                                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon_agree_select" translatesAutoresizingMaskIntoConstraints="NO" id="Ekx-bV-Egf">
                                                                 <rect key="frame" x="0.0" y="17" width="18" height="18"/>
@@ -753,17 +754,17 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byT-Za-lX1">
-                                                        <rect key="frame" x="1" y="1" width="312" height="77"/>
+                                                        <rect key="frame" x="1" y="1" width="312" height="76.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5BK-KX-DFr">
-                                                                <rect key="frame" x="0.0" y="38" width="312" height="1"/>
+                                                                <rect key="frame" x="0.0" y="37.5" width="312" height="1"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="z2u-9F-I1T"/>
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TP-Link_2198" placeholder="请输入无线网名称" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Wgh-oh-JZ6">
-                                                                <rect key="frame" x="10" y="0.0" width="292" height="38"/>
+                                                                <rect key="frame" x="10" y="0.0" width="292" height="37.5"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -772,7 +773,7 @@
                                                                 </connections>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sd5-Xe-4rX">
-                                                                <rect key="frame" x="262" y="39" width="50" height="38"/>
+                                                                <rect key="frame" x="262" y="38.5" width="50" height="38"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="pkt-Fc-C7j"/>
                                                                 </constraints>
@@ -782,7 +783,7 @@
                                                                 </connections>
                                                             </button>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" placeholder="请输入无线网密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RJe-NL-PrA">
-                                                                <rect key="frame" x="10" y="39" width="242" height="38"/>
+                                                                <rect key="frame" x="10" y="38.5" width="242" height="38"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
@@ -915,7 +916,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重新配对" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxb-Nx-neC">
-                                <rect key="frame" x="157" y="340" width="62" height="18"/>
+                                <rect key="frame" x="156.5" y="340" width="62" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -927,16 +928,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="常见问题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvM-3t-uAd">
-                                <rect key="frame" x="158" y="607" width="70" height="21"/>
+                                <rect key="frame" x="157.5" y="607" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <color key="textColor" red="0.23136687278747559" green="0.53873193264007568" blue="0.95808607339859009" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="kindly_notice_iconzb" translatesAutoresizingMaskIntoConstraints="NO" id="Tix-97-gnG">
-                                <rect key="frame" x="135" y="609" width="18" height="17"/>
+                                <rect key="frame" x="134.5" y="609" width="18" height="17"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4w-Nj-wuT">
-                                <rect key="frame" x="30" y="557" width="316" height="40"/>
+                                <rect key="frame" x="29.5" y="557" width="316" height="40"/>
                                 <color key="backgroundColor" red="0.23136687280000001" green="0.53873193259999996" blue="0.95808607339999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Fdz-nc-EBN"/>
@@ -1001,7 +1002,7 @@
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b1j-a6-wZb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1041,7 +1042,7 @@
         <image name="zuo1" width="14" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9J8-o2-sth"/>
         <segue reference="Qdq-gX-CEZ"/>
+        <segue reference="9J8-o2-sth"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RoWaterPuefierLvXinController" customModule="OzneriFamily" customModuleProvider="target">
             <connections>
+                <outlet property="flagLb" destination="tMm-kk-uMU" id="2yq-le-3ta"/>
                 <outlet property="fuweiButton" destination="koX-6w-8Nc" id="fxs-uH-rIE"/>
                 <outlet property="hideImage1" destination="0ku-AF-mIC" id="nzl-vb-ZlB"/>
                 <outlet property="hideView1" destination="gMU-Sn-pMv" id="bXU-JC-9Q0"/>
@@ -37,7 +38,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="滤芯剩余" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Tx-fC-0JK" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="10" width="45" height="13.5"/>
+                                            <rect key="frame" x="20" y="10" width="45" height="14"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -64,39 +65,48 @@
                                             </connections>
                                         </button>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="RoLvxInB" translatesAutoresizingMaskIntoConstraints="NO" id="BXd-yY-b6h">
-                                            <rect key="frame" x="170.5" y="36.5" width="34" height="127"/>
+                                            <rect key="frame" x="171" y="37" width="34" height="127"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="127" id="YXL-XF-A0R"/>
                                             </constraints>
                                         </imageView>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="RoLvxInA" translatesAutoresizingMaskIntoConstraints="NO" id="hMZ-sS-mBD">
-                                            <rect key="frame" x="106.5" y="36.5" width="34" height="127"/>
+                                            <rect key="frame" x="107" y="37" width="34" height="127"/>
                                         </imageView>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="RoLvxInC" translatesAutoresizingMaskIntoConstraints="NO" id="T2b-bv-Th9">
-                                            <rect key="frame" x="234.5" y="36.5" width="34" height="127"/>
+                                            <rect key="frame" x="235" y="37" width="34" height="127"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="96%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULp-SJ-mH1">
-                                            <rect key="frame" x="234" y="163.5" width="35.5" height="36.5"/>
+                                            <rect key="frame" x="234" y="164" width="36" height="36"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkE-E1-ryl">
-                                            <rect key="frame" x="169.5" y="163.5" width="36" height="36.5"/>
+                                            <rect key="frame" x="170" y="164" width="36" height="36"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2s-Ty-axH" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                            <rect key="frame" x="91" y="36.5" width="0.0" height="0.0"/>
+                                            <rect key="frame" x="91" y="37" width="0.0" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="66%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFr-le-edU">
-                                            <rect key="frame" x="106" y="163.5" width="35.5" height="36.5"/>
+                                            <rect key="frame" x="106" y="164" width="36" height="36"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="清洗前置滤芯" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-kk-uMU">
+                                            <rect key="frame" x="30" y="37" width="25" height="134"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="1nS-b7-9tc"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -109,6 +119,7 @@
                                         <constraint firstAttribute="bottom" secondItem="ULp-SJ-mH1" secondAttribute="bottom" id="BlQ-vP-GVb"/>
                                         <constraint firstAttribute="trailing" secondItem="koX-6w-8Nc" secondAttribute="trailing" constant="20" id="HpJ-Sf-fCy"/>
                                         <constraint firstItem="jkE-E1-ryl" firstAttribute="centerX" secondItem="BXd-yY-b6h" secondAttribute="centerX" id="Jtc-JX-hZM"/>
+                                        <constraint firstItem="tMm-kk-uMU" firstAttribute="centerX" secondItem="9Tx-fC-0JK" secondAttribute="centerX" id="MQ9-yY-8vp"/>
                                         <constraint firstItem="9Tx-fC-0JK" firstAttribute="top" secondItem="M7F-9q-i5t" secondAttribute="top" constant="10" id="MSM-Ia-fhe"/>
                                         <constraint firstItem="ULp-SJ-mH1" firstAttribute="top" secondItem="T2b-bv-Th9" secondAttribute="bottom" id="OSB-CW-Kyw"/>
                                         <constraint firstItem="T2b-bv-Th9" firstAttribute="bottom" secondItem="hMZ-sS-mBD" secondAttribute="bottom" id="SZu-I5-l7c"/>
@@ -117,6 +128,7 @@
                                         <constraint firstItem="ULp-SJ-mH1" firstAttribute="centerX" secondItem="T2b-bv-Th9" secondAttribute="centerX" id="bOo-H9-0yq"/>
                                         <constraint firstItem="BXd-yY-b6h" firstAttribute="leading" secondItem="hMZ-sS-mBD" secondAttribute="trailing" constant="30" id="bl2-bJ-gJa"/>
                                         <constraint firstItem="hMZ-sS-mBD" firstAttribute="top" secondItem="F2s-Ty-axH" secondAttribute="top" id="dov-yZ-w8q"/>
+                                        <constraint firstItem="tMm-kk-uMU" firstAttribute="top" secondItem="hMZ-sS-mBD" secondAttribute="top" id="e3h-0g-N27"/>
                                         <constraint firstAttribute="bottom" secondItem="jkE-E1-ryl" secondAttribute="bottom" id="ecv-fl-P6E"/>
                                         <constraint firstItem="jkE-E1-ryl" firstAttribute="top" secondItem="BXd-yY-b6h" secondAttribute="bottom" id="feP-pB-thM"/>
                                         <constraint firstItem="jkE-E1-ryl" firstAttribute="top" secondItem="BXd-yY-b6h" secondAttribute="bottom" id="fwT-uV-XbI"/>
@@ -149,7 +161,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gMU-Sn-pMv">
-                                            <rect key="frame" x="67.5" y="48" width="240" height="40"/>
+                                            <rect key="frame" x="68" y="48" width="240" height="40"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tb2-NZ-HKE">
                                                     <rect key="frame" x="120" y="0.0" width="120" height="40"/>
@@ -210,7 +222,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="咨询" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqE-eB-L3e" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                            <rect key="frame" x="35" y="11.5" width="60" height="17"/>
+                                                            <rect key="frame" x="35" y="12" width="60" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="a4t-9l-SZb"/>
                                                                 <constraint firstAttribute="height" constant="17" id="oMY-KF-cxd"/>
@@ -311,7 +323,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="金色依泉系列" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKk-yx-pf6" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                            <rect key="frame" x="150.5" y="151" width="74" height="21"/>
+                                            <rect key="frame" x="151" y="151" width="74" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="arD-to-pdJ"/>
                                             </constraints>
@@ -343,7 +355,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浩泽智能水探头" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iS-sc-vzJ" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                            <rect key="frame" x="30.5" y="151" width="86" height="21"/>
+                                            <rect key="frame" x="31" y="151" width="86" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="kIn-jN-e0l"/>
                                             </constraints>

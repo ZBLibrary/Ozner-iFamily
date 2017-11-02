@@ -55,7 +55,6 @@ class PairSuccessController: UIViewController {
     var indexDevice: Int = 0
     
     
-    
     private var mainMatchView: UIView!
     
     var pairModel=[PairModle]()

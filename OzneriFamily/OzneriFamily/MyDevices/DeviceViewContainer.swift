@@ -69,7 +69,7 @@ class DeviceViewContainer: UIView {
     private func SelectWitchView(device:OznerBaseDevice?)  {
         
         //测试
-        var deviceNibName = "NoDeviceView"//WashDush_WifiMainView
+        var deviceNibName = "NoDeviceView"//"WashDush_WifiMainView"//
         if device != nil  {//有设备时视图初始化
             let tmpType=ProductInfo.getCurrDeviceClass()
             deviceNibName=DeviceNibName[tmpType]!
@@ -216,6 +216,15 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 lvxinValue=max(0, lvxinValue)
                 self.LvXinValue=Int(lvxinValue*100)
             case .WaterPurifier_Wifi:
+                
+                if currentDevice?.deviceInfo.wifiVersion == 3 {
+                    
+                    let filterA = (currentDevice as! WaterPurifier_Wifi).filterStates.filterA
+                    let filterB = (currentDevice as! WaterPurifier_Wifi).filterStates.filterB
+                    let filterC = (currentDevice as! WaterPurifier_Wifi).filterStates.filterC
+                    
+                    self.LvXinValue =  lroundf(Float(min(filterA, filterB, filterC)))
+                }
                 
                 if (currentDevice as! WaterPurifier_Wifi).deviceInfo.productID == "adf69dce-5baa-11e7-9baf-00163e120d98" {
                     let filterA = (currentDevice as! WaterPurifier_Wifi).filterStates.filterA

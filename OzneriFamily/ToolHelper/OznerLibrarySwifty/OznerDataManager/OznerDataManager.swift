@@ -128,6 +128,7 @@ class OznerDataManager: NSObject {
             tmpdev = WashDush_Wifi(deviceinfo: deviceInfo, Settings: setting)
         case .NewTrendAir_Wifi:
             tmpdev = NewTrendAir_Wifi(deviceinfo: deviceInfo, Settings: setting)
+
         }
         return tmpdev
     }

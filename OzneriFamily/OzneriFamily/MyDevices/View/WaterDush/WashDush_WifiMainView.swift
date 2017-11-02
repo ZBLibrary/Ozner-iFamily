@@ -106,7 +106,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         SVProgressHUD.dismiss(withDelay: 2)
         (self.currentDevice as! WashDush_Wifi).setControl(controlkey: sender.tag) { (error) in
             SVProgressHUD.dismiss()
-            alertError(code: (error as! NSError).code)
+            alertError(code: (error! as NSError).code)
         }
     }
     
@@ -127,7 +127,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         SVProgressHUD.dismiss(withDelay: 2)
         (self.currentDevice as! WashDush_Wifi).setModel(Model: sender.tag) { (error) in
             SVProgressHUD.dismiss()
-            alertError(code: (error as! NSError).code)
+            alertError(code: (error! as NSError).code)
         }
     }
     @IBAction func lastWashReport(_ sender: Any) {//上次洗涤报告
@@ -173,7 +173,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         xinfengWidth.constant = -width_screen/4
         controlButton4.isHidden=true
         appointButton.isHidden=true
-        switch (self.currentDevice?.deviceInfo.productID)! {
+        switch (self.currentDevice?.deviceInfo.productID ?? "")! {
         case "edb7b978-6aca-11e7-9baf-00163e120d98":
             controlButton3.isHidden=true
             lockWidth.constant = -width_screen/4
@@ -189,8 +189,14 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         default:
             break
         }
-        
-        
+        print(width_screen)
+        if width_screen<=320 {
+            
+            temperatureLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 16)
+            remindTimeValue.font=UIFont(name: ".SFUIDisplay-Thin", size: 20)
+            temperatureLabel.setNeedsDisplay()
+            remindTimeValue.setNeedsDisplay()
+        }
         self.setNeedsDisplay()
         let ovalRadius = 172.5*remind1H/205//半径
         let layer = CAShapeLayer()
@@ -201,7 +207,8 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         layer.fillColor = UIColor.clear.cgColor
         layer.lineCap = kCALineCapRound
         //初始化一个路径
-        let path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(M_PI), endAngle: 2.4*CGFloat(M_PI), clockwise: true)
+        let path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(Double.pi), endAngle: 2.4*CGFloat(Double.pi), clockwise: true)
+        
         layer.path = path.cgPath
         remindTimeView1.layer.addSublayer(layer)
         timeShapeLayer = CAShapeLayer()
@@ -212,16 +219,16 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         timeShapeLayer.fillColor = UIColor.clear.cgColor
         timeShapeLayer.lineCap = kCALineCapRound
         //初始化一个路径
-        timeShapeLayer.path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(M_PI), endAngle: 0.6*CGFloat(M_PI), clockwise: true).cgPath
+        timeShapeLayer.path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(Double.pi), endAngle: 0.6*CGFloat(Double.pi), clockwise: true).cgPath
         remindTimeView1.layer.addSublayer(timeShapeLayer)
         temperature=0
     }
     var timeShapeLayer:CAShapeLayer!
     func setTimeCircle(progress:CGFloat) {
         let ovalRadius = 172.5*remind1H/205//半径
-        let endangle = 0.6*CGFloat(M_PI)+progress*1.8*CGFloat(M_PI)
+        let endangle = 0.6*CGFloat(Double.pi)+progress*1.8*CGFloat(Double.pi)
         timeShapeLayer.removeFromSuperlayer()
-        timeShapeLayer.path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(M_PI), endAngle: endangle, clockwise: true).cgPath
+        timeShapeLayer.path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(Double.pi), endAngle: endangle, clockwise: true).cgPath
         remindTimeView1.layer.addSublayer(timeShapeLayer)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -239,7 +246,8 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             temperatureLabel.text = temperature==0 || temperature == -1 ? "-":"\(temperature)"
             //加载温度动画temperatView
             //smallCircleView.isHidden=false
-            let angle=CGFloat(M_PI)*(2.7*CGFloat(temperature)+45)/180.0
+            
+            let angle=CGFloat(Double.pi)*(2.7*CGFloat(temperature)+45)/180.0
             smallCircleY.constant = cicleR*cos(angle)
             smallCircleX.constant = -cicleR*sin(angle)
             
@@ -344,13 +352,18 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             if filterValue==oldValue {
                 return
             }
+            if self.currentDevice?.connectStatus != .Connected{
+                consumableButton.setImage(UIImage.init(named: "滤芯及耗材"), for: .normal)
+                stopfilterAnimal()
+                return
+            }
             consumableButton.setImage(UIImage.init(named: filterValue<=0 ? "滤芯及耗材":"滤芯及耗材缺乏"), for: .normal)
             filterValue<=0 ? stopfilterAnimal():starfilterAnimal()
         }
     }
     var filterTimer:Timer?
     func filterAnimal()  {
-        consumableButton.setImage(consumableButton.image(for: .normal)==nil ? UIImage.init(named: "滤芯及耗材"):nil, for: .normal)
+        consumableButton.setImage(consumableButton.image(for: .normal)==nil ? UIImage.init(named: "滤芯及耗材缺乏"):nil, for: .normal)
         
     }
     func starfilterAnimal()  {
@@ -383,7 +396,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         let filterStatus = (self.currentDevice as! WashDush_Wifi).filterStatus
         let time=filterStatus.AppointTime
         appointButton.setTitle("\(time/60):\(time%60):00", for: .normal)
-        if filterStatus.jingjie<=0||filterStatus.jingshui<=0||filterStatus.ruanshui<=0||filterStatus.liangdie<=0 {
+        if filterStatus.jingjie<=0||filterStatus.jingshui<=0||filterStatus.ruanshui<=0||filterStatus.liangjie<=0 {
             filterValue=1
         }else{
             filterValue=0

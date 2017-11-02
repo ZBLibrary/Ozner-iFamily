@@ -25,31 +25,24 @@ class WashHaoCaiController: BaseViewController {
     @IBOutlet var animalView4: UIView!
     
     @IBAction func bugHaoCaiClick(_ sender: Any) {
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false,
-            dynamicAnimatorActive: true
-        )
-        let alert=SCLAlertView(appearance: appearance)
-        _=alert.addButton("取消") {
-        }
-        _=alert.addButton("拨打") {
-            UIApplication.shared.openURL(URL.init(string: "telprompt://4009209667")!)
-        }
-        _=alert.showInfo("", subTitle: "请拨打400 920 9667电话补充耗材")
+        let vc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "AboutDeviceController") as! AboutDeviceController
+        vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("BuyWashHaoCai"))!, Type: 0)
+        vc.title=""
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         let filterStatus=(OznerManager.instance.currentDevice as! WashDush_Wifi).filterStatus
         let valueArr = [0:filterStatus.jingshui,
                         1:filterStatus.ruanshui,
-                        2:filterStatus.liangdie,
+                        2:filterStatus.liangjie,
                         3:filterStatus.jingjie]
         let titles = [PTitleLabel,RTitleLabel,STitleLabel,DTitleLabel]
         let Imgs = [PImg,RImg,SImg,DImg]
         for (index,value) in valueArr {
             IsAnimals[index]=false
             var titleStr = ""
-            var imgStr = "wash_"+["P","R","S","D"][index]
+            var imgStr = "wash_"+["P","S","R","D"][index]
             switch true {
             case value>=100:
                 titleStr="充足"

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CCQ-KV-qqu">
+=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CCQ-KV-qqu">
+>>>>>>> Distri_GiantJade
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,6 +13,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,10 +21,6 @@
         <scene sceneID="aRk-Uu-1a7">
             <objects>
                 <viewController storyboardIdentifier="MyDevicesController" id="ckL-4d-ktC" userLabel="设备首页控制器" customClass="MyDevicesController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oIP-dQ-VF9"/>
-                        <viewControllerLayoutGuide type="bottom" id="11q-D0-rCp"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zJ2-FC-Lhq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,24 +165,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lB7-oh-d8a" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="0ks-cR-Idz"/>
+                            <constraint firstItem="lB7-oh-d8a" firstAttribute="leading" secondItem="vi8-mp-K4s" secondAttribute="leading" id="0ks-cR-Idz"/>
                             <constraint firstItem="tCG-qZ-itE" firstAttribute="top" secondItem="zJ2-FC-Lhq" secondAttribute="top" id="5ZD-jX-wmk"/>
                             <constraint firstItem="lB7-oh-d8a" firstAttribute="height" secondItem="DOi-Yu-rVo" secondAttribute="height" multiplier="65:667" id="9ZV-Cn-Lky"/>
-                            <constraint firstItem="Sgw-je-ShT" firstAttribute="top" secondItem="oIP-dQ-VF9" secondAttribute="bottom" id="LoV-Li-TOl"/>
-                            <constraint firstAttribute="trailing" secondItem="lB7-oh-d8a" secondAttribute="trailing" id="SAi-UU-Dhv"/>
-                            <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="DOi-Yu-rVo" secondAttribute="bottom" id="Whs-NJ-MAl"/>
-                            <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="lB7-oh-d8a" secondAttribute="bottom" constant="200" id="aGJ-MZ-rdk"/>
+                            <constraint firstItem="Sgw-je-ShT" firstAttribute="top" secondItem="vi8-mp-K4s" secondAttribute="top" id="LoV-Li-TOl"/>
+                            <constraint firstItem="vi8-mp-K4s" firstAttribute="trailing" secondItem="lB7-oh-d8a" secondAttribute="trailing" id="SAi-UU-Dhv"/>
+                            <constraint firstItem="vi8-mp-K4s" firstAttribute="bottom" secondItem="DOi-Yu-rVo" secondAttribute="bottom" id="Whs-NJ-MAl"/>
+                            <constraint firstItem="vi8-mp-K4s" firstAttribute="bottom" secondItem="lB7-oh-d8a" secondAttribute="bottom" constant="200" id="aGJ-MZ-rdk"/>
                             <constraint firstItem="DOi-Yu-rVo" firstAttribute="top" secondItem="zJ2-FC-Lhq" secondAttribute="top" id="cq4-Tb-3yC"/>
                             <constraint firstItem="cvC-av-l96" firstAttribute="top" secondItem="Sgw-je-ShT" secondAttribute="bottom" id="iRR-Vh-H4d"/>
-                            <constraint firstAttribute="trailing" secondItem="tCG-qZ-itE" secondAttribute="trailing" id="lNk-8B-a2m"/>
-                            <constraint firstAttribute="trailing" secondItem="DOi-Yu-rVo" secondAttribute="trailing" id="n2c-gh-Aoo"/>
-                            <constraint firstItem="cvC-av-l96" firstAttribute="centerX" secondItem="zJ2-FC-Lhq" secondAttribute="centerX" id="p8g-sQ-3oH"/>
-                            <constraint firstAttribute="trailing" secondItem="Sgw-je-ShT" secondAttribute="trailing" id="pQE-Gs-6Ie"/>
-                            <constraint firstItem="Sgw-je-ShT" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="uQw-XS-WPe"/>
-                            <constraint firstItem="DOi-Yu-rVo" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="wRX-Qz-ebK"/>
-                            <constraint firstItem="tCG-qZ-itE" firstAttribute="leading" secondItem="zJ2-FC-Lhq" secondAttribute="leading" id="xd4-pq-2n1"/>
-                            <constraint firstItem="11q-D0-rCp" firstAttribute="top" secondItem="tCG-qZ-itE" secondAttribute="bottom" id="yam-uQ-8Cq"/>
+                            <constraint firstItem="vi8-mp-K4s" firstAttribute="trailing" secondItem="tCG-qZ-itE" secondAttribute="trailing" id="lNk-8B-a2m"/>
+                            <constraint firstItem="vi8-mp-K4s" firstAttribute="trailing" secondItem="DOi-Yu-rVo" secondAttribute="trailing" id="n2c-gh-Aoo"/>
+                            <constraint firstItem="cvC-av-l96" firstAttribute="centerX" secondItem="vi8-mp-K4s" secondAttribute="centerX" id="p8g-sQ-3oH"/>
+                            <constraint firstItem="vi8-mp-K4s" firstAttribute="trailing" secondItem="Sgw-je-ShT" secondAttribute="trailing" id="pQE-Gs-6Ie"/>
+                            <constraint firstItem="Sgw-je-ShT" firstAttribute="leading" secondItem="vi8-mp-K4s" secondAttribute="leading" id="uQw-XS-WPe"/>
+                            <constraint firstItem="DOi-Yu-rVo" firstAttribute="leading" secondItem="vi8-mp-K4s" secondAttribute="leading" id="wRX-Qz-ebK"/>
+                            <constraint firstItem="tCG-qZ-itE" firstAttribute="leading" secondItem="vi8-mp-K4s" secondAttribute="leading" id="xd4-pq-2n1"/>
+                            <constraint firstItem="vi8-mp-K4s" firstAttribute="bottom" secondItem="tCG-qZ-itE" secondAttribute="bottom" id="yam-uQ-8Cq"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="vi8-mp-K4s"/>
                     </view>
                     <navigationItem key="navigationItem" id="VZ5-Gy-EUM"/>
                     <connections>
@@ -232,10 +234,6 @@
         <scene sceneID="wZE-Ka-yNe">
             <objects>
                 <viewController id="yAS-kk-o27" customClass="WashReportController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LfO-e4-5yd"/>
-                        <viewControllerLayoutGuide type="bottom" id="iSv-to-fGY"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="flq-l7-ebL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -479,41 +477,42 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tNx-Oa-4tt" firstAttribute="height" secondItem="z7y-b4-q1j" secondAttribute="height" id="0Od-Lu-0o9"/>
-                            <constraint firstItem="7Fs-lN-2J9" firstAttribute="leading" secondItem="flq-l7-ebL" secondAttribute="leading" id="1hJ-do-9TD"/>
-                            <constraint firstItem="ACp-si-le4" firstAttribute="leading" secondItem="flq-l7-ebL" secondAttribute="leading" id="1wZ-ii-w4l"/>
-                            <constraint firstAttribute="trailing" secondItem="7Fs-lN-2J9" secondAttribute="trailing" id="4qY-QH-n72"/>
+                            <constraint firstItem="7Fs-lN-2J9" firstAttribute="leading" secondItem="53O-R3-OgG" secondAttribute="leading" id="1hJ-do-9TD"/>
+                            <constraint firstItem="ACp-si-le4" firstAttribute="leading" secondItem="53O-R3-OgG" secondAttribute="leading" id="1wZ-ii-w4l"/>
+                            <constraint firstItem="53O-R3-OgG" firstAttribute="trailing" secondItem="7Fs-lN-2J9" secondAttribute="trailing" id="4qY-QH-n72"/>
                             <constraint firstItem="p7q-rC-ADx" firstAttribute="top" secondItem="N11-18-RSe" secondAttribute="bottom" id="5R4-eY-fWi"/>
-                            <constraint firstAttribute="trailing" secondItem="nho-Cr-1il" secondAttribute="trailing" id="6Oq-QR-cki"/>
+                            <constraint firstItem="53O-R3-OgG" firstAttribute="trailing" secondItem="nho-Cr-1il" secondAttribute="trailing" id="6Oq-QR-cki"/>
                             <constraint firstItem="N11-18-RSe" firstAttribute="top" secondItem="ACp-si-le4" secondAttribute="bottom" id="6gx-jo-avA"/>
                             <constraint firstItem="TMB-6F-QAZ" firstAttribute="height" secondItem="z7y-b4-q1j" secondAttribute="height" id="8lV-ri-EgJ"/>
-                            <constraint firstItem="TMB-6F-QAZ" firstAttribute="leading" secondItem="flq-l7-ebL" secondAttribute="leading" id="A3h-NW-IWK"/>
-                            <constraint firstAttribute="trailing" secondItem="ACp-si-le4" secondAttribute="trailing" id="BEJ-2a-gEE"/>
+                            <constraint firstItem="TMB-6F-QAZ" firstAttribute="leading" secondItem="53O-R3-OgG" secondAttribute="leading" id="A3h-NW-IWK"/>
+                            <constraint firstItem="53O-R3-OgG" firstAttribute="trailing" secondItem="ACp-si-le4" secondAttribute="trailing" id="BEJ-2a-gEE"/>
                             <constraint firstItem="p7q-rC-ADx" firstAttribute="height" secondItem="z7y-b4-q1j" secondAttribute="height" id="DvA-Yz-O7I"/>
                             <constraint firstItem="PNT-1L-rqN" firstAttribute="height" secondItem="z7y-b4-q1j" secondAttribute="height" id="GFa-8K-eA8"/>
                             <constraint firstItem="ACp-si-le4" firstAttribute="height" secondItem="z7y-b4-q1j" secondAttribute="height" id="JP8-jb-M3i"/>
                             <constraint firstItem="ACp-si-le4" firstAttribute="top" secondItem="nho-Cr-1il" secondAttribute="bottom" id="JWr-K8-3vw"/>
                             <constraint firstItem="nho-Cr-1il" firstAttribute="top" secondItem="tNx-Oa-4tt" secondAttribute="bottom" id="K00-2V-Nc9"/>
-                            <constraint firstItem="tNx-Oa-4tt" firstAttribute="leading" secondItem="flq-l7-ebL" secondAttribute="leading" id="P9p-64-SFL"/>
-                            <constraint firstAttribute="trailing" secondItem="tNx-Oa-4tt" secondAttribute="trailing" id="POf-a2-R4p"/>
-                            <constraint firstAttribute="trailing" secondItem="PNT-1L-rqN" secondAttribute="trailing" id="Q1j-qB-Csg"/>
+                            <constraint firstItem="tNx-Oa-4tt" firstAttribute="leading" secondItem="53O-R3-OgG" secondAttribute="leading" id="P9p-64-SFL"/>
+                            <constraint firstItem="53O-R3-OgG" firstAttribute="trailing" secondItem="tNx-Oa-4tt" secondAttribute="trailing" id="POf-a2-R4p"/>
+                            <constraint firstItem="53O-R3-OgG" firstAttribute="trailing" secondItem="PNT-1L-rqN" secondAttribute="trailing" id="Q1j-qB-Csg"/>
                             <constraint firstItem="TMB-6F-QAZ" firstAttribute="top" secondItem="p7q-rC-ADx" secondAttribute="bottom" id="WNA-bn-y7A"/>
                             <constraint firstItem="N11-18-RSe" firstAttribute="height" secondItem="z7y-b4-q1j" secondAttribute="height" id="Zu2-ZL-M4z"/>
-                            <constraint firstItem="nho-Cr-1il" firstAttribute="leading" secondItem="flq-l7-ebL" secondAttribute="leading" id="aUe-Le-Oys"/>
-                            <constraint firstAttribute="trailing" secondItem="z7y-b4-q1j" secondAttribute="trailing" id="cQn-8d-hZM"/>
+                            <constraint firstItem="nho-Cr-1il" firstAttribute="leading" secondItem="53O-R3-OgG" secondAttribute="leading" id="aUe-Le-Oys"/>
+                            <constraint firstItem="53O-R3-OgG" firstAttribute="trailing" secondItem="z7y-b4-q1j" secondAttribute="trailing" id="cQn-8d-hZM"/>
                             <constraint firstItem="nho-Cr-1il" firstAttribute="height" secondItem="z7y-b4-q1j" secondAttribute="height" id="eCu-wX-XBm"/>
-                            <constraint firstItem="z7y-b4-q1j" firstAttribute="top" secondItem="LfO-e4-5yd" secondAttribute="bottom" id="hpm-IU-70R"/>
+                            <constraint firstItem="z7y-b4-q1j" firstAttribute="top" secondItem="53O-R3-OgG" secondAttribute="top" id="hpm-IU-70R"/>
                             <constraint firstItem="7Fs-lN-2J9" firstAttribute="height" secondItem="z7y-b4-q1j" secondAttribute="height" id="jaj-yj-QLh"/>
-                            <constraint firstAttribute="trailing" secondItem="p7q-rC-ADx" secondAttribute="trailing" id="l4S-2A-wqx"/>
-                            <constraint firstItem="N11-18-RSe" firstAttribute="leading" secondItem="flq-l7-ebL" secondAttribute="leading" id="nkq-j6-PPT"/>
-                            <constraint firstAttribute="trailing" secondItem="N11-18-RSe" secondAttribute="trailing" id="nwo-OM-Sub"/>
-                            <constraint firstItem="p7q-rC-ADx" firstAttribute="leading" secondItem="flq-l7-ebL" secondAttribute="leading" id="sKl-Zm-yOr"/>
-                            <constraint firstItem="PNT-1L-rqN" firstAttribute="leading" secondItem="flq-l7-ebL" secondAttribute="leading" id="uB1-AH-b1N"/>
-                            <constraint firstAttribute="trailing" secondItem="TMB-6F-QAZ" secondAttribute="trailing" id="wGz-vr-6PJ"/>
+                            <constraint firstItem="53O-R3-OgG" firstAttribute="trailing" secondItem="p7q-rC-ADx" secondAttribute="trailing" id="l4S-2A-wqx"/>
+                            <constraint firstItem="N11-18-RSe" firstAttribute="leading" secondItem="53O-R3-OgG" secondAttribute="leading" id="nkq-j6-PPT"/>
+                            <constraint firstItem="53O-R3-OgG" firstAttribute="trailing" secondItem="N11-18-RSe" secondAttribute="trailing" id="nwo-OM-Sub"/>
+                            <constraint firstItem="p7q-rC-ADx" firstAttribute="leading" secondItem="53O-R3-OgG" secondAttribute="leading" id="sKl-Zm-yOr"/>
+                            <constraint firstItem="PNT-1L-rqN" firstAttribute="leading" secondItem="53O-R3-OgG" secondAttribute="leading" id="uB1-AH-b1N"/>
+                            <constraint firstItem="53O-R3-OgG" firstAttribute="trailing" secondItem="TMB-6F-QAZ" secondAttribute="trailing" id="wGz-vr-6PJ"/>
                             <constraint firstItem="tNx-Oa-4tt" firstAttribute="top" secondItem="PNT-1L-rqN" secondAttribute="bottom" id="wWt-mD-j56"/>
                             <constraint firstItem="7Fs-lN-2J9" firstAttribute="top" secondItem="TMB-6F-QAZ" secondAttribute="bottom" id="yKf-n9-0hh"/>
-                            <constraint firstItem="z7y-b4-q1j" firstAttribute="leading" secondItem="flq-l7-ebL" secondAttribute="leading" id="yti-KF-Bo0"/>
+                            <constraint firstItem="z7y-b4-q1j" firstAttribute="leading" secondItem="53O-R3-OgG" secondAttribute="leading" id="yti-KF-Bo0"/>
                             <constraint firstItem="PNT-1L-rqN" firstAttribute="top" secondItem="z7y-b4-q1j" secondAttribute="bottom" id="zEL-Yw-IwM"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="53O-R3-OgG"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="上一次洗涤运行报告" id="ZBs-Rn-xCM"/>
@@ -539,10 +538,6 @@
         <scene sceneID="sde-XJ-gq5">
             <objects>
                 <viewController id="vmI-Za-rQX" customClass="WashHaoCaiController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vJz-ge-Ynh"/>
-                        <viewControllerLayoutGuide type="bottom" id="FhU-z8-eO5"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gmH-7m-UxU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -608,10 +603,10 @@
                                                                         <color key="textColor" red="0.28541392090000001" green="0.78290158509999996" blue="0.92131656409999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="软水芯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOW-pw-7KE">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亮洁芯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOW-pw-7KE">
                                                                         <rect key="frame" x="0.0" y="233" width="93" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <color key="textColor" red="0.0" green="0.65719503160000003" blue="0.59319585559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="textColor" red="0.82520884275436401" green="0.77999013662338257" blue="0.51480454206466675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="wash_S1" translatesAutoresizingMaskIntoConstraints="NO" id="HG8-dz-Tbf">
@@ -686,10 +681,10 @@
                                                                         <color key="textColor" red="0.28541392090000001" green="0.78290158509999996" blue="0.92131656409999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亮洁芯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLs-fw-Rlj">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="软水芯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLs-fw-Rlj">
                                                                         <rect key="frame" x="0.0" y="233" width="94" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <color key="textColor" red="0.82520884279999995" green="0.77999013660000005" blue="0.51480454210000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="textColor" red="0.0" green="0.65719503164291382" blue="0.59319585561752319" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="wash_R1" translatesAutoresizingMaskIntoConstraints="NO" id="Fy6-Ab-ehp">
@@ -789,11 +784,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="StM-Eg-3Tc" secondAttribute="trailing" id="I0T-fN-H7f"/>
-                            <constraint firstItem="StM-Eg-3Tc" firstAttribute="leading" secondItem="gmH-7m-UxU" secondAttribute="leading" id="cqA-pO-Tte"/>
-                            <constraint firstItem="StM-Eg-3Tc" firstAttribute="top" secondItem="vJz-ge-Ynh" secondAttribute="bottom" id="fE6-T8-Wrc"/>
-                            <constraint firstItem="FhU-z8-eO5" firstAttribute="top" secondItem="StM-Eg-3Tc" secondAttribute="bottom" id="s8O-Ss-jIY"/>
+                            <constraint firstItem="J5h-Aq-IeG" firstAttribute="trailing" secondItem="StM-Eg-3Tc" secondAttribute="trailing" id="I0T-fN-H7f"/>
+                            <constraint firstItem="StM-Eg-3Tc" firstAttribute="leading" secondItem="J5h-Aq-IeG" secondAttribute="leading" id="cqA-pO-Tte"/>
+                            <constraint firstItem="StM-Eg-3Tc" firstAttribute="top" secondItem="J5h-Aq-IeG" secondAttribute="top" id="fE6-T8-Wrc"/>
+                            <constraint firstItem="J5h-Aq-IeG" firstAttribute="bottom" secondItem="StM-Eg-3Tc" secondAttribute="bottom" id="s8O-Ss-jIY"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="J5h-Aq-IeG"/>
                     </view>
                     <navigationItem key="navigationItem" title="耗材状态" id="wiO-5u-gxo"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -821,10 +817,6 @@
         <scene sceneID="q7t-V7-4ju">
             <objects>
                 <viewController id="Xci-YO-YQk" customClass="SkinDetailController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QHf-j5-Mmm"/>
-                        <viewControllerLayoutGuide type="bottom" id="pko-aA-8a9"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lD3-3Y-GRc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="826"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1605,11 +1597,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94095736742019653" green="0.94509977102279663" blue="0.94911319017410278" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Lh9-KN-yuC" firstAttribute="leading" secondItem="lD3-3Y-GRc" secondAttribute="leading" id="CrP-Av-50o"/>
+                            <constraint firstItem="Lh9-KN-yuC" firstAttribute="leading" secondItem="b3s-7x-BtK" secondAttribute="leading" id="CrP-Av-50o"/>
                             <constraint firstAttribute="bottom" secondItem="Lh9-KN-yuC" secondAttribute="bottom" id="Wqj-gy-drc"/>
-                            <constraint firstAttribute="trailing" secondItem="Lh9-KN-yuC" secondAttribute="trailing" id="fqI-sl-uMb"/>
+                            <constraint firstItem="b3s-7x-BtK" firstAttribute="trailing" secondItem="Lh9-KN-yuC" secondAttribute="trailing" id="fqI-sl-uMb"/>
                             <constraint firstItem="Lh9-KN-yuC" firstAttribute="top" secondItem="lD3-3Y-GRc" secondAttribute="top" id="wnj-1e-NYZ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="b3s-7x-BtK"/>
                     </view>
                     <navigationItem key="navigationItem" title="智能补水仪详情" id="clj-bW-cvm">
                         <barButtonItem key="rightBarButtonItem" image="device_share" id="vl0-OY-tLM">
@@ -1661,10 +1654,6 @@
         <scene sceneID="S48-bh-oDL">
             <objects>
                 <viewController id="hqs-RD-39H" customClass="SkinQueryController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dXL-Lk-kmj"/>
-                        <viewControllerLayoutGuide type="bottom" id="djY-Dd-pm9"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fuP-PW-VV4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="965"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1947,11 +1936,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="djY-Dd-pm9" firstAttribute="top" secondItem="pIp-9a-t92" secondAttribute="bottom" id="1QT-QX-IJx"/>
-                            <constraint firstAttribute="trailing" secondItem="pIp-9a-t92" secondAttribute="trailing" id="2Tb-gf-3vY"/>
+                            <constraint firstItem="qqQ-tc-qLV" firstAttribute="bottom" secondItem="pIp-9a-t92" secondAttribute="bottom" id="1QT-QX-IJx"/>
+                            <constraint firstItem="qqQ-tc-qLV" firstAttribute="trailing" secondItem="pIp-9a-t92" secondAttribute="trailing" id="2Tb-gf-3vY"/>
                             <constraint firstItem="pIp-9a-t92" firstAttribute="top" secondItem="fuP-PW-VV4" secondAttribute="top" id="PW8-Ff-t8b"/>
-                            <constraint firstItem="pIp-9a-t92" firstAttribute="leading" secondItem="fuP-PW-VV4" secondAttribute="leading" id="T40-zz-vDj"/>
+                            <constraint firstItem="pIp-9a-t92" firstAttribute="leading" secondItem="qqQ-tc-qLV" secondAttribute="leading" id="T40-zz-vDj"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="qqQ-tc-qLV"/>
                     </view>
                     <navigationItem key="navigationItem" title="肤质查询" id="W9I-rI-e37"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -1977,10 +1967,6 @@
         <scene sceneID="gZz-V1-Hjs">
             <objects>
                 <viewController id="3Ak-V9-a2E" customClass="AirLvXinController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wud-4b-cP5"/>
-                        <viewControllerLayoutGuide type="bottom" id="Vvv-VS-o05"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hlT-i7-AZ4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1992,25 +1978,25 @@
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="136"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQL-69-4GE">
-                                                <rect key="frame" x="0.0" y="18" width="187.5" height="100"/>
+                                                <rect key="frame" x="0.0" y="18" width="187.5" height="99.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOC为空气中挥发性有机化合物" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVM-oh-s8l" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="14.5" y="86.5" width="159" height="13.5"/>
+                                                        <rect key="frame" x="15" y="86" width="159" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <color key="textColor" red="0.33333333329999998" green="0.53725490200000003" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAA-qd-r0b">
-                                                        <rect key="frame" x="80" y="0.0" width="27.5" height="16"/>
+                                                        <rect key="frame" x="80.5" y="0.0" width="27.5" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                         <color key="textColor" red="0.0" green="0.2156862745" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="air001" translatesAutoresizingMaskIntoConstraints="NO" id="u3s-N2-DPa">
-                                                        <rect key="frame" x="112.5" y="-0.5" width="17" height="17"/>
+                                                        <rect key="frame" x="113" y="-0.5" width="17" height="17"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5PA-vH-naK">
-                                                        <rect key="frame" x="85.5" y="27.5" width="16.5" height="45.5"/>
+                                                        <rect key="frame" x="86" y="27.5" width="16.5" height="45.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="38"/>
                                                         <color key="textColor" red="0.33333333329999998" green="0.53725490200000003" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2045,25 +2031,25 @@
                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="136"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npA-k0-fBT">
-                                                <rect key="frame" x="0.0" y="18" width="187.5" height="100"/>
+                                                <rect key="frame" x="0.0" y="18" width="187.5" height="99.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM2.5为空气中细微颗粒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwv-bz-HPi" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="32" y="86.5" width="123.5" height="13.5"/>
+                                                        <rect key="frame" x="32.5" y="86" width="123.5" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <color key="textColor" red="0.33333333329999998" green="0.53725490200000003" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zev-nm-41N">
-                                                        <rect key="frame" x="75" y="0.0" width="38" height="16"/>
+                                                        <rect key="frame" x="75.5" y="0.0" width="38" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                         <color key="textColor" red="0.0" green="0.2156862745" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="air001" translatesAutoresizingMaskIntoConstraints="NO" id="gxo-vL-xUW">
-                                                        <rect key="frame" x="118" y="-0.5" width="17" height="17"/>
+                                                        <rect key="frame" x="118.5" y="-0.5" width="17" height="17"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSP-m4-AeV">
-                                                        <rect key="frame" x="85.5" y="27.5" width="16.5" height="45.5"/>
+                                                        <rect key="frame" x="86" y="27.5" width="16.5" height="45.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="38"/>
                                                         <color key="textColor" red="0.33333333329999998" green="0.53725490200000003" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2162,31 +2148,31 @@
                                         <rect key="frame" x="0.0" y="79" width="375" height="101"/>
                                         <subviews>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="TDSJinDu_100" translatesAutoresizingMaskIntoConstraints="NO" id="PX3-Lu-qT0">
-                                                <rect key="frame" x="41.5" y="47" width="292" height="7"/>
+                                                <rect key="frame" x="41.5" y="47.5" width="292" height="7"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="7" id="eFa-fO-Eoa"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="TDSJinDu_0" translatesAutoresizingMaskIntoConstraints="NO" id="4ys-Pa-6Vi">
-                                                <rect key="frame" x="41.5" y="47" width="192" height="7"/>
+                                                <rect key="frame" x="41.5" y="47.5" width="192" height="7"/>
                                             </imageView>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="air003" translatesAutoresizingMaskIntoConstraints="NO" id="lAx-Up-HeT">
-                                                <rect key="frame" x="229.5" y="59" width="8" height="11"/>
+                                                <rect key="frame" x="229.5" y="59.5" width="8" height="11"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40H-Md-ltd">
-                                                <rect key="frame" x="342.5" y="59" width="6" height="14.5"/>
+                                                <rect key="frame" x="342.5" y="59.5" width="6" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b44-Us-or0">
-                                                <rect key="frame" x="26.5" y="59" width="6" height="14.5"/>
+                                                <rect key="frame" x="26.5" y="59.5" width="6" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LV4-BE-uhK">
-                                                <rect key="frame" x="230.5" y="27.5" width="6" height="14.5"/>
+                                                <rect key="frame" x="230.5" y="28" width="6" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2383,28 +2369,29 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93706661462783813" green="0.93679302930831909" blue="0.96569913625717163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="aXP-f8-d3q" secondAttribute="trailing" id="1Hp-pJ-4kc"/>
+                            <constraint firstItem="vIP-yQ-eAs" firstAttribute="trailing" secondItem="aXP-f8-d3q" secondAttribute="trailing" id="1Hp-pJ-4kc"/>
                             <constraint firstItem="pSu-jB-VbL" firstAttribute="top" secondItem="npA-k0-fBT" secondAttribute="bottom" priority="250" constant="20" id="40j-N7-POv"/>
                             <constraint firstItem="pSu-jB-VbL" firstAttribute="top" secondItem="y1i-ve-Sqb" secondAttribute="bottom" constant="10" id="46a-66-uQH"/>
-                            <constraint firstItem="y1i-ve-Sqb" firstAttribute="leading" secondItem="hlT-i7-AZ4" secondAttribute="leading" id="4G4-SG-Zge"/>
+                            <constraint firstItem="y1i-ve-Sqb" firstAttribute="leading" secondItem="vIP-yQ-eAs" secondAttribute="leading" id="4G4-SG-Zge"/>
                             <constraint firstItem="aXP-f8-d3q" firstAttribute="height" secondItem="hlT-i7-AZ4" secondAttribute="height" multiplier="136:667" id="5zo-Xl-deM"/>
-                            <constraint firstItem="aXP-f8-d3q" firstAttribute="top" secondItem="wud-4b-cP5" secondAttribute="bottom" id="7ya-5W-cBF"/>
-                            <constraint firstItem="pSu-jB-VbL" firstAttribute="leading" secondItem="hlT-i7-AZ4" secondAttribute="leading" id="A2k-1L-Lno"/>
-                            <constraint firstItem="aXP-f8-d3q" firstAttribute="leading" secondItem="hlT-i7-AZ4" secondAttribute="leading" id="Ig8-kG-94O"/>
+                            <constraint firstItem="aXP-f8-d3q" firstAttribute="top" secondItem="vIP-yQ-eAs" secondAttribute="top" id="7ya-5W-cBF"/>
+                            <constraint firstItem="pSu-jB-VbL" firstAttribute="leading" secondItem="vIP-yQ-eAs" secondAttribute="leading" id="A2k-1L-Lno"/>
+                            <constraint firstItem="aXP-f8-d3q" firstAttribute="leading" secondItem="vIP-yQ-eAs" secondAttribute="leading" id="Ig8-kG-94O"/>
                             <constraint firstItem="gE6-hL-516" firstAttribute="height" secondItem="hlT-i7-AZ4" secondAttribute="height" multiplier="33:667" id="KLM-XI-OEI"/>
-                            <constraint firstAttribute="trailing" secondItem="gE6-hL-516" secondAttribute="trailing" id="NDx-EH-dTe"/>
-                            <constraint firstItem="Vvv-VS-o05" firstAttribute="top" secondItem="mtx-WN-JLY" secondAttribute="bottom" id="Pyd-xr-hyo"/>
+                            <constraint firstItem="vIP-yQ-eAs" firstAttribute="trailing" secondItem="gE6-hL-516" secondAttribute="trailing" id="NDx-EH-dTe"/>
+                            <constraint firstItem="vIP-yQ-eAs" firstAttribute="bottom" secondItem="mtx-WN-JLY" secondAttribute="bottom" id="Pyd-xr-hyo"/>
                             <constraint firstItem="pSu-jB-VbL" firstAttribute="height" secondItem="hlT-i7-AZ4" secondAttribute="height" multiplier="180:667" id="Q7o-XD-oQW"/>
-                            <constraint firstAttribute="trailing" secondItem="y1i-ve-Sqb" secondAttribute="trailing" id="Td8-8b-VRg"/>
-                            <constraint firstAttribute="trailing" secondItem="pSu-jB-VbL" secondAttribute="trailing" id="XBc-Kh-DVW"/>
-                            <constraint firstItem="mtx-WN-JLY" firstAttribute="leading" secondItem="hlT-i7-AZ4" secondAttribute="leading" id="abv-2i-VUn"/>
+                            <constraint firstItem="vIP-yQ-eAs" firstAttribute="trailing" secondItem="y1i-ve-Sqb" secondAttribute="trailing" id="Td8-8b-VRg"/>
+                            <constraint firstItem="vIP-yQ-eAs" firstAttribute="trailing" secondItem="pSu-jB-VbL" secondAttribute="trailing" id="XBc-Kh-DVW"/>
+                            <constraint firstItem="mtx-WN-JLY" firstAttribute="leading" secondItem="vIP-yQ-eAs" secondAttribute="leading" id="abv-2i-VUn"/>
                             <constraint firstItem="gE6-hL-516" firstAttribute="top" secondItem="pSu-jB-VbL" secondAttribute="bottom" constant="1" id="awi-pp-gK4"/>
                             <constraint firstItem="y1i-ve-Sqb" firstAttribute="top" secondItem="aXP-f8-d3q" secondAttribute="bottom" id="dpx-WQ-i2Y"/>
-                            <constraint firstAttribute="trailing" secondItem="mtx-WN-JLY" secondAttribute="trailing" id="f4X-L5-dbG"/>
-                            <constraint firstItem="gE6-hL-516" firstAttribute="leading" secondItem="hlT-i7-AZ4" secondAttribute="leading" id="vzz-cb-Qns"/>
+                            <constraint firstItem="vIP-yQ-eAs" firstAttribute="trailing" secondItem="mtx-WN-JLY" secondAttribute="trailing" id="f4X-L5-dbG"/>
+                            <constraint firstItem="gE6-hL-516" firstAttribute="leading" secondItem="vIP-yQ-eAs" secondAttribute="leading" id="vzz-cb-Qns"/>
                             <constraint firstItem="y1i-ve-Sqb" firstAttribute="height" secondItem="hlT-i7-AZ4" secondAttribute="height" multiplier="90:667" id="ziD-cE-uK2"/>
                             <constraint firstItem="mtx-WN-JLY" firstAttribute="top" secondItem="gE6-hL-516" secondAttribute="bottom" id="zq3-px-VRh"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="vIP-yQ-eAs"/>
                     </view>
                     <navigationItem key="navigationItem" title="室内空气质量详情" id="BVr-yP-2Rq"/>
                     <connections>
@@ -2441,10 +2428,6 @@
         <scene sceneID="4Yw-Qe-WCj">
             <objects>
                 <viewController id="ivk-xY-aWD" customClass="WaterPurfierTDSController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fS6-sG-I86"/>
-                        <viewControllerLayoutGuide type="bottom" id="pJF-P3-7rD"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uMj-ug-WEg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2640,13 +2623,13 @@
                                 <rect key="frame" x="0.0" y="214" width="375" height="254"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIB-qT-KPT">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="182"/>
+                                        <rect key="frame" x="0.0" y="71.5" width="375" height="182.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVr-qf-AlE">
-                                                <rect key="frame" x="0.0" y="10" width="375" height="142"/>
+                                                <rect key="frame" x="0.0" y="10" width="375" height="142.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1a0-iy-Vgz">
-                                                        <rect key="frame" x="39.5" y="122" width="320" height="20"/>
+                                                        <rect key="frame" x="39.5" y="122.5" width="320" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWY-wU-mSi" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="8" width="49.5" height="12"/>
@@ -2720,18 +2703,18 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hP0-2h-plQ">
-                                                        <rect key="frame" x="15.5" y="121" width="344" height="1"/>
+                                                        <rect key="frame" x="15.5" y="121.5" width="344" height="1"/>
                                                         <color key="backgroundColor" red="0.53374731539999998" green="0.72080600260000005" blue="0.97003930810000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="g7g-Nj-Gye"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhr-Au-xdl" customClass="WaterPurfierTDSChart" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="49.5" y="7" width="300" height="114"/>
+                                                        <rect key="frame" x="49.5" y="7" width="300" height="114.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rLo-lA-xSl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="121"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="121.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="较差" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9m-Uz-hVj" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="22" y="0.0" width="22.5" height="13.5"/>
@@ -2740,7 +2723,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安全" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlt-xq-LEt" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                                <rect key="frame" x="22" y="80.5" width="22.5" height="13.5"/>
+                                                                <rect key="frame" x="22" y="81.5" width="22.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                                 <color key="textColor" red="0.032312974333763123" green="0.62567442655563354" blue="0.081017114222049713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -2755,10 +2738,10 @@
                                                                 <rect key="frame" x="34.5" y="13.5" width="10" height="27"/>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSu-JH-Biv">
-                                                                <rect key="frame" x="34.5" y="94" width="10" height="27"/>
+                                                                <rect key="frame" x="34.5" y="95" width="10" height="26.5"/>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nf-DS-vU3">
-                                                                <rect key="frame" x="34.5" y="54" width="10" height="26.5"/>
+                                                                <rect key="frame" x="34.5" y="54" width="10" height="27.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="10" id="DT6-Fd-oni"/>
                                                                 </constraints>
@@ -2805,19 +2788,19 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化后" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kc-ZU-4cW" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                <rect key="frame" x="232" y="152" width="37" height="30"/>
+                                                <rect key="frame" x="232" y="152.5" width="37" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                 <color key="textColor" red="0.21710735559463501" green="0.50405031442642212" blue="0.89849025011062622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y32-jo-tQd" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                <rect key="frame" x="95.5" y="152" width="37" height="30"/>
+                                                <rect key="frame" x="95.5" y="152.5" width="37" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                 <color key="textColor" red="0.71601575613021851" green="0.3085353672504425" blue="0.64879316091537476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4t0-oG-HyU">
-                                                <rect key="frame" x="217" y="162" width="10" height="10"/>
+                                                <rect key="frame" x="217" y="162.5" width="10" height="10"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="ZKw-XL-flO"/>
@@ -2837,7 +2820,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NA7-yc-d3s">
-                                                <rect key="frame" x="80.5" y="162" width="10" height="10"/>
+                                                <rect key="frame" x="80.5" y="162.5" width="10" height="10"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="Fph-3h-dkg"/>
@@ -2876,7 +2859,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水质纯净指数分布" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGQ-m4-8C4" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                        <rect key="frame" x="122" y="0.0" width="131" height="46"/>
+                                        <rect key="frame" x="122" y="0.0" width="131" height="45.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2885,7 +2868,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XvK-Sf-U3E">
-                                        <rect key="frame" x="15" y="46" width="345" height="26"/>
+                                        <rect key="frame" x="15" y="45.5" width="345" height="26"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="tor-3l-1ks"/>
@@ -3122,17 +3105,18 @@
                         <constraints>
                             <constraint firstItem="8bY-50-NEy" firstAttribute="top" secondItem="U0Y-oV-15b" secondAttribute="bottom" id="KXl-mi-YER"/>
                             <constraint firstItem="8bY-50-NEy" firstAttribute="height" secondItem="uMj-ug-WEg" secondAttribute="height" multiplier="254:667" id="Nq2-Pg-zHX"/>
-                            <constraint firstItem="U0Y-oV-15b" firstAttribute="top" secondItem="fS6-sG-I86" secondAttribute="bottom" id="PjC-1C-ICK"/>
+                            <constraint firstItem="U0Y-oV-15b" firstAttribute="top" secondItem="xub-AE-DCQ" secondAttribute="top" id="PjC-1C-ICK"/>
                             <constraint firstItem="U0Y-oV-15b" firstAttribute="height" secondItem="uMj-ug-WEg" secondAttribute="height" multiplier="150:667" id="So1-L7-be6"/>
-                            <constraint firstAttribute="trailing" secondItem="8bY-50-NEy" secondAttribute="trailing" id="XTX-qR-xBc"/>
-                            <constraint firstAttribute="trailing" secondItem="ozb-Qe-cz6" secondAttribute="trailing" id="ceS-Ac-MwI"/>
-                            <constraint firstItem="ozb-Qe-cz6" firstAttribute="leading" secondItem="uMj-ug-WEg" secondAttribute="leading" id="dxj-P4-Ubm"/>
-                            <constraint firstItem="pJF-P3-7rD" firstAttribute="top" secondItem="ozb-Qe-cz6" secondAttribute="bottom" id="kC5-58-tJD"/>
-                            <constraint firstAttribute="trailing" secondItem="U0Y-oV-15b" secondAttribute="trailing" id="lNi-IX-o4U"/>
-                            <constraint firstItem="8bY-50-NEy" firstAttribute="leading" secondItem="uMj-ug-WEg" secondAttribute="leading" id="mBI-ZI-bxe"/>
-                            <constraint firstItem="U0Y-oV-15b" firstAttribute="leading" secondItem="uMj-ug-WEg" secondAttribute="leading" id="oFM-tw-r7G"/>
+                            <constraint firstItem="xub-AE-DCQ" firstAttribute="trailing" secondItem="8bY-50-NEy" secondAttribute="trailing" id="XTX-qR-xBc"/>
+                            <constraint firstItem="xub-AE-DCQ" firstAttribute="trailing" secondItem="ozb-Qe-cz6" secondAttribute="trailing" id="ceS-Ac-MwI"/>
+                            <constraint firstItem="ozb-Qe-cz6" firstAttribute="leading" secondItem="xub-AE-DCQ" secondAttribute="leading" id="dxj-P4-Ubm"/>
+                            <constraint firstItem="xub-AE-DCQ" firstAttribute="bottom" secondItem="ozb-Qe-cz6" secondAttribute="bottom" id="kC5-58-tJD"/>
+                            <constraint firstItem="xub-AE-DCQ" firstAttribute="trailing" secondItem="U0Y-oV-15b" secondAttribute="trailing" id="lNi-IX-o4U"/>
+                            <constraint firstItem="8bY-50-NEy" firstAttribute="leading" secondItem="xub-AE-DCQ" secondAttribute="leading" id="mBI-ZI-bxe"/>
+                            <constraint firstItem="U0Y-oV-15b" firstAttribute="leading" secondItem="xub-AE-DCQ" secondAttribute="leading" id="oFM-tw-r7G"/>
                             <constraint firstItem="ozb-Qe-cz6" firstAttribute="top" secondItem="8bY-50-NEy" secondAttribute="bottom" constant="10" id="tZN-cm-AQN"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="xub-AE-DCQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="水质纯净值TDS" id="gEC-Tw-Hf9">
                         <barButtonItem key="rightBarButtonItem" image="device_share" id="yMg-mf-2lK">
@@ -3173,10 +3157,6 @@
         <scene sceneID="Fve-Wr-KNt">
             <objects>
                 <viewController id="VQJ-Lp-BC3" customClass="CupTDSDetailController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Kh6-qE-ZGL"/>
-                        <viewControllerLayoutGuide type="bottom" id="0cc-Et-ExI"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kUD-sx-2OS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3529,19 +3509,20 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94095736742019653" green="0.94509977102279663" blue="0.94911319017410278" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="FOy-fS-ZbU" secondAttribute="trailing" id="5A0-6a-iTk"/>
-                            <constraint firstItem="0cc-Et-ExI" firstAttribute="top" secondItem="HLU-gv-wMb" secondAttribute="bottom" constant="10" id="7J6-mB-qRW"/>
-                            <constraint firstItem="HLU-gv-wMb" firstAttribute="leading" secondItem="kUD-sx-2OS" secondAttribute="leading" id="IcP-AT-H1t"/>
+                            <constraint firstItem="dLA-al-Alh" firstAttribute="trailing" secondItem="FOy-fS-ZbU" secondAttribute="trailing" id="5A0-6a-iTk"/>
+                            <constraint firstItem="dLA-al-Alh" firstAttribute="bottom" secondItem="HLU-gv-wMb" secondAttribute="bottom" constant="10" id="7J6-mB-qRW"/>
+                            <constraint firstItem="HLU-gv-wMb" firstAttribute="leading" secondItem="dLA-al-Alh" secondAttribute="leading" id="IcP-AT-H1t"/>
                             <constraint firstItem="Hsr-Xh-mTi" firstAttribute="top" secondItem="FOy-fS-ZbU" secondAttribute="bottom" id="MEu-t4-emA"/>
-                            <constraint firstItem="FOy-fS-ZbU" firstAttribute="leading" secondItem="kUD-sx-2OS" secondAttribute="leading" id="Pue-j3-7ZK"/>
-                            <constraint firstItem="Hsr-Xh-mTi" firstAttribute="leading" secondItem="kUD-sx-2OS" secondAttribute="leading" id="T3T-CJ-crm"/>
+                            <constraint firstItem="FOy-fS-ZbU" firstAttribute="leading" secondItem="dLA-al-Alh" secondAttribute="leading" id="Pue-j3-7ZK"/>
+                            <constraint firstItem="Hsr-Xh-mTi" firstAttribute="leading" secondItem="dLA-al-Alh" secondAttribute="leading" id="T3T-CJ-crm"/>
                             <constraint firstItem="FOy-fS-ZbU" firstAttribute="height" secondItem="kUD-sx-2OS" secondAttribute="height" multiplier="150:667" id="WFr-jB-kpX"/>
                             <constraint firstItem="HLU-gv-wMb" firstAttribute="top" secondItem="Hsr-Xh-mTi" secondAttribute="bottom" constant="10" id="dck-9H-hfw"/>
-                            <constraint firstAttribute="trailing" secondItem="HLU-gv-wMb" secondAttribute="trailing" id="eTA-L2-bQ0"/>
+                            <constraint firstItem="dLA-al-Alh" firstAttribute="trailing" secondItem="HLU-gv-wMb" secondAttribute="trailing" id="eTA-L2-bQ0"/>
                             <constraint firstItem="Hsr-Xh-mTi" firstAttribute="height" secondItem="kUD-sx-2OS" secondAttribute="height" multiplier="254:667" id="gwm-Jt-bYl"/>
-                            <constraint firstItem="FOy-fS-ZbU" firstAttribute="top" secondItem="Kh6-qE-ZGL" secondAttribute="bottom" id="nP7-Za-xOj"/>
-                            <constraint firstAttribute="trailing" secondItem="Hsr-Xh-mTi" secondAttribute="trailing" id="rce-pw-mQC"/>
+                            <constraint firstItem="FOy-fS-ZbU" firstAttribute="top" secondItem="dLA-al-Alh" secondAttribute="top" id="nP7-Za-xOj"/>
+                            <constraint firstItem="dLA-al-Alh" firstAttribute="trailing" secondItem="Hsr-Xh-mTi" secondAttribute="trailing" id="rce-pw-mQC"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="dLA-al-Alh"/>
                     </view>
                     <navigationItem key="navigationItem" title="水质纯净值TDS" id="g8J-LW-QqX">
                         <barButtonItem key="rightBarButtonItem" image="device_share" id="gh4-nF-2cx">
@@ -3579,10 +3560,6 @@
         <scene sceneID="pIV-yA-qf1">
             <objects>
                 <viewController id="tcJ-Yi-bA2" customClass="CupDrinkingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vs6-5u-XMk"/>
-                        <viewControllerLayoutGuide type="bottom" id="cWO-Ff-LF9"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pN0-2m-SIX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3732,16 +3709,16 @@
                                 <rect key="frame" x="0.0" y="214" width="375" height="254"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="los-SS-bT9">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="182"/>
+                                        <rect key="frame" x="0.0" y="71.5" width="375" height="182.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7jH-gW-P2p">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="182.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0s5-0a-aRo">
-                                                        <rect key="frame" x="0.0" y="10" width="375" height="157"/>
+                                                        <rect key="frame" x="0.0" y="10" width="375" height="157.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCo-cH-vQV">
-                                                                <rect key="frame" x="39.5" y="137" width="320" height="20"/>
+                                                                <rect key="frame" x="39.5" y="137.5" width="320" height="20"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kjh-NV-3u1">
                                                                         <rect key="frame" x="0.0" y="8" width="49.5" height="12"/>
@@ -3815,18 +3792,18 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmm-dC-7J2">
-                                                                <rect key="frame" x="15.5" y="136" width="344" height="1"/>
+                                                                <rect key="frame" x="15.5" y="136.5" width="344" height="1"/>
                                                                 <color key="backgroundColor" red="0.53374731539999998" green="0.72080600260000005" blue="0.97003930810000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="xLg-cv-sMq"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ib-1D-ORI" customClass="CupDrinkingChartView" customModule="OzneriFamily" customModuleProvider="target">
-                                                                <rect key="frame" x="49.5" y="7" width="300" height="129"/>
+                                                                <rect key="frame" x="49.5" y="7" width="300" height="129.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4A-o4-0dI">
-                                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="136"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="136.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7d-iM-Fff">
                                                                         <rect key="frame" x="23.5" y="0.0" width="21" height="13.5"/>
@@ -3835,7 +3812,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cg4-tH-qMO">
-                                                                        <rect key="frame" x="25.5" y="90.5" width="19" height="13.5"/>
+                                                                        <rect key="frame" x="25.5" y="91.5" width="19" height="13.5"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
@@ -3850,10 +3827,10 @@
                                                                         <rect key="frame" x="34.5" y="13.5" width="10" height="32"/>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SnE-GD-fCq">
-                                                                        <rect key="frame" x="34.5" y="104" width="10" height="32"/>
+                                                                        <rect key="frame" x="34.5" y="105" width="10" height="31.5"/>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2nD-Fm-Ixi">
-                                                                        <rect key="frame" x="34.5" y="59" width="10" height="31.5"/>
+                                                                        <rect key="frame" x="34.5" y="59" width="10" height="32.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="10" id="Yb6-0h-D8h"/>
                                                                         </constraints>
@@ -3918,7 +3895,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="饮水量指数分布" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXj-Ge-fYY" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                        <rect key="frame" x="130.5" y="0.0" width="114.5" height="46"/>
+                                        <rect key="frame" x="130.5" y="0.0" width="114.5" height="45.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3927,7 +3904,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aTT-IU-ayU">
-                                        <rect key="frame" x="15" y="46" width="345" height="26"/>
+                                        <rect key="frame" x="15" y="45.5" width="345" height="26"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="UrO-PB-sYg"/>
@@ -4153,17 +4130,18 @@
                         <constraints>
                             <constraint firstItem="xPW-df-HNU" firstAttribute="top" secondItem="Xun-HG-JcZ" secondAttribute="bottom" constant="10" id="0IO-6U-vsp"/>
                             <constraint firstItem="Xun-HG-JcZ" firstAttribute="top" secondItem="EL4-gk-L7C" secondAttribute="bottom" id="BNw-9U-JEQ"/>
-                            <constraint firstItem="EL4-gk-L7C" firstAttribute="top" secondItem="vs6-5u-XMk" secondAttribute="bottom" id="FDU-Nv-VXp"/>
-                            <constraint firstItem="Xun-HG-JcZ" firstAttribute="leading" secondItem="pN0-2m-SIX" secondAttribute="leading" id="Gjb-bs-CIJ"/>
+                            <constraint firstItem="EL4-gk-L7C" firstAttribute="top" secondItem="ZHC-5u-a5J" secondAttribute="top" id="FDU-Nv-VXp"/>
+                            <constraint firstItem="Xun-HG-JcZ" firstAttribute="leading" secondItem="ZHC-5u-a5J" secondAttribute="leading" id="Gjb-bs-CIJ"/>
                             <constraint firstItem="EL4-gk-L7C" firstAttribute="height" secondItem="pN0-2m-SIX" secondAttribute="height" multiplier="150:667" id="J42-vb-35b"/>
-                            <constraint firstItem="cWO-Ff-LF9" firstAttribute="top" secondItem="xPW-df-HNU" secondAttribute="bottom" constant="10" id="Vf8-xs-jXk"/>
+                            <constraint firstItem="ZHC-5u-a5J" firstAttribute="bottom" secondItem="xPW-df-HNU" secondAttribute="bottom" constant="10" id="Vf8-xs-jXk"/>
                             <constraint firstItem="Xun-HG-JcZ" firstAttribute="height" secondItem="pN0-2m-SIX" secondAttribute="height" multiplier="254:667" id="crd-Me-KiG"/>
-                            <constraint firstAttribute="trailing" secondItem="Xun-HG-JcZ" secondAttribute="trailing" id="ka0-wG-abW"/>
-                            <constraint firstAttribute="trailing" secondItem="xPW-df-HNU" secondAttribute="trailing" id="o4e-FN-vWJ"/>
-                            <constraint firstItem="EL4-gk-L7C" firstAttribute="leading" secondItem="pN0-2m-SIX" secondAttribute="leading" id="sz9-iD-VfP"/>
-                            <constraint firstAttribute="trailing" secondItem="EL4-gk-L7C" secondAttribute="trailing" id="uWP-XT-Xjw"/>
-                            <constraint firstItem="xPW-df-HNU" firstAttribute="leading" secondItem="pN0-2m-SIX" secondAttribute="leading" id="uuA-we-Syw"/>
+                            <constraint firstItem="ZHC-5u-a5J" firstAttribute="trailing" secondItem="Xun-HG-JcZ" secondAttribute="trailing" id="ka0-wG-abW"/>
+                            <constraint firstItem="ZHC-5u-a5J" firstAttribute="trailing" secondItem="xPW-df-HNU" secondAttribute="trailing" id="o4e-FN-vWJ"/>
+                            <constraint firstItem="EL4-gk-L7C" firstAttribute="leading" secondItem="ZHC-5u-a5J" secondAttribute="leading" id="sz9-iD-VfP"/>
+                            <constraint firstItem="ZHC-5u-a5J" firstAttribute="trailing" secondItem="EL4-gk-L7C" secondAttribute="trailing" id="uWP-XT-Xjw"/>
+                            <constraint firstItem="xPW-df-HNU" firstAttribute="leading" secondItem="ZHC-5u-a5J" secondAttribute="leading" id="uuA-we-Syw"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZHC-5u-a5J"/>
                     </view>
                     <navigationItem key="navigationItem" title="饮水量" id="14Y-Ij-4zT">
                         <barButtonItem key="rightBarButtonItem" image="device_share" id="RH8-Oi-Gfn">
@@ -4203,10 +4181,6 @@
         <scene sceneID="0mP-3L-XRX">
             <objects>
                 <viewController id="8od-ad-L3q" customClass="CupTemperatureController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BkY-G7-3YA"/>
-                        <viewControllerLayoutGuide type="bottom" id="y4p-9H-ok5"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g6e-da-KVg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4496,19 +4470,20 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94095736740000002" green="0.94509977099999998" blue="0.94911319019999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="rIx-2j-EKQ" firstAttribute="top" secondItem="BkY-G7-3YA" secondAttribute="bottom" id="2c8-6X-FqF"/>
-                            <constraint firstItem="y4p-9H-ok5" firstAttribute="top" secondItem="tvg-gR-N7l" secondAttribute="bottom" constant="10" id="9QI-SN-Zdy"/>
-                            <constraint firstAttribute="trailing" secondItem="tvg-gR-N7l" secondAttribute="trailing" id="Fhs-TO-l05"/>
+                            <constraint firstItem="rIx-2j-EKQ" firstAttribute="top" secondItem="oIK-s7-bLJ" secondAttribute="top" id="2c8-6X-FqF"/>
+                            <constraint firstItem="oIK-s7-bLJ" firstAttribute="bottom" secondItem="tvg-gR-N7l" secondAttribute="bottom" constant="10" id="9QI-SN-Zdy"/>
+                            <constraint firstItem="oIK-s7-bLJ" firstAttribute="trailing" secondItem="tvg-gR-N7l" secondAttribute="trailing" id="Fhs-TO-l05"/>
                             <constraint firstItem="qRS-dY-JPj" firstAttribute="height" secondItem="g6e-da-KVg" secondAttribute="height" multiplier="254:667" id="Hgv-Z4-pfU"/>
-                            <constraint firstAttribute="trailing" secondItem="rIx-2j-EKQ" secondAttribute="trailing" id="T3k-7R-J3u"/>
-                            <constraint firstItem="qRS-dY-JPj" firstAttribute="leading" secondItem="g6e-da-KVg" secondAttribute="leading" id="UTD-av-R2g"/>
+                            <constraint firstItem="oIK-s7-bLJ" firstAttribute="trailing" secondItem="rIx-2j-EKQ" secondAttribute="trailing" id="T3k-7R-J3u"/>
+                            <constraint firstItem="qRS-dY-JPj" firstAttribute="leading" secondItem="oIK-s7-bLJ" secondAttribute="leading" id="UTD-av-R2g"/>
                             <constraint firstItem="rIx-2j-EKQ" firstAttribute="height" secondItem="g6e-da-KVg" secondAttribute="height" multiplier="150:667" id="VGU-Ki-V1b"/>
-                            <constraint firstItem="tvg-gR-N7l" firstAttribute="leading" secondItem="g6e-da-KVg" secondAttribute="leading" id="apS-2P-Kcb"/>
+                            <constraint firstItem="tvg-gR-N7l" firstAttribute="leading" secondItem="oIK-s7-bLJ" secondAttribute="leading" id="apS-2P-Kcb"/>
                             <constraint firstItem="tvg-gR-N7l" firstAttribute="top" secondItem="qRS-dY-JPj" secondAttribute="bottom" constant="10" id="mkL-vc-bG3"/>
-                            <constraint firstItem="rIx-2j-EKQ" firstAttribute="leading" secondItem="g6e-da-KVg" secondAttribute="leading" id="my4-Bf-mrN"/>
+                            <constraint firstItem="rIx-2j-EKQ" firstAttribute="leading" secondItem="oIK-s7-bLJ" secondAttribute="leading" id="my4-Bf-mrN"/>
                             <constraint firstItem="qRS-dY-JPj" firstAttribute="top" secondItem="rIx-2j-EKQ" secondAttribute="bottom" id="tie-wr-ZLy"/>
-                            <constraint firstAttribute="trailing" secondItem="qRS-dY-JPj" secondAttribute="trailing" id="zo6-s3-h1q"/>
+                            <constraint firstItem="oIK-s7-bLJ" firstAttribute="trailing" secondItem="qRS-dY-JPj" secondAttribute="trailing" id="zo6-s3-h1q"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="oIK-s7-bLJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="水温" id="3U9-wc-9C2"/>
                     <connections>
@@ -4530,10 +4505,6 @@
         <scene sceneID="Suy-EX-UDn">
             <objects>
                 <viewController id="SrH-4Z-1Vu" customClass="TapSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Dyu-jV-l1g"/>
-                        <viewControllerLayoutGuide type="bottom" id="QRA-TX-Fte"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7l9-XD-Itf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4830,11 +4801,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93706661462783813" green="0.93679302930831909" blue="0.96569913625717163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Yo2-PP-IO1" firstAttribute="top" secondItem="Dyu-jV-l1g" secondAttribute="bottom" id="LAi-bZ-p4N"/>
-                            <constraint firstItem="Yo2-PP-IO1" firstAttribute="leading" secondItem="7l9-XD-Itf" secondAttribute="leading" id="jZc-LD-6ed"/>
-                            <constraint firstItem="QRA-TX-Fte" firstAttribute="top" secondItem="Yo2-PP-IO1" secondAttribute="bottom" id="xo4-Hd-Oth"/>
-                            <constraint firstAttribute="trailing" secondItem="Yo2-PP-IO1" secondAttribute="trailing" id="xv4-44-DTL"/>
+                            <constraint firstItem="Yo2-PP-IO1" firstAttribute="top" secondItem="mUp-C7-xM3" secondAttribute="top" id="LAi-bZ-p4N"/>
+                            <constraint firstItem="Yo2-PP-IO1" firstAttribute="leading" secondItem="mUp-C7-xM3" secondAttribute="leading" id="jZc-LD-6ed"/>
+                            <constraint firstItem="mUp-C7-xM3" firstAttribute="bottom" secondItem="Yo2-PP-IO1" secondAttribute="bottom" id="xo4-Hd-Oth"/>
+                            <constraint firstItem="mUp-C7-xM3" firstAttribute="trailing" secondItem="Yo2-PP-IO1" secondAttribute="trailing" id="xv4-44-DTL"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="mUp-C7-xM3"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="nXo-Zd-eC1">
                         <barButtonItem key="leftBarButtonItem" image="icon_back" id="wiP-hq-Bhk">
@@ -4872,10 +4844,6 @@
         <scene sceneID="Ql6-vl-588">
             <objects>
                 <viewController id="XeD-QT-4f5" customClass="CupSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CjB-Pg-1Me"/>
-                        <viewControllerLayoutGuide type="bottom" id="bsH-DZ-hM2"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xZs-um-7So">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1325"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5711,11 +5679,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BBu-U1-Vjj" firstAttribute="leading" secondItem="xZs-um-7So" secondAttribute="leading" id="SvL-x2-Blf"/>
-                            <constraint firstItem="bsH-DZ-hM2" firstAttribute="top" secondItem="BBu-U1-Vjj" secondAttribute="bottom" id="VLy-jN-cWD"/>
-                            <constraint firstItem="BBu-U1-Vjj" firstAttribute="top" secondItem="CjB-Pg-1Me" secondAttribute="bottom" id="gCx-Mw-blU"/>
-                            <constraint firstAttribute="trailing" secondItem="BBu-U1-Vjj" secondAttribute="trailing" id="kbA-cy-9M9"/>
+                            <constraint firstItem="BBu-U1-Vjj" firstAttribute="leading" secondItem="hFh-mk-8eh" secondAttribute="leading" id="SvL-x2-Blf"/>
+                            <constraint firstItem="hFh-mk-8eh" firstAttribute="bottom" secondItem="BBu-U1-Vjj" secondAttribute="bottom" id="VLy-jN-cWD"/>
+                            <constraint firstItem="BBu-U1-Vjj" firstAttribute="top" secondItem="hFh-mk-8eh" secondAttribute="top" id="gCx-Mw-blU"/>
+                            <constraint firstItem="hFh-mk-8eh" firstAttribute="trailing" secondItem="BBu-U1-Vjj" secondAttribute="trailing" id="kbA-cy-9M9"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="hFh-mk-8eh"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="vzc-6q-nbu">
                         <barButtonItem key="leftBarButtonItem" image="icon_back" id="SiL-NY-JPg">
@@ -5785,10 +5754,6 @@
         <scene sceneID="W0i-cX-zbN">
             <objects>
                 <viewController id="0RJ-al-8HV" customClass="WaterPurfierSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7yj-VV-ez3"/>
-                        <viewControllerLayoutGuide type="bottom" id="61P-Eo-FGl"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BNy-vH-soa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5995,11 +5960,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93706661459999996" green="0.93679302929999997" blue="0.96569913630000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lY7-I8-XRY" firstAttribute="leading" secondItem="BNy-vH-soa" secondAttribute="leading" id="F1A-zK-6O5"/>
-                            <constraint firstItem="lY7-I8-XRY" firstAttribute="top" secondItem="7yj-VV-ez3" secondAttribute="bottom" id="H17-m0-FYM"/>
-                            <constraint firstItem="61P-Eo-FGl" firstAttribute="top" secondItem="lY7-I8-XRY" secondAttribute="bottom" id="Tu5-gf-eZt"/>
-                            <constraint firstAttribute="trailing" secondItem="lY7-I8-XRY" secondAttribute="trailing" id="maQ-Nd-KnQ"/>
+                            <constraint firstItem="lY7-I8-XRY" firstAttribute="leading" secondItem="fPf-YF-Ql7" secondAttribute="leading" id="F1A-zK-6O5"/>
+                            <constraint firstItem="lY7-I8-XRY" firstAttribute="top" secondItem="fPf-YF-Ql7" secondAttribute="top" id="H17-m0-FYM"/>
+                            <constraint firstItem="fPf-YF-Ql7" firstAttribute="bottom" secondItem="lY7-I8-XRY" secondAttribute="bottom" id="Tu5-gf-eZt"/>
+                            <constraint firstItem="fPf-YF-Ql7" firstAttribute="trailing" secondItem="lY7-I8-XRY" secondAttribute="trailing" id="maQ-Nd-KnQ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="fPf-YF-Ql7"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="oUO-6B-IcQ">
                         <barButtonItem key="leftBarButtonItem" image="icon_back" id="5hl-5h-H3o">
@@ -6027,10 +5993,6 @@
         <scene sceneID="CiE-L0-bah">
             <objects>
                 <viewController id="hfS-yf-OMy" customClass="AirPurfierSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JwI-0o-HT1"/>
-                        <viewControllerLayoutGuide type="bottom" id="NqW-BV-Q9d"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="onv-yc-zsv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6296,11 +6258,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93706661459999996" green="0.93679302929999997" blue="0.96569913630000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Rtm-Vo-A3u" firstAttribute="leading" secondItem="onv-yc-zsv" secondAttribute="leading" id="4gR-70-53s"/>
-                            <constraint firstAttribute="trailing" secondItem="Rtm-Vo-A3u" secondAttribute="trailing" id="MLc-YG-K1p"/>
-                            <constraint firstItem="NqW-BV-Q9d" firstAttribute="top" secondItem="Rtm-Vo-A3u" secondAttribute="bottom" id="XXr-p3-CHy"/>
-                            <constraint firstItem="Rtm-Vo-A3u" firstAttribute="top" secondItem="JwI-0o-HT1" secondAttribute="bottom" id="qf7-lX-reM"/>
+                            <constraint firstItem="Rtm-Vo-A3u" firstAttribute="leading" secondItem="Kpp-Fr-2r3" secondAttribute="leading" id="4gR-70-53s"/>
+                            <constraint firstItem="Kpp-Fr-2r3" firstAttribute="trailing" secondItem="Rtm-Vo-A3u" secondAttribute="trailing" id="MLc-YG-K1p"/>
+                            <constraint firstItem="Kpp-Fr-2r3" firstAttribute="bottom" secondItem="Rtm-Vo-A3u" secondAttribute="bottom" id="XXr-p3-CHy"/>
+                            <constraint firstItem="Rtm-Vo-A3u" firstAttribute="top" secondItem="Kpp-Fr-2r3" secondAttribute="top" id="qf7-lX-reM"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kpp-Fr-2r3"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="zQR-TD-o7G">
                         <barButtonItem key="leftBarButtonItem" image="icon_back" id="CAa-AB-Nzk">
@@ -6326,10 +6289,6 @@
         <scene sceneID="nNC-aI-QP3">
             <objects>
                 <viewController id="GRq-nX-7ST" userLabel="设置设备名称和属性" customClass="SetDeviceNameController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6rX-FG-emR"/>
-                        <viewControllerLayoutGuide type="bottom" id="YqJ-lj-sGW"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fuP-KR-Leq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6507,10 +6466,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.91743546724319458" green="0.91703134775161743" blue="0.95424395799636841" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="FDJ-mv-OQ4" secondAttribute="trailing" id="EKV-WO-tC8"/>
-                            <constraint firstItem="FDJ-mv-OQ4" firstAttribute="top" secondItem="6rX-FG-emR" secondAttribute="bottom" id="NwR-fX-8Gr"/>
-                            <constraint firstItem="FDJ-mv-OQ4" firstAttribute="leading" secondItem="fuP-KR-Leq" secondAttribute="leading" id="Y2Q-Ha-siM"/>
+                            <constraint firstItem="0XR-ns-q3T" firstAttribute="trailing" secondItem="FDJ-mv-OQ4" secondAttribute="trailing" id="EKV-WO-tC8"/>
+                            <constraint firstItem="FDJ-mv-OQ4" firstAttribute="top" secondItem="0XR-ns-q3T" secondAttribute="top" id="NwR-fX-8Gr"/>
+                            <constraint firstItem="FDJ-mv-OQ4" firstAttribute="leading" secondItem="0XR-ns-q3T" secondAttribute="leading" id="Y2Q-Ha-siM"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="0XR-ns-q3T"/>
                     </view>
                     <navigationItem key="navigationItem" id="EKc-t5-5pX">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="YDU-hP-MB8">
@@ -6548,10 +6508,6 @@
         <scene sceneID="wQA-5Q-6fg">
             <objects>
                 <viewController id="wJe-e0-Zje" userLabel="水机充值" customClass="PayWaterController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="guu-3a-EY3"/>
-                        <viewControllerLayoutGuide type="bottom" id="srC-NQ-eZF"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Otx-qt-6L0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6594,15 +6550,16 @@
                         <color key="backgroundColor" red="0.96068006753921509" green="0.96084433794021606" blue="0.96066969633102417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3qJ-gQ-1Lz" firstAttribute="leading" secondItem="Otx-qt-6L0" secondAttribute="leadingMargin" constant="30" id="8Y8-ol-BE9"/>
-                            <constraint firstItem="4gW-h0-Gyb" firstAttribute="leading" secondItem="Otx-qt-6L0" secondAttribute="leading" id="GVa-Nl-hPG"/>
-                            <constraint firstItem="srC-NQ-eZF" firstAttribute="top" secondItem="3qJ-gQ-1Lz" secondAttribute="bottom" constant="20" id="Pb1-Mg-w72"/>
-                            <constraint firstAttribute="trailing" secondItem="4gW-h0-Gyb" secondAttribute="trailing" id="YUu-WN-Ge8"/>
+                            <constraint firstItem="4gW-h0-Gyb" firstAttribute="leading" secondItem="RDx-r0-QR9" secondAttribute="leading" id="GVa-Nl-hPG"/>
+                            <constraint firstItem="RDx-r0-QR9" firstAttribute="bottom" secondItem="3qJ-gQ-1Lz" secondAttribute="bottom" constant="20" id="Pb1-Mg-w72"/>
+                            <constraint firstItem="RDx-r0-QR9" firstAttribute="trailing" secondItem="4gW-h0-Gyb" secondAttribute="trailing" id="YUu-WN-Ge8"/>
                             <constraint firstItem="3qJ-gQ-1Lz" firstAttribute="top" secondItem="4gW-h0-Gyb" secondAttribute="bottom" constant="25" id="h34-Cx-XhU"/>
-                            <constraint firstItem="4gW-h0-Gyb" firstAttribute="top" secondItem="guu-3a-EY3" secondAttribute="bottom" id="h9D-gP-e2E"/>
+                            <constraint firstItem="4gW-h0-Gyb" firstAttribute="top" secondItem="RDx-r0-QR9" secondAttribute="top" id="h9D-gP-e2E"/>
                             <constraint firstItem="jMc-YJ-70B" firstAttribute="centerY" secondItem="Otx-qt-6L0" secondAttribute="centerY" id="jRL-b3-JvW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3qJ-gQ-1Lz" secondAttribute="trailing" constant="30" id="jv8-A0-R99"/>
-                            <constraint firstItem="jMc-YJ-70B" firstAttribute="centerX" secondItem="Otx-qt-6L0" secondAttribute="centerX" id="n97-RY-Uv4"/>
+                            <constraint firstItem="jMc-YJ-70B" firstAttribute="centerX" secondItem="RDx-r0-QR9" secondAttribute="centerX" id="n97-RY-Uv4"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="RDx-r0-QR9"/>
                     </view>
                     <navigationItem key="navigationItem" id="KbK-ti-QvR">
                         <barButtonItem key="rightBarButtonItem" title="购买" id="dVr-ei-1GD">
@@ -6624,10 +6581,6 @@
         <scene sceneID="hMi-Cx-Ndx">
             <objects>
                 <viewController id="DKl-oz-nSd" customClass="SetReplenishTimeController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tOM-TD-stq"/>
-                        <viewControllerLayoutGuide type="bottom" id="nZl-cM-b8S"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9Ps-Lf-pYh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6932,10 +6885,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fK1-Zq-IuT" firstAttribute="top" secondItem="tOM-TD-stq" secondAttribute="bottom" id="YAj-Nx-k36"/>
-                            <constraint firstItem="fK1-Zq-IuT" firstAttribute="leading" secondItem="9Ps-Lf-pYh" secondAttribute="leading" id="cAf-EJ-mJ9"/>
-                            <constraint firstAttribute="trailing" secondItem="fK1-Zq-IuT" secondAttribute="trailing" id="cHQ-hI-vuA"/>
+                            <constraint firstItem="fK1-Zq-IuT" firstAttribute="top" secondItem="sRz-YI-glL" secondAttribute="top" id="YAj-Nx-k36"/>
+                            <constraint firstItem="fK1-Zq-IuT" firstAttribute="leading" secondItem="sRz-YI-glL" secondAttribute="leading" id="cAf-EJ-mJ9"/>
+                            <constraint firstItem="sRz-YI-glL" firstAttribute="trailing" secondItem="fK1-Zq-IuT" secondAttribute="trailing" id="cHQ-hI-vuA"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="sRz-YI-glL"/>
                     </view>
                     <navigationItem key="navigationItem" title="补水提醒时间" id="ZMr-Lx-6jD">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="Pch-A6-3yR">
@@ -6977,10 +6931,6 @@
         <scene sceneID="WoM-Zy-hq1">
             <objects>
                 <viewController id="JAd-A0-6eL" customClass="ReplenishSexController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cKf-ko-3LG"/>
-                        <viewControllerLayoutGuide type="bottom" id="Kgz-ev-hzw"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PHd-IX-Sgk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7088,10 +7038,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.8980392157" green="0.89411764709999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Kg4-AF-K2O" firstAttribute="leading" secondItem="PHd-IX-Sgk" secondAttribute="leading" id="6rr-5t-klA"/>
-                            <constraint firstAttribute="trailing" secondItem="Kg4-AF-K2O" secondAttribute="trailing" id="8wE-fg-DM4"/>
-                            <constraint firstItem="Kg4-AF-K2O" firstAttribute="top" secondItem="cKf-ko-3LG" secondAttribute="bottom" id="c20-Xf-Uoy"/>
+                            <constraint firstItem="Kg4-AF-K2O" firstAttribute="leading" secondItem="VuQ-dV-CuV" secondAttribute="leading" id="6rr-5t-klA"/>
+                            <constraint firstItem="VuQ-dV-CuV" firstAttribute="trailing" secondItem="Kg4-AF-K2O" secondAttribute="trailing" id="8wE-fg-DM4"/>
+                            <constraint firstItem="Kg4-AF-K2O" firstAttribute="top" secondItem="VuQ-dV-CuV" secondAttribute="top" id="c20-Xf-Uoy"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="VuQ-dV-CuV"/>
                     </view>
                     <navigationItem key="navigationItem" title="性别" id="6Jh-1O-jza">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="xOm-D0-4kg">
@@ -7115,10 +7066,6 @@
         <scene sceneID="H6N-oJ-nFi">
             <objects>
                 <viewController id="rWv-vc-sXq" customClass="NewAirSetTimeController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="szy-Cb-hzX"/>
-                        <viewControllerLayoutGuide type="bottom" id="IP2-hv-jUy"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1pV-t5-Oaf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7259,15 +7206,16 @@
                         <constraints>
                             <constraint firstItem="km6-uL-b4X" firstAttribute="top" secondItem="OnV-DI-bAD" secondAttribute="bottom" id="5Mu-LV-qhG"/>
                             <constraint firstItem="zXG-Xh-7AW" firstAttribute="top" secondItem="km6-uL-b4X" secondAttribute="bottom" constant="20" id="DXU-Kg-aWO"/>
-                            <constraint firstItem="OnV-DI-bAD" firstAttribute="leading" secondItem="1pV-t5-Oaf" secondAttribute="leading" id="N0o-t4-DuH"/>
-                            <constraint firstAttribute="trailing" secondItem="km6-uL-b4X" secondAttribute="trailing" id="Q4T-rb-z6p"/>
-                            <constraint firstItem="km6-uL-b4X" firstAttribute="leading" secondItem="1pV-t5-Oaf" secondAttribute="leading" id="QAo-hj-GET"/>
+                            <constraint firstItem="OnV-DI-bAD" firstAttribute="leading" secondItem="uB4-sa-pW1" secondAttribute="leading" id="N0o-t4-DuH"/>
+                            <constraint firstItem="uB4-sa-pW1" firstAttribute="trailing" secondItem="km6-uL-b4X" secondAttribute="trailing" id="Q4T-rb-z6p"/>
+                            <constraint firstItem="km6-uL-b4X" firstAttribute="leading" secondItem="uB4-sa-pW1" secondAttribute="leading" id="QAo-hj-GET"/>
                             <constraint firstItem="OnV-DI-bAD" firstAttribute="top" secondItem="aJf-eh-Tbd" secondAttribute="bottom" constant="10" id="alZ-5B-img"/>
-                            <constraint firstItem="aJf-eh-Tbd" firstAttribute="top" secondItem="szy-Cb-hzX" secondAttribute="bottom" constant="10" id="g6O-0E-9Ev"/>
-                            <constraint firstItem="zXG-Xh-7AW" firstAttribute="centerX" secondItem="1pV-t5-Oaf" secondAttribute="centerX" id="hhi-pv-gLP"/>
-                            <constraint firstAttribute="trailing" secondItem="OnV-DI-bAD" secondAttribute="trailing" id="i0j-Ap-WRG"/>
-                            <constraint firstItem="aJf-eh-Tbd" firstAttribute="centerX" secondItem="1pV-t5-Oaf" secondAttribute="centerX" id="q5S-KZ-25G"/>
+                            <constraint firstItem="aJf-eh-Tbd" firstAttribute="top" secondItem="uB4-sa-pW1" secondAttribute="top" constant="10" id="g6O-0E-9Ev"/>
+                            <constraint firstItem="zXG-Xh-7AW" firstAttribute="centerX" secondItem="uB4-sa-pW1" secondAttribute="centerX" id="hhi-pv-gLP"/>
+                            <constraint firstItem="uB4-sa-pW1" firstAttribute="trailing" secondItem="OnV-DI-bAD" secondAttribute="trailing" id="i0j-Ap-WRG"/>
+                            <constraint firstItem="aJf-eh-Tbd" firstAttribute="centerX" secondItem="uB4-sa-pW1" secondAttribute="centerX" id="q5S-KZ-25G"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="uB4-sa-pW1"/>
                     </view>
                     <connections>
                         <outlet property="PowerOffButton" destination="tbm-ek-Ywb" id="vly-71-sjS"/>
@@ -7286,10 +7234,6 @@
         <scene sceneID="eI2-qa-orI">
             <objects>
                 <viewController storyboardIdentifier="AboutDeviceController" id="aGC-dU-WII" customClass="AboutDeviceController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8Fl-OW-mW0"/>
-                        <viewControllerLayoutGuide type="bottom" id="yAD-vK-cBB"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JbE-ym-o8Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7301,11 +7245,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KXF-19-WIa" firstAttribute="leading" secondItem="JbE-ym-o8Y" secondAttribute="leading" id="CiL-76-QXn"/>
-                            <constraint firstItem="yAD-vK-cBB" firstAttribute="top" secondItem="KXF-19-WIa" secondAttribute="bottom" id="MEA-yw-KRO"/>
-                            <constraint firstAttribute="trailing" secondItem="KXF-19-WIa" secondAttribute="trailing" id="lY6-I1-mr8"/>
-                            <constraint firstItem="KXF-19-WIa" firstAttribute="top" secondItem="8Fl-OW-mW0" secondAttribute="bottom" id="nhs-Pj-Vta"/>
+                            <constraint firstItem="KXF-19-WIa" firstAttribute="leading" secondItem="KDA-7x-VTY" secondAttribute="leading" id="CiL-76-QXn"/>
+                            <constraint firstItem="KDA-7x-VTY" firstAttribute="bottom" secondItem="KXF-19-WIa" secondAttribute="bottom" id="MEA-yw-KRO"/>
+                            <constraint firstItem="KDA-7x-VTY" firstAttribute="trailing" secondItem="KXF-19-WIa" secondAttribute="trailing" id="lY6-I1-mr8"/>
+                            <constraint firstItem="KXF-19-WIa" firstAttribute="top" secondItem="KDA-7x-VTY" secondAttribute="top" id="nhs-Pj-Vta"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="KDA-7x-VTY"/>
                     </view>
                     <navigationItem key="navigationItem" title="关于设备" id="ayW-NF-CSz"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -7322,10 +7267,6 @@
         <scene sceneID="2v4-wA-gA6">
             <objects>
                 <viewController id="XBD-wp-tdL" customClass="WaterReplenishSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Nzp-Xm-ZEQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="Iyo-VT-Mhv"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EdO-NY-mOe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7692,11 +7633,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93706661459999996" green="0.93679302929999997" blue="0.96569913630000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Ihe-MZ-WsE" firstAttribute="leading" secondItem="EdO-NY-mOe" secondAttribute="leading" id="IFS-dd-pGn"/>
-                            <constraint firstItem="Iyo-VT-Mhv" firstAttribute="top" secondItem="Ihe-MZ-WsE" secondAttribute="bottom" id="WK1-fg-LJS"/>
-                            <constraint firstAttribute="trailing" secondItem="Ihe-MZ-WsE" secondAttribute="trailing" id="fJL-Ur-6St"/>
-                            <constraint firstItem="Ihe-MZ-WsE" firstAttribute="top" secondItem="Nzp-Xm-ZEQ" secondAttribute="bottom" id="gMo-PG-om2"/>
+                            <constraint firstItem="Ihe-MZ-WsE" firstAttribute="leading" secondItem="4S2-uy-OQN" secondAttribute="leading" id="IFS-dd-pGn"/>
+                            <constraint firstItem="4S2-uy-OQN" firstAttribute="bottom" secondItem="Ihe-MZ-WsE" secondAttribute="bottom" id="WK1-fg-LJS"/>
+                            <constraint firstItem="4S2-uy-OQN" firstAttribute="trailing" secondItem="Ihe-MZ-WsE" secondAttribute="trailing" id="fJL-Ur-6St"/>
+                            <constraint firstItem="Ihe-MZ-WsE" firstAttribute="top" secondItem="4S2-uy-OQN" secondAttribute="top" id="gMo-PG-om2"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="4S2-uy-OQN"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="eKL-DY-FgN">
                         <barButtonItem key="leftBarButtonItem" image="icon_back" id="zzZ-ws-4Az">
@@ -7729,16 +7671,12 @@
         <scene sceneID="ap5-Xc-Wbd">
             <objects>
                 <viewController id="LRU-8U-mU5" customClass="ElectrickettleSettingVc" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oBE-Ae-ERk"/>
-                        <viewControllerLayoutGuide type="bottom" id="iWm-S0-Wjc"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="N1a-Qh-oZI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-l6-Tpr">
-                                <rect key="frame" x="117" y="384" width="140" height="40"/>
+                                <rect key="frame" x="117.5" y="384" width="140" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="4XR-oi-3nv"/>
                                     <constraint firstAttribute="height" constant="40" id="G9r-HJ-7b2"/>
@@ -7989,23 +7927,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="efm-uv-DDB" firstAttribute="trailing" secondItem="1ad-bd-Mde" secondAttribute="trailing" id="3Ju-8U-EGZ"/>
-                            <constraint firstItem="jur-yE-We5" firstAttribute="leading" secondItem="N1a-Qh-oZI" secondAttribute="leading" id="5C3-dg-ISS"/>
+                            <constraint firstItem="jur-yE-We5" firstAttribute="leading" secondItem="Ipl-0M-tJi" secondAttribute="leading" id="5C3-dg-ISS"/>
                             <constraint firstItem="1ad-bd-Mde" firstAttribute="trailing" secondItem="1Fb-yC-hVn" secondAttribute="trailing" constant="-20" id="95y-B4-qij"/>
-                            <constraint firstItem="jur-yE-We5" firstAttribute="top" secondItem="oBE-Ae-ERk" secondAttribute="bottom" id="BVn-2H-Sji"/>
-                            <constraint firstItem="7UF-l6-Tpr" firstAttribute="centerX" secondItem="N1a-Qh-oZI" secondAttribute="centerX" id="Fpb-Qi-yI7"/>
+                            <constraint firstItem="jur-yE-We5" firstAttribute="top" secondItem="Ipl-0M-tJi" secondAttribute="top" id="BVn-2H-Sji"/>
+                            <constraint firstItem="7UF-l6-Tpr" firstAttribute="centerX" secondItem="Ipl-0M-tJi" secondAttribute="centerX" id="Fpb-Qi-yI7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tjt-4U-uzd" secondAttribute="trailing" id="GbK-bP-zrN"/>
-                            <constraint firstAttribute="trailing" secondItem="sMP-aR-wCU" secondAttribute="trailing" id="QKI-2M-mHe"/>
+                            <constraint firstItem="Ipl-0M-tJi" firstAttribute="trailing" secondItem="sMP-aR-wCU" secondAttribute="trailing" id="QKI-2M-mHe"/>
                             <constraint firstItem="5Xw-z5-Xda" firstAttribute="trailing" secondItem="N1a-Qh-oZI" secondAttribute="trailingMargin" id="Qbt-IM-rwp"/>
-                            <constraint firstItem="7UF-l6-Tpr" firstAttribute="top" secondItem="oBE-Ae-ERk" secondAttribute="bottom" constant="320" id="Qs6-kQ-fvM"/>
-                            <constraint firstAttribute="trailing" secondItem="jur-yE-We5" secondAttribute="trailing" id="WHs-t3-MeE"/>
+                            <constraint firstItem="7UF-l6-Tpr" firstAttribute="top" secondItem="Ipl-0M-tJi" secondAttribute="top" constant="320" id="Qs6-kQ-fvM"/>
+                            <constraint firstItem="Ipl-0M-tJi" firstAttribute="trailing" secondItem="jur-yE-We5" secondAttribute="trailing" id="WHs-t3-MeE"/>
                             <constraint firstItem="Tjt-4U-uzd" firstAttribute="leading" secondItem="N1a-Qh-oZI" secondAttribute="leadingMargin" id="XaT-t5-DsU"/>
                             <constraint firstItem="5Xw-z5-Xda" firstAttribute="leading" secondItem="N1a-Qh-oZI" secondAttribute="leadingMargin" id="fZU-vA-GCu"/>
                             <constraint firstItem="Tjt-4U-uzd" firstAttribute="top" secondItem="jur-yE-We5" secondAttribute="bottom" id="i2A-Yp-t2j"/>
                             <constraint firstItem="sMP-aR-wCU" firstAttribute="top" secondItem="5Xw-z5-Xda" secondAttribute="bottom" id="ioB-iA-d09"/>
                             <constraint firstItem="5Xw-z5-Xda" firstAttribute="top" secondItem="Tjt-4U-uzd" secondAttribute="bottom" id="neC-Y4-vdn"/>
-                            <constraint firstItem="sMP-aR-wCU" firstAttribute="leading" secondItem="N1a-Qh-oZI" secondAttribute="leading" id="olX-x6-KXx"/>
+                            <constraint firstItem="sMP-aR-wCU" firstAttribute="leading" secondItem="Ipl-0M-tJi" secondAttribute="leading" id="olX-x6-KXx"/>
                             <constraint firstItem="wRf-WB-AFa" firstAttribute="leading" secondItem="1Fb-yC-hVn" secondAttribute="leading" constant="20" id="qgW-2o-mUK"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ipl-0M-tJi"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="D5O-Wo-8FS">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="C2e-2f-7Ad">
@@ -8038,10 +7977,6 @@
         <scene sceneID="Zu8-x8-wJA">
             <objects>
                 <viewController id="f3R-LE-xjw" customClass="TapLvXinController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wq1-Q4-Hmf"/>
-                        <viewControllerLayoutGuide type="bottom" id="vdY-Aq-QbD"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Uw9-fO-Klz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1430"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -8513,11 +8448,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="FMr-Sv-dZs" secondAttribute="trailing" id="Aj1-rN-WGz"/>
-                            <constraint firstItem="FMr-Sv-dZs" firstAttribute="leading" secondItem="Uw9-fO-Klz" secondAttribute="leading" id="NLR-aO-Nk5"/>
-                            <constraint firstItem="FMr-Sv-dZs" firstAttribute="top" secondItem="wq1-Q4-Hmf" secondAttribute="bottom" id="Sq1-zw-RSR"/>
-                            <constraint firstItem="vdY-Aq-QbD" firstAttribute="top" secondItem="FMr-Sv-dZs" secondAttribute="bottom" id="oqF-mt-pqS"/>
+                            <constraint firstItem="KVQ-wB-Ffn" firstAttribute="trailing" secondItem="FMr-Sv-dZs" secondAttribute="trailing" id="Aj1-rN-WGz"/>
+                            <constraint firstItem="FMr-Sv-dZs" firstAttribute="leading" secondItem="KVQ-wB-Ffn" secondAttribute="leading" id="NLR-aO-Nk5"/>
+                            <constraint firstItem="FMr-Sv-dZs" firstAttribute="top" secondItem="KVQ-wB-Ffn" secondAttribute="top" id="Sq1-zw-RSR"/>
+                            <constraint firstItem="KVQ-wB-Ffn" firstAttribute="bottom" secondItem="FMr-Sv-dZs" secondAttribute="bottom" id="oqF-mt-pqS"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="KVQ-wB-Ffn"/>
                     </view>
                     <navigationItem key="navigationItem" title="滤芯状态" id="Fis-FU-Yh2"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -8544,10 +8480,6 @@
         <scene sceneID="E6R-hy-nqx">
             <objects>
                 <viewController id="1E5-IJ-tIV" customClass="TDSPanSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4pJ-zf-jSN"/>
-                        <viewControllerLayoutGuide type="bottom" id="1K6-2E-4hk"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="L6R-eX-cWl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -8699,11 +8631,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93706661459999996" green="0.93679302929999997" blue="0.96569913630000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7aq-1R-b70" firstAttribute="top" secondItem="4pJ-zf-jSN" secondAttribute="bottom" id="3Sm-Or-PzX"/>
-                            <constraint firstItem="7aq-1R-b70" firstAttribute="leading" secondItem="L6R-eX-cWl" secondAttribute="leading" id="9Iz-Mv-Plv"/>
-                            <constraint firstItem="1K6-2E-4hk" firstAttribute="top" secondItem="7aq-1R-b70" secondAttribute="bottom" id="Wgs-Fu-cHY"/>
-                            <constraint firstAttribute="trailing" secondItem="7aq-1R-b70" secondAttribute="trailing" id="WsS-kX-vcA"/>
+                            <constraint firstItem="7aq-1R-b70" firstAttribute="top" secondItem="U2Q-Sj-RVQ" secondAttribute="top" id="3Sm-Or-PzX"/>
+                            <constraint firstItem="7aq-1R-b70" firstAttribute="leading" secondItem="U2Q-Sj-RVQ" secondAttribute="leading" id="9Iz-Mv-Plv"/>
+                            <constraint firstItem="U2Q-Sj-RVQ" firstAttribute="bottom" secondItem="7aq-1R-b70" secondAttribute="bottom" id="Wgs-Fu-cHY"/>
+                            <constraint firstItem="U2Q-Sj-RVQ" firstAttribute="trailing" secondItem="7aq-1R-b70" secondAttribute="trailing" id="WsS-kX-vcA"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="U2Q-Sj-RVQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="xo9-0U-NFa">
                         <barButtonItem key="leftBarButtonItem" image="icon_back" id="2M1-Sg-KAc">
@@ -8731,10 +8664,6 @@
         <scene sceneID="Csb-aO-ZQw">
             <objects>
                 <viewController id="mSq-x3-veU" customClass="CupSetDrinkTimeController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="why-Wx-cj4"/>
-                        <viewControllerLayoutGuide type="bottom" id="aii-Yz-1eV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mWu-PM-bne">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -8951,10 +8880,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="maB-Fd-2l7" secondAttribute="trailing" id="KEg-Ht-00W"/>
-                            <constraint firstItem="maB-Fd-2l7" firstAttribute="top" secondItem="why-Wx-cj4" secondAttribute="bottom" id="sR7-PQ-DhU"/>
-                            <constraint firstItem="maB-Fd-2l7" firstAttribute="leading" secondItem="mWu-PM-bne" secondAttribute="leading" id="umG-td-ftr"/>
+                            <constraint firstItem="t0Z-ct-5JW" firstAttribute="trailing" secondItem="maB-Fd-2l7" secondAttribute="trailing" id="KEg-Ht-00W"/>
+                            <constraint firstItem="maB-Fd-2l7" firstAttribute="top" secondItem="t0Z-ct-5JW" secondAttribute="top" id="sR7-PQ-DhU"/>
+                            <constraint firstItem="maB-Fd-2l7" firstAttribute="leading" secondItem="t0Z-ct-5JW" secondAttribute="leading" id="umG-td-ftr"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="t0Z-ct-5JW"/>
                     </view>
                     <navigationItem key="navigationItem" title="饮水提醒时间段" id="d0B-zE-CB3">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="Tqf-kj-2z2">
@@ -8989,10 +8919,6 @@
         <scene sceneID="iwj-Tf-Hc6">
             <objects>
                 <viewController id="goi-2L-YQV" customClass="NewAirSettingController" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eC8-eq-MYm"/>
-                        <viewControllerLayoutGuide type="bottom" id="TIQ-qR-zCX"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KDc-Fh-cRb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -9013,8 +8939,8 @@
                                                             <constraint firstAttribute="height" constant="1" id="hy1-l0-c9n"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的新风机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nc-PA-5yf" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="15" y="16" width="71.5" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的新风空净" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nc-PA-5yf" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                        <rect key="frame" x="15" y="16" width="86" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -9022,8 +8948,8 @@
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Rank_toright" translatesAutoresizingMaskIntoConstraints="NO" id="crG-jr-gTe">
                                                         <rect key="frame" x="352" y="16" width="8" height="17"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的新风机(办公室)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lb0-VW-6R1">
-                                                        <rect key="frame" x="209" y="15" width="133" height="18"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的新风空净(办公室)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lb0-VW-6R1">
+                                                        <rect key="frame" x="194" y="15" width="148" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="127" id="zze-yT-eKu"/>
                                                         </constraints>
@@ -9064,8 +8990,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfG-ex-JSo">
                                                 <rect key="frame" x="0.0" y="121" width="375" height="48"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于新风机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dm5-1O-E62" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="15" y="16" width="66.5" height="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于新风空净" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dm5-1O-E62" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
+                                                        <rect key="frame" x="15" y="16" width="80" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -9205,11 +9131,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93706661459999996" green="0.93679302929999997" blue="0.96569913630000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="akT-ZS-Nqt" firstAttribute="top" secondItem="eC8-eq-MYm" secondAttribute="bottom" id="ddg-FH-6ue"/>
-                            <constraint firstAttribute="trailing" secondItem="akT-ZS-Nqt" secondAttribute="trailing" id="eVS-G2-ofK"/>
-                            <constraint firstItem="akT-ZS-Nqt" firstAttribute="leading" secondItem="KDc-Fh-cRb" secondAttribute="leading" id="l2G-7x-BbR"/>
-                            <constraint firstItem="TIQ-qR-zCX" firstAttribute="top" secondItem="akT-ZS-Nqt" secondAttribute="bottom" id="lNl-rP-wyV"/>
+                            <constraint firstItem="akT-ZS-Nqt" firstAttribute="top" secondItem="7TK-PP-ZlD" secondAttribute="top" id="ddg-FH-6ue"/>
+                            <constraint firstItem="7TK-PP-ZlD" firstAttribute="trailing" secondItem="akT-ZS-Nqt" secondAttribute="trailing" id="eVS-G2-ofK"/>
+                            <constraint firstItem="akT-ZS-Nqt" firstAttribute="leading" secondItem="7TK-PP-ZlD" secondAttribute="leading" id="l2G-7x-BbR"/>
+                            <constraint firstItem="7TK-PP-ZlD" firstAttribute="bottom" secondItem="akT-ZS-Nqt" secondAttribute="bottom" id="lNl-rP-wyV"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="7TK-PP-ZlD"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="H0x-0x-GPE">
                         <barButtonItem key="leftBarButtonItem" image="icon_back" id="Goq-SK-6Un">
@@ -9282,8 +9209,13 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="avB-qO-o0y"/>
+<<<<<<< HEAD
+        <segue reference="BXe-Ml-x0S"/>
+        <segue reference="zGQ-IS-Izq"/>
+=======
         <segue reference="2o5-Yi-uFb"/>
         <segue reference="StK-Z1-fQm"/>
+>>>>>>> Distri_GiantJade
         <segue reference="Gh9-Ah-szL"/>
     </inferredMetricsTieBreakers>
 </document>
