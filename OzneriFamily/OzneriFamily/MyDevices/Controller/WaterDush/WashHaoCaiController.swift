@@ -37,8 +37,8 @@ class WashHaoCaiController: BaseViewController {
                         1:filterStatus.ruanshui,
                         2:filterStatus.liangjie,
                         3:filterStatus.jingjie]
-        let titles = [PTitleLabel,RTitleLabel,STitleLabel,DTitleLabel]
-        let Imgs = [PImg,RImg,SImg,DImg]
+        let titles = [PTitleLabel,STitleLabel,RTitleLabel,DTitleLabel]
+        let Imgs = [PImg,SImg,RImg,DImg]
         for (index,value) in valueArr {
             IsAnimals[index]=false
             var titleStr = ""
