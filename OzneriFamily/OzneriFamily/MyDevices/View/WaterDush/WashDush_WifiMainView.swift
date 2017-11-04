@@ -352,13 +352,18 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             if filterValue==oldValue {
                 return
             }
+            if self.currentDevice?.connectStatus != .Connected{
+                consumableButton.setImage(UIImage.init(named: "滤芯及耗材"), for: .normal)
+                stopfilterAnimal()
+                return
+            }
             consumableButton.setImage(UIImage.init(named: filterValue<=0 ? "滤芯及耗材":"滤芯及耗材缺乏"), for: .normal)
             filterValue<=0 ? stopfilterAnimal():starfilterAnimal()
         }
     }
     var filterTimer:Timer?
     func filterAnimal()  {
-        consumableButton.setImage(consumableButton.image(for: .normal)==nil ? UIImage.init(named: "滤芯及耗材"):nil, for: .normal)
+        consumableButton.setImage(consumableButton.image(for: .normal)==nil ? UIImage.init(named: "滤芯及耗材缺乏"):nil, for: .normal)
         
     }
     func starfilterAnimal()  {
@@ -391,7 +396,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         let filterStatus = (self.currentDevice as! WashDush_Wifi).filterStatus
         let time=filterStatus.AppointTime
         appointButton.setTitle("\(time/60):\(time%60):00", for: .normal)
-        if filterStatus.jingjie<=0||filterStatus.jingshui<=0||filterStatus.ruanshui<=0||filterStatus.liangdie<=0 {
+        if filterStatus.jingjie<=0||filterStatus.jingshui<=0||filterStatus.ruanshui<=0||filterStatus.liangjie<=0 {
             filterValue=1
         }else{
             filterValue=0

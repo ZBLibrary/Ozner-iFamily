@@ -74,7 +74,9 @@ class AirPurifier_Wifi: OznerBaseDevice {
                 return
             }
             for _ in 0..<Int(recvData[12]) {
-                
+                if p>=recvData.count {
+                    return
+                }
                 let keyOfData = UInt8(recvData[p])
                 p+=1
                 let size = Int(recvData[p])
