@@ -31,6 +31,7 @@
 		6876B55B1F5D314800E20ECE /* TwoCupMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6876B55A1F5D314800E20ECE /* TwoCupMainView.xib */; };
 		6876B55D1F5D3A7000E20ECE /* GYCirclePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6876B55C1F5D3A7000E20ECE /* GYCirclePoint.swift */; };
 		688080241F274ABA00E06404 /* AbbDatePickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688080231F274ABA00E06404 /* AbbDatePickView.swift */; };
+		68986DB61FAFED5200B280C4 /* CenterWater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68986DB51FAFED5200B280C4 /* CenterWater.swift */; };
 		68BA2DC91F4D7D630033E45F /* XZChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA2DC81F4D7D630033E45F /* XZChatViewController.swift */; };
 		7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */; };
 		8D0034801F78AB8E001A5B49 /* NewAirSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00347F1F78AB8E001A5B49 /* NewAirSettingController.swift */; };
@@ -449,6 +450,7 @@
 		6876B55A1F5D314800E20ECE /* TwoCupMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoCupMainView.xib; sourceTree = "<group>"; };
 		6876B55C1F5D3A7000E20ECE /* GYCirclePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCirclePoint.swift; sourceTree = "<group>"; };
 		688080231F274ABA00E06404 /* AbbDatePickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbbDatePickView.swift; sourceTree = "<group>"; };
+		68986DB51FAFED5200B280C4 /* CenterWater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterWater.swift; sourceTree = "<group>"; };
 		68BA2DC81F4D7D630033E45F /* XZChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZChatViewController.swift; sourceTree = "<group>"; };
 		8D00347F1F78AB8E001A5B49 /* NewAirSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAirSettingController.swift; sourceTree = "<group>"; };
 		8D0034811F78C31D001A5B49 /* NewAirSetTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAirSetTimeController.swift; sourceTree = "<group>"; };
@@ -1112,6 +1114,14 @@
 			path = TwoCup;
 			sourceTree = "<group>";
 		};
+		68986DB41FAFED1800B280C4 /* CenterWater */ = {
+			isa = PBXGroup;
+			children = (
+				68986DB51FAFED5200B280C4 /* CenterWater.swift */,
+			);
+			path = CenterWater;
+			sourceTree = "<group>";
+		};
 		8D0D68F11DDD99A00097038E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1400,6 +1410,7 @@
 		8D36D25F1F06234A0091EB1F /* DeviceManager */ = {
 			isa = PBXGroup;
 			children = (
+				68986DB41FAFED1800B280C4 /* CenterWater */,
 				8D36D26D1F06234A0091EB1F /* OznerDeviceManager.swift */,
 				8DC8664F1F6E9BDA0057C1D8 /* NewTrendAir_Wifi */,
 				682B8A891F3ADBD100CBE821 /* WashDush */,
@@ -2659,7 +2670,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = UZZG6NM74T;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2943,6 +2954,7 @@
 				8D36D2DF1F06234A0091EB1F /* BabyCallback.m in Sources */,
 				8D429A031DC9E9160083011C /* DeviceSettingController.swift in Sources */,
 				8D14A93A1DD9907000920AE9 /* UIImage+ColorAtPixel.m in Sources */,
+				68986DB61FAFED5200B280C4 /* CenterWater.swift in Sources */,
 				E0745AB71EE94ED200CB39CC /* UdeskBaseCell.m in Sources */,
 				8D0D69391DDD99A10097038E /* FriendSearch.swift in Sources */,
 				8DAE80891D9B992B00A9946F /* CoreDataManager.swift in Sources */,
@@ -3417,10 +3429,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = UZZG6NM74T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3456,8 +3468,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2fd3c7fd-afef-4fe1-bc28-0568c37f08bd";
-				PROVISIONING_PROFILE_SPECIFIER = Distri_OzneriFamily;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -3473,10 +3485,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = UZZG6NM74T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3512,8 +3524,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2fd3c7fd-afef-4fe1-bc28-0568c37f08bd";
-				PROVISIONING_PROFILE_SPECIFIER = Distri_OzneriFamily;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

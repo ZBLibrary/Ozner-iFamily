@@ -104,9 +104,12 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == ProductInfo.products.count - 1 {
+        
+        if indexPath.row == ProductInfo.products.count - 2 {
             
             let vc = WaterGPRSScanVc()
+            vc.scanTypeIndex = ProductInfo.products.count - 2
+            vc.scanString = "RoWater"
             self.navigationController?.pushViewController(vc, animated: true)
             return
         }
@@ -116,11 +119,15 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
         case OZDeviceClass.NewTrendAir_Wifi.rawValue://扫码配网,OZDeviceClass.WashDush_Wifi.rawValue
             let vc = PairingScanViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+        case OZDeviceClass.CenterWater.rawValue:
+            let vc = WaterGPRSScanVc()
+            vc.scanTypeIndex = ProductInfo.products.count - 1
+            vc.scanString = "runner_CentralPurifier"
+            self.navigationController?.pushViewController(vc, animated: true)
             
         default:
             self.performSegue(withIdentifier: "pushPairID", sender: indexPath.row)
         }
-        
 
     }
 

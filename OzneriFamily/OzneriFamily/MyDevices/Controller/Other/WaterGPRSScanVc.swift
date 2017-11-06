@@ -18,10 +18,12 @@ import SVProgressHUD
 class WaterGPRSScanVc: PairingScanViewController {
     
     //MARK: - Attributes
-
+    var scanTypeIndex:Int!
+    var scanString:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     //MARK: - Override
@@ -58,14 +60,24 @@ class WaterGPRSScanVc: PairingScanViewController {
 //                    default:
 //                        break
 //                    }
-                }
+            } else {
+              
+                appDelegate.window?.noticeOnlyText("请检查二维码是否正确")
+                self.navigationController?.popViewController(animated: true)
+                return
+            }
                 if deviceInfo2.deviceMac != "" && deviceInfo2.deviceID != "" && deviceInfo2.productID != "" {
            
+                    if deviceInfo2.productID != scanString {
+                        appDelegate.window?.noticeOnlyText("请确认当期配对类型")
+                        self.navigationController?.popViewController(animated: true)
+                        return
+                    }
 //                    let pair = PairSuccessController()
                     let storeB = UIStoryboard.init(name: "LeftMenu", bundle: nil)
-
                     let pair = storeB.instantiateViewController(withIdentifier: "PairSuccessController") as! PairSuccessController
-                    pair.productInfo=ProductInfo.products["\(11)"]!
+                    pair.productInfo=ProductInfo.products["\(scanTypeIndex!)"]!
+                    
                     pair.deviceArr = [deviceInfo2]
                                     
                     self.navigationController?.pushViewController(pair, animated: true)

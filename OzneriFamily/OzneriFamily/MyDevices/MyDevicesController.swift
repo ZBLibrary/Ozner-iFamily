@@ -88,8 +88,9 @@ class MyDevicesController: UIViewController {
             self.performSegue(withIdentifier: "showTDSPanSetting", sender: nil)
         case .NewTrendAir_Wifi:
             self.performSegue(withIdentifier: "showNewAirSetting", sender: nil)
-            
-            
+        case .CenterWater:
+//            .CenterWater
+            self.performSegue(withIdentifier: "ShowElectrickettleSetting", sender: nil)
         }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮
