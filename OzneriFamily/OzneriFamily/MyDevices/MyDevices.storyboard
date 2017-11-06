@@ -217,6 +217,7 @@
                         <segue destination="vmI-Za-rQX" kind="show" identifier="showWashHaoCai" id="2Wz-bf-3I2"/>
                         <segue destination="goi-2L-YQV" kind="show" identifier="showNewAirSetting" id="5B5-Zk-xom"/>
                         <segue destination="rWv-vc-sXq" kind="show" identifier="showNewAirAppoint" id="zGQ-IS-Izq"/>
+                        <segue destination="Iwh-3z-Cui" kind="show" identifier="ShowCenterWaterSettingVc" id="hoT-6M-OR5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6B-00-A3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1992,25 +1993,25 @@
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="136"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQL-69-4GE">
-                                                <rect key="frame" x="0.0" y="18" width="187.5" height="100"/>
+                                                <rect key="frame" x="0.0" y="18" width="187.5" height="99.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOC为空气中挥发性有机化合物" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVM-oh-s8l" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="14.5" y="86.5" width="159" height="13.5"/>
+                                                        <rect key="frame" x="15" y="86" width="159" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <color key="textColor" red="0.33333333329999998" green="0.53725490200000003" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VOC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAA-qd-r0b">
-                                                        <rect key="frame" x="80" y="0.0" width="27.5" height="16"/>
+                                                        <rect key="frame" x="80.5" y="0.0" width="27.5" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                         <color key="textColor" red="0.0" green="0.2156862745" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="air001" translatesAutoresizingMaskIntoConstraints="NO" id="u3s-N2-DPa">
-                                                        <rect key="frame" x="112.5" y="-0.5" width="17" height="17"/>
+                                                        <rect key="frame" x="113" y="-0.5" width="17" height="17"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5PA-vH-naK">
-                                                        <rect key="frame" x="85.5" y="27.5" width="16.5" height="45.5"/>
+                                                        <rect key="frame" x="86" y="27.5" width="16.5" height="45.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="38"/>
                                                         <color key="textColor" red="0.33333333329999998" green="0.53725490200000003" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2045,25 +2046,25 @@
                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="136"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npA-k0-fBT">
-                                                <rect key="frame" x="0.0" y="18" width="187.5" height="100"/>
+                                                <rect key="frame" x="0.0" y="18" width="187.5" height="99.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM2.5为空气中细微颗粒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwv-bz-HPi" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="32" y="86.5" width="123.5" height="13.5"/>
+                                                        <rect key="frame" x="32.5" y="86" width="123.5" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <color key="textColor" red="0.33333333329999998" green="0.53725490200000003" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zev-nm-41N">
-                                                        <rect key="frame" x="75" y="0.0" width="38" height="16"/>
+                                                        <rect key="frame" x="75.5" y="0.0" width="38" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                         <color key="textColor" red="0.0" green="0.2156862745" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="air001" translatesAutoresizingMaskIntoConstraints="NO" id="gxo-vL-xUW">
-                                                        <rect key="frame" x="118" y="-0.5" width="17" height="17"/>
+                                                        <rect key="frame" x="118.5" y="-0.5" width="17" height="17"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSP-m4-AeV">
-                                                        <rect key="frame" x="85.5" y="27.5" width="16.5" height="45.5"/>
+                                                        <rect key="frame" x="86" y="27.5" width="16.5" height="45.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="38"/>
                                                         <color key="textColor" red="0.33333333329999998" green="0.53725490200000003" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2162,31 +2163,31 @@
                                         <rect key="frame" x="0.0" y="79" width="375" height="101"/>
                                         <subviews>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="TDSJinDu_100" translatesAutoresizingMaskIntoConstraints="NO" id="PX3-Lu-qT0">
-                                                <rect key="frame" x="41.5" y="47" width="292" height="7"/>
+                                                <rect key="frame" x="41.5" y="47.5" width="292" height="7"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="7" id="eFa-fO-Eoa"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="TDSJinDu_0" translatesAutoresizingMaskIntoConstraints="NO" id="4ys-Pa-6Vi">
-                                                <rect key="frame" x="41.5" y="47" width="192" height="7"/>
+                                                <rect key="frame" x="41.5" y="47.5" width="192" height="7"/>
                                             </imageView>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="air003" translatesAutoresizingMaskIntoConstraints="NO" id="lAx-Up-HeT">
-                                                <rect key="frame" x="229.5" y="59" width="8" height="11"/>
+                                                <rect key="frame" x="229.5" y="59.5" width="8" height="11"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40H-Md-ltd">
-                                                <rect key="frame" x="342.5" y="59" width="6" height="14.5"/>
+                                                <rect key="frame" x="342.5" y="59.5" width="6" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b44-Us-or0">
-                                                <rect key="frame" x="26.5" y="59" width="6" height="14.5"/>
+                                                <rect key="frame" x="26.5" y="59.5" width="6" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LV4-BE-uhK">
-                                                <rect key="frame" x="230.5" y="27.5" width="6" height="14.5"/>
+                                                <rect key="frame" x="230.5" y="28" width="6" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2640,13 +2641,13 @@
                                 <rect key="frame" x="0.0" y="214" width="375" height="254"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIB-qT-KPT">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="182"/>
+                                        <rect key="frame" x="0.0" y="71.5" width="375" height="182.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVr-qf-AlE">
-                                                <rect key="frame" x="0.0" y="10" width="375" height="142"/>
+                                                <rect key="frame" x="0.0" y="10" width="375" height="142.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1a0-iy-Vgz">
-                                                        <rect key="frame" x="39.5" y="122" width="320" height="20"/>
+                                                        <rect key="frame" x="39.5" y="122.5" width="320" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWY-wU-mSi" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="8" width="49.5" height="12"/>
@@ -2720,18 +2721,18 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hP0-2h-plQ">
-                                                        <rect key="frame" x="15.5" y="121" width="344" height="1"/>
+                                                        <rect key="frame" x="15.5" y="121.5" width="344" height="1"/>
                                                         <color key="backgroundColor" red="0.53374731539999998" green="0.72080600260000005" blue="0.97003930810000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="g7g-Nj-Gye"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhr-Au-xdl" customClass="WaterPurfierTDSChart" customModule="OzneriFamily" customModuleProvider="target">
-                                                        <rect key="frame" x="49.5" y="7" width="300" height="114"/>
+                                                        <rect key="frame" x="49.5" y="7" width="300" height="114.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rLo-lA-xSl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="121"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="121.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="较差" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9m-Uz-hVj" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
                                                                 <rect key="frame" x="22" y="0.0" width="22.5" height="13.5"/>
@@ -2740,7 +2741,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安全" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlt-xq-LEt" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                                <rect key="frame" x="22" y="80.5" width="22.5" height="13.5"/>
+                                                                <rect key="frame" x="22" y="81.5" width="22.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                                 <color key="textColor" red="0.032312974333763123" green="0.62567442655563354" blue="0.081017114222049713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -2755,10 +2756,10 @@
                                                                 <rect key="frame" x="34.5" y="13.5" width="10" height="27"/>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSu-JH-Biv">
-                                                                <rect key="frame" x="34.5" y="94" width="10" height="27"/>
+                                                                <rect key="frame" x="34.5" y="95" width="10" height="26.5"/>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nf-DS-vU3">
-                                                                <rect key="frame" x="34.5" y="54" width="10" height="26.5"/>
+                                                                <rect key="frame" x="34.5" y="54" width="10" height="27.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="10" id="DT6-Fd-oni"/>
                                                                 </constraints>
@@ -2805,19 +2806,19 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化后" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kc-ZU-4cW" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                <rect key="frame" x="232" y="152" width="37" height="30"/>
+                                                <rect key="frame" x="232" y="152.5" width="37" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                 <color key="textColor" red="0.21710735559463501" green="0.50405031442642212" blue="0.89849025011062622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="净化前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y32-jo-tQd" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                                <rect key="frame" x="95.5" y="152" width="37" height="30"/>
+                                                <rect key="frame" x="95.5" y="152.5" width="37" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                 <color key="textColor" red="0.71601575613021851" green="0.3085353672504425" blue="0.64879316091537476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4t0-oG-HyU">
-                                                <rect key="frame" x="217" y="162" width="10" height="10"/>
+                                                <rect key="frame" x="217" y="162.5" width="10" height="10"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="ZKw-XL-flO"/>
@@ -2837,7 +2838,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NA7-yc-d3s">
-                                                <rect key="frame" x="80.5" y="162" width="10" height="10"/>
+                                                <rect key="frame" x="80.5" y="162.5" width="10" height="10"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="Fph-3h-dkg"/>
@@ -2876,7 +2877,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水质纯净指数分布" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGQ-m4-8C4" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                        <rect key="frame" x="122" y="0.0" width="131" height="46"/>
+                                        <rect key="frame" x="122" y="0.0" width="131" height="45.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2885,7 +2886,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XvK-Sf-U3E">
-                                        <rect key="frame" x="15" y="46" width="345" height="26"/>
+                                        <rect key="frame" x="15" y="45.5" width="345" height="26"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="tor-3l-1ks"/>
@@ -3732,16 +3733,16 @@
                                 <rect key="frame" x="0.0" y="214" width="375" height="254"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="los-SS-bT9">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="182"/>
+                                        <rect key="frame" x="0.0" y="71.5" width="375" height="182.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7jH-gW-P2p">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="182.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0s5-0a-aRo">
-                                                        <rect key="frame" x="0.0" y="10" width="375" height="157"/>
+                                                        <rect key="frame" x="0.0" y="10" width="375" height="157.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCo-cH-vQV">
-                                                                <rect key="frame" x="39.5" y="137" width="320" height="20"/>
+                                                                <rect key="frame" x="39.5" y="137.5" width="320" height="20"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kjh-NV-3u1">
                                                                         <rect key="frame" x="0.0" y="8" width="49.5" height="12"/>
@@ -3815,18 +3816,18 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmm-dC-7J2">
-                                                                <rect key="frame" x="15.5" y="136" width="344" height="1"/>
+                                                                <rect key="frame" x="15.5" y="136.5" width="344" height="1"/>
                                                                 <color key="backgroundColor" red="0.53374731539999998" green="0.72080600260000005" blue="0.97003930810000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="xLg-cv-sMq"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ib-1D-ORI" customClass="CupDrinkingChartView" customModule="OzneriFamily" customModuleProvider="target">
-                                                                <rect key="frame" x="49.5" y="7" width="300" height="129"/>
+                                                                <rect key="frame" x="49.5" y="7" width="300" height="129.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4A-o4-0dI">
-                                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="136"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="136.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7d-iM-Fff">
                                                                         <rect key="frame" x="23.5" y="0.0" width="21" height="13.5"/>
@@ -3835,7 +3836,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cg4-tH-qMO">
-                                                                        <rect key="frame" x="25.5" y="90.5" width="19" height="13.5"/>
+                                                                        <rect key="frame" x="25.5" y="91.5" width="19" height="13.5"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
@@ -3850,10 +3851,10 @@
                                                                         <rect key="frame" x="34.5" y="13.5" width="10" height="32"/>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SnE-GD-fCq">
-                                                                        <rect key="frame" x="34.5" y="104" width="10" height="32"/>
+                                                                        <rect key="frame" x="34.5" y="105" width="10" height="31.5"/>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2nD-Fm-Ixi">
-                                                                        <rect key="frame" x="34.5" y="59" width="10" height="31.5"/>
+                                                                        <rect key="frame" x="34.5" y="59" width="10" height="32.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="10" id="Yb6-0h-D8h"/>
                                                                         </constraints>
@@ -3918,7 +3919,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="饮水量指数分布" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXj-Ge-fYY" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                        <rect key="frame" x="130.5" y="0.0" width="114.5" height="46"/>
+                                        <rect key="frame" x="130.5" y="0.0" width="114.5" height="45.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3927,7 +3928,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aTT-IU-ayU">
-                                        <rect key="frame" x="15" y="46" width="345" height="26"/>
+                                        <rect key="frame" x="15" y="45.5" width="345" height="26"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="UrO-PB-sYg"/>
@@ -7738,7 +7739,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-l6-Tpr">
-                                <rect key="frame" x="117" y="384" width="140" height="40"/>
+                                <rect key="frame" x="117.5" y="384" width="140" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="4XR-oi-3nv"/>
                                     <constraint firstAttribute="height" constant="40" id="G9r-HJ-7b2"/>
@@ -9231,6 +9232,25 @@
             </objects>
             <point key="canvasLocation" x="13111" y="1156"/>
         </scene>
+        <!--Center Water Setting Vc-->
+        <scene sceneID="JOh-48-zgg">
+            <objects>
+                <viewController id="Iwh-3z-Cui" customClass="CenterWaterSettingVc" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8E2-q0-j1w"/>
+                        <viewControllerLayoutGuide type="bottom" id="zY1-tP-k42"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gv8-Ig-Klq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Cvk-Up-0cB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ihZ-Jc-itj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13794" y="1155"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Rank_toright" width="8" height="17"/>
@@ -9282,8 +9302,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="avB-qO-o0y"/>
-        <segue reference="2o5-Yi-uFb"/>
-        <segue reference="StK-Z1-fQm"/>
-        <segue reference="Gh9-Ah-szL"/>
+        <segue reference="BXe-Ml-x0S"/>
+        <segue reference="zGQ-IS-Izq"/>
+        <segue reference="kPL-av-rgP"/>
     </inferredMetricsTieBreakers>
 </document>

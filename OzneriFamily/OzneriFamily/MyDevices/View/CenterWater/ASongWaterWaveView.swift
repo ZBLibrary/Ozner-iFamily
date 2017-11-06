@@ -39,13 +39,9 @@ class ASongWaterWaveView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        asongLabel = UILabel(frame: CGRect(x: 0, y: 64, width: frame.size.width, height: 40))
-        asongLabel.text = "32.5L"
-        asongLabel.font = UIFont.systemFont(ofSize: 20)
-        asongLabel.textColor = UIColor(red: 22.0 / 255.0, green: 143.0 / 255.0, blue: 254.0 / 255.0, alpha: 1.0)
-       
-        asongLabel.textAlignment = .center
-        self.addSubview(asongLabel)
+        if asongLabel == nil {
+            addLb()
+        }
         
         initData()
         configUI()
@@ -53,7 +49,7 @@ class ASongWaterWaveView: UIView {
     //MARK: - 数据的初始化
     private func initData(){
         waveSpeed = 0.05
-        waveA = 8
+        waveA = 10
         // 设置周期 :( 2* M_PI)/waveW = bounds.size.width 。因为涉及的是layer，所以只谈bounds,不说frame
         waveW = 2 * CGFloat.pi / bounds.size.width
         b  = bounds.size.height / 2
@@ -68,8 +64,8 @@ class ASongWaterWaveView: UIView {
     //MARK: - 初始化UI
     private func configUI(){
         
-        firstWaveLayer.fillColor = UIColor.init(red: 69/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.5).cgColor
-        secondWaveLayer.fillColor = UIColor.init(red: 69/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.5).cgColor
+        firstWaveLayer.fillColor = UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0).cgColor
+        secondWaveLayer.fillColor = UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 0.2).cgColor
         layer.addSublayer(firstWaveLayer)
         layer.addSublayer(secondWaveLayer)
         waveDisplaylink = CADisplayLink(target: self, selector: #selector(getCurrentWave))
@@ -84,7 +80,7 @@ class ASongWaterWaveView: UIView {
     private func setCurrentStatusWavePath() {
         let path = UIBezierPath(ovalIn: self.bounds)
         
-        UIColor.red.setFill()
+        UIColor.lightGray.withAlphaComponent(0.3).setFill()
         path.fill()
         path.addClip()
         // 创建一个路径
@@ -123,29 +119,31 @@ class ASongWaterWaveView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        asongLabel = UILabel(frame: CGRect(x: 0, y: 64, width: frame.size.width, height: 40))
-        asongLabel.text = "32.5L"
-        asongLabel.font = UIFont.systemFont(ofSize: 20)
-        asongLabel.textColor = UIColor(red: 22.0 / 255.0, green: 143.0 / 255.0, blue: 254.0 / 255.0, alpha: 1.0)
-        
-        asongLabel.textAlignment = .center
-        self.addSubview(asongLabel)
-        
+        if asongLabel == nil {
+            addLb()
+        }
         initData()
         configUI()
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-        super.init(coder: aDecoder)
-        asongLabel = UILabel(frame: CGRect(x: 0, y: 64, width: frame.size.width, height: 40))
+    func addLb() {
+        asongLabel = UILabel(frame: CGRect(x: 0, y: 25, width: frame.size.width, height: 40))
         asongLabel.text = "32.5L"
-        asongLabel.font = UIFont.systemFont(ofSize: 20)
-        asongLabel.textColor = UIColor(red: 22.0 / 255.0, green: 143.0 / 255.0, blue: 254.0 / 255.0, alpha: 1.0)
+        asongLabel.font = UIFont.systemFont(ofSize: 35)
+        asongLabel.textColor = UIColor(red: 58 / 255.0, green: 113 / 255.0, blue: 221 / 255.0, alpha: 1.0)
         
         asongLabel.textAlignment = .center
         self.addSubview(asongLabel)
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        if asongLabel == nil {
+            addLb()
+        }
         
         initData()
         configUI()

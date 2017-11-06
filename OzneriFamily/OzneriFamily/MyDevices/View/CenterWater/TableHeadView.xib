@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="TableHeadViewID" id="iN0-l3-epB" customClass="TableHeadView" customModule="WSWaterWaveDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="282" height="48"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的中央净水机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Md-TC-WaA">
+                    <rect key="frame" x="15" y="15" width="107.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My_toright_icon" translatesAutoresizingMaskIntoConstraints="NO" id="e9i-J7-gp6">
+                    <rect key="frame" x="247" y="14" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="fFN-Fz-aCR"/>
+                        <constraint firstAttribute="height" constant="20" id="ikK-r0-roN"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的水机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jT-Gw-PVR">
+                    <rect key="frame" x="170.5" y="15.5" width="61.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rl-jU-HfY">
+                    <rect key="frame" x="0.0" y="0.0" width="282" height="48"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdT-r3-hKG">
+                    <rect key="frame" x="15" y="47" width="252" height="1"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="yZW-no-Nlz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="e9i-J7-gp6" firstAttribute="leading" secondItem="5jT-Gw-PVR" secondAttribute="trailing" constant="15" id="2RQ-Ux-KEz"/>
+                <constraint firstItem="4Md-TC-WaA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="Ho8-X2-6Cp"/>
+                <constraint firstItem="mdT-r3-hKG" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="LLh-ck-lT3"/>
+                <constraint firstItem="5jT-Gw-PVR" firstAttribute="centerY" secondItem="4Md-TC-WaA" secondAttribute="centerY" id="NVl-py-QBW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6Rl-jU-HfY" secondAttribute="bottom" id="PZ9-8p-bps"/>
+                <constraint firstItem="4Md-TC-WaA" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="RWL-xj-2c7"/>
+                <constraint firstItem="6Rl-jU-HfY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Sd5-33-Vgq"/>
+                <constraint firstItem="mdT-r3-hKG" firstAttribute="trailing" secondItem="e9i-J7-gp6" secondAttribute="trailing" id="Z3k-MA-mLS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6Rl-jU-HfY" secondAttribute="trailing" id="j5v-xb-Crx"/>
+                <constraint firstItem="e9i-J7-gp6" firstAttribute="centerY" secondItem="4Md-TC-WaA" secondAttribute="centerY" id="jEX-jH-WCW"/>
+                <constraint firstItem="mdT-r3-hKG" firstAttribute="leading" secondItem="4Md-TC-WaA" secondAttribute="leading" id="nqJ-fW-whI"/>
+                <constraint firstItem="6Rl-jU-HfY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="qky-y9-fei"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e9i-J7-gp6" secondAttribute="trailing" constant="15" id="xFG-tP-hJj"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="actionBtn" destination="6Rl-jU-HfY" id="Kq5-WQ-5AA"/>
+                <outlet property="nameLb" destination="5jT-Gw-PVR" id="jbP-yA-yoe"/>
+            </connections>
+            <point key="canvasLocation" x="-43" y="-253"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="My_toright_icon" width="10" height="13"/>
+    </resources>
+</document>

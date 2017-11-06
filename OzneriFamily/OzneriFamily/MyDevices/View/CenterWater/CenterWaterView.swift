@@ -15,14 +15,26 @@
 
 import UIKit
 
-class CenterWaterView: OznerDeviceView {
+class CenterWaterView: OznerDeviceView{
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var centerBtn: UIButton!
+    @IBOutlet weak var leftWaveView: ASongWaterWaveView!
+    
+    @IBOutlet weak var rightWaveView: ASongWaterWaveView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        leftWaveView.layer.cornerRadius = leftWaveView.frame.width/2
+        leftWaveView.layer.masksToBounds = true
+        
+        rightWaveView.layer.cornerRadius = leftWaveView.frame.width/2
+        rightWaveView.layer.masksToBounds = true
+        centerBtn.layer.cornerRadius = 23
+        centerBtn.layer.masksToBounds = true
+        centerBtn.layer.borderColor = UIColor(red: 22.0 / 255.0, green: 142.0 / 255.0, blue: 253.0 / 255.0, alpha: 1.0).cgColor
+        centerBtn.layer.borderWidth = 2
+        
     }
-    */
-
+    
 }
