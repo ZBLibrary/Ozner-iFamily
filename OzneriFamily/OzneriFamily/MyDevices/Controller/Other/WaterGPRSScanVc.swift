@@ -36,7 +36,7 @@ class WaterGPRSScanVc: PairingScanViewController {
             return
         }
         if let result = arrayResult[0].strScanned{
-            print("扫描到的二维码内容："+result)
+
             if result.contains("&deviceId=")&&result.contains("deviceType=") {
 
                 let arr = result.components(separatedBy: "deviceType=")
@@ -46,20 +46,7 @@ class WaterGPRSScanVc: PairingScanViewController {
                 deviceInfo2.deviceMac = arr2[1]
                 deviceInfo2.deviceID = arr2[1]
                 deviceInfo2.productID = arr2[0]
-//                for item in resultArr {
-//                    let itemArr = item.components(separatedBy: "=")
-//
-//                    switch itemArr[0] {
-//                    case "mac":
-//                        deviceInfo2.deviceMac=itemArr[1]
-//                    case "deviceid":
-//                        deviceInfo2.deviceID=itemArr[1]
-//                    case "productid":
-//                        deviceInfo2.productID=itemArr[1]
-//                        deviceInfo2.deviceType=itemArr[1]
-//                    default:
-//                        break
-//                    }
+                
             } else {
               
                 appDelegate.window?.noticeOnlyText("请检查二维码是否正确")
