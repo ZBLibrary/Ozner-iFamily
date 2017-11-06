@@ -73,7 +73,7 @@ class WaterGPRSScanVc: PairingScanViewController {
                         self.navigationController?.popViewController(animated: true)
                         return
                     }
-//                    let pair = PairSuccessController()
+
                     let storeB = UIStoryboard.init(name: "LeftMenu", bundle: nil)
                     let pair = storeB.instantiateViewController(withIdentifier: "PairSuccessController") as! PairSuccessController
                     pair.productInfo=ProductInfo.products["\(scanTypeIndex!)"]!
@@ -81,23 +81,6 @@ class WaterGPRSScanVc: PairingScanViewController {
                     pair.deviceArr = [deviceInfo2]
                                     
                     self.navigationController?.pushViewController(pair, animated: true)
-                    
-                    
-//                 let device=OznerManager.instance.createDevice(scanDeviceInfo: deviceInfo2, setting: nil)
-//                    device.settings.name="智能设备"
-//                    OznerManager.instance.saveDevice(device: device)
-//                    OznerManager.instance.currentDevice=device
-//                    //上传到服务器
-//                    LoginManager.instance.showHud()
-//                    User.AddDevice(mac: device.deviceInfo.deviceMac, type: device.deviceInfo.deviceType, setting: device.settings.toJsonString(), success: {
-//                        print("设备上传到服务器成功！")
-//                        SVProgressHUD.dismiss()
-//                    }, failure: { (error) in
-//                        SVProgressHUD.dismiss()
-//                        print("设备上传到服务器失败！")
-//                    })
-//                    self.dismiss(animated: false, completion: {})
-                    
                 }
                 
             }
