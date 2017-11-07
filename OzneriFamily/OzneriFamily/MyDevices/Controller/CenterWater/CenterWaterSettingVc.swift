@@ -79,6 +79,9 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
         
         let headView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableHeadViewID") as! TableHeadView
         headView.actionBtn.tag = section + 666
+        if section == 0 {
+            headView.nameLb.text = self.getNameAndAttr()
+        }
         headView.actionBtn.addTarget(self, action: #selector(CenterWaterSettingVc.actionBtn(_:)), for: UIControlEvents.touchUpInside)
         return headView
     }
@@ -89,6 +92,16 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
     }
     
     func actionBtn(_ sender:UIButton) {
+        
+        switch sender.tag {
+        case 666:
+            self.performSegue(withIdentifier: "ShowCenterVc", sender: nil)
+            break
+        case 668:
+            break
+        default:
+            break
+        }
         
     }
     
@@ -115,24 +128,21 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
     
 }
 
-class CenterWaterSettingVc: BaseViewController {
+class CenterWaterSettingVc: DeviceSettingController {
     
     var tableView:UITableView!
     var sectionNum:Int = 0
     
+    @IBAction func saveAction(_ sender: Any) {
+        
+        self.saveDevice()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        //        let singleWaterWaveView = ASongWaterWaveView(frame:CGRect(x: 20, y: 200, width: 200, height: 200))
-        //        singleWaterWaveView.layer.masksToBounds = true
-        //        singleWaterWaveView.layer.cornerRadius = 100
-        //        view.addSubview(singleWaterWaveView)
-        
-        //        let waveView = UINib.init(nibName: "CenterWaterView", bundle: nil).instantiate(withOwner: nil, options: nil).last as! CenterWaterView
-        //        waveView.backgroundColor = UIColor.brown
-        //        waveView.frame = view.frame
-        //
-        //        view.addSubview(waveView)
+        self.title = "设置"
         
         tableView = UITableView(frame: view.frame, style: UITableViewStyle.plain)
         tableView.backgroundColor = UIColor.white
@@ -149,10 +159,14 @@ class CenterWaterSettingVc: BaseViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
 }

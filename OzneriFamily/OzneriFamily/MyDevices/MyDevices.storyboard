@@ -9245,7 +9245,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Cvk-Up-0cB"/>
+                    <navigationItem key="navigationItem" id="Cvk-Up-0cB">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="t4t-8f-ytD">
+                            <connections>
+                                <action selector="saveAction:" destination="Iwh-3z-Cui" id="D8T-EX-Hfa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="GRq-nX-7ST" kind="show" identifier="ShowCenterVc" id="CmT-Iw-XQ3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ihZ-Jc-itj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -9302,8 +9311,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="avB-qO-o0y"/>
-        <segue reference="BXe-Ml-x0S"/>
-        <segue reference="zGQ-IS-Izq"/>
-        <segue reference="kPL-av-rgP"/>
+        <segue reference="2o5-Yi-uFb"/>
+        <segue reference="StK-Z1-fQm"/>
+        <segue reference="CmT-Iw-XQ3"/>
     </inferredMetricsTieBreakers>
 </document>
