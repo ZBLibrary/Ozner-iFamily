@@ -22,7 +22,7 @@ class CenterHeadView: UITableViewHeaderFooterView {
     @IBOutlet weak var defaultBtn: UIButton!
     
 
-    var block:(()->Void)!
+    var block:((Int)->Void)!
     
     var isDefault = true
     
@@ -59,7 +59,7 @@ class CenterHeadView: UITableViewHeaderFooterView {
             break
         }
         
-        block()
+        block(sender.tag)
     }
     
     func btnBgColor(_ btn:UIButton,color:UIColor) {

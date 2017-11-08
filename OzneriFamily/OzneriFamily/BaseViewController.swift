@@ -33,7 +33,7 @@ class BaseViewController: UIViewController {
     }
     
     func backAction() {
-    _ = navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     //MARK: - Override

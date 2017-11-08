@@ -18,11 +18,47 @@ import UIKit
 
 class GYCenterWaterCell: UITableViewCell {
 
+    @IBOutlet weak var timeLb: UILabel!
+    @IBOutlet weak var nameLb: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    
+    func reloadUI(_ model:CenterWaterModel,index:Int) {
+        
+        nameLb.text = model.name
+        
+        switch index {
+        case 0:
+            timeLb.text = model.setTime + "天"
+            break
+        case 1:
+            timeLb.text = model.setTime + "天"
+            break
+        case 2:
+            timeLb.text = model.setTime + "顿"
+            break
+        case 3:
+            timeLb.text = model.setTime + "分钟"
+            break
+        case 4:
+            timeLb.text = model.setTime + "分钟"
+            break
+        case 5:
+            timeLb.text = model.setTime + "分钟"
+            break
+        case 6:
+            timeLb.text = model.setTime + "分钟"
+            break
+        default:
+            break
+        }
+        
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

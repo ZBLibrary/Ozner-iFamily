@@ -21,6 +21,11 @@ fileprivate struct gy_associatedKeys{
     
 }
 
+struct CenterWaterModel {
+    var name = ""
+    var setTime = ""
+}
+
 extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,8 +45,11 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GYCenterWaterCellD") as! GYCenterWaterCell
+        let model = dataArr[indexPath.row]
+        cell.reloadUI(model,index:indexPath.row)
         
         cell.selectionStyle = .none
+        
         return cell
     }
     
@@ -52,7 +60,35 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if !isCanEdit {
+            self.noticeOnlyText("请选择自定义模式进行设置")
+            return
+        }
         
+        var model = dataArr[indexPath.row]
+        
+        switch indexPath.row {
+        case 0...6:
+            let alert = SCLAlertView()
+            let txt = alert.addTextField("请输入")
+            alert.addButton("确定") {
+                print("Text value: \(String(describing: txt.text))")
+                if txt.text?.count == 0 || txt.text == nil {
+                    return
+                }
+                model.setTime = txt.text!
+                self.dataArr[indexPath.row] = model
+                self.tableView.reloadData()
+            }
+            alert.addButton("取消") {
+                
+            }
+            alert.showEdit("温馨提示", subTitle: "请设置"+model.name)
+            break
+        default:
+            break
+        }
+ 
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -65,9 +101,10 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
             let headView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "CenterHeadViewID") as! CenterHeadView
             headView.isUserInteractionEnabled = true
             headView.addGestureRecognizer(tap)
-            headView.block = { Void in
+            headView.block = { (index) -> Void in
                 
                 self.sectionNum = 8
+                self.isCanEdit = index == 555 ? false :true
                 self.tableView.reloadData()
                 
             }
@@ -133,6 +170,14 @@ class CenterWaterSettingVc: DeviceSettingController {
     var tableView:UITableView!
     var sectionNum:Int = 0
     
+    var isCanEdit:Bool = false
+    
+    var dataArr:[CenterWaterModel] = [] {
+        didSet{
+//            tableView.reloadData()
+        }
+    }
+    
     @IBAction func saveAction(_ sender: Any) {
         
         self.saveDevice()
@@ -143,6 +188,16 @@ class CenterWaterSettingVc: DeviceSettingController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         self.title = "设置"
+        
+        
+        
+        dataArr = [CenterWaterModel(name: "居家反冲洗周期", setTime: "7"),                   CenterWaterModel(name: "出差反冲洗周期", setTime: "3"),
+            CenterWaterModel(name: "周期制水量", setTime: "2.5"),
+            CenterWaterModel(name: "居家反洗持续时间", setTime: "15"),
+        CenterWaterModel(name: "居家正洗持续时间", setTime: "8"),
+        CenterWaterModel(name: "出差反洗持续时间", setTime: "4"),
+        CenterWaterModel(name: "出差正洗持续时间", setTime: "4"),
+        CenterWaterModel(name: "执行反冲洗时间点", setTime: "02：00")]
         
         tableView = UITableView(frame: view.frame, style: UITableViewStyle.plain)
         tableView.backgroundColor = UIColor.white
