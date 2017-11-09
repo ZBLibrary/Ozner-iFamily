@@ -85,11 +85,43 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
             }
             alert.showEdit("温馨提示", subTitle: "请设置"+model.name)
             break
+        case 7:
+            pickDateView=Bundle.main.loadNibNamed("TapDatePickerView", owner: nil, options: nil)?.last as? TapDatePickerView
+            pickDateView?.datePicker.minimumDate = Date.init()
+            pickDateView?.datePicker.datePickerMode = .time
+    
+            pickDateView?.datePicker.maximumDate = Date.init(timeIntervalSinceNow: 24 * 60 * 60)
+            pickDateView?.datePicker.datePickerMode = .dateAndTime
+            pickDateView?.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
+            pickDateView?.cancelButton.addTarget(self, action: #selector(pickerCancle), for: .touchUpInside)
+            pickDateView?.OKButton.addTarget(self, action: #selector(pickerOK), for: .touchUpInside)
+            view.addSubview(pickDateView!)
+            break
         default:
             break
         }
  
     }
+    
+    func pickerOK()  {
+        let date = pickDateView!.datePicker.date as NSDate
+        print(date.formattedDate(withFormat: "HH:mm"))
+        DispatchQueue.main.async {
+
+            var model = self.dataArr[7]
+            model.setTime = date.formattedDate(withFormat: "HH:mm")
+            self.dataArr[7] = model
+            self.pickDateView?.removeFromSuperview()
+        
+            self.tableView.reloadRows(at: [IndexPath(item: 7, section: 1)], with: UITableViewRowAnimation.none)
+        }
+    }
+    
+    func pickerCancle() {
+        pickDateView?.removeFromSuperview()
+        
+    }
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -118,6 +150,8 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
         headView.actionBtn.tag = section + 666
         if section == 0 {
             headView.nameLb.text = self.getNameAndAttr()
+        } else {
+            headView.nameLb.text = "我的水机"
         }
         headView.actionBtn.addTarget(self, action: #selector(CenterWaterSettingVc.actionBtn(_:)), for: UIControlEvents.touchUpInside)
         return headView
@@ -172,11 +206,9 @@ class CenterWaterSettingVc: DeviceSettingController {
     
     var isCanEdit:Bool = false
     
-    var dataArr:[CenterWaterModel] = [] {
-        didSet{
-//            tableView.reloadData()
-        }
-    }
+    var pickDateView:TapDatePickerView?
+    
+    var dataArr:[CenterWaterModel] = []
     
     @IBAction func saveAction(_ sender: Any) {
         

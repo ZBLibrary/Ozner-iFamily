@@ -32,7 +32,7 @@ class CenterHeadView: UITableViewHeaderFooterView {
         cornerBtn(setBtn)
         cornerBtn(defaultBtn)
         if isDefault {
-            btnBgColor(defaultBtn, color: UIColor.blue)
+            btnBgColor(setBtn, color: UIColor.blue)
         }
         
     }
