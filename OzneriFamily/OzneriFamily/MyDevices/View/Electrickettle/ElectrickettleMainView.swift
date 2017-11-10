@@ -156,6 +156,13 @@ class ElectrickettleMainView: OznerDeviceView {
     
     @IBAction func tempChange(_ sender: UIButton) {
         
+        if sender.tag > Int(tempValue.maximumValue) && sender.tag != 666{
+            
+            self.noticeOnlyText("设置温度不能大于当前煮沸温度")
+            
+            return
+        }
+        
         let device = currentDevice as? Electrickettle_Blue
         
         if device?.connectStatus != OznerConnectStatus.Connected {
@@ -433,7 +440,10 @@ class ElectrickettleMainView: OznerDeviceView {
         slider.addTarget(self, action: #selector(ElectrickettleMainView.sliderValueChanged(_:)), for: UIControlEvents.touchUpInside)
         
         tempValue.minimumValue = 0
-        tempValue.maximumValue = 100
+        
+        let manS = Int((OznerManager.instance.currentDevice?.settings.GetValue(key: "ELTempSet", defaultValue: "100"))!)
+        
+        tempValue.maximumValue = Float(manS!)
         tempValue.isEnabled = true
         tempValue.layer.sublayers?.removeAll()
         switchlb.isEnabled = false

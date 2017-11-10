@@ -131,7 +131,7 @@ class ElectrickettleSettingVc: DeviceSettingController {
             LocalNotificationHelper.removeNoticeForKey(key: currentRemindType.remindNotification)
         }
         
-        let timeSpace = Int(self.deviceSetting.GetValue(key: "ELTempSet", defaultValue: "0"))!
+        let timeSpace = Int(self.deviceSetting.GetValue(key: "ELTempSet", defaultValue: "100"))!
         
         let device = OznerManager.instance.currentDevice as? Electrickettle_Blue
         
