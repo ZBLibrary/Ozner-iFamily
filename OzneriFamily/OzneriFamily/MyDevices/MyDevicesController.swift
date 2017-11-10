@@ -104,6 +104,19 @@ class MyDevicesController: UIViewController {
 
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleBottomMargin]
         // Do any additional setup after loading the view.
+        
+//        let device=OznerManager.instance.createDevice(scanDeviceInfo: deviceArr[0], setting: nil)
+//        for (key,value) in settings {
+//            if value != "" {
+//                device.settings.SetValue(key: key, value: value)
+//            }
+//        }
+//        device.settings.name=settings["name"]
+//
+//        OznerManager.instance.saveDevice(device: device)
+//
+//        OznerManager.instance.currentDevice=device
+        
     }
     
     override func viewDidLayoutSubviews() {

@@ -437,8 +437,6 @@ class ElectrickettleMainView: OznerDeviceView {
         tempValue.isEnabled = true
         tempValue.layer.sublayers?.removeAll()
         switchlb.isEnabled = false
-     
-
         
     }
     
