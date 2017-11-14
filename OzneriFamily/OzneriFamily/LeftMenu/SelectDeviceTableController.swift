@@ -122,7 +122,7 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
         case OZDeviceClass.CenterWater.rawValue:
             let vc = WaterGPRSScanVc()
             vc.scanTypeIndex = ProductInfo.products.count - 1
-            vc.scanString = "runner_CentralPurifier"
+            vc.scanString = "Test_CentralPurifier"
             self.navigationController?.pushViewController(vc, animated: true)
             
         default:

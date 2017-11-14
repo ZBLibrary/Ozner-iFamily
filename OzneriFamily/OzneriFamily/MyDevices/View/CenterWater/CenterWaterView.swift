@@ -37,4 +37,12 @@ class CenterWaterView: OznerDeviceView{
         
     }
     
+    override func SensorUpdate(identifier: String) {
+        super.SensorUpdate(identifier: identifier)
+        
+        let device = self.currentDevice as? CenterWater
+        leftWaveView.asongLabel.text = String(describing: (device?.centerInfo.todayW) ?? 0) + "L"
+        rightWaveView.asongLabel.text = String(describing: (device?.centerInfo.todayW) ?? 0) + "L"
+    }
+    
 }
