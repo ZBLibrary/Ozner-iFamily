@@ -103,7 +103,7 @@ class ASongWaterWaveView: UIView {
         secondPath.move(to: CGPoint(x: 0, y: secondY))
         
         for i in 0...Int(bounds.size.width) {
-            secondY = waveA * sin(waveW * CGFloat(i) + offsetX - bounds.size.width/2 ) + b
+            secondY = waveA * sin(waveW * CGFloat(i) + offsetX - bounds.size.width/2) + b
             secondPath.addLine(to: CGPoint(x: CGFloat(i), y: secondY))
         }
         secondPath.addLine(to: CGPoint(x: bounds.size.width, y: bounds.size.height))

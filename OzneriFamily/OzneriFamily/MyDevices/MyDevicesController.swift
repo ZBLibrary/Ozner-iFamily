@@ -148,6 +148,13 @@ class MyDevicesController: UIViewController {
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.addLeftGestures()
   
+        if  OznerManager.instance.currentDevice != nil && OznerManager.instance.currentDevice?.connectStatus !=  OznerConnectStatus.Connected {
+            
+            filterImg.image=UIImage(named: "airLvxinState0")
+            filterValueLabel.text="-"
+            deviceViewContainer.LvXinValue = -1
+        }
+
         
         
     }
