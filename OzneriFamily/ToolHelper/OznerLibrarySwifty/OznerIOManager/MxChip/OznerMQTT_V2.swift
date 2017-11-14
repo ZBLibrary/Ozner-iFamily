@@ -58,7 +58,7 @@ class OznerMQTT_V2: NSObject {
                 if let hexStr=mess?.payloadString() {
                     
                     if hexStr.characters.count>0 {
-                        print("2.0收到指令："+hexStr)
+                        //print("2.0收到指令："+hexStr)
                         let needData=OznerTools.hexStringToData(strHex: hexStr)
                         callback.dataCallBack(needData)
                     }

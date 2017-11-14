@@ -31,9 +31,7 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
     }
     required override init() {
         super.init()
-        if( easylink_config == nil){
-            easylink_config = EASYLINK(delegate: self)
-        }
+        
         
         //wifiReachability = Reachability.forLocalWiFi()  //监测Wi-Fi连接状态
     }
@@ -49,18 +47,21 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
         FailedBlock=failedBlock
         pairOutTime=timeOut
         deviceType=deviceClass
-        if( easylink_config == nil){
-            easylink_config = EASYLINK(delegate: self)
+        if( easylink_config != nil){
+            easylink_config.unInit()
         }
-            var wlanConfig = [String:Any]()
-            wlanConfig[KEY_SSID]=ssid!.data(using: String.Encoding.utf8)
-            wlanConfig[KEY_PASSWORD]=password!
-            wlanConfig[KEY_DHCP]=1
-            wlanConfig[KEY_IP]=EASYLINK.getIPAddress()
-            wlanConfig[KEY_NETMASK]=EASYLINK.getNetMask()
-            wlanConfig[KEY_GATEWAY]=EASYLINK.getGatewayAddress()
-            wlanConfig[KEY_DNS1]=EASYLINK.getGatewayAddress()
-            easylink_config.prepareEasyLink_(withFTC: wlanConfig, info: "".data(using: String.Encoding.utf8), mode: EASYLINK_V2_PLUS)
+        easylink_config = EASYLINK(delegate: self)
+        
+        var wlanConfig = [String:Any]()
+        wlanConfig[KEY_SSID]=ssid!.data(using: String.Encoding.utf8)
+        wlanConfig[KEY_PASSWORD]=password!
+        wlanConfig[KEY_DHCP]=1
+        wlanConfig[KEY_IP]=EASYLINK.getIPAddress()
+        wlanConfig[KEY_NETMASK]=EASYLINK.getNetMask()
+        wlanConfig[KEY_GATEWAY]=EASYLINK.getGatewayAddress()
+        wlanConfig[KEY_DNS1]=EASYLINK.getGatewayAddress()
+        easylink_config.prepareEasyLink_(withFTC: wlanConfig, info: "".data(using: String.Encoding.utf8), mode: EASYLINK_V2_PLUS)
+        
         print("开始进行WIFI1.0配对")
         DispatchQueue.main.async {
              self.easylink_config.transmitSettings()
@@ -70,14 +71,13 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
     
     func canclePair() {//取消配对
         if (easylink_config != nil) {
-//            do {
-                DispatchQueue.main.async {
-                    self.easylink_config.stopTransmitting()
- 
-                }
-//            }catch {
-//                print(1)
-//            }
+            
+            DispatchQueue.main.async {
+                self.easylink_config.stopTransmitting()
+                
+            }
+            //easylink_config.unInit()
+            
         }
     }
     @objc private func pairFailed() {
@@ -142,30 +142,20 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
     //EasyLinkFTCDelegate 代理方法
     func onFound(_ client: NSNumber!, withName name: String!, mataData mataDataDict: [AnyHashable : Any]!) {
         print(mataDataDict)
-        if let tmptype =  mataDataDict["FW"] as? String
+        if  (mataDataDict["FW"] as? String) != nil
         {
-            //var productID = "16a21bd6"
-//            if tmptype.contains("FOG_HAOZE_AIR") {
-//                productID="580c2783"
-//            }
-            //if deviceType.pairID.contains(productID) {
-                self.pairSuccessed(configDict: mataDataDict)
-            //}
+            self.pairSuccessed(configDict: mataDataDict)
         }
         
         
     }
     func onFound(byFTC client: NSNumber!, withConfiguration configDict: [AnyHashable : Any]!) {
         print(configDict)
-        if let tmptype =  configDict["FW"] as? String
+        if (configDict["FW"] as? String) != nil
         {
-//            var productID = "16a21bd6"
-//            if tmptype.contains("FOG_HAOZE_AIR") {
-//                productID="580c2783"
-//            }
-            //if deviceType.pairID.contains(productID) {
+
                 self.pairSuccessed(configDict: configDict)
-            //}
+            
         }
         
     }
