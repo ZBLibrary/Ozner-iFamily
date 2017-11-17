@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="CenterHeadViewID" id="iN0-l3-epB" customClass="CenterHeadView" customModule="WSWaterWaveDemo" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="CenterHeadViewID" id="iN0-l3-epB" customClass="CenterHeadView" customModule="OzneriFamily" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="400" height="51"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -42,13 +42,13 @@
                         <constraint firstAttribute="width" constant="10" id="z82-gu-hpA"/>
                     </constraints>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9f-yi-JRB">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9f-yi-JRB">
                     <rect key="frame" x="247" y="17" width="31" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGF-Iu-niU">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGF-Iu-niU">
                     <rect key="frame" x="229" y="20.5" width="10" height="10"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="7vM-pb-SCn"/>
@@ -61,7 +61,7 @@
                         <action selector="setBtnAction:" destination="-2" eventType="touchUpInside" id="kEh-BH-EB3"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="555" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEU-Ib-hVY">
+                <button hidden="YES" opaque="NO" tag="555" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEU-Ib-hVY">
                     <rect key="frame" x="229" y="0.0" width="49" height="51"/>
                     <gestureRecognizers/>
                     <connections>

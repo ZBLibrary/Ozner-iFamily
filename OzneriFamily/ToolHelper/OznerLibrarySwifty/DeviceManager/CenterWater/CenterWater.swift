@@ -27,7 +27,7 @@ class CenterWater: OznerBaseDevice {
         }
     }
     
-    private(set) var centerConfig:(HomeWashCycle:Int,TravelWashCycle:Int,WaterLimit_1Cycle:Int,HomeNtvTime:Int,HomePtvTime:Int,TravelPtvTime:Int,WashTimeInterval:Int,TravelNtvTime:Int) = (0,0,0,0,0,0,0,0) {
+    private(set) var centerConfig:(HomeWashCycle:Int,TravelWashCycle:Int,WaterLimit_1Cycle:Int,HomeNtvTime:Int,HomePtvTime:Int,TravelPtvTime:Int,TravelNtvTime:Int,WashTimeNode:Int) = (0,0,0,0,0,0,0,0) {
         
         didSet {
             if centerConfig != oldValue {
@@ -52,7 +52,7 @@ class CenterWater: OznerBaseDevice {
         
         for item in JSON.init(recvDic).arrayValue {
             switch item["key"].stringValue {
-            case "WaterLimit_1Cycle":
+            case "WaterUsageCnt":
                 //                    tmpSensor.PM25 = item["value"].intValue
                 tmpCenter.todayW = item["value"].intValue
                 break
@@ -61,17 +61,36 @@ class CenterWater: OznerBaseDevice {
                 break
             case "Online":
                 self.connectStatus = item["value"].intValue==1 ? OznerConnectStatus.Connected:OznerConnectStatus.Disconnect
-            case "APercent":
-                tmpCenter.filter = item["value"].intValue
                 break
-            case "BPercent":
-                tmpCenter.userMode =  item["value"].intValue
-                break
-            case "CPercent":
+            case "Cmd_CtrlDevice":
                 tmpConfig.HomeNtvTime = item["value"].intValue
                 break
-            case "PowerOn":
+            case "UserMode":
+                tmpCenter.userMode =  item["value"].intValue
+                break
+            case "HomeWashCycle":
+                tmpConfig.HomeWashCycle = item["value"].intValue
+                break
+            case "TravelWashCycle":
+                tmpConfig.TravelWashCycle = item["value"].intValue
+                break
+            case "WaterLimit_1Cycle":
+                tmpConfig.WaterLimit_1Cycle = item["value"].intValue
+                break
+            case "WashTimeNode":
+                tmpConfig.WashTimeNode = item["value"].intValue
+                break
+            case "HomeNtvTime":
+                tmpConfig.HomeNtvTime = item["value"].intValue
+                break
+            case "HomePtvTime":
                 tmpConfig.HomePtvTime = item["value"].intValue
+                break
+            case "TravelNtvTime":
+                tmpConfig.TravelNtvTime = item["value"].intValue
+                break
+            case "TravelPtvTime":
+                tmpConfig.TravelPtvTime = item["value"].intValue
                 break
             case "CHILDLOCK":
                 //                    tmpStatus.Lock = item["value"].intValue==1

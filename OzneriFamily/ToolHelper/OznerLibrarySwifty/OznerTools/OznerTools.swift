@@ -8,7 +8,34 @@
 
 import UIKit
 
+struct MqttSendStruct {
+    
+    var key:String = ""
+    var value:Any = ""
+    var type:String = ""
+    
+}
+
 class OznerTools: NSObject {
+    
+    //2G
+    class func mqttModelToData(_ models:[MqttSendStruct]) -> Data {
+        
+        var arr = [[String:Any]]()
+        
+        for model in models {
+            
+            let keyModel = ["key":model.key,"value":model.value,"type":model.type,"updateTime":Date().timeIntervalSince1970]
+            arr.append(keyModel)
+        }
+        
+//        let arr = [["key":model.key,"value":model.value,"type":model.type,"updateTime":Date().timeIntervalSince1970]]
+        
+        let data = try! JSONSerialization.data(withJSONObject: arr, options: JSONSerialization.WritingOptions.prettyPrinted)
+        
+        return data
+    }
+    
     
     class func dataFromInt16(number:UInt16)->Data {
         
@@ -106,3 +133,4 @@ extension Data{
         return self.subdata(in: Range(range1..<range2))
     }
 }
+

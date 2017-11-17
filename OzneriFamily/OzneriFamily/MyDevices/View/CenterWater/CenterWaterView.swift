@@ -43,6 +43,9 @@ class CenterWaterView: OznerDeviceView{
         let device = self.currentDevice as? CenterWater
         leftWaveView.asongLabel.text = String(describing: (device?.centerInfo.todayW) ?? 0) + "L"
         rightWaveView.asongLabel.text = String(describing: (device?.centerInfo.todayW) ?? 0) + "L"
+        centerBtn.backgroundColor = (device?.centerConfig.HomeNtvTime == 0) ? UIColor.blue : UIColor.white
+        
+        
     }
     
 }

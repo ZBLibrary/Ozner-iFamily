@@ -24,6 +24,7 @@ fileprivate struct gy_associatedKeys{
 struct CenterWaterModel {
     var name = ""
     var setTime = ""
+    var key = ""
 }
 
 extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
@@ -136,7 +137,7 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
             headView.block = { (index) -> Void in
                 
                 self.sectionNum = 8
-                self.isCanEdit = index == 555 ? false :true
+//                self.isCanEdit = index == 555 ? false :true
                 self.tableView.reloadData()
                 
             }
@@ -151,6 +152,7 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
         if section == 0 {
             headView.nameLb.text = self.getNameAndAttr()
         } else {
+            headView.deviceLb.text = "关于中央净水机"
             headView.nameLb.text = "我的水机"
         }
         headView.actionBtn.addTarget(self, action: #selector(CenterWaterSettingVc.actionBtn(_:)), for: UIControlEvents.touchUpInside)
@@ -159,7 +161,7 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return 40
+        return 50
     }
     
     func actionBtn(_ sender:UIButton) {
@@ -204,13 +206,28 @@ class CenterWaterSettingVc: DeviceSettingController {
     var tableView:UITableView!
     var sectionNum:Int = 0
     
-    var isCanEdit:Bool = false
+    var isCanEdit:Bool = true
     
     var pickDateView:TapDatePickerView?
     
     var dataArr:[CenterWaterModel] = []
     
     @IBAction func saveAction(_ sender: Any) {
+        
+        var  arr:[MqttSendStruct] = []
+ 
+        for item in dataArr {
+            
+            let model = MqttSendStruct(key: item.key, value: Int(item.setTime) ?? 0, type: "Integer")
+            arr.append(model)
+        }
+        
+        let device = OznerManager.instance.currentDevice as! CenterWater
+        device.SendDataToDevice(sendData: OznerTools.mqttModelToData(arr)) { (error) in
+            if error != nil {
+                print(error!)
+            }
+        }
         
         self.saveDevice()
     }
@@ -221,15 +238,15 @@ class CenterWaterSettingVc: DeviceSettingController {
         view.backgroundColor = UIColor.white
         self.title = "设置"
         
+        let device = OznerManager.instance.currentDevice as! CenterWater
         
-        
-        dataArr = [CenterWaterModel(name: "居家反冲洗周期", setTime: "7"),                   CenterWaterModel(name: "出差反冲洗周期", setTime: "3"),
-            CenterWaterModel(name: "周期制水量", setTime: "2.5"),
-            CenterWaterModel(name: "居家反洗持续时间", setTime: "15"),
-        CenterWaterModel(name: "居家正洗持续时间", setTime: "8"),
-        CenterWaterModel(name: "出差反洗持续时间", setTime: "4"),
-        CenterWaterModel(name: "出差正洗持续时间", setTime: "4"),
-        CenterWaterModel(name: "执行反冲洗时间点", setTime: "02：00")]
+        dataArr = [CenterWaterModel(name: "居家反冲洗周期", setTime: "\(device.centerConfig.HomeWashCycle)",key:"HomeWashCycle"),                   CenterWaterModel(name: "出差反冲洗周期", setTime: "\(device.centerConfig.TravelWashCycle)",key:"TravelWashCycle"),
+            CenterWaterModel(name: "周期制水量", setTime: "\(device.centerConfig.WaterLimit_1Cycle)",key:"WaterLimit_1Cycle"),
+            CenterWaterModel(name: "居家反洗持续时间", setTime: "\(device.centerConfig.HomeNtvTime)",key:"HomeNtvTime"),
+        CenterWaterModel(name: "居家正洗持续时间", setTime: "\(device.centerConfig.HomePtvTime)",key:"HomePtvTime"),
+        CenterWaterModel(name: "出差反洗持续时间", setTime: "\(device.centerConfig.TravelNtvTime)",key:"TravelNtvTime"),
+        CenterWaterModel(name: "出差正洗持续时间", setTime: "\(device.centerConfig.TravelPtvTime)",key:"TravelPtvTime"),
+        CenterWaterModel(name: "执行反冲洗时间点", setTime: "\(device.centerConfig.WashTimeNode)",key:"WashTimeNode")]
         
         tableView = UITableView(frame: view.frame, style: UITableViewStyle.plain)
         tableView.backgroundColor = UIColor.white
@@ -242,7 +259,17 @@ class CenterWaterSettingVc: DeviceSettingController {
         tableView.register(UINib.init(nibName: "TableHeadView", bundle: nil), forHeaderFooterViewReuseIdentifier: "TableHeadViewID")
         tableView.register(UINib.init(nibName: "CenterHeadView", bundle: nil), forHeaderFooterViewReuseIdentifier: "CenterHeadViewID")
         tableView.register(UINib.init(nibName: "GYCenterWaterCell", bundle: nil), forCellReuseIdentifier: "GYCenterWaterCellD")
-        tableView.tableFooterView = UIView()
+        
+        let footView = UIView(frame: CGRect(x: 0, y: 0, width: width_screen, height: 200))
+        footView.addSubview(deleBtn)
+        deleBtn.addTarget(self, action: #selector(CenterWaterSettingVc.deleteAction), for: UIControlEvents.touchUpInside)
+        tableView.tableFooterView = footView
+        
+    }
+    
+    func deleteAction() {
+        
+        super.deleteDevice()
         
     }
     
@@ -255,5 +282,16 @@ class CenterWaterSettingVc: DeviceSettingController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    lazy var deleBtn: UIButton = {
+        
+        let btn = UIButton(frame: CGRect(x: 80, y: 80, width: width_screen - 160, height: 50))
+        btn.layer.cornerRadius = 25
+        btn.layer.masksToBounds = true
+        btn.setTitle("删除此设备", for: UIControlState.normal)
+        btn.backgroundColor = UIColor(red: 245.0 / 255.0, green: 71.0 / 255.0, blue: 80.0 / 255.0, alpha: 1.0)
+        
+        return btn
+    }()
     
 }

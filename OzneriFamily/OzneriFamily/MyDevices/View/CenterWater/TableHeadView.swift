@@ -17,6 +17,8 @@ import UIKit
 
 class TableHeadView: UITableViewHeaderFooterView {
 
+    @IBOutlet weak var deviceLb: UILabel!
+    
     @IBOutlet weak var nameLb: UILabel!
     @IBOutlet weak var actionBtn: UIButton!
     
