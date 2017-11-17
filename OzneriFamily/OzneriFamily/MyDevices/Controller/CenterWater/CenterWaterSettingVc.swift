@@ -25,9 +25,10 @@ struct CenterWaterModel {
     var name = ""
     var setTime = ""
     var key = ""
+    var rang = ""
 }
 
-extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
+extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -68,13 +69,18 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
         
         var model = dataArr[indexPath.row]
         
+        currentModel = model
         switch indexPath.row {
-        case 0...6:
+        case 0...7:
             let alert = SCLAlertView()
-            let txt = alert.addTextField("请输入")
+            let txt = alert.addTextField("设置范围"+model.rang)
+            txt.delegate = self
+            
             alert.addButton("确定") {
+                
                 print("Text value: \(String(describing: txt.text))")
                 if txt.text?.count == 0 || txt.text == nil {
+                    
                     return
                 }
                 model.setTime = txt.text!
@@ -86,23 +92,41 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate {
             }
             alert.showEdit("温馨提示", subTitle: "请设置"+model.name)
             break
-        case 7:
-            pickDateView=Bundle.main.loadNibNamed("TapDatePickerView", owner: nil, options: nil)?.last as? TapDatePickerView
-            pickDateView?.datePicker.minimumDate = Date.init()
-            pickDateView?.datePicker.datePickerMode = .time
-    
-            pickDateView?.datePicker.maximumDate = Date.init(timeIntervalSinceNow: 24 * 60 * 60)
-            pickDateView?.datePicker.datePickerMode = .dateAndTime
-            pickDateView?.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
-            pickDateView?.cancelButton.addTarget(self, action: #selector(pickerCancle), for: .touchUpInside)
-            pickDateView?.OKButton.addTarget(self, action: #selector(pickerOK), for: .touchUpInside)
-            view.addSubview(pickDateView!)
-            break
+//        case 7:
+//            pickDateView=Bundle.main.loadNibNamed("TapDatePickerView", owner: nil, options: nil)?.last as? TapDatePickerView
+//            pickDateView?.datePicker.minimumDate = Date.init()
+//            pickDateView?.datePicker.datePickerMode = .time
+//
+//            pickDateView?.datePicker.maximumDate = Date.init(timeIntervalSinceNow: 24 * 60 * 60)
+//            pickDateView?.datePicker.datePickerMode = .dateAndTime
+//            pickDateView?.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
+//            pickDateView?.cancelButton.addTarget(self, action: #selector(pickerCancle), for: .touchUpInside)
+//            pickDateView?.OKButton.addTarget(self, action: #selector(pickerOK), for: .touchUpInside)
+//            view.addSubview(pickDateView!)
+//            break
         default:
             break
         }
  
     }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        
+        var arr = currentModel!.rang.components(separatedBy: "$")
+        
+//        let isBool = Int(arr[1]) >= Int(textField.text!) >= Int(arr[1])
+//        let isBool =  (Int(arr[0]) <= Int(textField.text!) <= Int(arr[1]))
+        
+        
+        
+//        guard isBool else {
+//            
+//            return false
+//        }
+        
+        return true
+    }
+    
     
     func pickerOK()  {
         let date = pickDateView!.datePicker.date as NSDate
@@ -211,6 +235,7 @@ class CenterWaterSettingVc: DeviceSettingController {
     var pickDateView:TapDatePickerView?
     
     var dataArr:[CenterWaterModel] = []
+    var currentModel:CenterWaterModel?
     
     @IBAction func saveAction(_ sender: Any) {
         
@@ -240,13 +265,13 @@ class CenterWaterSettingVc: DeviceSettingController {
         
         let device = OznerManager.instance.currentDevice as! CenterWater
         
-        dataArr = [CenterWaterModel(name: "居家反冲洗周期", setTime: "\(device.centerConfig.HomeWashCycle)",key:"HomeWashCycle"),                   CenterWaterModel(name: "出差反冲洗周期", setTime: "\(device.centerConfig.TravelWashCycle)",key:"TravelWashCycle"),
-            CenterWaterModel(name: "周期制水量", setTime: "\(device.centerConfig.WaterLimit_1Cycle)",key:"WaterLimit_1Cycle"),
-            CenterWaterModel(name: "居家反洗持续时间", setTime: "\(device.centerConfig.HomeNtvTime)",key:"HomeNtvTime"),
-        CenterWaterModel(name: "居家正洗持续时间", setTime: "\(device.centerConfig.HomePtvTime)",key:"HomePtvTime"),
-        CenterWaterModel(name: "出差反洗持续时间", setTime: "\(device.centerConfig.TravelNtvTime)",key:"TravelNtvTime"),
-        CenterWaterModel(name: "出差正洗持续时间", setTime: "\(device.centerConfig.TravelPtvTime)",key:"TravelPtvTime"),
-        CenterWaterModel(name: "执行反冲洗时间点", setTime: "\(device.centerConfig.WashTimeNode)",key:"WashTimeNode")]
+        dataArr = [CenterWaterModel(name: "居家反冲洗周期", setTime: "\(device.centerConfig.HomeWashCycle)",key:"HomeWashCycle",rang:"0-99"),                   CenterWaterModel(name: "出差反冲洗周期", setTime: "\(device.centerConfig.TravelWashCycle)",key:"TravelWashCycle",rang:"0-99"),
+            CenterWaterModel(name: "周期制水量", setTime: "\(device.centerConfig.WaterLimit_1Cycle)",key:"WaterLimit_1Cycle",rang:"100-99000"),
+            CenterWaterModel(name: "居家反洗持续时间", setTime: "\(device.centerConfig.HomeNtvTime)",key:"HomeNtvTime",rang:"0-99"),
+        CenterWaterModel(name: "居家正洗持续时间", setTime: "\(device.centerConfig.HomePtvTime)",key:"HomePtvTime",rang:"0-99"),
+        CenterWaterModel(name: "出差反洗持续时间", setTime: "\(device.centerConfig.TravelNtvTime)",key:"TravelNtvTime",rang:"0-99"),
+        CenterWaterModel(name: "出差正洗持续时间", setTime: "\(device.centerConfig.TravelPtvTime)",key:"TravelPtvTime",rang:"0-99"),
+        CenterWaterModel(name: "执行反冲洗时间点", setTime: "\(device.centerConfig.WashTimeNode)",key:"WashTimeNode",rang:"0-23")]
         
         tableView = UITableView(frame: view.frame, style: UITableViewStyle.plain)
         tableView.backgroundColor = UIColor.white

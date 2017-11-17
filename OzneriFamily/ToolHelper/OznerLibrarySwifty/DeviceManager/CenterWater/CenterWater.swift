@@ -18,7 +18,7 @@ import SwiftyJSON
 
 class CenterWater: OznerBaseDevice {
     
-    private(set) var centerInfo:(todayW:Int,sumW:Int,filter:Int,userMode:Int) = (0,0,0,0){
+    private(set) var centerInfo:(todayW:Int,sumW:Int,filter:Int,userMode:Int,Cmd_CtrlDevice:Int) = (0,0,0,0,0){
         
         didSet {
             if centerInfo != oldValue {
@@ -63,7 +63,7 @@ class CenterWater: OznerBaseDevice {
                 self.connectStatus = item["value"].intValue==1 ? OznerConnectStatus.Connected:OznerConnectStatus.Disconnect
                 break
             case "Cmd_CtrlDevice":
-                tmpConfig.HomeNtvTime = item["value"].intValue
+                tmpCenter.Cmd_CtrlDevice = item["value"].intValue
                 break
             case "UserMode":
                 tmpCenter.userMode =  item["value"].intValue
