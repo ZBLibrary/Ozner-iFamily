@@ -154,8 +154,6 @@ class MyDevicesController: UIViewController {
             filterValueLabel.text="-"
             deviceViewContainer.LvXinValue = -1
         }
-
-        
         
     }
     

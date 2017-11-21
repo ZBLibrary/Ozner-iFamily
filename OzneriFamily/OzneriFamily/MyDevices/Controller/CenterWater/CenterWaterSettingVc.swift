@@ -336,6 +336,7 @@ class CenterWaterSettingVc: DeviceSettingController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
         tableView.reloadData()
     }
     
