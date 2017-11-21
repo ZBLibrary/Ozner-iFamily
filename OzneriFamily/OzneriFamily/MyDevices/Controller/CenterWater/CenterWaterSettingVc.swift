@@ -161,7 +161,7 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate,UIText
             headView.block = { (index) -> Void in
                 
                 self.sectionNum = 8
-//                self.isCanEdit = index == 555 ? false :true
+                self.isCanEdit = index == 555 ? false :true
                 self.tableView.reloadData()
                 
             }
@@ -285,11 +285,29 @@ class CenterWaterSettingVc: DeviceSettingController {
         tableView.register(UINib.init(nibName: "CenterHeadView", bundle: nil), forHeaderFooterViewReuseIdentifier: "CenterHeadViewID")
         tableView.register(UINib.init(nibName: "GYCenterWaterCell", bundle: nil), forCellReuseIdentifier: "GYCenterWaterCellD")
         
-        let footView = UIView(frame: CGRect(x: 0, y: 0, width: width_screen, height: 200))
+        let footView = UIView(frame: CGRect(x: 0, y: 0, width: width_screen, height: 280))
         footView.addSubview(deleBtn)
+        
+        let btn1 = UIButton.createButtonWithText("咨询", target: self, action:#selector(CenterWaterSettingVc.consultAction) , frame: CGRect(x: 60, y: 15, width: 80, height: 40))
+        btn1.setTitleColor(UIColor.black, for: UIControlState.normal)
+        footView.addSubview(btn1)
+        
+        let btn2 = UIButton.createButtonWithText("更多商品", target: self, action:#selector(CenterWaterSettingVc.BuyAction) , frame: CGRect(x: width_screen - 140, y: 15, width: 80, height: 40))
+        btn2.setTitleColor(UIColor.black, for: UIControlState.normal)
+        footView.addSubview(btn2)
+        
         deleBtn.addTarget(self, action: #selector(CenterWaterSettingVc.deleteAction), for: UIControlEvents.touchUpInside)
         tableView.tableFooterView = footView
         
+    }
+    
+    func consultAction() {
+        
+        LoginManager.instance.setTabbarSelected(index: 2)
+    }
+    
+    func BuyAction() {
+        LoginManager.instance.setTabbarSelected(index: 1)
     }
     
     func deleteAction() {
@@ -308,9 +326,10 @@ class CenterWaterSettingVc: DeviceSettingController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     lazy var deleBtn: UIButton = {
         
-        let btn = UIButton(frame: CGRect(x: 80, y: 80, width: width_screen - 160, height: 50))
+        let btn = UIButton(frame: CGRect(x: 80, y: 100, width: width_screen - 160, height: 50))
         btn.layer.cornerRadius = 25
         btn.layer.masksToBounds = true
         btn.setTitle("删除此设备", for: UIControlState.normal)

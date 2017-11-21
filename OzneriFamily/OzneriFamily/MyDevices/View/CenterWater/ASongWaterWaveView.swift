@@ -128,9 +128,10 @@ class ASongWaterWaveView: UIView {
     }
     
     func addLb() {
-        asongLabel = UILabel(frame: CGRect(x: 0, y: 25, width: frame.size.width, height: 40))
+        asongLabel = UILabel(frame: CGRect(x: 10, y: 25, width: frame.size.width - 20, height: 40))
         asongLabel.text = "32.5L"
         asongLabel.font = UIFont.systemFont(ofSize: 35)
+        asongLabel.adjustsFontSizeToFitWidth = true
         asongLabel.textColor = UIColor(red: 58 / 255.0, green: 113 / 255.0, blue: 221 / 255.0, alpha: 1.0)
         
         asongLabel.textAlignment = .center
