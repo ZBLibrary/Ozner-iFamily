@@ -271,7 +271,7 @@ class CenterWaterSettingVc: DeviceSettingController {
                 print(error!)
             }
         }
-        
+        sleep(2)
         self.saveDevice()
     }
     

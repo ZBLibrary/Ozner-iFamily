@@ -59,15 +59,18 @@ class CenterWaterView: OznerDeviceView{
                 self.noticeOnlyText("当前正在进行反冲洗")
                 return
             }
-            self.noticeOnlyText("已发送")
             
-            break
+            let model = MqttSendStruct(key: "Cmd_CtrlDevice", value: 1, type: "Integer")
+            self.currentDevice?.SendDataToDevice(sendData: OznerTools.mqttModelToData([model]), CallBack: { (error) in
+
+            })
+            self.noticeOnlyText("已发送")
+            return
         case 666:
             if currentMode == 666 {
                 self.noticeOnlyText("当前模式已为居家模式")
                 return
             }
-            self.noticeOnlyText("已发送")
             
             break
         case 667:
@@ -75,13 +78,19 @@ class CenterWaterView: OznerDeviceView{
                 self.noticeOnlyText("当前模式已为出差模式")
                 return
             }
-            self.noticeOnlyText("已发送")
             
             break
         default:
             break
         }
+        let value = sender.tag == 666 ? 0 : 1
         
+        let model = MqttSendStruct(key: "UserMode", value: value, type: "Integer")
+        self.currentDevice?.SendDataToDevice(sendData: OznerTools.mqttModelToData([model]), CallBack: { (error) in
+
+        })
+        self.noticeOnlyText("已发送")
+
         
     }
     
