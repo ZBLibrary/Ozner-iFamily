@@ -23,6 +23,7 @@ class CenterWater: OznerBaseDevice {
         didSet {
             if centerInfo != oldValue {
                 self.delegate?.OznerDeviceSensorUpdate?(identifier: self.deviceInfo.deviceID)
+//                self.delegate?.OznerDevicefilterUpdate!(identifier: self.deviceInfo.deviceID)
             }
         }
     }
@@ -50,21 +51,24 @@ class CenterWater: OznerBaseDevice {
         
         let recvDic = try! JSONSerialization.jsonObject(with: recvData, options: JSONSerialization.ReadingOptions.allowFragments) as! [Dictionary<String, Any>]
         
+        var FilterLifeInit:Float = 0
+        var FilterUsageAmount:Float = 0
+        
         for item in JSON.init(recvDic).arrayValue {
             switch item["key"].stringValue {
             case "WaterUsageCnt":
                 //                    tmpSensor.PM25 = item["value"].intValue
                 tmpCenter.todayW = item["value"].intValue
                 break
-            case "FilterUsageAmount":
+            case "WaterTotalAmount":
                 tmpCenter.sumW = item["value"].intValue
                 break
             case "Online":
                 self.connectStatus = item["value"].intValue==1 ? OznerConnectStatus.Connected:OznerConnectStatus.Disconnect
                 break
-            case "Cmd_CtrlDevice":
-                tmpCenter.Cmd_CtrlDevice = item["value"].intValue
-                break
+//            case "Cmd_CtrlDevice":
+//                tmpCenter.Cmd_CtrlDevice = item["value"].intValue
+//                break
             case "UserMode":
                 tmpCenter.userMode =  item["value"].intValue
                 break
@@ -92,15 +96,29 @@ class CenterWater: OznerBaseDevice {
             case "TravelPtvTime":
                 tmpConfig.TravelPtvTime = item["value"].intValue
                 break
+            case "FilterLifeInit":
+                FilterLifeInit = Float(item["value"].intValue)
+                break
+            case "FilterUsageAmount":
+                FilterUsageAmount = Float(item["value"].intValue)
+                break
             case "CHILDLOCK":
                 //                    tmpStatus.Lock = item["value"].intValue==1
                 break
                 //                case "POWER":
                 //                    tmpStatus.Power = item["value"].intValue==1
             //                    break
+            case "SystemStatus":
+                tmpCenter.Cmd_CtrlDevice = item["value"].intValue
+                break
             default:
                 break
             }
+        }
+        
+        if FilterLifeInit != 0 {
+           
+            tmpCenter.filter =  Int((Double(1 - FilterUsageAmount/FilterLifeInit)).roundTo(2) * 100)
         }
         
         centerInfo = tmpCenter

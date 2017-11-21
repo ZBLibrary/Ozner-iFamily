@@ -75,18 +75,21 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ikd-OQ-Maf">
                     <rect key="frame" x="0.0" y="420" width="375" height="247"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7n-2Z-oAr">
+                        <button opaque="NO" tag="665" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7n-2Z-oAr">
                             <rect key="frame" x="56" y="45" width="263" height="46"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="46" id="JyF-se-SB6"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="立即启动反冲洗"/>
+                            <connections>
+                                <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="qvM-yt-hUm"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0h-8C-dRU">
                             <rect key="frame" x="61" y="126" width="105" height="105"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="居家模式" translatesAutoresizingMaskIntoConstraints="NO" id="4C8-tm-tMX">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="居家模式-二态" translatesAutoresizingMaskIntoConstraints="NO" id="4C8-tm-tMX">
                                     <rect key="frame" x="22" y="0.0" width="62" height="62"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="62" id="8O5-lX-eOH"/>
@@ -96,23 +99,33 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="居家模式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoJ-Gh-E88">
                                     <rect key="frame" x="18" y="76" width="70" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" tag="666" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffr-er-zxB">
+                                    <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                    <connections>
+                                        <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="R4q-HZ-NEe"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="P0h-8C-dRU" secondAttribute="height" multiplier="1:1" id="BRC-V5-DJv"/>
                                 <constraint firstItem="4C8-tm-tMX" firstAttribute="centerX" secondItem="P0h-8C-dRU" secondAttribute="centerX" id="J5E-Wi-dSV"/>
+                                <constraint firstAttribute="trailing" secondItem="ffr-er-zxB" secondAttribute="trailing" id="JQZ-KQ-OVN"/>
+                                <constraint firstAttribute="bottom" secondItem="ffr-er-zxB" secondAttribute="bottom" id="PWh-qe-f91"/>
                                 <constraint firstItem="4C8-tm-tMX" firstAttribute="top" secondItem="P0h-8C-dRU" secondAttribute="top" id="UHD-fE-T1c"/>
+                                <constraint firstItem="ffr-er-zxB" firstAttribute="leading" secondItem="P0h-8C-dRU" secondAttribute="leading" id="ZSg-Pt-XfU"/>
                                 <constraint firstItem="KoJ-Gh-E88" firstAttribute="top" secondItem="4C8-tm-tMX" secondAttribute="bottom" constant="14" id="dyZ-fK-3ne"/>
+                                <constraint firstItem="ffr-er-zxB" firstAttribute="top" secondItem="P0h-8C-dRU" secondAttribute="top" id="eAH-c3-Xk8"/>
                                 <constraint firstItem="KoJ-Gh-E88" firstAttribute="centerX" secondItem="4C8-tm-tMX" secondAttribute="centerX" id="kyL-DK-qUt"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTy-42-hGY">
                             <rect key="frame" x="209" y="126" width="105" height="105"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="出差模式" translatesAutoresizingMaskIntoConstraints="NO" id="yQz-OE-Ev6">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="出差模式-二态" translatesAutoresizingMaskIntoConstraints="NO" id="yQz-OE-Ev6">
                                     <rect key="frame" x="22" y="0.0" width="62" height="62"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="62" id="ECk-GW-ghx"/>
@@ -122,17 +135,27 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出差模式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYa-M8-ZXN">
                                     <rect key="frame" x="18" y="76" width="70" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" tag="667" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HW0-XS-OQN">
+                                    <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                    <connections>
+                                        <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="FDO-b7-OM6"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="HW0-XS-OQN" firstAttribute="top" secondItem="fTy-42-hGY" secondAttribute="top" id="P1m-n4-oYp"/>
                                 <constraint firstItem="dYa-M8-ZXN" firstAttribute="centerX" secondItem="yQz-OE-Ev6" secondAttribute="centerX" id="U5D-nF-fX5"/>
                                 <constraint firstItem="yQz-OE-Ev6" firstAttribute="centerX" secondItem="fTy-42-hGY" secondAttribute="centerX" id="Wv0-gS-vvi"/>
                                 <constraint firstItem="dYa-M8-ZXN" firstAttribute="top" secondItem="yQz-OE-Ev6" secondAttribute="bottom" constant="14" id="X10-KB-XVk"/>
+                                <constraint firstAttribute="trailing" secondItem="HW0-XS-OQN" secondAttribute="trailing" id="Z8s-sU-qXo"/>
                                 <constraint firstItem="yQz-OE-Ev6" firstAttribute="top" secondItem="fTy-42-hGY" secondAttribute="top" id="dds-8o-YfB"/>
                                 <constraint firstAttribute="width" secondItem="fTy-42-hGY" secondAttribute="height" multiplier="1:1" id="fGy-h5-4OF"/>
+                                <constraint firstItem="HW0-XS-OQN" firstAttribute="leading" secondItem="fTy-42-hGY" secondAttribute="leading" id="voF-b2-3Lz"/>
+                                <constraint firstAttribute="bottom" secondItem="HW0-XS-OQN" secondAttribute="bottom" id="y9V-WC-Wcg"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -167,14 +190,18 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="centerBtn" destination="h7n-2Z-oAr" id="7GQ-NP-auH"/>
+                <outlet property="homeImage" destination="4C8-tm-tMX" id="hmd-5q-bdZ"/>
+                <outlet property="homeMode" destination="KoJ-Gh-E88" id="jCo-Ch-Y94"/>
                 <outlet property="leftWaveView" destination="hzh-DG-yO8" id="spC-p0-8QV"/>
+                <outlet property="outImage" destination="yQz-OE-Ev6" id="mg4-AX-Q0B"/>
+                <outlet property="outLb" destination="dYa-M8-ZXN" id="hYl-6H-dck"/>
                 <outlet property="rightWaveView" destination="FF1-cF-DiB" id="vky-8n-uNS"/>
             </connections>
             <point key="canvasLocation" x="-9.5" y="96.5"/>
         </view>
     </objects>
     <resources>
-        <image name="出差模式" width="62" height="62"/>
-        <image name="居家模式" width="62" height="62"/>
+        <image name="出差模式-二态" width="52" height="24"/>
+        <image name="居家模式-二态" width="42" height="38"/>
     </resources>
 </document>

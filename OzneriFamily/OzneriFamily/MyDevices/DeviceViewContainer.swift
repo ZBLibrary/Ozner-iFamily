@@ -171,7 +171,9 @@ class DeviceViewContainer: UIView {
                 break
             case .CenterWater:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:225*k_height)
-
+                let device = OznerManager.instance.currentDevice as? CenterWater
+                LvXinValue = (device?.centerInfo.filter)!
+                break
             }
             currentDeviceView.currentDevice=OznerManager.instance.currentDevice
             OznerDeviceSensorUpdate(identifier: (OznerManager.instance.currentDevice?.deviceInfo.deviceID)!)//初始化设备状态
@@ -238,11 +240,16 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 break
             case .WaterReplenish:
                 self.batteryValue = Int((currentDevice as! WaterReplenish).status.battery*100)
+                break
             case .WaterPurifier_Blue:
                 let tmpDev=currentDevice as! WaterPurifier_Blue
                 let lvxinValue=min(tmpDev.FilterInfo.Filter_A_Percentage, tmpDev.FilterInfo.Filter_B_Time, tmpDev.FilterInfo.Filter_C_Time)
                 self.LvXinValue=Int(lvxinValue)
-
+                break
+            case .CenterWater:
+                let device = OznerManager.instance.currentDevice as? CenterWater
+                self.LvXinValue = (device?.centerInfo.filter)!
+                break
             default:
             break
             }

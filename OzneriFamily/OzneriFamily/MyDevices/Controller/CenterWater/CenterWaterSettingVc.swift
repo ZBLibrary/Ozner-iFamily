@@ -162,6 +162,12 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate,UIText
                 
                 self.sectionNum = 8
                 self.isCanEdit = index == 555 ? false :true
+                
+                if !self.isCanEdit {
+                    self.dataArr.removeAll()
+                    self.initData()
+                }
+                
                 self.tableView.reloadData()
                 
             }
@@ -221,6 +227,18 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate,UIText
             }
         }
         tableView.reloadData()
+    }
+    
+    fileprivate func initData() {
+        
+        dataArr = [CenterWaterModel(name: "居家反冲洗周期", setTime: "5",key:"HomeWashCycle",rang:"0-99"),                   CenterWaterModel(name: "出差反冲洗周期", setTime: "3",key:"TravelWashCycle",rang:"0-99"),
+                   CenterWaterModel(name: "周期制水量", setTime: "2500",key:"WaterLimit_1Cycle",rang:"100-99000"),
+                   CenterWaterModel(name: "居家反洗持续时间", setTime: "12",key:"HomeNtvTime",rang:"0-99"),
+                   CenterWaterModel(name: "居家正洗持续时间", setTime: "6",key:"HomePtvTime",rang:"0-99"),
+                   CenterWaterModel(name: "出差反洗持续时间", setTime: "4",key:"TravelNtvTime",rang:"0-99"),
+                   CenterWaterModel(name: "出差正洗持续时间", setTime: "4",key:"TravelPtvTime",rang:"0-99"),
+                   CenterWaterModel(name: "执行反冲洗时间点", setTime: "2",key:"WashTimeNode",rang:"0-23")]
+        
     }
     
 }
