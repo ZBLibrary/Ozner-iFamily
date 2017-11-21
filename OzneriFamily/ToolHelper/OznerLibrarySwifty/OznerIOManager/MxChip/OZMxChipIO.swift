@@ -39,7 +39,7 @@ class OZMxChipIO: OznerBaseIO {
             })
             break
         case 3:
-            OznerMQTT_V3.instance.sendData(data: sendData, toTopic: deviceInfo.deviceID, callback: { (code) in
+            OznerMQTT_V3.instance.sendData(data: sendData, toTopic: deviceInfo.deviceType+"/"+deviceInfo.deviceMac, callback: { (code) in
             })
             break
         default:

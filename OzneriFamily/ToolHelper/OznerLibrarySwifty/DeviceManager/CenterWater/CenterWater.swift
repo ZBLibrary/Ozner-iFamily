@@ -125,6 +125,11 @@ class CenterWater: OznerBaseDevice {
         centerConfig = tmpConfig
     }
     
+    override func SendDataToDevice(sendData: Data, CallBack callback: ((Error?) -> Void)?) {
+        super.SendDataToDevice(sendData: sendData, CallBack: callback)
+        
+    }
+    
     override func doWillInit() {
         super.doWillInit()
         

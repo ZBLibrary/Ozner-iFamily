@@ -86,8 +86,9 @@ class CenterWaterView: OznerDeviceView{
         let value = sender.tag == 666 ? 0 : 1
         
         let model = MqttSendStruct(key: "UserMode", value: value, type: "Integer")
-        self.currentDevice?.SendDataToDevice(sendData: OznerTools.mqttModelToData([model]), CallBack: { (error) in
-
+        let device = self.currentDevice as! CenterWater
+        device.SendDataToDevice(sendData: OznerTools.mqttModelToData([model]), CallBack: { (error) in
+            print(error)
         })
         self.noticeOnlyText("已发送")
 
