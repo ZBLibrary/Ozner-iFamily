@@ -28,7 +28,7 @@ struct CenterWaterModel {
     var rang = ""
 }
 
-extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate{
+extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -69,12 +69,10 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate,UIText
         
         var model = dataArr[indexPath.row]
         
-        currentModel = model
         switch indexPath.row {
         case 0...7:
             let alert = SCLAlertView()
             let txt = alert.addTextField("设置范围"+model.rang)
-            txt.delegate = self
             
             alert.addButton("确定") {
                 
@@ -83,6 +81,18 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate,UIText
                     
                     return
                 }
+                var arr = model.rang.components(separatedBy: "-")
+                
+                if Int(txt.text!)! < Int(arr[0])! {
+                    self.noticeOnlyText("请设置大于\(arr[0])的数字")
+                    return
+                }
+                
+                if Int(txt.text!)! > Int(arr[1])! {
+                    self.noticeOnlyText("请设置小于\(arr[1])的数字")
+                    return
+                }
+                
                 model.setTime = txt.text!
                 self.dataArr[indexPath.row] = model
                 self.tableView.reloadData()
@@ -108,23 +118,6 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate,UIText
             break
         }
  
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        
-        var arr = currentModel!.rang.components(separatedBy: "$")
-        
-//        let isBool = Int(arr[1]) >= Int(textField.text!) >= Int(arr[1])
-//        let isBool =  (Int(arr[0]) <= Int(textField.text!) <= Int(arr[1]))
-        
-        
-        
-//        guard isBool else {
-//            
-//            return false
-//        }
-        
-        return true
     }
     
     
@@ -253,7 +246,6 @@ class CenterWaterSettingVc: DeviceSettingController {
     var pickDateView:TapDatePickerView?
     
     var dataArr:[CenterWaterModel] = []
-    var currentModel:CenterWaterModel?
     
     @IBAction func saveAction(_ sender: Any) {
         
@@ -306,13 +298,13 @@ class CenterWaterSettingVc: DeviceSettingController {
         let footView = UIView(frame: CGRect(x: 0, y: 0, width: width_screen, height: 280))
         footView.addSubview(deleBtn)
         
-        let btn1 = UIButton.createButtonWithText("咨询", target: self, action:#selector(CenterWaterSettingVc.consultAction) , frame: CGRect(x: 60, y: 15, width: 80, height: 40))
-        btn1.setTitleColor(UIColor.black, for: UIControlState.normal)
-        footView.addSubview(btn1)
-        
-        let btn2 = UIButton.createButtonWithText("更多商品", target: self, action:#selector(CenterWaterSettingVc.BuyAction) , frame: CGRect(x: width_screen - 140, y: 15, width: 80, height: 40))
-        btn2.setTitleColor(UIColor.black, for: UIControlState.normal)
-        footView.addSubview(btn2)
+//        let btn1 = UIButton.createButtonWithText("咨询", target: self, action:#selector(CenterWaterSettingVc.consultAction) , frame: CGRect(x: 60, y: 15, width: 80, height: 40))
+//        btn1.setTitleColor(UIColor.black, for: UIControlState.normal)
+//        footView.addSubview(btn1)
+//
+//        let btn2 = UIButton.createButtonWithText("更多商品", target: self, action:#selector(CenterWaterSettingVc.BuyAction) , frame: CGRect(x: width_screen - 140, y: 15, width: 80, height: 40))
+//        btn2.setTitleColor(UIColor.black, for: UIControlState.normal)
+//        footView.addSubview(btn2)
         
         deleBtn.addTarget(self, action: #selector(CenterWaterSettingVc.deleteAction), for: UIControlEvents.touchUpInside)
         tableView.tableFooterView = footView
