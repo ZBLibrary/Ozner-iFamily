@@ -43,7 +43,9 @@ class GYValueElectSlider: UISlider {
         self.minimumTrackTintColor = UIColor.init(hexString: "a63765")
         self.isEnabled = true
         self.minimumValue = 0
-        self.maximumValue = 100
+        let manS = Int((OznerManager.instance.currentDevice?.settings.GetValue(key: "ELTempSet", defaultValue: "90"))!)
+     
+        self.maximumValue = Float(manS! >= 90 ? 90 : manS!)
         
         self.addTarget(self, action: #selector(sliderValueChanged(_:)), for: UIControlEvents.valueChanged)
         

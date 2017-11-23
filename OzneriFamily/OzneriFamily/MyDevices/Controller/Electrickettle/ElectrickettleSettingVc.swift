@@ -137,8 +137,10 @@ class ElectrickettleSettingVc: DeviceSettingController {
         
         if device?.connectStatus == .Connected {
         
-          _ = device?.setSetting((hotTemp:  device?.settingInfo.hotTime ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: timeSpace, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+          _ = device?.setSetting((hotTemp:  device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: timeSpace, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
         }
+        
+        sleep(1)
         
     }
     

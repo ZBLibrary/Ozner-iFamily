@@ -129,7 +129,6 @@ class ElectrickettleMainView: OznerDeviceView {
 
         }
         
-        
         datePick.showInView()
         
 //        pickDateView=Bundle.main.loadNibNamed("TapDatePickerView", owner: nil, options: nil)?.last as? TapDatePickerView
@@ -302,6 +301,7 @@ class ElectrickettleMainView: OznerDeviceView {
             return
         }
         
+        
         _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: Int(sender.value * 60.0), boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
         
     }
@@ -399,19 +399,21 @@ class ElectrickettleMainView: OznerDeviceView {
         }
         
         //Value设置
-        if currentDevice.settingInfo.orderFunction == 0   {
-            valuelb.text = "持续保温0小时"
-            slider.value = 0.0
-        } else if currentDevice.settingInfo.orderSec > 0 {
-            let time = String.init(format: "%.1f",currentDevice.settingInfo.hotTime/60)
-            
-            valuelb.text = "持续保温\(time))小时"
+//        if currentDevice.settingInfo.orderFunction == 0   {
+//            valuelb.text = "持续保温0小时"
+//            slider.value = 0.0
+//        } else
+        
+        if currentDevice.settingInfo.orderSec > 0 {
+            let time = String.init(format: "%.1f",CGFloat(currentDevice.settingInfo.hotTime)/60.0)
+            valuelb.text = "持续保温\(time)小时"
             slider.value = Float(time)!
-        } else {
+        }
+        
+        if currentDevice.settingInfo.hotSurplusTime > 0 && currentDevice.settingInfo.orderFunction == 2{
             
-            let time = String.init(format: "%.1f",currentDevice.settingInfo.hotSurplusTime/60)
-            
-            valuelb.text = "持续保温\(time))小时"
+            let time = String.init(format: "%.1f",CGFloat(currentDevice.settingInfo.hotSurplusTime)/60)
+            valuelb.text = "持续保温\(time)小时"
             slider.value = Float(time)!
             
         }
@@ -441,9 +443,9 @@ class ElectrickettleMainView: OznerDeviceView {
         
         tempValue.minimumValue = 0
         
-        let manS = Int((OznerManager.instance.currentDevice?.settings.GetValue(key: "ELTempSet", defaultValue: "100"))!)
+        let manS = Int((OznerManager.instance.currentDevice?.settings.GetValue(key: "ELTempSet", defaultValue: "90"))!)
         
-        tempValue.maximumValue = Float(manS!)
+        tempValue.maximumValue = Float(manS! >= 90 ? 90 : manS!)
         tempValue.isEnabled = true
         tempValue.layer.sublayers?.removeAll()
         switchlb.isEnabled = false
