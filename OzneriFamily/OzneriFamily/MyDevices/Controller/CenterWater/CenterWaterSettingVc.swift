@@ -194,6 +194,7 @@ extension CenterWaterSettingVc: UITableViewDataSource,UITableViewDelegate{
             self.performSegue(withIdentifier: "ShowCenterVc", sender: nil)
             break
         case 668:
+            self.performSegue(withIdentifier: "showAboutDevice", sender: nil)
             break
         default:
             break
@@ -263,7 +264,7 @@ class CenterWaterSettingVc: DeviceSettingController {
                 print(error!)
             }
         }
-        sleep(2)
+        sleep(1)
         self.saveDevice()
     }
     
@@ -348,5 +349,14 @@ class CenterWaterSettingVc: DeviceSettingController {
         
         return btn
     }()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier=="showAboutDevice" {
+            let VC=segue.destination as!  AboutDeviceController
+            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutCeterWater"]?.stringValue)!, Type: 0)
+        }
+    }
     
 }
