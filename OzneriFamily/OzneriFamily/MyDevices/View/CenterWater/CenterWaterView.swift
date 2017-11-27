@@ -135,7 +135,7 @@ class CenterWaterView: OznerDeviceView{
         
         centerBtn.layer.borderColor = UIColor(red: 22.0 / 255.0, green: 142.0 / 255.0, blue: 253.0 / 255.0, alpha: 1.0).cgColor
         centerBtn.setTitleColor(UIColor(red: 22.0 / 255.0, green: 142.0 / 255.0, blue: 253.0 / 255.0, alpha: 1.0), for: UIControlState.normal)
-        centerBtn.setTitle("立即启动反冲洗", for: UIControlState.normal)
+        centerBtn.setTitle("立即启动冲洗", for: UIControlState.normal)
         centerBtn.backgroundColor = UIColor.white
         centerBtn.layer.borderWidth = 2
         
