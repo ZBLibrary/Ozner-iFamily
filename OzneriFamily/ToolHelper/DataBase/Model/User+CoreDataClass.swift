@@ -794,9 +794,9 @@ public class User: BaseDataObject {
             {
                 if item["Weight"].string != nil && item["Weight"].stringValue.count > 0 {
                     
-//                    if item["AppData"].stringValue != "iOS" {
-//                        continue
-//                    }
+                    if item["AppData"].stringValue != "iOS" {
+                        continue
+                    }
                     
                     let info =  OznerDeviceInfo(deviceID: item["Mac"].stringValue, deviceMac: item["Mac"].stringValue, deviceType: item["DeviceType"].stringValue, productID: item["DeviceType"].stringValue, wifiVersion: item["Weight"].intValue)
 //                    let device = OznerBaseDevice.init(deviceinfo: info, Settings: item["Settings"].stringValue)

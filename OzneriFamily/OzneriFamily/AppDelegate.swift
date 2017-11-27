@@ -69,7 +69,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         }
         
         locateManage?.desiredAccuracy = kCLLocationAccuracyBest
-        locateManage?.startUpdatingHeading()
+        locateManage?.distanceFilter = 1000
+        locateManage?.startUpdatingLocation()
        
 //        let userSetting = UIUserNotificationSettings(types:myTypes, categories:nil)
 //        UIApplication.shared.registerUserNotificationSettings(userSetting)
@@ -530,7 +531,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
     
     // MARK: - 定位
     
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let newloca = locations.last {
@@ -553,7 +553,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                             if locality.contains("市") {
                                
                              let str = locality.replacingOccurrences(of: "市", with: "")
-                                
                                 UserDefaults.standard.setValue(str, forKey: "GYCITY")
                                 UserDefaults.standard.synchronize()
                             } else {
@@ -566,7 +565,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                         }
                         
                     }
-                    
                     
                 }
                 
