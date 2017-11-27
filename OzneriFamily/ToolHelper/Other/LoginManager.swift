@@ -163,12 +163,23 @@ class LoginManager:NSObject{
         SVProgressHUD.show()
         
     }
+    
+    func isdownDeviceFromNet() -> Bool{
+    
+        if let _ = UserDefaults.standard.value(forKey: downDeviceInderifer)  {
+            
+            return true
+        }
+        
+        return false
+    }
 }
 
 
 //当前设备型号
 let cureentIphoneType: EnumIphoneType = LoginManager.currenIphoneType()
 
+let downDeviceInderifer = "downDeviceInderifer"
 public func printLog<T>(_ message: T,file: String = #file,method: String = #function, line: Int = #line)
 {
     #if DEBUG

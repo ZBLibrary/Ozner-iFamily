@@ -441,7 +441,7 @@ class ElectrickettleMainView: OznerDeviceView {
 
         slider.addTarget(self, action: #selector(ElectrickettleMainView.sliderValueChanged(_:)), for: UIControlEvents.touchUpInside)
         
-        tempValue.minimumValue = 0
+        tempValue.minimumValue = 40
         
         let manS = Int((OznerManager.instance.currentDevice?.settings.GetValue(key: "ELTempSet", defaultValue: "90"))!)
         

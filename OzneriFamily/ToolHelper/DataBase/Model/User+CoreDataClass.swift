@@ -766,8 +766,8 @@ public class User: BaseDataObject {
     }
     
     //绑定设备
-    class func AddDevice(mac:String,type:String,setting:String,success: @escaping (() -> Void), failure: @escaping ((Error) -> Void)){
-        self.fetchData(key: "AddDevice", parameters: ["Mac":mac,"DeviceType":type,"Settings":setting], success: { (json) in
+    class func AddDevice(mac:String,type:String,setting:String,weight:Int,success: @escaping (() -> Void), failure: @escaping ((Error) -> Void)){
+        self.fetchData(key: "AddDevice", parameters: ["Mac":mac,"DeviceType":type,"Settings":setting,"Weight":weight,"AppData":"iOS"], success: { (json) in
             success()
         }, failure: failure)
     }
@@ -780,13 +780,35 @@ public class User: BaseDataObject {
     // 获取设备列表
     class func GetDeviceList(success: @escaping (() -> Void), failure: @escaping ((Error) -> Void)){
         self.fetchDataWithProgress(key: "GetDeviceList", parameters: [:], success: { (json) in
-            for _ in json["data"].arrayValue
-            {
-//                OznerBaseDevice.init(deviceinfo: OznerDeviceInfo, Settings: item["Settings"].stringValue)
-//                let device=OznerBaseDevice(item["Mac"].stringValue, type: item["DeviceType"].stringValue, settings: item["Settings"].stringValue)
-//                OznerManager.instance().save(device)
+            
+            guard json["data"].arrayValue.count  > 0 else {
+                
+                DispatchQueue.main.async {
+                    appDelegate.window?.noticeOnlyText("暂未发现网络设备")
+                }
+                success()
+                return
             }
-        }, failure: failure)
+            
+            for item in json["data"].arrayValue
+            {
+                if item["Weight"].string != nil && item["Weight"].stringValue.count > 0 {
+                    
+//                    if item["AppData"].stringValue != "iOS" {
+//                        continue
+//                    }
+                    
+                    let info =  OznerDeviceInfo(deviceID: item["Mac"].stringValue, deviceMac: item["Mac"].stringValue, deviceType: item["DeviceType"].stringValue, productID: item["DeviceType"].stringValue, wifiVersion: item["Weight"].intValue)
+//                    let device = OznerBaseDevice.init(deviceinfo: info, Settings: item["Settings"].stringValue)
+//                let device=OznerBaseDevice(item["Mac"].stringValue, type: item["DeviceType"].stringValue, settings: item["Settings"].stringValue)
+                 let device = OznerManager.instance.createDevice(scanDeviceInfo: info, setting: item["Settings"].stringValue)
+                    OznerManager.instance.saveDevice(device: device)
+                }
+            }
+                success()
+            }, failure: { (error) in
+                failure(error)
+            })
         
     }
     

@@ -98,7 +98,7 @@ struct OznerDeviceInfo {
      c.1.0空净 FOG_HAOZE_AIR
      */
     var productID = ""
-    var wifiVersion = 1//wifi版本，1或2
+    var wifiVersion = 1//wifi版本，1或2,3
     
     
     func des() -> String {

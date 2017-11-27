@@ -144,9 +144,6 @@ class ElectrickettleSettingVc: DeviceSettingController {
         
     }
     
-    
-    
-    
         
     @IBAction func deleteAction(_ sender: Any) {
         
@@ -187,7 +184,7 @@ class ElectrickettleSettingVc: DeviceSettingController {
         case 1111:
             
             pickDateView.pickerData.removeAll()
-            for i in 0...100 {
+            for i in 40...100 {
                 
                 pickDateView.pickerData.append(i)
 

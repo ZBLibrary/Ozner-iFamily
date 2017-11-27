@@ -133,14 +133,16 @@ class PairSuccessController: UIViewController {
       
         //上传到服务器
         LoginManager.instance.showHud()
-        User.AddDevice(mac: device.deviceInfo.deviceMac, type: device.deviceInfo.deviceType, setting: device.settings.toJsonString(), success: {
-            print("设备上传到服务器成功！")
-            SVProgressHUD.dismiss()
-        }, failure: { (error) in
-            SVProgressHUD.dismiss()
-            print("设备上传到服务器失败！")
-        })
-        
+        let ioType=ProductInfo.getIOTypeFromProductID(productID: device.deviceInfo.productID)
+        if ioType != .Blue{
+            User.AddDevice(mac: device.deviceInfo.deviceID, type: device.deviceInfo.deviceType, setting: device.settings.toJsonString(),weight: device.deviceInfo.wifiVersion, success: {
+                print("设备上传到服务器成功！")
+                SVProgressHUD.dismiss()
+            }, failure: { (error) in
+                SVProgressHUD.dismiss()
+                print("设备上传到服务器失败！")
+            })
+        }
         self.dismiss(animated: false, completion: {})
     }
     func CheckInputText()->Bool

@@ -169,7 +169,7 @@ open class PairingScanViewController: UIViewController, UIImagePickerControllerD
                     OznerManager.instance.currentDevice=device
                     //上传到服务器
                     LoginManager.instance.showHud()
-                    User.AddDevice(mac: device.deviceInfo.deviceMac, type: device.deviceInfo.deviceType, setting: device.settings.toJsonString(), success: {
+                    User.AddDevice(mac: device.deviceInfo.deviceMac, type: device.deviceInfo.deviceType, setting: device.settings.toJsonString(),weight: device.deviceInfo.wifiVersion, success: {
                         print("设备上传到服务器成功！")
                         SVProgressHUD.dismiss()
                     }, failure: { (error) in

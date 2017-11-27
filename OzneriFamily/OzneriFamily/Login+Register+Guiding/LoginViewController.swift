@@ -132,7 +132,31 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         LoginManager.instance.mainTabBarController = MainTabBarController()
         LoginManager.instance.mainTabBarController?.loadTabBar()
         LoginManager.instance.mainTabBarController?.modalTransitionStyle = .crossDissolve
-        self.present(LoginManager.instance.mainTabBarController!, animated: true, completion: nil)
+        
+        if !LoginManager.instance.isdownDeviceFromNet() {
+            UserDefaults.standard.setValue("oK", forKey: downDeviceInderifer)
+            UserDefaults.standard.synchronize()
+            let alertView = SCLAlertView()
+            
+            _ = alertView.addButton(loadLanguage("确定"), action: {
+                
+                User.GetDeviceList(success: {
+                    
+                    self.present(LoginManager.instance.mainTabBarController!, animated: true, completion: nil)
+                }, failure: { (error) in
+                    self.present(LoginManager.instance.mainTabBarController!, animated: true, completion: nil)
+                })
+                
+            })
+            
+            _ = alertView.addButton(loadLanguage("取消"), action: {})
+            _ = alertView.showInfo(loadLanguage("温馨提示"), subTitle: loadLanguage("是否从网络获取设备列表"))
+            
+        } else {
+            
+            self.present(LoginManager.instance.mainTabBarController!, animated: true, completion: nil)
+        }
+        
     }
 
     var firstAppear = true
