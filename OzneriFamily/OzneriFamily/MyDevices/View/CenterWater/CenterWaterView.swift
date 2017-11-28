@@ -55,8 +55,9 @@ class CenterWaterView: OznerDeviceView{
         
         switch sender.tag {
         case 665:
-            if isWash == 888 {
-                self.noticeOnlyText("当前正在进行反冲洗")
+            if isWash == 889 {
+//                self.noticeOnlyText("当前正在进行冲洗")
+               self.noticeOnlyText("当前状态无法设置")
                 return
             }
             
@@ -102,7 +103,7 @@ class CenterWaterView: OznerDeviceView{
         leftWaveView.asongLabel.text = String(describing: (device?.centerInfo.todayW) ?? 0) + "L"
         rightWaveView.asongLabel.text = String(describing: (device?.centerInfo.sumW) ?? 0) + "L"
 //        centerBtn.backgroundColor = (device?.centerInfo.Cmd_CtrlDevice == 0) ? UIColor.blue : UIColor.white
-        centerBtnBlueBg(device?.centerInfo.Cmd_CtrlDevice == 2)
+        centerBtnBlueBg(device?.centerInfo.Cmd_CtrlDevice == 1)
         
         modeIsTrue(device?.centerInfo.userMode == 0)
         
@@ -125,11 +126,24 @@ class CenterWaterView: OznerDeviceView{
         centerBtn.layer.cornerRadius = 23
         centerBtn.layer.masksToBounds = true
 
-        if isBLue {
+        if !isBLue {
             
             centerBtn.backgroundColor = UIColor(red: 22.0 / 255.0, green: 142.0 / 255.0, blue: 253.0 / 255.0, alpha: 1.0)
             centerBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
-            centerBtn.setTitle("正在反冲洗", for: UIControlState.normal)
+            
+            let device = self.currentDevice as? CenterWater
+            var stateStr = "正在冲洗"
+            switch device!.centerInfo.Cmd_CtrlDevice {
+                case 2,3,4,5,6:
+                    break
+                case 0:
+                    stateStr = "休眠中"
+                    break
+                default:
+                    break
+            }
+            
+            centerBtn.setTitle(stateStr, for: UIControlState.normal)
             return
         }
         
