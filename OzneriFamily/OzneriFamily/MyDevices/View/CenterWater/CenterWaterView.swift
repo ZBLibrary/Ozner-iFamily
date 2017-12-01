@@ -40,14 +40,14 @@ class CenterWaterView: OznerDeviceView{
         rightWaveView.layer.cornerRadius = leftWaveView.frame.width/2
         rightWaveView.layer.masksToBounds = true
    
-        centerBtnBlueBg(false)
+        centerBtnBlueBg(true)
         
     }
     
     
     
     @IBAction func btnAction(_ sender: UIButton) {
-        
+        let device = self.currentDevice as? CenterWater
         guard self.currentDevice?.connectStatus == .Connected else {
             self.noticeOnlyText("请检查设备连接状态")
             return
@@ -55,7 +55,7 @@ class CenterWaterView: OznerDeviceView{
         
         switch sender.tag {
         case 665:
-            if isWash == 889 {
+            if isWash == 899 {
 //                self.noticeOnlyText("当前正在进行冲洗")
                self.noticeOnlyText("当前状态无法设置")
                 return
@@ -79,7 +79,10 @@ class CenterWaterView: OznerDeviceView{
                 self.noticeOnlyText("当前模式已为出差模式")
                 return
             }
-            
+            if device?.centerInfo.Flowstatus == 1 {
+                self.noticeOnlyText("通水状态下无法设置")
+                return
+            }
             break
         default:
             break
@@ -87,8 +90,8 @@ class CenterWaterView: OznerDeviceView{
         let value = sender.tag == 666 ? 0 : 1
         
         let model = MqttSendStruct(key: "UserMode", value: value, type: "Integer")
-        let device = self.currentDevice as! CenterWater
-        device.SendDataToDevice(sendData: OznerTools.mqttModelToData([model]), CallBack: { (error) in
+
+        device?.SendDataToDevice(sendData: OznerTools.mqttModelToData([model]), CallBack: { (error) in
             print(error)
         })
         self.noticeOnlyText("已发送")
@@ -132,6 +135,11 @@ class CenterWaterView: OznerDeviceView{
             centerBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
             
             let device = self.currentDevice as? CenterWater
+            
+            guard device != nil else {
+                return
+            }
+            
             var stateStr = "正在冲洗"
             switch device!.centerInfo.Cmd_CtrlDevice {
                 case 2,3,4,5,6:

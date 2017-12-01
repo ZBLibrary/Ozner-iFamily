@@ -64,6 +64,10 @@ NSString* deviceName=nil;
         CBUUID* uuid=[CBUUID UUIDWithString:@"FFF0"];
         macData1=[dict objectForKey:uuid];
     }
+
+    if (macData1.length < 18) {
+        return false;
+    }
     
     BytePtr bytes2 = (BytePtr)[[macData1 subdataWithRange:NSMakeRange(18, 1)] bytes];
     
@@ -142,14 +146,14 @@ NSString* deviceName=nil;
     //设置查找设备的过滤器
     [baby setFilterOnDiscoverPeripherals:^BOOL(NSString *peripheralName, NSDictionary *advertisementData, NSNumber *RSSI) {
         
-//        BOOL isCanSearch = false;
-//
-//        if ([peripheralName  isEqual: @"RO Comml"]) {
-//
-//            isCanSearch = [weakSelf isCanSearch:advertisementData];
-//        }
+        BOOL isCanSearch = false;
+
+        if ([peripheralName isEqual: @"RO Comml"]) {
+
+            isCanSearch = [weakSelf isCanSearch:advertisementData];
+        }
         // || ([peripheralName  isEqual: @"RO Comml"]  && isCanSearch)
-        if (peripheralName == nil) {
+        if (peripheralName == nil || isCanSearch) {
             return NO;
         }
         if ([deviceName containsString:peripheralName]) {

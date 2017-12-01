@@ -17,8 +17,8 @@ import UIKit
 import SwiftyJSON
 
 class CenterWater: OznerBaseDevice {
-    
-    private(set) var centerInfo:(todayW:Int,sumW:Int,filter:Int,userMode:Int,Cmd_CtrlDevice:Int) = (0,0,0,0,0){
+
+    private(set) var centerInfo:(todayW:Int,sumW:Int,filter:Int,userMode:Int,Cmd_CtrlDevice:Int,Flowstatus:Int) = (0,0,0,0,1,-1){
         
         didSet {
             if centerInfo != oldValue {
@@ -102,8 +102,8 @@ class CenterWater: OznerBaseDevice {
             case "FilterUsageAmount":
                 FilterUsageAmount = Float(item["value"].intValue)
                 break
-            case "CHILDLOCK":
-                //                    tmpStatus.Lock = item["value"].intValue==1
+            case "Flowstatus":
+                tmpCenter.Flowstatus = item["value"].intValue
                 break
                 //                case "POWER":
                 //                    tmpStatus.Power = item["value"].intValue==1

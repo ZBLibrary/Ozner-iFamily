@@ -38,7 +38,7 @@ class GYCenterWaterCell: UITableViewCell {
             timeLb.text = model.setTime + "天"
             break
         case 2:
-            timeLb.text = model.setTime + "顿"
+            timeLb.text = model.setTime + "L"
             break
         case 3:
             timeLb.text = model.setTime + "分钟"
@@ -57,7 +57,6 @@ class GYCenterWaterCell: UITableViewCell {
         default:
             break
         }
-        
         
     }
     
