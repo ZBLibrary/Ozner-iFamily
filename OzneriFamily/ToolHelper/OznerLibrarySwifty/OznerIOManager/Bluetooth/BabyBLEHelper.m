@@ -66,7 +66,7 @@ NSString* deviceName=nil;
     }
 
     if (macData1.length < 18) {
-        return false;
+        return true;
     }
     
     BytePtr bytes2 = (BytePtr)[[macData1 subdataWithRange:NSMakeRange(18, 1)] bytes];
