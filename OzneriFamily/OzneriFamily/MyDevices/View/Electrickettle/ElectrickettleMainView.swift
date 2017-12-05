@@ -165,6 +165,7 @@ class ElectrickettleMainView: OznerDeviceView {
         let device = currentDevice as? Electrickettle_Blue
         
         if device?.connectStatus != OznerConnectStatus.Connected {
+            self.noticeOnlyText("请检查设备是否连接")
             return
         }
         
@@ -176,51 +177,47 @@ class ElectrickettleMainView: OznerDeviceView {
                 self.currentTempBtn = nil
             }
             
-            if sender.tag == 666 {
-                
-                secondContrains.constant = 120
-                tempValue.isHidden = true
-            }
-            
             return
         }
         
         if sender.tag == 666{
             
-            secondContrains.constant = 170
+            secondContrains.constant = 180
             tempValue.isHidden = false
-            let value = UserDefaults.standard.value(forKey: "UISliderValueElectrickettle") ?? 0
+            let value = UserDefaults.standard.value(forKey: "UISliderValueElectrickettle") ?? 40
             tempValue.value = Float(value as! Int)
+            tempValue.previewView?.valueLb.text = String.init(format: "%.0f℃",tempValue.value)
+            tempValue.beginAdd()
             
-        } else {
-            tempValue.isHidden = true
-            secondContrains.constant = 120
+            tempValue.chageValueFrame()
+            
         }
         
         if sender.tag != 666 {
-            
-            let device = currentDevice as? Electrickettle_Blue
-            
+        
             _ = device?.setSetting((hotTemp: sender.tag , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
             
+        } else {
+         
+            _ = device?.setSetting((hotTemp: Int(tempValue.value) , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
         }
         
         switch sender.tag {
-        case 90:
-            currentTemp.text = "90℃适合泡咖啡"
-            break
-        case 80:
-            currentTemp.text = "80℃适合泡绿茶"
-            break
-        case 70:
-            currentTemp.text = "70℃适合冲米粉"
-            break
-        case 60:
-            currentTemp.text = "60℃适合泡牛奶"
-            break
-        default:
-            currentTemp.text = ""
-            break
+            case 90:
+                currentTemp.text = "90℃适合泡咖啡"
+                break
+            case 80:
+                currentTemp.text = "80℃适合泡绿茶"
+                break
+            case 70:
+                currentTemp.text = "70℃适合冲米粉"
+                break
+            case 60:
+                currentTemp.text = "60℃适合泡牛奶"
+                break
+            default:
+                currentTemp.text = ""
+                break
         }
         
         UIView.animate(withDuration: 0.5) {
@@ -360,7 +357,7 @@ class ElectrickettleMainView: OznerDeviceView {
             self.noticeOnlyText("预约时间已取消")
         }
         
-        self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
+        self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 0.5, inModes: [RunLoopMode.commonModes])
         
     }
 
@@ -394,7 +391,7 @@ class ElectrickettleMainView: OznerDeviceView {
             let date = Date(timeIntervalSinceNow: TimeInterval(currentDevice.settingInfo.orderSec * 60))
             settimeBtn.setTitle((date.gy_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date.gy_stringFromDate(dateFormat: " HH:mm")), for: UIControlState.normal)
             
-            self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 1, inModes: [RunLoopMode.commonModes])
+            self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 0.5, inModes: [RunLoopMode.commonModes])
             
         }
         
@@ -404,7 +401,7 @@ class ElectrickettleMainView: OznerDeviceView {
 //            slider.value = 0.0
 //        } else
         
-        if currentDevice.settingInfo.orderSec > 0 {
+        if currentDevice.settingInfo.orderSec >= 0 {
             let time = String.init(format: "%.1f",CGFloat(currentDevice.settingInfo.hotTime)/60.0)
             valuelb.text = "持续保温\(time)小时"
             slider.value = Float(time)!
@@ -417,6 +414,13 @@ class ElectrickettleMainView: OznerDeviceView {
             slider.value = Float(time)!
             
         }
+        
+        tempValue.value = Float(currentDevice.settingInfo.hotTemp)
+        tempValue.previewView?.valueLb.text = String.init(format: "%d℃", currentDevice.settingInfo.hotTemp)
+        tempValue.beginAdd()
+        tempValue.chageValueFrame()
+        
+        //设置保温温度温度 hotTemp
         
     }
     
@@ -449,12 +453,15 @@ class ElectrickettleMainView: OznerDeviceView {
         tempValue.isEnabled = true
         tempValue.layer.sublayers?.removeAll()
         switchlb.isEnabled = false
-        
     }
     
      func gylayoutSubviews() {
         
-        scrollerView.contentSize = CGSize(width: width_screen, height: 560)
+        DispatchQueue.main.async {
+            
+            self.scrollerView.contentSize = CGSize(width: width_screen, height: 560)
+
+        }
         
     }
     

@@ -54,30 +54,31 @@ class GYValueElectSlider: UISlider {
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         
         let tracking = super.beginTracking(touch, with: event)
-        let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
-        let rect1 = rect.insetBy(dx: -8, dy: -8)
+//        let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
+//        let rect1 = rect.insetBy(dx: -8, dy: -8)
+//
+//        let rect2 = rect1.offsetBy(dx: 0, dy: -30)
+//
+//        if previewView == nil {
         
-        let rect2 = rect1.offsetBy(dx: 0, dy: -30)
-        
-        if previewView == nil {
-            
             //            let rect = CGRect.offsetBy(CGRect.insetBy(self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)))
             
             
-            addSubview(creatGYTmpView(rect2))
-            
-            UIView.animate(withDuration: 0.08, animations: {
-                self.previewView?.alpha = 1
-            })
-            
-        } else {
-            
-            //            let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
-            //            let rect1 = rect.insetBy(dx: -8, dy: -8)
-            //            let rect2 = rect1.offsetBy(dx: 0, dy: -20)
-            previewView?.frame = rect2
-            
-        }
+//            addSubview(creatGYTmpView(rect2))
+//
+//            UIView.animate(withDuration: 0.08, animations: {
+//                self.previewView?.alpha = 1
+//            })
+
+        beginAdd()
+//        } else {
+//
+//            //            let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
+//            //            let rect1 = rect.insetBy(dx: -8, dy: -8)
+//            //            let rect2 = rect1.offsetBy(dx: 0, dy: -20)
+//            previewView?.frame = rect2
+//
+//        }
         
         
         return tracking
@@ -160,6 +161,39 @@ class GYValueElectSlider: UISlider {
         previewView?.backgroundColor = UIColor.clear
         return previewView!
         
+    }
+    
+    func beginAdd() {
+        
+        let rect = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value)
+        let rect1 = rect.insetBy(dx: -8, dy: -8)
+        
+        let rect2 = rect1.offsetBy(dx: 0, dy: -30)
+        
+        if previewView == nil {
+            
+            addSubview(creatGYTmpView(rect2))
+            
+            UIView.animate(withDuration: 0.08, animations: {
+                self.previewView?.alpha = 1
+            })
+            
+        } else {
+            
+            previewView?.frame = rect2
+            
+        }
+        
+    }
+    
+    func chageValueFrame() {
+    
+        var rect = previewView?.frame
+        
+        rect?.origin.x = self.thumbRect(forBounds: self.bounds, trackRect: self.bounds, value: self.value).midX - ((rect?.width)! / 2)
+        previewView?.frame = rect!
+    
+    
     }
     
     func sliderValueChanged(_ sender:UISlider) {

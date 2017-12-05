@@ -269,13 +269,21 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
             }
             let tmptdsBF = (tds.tds1==65535 || tds.tds1<0) ? 0:tds.tds1
             let tmptdsAF = (tds.tds2==65535 || tds.tds2<0) ? 0:tds.tds2
-            let tdsBF=max(tmptdsBF, tmptdsAF)
+            let tdsBF=max(tmptdsBF, tmptdsAF) > 999 ? 999 : max(tmptdsBF, tmptdsAF)
             var tdsAF=min(tmptdsBF, tmptdsAF)
             
-            tdsValueLabel_BF.text = tdsBF==0 ? loadLanguage("暂无"):"\(tdsBF)"
+            tdsValueLabel_BF.text = tdsBF==0 ? loadLanguage("--"):"\(tdsBF)"
             tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:45)*width_screen/375)
             tdsAF = (tdsAF >= 99 ? 99 : tdsAF)
-            tdsValueLabel_AF.text = tdsAF==0 ? loadLanguage("暂无"):"\(tdsAF >= 99 ? 99 : tdsAF)"
+            if tdsAF != 0 {
+                tdsAF = tdsAF < 3 ? Int(CGFloat(tdsBF) * 0.05) : tdsAF
+            }
+            
+            if tdsBF != 0 && tdsAF == 0 {
+                tdsAF = Int(CGFloat(tdsBF) * 0.05)
+            }
+            
+            tdsValueLabel_AF.text = tdsAF==0 ? loadLanguage("-"):"\(tdsAF)"
             tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:45)*width_screen/375)
             
             var angleBF = CGFloat(0)

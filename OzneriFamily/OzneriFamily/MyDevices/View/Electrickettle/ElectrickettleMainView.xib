@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -286,7 +287,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gF-dv-85H">
-                                    <rect key="frame" x="10" y="210" width="354" height="120"/>
+                                    <rect key="frame" x="10" y="210" width="354" height="180"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="保温温度" translatesAutoresizingMaskIntoConstraints="NO" id="vZV-99-Y1L">
                                             <rect key="frame" x="10" y="10" width="25" height="25"/>
@@ -376,8 +377,8 @@
                                                 <action selector="tempChange:" destination="iN0-l3-epB" eventType="touchUpInside" id="jMu-eX-l3U"/>
                                             </connections>
                                         </button>
-                                        <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qhL-IN-o8s" customClass="GYValueElectSlider" customModule="OzneriFamily" customModuleProvider="target">
-                                            <rect key="frame" x="18" y="80" width="318" height="31"/>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qhL-IN-o8s" customClass="GYValueElectSlider" customModule="OzneriFamily" customModuleProvider="target">
+                                            <rect key="frame" x="18" y="140" width="318" height="31"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="btD-CA-9s9"/>
                                             </constraints>
@@ -406,9 +407,9 @@
                                         <constraint firstItem="KcG-bp-nXm" firstAttribute="leading" secondItem="cr2-vE-kaC" secondAttribute="trailing" id="KPV-Qv-pGB"/>
                                         <constraint firstItem="KcG-bp-nXm" firstAttribute="centerY" secondItem="cr2-vE-kaC" secondAttribute="centerY" id="QY1-S1-26d"/>
                                         <constraint firstItem="vZV-99-Y1L" firstAttribute="leading" secondItem="2gF-dv-85H" secondAttribute="leading" constant="10" id="RD4-b2-OHp"/>
-                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="RTu-m9-HNA"/>
-                                        <constraint firstAttribute="height" constant="120" id="TnN-XT-E6a"/>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="Z1i-wo-RNr"/>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="180" id="RTu-m9-HNA"/>
+                                        <constraint firstAttribute="height" constant="180" id="TnN-XT-E6a"/>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="Z1i-wo-RNr"/>
                                         <constraint firstItem="ydx-Ki-ueg" firstAttribute="centerY" secondItem="KcG-bp-nXm" secondAttribute="centerY" id="bqi-ri-HFk"/>
                                         <constraint firstItem="KcG-bp-nXm" firstAttribute="width" secondItem="cr2-vE-kaC" secondAttribute="width" id="h8Q-XR-gPE"/>
                                         <constraint firstItem="cr2-vE-kaC" firstAttribute="width" secondItem="3er-wj-XeL" secondAttribute="width" id="i1J-Vq-C32"/>
@@ -424,7 +425,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHB-je-4Sg">
-                                    <rect key="frame" x="10" y="340" width="354" height="120"/>
+                                    <rect key="frame" x="10" y="400" width="354" height="120"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="保温模式" translatesAutoresizingMaskIntoConstraints="NO" id="GMQ-8L-t76">
                                             <rect key="frame" x="10" y="10" width="25" height="25"/>
@@ -550,7 +551,7 @@
                 <outlet property="tmepLb" destination="1El-Bm-HBl" id="FGY-iQ-8TF"/>
                 <outlet property="valuelb" destination="kki-6p-VTs" id="PGp-3D-f8Z"/>
             </connections>
-            <point key="canvasLocation" x="54.5" y="135.5"/>
+            <point key="canvasLocation" x="-99" y="290"/>
         </view>
     </objects>
     <resources>

@@ -142,6 +142,9 @@ class PairSuccessController: UIViewController {
                 SVProgressHUD.dismiss()
                 print("设备上传到服务器失败！")
             })
+        } else {
+
+            SVProgressHUD.dismiss()
         }
         self.dismiss(animated: false, completion: {})
     }
