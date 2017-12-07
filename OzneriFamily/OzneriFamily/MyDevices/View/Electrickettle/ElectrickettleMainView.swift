@@ -123,7 +123,7 @@ class ElectrickettleMainView: OznerDeviceView {
             self?.settimeBtn.setTitle((date.gy2_stringFromDate(dateFormat: "dd") == Date().gy_stringFromDate(dateFormat: "dd") ? "今天" : "明天") + (date.gy2_stringFromDate(dateFormat: " HH:mm") ), for: UIControlState.normal)
             
             let time = date.timeIntervalSinceNow
-            let seconds = lround(time/60)  - (60 * 8)
+            let seconds = Int(time/60)  - (60 * 8) + 2
             
             _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: 1, orderSec: seconds))
 
