@@ -62,6 +62,7 @@ public class User: BaseDataObject {
         } else {
             if let user = CoreDataManager.defaultManager.fetch(entityName: "User", ID: UserID!, error: &error) as? User {
                 User.currentUser=user
+                CoreDataManager.defaultManager.saveChanges()
                 success(user)
             } else {
                 let userInfo: NSMutableDictionary = [
