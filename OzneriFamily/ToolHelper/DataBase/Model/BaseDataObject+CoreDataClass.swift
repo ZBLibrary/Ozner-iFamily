@@ -48,22 +48,23 @@ extension BaseDataObject{
         })
     }
     class func fetchDataWithProgress(key: String, parameters: NSDictionary?, success: @escaping ((JSON)->Void), failure: @escaping ((Error)->Void)){
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
-        SVProgressHUD.showProgress(0)
+        DispatchQueue.main.async {
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
+            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+            SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.flat)
+            SVProgressHUD.showProgress(0)
+        }
+  
         _=NetworkManager.defaultManager?.POST(key: key, parameters: parameters, progress: { (progress) in
             //Update the progress view
             DispatchQueue.main.async(execute: {
                 if Float(progress.fractionCompleted)<1{
                     SVProgressHUD.showProgress(Float(progress.fractionCompleted))
-                }else{
-                    SVProgressHUD.dismiss()
                 }
             })
 
             }, success: { (json) in
-                
+                SVProgressHUD.dismiss()
                 success(json)
             }, failure: { (error) in
                 SVProgressHUD.dismiss()
