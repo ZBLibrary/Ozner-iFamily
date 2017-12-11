@@ -150,6 +150,7 @@ class TwoCupMainView: OznerDeviceView {
             let endTime=Int((OznerManager.instance.currentDevice?.settings.GetValue(key: "SmartCupEndTiemKey", defaultValue: "\(19*3600)"))!)!
             
             timeRemindLb.text="\(timeCheck(starTime)):\(sec(starTime))-\(timeCheck(endTime)):\(sec(endTime))"
+            timeRemindLb.adjustsFontSizeToFitWidth = true
             let timeSpace = Int((OznerManager.instance.currentDevice?.settings.GetValue(key: "SmartCupRemindInterval", defaultValue: "15"))!)!
             secondRemindLb.text="\(timeSpace%60+timeSpace/60)"+(timeSpace>=60 ? loadLanguage("小时"):loadLanguage("分钟"))
         }
