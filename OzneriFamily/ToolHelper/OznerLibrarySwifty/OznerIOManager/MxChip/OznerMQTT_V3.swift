@@ -33,14 +33,14 @@ class OznerMQTT_V3: NSObject {
         
         SubscribeTopics=[String:dataCallBlock]()
         
-        mqttClient = MQTTClient(clientId: "1231zhu777777788")
+        mqttClient = MQTTClient(clientId: User.currentUser?.phone ?? ("v1-app-" + rndString(len: 12)))
         mqttClient.port=1884
         
-        mqttClient.username="17621050877"//手机号
+        mqttClient.username=User.currentUser?.phone//手机号
         var token = "12345678" + "@\(mqttClient.username!)" + "@\(mqttClient.clientID!)"
         
         token = Helper.gprsEncryption(token)
-        print("加密后的password:\(token)")
+//        print("加密后的password:\(token)")
         mqttClient.password=token//token
         mqttClient.keepAlive=60
         
@@ -105,5 +105,15 @@ class OznerMQTT_V3: NSObject {
         SubscribeTopics.removeValue(forKey: topic)
         mqttClient.unsubscribe(topic) {
         }
+    }
+    
+    private func rndString(len:Int) -> String {
+        let  HexString = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
+        var str = ""
+        for _ in 0..<len {
+            let temp = Int(arc4random()%16)
+            str+=HexString[temp]
+        }
+        return str
     }
 }

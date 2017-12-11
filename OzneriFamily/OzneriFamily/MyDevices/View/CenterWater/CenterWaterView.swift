@@ -73,6 +73,11 @@ class CenterWaterView: OznerDeviceView{
                 return
             }
             
+            if device?.centerInfo.Flowstatus == 0 {
+                self.noticeOnlyText("未通水状态下无法设置居家模式")
+                return
+            }
+            
             break
         case 667:
             if currentMode == 667 {
@@ -80,7 +85,7 @@ class CenterWaterView: OznerDeviceView{
                 return
             }
             if device?.centerInfo.Flowstatus == 1 {
-                self.noticeOnlyText("通水状态下无法设置")
+                self.noticeOnlyText("通水状态下无法设置出差模式")
                 return
             }
             break
