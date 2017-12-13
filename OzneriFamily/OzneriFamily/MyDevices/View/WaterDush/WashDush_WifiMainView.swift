@@ -111,12 +111,12 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
     }
     
     
-    @IBOutlet var washModel1: UIButton!//强劲
-    @IBOutlet var washModel2: UIButton!//日常
-    @IBOutlet var washModel3: UIButton!//节能
+    @IBOutlet var washModel1: UIButton!//节能
+    @IBOutlet var washModel2: UIButton!//强劲
+    @IBOutlet var washModel3: UIButton!//日常
     @IBOutlet var washModel4: UIButton!//快速
-    @IBOutlet var washModel5: UIButton!//瓜果
-    @IBOutlet var washModel6: UIButton!//奶瓶
+    @IBOutlet var washModel5: UIButton!//奶瓶
+    @IBOutlet var washModel6: UIButton!//瓜果
     @IBOutlet var washModel7: UIButton!//清洁
     @IBAction func washModelClick(_ sender: UIButton) {
         if  self.currentDevice?.connectStatus != OznerConnectStatus.Connected{
@@ -170,21 +170,26 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         washAppointTime.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         washAppointTime.backgroundColor=UIColor.black.withAlphaComponent(0.5)
         
-        xinfengWidth.constant = -width_screen/4
-        controlButton4.isHidden=true
         appointButton.isHidden=true
         switch (self.currentDevice?.deviceInfo.productID ?? "")! {
-        case "edb7b978-6aca-11e7-9baf-00163e120d98":
+        case "edb7b978-6aca-11e7-9baf-00163e120d98","908fbf94-6ace-11e7-9baf-00163e120d98":
+            xinfengWidth.constant = -width_screen/4
+            controlButton4.isHidden=true
             controlButton3.isHidden=true
             lockWidth.constant = -width_screen/4
-            
             washModel5.isHidden=true
             model5Width.constant=0
             washModel7.isHidden=true
-            
             break
-        case "151e571a-6acb-11e7-9baf-00163e120d98":
+        case "151e571a-6acb-11e7-9baf-00163e120d98","2c9ca1cc-75bf-11e7-9baf-00163e120d98":
+            xinfengWidth.constant = -width_screen/4
+            controlButton4.isHidden=true
             lockWidth.constant = width_screen/12
+            break
+        case "e9f8b3c2-769c-11e7-9baf-00163e120d98":
+            //lockWidth.constant = width_screen/12
+            washModel5.isHidden=true
+            model5Width.constant=0
             break
         default:
             break
