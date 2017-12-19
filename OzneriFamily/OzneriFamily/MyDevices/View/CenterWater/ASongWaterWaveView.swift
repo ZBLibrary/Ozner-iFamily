@@ -52,7 +52,7 @@ class ASongWaterWaveView: UIView {
         waveA = 10
         // 设置周期 :( 2* M_PI)/waveW = bounds.size.width 。因为涉及的是layer，所以只谈bounds,不说frame
         waveW = 2 * CGFloat.pi / bounds.size.width
-        b  = bounds.size.height / 2
+        b  = bounds.size.height / 1.5
     }
     
     override func draw(_ rect: CGRect) {
@@ -80,7 +80,8 @@ class ASongWaterWaveView: UIView {
     private func setCurrentStatusWavePath() {
         let path = UIBezierPath(ovalIn: self.bounds)
         
-        UIColor.lightGray.withAlphaComponent(0.3).setFill()
+//        UIColor(red: 243.0 / 255.0, green: 246.0 / 255.0, blue: 255.0 / 255.0, alpha: 0.6).setFill()
+        UIColor.init(hex: "0xffe3f9ff").setFill()
         path.fill()
         path.addClip()
         // 创建一个路径

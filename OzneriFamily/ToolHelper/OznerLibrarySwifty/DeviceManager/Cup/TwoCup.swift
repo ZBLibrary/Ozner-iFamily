@@ -131,8 +131,7 @@ class TwoCup: OznerBaseDevice {
     }
     
     override func doWillInit() {
-        
-        print("智能水杯")
+        super.doWillInit()
         readDeviceInfo()
         sleep(1)
         calibrationTime()
@@ -144,7 +143,7 @@ class TwoCup: OznerBaseDevice {
     }
     
     override func repeatFunc() {
-        
+        super.repeatFunc()
         readDeviceInfo()
   
     }
