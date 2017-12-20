@@ -27,6 +27,7 @@ class CenterWaterView: OznerDeviceView{
     @IBOutlet weak var outImage: UIImageView!
     @IBOutlet weak var homeImage: UIImageView!
     
+    @IBOutlet weak var daylb: UILabel!
     @IBOutlet weak var homeMode: UILabel!
     
     var currentMode:Int = 666
@@ -108,19 +109,26 @@ class CenterWaterView: OznerDeviceView{
         super.SensorUpdate(identifier: identifier)
         
         let device = self.currentDevice as? CenterWater
-        leftWaveView.asongLabel.text = String(describing: (device?.centerInfo.todayW) ?? 0) + "L"
-        rightWaveView.asongLabel.text = String(describing: (device?.centerInfo.sumW) ?? 0) + "L"
+        leftWaveView.asongLabel.text = canclueWater((device?.centerInfo.todayW) ?? 0)
+        rightWaveView.asongLabel.text = canclueWater((device?.centerInfo.sumW) ?? 0)
 //        centerBtn.backgroundColor = (device?.centerInfo.Cmd_CtrlDevice == 0) ? UIColor.blue : UIColor.white
         centerBtnBlueBg(device?.centerInfo.Cmd_CtrlDevice == 1)
         
         modeIsTrue(device?.centerInfo.userMode == 0)
+        
+        if device?.centerInfo.userMode == 0 {
+            daylb.text = String.init(format: "%02d", device!.centerInfo.WashTimeInterval) + "/" + String.init(format: "%02d", device!.centerConfig.HomeWashCycle) + "D"
+        } else {
+            
+            daylb.text = String.init(format: "%02d", device!.centerInfo.WashTimeInterval) + "/" + String.init(format: "%02d", device!.centerConfig.TravelWashCycle) + "D"
+        }
         
     }
     
     fileprivate func modeIsTrue(_ isBool:Bool) {
         
         currentMode = isBool ? 666 : 667
-        
+                
         homeImage.image = isBool ? UIImage(named: "居家模式") : UIImage(named: "居家模式-二态")
         outImage.image = isBool ? UIImage(named: "出差模式-二态"): UIImage(named: "居家模式")
         homeMode.textColor = isBool ? UIColor(red: 22.0 / 255.0, green: 142.0 / 255.0, blue: 253.0 / 255.0, alpha: 1.0) :  UIColor(red: 170 / 255.0, green: 170 / 255.0, blue: 170 / 255.0, alpha: 1.0)
@@ -165,6 +173,16 @@ class CenterWaterView: OznerDeviceView{
         centerBtn.setTitle("立即启动冲洗", for: UIControlState.normal)
         centerBtn.backgroundColor = UIColor.white
         centerBtn.layer.borderWidth = 2
+        
+    }
+    
+    fileprivate func canclueWater(_ water:Int) -> String{
+        
+        if water == 0 {
+            return "0T"
+        }
+        
+        return String(format: "%.2f", Float(water)/1000.0) + "T"
         
     }
     
