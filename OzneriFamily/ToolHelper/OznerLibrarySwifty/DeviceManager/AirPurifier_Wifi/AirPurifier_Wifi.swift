@@ -161,8 +161,8 @@ class AirPurifier_Wifi: OznerBaseDevice {
     }
     
     func addTimeToDevice(_ dayNum:Int) {
-        var dataV =  OznerTools.dataFromInt(number: 2, length: dayNum)
-      dataV.append(OznerTools.dataFromInt(number: 1, length: dayNum))
+        var dataV =  OznerTools.dataFromInt(number: CLongLong(dayNum), length: 2)
+      dataV.append(OznerTools.dataFromInt(number: CLongLong(dayNum), length: 1))
       let data = setProperty(code: 0x13, data: dataV)
       self.SendDataToDevice(sendData: data, CallBack: nil)
     }
