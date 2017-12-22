@@ -93,13 +93,13 @@ class ElectrickettleMainView: OznerDeviceView {
                     tdsImg.image=UIImage(named: "baobiao")
                     tdsStateLabel.text=loadLanguage("好")
                     angle=CGFloat(TDS)/CGFloat(tds_good*3)
-                case TDS>Int(tds_good)&&TDS<=Int(tds_bad):
+                case TDS>Int(tds_good)&&TDS<=Int(100):
                     tdsImg.image=UIImage(named: "yiban")
-                    tdsStateLabel.text=loadLanguage("一般")
+                    tdsStateLabel.text=loadLanguage("中")
                     angle=CGFloat(TDS-Int(tds_good))/CGFloat((tds_bad-tds_good)*3)+0.33
-                case TDS>Int(tds_bad)&&TDS<Int(tds_bad+50):
+                case TDS>Int(100):
                     tdsImg.image=UIImage(named: "cha")
-                    tdsStateLabel.text=loadLanguage("偏差")
+                    tdsStateLabel.text=loadLanguage("差")
                     angle=CGFloat(TDS-Int(tds_bad))/CGFloat(50*3)+0.66
                 default:
                     tdsImg.image=UIImage(named: "cha")
@@ -407,7 +407,7 @@ class ElectrickettleMainView: OznerDeviceView {
             slider.value = Float(time)!
         }
         
-        if currentDevice.settingInfo.hotSurplusTime > 0 && currentDevice.settingInfo.orderFunction == 2{
+        if currentDevice.settingInfo.hotSurplusTime > 0 && (currentDevice.settingInfo.isHot == 2){
             
             let time = String.init(format: "%.1f",CGFloat(currentDevice.settingInfo.hotSurplusTime)/60)
             valuelb.text = "持续保温\(time)小时"

@@ -192,7 +192,9 @@ class AirLvXinController: BaseViewController {
             if json1["state"].intValue >= 1 {
                 
                 let filterLifeDay = json1["filterLifeDay"].intValue
-                
+                DispatchQueue.main.async {
+                    
+                }
                 let appearance = SCLAlertView.SCLAppearance(
                     showCloseButton: false,
                     dynamicAnimatorActive: true
@@ -220,8 +222,6 @@ class AirLvXinController: BaseViewController {
                     self.noticeOnlyText("此二维码已失效")
                 }
             }
-            
-            
             
         }, failure: { (error) in
             

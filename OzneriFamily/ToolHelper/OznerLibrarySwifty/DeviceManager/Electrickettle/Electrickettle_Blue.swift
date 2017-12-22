@@ -17,7 +17,7 @@ import UIKit
 
 class Electrickettle_Blue: OznerBaseDevice {
     
-    private(set)  var settingInfo:(isHot:Int,temp:Int,tds:Int,orderFunction:Int,orderSec:Int,orderTemp:Int,hotPattern:Int,hotTemp:Int,hotTime:Int,hotSurplusTime:Int) = (-1,-1,0,0,0,0,0,0,0,0) {
+    private(set)  var settingInfo:(isHot:Int,temp:Int,tds:Int,orderFunction:Int,orderSec:Int,orderTemp:Int,hotPattern:Int,hotTemp:Int,hotTime:Int,hotSurplusTime:Int,errorCode:Int) = (-1,-1,0,0,0,0,0,0,0,0,-1) {
         
         didSet {
             
@@ -55,26 +55,26 @@ class Electrickettle_Blue: OznerBaseDevice {
                 
                 print("电热壶错误码:\(Int(errorCode))")
                 
-                switch errorCode {
-                case 2:
-                    break
-                case 4:
-                    break
-                case 8:
-                    break
-                case 16:
-                    break
-                default:
-                    break
-                }
-                
-                if isFirst {
-                    
-                    isFirst = false
-                    appDelegate.window?.noticeOnlyText("请检查水壶是否放置好")
-                }
+//                switch errorCode {
+//                case 2:
+//                    break
+//                case 4:
+//                    break
+//                case 8:
+//                    break
+//                case 16:
+//                    break
+//                default:
+//                    break
+//                }
+//
+//                if isFirst {
+//
+//                    isFirst = false
+//                    appDelegate.window?.noticeOnlyText("请检查水壶是否放置好")
+//                }
 
-                settingInfo = (isHot,temp,tds,orderFunction,orderSec,orderTemp,hotPattern,hotTemp,hotTime,hotSurplusTime)
+                settingInfo = (isHot,temp,tds,orderFunction,orderSec,orderTemp,hotPattern,hotTemp,hotTime,hotSurplusTime,Int(errorCode))
 
             break
 //            case 0x33:
@@ -97,7 +97,7 @@ class Electrickettle_Blue: OznerBaseDevice {
     
     
     override func repeatFunc() {
-        
+//        super.repeatFunc()
         requestInfo()
         
     }
@@ -114,7 +114,17 @@ class Electrickettle_Blue: OznerBaseDevice {
         data.append(OznerTools.dataFromInt16(number: UInt16(setInfo.orderSec)))
 //        let data = Data.init(bytes: [0x33,UInt8(setInfo.hotTemp),UInt8(setInfo.hotTime),UInt8(setInfo.boilTemp),UInt8(setInfo.hotFunction),UInt8(setInfo.orderFunction),UInt8(setInfo.orderSec)])
         self.SendDataToDevice(sendData: data) { (error) in
-            print("---------------")
+//            print("---------------")
+            guard error != nil else {
+                DispatchQueue.main.async {
+                    appDelegate.window?.noticeOnlyText("设置成功")
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                appDelegate.window?.noticeOnlyText("设置失败,请重试")
+            }
         }
         sleep(UInt32(0.3))
         
@@ -153,9 +163,9 @@ class Electrickettle_Blue: OznerBaseDevice {
 
 }
 
-public func !=<A, B, C, D, E,F,G,H,I,J>(lhs: (A, B, C, D, E,F,G,H,I,J), rhs: (A, B, C, D, E,F,G,H,I,J)) -> Bool where A : Equatable, B : Equatable, C : Equatable, D : Equatable, E : Equatable,F : Equatable, G : Equatable, H : Equatable , I : Equatable, J: Equatable{
+public func !=<A, B, C, D, E,F,G,H,I,J,K>(lhs: (A, B, C, D, E,F,G,H,I,J,K), rhs: (A, B, C, D, E,F,G,H,I,J,K)) -> Bool where A : Equatable, B : Equatable, C : Equatable, D : Equatable, E : Equatable,F : Equatable, G : Equatable, H : Equatable , I : Equatable, J: Equatable,K:Equatable{
     
-    return lhs.0 != rhs.0 || lhs.1 != rhs.1 || lhs.2 != rhs.2 || lhs.3 != rhs.3 || lhs.4 != rhs.4 || lhs.5 != rhs.5 || lhs.6 != rhs.6 || lhs.7 != rhs.7 || lhs.8 != rhs.8 || lhs.9 != rhs.9
+    return lhs.0 != rhs.0 || lhs.1 != rhs.1 || lhs.2 != rhs.2 || lhs.3 != rhs.3 || lhs.4 != rhs.4 || lhs.5 != rhs.5 || lhs.6 != rhs.6 || lhs.7 != rhs.7 || lhs.8 != rhs.8 || lhs.9 != rhs.9 || lhs.10 != lhs.10
     
 }
 
