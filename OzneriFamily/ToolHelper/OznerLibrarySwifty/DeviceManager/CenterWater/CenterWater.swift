@@ -138,13 +138,22 @@ class CenterWater: OznerBaseDevice {
     override func doWillInit() {
         super.doWillInit()
         self.connectStatus = .Connecting
-        User.getGPRSInfo(deviceType: "Test_CentralPurifier", deviceID: self.deviceInfo.deviceID) { (data) in
-            //            let json = data as! [String:AnyObject]
+        
+        User.getGPRSInfo(deviceType: "Test_CentralPurifier", deviceID: self.deviceInfo.deviceID, success: { (data) in
+            
             let json = try! JSONSerialization.jsonObject(with: data as! Data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
             print(json)
             let needData = try! JSONSerialization.data(withJSONObject: json["values"] ?? "", options: JSONSerialization.WritingOptions.prettyPrinted)
             self.OznerBaseIORecvData(recvData: needData)
-        }
+            
+        }, failure: { (error) in
+            
+            DispatchQueue.main.async {
+                appDelegate.window?.noticeOnlyText("请求失败请重试")
+            }
+            
+        })
+    
         
     }
 

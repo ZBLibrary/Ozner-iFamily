@@ -128,7 +128,7 @@ class CenterWaterView: OznerDeviceView{
     fileprivate func modeIsTrue(_ isBool:Bool) {
         
         currentMode = isBool ? 666 : 667
-                
+        
         homeImage.image = isBool ? UIImage(named: "居家模式") : UIImage(named: "居家模式-二态")
         outImage.image = isBool ? UIImage(named: "出差模式-二态"): UIImage(named: "居家模式")
         homeMode.textColor = isBool ? UIColor(red: 22.0 / 255.0, green: 142.0 / 255.0, blue: 253.0 / 255.0, alpha: 1.0) :  UIColor(red: 170 / 255.0, green: 170 / 255.0, blue: 170 / 255.0, alpha: 1.0)

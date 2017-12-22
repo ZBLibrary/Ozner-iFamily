@@ -911,7 +911,7 @@ public class User: BaseDataObject {
     }
     
     //获取GPRS初始化信息
-    class func getGPRSInfo(deviceType:String,deviceID:String,success: @escaping ((Any) -> Void)) {
+    class func getGPRSInfo(deviceType:String,deviceID:String,success: @escaping ((Any) -> Void), failure: @escaping ((Error) -> Void)) {
      
         let manager = AFHTTPSessionManager.init()
         manager.responseSerializer = AFHTTPResponseSerializer()
@@ -919,8 +919,38 @@ public class User: BaseDataObject {
         manager.get("http://iot.ozner.net:1885/service/query.do", parameters: ["deviceType":deviceType,"deviceId":deviceID], progress: nil, success: { (_, data) in
             print(data)
             success(data)
-        }, failure: nil)
+        }, failure: { (_, error) in
+            failure(error)
+        })
+
+    }
+    
+    //获取滤芯初始化信息
+    class func getFilterNoInfo(deviceType:String,success: @escaping ((Any) -> Void), failure: @escaping ((Error) -> Void)) {
+        
+        let manager = AFHTTPSessionManager.init()
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
+        manager.get("http://192.168.173.36:81/HZFMS/GetFilterInfo", parameters: ["filter_no":deviceType], progress: nil, success: { (_, data) in
+            success(data)
+        }, failure: { (_, error) in
+            failure(error)
+        })
         
     }
+    
+    //绑定滤芯
+    class func getFilterNoInfo(deviceId:String,filter_no:String,success: @escaping ((Any) -> Void), failure: @escaping ((Error) -> Void)) {
         
+        let manager = AFHTTPSessionManager.init()
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        manager.requestSerializer = AFJSONRequestSerializer.init(writingOptions: JSONSerialization.WritingOptions.init(rawValue: 0))
+        let UserID = UserDefaults.standard.object(forKey: UserDefaultsUserIDKey) as? NSString
+        manager.get("http://192.168.173.36:81//HZFMS/BindInfo", parameters: ["deviceId":deviceId,"filter_no":filter_no,"userId":UserID], progress: nil, success: { (_, data) in
+            success(data)
+        }, failure: { (_, error) in
+            failure(error)
+        })
+        
+    }
 }

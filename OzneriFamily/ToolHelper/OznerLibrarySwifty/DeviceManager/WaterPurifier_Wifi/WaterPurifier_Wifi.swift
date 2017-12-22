@@ -179,14 +179,21 @@ class WaterPurifier_Wifi: OznerBaseDevice {
         
         if self.deviceInfo.wifiVersion == 3 {
            
-            User.getGPRSInfo(deviceType: "RoWater", deviceID: self.deviceInfo.deviceID) { (data) in
-                //            let json = data as! [String:AnyObject]
+            User.getGPRSInfo(deviceType: "RoWater", deviceID: self.deviceInfo.deviceID, success: { (data) in
+                
                 let json = try! JSONSerialization.jsonObject(with: data as! Data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
                 print(json)
                 let needData = try! JSONSerialization.data(withJSONObject: json["values"] ?? "", options: JSONSerialization.WritingOptions.prettyPrinted)
                 self.OznerBaseIORecvData(recvData: needData)
-            }
-
+                
+            }, failure: { (error) in
+                
+                DispatchQueue.main.async {
+                    appDelegate.window?.noticeOnlyText("请求失败请重试")
+                }
+                
+            })
+            
         }else{
         
         let needData=self.MakeWoodyBytes(code: 0xfa, Opcode: 0x05, data: Data())
