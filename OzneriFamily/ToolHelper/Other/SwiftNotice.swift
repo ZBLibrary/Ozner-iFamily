@@ -211,7 +211,7 @@ class SwiftNotice: NSObject {
     }
     
     @discardableResult
-    static func showText(_ text: String, autoClear: Bool=true, autoClearTime: Int=1.5) -> UIWindow {
+    static func showText(_ text: String, autoClear: Bool=true, autoClearTime: Int=1) -> UIWindow {
         let window = UIWindow()
         window.backgroundColor = UIColor.clear
         let mainView = UIView()
