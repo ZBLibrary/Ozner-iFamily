@@ -30,8 +30,6 @@ class Electrickettle_Blue: OznerBaseDevice {
         
     }
     
-    var isFirst:Bool = true
-    
     override func OznerBaseIORecvData(recvData: Data) {
         super.OznerBaseIORecvData(recvData: recvData)
         switch UInt8(recvData[0]) {
@@ -51,30 +49,10 @@ class Electrickettle_Blue: OznerBaseDevice {
                 let hotTime = recvData.subInt(starIndex: 11, count: 2)
                 let hotSurplusTime = recvData.subInt(starIndex: 13, count: 2)
                 
-                let errorCode = recvData[17]
-                
-                print("电热壶错误码:\(Int(errorCode))")
-                
-//                switch errorCode {
-//                case 2:
-//                    break
-//                case 4:
-//                    break
-//                case 8:
-//                    break
-//                case 16:
-//                    break
-//                default:
-//                    break
-//                }
-//
-//                if isFirst {
-//
-//                    isFirst = false
-//                    appDelegate.window?.noticeOnlyText("请检查水壶是否放置好")
-//                }
-
-                settingInfo = (isHot,temp,tds,orderFunction,orderSec,orderTemp,hotPattern,hotTemp,hotTime,hotSurplusTime,Int(errorCode))
+                let errcode = recvData[17]
+//                print(OznerTools.hexStringFromData(data: recvData.subData(starIndex: 17, count: 1)) & 0x04)
+                let code = errcode & 0b00000100
+                settingInfo =  (isHot,temp,tds,orderFunction,orderSec,orderTemp,hotPattern,hotTemp,hotTime,hotSurplusTime,Int(code != 0 ? 4 : -1))
 
             break
 //            case 0x33:
