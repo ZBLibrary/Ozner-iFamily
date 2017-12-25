@@ -66,6 +66,7 @@ class TwoCup: OznerBaseDevice {
     }
     
     override func OznerBaseIORecvData(recvData: Data) {
+        super.OznerBaseIORecvData(recvData: recvData)
         switch UInt8(recvData[0]) {
             
         //二代 设备状态返回

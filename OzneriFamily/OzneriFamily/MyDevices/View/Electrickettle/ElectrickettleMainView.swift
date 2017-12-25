@@ -47,13 +47,20 @@ class ElectrickettleMainView: OznerDeviceView {
 
     @IBOutlet weak var settimeBtn: UIButton!
     
-    var tempLbtext:(temp:Int,pattern:Int) = (-1,-1) {
+    var tempLbtext:(temp:Int,pattern:Int,errcode:Int) = (-1,-1,-1) {
         
         didSet {
             
             if tempLbtext != oldValue {
-                
-                tmepLb.text = String(tempLbtext.temp) + "℃"
+                if tempLbtext.errcode == 4 {
+                    tmepLb.text = "未放好"
+                    patternLb.text = "暂无"
+                    TDS = -333
+                    return
+                } else {
+                    tmepLb.text = String(tempLbtext.temp) + "℃"
+                    
+                }
                 
                 switch tempLbtext.pattern {
                 case 0:
@@ -84,6 +91,7 @@ class ElectrickettleMainView: OznerDeviceView {
                     tdsStateLabel.text="-"
                     tdsValueLabel.text=loadLanguage("暂无")
                     tdsBeatLabel.text=""
+                    circleView.updateCircleView(angle: 0)
                     return
                 }
                 tdsValueLabel.text="\(TDS)"
@@ -92,18 +100,21 @@ class ElectrickettleMainView: OznerDeviceView {
                 case TDS<=Int(tds_good):
                     tdsImg.image=UIImage(named: "baobiao")
                     tdsStateLabel.text=loadLanguage("好")
+                    tdsStateLabel.textColor = UIColor.blue
                     angle=CGFloat(TDS)/CGFloat(tds_good*3)
-                case TDS>Int(tds_good)&&TDS<=Int(100):
+                case TDS>Int(tds_good)&&TDS<=Int(tds_bad):
                     tdsImg.image=UIImage(named: "yiban")
                     tdsStateLabel.text=loadLanguage("中")
+                    tdsStateLabel.textColor = UIColor.yellow
                     angle=CGFloat(TDS-Int(tds_good))/CGFloat((tds_bad-tds_good)*3)+0.33
-                case TDS>Int(100):
+                case TDS>Int(tds_bad):
                     tdsImg.image=UIImage(named: "cha")
                     tdsStateLabel.text=loadLanguage("差")
+                    tdsStateLabel.textColor = UIColor.red
                     angle=CGFloat(TDS-Int(tds_bad))/CGFloat(50*3)+0.66
                 default:
                     tdsImg.image=UIImage(named: "cha")
-                    tdsStateLabel.text=loadLanguage("偏差")
+                    tdsStateLabel.text=loadLanguage("差")
                     angle=1.0
                     break
                 }
@@ -125,7 +136,7 @@ class ElectrickettleMainView: OznerDeviceView {
             let time = date.timeIntervalSinceNow
             let seconds = Int(time/60)  - (60 * 8) + 2
             
-            _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: 1, orderSec: seconds))
+            _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: 1, orderSec: seconds), isShow: true)
 
         }
         
@@ -195,25 +206,25 @@ class ElectrickettleMainView: OznerDeviceView {
         
         if sender.tag != 666 {
         
-            _ = device?.setSetting((hotTemp: sender.tag , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+            _ = device?.setSetting((hotTemp: sender.tag , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0), isShow: true)
             
         } else {
          
-            _ = device?.setSetting((hotTemp: Int(tempValue.value) , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+            _ = device?.setSetting((hotTemp: Int(tempValue.value) , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0), isShow: true)
         }
         
         switch sender.tag {
             case 90:
                 currentTemp.text = "90℃适合泡咖啡"
                 break
-            case 80:
-                currentTemp.text = "80℃适合泡绿茶"
+            case 85:
+                currentTemp.text = "85℃适合泡绿茶"
                 break
             case 70:
                 currentTemp.text = "70℃适合冲米粉"
                 break
-            case 60:
-                currentTemp.text = "60℃适合泡牛奶"
+            case 50:
+                currentTemp.text = "50℃适合泡奶粉"
                 break
             default:
                 currentTemp.text = ""
@@ -253,12 +264,12 @@ class ElectrickettleMainView: OznerDeviceView {
         switch sender.tag {
         case 777:
 //            _ = device?.setHotFunction(0)
-             _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 40 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+             _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 40 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0), isShow: true)
 
             break
         case 888:
 //            _ = device?.setHotFunction(1)
-             _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 40 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: 1 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+             _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 40 , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: 1 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0), isShow: true)
             
             break
         default:
@@ -299,7 +310,7 @@ class ElectrickettleMainView: OznerDeviceView {
         }
         
         
-        _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: Int(sender.value * 60.0), boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+        _ = device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: Int(sender.value * 60.0), boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0), isShow: true)
         
     }
     
@@ -351,10 +362,11 @@ class ElectrickettleMainView: OznerDeviceView {
         } else {
             
             firstContraint.constant = 60
-            _ =  device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: 0 , orderFunction: 0, orderSec: 0))
+            _ =  device?.setSetting((hotTemp: device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: 0 , orderFunction: 0, orderSec: 0), isShow: false)
             settimeBtn.setTitle("--:--", for: UIControlState.normal)
          
-            self.noticeOnlyText("预约时间已取消")
+//            self.noticeOnlyText("预约时间已取消")
+            appDelegate.window?.noticeOnlyText("预约时间已取消")
         }
         
         self.perform(#selector(ElectrickettleMainView.gylayoutSubviews), with: nil, afterDelay: 0.5, inModes: [RunLoopMode.commonModes])
@@ -365,7 +377,7 @@ class ElectrickettleMainView: OznerDeviceView {
         
         let currentDevice=OznerManager.instance.currentDevice as! Electrickettle_Blue
         
-        tempLbtext = (currentDevice.settingInfo.temp,currentDevice.settingInfo.isHot)
+        tempLbtext = (currentDevice.settingInfo.temp,currentDevice.settingInfo.isHot,currentDevice.settingInfo.errorCode)
         
         TDS = currentDevice.settingInfo.tds
         switchlb.isEnabled = (currentDevice.connectStatus == .Connected)
@@ -427,7 +439,7 @@ class ElectrickettleMainView: OznerDeviceView {
     
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
 
-    
+        
     }
     
     

@@ -112,7 +112,7 @@ class GYValueElectSlider: UISlider {
             
             let device = OznerManager.instance.currentDevice as? Electrickettle_Blue
             
-            _ = device?.setSetting((hotTemp: lround(Double(self.value)), hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+            _ = device?.setSetting((hotTemp: lround(Double(self.value)), hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0), isShow: true)
             previewView?.valueLb.text = String.init(format: "%d", lround(Double(self.value))) + "℃"
 
             
