@@ -81,7 +81,7 @@ class Electrickettle_Blue: OznerBaseDevice {
     }
     
     
-    func setSetting(_ setInfo:(hotTemp:Int,hotTime:Int,boilTemp:Int,hotFunction:Int,orderFunction:Int,orderSec:Int)) -> Bool{
+    func setSetting(_ setInfo:(hotTemp:Int,hotTime:Int,boilTemp:Int,hotFunction:Int,orderFunction:Int,orderSec:Int),isShow:Bool) -> Bool{
         
         var data = Data.init(bytes: [0x33])
         data.append(UInt8(setInfo.hotTemp))
@@ -93,7 +93,10 @@ class Electrickettle_Blue: OznerBaseDevice {
 //        let data = Data.init(bytes: [0x33,UInt8(setInfo.hotTemp),UInt8(setInfo.hotTime),UInt8(setInfo.boilTemp),UInt8(setInfo.hotFunction),UInt8(setInfo.orderFunction),UInt8(setInfo.orderSec)])
         self.SendDataToDevice(sendData: data) { (error) in
 //            print("---------------")
-            guard error != nil else {
+            guard isShow else {
+                return
+            }
+            guard error != nil   else {
                 DispatchQueue.main.async {
                     appDelegate.window?.noticeOnlyText("设置成功")
                 }
@@ -104,7 +107,6 @@ class Electrickettle_Blue: OznerBaseDevice {
                 appDelegate.window?.noticeOnlyText("设置失败,请重试")
             }
         }
-        sleep(UInt32(0.3))
         
         return true
         
