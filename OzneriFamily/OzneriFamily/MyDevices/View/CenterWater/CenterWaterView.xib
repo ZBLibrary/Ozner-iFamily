@@ -47,22 +47,39 @@
                             <color key="textColor" red="0.2274509804" green="0.4431372549" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经过净化后的水质健康，适合您直饮" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-Aq-c5V">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为了您的用水健康,请及时更换滤料并定期反冲洗" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-Aq-c5V">
                             <rect key="frame" x="0.0" y="302" width="375" height="20"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" red="0.2274509804" green="0.4431372549" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="洗碗机预约" translatesAutoresizingMaskIntoConstraints="NO" id="XaL-D1-iek">
+                            <rect key="frame" x="13" y="376" width="26" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26" id="QE4-g1-tIS"/>
+                                <constraint firstAttribute="width" constant="26" id="uG1-cp-HgP"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/00D" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myX-RG-Enl">
+                            <rect key="frame" x="47" y="380.5" width="52.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="XaL-D1-iek" secondAttribute="bottom" constant="-2" id="8Xl-ZX-WZ6"/>
                         <constraint firstItem="JFq-Qp-UgK" firstAttribute="centerX" secondItem="hzh-DG-yO8" secondAttribute="centerX" id="Bg4-Pk-OIb"/>
+                        <constraint firstItem="myX-RG-Enl" firstAttribute="centerY" secondItem="XaL-D1-iek" secondAttribute="centerY" id="CMs-As-AGm"/>
                         <constraint firstAttribute="trailing" secondItem="FF1-cF-DiB" secondAttribute="trailing" constant="30" id="DVz-yM-6Xe"/>
                         <constraint firstItem="WFH-0P-d5F" firstAttribute="centerX" secondItem="FF1-cF-DiB" secondAttribute="centerX" id="KZU-Jj-hsa"/>
                         <constraint firstItem="hzh-DG-yO8" firstAttribute="width" secondItem="5oe-fy-Or1" secondAttribute="width" multiplier="0.4" id="NKY-7w-abL"/>
                         <constraint firstItem="NOd-Aq-c5V" firstAttribute="top" secondItem="hzh-DG-yO8" secondAttribute="bottom" constant="22" id="OKB-XK-dXO"/>
                         <constraint firstItem="NOd-Aq-c5V" firstAttribute="leading" secondItem="5oe-fy-Or1" secondAttribute="leading" id="OyG-ka-KUy"/>
+                        <constraint firstItem="myX-RG-Enl" firstAttribute="leading" secondItem="XaL-D1-iek" secondAttribute="trailing" constant="8" id="TOb-Q7-XUy"/>
                         <constraint firstItem="hzh-DG-yO8" firstAttribute="top" secondItem="5oe-fy-Or1" secondAttribute="top" constant="130" id="Zpq-lk-0Fd"/>
+                        <constraint firstItem="XaL-D1-iek" firstAttribute="leading" secondItem="5oe-fy-Or1" secondAttribute="leading" constant="13" id="djv-rX-Lia"/>
                         <constraint firstItem="FF1-cF-DiB" firstAttribute="width" secondItem="FF1-cF-DiB" secondAttribute="height" multiplier="1:1" id="dsG-c5-ZsF"/>
                         <constraint firstItem="FF1-cF-DiB" firstAttribute="top" secondItem="hzh-DG-yO8" secondAttribute="top" id="kTd-2y-UXS"/>
                         <constraint firstItem="hzh-DG-yO8" firstAttribute="top" secondItem="JFq-Qp-UgK" secondAttribute="bottom" constant="15" id="m7z-hV-YY7"/>
@@ -190,6 +207,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="centerBtn" destination="h7n-2Z-oAr" id="7GQ-NP-auH"/>
+                <outlet property="daylb" destination="myX-RG-Enl" id="6gr-Q6-d1a"/>
                 <outlet property="homeImage" destination="4C8-tm-tMX" id="hmd-5q-bdZ"/>
                 <outlet property="homeMode" destination="KoJ-Gh-E88" id="jCo-Ch-Y94"/>
                 <outlet property="leftWaveView" destination="hzh-DG-yO8" id="spC-p0-8QV"/>
@@ -203,5 +221,6 @@
     <resources>
         <image name="出差模式-二态" width="52" height="24"/>
         <image name="居家模式-二态" width="42" height="38"/>
+        <image name="洗碗机预约" width="26" height="26"/>
     </resources>
 </document>

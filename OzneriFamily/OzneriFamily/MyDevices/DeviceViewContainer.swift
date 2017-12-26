@@ -209,7 +209,7 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
             case .AirPurifier_Wifi:
                 
                 let workTime=(currentDevice as! AirPurifier_Wifi).filterStatus.workTime
-                var lvxinValue=1-CGFloat(workTime)/CGFloat(129600)
+                var lvxinValue=1-CGFloat(workTime)/CGFloat((currentDevice as! AirPurifier_Wifi).filterStatus.maxWorkTime)
                 lvxinValue=min(1, lvxinValue)
                 lvxinValue=max(0, lvxinValue)
                 self.LvXinValue=Int(lvxinValue*100)

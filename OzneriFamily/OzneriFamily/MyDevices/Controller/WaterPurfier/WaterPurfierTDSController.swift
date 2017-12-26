@@ -104,9 +104,18 @@ class WaterPurfierTDSController: BaseViewController {
             TDS_BF=device.filterStates.TDS_Before
             TDS_AF=device.filterStates.TDS_After
         } else {
-            
             TDS_BF=device.sensor.TDS_Before
             TDS_AF=device.sensor.TDS_After
+            
+            TDS_AF = (TDS_AF >= 99 ? 99 : TDS_AF)
+            if TDS_AF != 0 {
+                TDS_AF = TDS_AF < 3 ? Int(CGFloat(TDS_BF) * 0.05) : TDS_AF
+            }
+            
+            if TDS_BF != 0 && TDS_AF == 0 {
+                TDS_AF = Int(CGFloat(TDS_BF) * 0.05)
+            }
+           
         }
         
         segement.setTitle(loadLanguage("周"), forSegmentAt: 0)

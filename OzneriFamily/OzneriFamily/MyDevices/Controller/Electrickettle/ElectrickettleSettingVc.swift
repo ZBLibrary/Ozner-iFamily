@@ -137,7 +137,7 @@ class ElectrickettleSettingVc: DeviceSettingController {
         
         if device?.connectStatus == .Connected {
         
-          _ = device?.setSetting((hotTemp:  device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: timeSpace, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0))
+          _ = device?.setSetting((hotTemp:  device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: timeSpace, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0), isShow: true)
         }
         
         sleep(1)
@@ -148,7 +148,8 @@ class ElectrickettleSettingVc: DeviceSettingController {
     @IBAction func deleteAction(_ sender: Any) {
         
         super.deleteDevice()
-        
+        LocalNotificationHelper.removeNoticeForKey(key: currentRemindType.remindNotification)
+
     }
     
     @IBAction func btnAction(_ sender: UIButton) {

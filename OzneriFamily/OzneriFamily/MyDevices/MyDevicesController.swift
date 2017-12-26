@@ -277,7 +277,15 @@ extension MyDevicesController : DeviceViewContainerDelegate{
             filterValueLabel.text="\(min(value, 100))%"
             break
         }
-        filterStateLabel.text = value<30 ? loadLanguage("请及时更换滤芯"):loadLanguage("滤芯状态")
+        
+        if OznerManager.instance.currentDevice?.deviceInfo.deviceType != "Test_CentralPurifier" {
+            
+            filterStateLabel.text = value<30 ? loadLanguage("请及时更换滤芯"):loadLanguage("滤芯状态")
+        } else {
+            
+            filterStateLabel.text = value<30 ? loadLanguage("请及时更换滤料"):loadLanguage("滤料状态")
+        }
+        
     }//0-100，<0表示无
     
     //页面跳转

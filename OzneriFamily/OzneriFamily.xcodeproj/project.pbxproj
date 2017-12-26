@@ -29,6 +29,7 @@
 		6876B55D1F5D3A7000E20ECE /* GYCirclePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6876B55C1F5D3A7000E20ECE /* GYCirclePoint.swift */; };
 		688080241F274ABA00E06404 /* AbbDatePickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688080231F274ABA00E06404 /* AbbDatePickView.swift */; };
 		68986DB61FAFED5200B280C4 /* CenterWater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68986DB51FAFED5200B280C4 /* CenterWater.swift */; };
+		68B06AA01FEB9CE8000D4091 /* FilterInfoScanVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B06A9F1FEB9CE8000D4091 /* FilterInfoScanVc.swift */; };
 		68BA2DC91F4D7D630033E45F /* XZChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA2DC81F4D7D630033E45F /* XZChatViewController.swift */; };
 		68C36F171FB03A9500458707 /* CenterWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C36F161FB03A9500458707 /* CenterWaterView.swift */; };
 		68C36F191FB03AA400458707 /* ASongWaterWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C36F181FB03AA400458707 /* ASongWaterWaveView.swift */; };
@@ -456,6 +457,7 @@
 		6876B55C1F5D3A7000E20ECE /* GYCirclePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCirclePoint.swift; sourceTree = "<group>"; };
 		688080231F274ABA00E06404 /* AbbDatePickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbbDatePickView.swift; sourceTree = "<group>"; };
 		68986DB51FAFED5200B280C4 /* CenterWater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterWater.swift; sourceTree = "<group>"; };
+		68B06A9F1FEB9CE8000D4091 /* FilterInfoScanVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoScanVc.swift; sourceTree = "<group>"; };
 		68BA2DC81F4D7D630033E45F /* XZChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZChatViewController.swift; sourceTree = "<group>"; };
 		68C36F151FB03A9400458707 /* CenterWaterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CenterWaterView.xib; sourceTree = "<group>"; };
 		68C36F161FB03A9500458707 /* CenterWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterWaterView.swift; sourceTree = "<group>"; };
@@ -2002,6 +2004,7 @@
 				8D16BC4E1DB8719F00CA3A49 /* AboutDeviceController.swift */,
 				8D429A021DC9E9160083011C /* DeviceSettingController.swift */,
 				6847B8501F99A2EE00D0F018 /* WaterGPRSScanVc.swift */,
+				68B06A9F1FEB9CE8000D4091 /* FilterInfoScanVc.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -2906,7 +2909,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A2BA87CED2A9DDCC1938133B /* [CP] Check Pods Manifest.lock */ = {
@@ -3285,6 +3288,7 @@
 				E0745ABA1EE94ED200CB39CC /* UdeskStructCell.m in Sources */,
 				E0745ACA1EE94ED200CB39CC /* UdeskRobotViewController.m in Sources */,
 				E0745AB01EE94ED200CB39CC /* UdeskBaseMessage.m in Sources */,
+				68B06AA01FEB9CE8000D4091 /* FilterInfoScanVc.swift in Sources */,
 				E0745AF21EE94ED200CB39CC /* UdeskPhotoManeger.m in Sources */,
 				8D7837091DE292B000A3D9E3 /* OznerShareManager.swift in Sources */,
 				E0745ADB1EE94ED200CB39CC /* UdeskSDKStyle.m in Sources */,

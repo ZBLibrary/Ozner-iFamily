@@ -148,6 +148,12 @@ class WaterPurifier_Wifi: OznerBaseDevice {
                     
                     tmpSensor.TDS_Before = max(tds1, tds2)
                     tmpSensor.TDS_After = min(tds1, tds2)
+                    
+                    if self.deviceInfo.wifiVersion == 2 {
+                        tmpSensor.TDS_Before = min(max(tds1, tds2),999)
+                        tmpSensor.TDS_After = min(min(tds1, tds2),50)
+                    }
+                  
                     tmpSensor.Temperature = Float(recvData.subInt(starIndex: 10, count: 2))/10.0
                     
                 case 0x03://Opcode_DeviceInfo
@@ -173,14 +179,21 @@ class WaterPurifier_Wifi: OznerBaseDevice {
         
         if self.deviceInfo.wifiVersion == 3 {
            
-            User.getGPRSInfo(deviceType: "RoWater", deviceID: self.deviceInfo.deviceID) { (data) in
-                //            let json = data as! [String:AnyObject]
+            User.getGPRSInfo(deviceType: "RoWater", deviceID: self.deviceInfo.deviceID, success: { (data) in
+                
                 let json = try! JSONSerialization.jsonObject(with: data as! Data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
                 print(json)
                 let needData = try! JSONSerialization.data(withJSONObject: json["values"] ?? "", options: JSONSerialization.WritingOptions.prettyPrinted)
                 self.OznerBaseIORecvData(recvData: needData)
-            }
-
+                
+            }, failure: { (error) in
+                
+                DispatchQueue.main.async {
+                    appDelegate.window?.noticeOnlyText("请求失败请重试")
+                }
+                
+            })
+            
         }else{
             
             let needData=self.MakeWoodyBytes(code: 0xfa, Opcode: 0x05, data: Data())

@@ -69,6 +69,7 @@ NSString* idString;
     if (self.currPeripheral != nil) {
         if (writeCharacteristic != nil) {
             [self.currPeripheral writeValue:data forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
+            _babyFailureBlock = block;
         }
     }
 }
@@ -147,6 +148,10 @@ NSString* idString;
     //设置写数据成功的block
     [baby setBlockOnDidWriteValueForCharacteristicAtChannel:idString block:^(CBCharacteristic *characteristic, NSError *error) {
         weakSelf.babyBLESensorBlock(characteristic.value);
+        if (weakSelf.babyFailureBlock) {
+            weakSelf.babyFailureBlock(error);
+        }
+        
     }];
     //读取rssi的委托
     [baby setBlockOnDidReadRSSI:^(NSNumber *RSSI, NSError *error) {

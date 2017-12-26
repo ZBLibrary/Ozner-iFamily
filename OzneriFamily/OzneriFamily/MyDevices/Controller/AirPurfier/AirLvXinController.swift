@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class AirLvXinController: BaseViewController {
 
@@ -17,7 +18,25 @@ class AirLvXinController: BaseViewController {
     @IBOutlet var totalPurificatContainerView: UIView!
     @IBOutlet var totalValueLabel: UILabel!
     @IBOutlet var reSetLvXinButton: UIButton!
+    
+    let device=OznerManager.instance.currentDevice
+    
     @IBAction func reSetLvXinClick(_ sender: AnyObject) {
+        
+        let deviceType = ProductInfo.getIOTypeFromProductID(productID: (device?.deviceInfo.productID)!)
+        
+        if deviceType == .MxChip {
+            let vc = FilterInfoScanVc()
+            vc.block = { (str) in
+                self.getFilterInfo(str)
+            }
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            return
+        }
+        
+        
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false,
             dynamicAnimatorActive: true
@@ -51,9 +70,10 @@ class AirLvXinController: BaseViewController {
         
         self.title = loadLanguage("室内空气质量详情")
         hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
-        let device=OznerManager.instance.currentDevice
+        
         switch ProductInfo.getDeviceClassFromProductID(productID: (device?.deviceInfo.productID)!) {
         case .AirPurifier_Blue:
+            reSetLvXinButton.setTitle("重置滤芯", for: UIControlState.normal)
             reSetLvXinButton.isHidden=false
             vocWidthConstraint.constant = -width_screen/2
             //hiden
@@ -61,7 +81,8 @@ class AirLvXinController: BaseViewController {
             pm25ValueLabel.text="\(Int((device as! AirPurifier_Blue).sensor.PM25))"
             SetLvXin(workTime: Int((device as! AirPurifier_Blue).filterStatus.workTime), maxUseMM: 60000)
         case .AirPurifier_Wifi:
-            reSetLvXinButton.isHidden=true
+            reSetLvXinButton.setTitle("绑定滤芯", for: UIControlState.normal)
+            reSetLvXinButton.isHidden=false
             vocWidthConstraint.constant = 0
             totalPurificatContainerView.isHidden=false
             pm25ValueLabel.text="\((device as! AirPurifier_Wifi).sensor.PM25)"
@@ -162,6 +183,69 @@ class AirLvXinController: BaseViewController {
             vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["什么是VOC"]?.stringValue)!, Type: 2)
             vc.title=loadLanguage("什么是VOC")
         }
+    }
+    
+    fileprivate func getFilterInfo(_ str:String) {
+        User.getFilterNoInfo(deviceType: str, success: { (data) in
+            
+            let json1 = JSON(data)
+            if json1["state"].intValue >= 1 {
+                
+                let filterLifeDay = json1["filterLifeDay"].intValue
+                DispatchQueue.main.async {
+                    
+                }
+                let appearance = SCLAlertView.SCLAppearance(
+                    showCloseButton: false,
+                    dynamicAnimatorActive: true
+                )
+                let alert=SCLAlertView(appearance: appearance)
+                _=alert.addButton(loadLanguage("否")) {
+                }
+                _=alert.addButton(loadLanguage("是")) {
+                    
+                    let device=OznerManager.instance.currentDevice as! AirPurifier_Wifi
+
+                    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+                        
+                        device.addTimeToDevice(filterLifeDay)
+
+                    }
+                    self.bindFilterInfo(str, deviceId: device.deviceInfo.deviceMac)
+                    
+                }
+                
+                _=alert.showInfo("", subTitle: loadLanguage("您是否绑定此滤芯?"))
+                
+            } else {
+                DispatchQueue.main.async {
+                    self.noticeOnlyText("此二维码已失效")
+                }
+            }
+            
+        }, failure: { (error) in
+            
+        })
+    }
+    
+    fileprivate func bindFilterInfo(_ str:String,deviceId:String) {
+    
+        User.getFilterNoInfo(deviceId: deviceId, filter_no: str, success: { (data) in
+            
+            let json1 = JSON(data)
+            if json1["state"].intValue >= 1 {
+                DispatchQueue.main.async {
+                    self.noticeOnlyText("绑定成功")
+                }
+            }
+            
+        }) { (error) in
+            
+            self.noticeOnlyText("绑定失败")
+            
+        }
+    
+    
     }
     
 

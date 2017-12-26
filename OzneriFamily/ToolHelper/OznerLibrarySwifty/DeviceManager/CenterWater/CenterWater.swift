@@ -18,7 +18,7 @@ import SwiftyJSON
 
 class CenterWater: OznerBaseDevice {
 
-    private(set) var centerInfo:(todayW:Int,sumW:Int,filter:Int,userMode:Int,Cmd_CtrlDevice:Int,Flowstatus:Int) = (0,0,0,0,1,-1){
+    private(set) var centerInfo:(todayW:Int,sumW:Int,filter:Int,userMode:Int,Cmd_CtrlDevice:Int,Flowstatus:Int,WashTimeInterval:Int) = (0,0,0,0,1,-1,0){
         
         didSet {
             if centerInfo != oldValue {
@@ -56,6 +56,10 @@ class CenterWater: OznerBaseDevice {
         
         for item in JSON.init(recvDic).arrayValue {
             switch item["key"].stringValue {
+            case "WashTimeInterval":
+                tmpCenter.WashTimeInterval = item["value"].intValue
+                break
+
             case "WaterUsageCnt":
                 //                    tmpSensor.PM25 = item["value"].intValue
                 tmpCenter.todayW = item["value"].intValue
@@ -64,7 +68,7 @@ class CenterWater: OznerBaseDevice {
                 tmpCenter.sumW = item["value"].intValue
                 break
             case "Online":
-                self.connectStatus = item["value"].intValue==1 ? OznerConnectStatus.Connected:OznerConnectStatus.Disconnect
+                self.connectStatus = item["value"].boolValue ? OznerConnectStatus.Connected:OznerConnectStatus.Disconnect
                 break
 //            case "Cmd_CtrlDevice":
 //                tmpCenter.Cmd_CtrlDevice = item["value"].intValue
@@ -111,6 +115,7 @@ class CenterWater: OznerBaseDevice {
             case "SystemStatus":
                 tmpCenter.Cmd_CtrlDevice = item["value"].intValue
                 break
+          
             default:
                 break
             }
@@ -132,15 +137,26 @@ class CenterWater: OznerBaseDevice {
     
     override func doWillInit() {
         super.doWillInit()
+        self.connectStatus = .Connecting
         
-        User.getGPRSInfo(deviceType: "Test_CentralPurifier", deviceID: self.deviceInfo.deviceID) { (data) in
-            //            let json = data as! [String:AnyObject]
+        User.getGPRSInfo(deviceType: "Test_CentralPurifier", deviceID: self.deviceInfo.deviceID, success: { (data) in
+            
             let json = try! JSONSerialization.jsonObject(with: data as! Data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
             print(json)
             let needData = try! JSONSerialization.data(withJSONObject: json["values"] ?? "", options: JSONSerialization.WritingOptions.prettyPrinted)
             self.OznerBaseIORecvData(recvData: needData)
-        }
+            
+        }, failure: { (error) in
+            
+            DispatchQueue.main.async {
+                appDelegate.window?.noticeOnlyText("请求失败请重试")
+            }
+            
+        })
+    
         
     }
+
+    
 
 }
