@@ -145,6 +145,7 @@ open class PairingScanViewController: UIViewController, UIImagePickerControllerD
         if let result = arrayResult[0].strScanned{
             print("扫描到的二维码内容："+result)
             if result.contains("mac")&&result.contains("deviceid")&&result.contains("productid")&&result.contains("&") {
+                var tmpInfo = OznerDeviceInfo(deviceID: "", deviceMac: "", deviceType: "", productID: "", wifiVersion: 2)
                 let resultArr = result.components(separatedBy: "&")
                 
                 for item in resultArr {
@@ -152,16 +153,21 @@ open class PairingScanViewController: UIViewController, UIImagePickerControllerD
                     
                     switch itemArr[0] {
                     case "mac":
-                        deviceInfo.deviceMac=itemArr[1]
+                        tmpInfo.deviceMac=itemArr[1]
                     case "deviceid":
-                        deviceInfo.deviceID=itemArr[1]
+                        tmpInfo.deviceID=itemArr[1]
                     case "productid":
-                        deviceInfo.productID=itemArr[1]
-                        deviceInfo.deviceType=itemArr[1]
+                        tmpInfo.productID=itemArr[1]
+                        tmpInfo.deviceType=itemArr[1]
+                        if tmpInfo.deviceType=="FreshAir"
+                        {
+                            tmpInfo.wifiVersion=3
+                        }
                     default:
                         break
                     }
                 }
+                deviceInfo=tmpInfo
                 if deviceInfo.deviceMac != "" && deviceInfo.deviceID != "" && deviceInfo.productID != "" {
                     let device=OznerManager.instance.createDevice(scanDeviceInfo: deviceInfo, setting: nil)
                     device.settings.name="智能设备"

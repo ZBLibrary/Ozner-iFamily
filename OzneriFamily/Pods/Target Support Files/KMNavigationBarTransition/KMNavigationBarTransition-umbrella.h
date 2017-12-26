@@ -17,8 +17,9 @@
 #import "UINavigationBar+KMNavigationBarTransition.h"
 #import "UINavigationBar+KMNavigationBarTransition_internal.h"
 #import "UINavigationController+KMNavigationBarTransition.h"
-#import "UINavigationController+KMNavigationBarTransition_Internal.h"
+#import "UINavigationController+KMNavigationBarTransition_internal.h"
 #import "UIScrollView+KMNavigationBarTransition.h"
+#import "UIScrollView+KMNavigationBarTransition_internal.h"
 #import "UIViewController+KMNavigationBarTransition.h"
 #import "UIViewController+KMNavigationBarTransition_internal.h"
 
