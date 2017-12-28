@@ -172,9 +172,6 @@ class TwoCup: OznerBaseDevice {
         
     }
     
-
-    
-    
     //MARK: - 二代水杯相关
     //二代智能水杯
     private func readDeviceInfo() {
