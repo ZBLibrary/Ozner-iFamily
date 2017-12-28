@@ -1442,8 +1442,8 @@
 		8D36D25F1F06234A0091EB1F /* DeviceManager */ = {
 			isa = PBXGroup;
 			children = (
-				68986DB41FAFED1800B280C4 /* CenterWater */,
 				8D36D26D1F06234A0091EB1F /* OznerDeviceManager.swift */,
+				68986DB41FAFED1800B280C4 /* CenterWater */,
 				8DC8664F1F6E9BDA0057C1D8 /* NewTrendAir_Wifi */,
 				682B8A891F3ADBD100CBE821 /* WashDush */,
 				682C705C1F1EE73600B0A6E6 /* Electrickettle */,
@@ -2909,7 +2909,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A2BA87CED2A9DDCC1938133B /* [CP] Check Pods Manifest.lock */ = {

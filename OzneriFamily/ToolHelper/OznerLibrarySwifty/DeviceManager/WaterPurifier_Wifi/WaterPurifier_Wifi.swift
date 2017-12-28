@@ -195,9 +195,9 @@ class WaterPurifier_Wifi: OznerBaseDevice {
             })
             
         }else{
-        
-        let needData=self.MakeWoodyBytes(code: 0xfa, Opcode: 0x05, data: Data())
-        self.SendDataToDevice(sendData: needData, CallBack: nil)
+            
+            let needData=self.MakeWoodyBytes(code: 0xfa, Opcode: 0x05, data: Data())
+            self.SendDataToDevice(sendData: needData, CallBack: nil)
         }
     }
     var requestCount = 0//请求三次没反应代表机器断网
