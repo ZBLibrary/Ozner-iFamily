@@ -30,6 +30,11 @@ class Electrickettle_Blue: OznerBaseDevice {
         
     }
     
+    required init(deviceinfo: OznerDeviceInfo, Settings settings: String?) {
+        super.init(deviceinfo: deviceinfo, Settings: settings)
+
+    }
+    
     override func OznerBaseIORecvData(recvData: Data) {
         super.OznerBaseIORecvData(recvData: recvData)
         switch UInt8(recvData[0]) {
@@ -73,9 +78,14 @@ class Electrickettle_Blue: OznerBaseDevice {
 //        return UInt8(sum%256)
 //    }
     
+    override func doWillInit() {
+        super.doWillInit()
+        requestInfo()
+    }
+    
     
     override func repeatFunc() {
-//        super.repeatFunc()
+        super.repeatFunc()
         requestInfo()
         
     }

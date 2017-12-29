@@ -69,6 +69,7 @@ NSString* idString;
     if (self.currPeripheral != nil) {
         if (writeCharacteristic != nil) {
             [self.currPeripheral writeValue:data forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
+            
             _babyFailureBlock = block;
         }
     }
@@ -90,8 +91,9 @@ NSString* idString;
         }
         NSLog(@"设备：%@--连接成功",peripheral.name);
         weakSelf.babyBLEStatusBlock(1);
+
     }];
-    
+        
     //设置设备连接失败的委托
     [baby setBlockOnFailToConnectAtChannel:idString block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
         if (![idString isEqualToString:peripheral.identifier.UUIDString]) {
@@ -121,12 +123,13 @@ NSString* idString;
         {
             if ([[[characteristic UUID] UUIDString] isEqualToString:@"FFF2"])
             {
-                writeCharacteristic=characteristic;
+                    writeCharacteristic=characteristic;
+
             }
             if ([[[characteristic UUID] UUIDString] isEqualToString:@"FFF1"])
             {
-                readCharacteristic=characteristic;
-                [weakSelf setNotifiy];
+                    readCharacteristic=characteristic;
+                    [weakSelf setNotifiy];
                 
             }
             if (writeCharacteristic != nil && readCharacteristic != nil) {
@@ -147,7 +150,7 @@ NSString* idString;
     
     //设置写数据成功的block
     [baby setBlockOnDidWriteValueForCharacteristicAtChannel:idString block:^(CBCharacteristic *characteristic, NSError *error) {
-        weakSelf.babyBLESensorBlock(characteristic.value);
+//        weakSelf.babyBLESensorBlock(characteristic.value);
         if (weakSelf.babyFailureBlock) {
             weakSelf.babyFailureBlock(error);
         }
@@ -191,6 +194,7 @@ NSString* idString;
                    block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
                        if (weakSelf != nil) {
                            weakSelf.babyBLESensorBlock(characteristics.value);
+       
                        }
                        
                    }];
