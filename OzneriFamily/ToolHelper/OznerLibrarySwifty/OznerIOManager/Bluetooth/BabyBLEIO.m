@@ -92,9 +92,6 @@ NSString* idString;
         NSLog(@"设备：%@--连接成功",peripheral.name);
         weakSelf.babyBLEStatusBlock(1);
 
-//        dispatch_async(dispatch_queue_create(0, 0), ^{
-//           [weakSelf loadData];
-//        });
     }];
         
     //设置设备连接失败的委托
@@ -126,12 +123,13 @@ NSString* idString;
         {
             if ([[[characteristic UUID] UUIDString] isEqualToString:@"FFF2"])
             {
-                writeCharacteristic=characteristic;
+                    writeCharacteristic=characteristic;
+
             }
             if ([[[characteristic UUID] UUIDString] isEqualToString:@"FFF1"])
             {
-                readCharacteristic=characteristic;
-                [weakSelf setNotifiy];
+                    readCharacteristic=characteristic;
+                    [weakSelf setNotifiy];
                 
             }
             if (writeCharacteristic != nil && readCharacteristic != nil) {
@@ -196,9 +194,7 @@ NSString* idString;
                    block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
                        if (weakSelf != nil) {
                            weakSelf.babyBLESensorBlock(characteristics.value);
-                           if (characteristics.value == nil) {
-                               [baby AutoReconnect:self.currPeripheral];
-                           }
+       
                        }
                        
                    }];
