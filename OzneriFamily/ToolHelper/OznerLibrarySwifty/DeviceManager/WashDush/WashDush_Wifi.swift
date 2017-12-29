@@ -43,6 +43,7 @@ class WashDush_Wifi: OznerBaseDevice {
             
         }
     }
+    
     func setControl(controlkey:Int,callBack:((_ error:Error?)->Void)) {
         var errorCode = -1
         

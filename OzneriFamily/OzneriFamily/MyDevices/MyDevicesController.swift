@@ -139,7 +139,7 @@ class MyDevicesController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(false)
         deviceViewContainer.SetDeviceAndView()
 //        self.navigationController?.navigationBar.isHidden=true
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -158,7 +158,7 @@ class MyDevicesController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewDidAppear(false)
         LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
 
     }

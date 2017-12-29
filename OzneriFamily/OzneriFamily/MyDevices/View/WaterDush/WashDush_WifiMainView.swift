@@ -15,7 +15,8 @@
 
 import UIKit
 import SVProgressHUD
-class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
+ var remind1H:CGFloat!
+class WashDush_WifiMainView: OznerDeviceView {
     
     
     @IBOutlet var errorButton: UIButton!
@@ -66,21 +67,20 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         }
         self.window?.addSubview(washAppointTime)
     }
+    
+    @IBOutlet var remindTimeText: UILabel!
     @IBOutlet var remindTimeView1: UIView!//动画
     @IBOutlet var remindTimeView2: UIView!
     @IBOutlet var remindTimeView3: UIView!
     @IBOutlet var remindTimeValue: UILabel!//min
 
+    @IBOutlet var trmperatText: UILabel!
     @IBOutlet var temperatView: UIView!//动画
     @IBOutlet var smallCircleView: UIView!
     @IBOutlet var smallCircleX: NSLayoutConstraint!
     @IBOutlet var smallCircleY: NSLayoutConstraint!
     @IBOutlet var temperatureLabel: UILabel!//温度
-    @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var tdsCircleView: WaterPurifierHeadCircleView!//tds圆环
-    @IBOutlet var tdsBFLabel: UILabel!//tds前
-    @IBOutlet var tdsAFLabel: UILabel!//tds后
-    @IBOutlet var pageControl: UIPageControl!
+    
     
     @IBOutlet var consumableButton: UIButton!
     @IBAction func consumableClick(_ sender: Any) {//耗材界面
@@ -103,13 +103,27 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             return
         }
         SVProgressHUD.show(withStatus: "发送中...")
-        SVProgressHUD.dismiss(withDelay: 2)
+        SVProgressHUD.dismiss(withDelay: 3)
         (self.currentDevice as! WashDush_Wifi).setControl(controlkey: sender.tag) { (error) in
-            SVProgressHUD.dismiss()
-            alertError(code: (error! as NSError).code)
+            if (error! as NSError).code>=0
+            {
+                SVProgressHUD.dismiss()
+                alertError(code: (error! as NSError).code)
+            }else{
+                IsShowTimeOut=true
+                Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(ControlTimeOut), userInfo: nil, repeats: false)
+            }
         }
     }
+    var IsShowTimeOut = false
     
+    @objc private func ControlTimeOut(){
+        if IsShowTimeOut {
+            SVProgressHUD.dismiss()
+            SVProgressHUD.show(withStatus: "控制超时")
+            SVProgressHUD.dismiss(withDelay: 2)
+        }
+    }
     
     @IBOutlet var washModel1: UIButton!//节能
     @IBOutlet var washModel2: UIButton!//强劲
@@ -124,10 +138,16 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             return
         }
         SVProgressHUD.show(withStatus: "发送中...")
-        SVProgressHUD.dismiss(withDelay: 2)
+        SVProgressHUD.dismiss(withDelay: 3)
         (self.currentDevice as! WashDush_Wifi).setModel(Model: sender.tag) { (error) in
-            SVProgressHUD.dismiss()
-            alertError(code: (error! as NSError).code)
+            if (error! as NSError).code>=0
+            {
+                SVProgressHUD.dismiss()
+                alertError(code: (error! as NSError).code)
+            }else{
+                IsShowTimeOut=true
+                Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(ControlTimeOut), userInfo: nil, repeats: false)
+            }
         }
     }
     @IBAction func lastWashReport(_ sender: Any) {//上次洗涤报告
@@ -155,11 +175,15 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     var washAppointTime:WashAppointTime!
-    var remind1H:CGFloat!
+   
     var cicleR:CGFloat!
     override func draw(_ rect: CGRect) {
+        super.draw(rect)
         // Drawing code
-        remind1H = ((height_screen-height_tabBar)*720/1166-214)/2
+        if (height_screen-rect.size.height) == 64 {
+            remind1H = remindTimeView1.bounds.width/2
+        }
+        
         cicleR = remind1H*125/205*86/108
         temperatView.layer.cornerRadius=remind1H*125/205
         remindTimeView1.layer.cornerRadius=remind1H
@@ -196,11 +220,13 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         }
         print(width_screen)
         if width_screen<=320 {
-            
+            remindTimeText.font=UIFont(name: ".SFUIDisplay-Thin", size: 11)
+            trmperatText.font=UIFont(name: ".SFUIDisplay-Thin", size: 11)
             temperatureLabel.font=UIFont(name: ".SFUIDisplay-Thin", size: 16)
             remindTimeValue.font=UIFont(name: ".SFUIDisplay-Thin", size: 20)
-            temperatureLabel.setNeedsDisplay()
-            remindTimeValue.setNeedsDisplay()
+            //temperatureLabel.setNeedsDisplay()
+            //remindTimeValue.setNeedsDisplay()
+            
         }
         self.setNeedsDisplay()
         let ovalRadius = 172.5*remind1H/205//半径
@@ -236,10 +262,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
         timeShapeLayer.path = UIBezierPath.init(arcCenter: CGPoint.init(x: remind1H, y: remind1H), radius: ovalRadius, startAngle: 0.6*CGFloat(Double.pi), endAngle: endangle, clockwise: true).cgPath
         remindTimeView1.layer.addSublayer(timeShapeLayer)
     }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = Int((scrollView.contentOffset.x)/scrollView.frame.size.width);
-        pageControl.currentPage = page
-    }
+    
     
     
     
@@ -276,6 +299,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             if control==oldValue {
                 return
             }
+            IsShowTimeOut=false
             if control.power != oldValue.power {
                 controlButton1.setTitleColor(control.power ? controlSelectColor:unselectColor, for: .normal)
                 controlButton1.setImage(UIImage.init(named: control.power ? "电源开关ED":"电源开关"), for: .normal)
@@ -301,6 +325,7 @@ class WashDush_WifiMainView: OznerDeviceView,UIScrollViewDelegate {
             if washModel==oldValue {
                 return
             }
+            IsShowTimeOut=false
             //0 空档 1节能洗, 2:强劲洗，3日常洗，5奶瓶洗，4快速洗，6瓜果洗，7:自清洁，0空档，8自定义洗
             //print("新模式\(washModel)，旧模式\(oldValue)")
             if oldValue==0 {
