@@ -84,7 +84,7 @@ class ElectrickettleSettingVc: DeviceSettingController {
         tmepLb.text = timeSpac1e + "℃"
         
         gySwitch.addTarget(self, action:#selector(ElectrickettleSettingVc.switchChanged(_:)), for: UIControlEvents.valueChanged)
-        
+
         pickDateView=Bundle.main.loadNibNamed("CupCustomPickerView", owner: nil, options: nil)?.last as! CupCustomPickerView
         pickDateView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         pickDateView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
@@ -137,7 +137,16 @@ class ElectrickettleSettingVc: DeviceSettingController {
         
         if device?.connectStatus == .Connected {
         
-          _ = device?.setSetting((hotTemp:  device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: timeSpace, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0), isShow: true)
+            if timeSpace < (device?.settingInfo.hotTemp ?? 0) {
+               
+                _ = device?.setSetting((hotTemp:  timeSpace , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: timeSpace, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0), isShow: true)
+                
+            } else {
+                
+                _ = device?.setSetting((hotTemp:  device?.settingInfo.hotTemp ?? 0, hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: timeSpace, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0), isShow: true)
+                
+            }
+            
         }
         
         sleep(1)
@@ -185,17 +194,17 @@ class ElectrickettleSettingVc: DeviceSettingController {
         case 1111:
             
             pickDateView.pickerData.removeAll()
+
             for i in 40...100 {
                 
                 pickDateView.pickerData.append(i)
 
             }
-            
             pickDateView.units = "℃"
             pickDateView.pickerView.reloadAllComponents()
-            let timeSpace = Int(self.deviceSetting.GetValue(key: "ELTempSet", defaultValue: "0"))!
+            let timeSpace = Int(self.deviceSetting.GetValue(key: "ELTempSet", defaultValue: "100"))!
 
-            pickDateView.setView(valueIndex: timeSpace, OKClick: { (value) in
+            pickDateView.setView(valueIndex: timeSpace - 40, OKClick: { (value) in
                 self.tmepLb.text="\(value)" + "℃"
                 self.deviceSetting.SetValue(key: "ELTempSet", value: "\(value)")
                 self.pickDateView.removeFromSuperview()

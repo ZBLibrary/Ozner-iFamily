@@ -157,7 +157,7 @@ class WaterPurifier_Blue: OznerBaseDevice {
         super.doWillInit()
     }
     override func repeatFunc() {
-
+        super.repeatFunc()
         requestSetting()
 
         if Int(arc4random()%2)==0 {

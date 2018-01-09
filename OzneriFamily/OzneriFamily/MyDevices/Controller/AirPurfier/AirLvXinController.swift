@@ -249,8 +249,9 @@ class AirLvXinController: BaseViewController {
             
         }) { (error) in
             
-            self.noticeOnlyText("绑定失败")
-            
+            DispatchQueue.main.async {
+                self.noticeOnlyText("绑定失败")
+            }
         }
     
     
