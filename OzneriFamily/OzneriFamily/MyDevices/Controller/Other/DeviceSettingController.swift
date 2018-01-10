@@ -68,7 +68,7 @@ class DeviceSettingController: BaseViewController {
         let device=OznerManager.instance.currentDevice
         if deviceSetting.toJsonString()==device?.settings.toJsonString()
         {
-            _=self.navigationController?.popViewController(animated: true)
+            _=self.navigationController?.popViewController(animated:  false)
         }else{
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false,
@@ -79,7 +79,7 @@ class DeviceSettingController: BaseViewController {
                 self.saveDevice()
             }
             _=alert.addButton("否") {
-                _=self.navigationController?.popViewController(animated: true)
+                _=self.navigationController?.popViewController(animated: false)
             }
             _=alert.showInfo("", subTitle: loadLanguage("是否保存？"))
         }

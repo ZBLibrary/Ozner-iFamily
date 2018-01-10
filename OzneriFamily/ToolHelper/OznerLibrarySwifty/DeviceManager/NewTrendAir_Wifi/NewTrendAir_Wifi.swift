@@ -158,30 +158,46 @@ class NewTrendAir_Wifi: OznerBaseDevice {
             let recvDic = try! JSONSerialization.jsonObject(with: recvData, options: JSONSerialization.ReadingOptions.allowFragments) as! [Dictionary<String, Any>]
             
             for item in JSON(recvDic).arrayValue {
+                if item["value"].intValue==65535
+                {
+                    continue
+                }
                 switch item["key"].stringValue {
-                case "TDS1":
-                    //tmpSensor.TDS_Before = item["value"].intValue
+                case "power":
+                    tmpStatus.Power = item["value"].boolValue
                     break
-                case "TDS2":
-                    //tmpSensor.TDS_After = item["value"].intValue
+                case "lock":
+                    tmpStatus.Lock = item["value"].boolValue
                     break
                 case "Online":
                     self.connectStatus = item["value"].intValue==1 ? OznerConnectStatus.Connected:OznerConnectStatus.Disconnect
-                case "APercent":
-                    //filterStates.filterA = item["value"].intValue
+                case "pm25in":
+                    tmpSensor.PM25_In = item["value"].intValue
                     break
-                case "BPercent":
-                    //filterStates.filterB = item["value"].intValue
+                case "pm25out":
+                    tmpSensor.PM25_Out = item["value"].intValue
                     break
-                case "CPercent":
-                    //filterStates.filterC = item["value"].intValue
+                case "tem":
+                    tmpSensor.Temperature = item["value"].intValue
                     break
-                case "PowerOn":
-                    //tmpStatus.Power = item["value"].boolValue
+                case "hum":
+                    tmpSensor.Humidity = item["value"].intValue
                     break
-                case "CHILDLOCK":
+                case "co2":
+                    tmpSensor.CO2 = item["value"].intValue
                     break
-                 
+                case "tvoc":
+                    tmpSensor.TVOC = item["value"].intValue
+                    break
+                case "filtertime":
+                    break
+                case "filtercon":
+                    break
+                case "mode":
+                    let tmpvalue=item["value"].intValue
+                    tmpStatus.AirAndSpeed=tmpvalue/256%256
+                    tmpStatus.NewAndSpeed=tmpvalue%256
+                    break
                 default:
                     break
                 }
