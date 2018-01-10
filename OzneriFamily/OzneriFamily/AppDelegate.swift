@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
 //        if #available(iOS 11.0, *) {
 //            UIScrollView.appearance().
 //        }
-        Thread.sleep(forTimeInterval: 1)
+        Thread.sleep(forTimeInterval: 0.5)
         return true
     }
     //微信 delegate---->
