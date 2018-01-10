@@ -79,9 +79,9 @@ class ElectrickettleSettingVc: DeviceSettingController {
         let timeSpace = Int(self.deviceSetting.GetValue(key: currentRemindType.remindInterval, defaultValue: "15")) ?? 15
         
         intervalLb.text = "\(timeSpace%60+timeSpace/60)"+(timeSpace>=60 ? loadLanguage("小时"):loadLanguage("分钟"))
-        
-        let timeSpac1e = self.deviceSetting.GetValue(key: "ELTempSet", defaultValue: "100")
-        tmepLb.text = timeSpac1e + "℃"
+        let device = OznerManager.instance.currentDevice as? Electrickettle_Blue
+        let timeSpac1e = device?.settingInfo.orderTemp ?? 100
+        tmepLb.text = "\(timeSpac1e)" + "℃"
         
         gySwitch.addTarget(self, action:#selector(ElectrickettleSettingVc.switchChanged(_:)), for: UIControlEvents.valueChanged)
 
@@ -202,7 +202,9 @@ class ElectrickettleSettingVc: DeviceSettingController {
             }
             pickDateView.units = "℃"
             pickDateView.pickerView.reloadAllComponents()
-            let timeSpace = Int(self.deviceSetting.GetValue(key: "ELTempSet", defaultValue: "100"))!
+            let device = OznerManager.instance.currentDevice as? Electrickettle_Blue
+            let timeSpace = device?.settingInfo.orderTemp ?? 100
+//            let timeSpace =  Int(self.deviceSetting.GetValue(key: "ELTempSet", defaultValue: "100"))!
 
             pickDateView.setView(valueIndex: timeSpace - 40, OKClick: { (value) in
                 self.tmepLb.text="\(value)" + "℃"
