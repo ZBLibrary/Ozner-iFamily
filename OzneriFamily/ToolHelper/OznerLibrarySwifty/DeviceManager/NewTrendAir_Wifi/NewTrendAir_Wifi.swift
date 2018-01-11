@@ -57,7 +57,27 @@ class NewTrendAir_Wifi: OznerBaseDevice {
             return
         }
         if self.deviceInfo.wifiVersion == 3 {
-            return
+            var tmpValue:AnyObject!
+            
+            switch key{
+            case 0:
+                tmpValue = (!(status.Power)).hashValue as AnyObject
+            case 3:
+                tmpValue = (!(status.Lock)).hashValue as AnyObject
+            case 1:
+                let newValue = (status.NewAndSpeed==0 ? 1:0)
+                let cleanValue = status.AirAndSpeed*256
+                tmpValue=newValue+cleanValue as AnyObject
+            case 2:
+                let newValue = status.NewAndSpeed
+                let cleanValue = (status.AirAndSpeed==0 ? 1:0)*256
+                tmpValue=newValue+cleanValue as AnyObject
+            default:
+                return
+            }
+            OznerTools.publicGPRSString(deviceType: self.deviceInfo.deviceType, deviceId: self.deviceInfo.deviceID, key: ["power","mode","mode","lockflag"][key], value: tmpValue, callback: { (code) in
+                
+            })
         }else{
             var data=Data()
             switch key {
@@ -166,7 +186,7 @@ class NewTrendAir_Wifi: OznerBaseDevice {
                 case "power":
                     tmpStatus.Power = item["value"].boolValue
                     break
-                case "lock":
+                case "lockflag":
                     tmpStatus.Lock = item["value"].boolValue
                     break
                 case "Online":

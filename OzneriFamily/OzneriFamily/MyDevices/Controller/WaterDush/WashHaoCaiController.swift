@@ -26,9 +26,11 @@ class WashHaoCaiController: BaseViewController {
     
     @IBAction func bugHaoCaiClick(_ sender: Any) {
         let vc=UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "AboutDeviceController") as! AboutDeviceController
-        vc.setLoadContent(content: (NetworkManager.defaultManager?.UrlNameWithRoot("BuyWashHaoCai"))!, Type: 0)
-        vc.title=""
+        vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["BuyWashHaoCai"]?.stringValue)!, Type: 0)
+        
+        vc.title="补充耗材"
         self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,12 +144,12 @@ class WashHaoCaiController: BaseViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier=="washBugLink" {
-            let vc=segue.destination as! AboutDeviceController
-            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["jxszd"]?.stringValue)!, Type: 0)
-            vc.title="补充耗材"
-            
-        }
+//        if segue.identifier=="washBugLink" {
+//            let vc=segue.destination as! AboutDeviceController
+//            vc.setLoadContent(content: (NetworkManager.defaultManager?.URL?["jxszd"]?.stringValue)!, Type: 0)
+//            vc.title="补充耗材"
+//
+//        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

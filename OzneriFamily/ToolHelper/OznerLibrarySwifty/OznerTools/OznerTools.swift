@@ -90,6 +90,17 @@ class OznerTools: NSObject {
         return data
     }
     
+    class func publicGPRSString(deviceType:String,deviceId:String,key:String,value:AnyObject,callback:((Int32)->Void)!){
+        let params = ["deviceType" : deviceType,
+                      "deviceId" : deviceId,
+                      "key" : key,
+                      "value" : value] as [String : Any]//设置参数
+
+        Helper.post("http://iot.ozner.net:1885/setter.do", requestParams: params) { (response, data, error) in
+            print(error ?? "")
+        }
+      
+    }
     class func publicString(payload:Data,deviceid:String,callback:((Int32)->Void)!){
         let payloadStr=OznerTools.hexStringFromData(data: payload)
         let params = ["username" : "bing.zhao@cftcn.com","password" : "l5201314","deviceid" : deviceid,"payload" : payloadStr]//设置参数
@@ -97,7 +108,7 @@ class OznerTools: NSObject {
         Helper.post("https://v2.fogcloud.io/enduser/sendCommandHz/", requestParams: params) { (response, data, error) in
             print(error ?? "")
         }
-      
+        
     }
     
 }
