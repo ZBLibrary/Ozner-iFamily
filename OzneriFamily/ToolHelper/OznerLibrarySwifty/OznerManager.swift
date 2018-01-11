@@ -112,9 +112,7 @@ class OznerManager: NSObject {
         handler(EASYLINK.ssidForConnectedNetwork())
     }
     
-    
-    
-    
+        
 //    func reachabilityChanged(notification: NSNotification) {
 //        if wifiReachability.isReachableViaWiFi() || wifiReachability.isReachableViaWWAN() {
 //            print("Service avalaible!!!")

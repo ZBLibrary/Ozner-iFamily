@@ -134,7 +134,7 @@ NSString* idString;
             }
             if (writeCharacteristic != nil && readCharacteristic != nil) {
                 weakSelf.babyBLEStatusBlock(3);
-                break;
+                continue;
             }
         }
         

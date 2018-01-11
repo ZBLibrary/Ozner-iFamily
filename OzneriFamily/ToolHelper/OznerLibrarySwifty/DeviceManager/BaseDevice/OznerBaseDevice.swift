@@ -97,9 +97,8 @@ class OznerBaseDevice: NSObject,OznerBaseIODelegate {
     //连接状态变化
     func OznerBaseIOStatusUpdate(status: OznerConnectStatus) {
         if status==OznerConnectStatus.IOIsReadly {
-            
-            self.doWillInit()
             connectStatus=OznerConnectStatus.Connected
+            self.doWillInit()
             
         }else{
             connectStatus=status

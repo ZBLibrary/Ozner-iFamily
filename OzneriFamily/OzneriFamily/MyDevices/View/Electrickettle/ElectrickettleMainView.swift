@@ -168,7 +168,7 @@ class ElectrickettleMainView: OznerDeviceView {
         
         if sender.tag > Int(tempValue.maximumValue) && sender.tag != 666{
             
-            self.noticeOnlyText("设置温度不能大于当前煮沸温度")
+            self.noticeOnlyText("设置保温温度不能大于当前煮沸温度")
             
             return
         }
@@ -190,13 +190,13 @@ class ElectrickettleMainView: OznerDeviceView {
             
             return
         }
-        
+        let value1 = UserDefaults.standard.value(forKey: "UISliderValueElectrickettle") ?? 40
+
         if sender.tag == 666{
             
             secondContrains.constant = 180
             tempValue.isHidden = false
-            let value = UserDefaults.standard.value(forKey: "UISliderValueElectrickettle") ?? 40
-            tempValue.value = Float(value as! Int)
+            tempValue.value = Float(value1 as! Int)
             tempValue.previewView?.valueLb.text = String.init(format: "%.0f℃",tempValue.value)
             tempValue.beginAdd()
             
@@ -205,7 +205,13 @@ class ElectrickettleMainView: OznerDeviceView {
         }
         
         if sender.tag != 666 {
-        
+//            let deviceSetting=BaseDeviceSetting(json: device?.settings.toJsonString())
+//            let value = Int(deviceSetting.GetValue(key: "ELTempSet", defaultValue: "100"))!
+//            if value < sender.tag {
+//                self.noticeOnlyText("保温温度不能大于煮沸温度!")
+//                return
+//            }
+            
             _ = device?.setSetting((hotTemp: sender.tag , hotTime: device?.settingInfo.hotTime ?? 0, boilTemp: device?.settingInfo.orderTemp ?? 0, hotFunction: device?.settingInfo.hotPattern ?? 0 , orderFunction: device?.settingInfo.orderFunction ?? 0, orderSec: device?.settingInfo.orderSec ?? 0), isShow: true)
             
         } else {

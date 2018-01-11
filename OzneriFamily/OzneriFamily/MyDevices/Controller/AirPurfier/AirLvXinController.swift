@@ -192,9 +192,12 @@ class AirLvXinController: BaseViewController {
             if json1["state"].intValue >= 1 {
                 
                 let filterLifeDay = json1["filterLifeDay"].intValue
-                DispatchQueue.main.async {
-                    
+                if json1["state"].intValue == 9{
+                    DispatchQueue.main.async {
+                       self.noticeOnlyText("滤芯已被使用")
+                    }
                 }
+               
                 let appearance = SCLAlertView.SCLAppearance(
                     showCloseButton: false,
                     dynamicAnimatorActive: true
@@ -218,8 +221,9 @@ class AirLvXinController: BaseViewController {
                 _=alert.showInfo("", subTitle: loadLanguage("您是否绑定此滤芯?"))
                 
             } else {
+                
                 DispatchQueue.main.async {
-                    self.noticeOnlyText("此二维码已失效")
+                    self.noticeOnlyText("无效滤芯")
                 }
             }
             
@@ -237,12 +241,17 @@ class AirLvXinController: BaseViewController {
                 DispatchQueue.main.async {
                     self.noticeOnlyText("绑定成功")
                 }
+            } else {
+                DispatchQueue.main.async {
+                    self.noticeOnlyText("绑定失败")
+                }
             }
             
         }) { (error) in
             
-            self.noticeOnlyText("绑定失败")
-            
+            DispatchQueue.main.async {
+                self.noticeOnlyText("绑定失败")
+            }
         }
     
     

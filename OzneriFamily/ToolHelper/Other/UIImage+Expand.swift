@@ -21,17 +21,21 @@ extension UIImageView {
         
     }
     public func loadGif(name: String) {
+        
         DispatchQueue.global().async {
             let image = UIImage.gif(name: name)
+ 
             DispatchQueue.main.async {
+                
                 self.image = image
+                
             }
         }
     }
     // 度/秒 其中<360 逆时针，>360顺时针
     public var oznerRotateSpeed:Double{
         set{
-            
+
             let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
             rotationAnimation.toValue = newValue>360 ? M_PI * 2.0 : -M_PI * 2.0
             rotationAnimation.duration = newValue>360 ? 360.0/(newValue-360) : 360.0/newValue
@@ -54,7 +58,6 @@ extension UIImage {
             print("SwiftGif: Source for the image does not exist")
             return nil
         }
-
         return UIImage.animatedImageWithSource(source)
     }
 
@@ -76,6 +79,7 @@ extension UIImage {
 
     public class func gif(name: String) -> UIImage? {
         // Check for existance of gif
+        
         guard let bundleURL = Bundle.main
           .url(forResource: name, withExtension: "gif") else {
             print("SwiftGif: This image named \"\(name)\" does not exist")
@@ -218,7 +222,7 @@ extension UIImage {
         // Heyhey
         let animation = UIImage.animatedImage(with: frames,
             duration: Double(duration) / 1000.0)
-
+        
         return animation
     }
 
