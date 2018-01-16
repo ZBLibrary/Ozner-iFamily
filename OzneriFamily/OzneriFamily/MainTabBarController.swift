@@ -17,7 +17,7 @@ class MainTabBarController: RDVTabBarController {
             OznerManager.instance.setOwner(Owner: ownerStr!, UserToken: (User.currentUser?.usertoken)!)
 
         }
-        sleep(UInt32(0.5))
+//        sleep(UInt32(0.5))
         let c1 = UIStoryboard(name: "MyDevices", bundle: nil).instantiateViewController(withIdentifier: "MyDevicesController") as! MyDevicesController
         
         let leftViewController = UIStoryboard(name: "LeftMenu", bundle: nil).instantiateInitialViewController() as! LeftMenuController

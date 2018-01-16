@@ -100,17 +100,17 @@ class ElectrickettleMainView: OznerDeviceView {
                 case TDS<=Int(tds_good):
                     tdsImg.image=UIImage(named: "baobiao")
                     tdsStateLabel.text=loadLanguage("好")
-                    tdsStateLabel.textColor = UIColor.blue
+                    tdsValueLabel.textColor = UIColor.blue
                     angle=CGFloat(TDS)/CGFloat(tds_good*3)
                 case TDS>Int(tds_good)&&TDS<=Int(tds_bad):
                     tdsImg.image=UIImage(named: "yiban")
                     tdsStateLabel.text=loadLanguage("中")
-                    tdsStateLabel.textColor = UIColor.yellow
+                    tdsValueLabel.textColor = UIColor.yellow
                     angle=CGFloat(TDS-Int(tds_good))/CGFloat((tds_bad-tds_good)*3)+0.33
                 case TDS>Int(tds_bad):
                     tdsImg.image=UIImage(named: "cha")
                     tdsStateLabel.text=loadLanguage("差")
-                    tdsStateLabel.textColor = UIColor.red
+                    tdsValueLabel.textColor = UIColor.red
                     angle=CGFloat(TDS-Int(tds_bad))/CGFloat(50*3)+0.66
                 default:
                     tdsImg.image=UIImage(named: "cha")
