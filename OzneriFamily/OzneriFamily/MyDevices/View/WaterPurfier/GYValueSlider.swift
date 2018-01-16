@@ -77,7 +77,6 @@ class GYValueSlider: UISlider {
         gradientLaye?.endPoint = CGPoint(x: 1, y: 0)
         self.layer.addSublayer(gradientLaye!)
 
-                
     }
     
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
