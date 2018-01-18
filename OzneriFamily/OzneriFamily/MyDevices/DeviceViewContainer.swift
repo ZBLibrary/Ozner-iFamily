@@ -65,7 +65,8 @@ class DeviceViewContainer: UIView {
         .Electrickettle_Blue:"ElectrickettleMainView",
         .WashDush_Wifi:"WashDush_WifiMainView",
         .NewTrendAir_Wifi:"NewTrendAirMainView",
-        .CenterWater:"CenterWaterView"
+        .CenterWater:"CenterWaterView",
+        .ThreeOutWater:"ThreeOutWaterMainView"
     ]
     private func SelectWitchView(device:OznerBaseDevice?)  {
         
@@ -174,6 +175,9 @@ class DeviceViewContainer: UIView {
                 let device = OznerManager.instance.currentDevice as? CenterWater
                 LvXinValue = (device?.centerInfo.filter)!
                 break
+            case .ThreeOutWater:
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:225*k_height)
+                LvXinValue = 110000
             }
             currentDeviceView.currentDevice=OznerManager.instance.currentDevice
             OznerDeviceSensorUpdate(identifier: (OznerManager.instance.currentDevice?.deviceInfo.deviceID)!)//初始化设备状态
@@ -249,6 +253,8 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
             case .CenterWater:
                 let device = OznerManager.instance.currentDevice as? CenterWater
                 self.LvXinValue = (device?.centerInfo.filter)!
+                break
+            case .ThreeOutWater:
                 break
             default:
             break

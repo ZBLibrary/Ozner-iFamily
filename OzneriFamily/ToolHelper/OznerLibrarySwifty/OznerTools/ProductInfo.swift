@@ -47,14 +47,15 @@ enum OZDeviceClass:String{
     case NewTrendAir_Wifi="NewTrendAir_Wifi"
     case TwoCup="TwoCup"
     case CenterWater="CenterWater"
+    case ThreeOutWater="ThreeOutWater"
     static func getFromString(str:String)->OZDeviceClass{
-        return ["WaterPurifier_Blue":.WaterPurifier_Blue,"Cup":.Cup,"Tap":.Tap,"TDSPan":.TDSPan,"WaterPurifier_Wifi":.WaterPurifier_Wifi,"AirPurifier_Blue":.AirPurifier_Blue,"AirPurifier_Wifi":.AirPurifier_Wifi,"WaterReplenish":.WaterReplenish,"Electrickettle_Blue":.Electrickettle_Blue,"WashDush_Wifi":.WashDush_Wifi,"NewTrendAir_Wifi":.NewTrendAir_Wifi,"TwoCup":.TwoCup,"CenterWater":CenterWater][str]!
+        return ["WaterPurifier_Blue":.WaterPurifier_Blue,"Cup":.Cup,"Tap":.Tap,"TDSPan":.TDSPan,"WaterPurifier_Wifi":.WaterPurifier_Wifi,"AirPurifier_Blue":.AirPurifier_Blue,"AirPurifier_Wifi":.AirPurifier_Wifi,"WaterReplenish":.WaterReplenish,"Electrickettle_Blue":.Electrickettle_Blue,"WashDush_Wifi":.WashDush_Wifi,"NewTrendAir_Wifi":.NewTrendAir_Wifi,"TwoCup":.TwoCup,"CenterWater":CenterWater,"ThreeOutWater":ThreeOutWater][str]!
     }
     public var ioType:OZIOType {
         switch self {
         case .WaterPurifier_Blue,.Cup,.Tap,.TDSPan,.AirPurifier_Blue,.WaterReplenish,.Electrickettle_Blue,.TwoCup:
             return OZIOType.Blue
-        case .WaterPurifier_Wifi,.AirPurifier_Wifi,.WashDush_Wifi,.NewTrendAir_Wifi,.CenterWater:
+        case .WaterPurifier_Wifi,.AirPurifier_Wifi,.WashDush_Wifi,.NewTrendAir_Wifi,.CenterWater,.ThreeOutWater:
             return OZIOType.MxChip
 //        default:
 //            return OZIOType.Blue
