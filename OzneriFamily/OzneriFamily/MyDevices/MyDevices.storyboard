@@ -218,6 +218,7 @@
                         <segue destination="goi-2L-YQV" kind="show" identifier="showNewAirSetting" id="5B5-Zk-xom"/>
                         <segue destination="rWv-vc-sXq" kind="show" identifier="showNewAirAppoint" id="zGQ-IS-Izq"/>
                         <segue destination="Iwh-3z-Cui" kind="show" identifier="ShowCenterWaterSettingVc" id="hoT-6M-OR5"/>
+                        <segue destination="P5y-ZO-mn1" kind="show" identifier="ThreeWaterSetting" id="7ck-2d-GA0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6B-00-A3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -9261,6 +9262,25 @@
             </objects>
             <point key="canvasLocation" x="13794" y="1155"/>
         </scene>
+        <!--Three Water Setting Vc-->
+        <scene sceneID="Egb-kK-oTa">
+            <objects>
+                <viewController id="P5y-ZO-mn1" customClass="ThreeWaterSettingVc" customModule="OzneriFamily" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aaa-IM-8nZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="mPA-uD-r8E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mGp-sy-rOt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yxG-wv-RFh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KmN-hg-cnC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7374" y="-86"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Rank_toright" width="8" height="17"/>
@@ -9312,8 +9332,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="avB-qO-o0y"/>
-        <segue reference="a3P-Op-FFc"/>
-        <segue reference="StK-Z1-fQm"/>
+        <segue reference="BXe-Ml-x0S"/>
+        <segue reference="zGQ-IS-Izq"/>
         <segue reference="CmT-Iw-XQ3"/>
     </inferredMetricsTieBreakers>
 </document>

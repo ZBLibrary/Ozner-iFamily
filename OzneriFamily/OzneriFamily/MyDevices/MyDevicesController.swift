@@ -92,7 +92,7 @@ class MyDevicesController: UIViewController {
 //            .CenterWater
             self.performSegue(withIdentifier: "ShowCenterWaterSettingVc", sender: nil)
         case .ThreeOutWater:
-            self.performSegue(withIdentifier: "ShowCenterWaterSettingVc", sender: nil)
+            self.performSegue(withIdentifier: "ThreeWaterSetting", sender: nil)
         }
     }
     @IBAction func leftMenuClick(_ sender: UIButton) {//左菜单点击按钮

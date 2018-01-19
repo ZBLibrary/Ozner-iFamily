@@ -18,11 +18,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5f-Do-9KZ" customClass="InstrumentView" customModule="OzneriFamily" customModuleProvider="target">
-                    <rect key="frame" x="45" y="40" width="285" height="387"/>
+                    <rect key="frame" x="45" y="85" width="285" height="333.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I09-6X-z8z">
-                    <rect key="frame" x="0.0" y="427" width="375" height="240"/>
+                    <rect key="frame" x="0.0" y="418.5" width="375" height="248.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加热设置" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQr-bD-wN6">
                             <rect key="frame" x="30" y="29" width="69.5" height="21"/>
@@ -136,14 +136,22 @@
                         <constraint firstItem="Sxf-4S-FBW" firstAttribute="top" secondItem="q5e-3F-Q3N" secondAttribute="top" id="wfz-cg-m6q"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安心服务365天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYG-8u-Vbj">
+                    <rect key="frame" x="129" y="89" width="117.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.2274509804" green="0.4431372549" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="S5f-Do-9KZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="45" id="F6v-dO-poU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="I09-6X-z8z" secondAttribute="bottom" id="KHM-dv-C8i"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="I09-6X-z8z" secondAttribute="trailing" id="XUP-Bg-XOT"/>
-                <constraint firstItem="S5f-Do-9KZ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="qky-fa-vYh"/>
-                <constraint firstItem="S5f-Do-9KZ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.58" id="sHs-eJ-5Na"/>
+                <constraint firstItem="nYG-8u-Vbj" firstAttribute="centerX" secondItem="S5f-Do-9KZ" secondAttribute="centerX" id="cnB-qO-OFj"/>
+                <constraint firstItem="S5f-Do-9KZ" firstAttribute="top" secondItem="nYG-8u-Vbj" secondAttribute="bottom" constant="-25" id="e7b-YG-2MI"/>
+                <constraint firstItem="S5f-Do-9KZ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="65" id="qky-fa-vYh"/>
+                <constraint firstItem="S5f-Do-9KZ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="sHs-eJ-5Na"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="S5f-Do-9KZ" secondAttribute="trailing" constant="45" id="vx6-TB-zOV"/>
                 <constraint firstItem="I09-6X-z8z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wkg-1x-xXE"/>
                 <constraint firstItem="I09-6X-z8z" firstAttribute="top" secondItem="S5f-Do-9KZ" secondAttribute="bottom" id="zLd-1D-0gB"/>

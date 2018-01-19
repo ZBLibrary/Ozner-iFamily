@@ -125,15 +125,13 @@ class InstrumentView: UIView {
         let str:NSString = "\(Int(progress * 2.0))" + "℃" as NSString
         context?.saveGState()
         context?.rotate(by: (CGFloat.pi * 45 / 180))
-        let attributes = [NSFontAttributeName:  UIFont.systemFont(ofSize: 40),  NSForegroundColorAttributeName: UIColor.blue]
+        let attributes = [NSFontAttributeName:  UIFont.systemFont(ofSize: 40),  NSForegroundColorAttributeName: UIColor.init(hex: "0xff7493ff")]
         
         str.draw(at: CGPoint(x: -42, y:-50), withAttributes: attributes)
-        ("当前温度" as NSString).draw(at: CGPoint(x: -60, y:10), withAttributes: [NSFontAttributeName:  UIFont.systemFont(ofSize: 30), NSForegroundColorAttributeName: UIColor.blue])
+        ("当前温度" as NSString).draw(at: CGPoint(x: -60, y:10), withAttributes: [NSFontAttributeName:  UIFont.systemFont(ofSize: 30), NSForegroundColorAttributeName: UIColor.init(hex: "0xff7493ff")])
         
         context?.restoreGState()
  
     }
     
-    
-
 }

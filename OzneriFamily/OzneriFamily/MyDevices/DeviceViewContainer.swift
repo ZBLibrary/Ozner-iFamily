@@ -176,7 +176,7 @@ class DeviceViewContainer: UIView {
                 LvXinValue = (device?.centerInfo.filter)!
                 break
             case .ThreeOutWater:
-                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:225*k_height)
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:225*k_height)
                 LvXinValue = 110000
             }
             currentDeviceView.currentDevice=OznerManager.instance.currentDevice
