@@ -28,12 +28,12 @@ extension ThreeWaterSettingVc: UITableViewDataSource,UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0,2:
+        case 0,1:
             return 0
         default:
             return sectionNum
@@ -143,36 +143,36 @@ extension ThreeWaterSettingVc: UITableViewDataSource,UITableViewDelegate{
         
         tap.isEnabled = true
         
-        if section == 1 {
-            let headView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "CenterHeadViewID") as! CenterHeadView
-            headView.isUserInteractionEnabled = true
-            headView.addGestureRecognizer(tap)
-            headView.block = { (index) -> Void in
-                
-                self.sectionNum = 8
-                self.isCanEdit = index == 555 ? false :true
-                
-                if !self.isCanEdit {
-                    self.dataArr.removeAll()
-                    self.initData()
-                }
-                
-                self.tableView.reloadData()
-                
-            }
-            
-            objc_setAssociatedObject(self, &gy_associatedKeys.imageKey, headView.rightImage, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            
-            return headView
-        }
+//        if section == 1 {
+//            let headView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "CenterHeadViewID") as! CenterHeadView
+//            headView.isUserInteractionEnabled = true
+//            headView.addGestureRecognizer(tap)
+//            headView.block = { (index) -> Void in
+//
+//                self.sectionNum = 8
+//                self.isCanEdit = index == 555 ? false :true
+//
+//                if !self.isCanEdit {
+//                    self.dataArr.removeAll()
+//                    self.initData()
+//                }
+//
+//                self.tableView.reloadData()
+//
+//            }
+//
+//            objc_setAssociatedObject(self, &gy_associatedKeys.imageKey, headView.rightImage, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+//
+//            return headView
+//        }
         
         let headView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableHeadViewID") as! TableHeadView
         headView.actionBtn.tag = section + 666
         if section == 0 {
             headView.nameLb.text = self.getNameAndAttr()
         } else {
-            headView.deviceLb.text = "关于中央净水机"
-            headView.nameLb.text = "我的水机"
+            headView.deviceLb.text = "说明书&操作指南"
+            headView.nameLb.text = "我的饮水机"
         }
         headView.actionBtn.addTarget(self, action: #selector(CenterWaterSettingVc.actionBtn(_:)), for: UIControlEvents.touchUpInside)
         return headView
@@ -187,10 +187,10 @@ extension ThreeWaterSettingVc: UITableViewDataSource,UITableViewDelegate{
         
         switch sender.tag {
         case 666:
-            self.performSegue(withIdentifier: "ShowCenterVc", sender: nil)
+            self.performSegue(withIdentifier: "threeWaterName", sender: nil)
             break
-        case 668:
-            self.performSegue(withIdentifier: "showAboutDevice", sender: nil)
+        case 667:
+            self.performSegue(withIdentifier: "AboutThreeWater", sender: nil)
             break
         default:
             break
@@ -221,13 +221,7 @@ extension ThreeWaterSettingVc: UITableViewDataSource,UITableViewDelegate{
     
     fileprivate func initData() {
         
-        dataArr = [CenterWaterModel(name: "居家反冲洗周期", setTime: "5",key:"HomeWashCycle",rang:"0-99"),                   CenterWaterModel(name: "出差反冲洗周期", setTime: "3",key:"TravelWashCycle",rang:"0-99"),
-                   CenterWaterModel(name: "周期制水量", setTime: "2500",key:"WaterLimit_1Cycle",rang:"100-99000"),
-                   CenterWaterModel(name: "居家反洗持续时间", setTime: "12",key:"HomeNtvTime",rang:"0-99"),
-                   CenterWaterModel(name: "居家正洗持续时间", setTime: "6",key:"HomePtvTime",rang:"0-99"),
-                   CenterWaterModel(name: "出差反洗持续时间", setTime: "4",key:"TravelNtvTime",rang:"0-99"),
-                   CenterWaterModel(name: "出差正洗持续时间", setTime: "4",key:"TravelPtvTime",rang:"0-99"),
-                   CenterWaterModel(name: "执行反冲洗时间点", setTime: "2",key:"WashTimeNode",rang:"0-23")]
+        dataArr = []
         
     }
     
@@ -245,22 +239,7 @@ class ThreeWaterSettingVc: DeviceSettingController {
     var dataArr:[CenterWaterModel] = []
     
     @IBAction func saveAction(_ sender: Any) {
-        
-        var  arr:[MqttSendStruct] = []
-        
-        for item in dataArr {
-            
-            let model = MqttSendStruct(key: item.key, value: Int(item.setTime) ?? 0, type: "Integer")
-            arr.append(model)
-        }
-        
-        let device = OznerManager.instance.currentDevice as! CenterWater
-        device.SendDataToDevice(sendData: OznerTools.mqttModelToData(arr)) { (error) in
-            if error != nil {
-                print(error!)
-            }
-        }
-        sleep(1)
+
         self.saveDevice()
     }
     
@@ -342,7 +321,7 @@ class ThreeWaterSettingVc: DeviceSettingController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier=="showAboutDevice" {
+        if segue.identifier=="AboutThreeWater" {
             let VC=segue.destination as!  AboutDeviceController
             VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutCeterWater"]?.stringValue)!, Type: 0)
         }
