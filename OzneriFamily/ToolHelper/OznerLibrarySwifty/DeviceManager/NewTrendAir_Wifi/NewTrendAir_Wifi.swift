@@ -20,7 +20,7 @@ class NewTrendAir_Wifi: OznerBaseDevice {
             //}
         }
     }
-    private(set) var status:(Power:Bool,Lock:Bool,AirAndSpeed:Int,NewAndSpeed:Int)=(false,false,0,0){
+    private(set) var status:(Power:Bool,Lock:Bool,AirAndSpeed:Int,NewAndSpeed:Int,hotPower:Bool,O3Power:Bool)=(false,false,0,0,false,false){
         didSet{
             //if status != oldValue {
                 self.delegate?.OznerDeviceStatusUpdate!(identifier: self.deviceInfo.deviceID)
@@ -35,11 +35,11 @@ class NewTrendAir_Wifi: OznerBaseDevice {
             
         }
     }
-    private(set) var appointTime:(onOffType:Int,onEveryDay:Int,offEveryDay:Int,offOnce:Int) = (0,0,0,0){
+    
+    private(set) var appointTime:(onState:Bool,onWeekDay:Int,onTimeM:Int,onTimeH:Int,offState:Bool,offWeekDay:Int,offTimeM:Int,offTimeH:Int) = (false,0,0,0,false,0,0,0){
         didSet{
-            //if filterStatus != oldValue {
+            
             self.delegate?.OznerDevicefilterUpdate?(identifier: self.deviceInfo.deviceID)
-            //}
             
         }
     }
@@ -84,16 +84,21 @@ class NewTrendAir_Wifi: OznerBaseDevice {
             case 0:
                 let value = !(status.Power)
                 data.append(UInt8(value.hashValue))
-            case 3:
-                let value = !(status.Lock)
-                data.append(UInt8(value.hashValue))
+            
             case 1:
                 let value = !Bool.init(NSNumber.init(value: status.AirAndSpeed))
                 data.append(UInt8(value.hashValue))
                 data.append(UInt8(status.NewAndSpeed))
+                data.append(UInt8(status.hotPower.hashValue))
+                data.append(UInt8(status.O3Power.hashValue))
             case 2:
                 let value = !Bool.init(NSNumber.init(value: status.NewAndSpeed))
                 data.append(UInt8(status.AirAndSpeed))
+                data.append(UInt8(value.hashValue))
+                data.append(UInt8(status.hotPower.hashValue))
+                data.append(UInt8(status.O3Power.hashValue))
+            case 3:
+                let value = !(status.Lock)
                 data.append(UInt8(value.hashValue))
             default:
                 break
@@ -137,13 +142,14 @@ class NewTrendAir_Wifi: OznerBaseDevice {
                 data.append(UInt8(status.AirAndSpeed))
                 data.append(UInt8(currValue))
             }
-            
+            data.append(UInt8(status.hotPower.hashValue))
+            data.append(UInt8(status.O3Power.hashValue))
             setSwitchData(code: 0x29, data: data)
         }
         
     }
     //设置开关机时间,Type:0单次，1每天
-    func setAppoint(onOffType:Int,onEveryDay:Int,offEveryDay:Int,offOnce:Int,callBack:((_ error:Error?)->Void)) {
+    func setAppoint(onState:Bool,onWeekDay:Int,onTimeM:Int,onTimeH:Int,offState:Bool,offWeekDay:Int,offTimeM:Int,offTimeH:Int,callBack:((_ error:Error?)->Void)) {
         if self.connectStatus != .Connected {
             callBack(NSError.init(domain: "设备已断开连接", code: -1, userInfo: nil))
             return
@@ -155,10 +161,15 @@ class NewTrendAir_Wifi: OznerBaseDevice {
         if self.deviceInfo.wifiVersion == 3 {
             return
         }else{
-            var data = Data.init(bytes: [UInt8(onOffType)])
-            data.append(OznerTools.dataFromInt(number: CLongLong(onEveryDay), length: 2))
-            data.append(OznerTools.dataFromInt(number: CLongLong(offEveryDay), length: 2))
-            data.append(OznerTools.dataFromInt(number: CLongLong(offOnce), length: 2))
+            var data = Data.init(bytes: [UInt8(onState.hashValue+onWeekDay*2)])
+            data.append(UInt8(onTimeM))
+            data.append(UInt8(onTimeH))
+            data.append(UInt8(0))
+            
+            data.append(UInt8(UInt8(offState.hashValue+offWeekDay*2)))
+            data.append(UInt8(offTimeM))
+            data.append(UInt8(offTimeH))
+            data.append(UInt8(0))
             setSwitchData(code: 0x04, data:data)
             callBack(NSError.init(domain: "数据发送成功", code: 0, userInfo: nil))
         }
@@ -170,64 +181,64 @@ class NewTrendAir_Wifi: OznerBaseDevice {
     }
     override func OznerBaseIORecvData(recvData: Data) {
         super.OznerBaseIORecvData(recvData: recvData)
-        if self.deviceInfo.wifiVersion == 3 {
-            var tmpStatus = status
-            var tmpSensor = sensor
-            var tmpFilterStatus = filterStatus
-            var tmpAppointTime = appointTime
-            let recvDic = try! JSONSerialization.jsonObject(with: recvData, options: JSONSerialization.ReadingOptions.allowFragments) as! [Dictionary<String, Any>]
-            
-            for item in JSON(recvDic).arrayValue {
-                if item["value"].intValue==65535
-                {
-                    continue
-                }
-                switch item["key"].stringValue {
-                case "power":
-                    tmpStatus.Power = item["value"].boolValue
-                    break
-                case "lockflag":
-                    tmpStatus.Lock = item["value"].boolValue
-                    break
-                case "Online":
-                    self.connectStatus = item["value"].intValue==1 ? OznerConnectStatus.Connected:OznerConnectStatus.Disconnect
-                case "pm25in":
-                    tmpSensor.PM25_In = item["value"].intValue
-                    break
-                case "pm25out":
-                    tmpSensor.PM25_Out = item["value"].intValue
-                    break
-                case "tem":
-                    tmpSensor.Temperature = item["value"].intValue
-                    break
-                case "hum":
-                    tmpSensor.Humidity = item["value"].intValue
-                    break
-                case "co2":
-                    tmpSensor.CO2 = item["value"].intValue
-                    break
-                case "tvoc":
-                    tmpSensor.TVOC = item["value"].intValue
-                    break
-                case "filtertime":
-                    break
-                case "filtercon":
-                    break
-                case "mode":
-                    let tmpvalue=item["value"].intValue
-                    tmpStatus.AirAndSpeed=tmpvalue/256%256
-                    tmpStatus.NewAndSpeed=tmpvalue%256
-                    break
-                default:
-                    break
-                }
-            }
-            
-            appointTime = tmpAppointTime
-            status = tmpStatus
-            sensor = tmpSensor
-            filterStatus = tmpFilterStatus
-        }else{
+//        if self.deviceInfo.wifiVersion == 3 {
+//            var tmpStatus = status
+//            var tmpSensor = sensor
+//            //var tmpFilterStatus = filterStatus
+//            //var tmpAppointTime = appointTime
+//            let recvDic = try! JSONSerialization.jsonObject(with: recvData, options: JSONSerialization.ReadingOptions.allowFragments) as! [Dictionary<String, Any>]
+//
+//            for item in JSON(recvDic).arrayValue {
+//                if item["value"].intValue==65535
+//                {
+//                    continue
+//                }
+//                switch item["key"].stringValue {
+//                case "power":
+//                    tmpStatus.Power = item["value"].boolValue
+//                    break
+//                case "lockflag":
+//                    tmpStatus.Lock = item["value"].boolValue
+//                    break
+//                case "Online":
+//                    self.connectStatus = item["value"].intValue==1 ? OznerConnectStatus.Connected:OznerConnectStatus.Disconnect
+//                case "pm25in":
+//                    tmpSensor.PM25_In = item["value"].intValue
+//                    break
+//                case "pm25out":
+//                    tmpSensor.PM25_Out = item["value"].intValue
+//                    break
+//                case "tem":
+//                    tmpSensor.Temperature = item["value"].intValue
+//                    break
+//                case "hum":
+//                    tmpSensor.Humidity = item["value"].intValue
+//                    break
+//                case "co2":
+//                    tmpSensor.CO2 = item["value"].intValue
+//                    break
+//                case "tvoc":
+//                    tmpSensor.TVOC = item["value"].intValue
+//                    break
+//                case "filtertime":
+//                    break
+//                case "filtercon":
+//                    break
+//                case "mode":
+//                    let tmpvalue=item["value"].intValue
+//                    tmpStatus.AirAndSpeed=tmpvalue/256%256
+//                    tmpStatus.NewAndSpeed=tmpvalue%256
+//                    break
+//                default:
+//                    break
+//                }
+//            }
+//
+//            //appointTime = tmpAppointTime
+//            status = tmpStatus
+//            sensor = tmpSensor
+//            //filterStatus = tmpFilterStatus
+//        }else{
             //解析数据并更新个性字段
             requestCount=0
             if (UInt8(recvData[0]) != 0xFA )
@@ -262,22 +273,23 @@ class NewTrendAir_Wifi: OznerBaseDevice {
                     }
                     switch keyOfData {
                     case 0x04://PROPERTY_POWER_TIMER
-                        tmpAppointTime.onOffType=Int(valueData[0])
+                        tmpAppointTime.onState = Int(valueData[0])%2==1
+                        tmpAppointTime.onWeekDay = Int(valueData[0])/2
+                        tmpAppointTime.onTimeM = Int(valueData[1])
+                        tmpAppointTime.onTimeH = Int(valueData[2])
                         
-                        tmpAppointTime.onEveryDay=min(1439, valueData.subInt(starIndex: 1, count: 2))
-                        tmpAppointTime.offEveryDay=min(1439, valueData.subInt(starIndex: 3, count: 2))
-                        tmpAppointTime.offOnce=min(1439, valueData.subInt(starIndex: 5, count: 2))
-                        break
+                        tmpAppointTime.offState = Int(valueData[4])%2==1
+                        tmpAppointTime.offWeekDay = Int(valueData[4])/2
+                        tmpAppointTime.offTimeM = Int(valueData[5])
+                        tmpAppointTime.offTimeH = Int(valueData[6])
+                        
+                        
                     case 0x00://PROPERTY_POWER
                         tmpStatus.Power=(Int(valueData[0]) != 0)
                     case 0x02://PROPERTY_LIGHT
                         break
                     case 0x03://PROPERTY_LOCK
                         tmpStatus.Lock=(Int(valueData[0]) != 0)
-                        
-                        //                case 0x01://PROPERTY_SPEED
-                        //                    tmpStatus.Speed_Air=Int(valueData[0])
-                        
                     case 0x15://PROPERTY_FILTER
                         if valueData.count>=16 {
                             let startInt = valueData.subInt(starIndex: 0, count: 4)
@@ -314,22 +326,18 @@ class NewTrendAir_Wifi: OznerBaseDevice {
                     case 0x29:
                         if valueData.count>=2
                         {
-                            tmpStatus.AirAndSpeed=Int(valueData[0])
-                            tmpStatus.NewAndSpeed=Int(valueData[1])
+                            tmpStatus.NewAndSpeed=Int(valueData[0])
+                            tmpStatus.AirAndSpeed=Int(valueData[1])
+                            tmpStatus.hotPower = Int(valueData[2])==1
+                            tmpStatus.O3Power = Int(valueData[3])==1
                         }
-                        
-                        
-                        //                case 0x2A://
-                        //                    tmpStatus.Power_New=Int(valueData[0])==1
-                        //                case 0x2B://
-                    //                    tmpStatus.Speed_New=Int(valueData[0])
                     default:
                         break
                     }
                     
                 }
                 if tmpStatus.Power==false {
-                    tmpStatus=(false,false,0,0)
+                    tmpStatus=(false,false,0,0,false,false)
                 }
                 appointTime = tmpAppointTime
                 status = tmpStatus
@@ -337,7 +345,7 @@ class NewTrendAir_Wifi: OznerBaseDevice {
                 filterStatus = tmpFilterStatus
             }
             
-        }
+        //}
         
         
     }

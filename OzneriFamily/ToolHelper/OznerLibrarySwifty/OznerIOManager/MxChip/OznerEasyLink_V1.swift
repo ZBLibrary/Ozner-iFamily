@@ -71,10 +71,8 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
     
     func canclePair() {//取消配对
         if (easylink_config != nil) {
-            
             DispatchQueue.main.async {
                 self.easylink_config.stopTransmitting()
-                
             }
             //easylink_config.unInit()
             

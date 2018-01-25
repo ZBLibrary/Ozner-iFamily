@@ -10,29 +10,29 @@ import UIKit
 
 class NewAirSetTimeController: BaseViewController {
     
-    var appointTime:(onOffType:Int,onEveryDay:Int,offEveryDay:Int,offOnce:Int)=(0,0,0,0){
+    var appointTime:(onState:Bool,onWeekDay:Int,onTimeM:Int,onTimeH:Int,offState:Bool,offWeekDay:Int,offTimeM:Int,offTimeH:Int)=(false,0,0,0,false,0,0,0){
         didSet{
             if segmentButton.selectedSegmentIndex==0 {//单次
                 containerHeight.constant=0
-                let value = appointTime.offOnce
-                PowerOffDatePicker.setDate(NSDate.init(string: "\(value/60):\(value%60)", formatString: "hh:mm", timeZone: TimeZone.current) as Date, animated: true)
-                let isSet=appointTime.onOffType%2>0
-                PowerOffButton.setTitleColor(isSet ? UIColor.gray:UIColor.blue, for: .normal)
-                PowerOffDatePicker.isEnabled=isSet
+                //let value = appointTime.offOnce
+//                PowerOffDatePicker.setDate(NSDate.init(string: "\(value/60):\(value%60)", formatString: "hh:mm", timeZone: TimeZone.current) as Date, animated: true)
+//                //let isSet=appointTime.onOffType%2>0
+//                PowerOffButton.setTitleColor(isSet ? UIColor.gray:UIColor.blue, for: .normal)
+//                PowerOffDatePicker.isEnabled=isSet
             }else{//每天
-                containerHeight.constant=150
-                let offValue = appointTime.offEveryDay
-                PowerOffDatePicker.setDate(NSDate.init(string: "\(offValue/60):\(offValue%60)", formatString: "hh:mm", timeZone: TimeZone.current) as Date, animated: true)
-                let onValue = appointTime.onEveryDay
-                PowerOnDatePicker.setDate(NSDate.init(string: "\(onValue/60):\(onValue%60)", formatString: "hh:mm", timeZone: TimeZone.current) as Date, animated: true)
+//                containerHeight.constant=150
+//                //let offValue = appointTime.offEveryDay
+//                PowerOffDatePicker.setDate(NSDate.init(string: "\(offValue/60):\(offValue%60)", formatString: "hh:mm", timeZone: TimeZone.current) as Date, animated: true)
+//                //let onValue = appointTime.onEveryDay
+//                PowerOnDatePicker.setDate(NSDate.init(string: "\(onValue/60):\(onValue%60)", formatString: "hh:mm", timeZone: TimeZone.current) as Date, animated: true)
                 
                 
-                let onIsSet = appointTime.onOffType/2%2>0//每天开机
-                let offIsSet = appointTime.onOffType/4%2>0//每天关机
-                PowerOffButton.setTitleColor(offIsSet ? UIColor.gray:UIColor.blue, for: .normal)
-                PowerOffDatePicker.isEnabled=offIsSet
-                PowerOnButton.setTitleColor(onIsSet ? UIColor.gray:UIColor.blue, for: .normal)
-                PowerOnDatePicker.isEnabled=onIsSet
+                //let onIsSet = appointTime.onOffType/2%2>0//每天开机
+                //let offIsSet = appointTime.onOffType/4%2>0//每天关机
+//                PowerOffButton.setTitleColor(offIsSet ? UIColor.gray:UIColor.blue, for: .normal)
+//                PowerOffDatePicker.isEnabled=offIsSet
+//                PowerOnButton.setTitleColor(onIsSet ? UIColor.gray:UIColor.blue, for: .normal)
+//                PowerOnDatePicker.isEnabled=onIsSet
             }
         }
     }
@@ -48,42 +48,42 @@ class NewAirSetTimeController: BaseViewController {
     @IBOutlet var containerHeight: NSLayoutConstraint!
     @IBOutlet var PowerOffButton: UIButton!
     @IBAction func PowerOffClick(_ sender: UIButton) {
-        var tmpValue=appointTime.onOffType
-        if segmentButton.selectedSegmentIndex==0 {
-            tmpValue = (tmpValue%2>0 ? -1:1)
-        }else{
-            tmpValue=(tmpValue/4%2>0 ? -4:4)
-        }
-        appointTime.onOffType=appointTime.onOffType+tmpValue
+//        var tmpValue=appointTime.onOffType
+//        if segmentButton.selectedSegmentIndex==0 {
+//            tmpValue = (tmpValue%2>0 ? -1:1)
+//        }else{
+//            tmpValue=(tmpValue/4%2>0 ? -4:4)
+//        }
+//        appointTime.onOffType=appointTime.onOffType+tmpValue
     }
     @IBOutlet var PowerOffDatePicker: UIDatePicker!
     @IBAction func PowerOffDateClick(_ sender: UIDatePicker) {
-        let tmpDate = sender.date as NSDate
-        let tmpValue = tmpDate.hour()*60+tmpDate.minute()
-        if segmentButton.selectedSegmentIndex==0 {
-            appointTime.offOnce=tmpValue
-        }else{
-            appointTime.offEveryDay=tmpValue
-        }
+//        let tmpDate = sender.date as NSDate
+//        let tmpValue = tmpDate.hour()*60+tmpDate.minute()
+//        if segmentButton.selectedSegmentIndex==0 {
+//            appointTime.offOnce=tmpValue
+//        }else{
+//            appointTime.offEveryDay=tmpValue
+//        }
         
     }
     @IBAction func SaveClick(_ sender: Any) {
-        (OznerManager.instance.currentDevice as! NewTrendAir_Wifi).setAppoint(onOffType: appointTime.onOffType, onEveryDay: appointTime.onEveryDay, offEveryDay: appointTime.offEveryDay, offOnce: appointTime.offOnce) { (error) in
-            showMSG(msg: (error as! NSError).domain)
+        (OznerManager.instance.currentDevice as! NewTrendAir_Wifi).setAppoint(onState: appointTime.onState, onWeekDay: appointTime.onWeekDay, onTimeM: appointTime.onTimeM, onTimeH: appointTime.onTimeH, offState: appointTime.offState, offWeekDay: appointTime.offWeekDay, offTimeM: appointTime.offTimeM, offTimeH: appointTime.offTimeH) { (error) in
+            showMSG(msg: (error! as NSError).domain)
         }
     }
     //PowerOn
     @IBOutlet var PowerOnButton: UIButton!
     @IBAction func PowerOnClick(_ sender: UIButton) {
-        var tmpValue=appointTime.onOffType
-        tmpValue=(tmpValue/2%2>0 ? -2:2)
-        appointTime.onOffType=appointTime.onOffType+tmpValue
+//        var tmpValue=appointTime.onOffType
+//        tmpValue=(tmpValue/2%2>0 ? -2:2)
+//        appointTime.onOffType=appointTime.onOffType+tmpValue
     }
     
     @IBOutlet var PowerOnDatePicker: UIDatePicker!
     @IBAction func PowerOnDateClick(_ sender: UIDatePicker) {
-        let tmpDate = sender.date as NSDate
-        appointTime.onEveryDay=tmpDate.hour()*60+tmpDate.minute()
+//        let tmpDate = sender.date as NSDate
+//        appointTime.onEveryDay=tmpDate.hour()*60+tmpDate.minute()
     }
     
     

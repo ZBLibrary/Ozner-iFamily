@@ -59,7 +59,7 @@ class NewTrendAirMainView: OznerDeviceView {
         let alertView=SCLAlertView()
         _=alertView.showTitle("", subTitle: msg, duration: 2.0, completeText: "ok", style: SCLAlertViewStyle.notice)
     }
-    var control:(Power:Bool,Lock:Bool,AirAndSpeed:Int,NewAndSpeed:Int)=(false,false,0,0){
+    var control:(Power:Bool,Lock:Bool,AirAndSpeed:Int,NewAndSpeed:Int,hotPower:Bool,O3Power:Bool)=(false,false,0,0,false,false){
         didSet{
             if control==oldValue {
                 return

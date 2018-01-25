@@ -107,6 +107,7 @@ class OznerTools: NSObject {
         //print("2.0发送指令："+payloadStr)
         Helper.post("https://v2.fogcloud.io/enduser/sendCommandHz/", requestParams: params) { (response, data, error) in
             print(error ?? "")
+            
         }
         
     }

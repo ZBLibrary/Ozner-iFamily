@@ -228,7 +228,13 @@ class WaterPurifier_Blue: OznerBaseDevice {
             UInt8(stopDate.minute()),
             UInt8(stopDate.second())]
         var data = Data.init(bytes: dataBytes)
-        data.append(OznerTools.dataFromInt(number: CLongLong(model), length: 2))
+        //if model==Int(0x8816) {
+            data.append(0x16)
+            data.append(0x88)
+//        }else{
+//            data.append(0x88)
+//            data.append(0x16)
+//        }
         let tmpByte = calcSum(data: data)
         data.append(tmpByte)
         self.SendDataToDevice(sendData: data) { (error) in}

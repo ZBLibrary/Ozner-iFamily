@@ -243,7 +243,7 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 break
             case .WaterPurifier_Blue:
                 let tmpDev=currentDevice as! WaterPurifier_Blue
-                let lvxinValue=min(tmpDev.FilterInfo.Filter_A_Percentage, tmpDev.FilterInfo.Filter_B_Time, tmpDev.FilterInfo.Filter_C_Time)
+                let lvxinValue=min(tmpDev.FilterInfo.Filter_A_Percentage, tmpDev.FilterInfo.Filter_B_Percentage, tmpDev.FilterInfo.Filter_C_Percentage)
                 self.LvXinValue=Int(lvxinValue)
                 break
             case .CenterWater:
