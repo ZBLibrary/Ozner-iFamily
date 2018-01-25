@@ -57,7 +57,17 @@ class PairingController: UIViewController,OznerPairDelegate {
             scanDeviceInfo=[OznerDeviceInfo]()
             OznerManager.instance.starPair(deviceClass: OZDeviceClass.getFromString(str: productInfo["ClassName"].stringValue), pairDelegate: self, ssid: "", password: "")
         case .MxChip,.Ayla,.AylaMxChip://WiFi配对
-            self.performSegue(withIdentifier: "showWifiPair", sender: nil)
+            
+            let alertView = SCLAlertView()
+            _ = alertView.addButton("确定", action: { [weak self] (Void) -> Void in
+                self?.performSegue(withIdentifier: "showWifiPair", sender: nil)
+            })
+            _ = alertView.addButton("取消", action: { [weak self] (Void) -> Void in
+                
+                self?.navigationController?.popViewController(animated: true)
+            })
+            _ = alertView.showInfo("重要提示", subTitle: productInfo["pairing"]["pairingText1"].stringValue)
+            
             break
         case .BlueMxChip:
             break
