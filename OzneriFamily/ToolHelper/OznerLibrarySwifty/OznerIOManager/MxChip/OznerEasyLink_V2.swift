@@ -67,7 +67,7 @@ class OznerEasyLink_V2: NSObject,ZBBonjourServiceDelegate,GCDAsyncSocketDelegate
     }
     
     func bonjourService(_ service: ZBBonjourService!, didReturnDevicesArray array: [Any]!) {
-        print(array)
+        print("=======\(array)")
         for item in array {
             if let RecordData = (item as AnyObject).object(forKey: "RecordData")
             {
