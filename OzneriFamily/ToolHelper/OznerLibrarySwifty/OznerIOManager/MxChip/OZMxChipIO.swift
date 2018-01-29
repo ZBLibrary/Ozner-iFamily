@@ -64,6 +64,7 @@ class OZMxChipIO: OznerBaseIO {
             OznerMQTT_V2.instance.subscribeTopic(topic: deviceID, messageHandler: (dataCallBack,statusCallBack))
             break
         case 3:
+
             OznerMQTT_V3.instance.subscribeTopic(topic: deviceID, messageHandler: (dataCallBack,statusCallBack))
             break
         default:
