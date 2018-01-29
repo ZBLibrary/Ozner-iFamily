@@ -152,6 +152,11 @@ class WaterPurifier_Wifi: OznerBaseDevice {
                     if self.deviceInfo.wifiVersion == 2 {
                         tmpSensor.TDS_Before = min(max(tds1, tds2),999)
                         tmpSensor.TDS_After = min(min(tds1, tds2),50)
+                        
+                        if tmpSensor.TDS_After < 3 {
+                            tmpSensor.TDS_After = Int(Double(tmpSensor.TDS_Before) * 0.05)
+                        }
+                        
                     }
                   
                     tmpSensor.Temperature = Float(recvData.subInt(starIndex: 10, count: 2))/10.0
