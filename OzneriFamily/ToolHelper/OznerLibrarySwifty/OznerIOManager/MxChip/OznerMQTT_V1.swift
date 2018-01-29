@@ -35,24 +35,27 @@ class OznerMQTT_V1: NSObject {
         mqttClient.keepAlive=60
         
         mqttClient.cleanSession=false
-        
-        mqttClient.connect(toHost: "api.easylink.io") { (code) in
-            //MQTTConnectionReturnCode
-            switch code {
-            case ConnectionAccepted:
-                print("ConnectionAccepted")
-                for (key,value) in self.SubscribeTopics {
-                    self.mqttClient.subscribe(key, withQos: AtLeastOnce, completionHandler: { (_) in
-                    })
-                    value.statusCallBack(OznerConnectStatus.Connected)
+        DispatchQueue.main.async { [weak self] ()->Void in
+            
+           self?.mqttClient.connect(toHost: "api.easylink.io") { (code) in
+                //MQTTConnectionReturnCode
+                switch code {
+                case ConnectionAccepted:
+                    print("ConnectionAccepted")
+                    for (key,value) in (self!.SubscribeTopics)! {
+                        self?.mqttClient.subscribe(key, withQos: AtLeastOnce, completionHandler: { (_) in
+                        })
+                        value.statusCallBack(OznerConnectStatus.Connected)
+                    }
+                default:
+                    for item in self!.SubscribeTopics {
+                        item.value.statusCallBack(OznerConnectStatus.Disconnect)
+                    }
+                    print("error:connect MQTT")
                 }
-            default:
-                for item in self.SubscribeTopics {
-                    item.value.statusCallBack(OznerConnectStatus.Disconnect)
-                }
-                print("error:connect MQTT")
             }
         }
+
         
         mqttClient.messageHandler={(mess) in
             if let callback = self.SubscribeTopics[mess?.topic ?? "none"] {

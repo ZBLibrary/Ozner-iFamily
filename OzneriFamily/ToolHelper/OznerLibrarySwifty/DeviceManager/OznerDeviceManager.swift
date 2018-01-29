@@ -27,12 +27,16 @@ class OznerDeviceManager: NSObject {
     }
     var owner:String!
     var userToken:String!//ayla用到
+    let lock = NSLock()
     func setOwner(Owner:String,UserToken:String) {
         owner=Owner
         userToken=UserToken
         OznerDataManager.instance.setSQL(dbName: Owner)//设置数据库
         //取设备信息，加载设备
+        
+        lock.lock()
         devices=OznerDataManager.instance.getAllDevicesFromSQL()
+        lock.unlock()
     }
     func saveDevice(device:OznerBaseDevice) {
         devices[device.deviceInfo.deviceID]=device

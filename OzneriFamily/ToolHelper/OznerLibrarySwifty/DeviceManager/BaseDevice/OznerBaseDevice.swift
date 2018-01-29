@@ -86,7 +86,14 @@ class OznerBaseDevice: NSObject,OznerBaseIODelegate {
     //io 发送初始化数据
     func doWillInit() {
         
-        self.connectStatus = .Connecting
+//        if (self.io?.isMember(of: OZBluetoothIO.self))! {
+//
+//        } else {
+        
+            self.connectStatus = .Connecting
+
+//        }
+        
 
     }
     //OznerBaseIODelegate
