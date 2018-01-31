@@ -132,7 +132,6 @@ class WaterPurifier_Wifi: OznerBaseDevice {
             let opCode = UInt8(recvData[3])
             if group == Int(0xFB) {
                
-                
                 switch opCode {
                 case 0x01://Opcode_RespondStatus
                     
