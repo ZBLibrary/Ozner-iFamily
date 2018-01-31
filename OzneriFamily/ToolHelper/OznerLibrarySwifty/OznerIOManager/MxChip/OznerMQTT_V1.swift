@@ -55,7 +55,6 @@ class OznerMQTT_V1: NSObject {
                 }
             }
         }
-
         
         mqttClient.messageHandler={(mess) in
             if let callback = self.SubscribeTopics[mess?.topic ?? "none"] {

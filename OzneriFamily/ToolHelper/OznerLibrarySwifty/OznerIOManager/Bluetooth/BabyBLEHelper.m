@@ -148,7 +148,7 @@ NSString* deviceName=nil;
         
         BOOL isCanSearch = false;
 
-        if ([peripheralName isEqual: @"RO Comml"]) {
+        if ([peripheralName isEqual: @"RO Comml"] || [peripheralName isEqual: @"NMQ_BLE"]) {
 
             isCanSearch = [weakSelf isCanSearch:advertisementData];
         }
