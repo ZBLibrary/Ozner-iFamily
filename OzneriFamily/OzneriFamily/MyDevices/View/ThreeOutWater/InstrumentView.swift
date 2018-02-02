@@ -134,4 +134,12 @@ class InstrumentView: UIView {
  
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        let temp = Int(arc4random())%100
+        setTemperature(CGFloat(temp))
+        
+    }
+    
 }

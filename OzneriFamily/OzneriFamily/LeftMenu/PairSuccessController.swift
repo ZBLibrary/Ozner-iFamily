@@ -134,8 +134,11 @@ class PairSuccessController: UIViewController {
         //上传到服务器
         LoginManager.instance.showHud()
         let ioType=ProductInfo.getIOTypeFromProductID(productID: device.deviceInfo.productID)
-        if ioType != .Blue{
-            User.AddDevice(mac: device.deviceInfo.deviceID, type: device.deviceInfo.deviceType, setting: device.settings.toJsonString(),weight: device.deviceInfo.wifiVersion, success: {
+        let  deviceClass = ProductInfo.getDeviceClassFromProductID(productID: device.deviceInfo.productID)
+        if ioType != .Blue || (deviceClass == .Tap){
+            var mac:String = ""
+            mac = (deviceClass == .Tap) ? device.deviceInfo.deviceMac : device.deviceInfo.deviceID
+            User.AddDevice(mac: mac, type: device.deviceInfo.deviceType, setting: device.settings.toJsonString(),weight: device.deviceInfo.wifiVersion, success: {
                 print("设备上传到服务器成功！")
                 SVProgressHUD.dismiss()
             }, failure: { (error) in

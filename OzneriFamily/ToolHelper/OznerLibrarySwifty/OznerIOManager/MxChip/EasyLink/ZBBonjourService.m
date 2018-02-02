@@ -126,6 +126,7 @@ static NSString * const KEY_OF_RECORDDATA = @"RecordData";
 - (NSMutableArray *)devicesArray {
     if (!_devicesArray) {
         _devicesArray = [NSMutableArray array];
+        
     }
     return _devicesArray;
 }
