@@ -65,7 +65,8 @@ class DeviceViewContainer: UIView {
         .Electrickettle_Blue:"ElectrickettleMainView",
         .WashDush_Wifi:"WashDush_WifiMainView",
         .NewTrendAir_Wifi:"NewTrendAirMainView",
-        .CenterWater:"CenterWaterView"
+        .CenterWater:"CenterWaterView",
+        .ThreeOutWater:"ThreeOutWaterMainView"
     ]
     private func SelectWitchView(device:OznerBaseDevice?)  {
         
@@ -174,6 +175,9 @@ class DeviceViewContainer: UIView {
                 let device = OznerManager.instance.currentDevice as? CenterWater
                 LvXinValue = (device?.centerInfo.filter)!
                 break
+            case .ThreeOutWater:
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:225*k_height)
+                LvXinValue = 110000
             }
             currentDeviceView.currentDevice=OznerManager.instance.currentDevice
             OznerDeviceSensorUpdate(identifier: (OznerManager.instance.currentDevice?.deviceInfo.deviceID)!)//初始化设备状态
@@ -250,6 +254,8 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 let device = OznerManager.instance.currentDevice as? CenterWater
                 self.LvXinValue = (device?.centerInfo.filter)!
                 break
+            case .ThreeOutWater:
+                break
             default:
             break
             }
@@ -267,6 +273,8 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 self.delegate.DeviceConnectStateChange!(stateDes:loadLanguage("设备已断开"))
             case OznerConnectStatus.Connected:
                 self.delegate.DeviceConnectStateChange!(stateDes: loadLanguage("设备已连接"))
+            case OznerConnectStatus.DisconnectOfPhoneBLE:
+                self.delegate.DeviceConnectStateChange!(stateDes: loadLanguage("请打开手机蓝牙"))
             default://已连接
                 self.delegate.DeviceConnectStateChange!(stateDes: "")
             }

@@ -47,28 +47,27 @@ class OznerMQTT_V3: NSObject {
         mqttClient.cleanSession=false
         
         //http://iot.ozner.net:1884 (内网地址请使用192.168.173.21:1884)
-        mqttClient.connect(toHost: "iot.ozner.net") { (code) in
-            
-            switch code {
-            case ConnectionAccepted:
+        DispatchQueue.main.async {
+            self.mqttClient.connect(toHost: "iot.ozner.net") { (code) in
                 
-                print("连接成功!")
-                
-//                self.mqttClient.subscribe("AirPurifier/f0fe6b49d02d", withQos: AtLeastOnce) { (dic) in
-//                    
-//                }
-                for (key,value) in self.SubscribeTopics {
-                    self.mqttClient.subscribe(key, withQos: AtLeastOnce, completionHandler: { (_) in
-                    })
-                    value.statusCallBack(OznerConnectStatus.Connected)
+                switch code {
+                case ConnectionAccepted:
+                    
+                    print("连接成功!")
+                    
+                    for (key,value) in self.SubscribeTopics {
+                        self.mqttClient.subscribe(key, withQos: AtLeastOnce, completionHandler: { (_) in
+                        })
+                        value.statusCallBack(OznerConnectStatus.Connected)
+                    }
+                    
+                default:
+                    for item in self.SubscribeTopics {
+                        item.value.statusCallBack(OznerConnectStatus.Disconnect)
+                    }
                 }
                 
-            default:
-                for item in self.SubscribeTopics {
-                    item.value.statusCallBack(OznerConnectStatus.Disconnect)
-                }
             }
-            
         }
         
         mqttClient.messageHandler = { (message) in

@@ -60,7 +60,7 @@ NSString* idString;
         [baby AutoReconnect:self.currPeripheral];
         baby.having(self.currPeripheral).and.channel(idString).then.connectToPeripherals().discoverServices().discoverCharacteristics().readValueForCharacteristic().discoverDescriptorsForCharacteristic().readValueForDescriptors().begin();
     } else {
-        _babyBLEStatusBlock(-1);
+        _babyBLEStatusBlock(-2);
     }
     
 }

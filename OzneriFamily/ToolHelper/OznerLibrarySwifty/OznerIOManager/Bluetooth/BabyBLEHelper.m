@@ -56,7 +56,7 @@ NSString* deviceName=nil;
 
 #pragma mark -设备是否可以被搜索（RO Comml）
 
-- (BOOL)isCanSearch:(NSDictionary *)advertisementData {
+- (BOOL)isCanSearch:(NSDictionary *)advertisementData withName:(NSString *)name{
     NSData* macData1=nil;
     if ([advertisementData objectForKey:CBAdvertisementDataServiceDataKey])
     {
@@ -69,8 +69,14 @@ NSString* deviceName=nil;
         return true;
     }
     
-    BytePtr bytes2 = (BytePtr)[[macData1 subdataWithRange:NSMakeRange(18, 1)] bytes];
-    
+    BytePtr bytes2;
+    if ([name isEqualToString:@"RO Comml"]) {
+        bytes2 = (BytePtr)[[macData1 subdataWithRange:NSMakeRange(18, 1)] bytes];
+    } else {
+        bytes2 = (BytePtr)[[macData1 subdataWithRange:NSMakeRange(17, 1)] bytes];
+    }
+//    NSLog(@"%@===%s",macData1,bytes2);
+//    NSLog(@"%@",[macData1 subdataWithRange:NSMakeRange(18, 1)]);
     return bytes2[0] == 0 ? true : false;
 }
 
@@ -148,9 +154,10 @@ NSString* deviceName=nil;
         
         BOOL isCanSearch = false;
 
-        if ([peripheralName isEqual: @"RO Comml"]) {
+        if ([peripheralName isEqual: @"RO Comml"] || [peripheralName isEqual: @"NMQ_BLE"]) {
 
-            isCanSearch = [weakSelf isCanSearch:advertisementData];
+            NSLog(@"%@",advertisementData);
+            isCanSearch = [weakSelf isCanSearch:advertisementData withName:peripheralName];
         }
         // || ([peripheralName  isEqual: @"RO Comml"]  && isCanSearch)
         if (peripheralName == nil || isCanSearch) {

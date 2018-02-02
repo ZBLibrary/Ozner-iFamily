@@ -22,6 +22,9 @@
 		683D3EED1F170A8B0010E708 /* WaterPurifierMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D3EEB1F170A8B0010E708 /* WaterPurifierMainView.swift */; };
 		683D3EEE1F170A8B0010E708 /* WaterPurifierMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 683D3EEC1F170A8B0010E708 /* WaterPurifierMainView.xib */; };
 		6847B8511F99A2EE00D0F018 /* WaterGPRSScanVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6847B8501F99A2EE00D0F018 /* WaterGPRSScanVc.swift */; };
+		686EC63E20103E6B005C1279 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686EC63D20103E6B005C1279 /* Colors.swift */; };
+		686EC64020103E71005C1279 /* InstrumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686EC63F20103E71005C1279 /* InstrumentView.swift */; };
+		686EC64320104559005C1279 /* ThreeOutWater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686EC64220104559005C1279 /* ThreeOutWater.swift */; };
 		6874DA2A1F209A610022A346 /* GYValueElectSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6874DA291F209A610022A346 /* GYValueElectSlider.swift */; };
 		6876B5561F5D2E7500E20ECE /* TwoCup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6876B5551F5D2E7500E20ECE /* TwoCup.swift */; };
 		6876B5591F5D312400E20ECE /* TwoCupMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6876B5581F5D312400E20ECE /* TwoCupMainView.swift */; };
@@ -29,6 +32,8 @@
 		6876B55D1F5D3A7000E20ECE /* GYCirclePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6876B55C1F5D3A7000E20ECE /* GYCirclePoint.swift */; };
 		688080241F274ABA00E06404 /* AbbDatePickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688080231F274ABA00E06404 /* AbbDatePickView.swift */; };
 		68986DB61FAFED5200B280C4 /* CenterWater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68986DB51FAFED5200B280C4 /* CenterWater.swift */; };
+		689F75A12011844800849FB5 /* ThreeWaterSettingVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F75A02011844800849FB5 /* ThreeWaterSettingVc.swift */; };
+		689F75A92011D78500849FB5 /* SetThreeWater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F75A82011D78500849FB5 /* SetThreeWater.swift */; };
 		68B06AA01FEB9CE8000D4091 /* FilterInfoScanVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B06A9F1FEB9CE8000D4091 /* FilterInfoScanVc.swift */; };
 		68BA2DC91F4D7D630033E45F /* XZChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA2DC81F4D7D630033E45F /* XZChatViewController.swift */; };
 		68C36F171FB03A9500458707 /* CenterWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C36F161FB03A9500458707 /* CenterWaterView.swift */; };
@@ -41,6 +46,8 @@
 		68C36F251FB03AD800458707 /* CenterHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68C36F1F1FB03AC300458707 /* CenterHeadView.xib */; };
 		68C36F261FB03ADD00458707 /* CenterWaterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68C36F151FB03A9400458707 /* CenterWaterView.xib */; };
 		68C36F291FB03B1D00458707 /* CenterWaterSettingVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C36F281FB03B1D00458707 /* CenterWaterSettingVc.swift */; };
+		68C40DDE200D947200BA1E52 /* ThreeOutWaterMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C40DDD200D947200BA1E52 /* ThreeOutWaterMainView.swift */; };
+		68C40DE0200D948400BA1E52 /* ThreeOutWaterMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68C40DDF200D948400BA1E52 /* ThreeOutWaterMainView.xib */; };
 		68C7808B1FC3BF160055266D /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C7808A1FC3BF160055266D /* UIButton+Extension.swift */; };
 		7CDB997D1525E441934F76FD /* Pods_OzneriFamily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF38EB9A5D6D0B8FCEAAC12 /* Pods_OzneriFamily.framework */; };
 		8D0034801F78AB8E001A5B49 /* NewAirSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00347F1F78AB8E001A5B49 /* NewAirSettingController.swift */; };
@@ -451,6 +458,9 @@
 		683D3EEB1F170A8B0010E708 /* WaterPurifierMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurifierMainView.swift; sourceTree = "<group>"; };
 		683D3EEC1F170A8B0010E708 /* WaterPurifierMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterPurifierMainView.xib; sourceTree = "<group>"; };
 		6847B8501F99A2EE00D0F018 /* WaterGPRSScanVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterGPRSScanVc.swift; sourceTree = "<group>"; };
+		686EC63D20103E6B005C1279 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		686EC63F20103E71005C1279 /* InstrumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentView.swift; sourceTree = "<group>"; };
+		686EC64220104559005C1279 /* ThreeOutWater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeOutWater.swift; sourceTree = "<group>"; };
 		6874DA291F209A610022A346 /* GYValueElectSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYValueElectSlider.swift; sourceTree = "<group>"; };
 		6876B5551F5D2E7500E20ECE /* TwoCup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoCup.swift; sourceTree = "<group>"; };
 		6876B5581F5D312400E20ECE /* TwoCupMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoCupMainView.swift; sourceTree = "<group>"; };
@@ -458,6 +468,8 @@
 		6876B55C1F5D3A7000E20ECE /* GYCirclePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCirclePoint.swift; sourceTree = "<group>"; };
 		688080231F274ABA00E06404 /* AbbDatePickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbbDatePickView.swift; sourceTree = "<group>"; };
 		68986DB51FAFED5200B280C4 /* CenterWater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterWater.swift; sourceTree = "<group>"; };
+		689F75A02011844800849FB5 /* ThreeWaterSettingVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeWaterSettingVc.swift; sourceTree = "<group>"; };
+		689F75A82011D78500849FB5 /* SetThreeWater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetThreeWater.swift; sourceTree = "<group>"; };
 		68B06A9F1FEB9CE8000D4091 /* FilterInfoScanVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoScanVc.swift; sourceTree = "<group>"; };
 		68BA2DC81F4D7D630033E45F /* XZChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZChatViewController.swift; sourceTree = "<group>"; };
 		68C36F151FB03A9400458707 /* CenterWaterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CenterWaterView.xib; sourceTree = "<group>"; };
@@ -470,6 +482,8 @@
 		68C36F1E1FB03AC300458707 /* TableHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableHeadView.xib; sourceTree = "<group>"; };
 		68C36F1F1FB03AC300458707 /* CenterHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CenterHeadView.xib; sourceTree = "<group>"; };
 		68C36F281FB03B1D00458707 /* CenterWaterSettingVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterWaterSettingVc.swift; sourceTree = "<group>"; };
+		68C40DDD200D947200BA1E52 /* ThreeOutWaterMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeOutWaterMainView.swift; sourceTree = "<group>"; };
+		68C40DDF200D948400BA1E52 /* ThreeOutWaterMainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThreeOutWaterMainView.xib; sourceTree = "<group>"; };
 		68C7808A1FC3BF160055266D /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		8D00347F1F78AB8E001A5B49 /* NewAirSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAirSettingController.swift; sourceTree = "<group>"; };
 		8D0034811F78C31D001A5B49 /* NewAirSetTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAirSetTimeController.swift; sourceTree = "<group>"; };
@@ -1130,6 +1144,14 @@
 			path = CenterWater;
 			sourceTree = "<group>";
 		};
+		686EC64120104551005C1279 /* ThreeOutWater */ = {
+			isa = PBXGroup;
+			children = (
+				686EC64220104559005C1279 /* ThreeOutWater.swift */,
+			);
+			path = ThreeOutWater;
+			sourceTree = "<group>";
+		};
 		6876B5571F5D311C00E20ECE /* TwoCup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1148,12 +1170,31 @@
 			path = CenterWater;
 			sourceTree = "<group>";
 		};
+		689F759F2011842E00849FB5 /* ThreeWater */ = {
+			isa = PBXGroup;
+			children = (
+				689F75A02011844800849FB5 /* ThreeWaterSettingVc.swift */,
+			);
+			path = ThreeWater;
+			sourceTree = "<group>";
+		};
 		68C36F271FB03B0A00458707 /* CenterWater */ = {
 			isa = PBXGroup;
 			children = (
 				68C36F281FB03B1D00458707 /* CenterWaterSettingVc.swift */,
 			);
 			path = CenterWater;
+			sourceTree = "<group>";
+		};
+		68C40DDC200D945200BA1E52 /* ThreeOutWater */ = {
+			isa = PBXGroup;
+			children = (
+				686EC63F20103E71005C1279 /* InstrumentView.swift */,
+				686EC63D20103E6B005C1279 /* Colors.swift */,
+				68C40DDD200D947200BA1E52 /* ThreeOutWaterMainView.swift */,
+				68C40DDF200D948400BA1E52 /* ThreeOutWaterMainView.xib */,
+			);
+			path = ThreeOutWater;
 			sourceTree = "<group>";
 		};
 		8D0D68F11DDD99A00097038E /* Controller */ = {
@@ -1444,6 +1485,7 @@
 		8D36D25F1F06234A0091EB1F /* DeviceManager */ = {
 			isa = PBXGroup;
 			children = (
+				686EC64120104551005C1279 /* ThreeOutWater */,
 				8D36D26D1F06234A0091EB1F /* OznerDeviceManager.swift */,
 				68986DB41FAFED1800B280C4 /* CenterWater */,
 				8DC8664F1F6E9BDA0057C1D8 /* NewTrendAir_Wifi */,
@@ -1811,6 +1853,7 @@
 		8D9951351DACE2E80050FB19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				689F759F2011842E00849FB5 /* ThreeWater */,
 				68C36F271FB03B0A00458707 /* CenterWater */,
 				8DC866531F6E9EAC0057C1D8 /* NewTrendAir */,
 				8D8064BF1F6B6553008BAC80 /* WaterDush */,
@@ -1829,6 +1872,7 @@
 		8D9951361DACE2E80050FB19 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				68C40DDC200D945200BA1E52 /* ThreeOutWater */,
 				684BA1041FAAA8740048CFC3 /* CenterWater */,
 				8DC866521F6E9EA20057C1D8 /* NewTrendAir */,
 				682B8A8C1F3ADDED00CBE821 /* WaterDush */,
@@ -2002,6 +2046,7 @@
 		8DC02FB41DB61F87007F57DB /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				689F75A82011D78500849FB5 /* SetThreeWater.swift */,
 				8D16BC4C1DB8718600CA3A49 /* SetDeviceNameController.swift */,
 				8D16BC4E1DB8719F00CA3A49 /* AboutDeviceController.swift */,
 				8D429A021DC9E9160083011C /* DeviceSettingController.swift */,
@@ -2809,6 +2854,7 @@
 				8D0D69441DDD99A10097038E /* MyInfoCell.xib in Resources */,
 				8D7141F01EE536D800AC9CE9 /* PayWaterCell.xib in Resources */,
 				8D1268861DDEE8460042DE3E /* Localizable.strings in Resources */,
+				68C40DE0200D948400BA1E52 /* ThreeOutWaterMainView.xib in Resources */,
 				8DAE806C1D9A600900A9946F /* LeftMenuDeviceCell.xib in Resources */,
 				8DC02E751DB5CE91007F57DB /* Air_BlueMainView.xib in Resources */,
 				8D11A1851DDB33DC002F14D3 /* CupTDSDetailLineView.xib in Resources */,
@@ -3068,6 +3114,7 @@
 				B7FAA6BE1E1CA138009042B4 /* GYFadeAnimator.swift in Sources */,
 				8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */,
 				8D14A93C1DD9907000920AE9 /* HSVZB.m in Sources */,
+				686EC63E20103E6B005C1279 /* Colors.swift in Sources */,
 				8D429A0B1DCA0DDB0083011C /* WaterPurfierTDSController.swift in Sources */,
 				8D3C7E261F67B1500024747D /* WashAppointTime.swift in Sources */,
 				8D0D69281DDD99A00097038E /* MyLikeViewController.swift in Sources */,
@@ -3117,6 +3164,7 @@
 				8D36D2EE1F06234A0091EB1F /* NSData+IPAddress.m in Sources */,
 				8D429A091DCA0D840083011C /* AirLvXinController.swift in Sources */,
 				683D3EED1F170A8B0010E708 /* WaterPurifierMainView.swift in Sources */,
+				68C40DDE200D947200BA1E52 /* ThreeOutWaterMainView.swift in Sources */,
 				8D5045C61DB34AA000EAC3B3 /* UIImage+Expand.swift in Sources */,
 				8D36D2E91F06234A0091EB1F /* GCDAsyncSocket.m in Sources */,
 				E0745AD41EE94ED200CB39CC /* UIImage+UdeskSDK.m in Sources */,
@@ -3204,6 +3252,7 @@
 				8D12AAC71DAB7386003A09E6 /* PairSuccessController.swift in Sources */,
 				8D36D2F11F06234A0091EB1F /* NSMutableDictionary+NilFuckOff.m in Sources */,
 				8D92F65E1D9510450068A40A /* LoginManager.swift in Sources */,
+				689F75A92011D78500849FB5 /* SetThreeWater.swift in Sources */,
 				E0745AEE1EE94ED200CB39CC /* UdeskHpple.m in Sources */,
 				8D108A8B1DC203A3006BDECD /* MyRegex.swift in Sources */,
 				8D0034801F78AB8E001A5B49 /* NewAirSettingController.swift in Sources */,
@@ -3236,6 +3285,7 @@
 				8D0F63D41DB09DE600FA38BF /* RDVTabBarItem.m in Sources */,
 				8D0F67C01DD4424500D35CD1 /* AirOutdoorView.swift in Sources */,
 				8D12AAC91DAB739F003A09E6 /* PairFailedController.swift in Sources */,
+				686EC64320104559005C1279 /* ThreeOutWater.swift in Sources */,
 				8D36D2DA1F06234A0091EB1F /* OZAylaIO.swift in Sources */,
 				8D36D2EB1F06234A0091EB1F /* AsyncSocket.m in Sources */,
 				8D36D2E41F06234A0091EB1F /* BabyRhythm.m in Sources */,
@@ -3248,6 +3298,7 @@
 				B7DBCB5B1E5AB2D400C5D7A3 /* OffLineSuggest.swift in Sources */,
 				8D129A221DD4B5080022F7EA /* LBXScanNetAnimation.swift in Sources */,
 				E0745AD61EE94ED200CB39CC /* UIViewController+UdeskKeyboardAnimation.m in Sources */,
+				686EC64020103E71005C1279 /* InstrumentView.swift in Sources */,
 				6874DA2A1F209A610022A346 /* GYValueElectSlider.swift in Sources */,
 				E0745AC31EE94ED200CB39CC /* UdeskVoiceRecordView.m in Sources */,
 				E0745AAC1EE94ED200CB39CC /* UdeskProblemModel.m in Sources */,
@@ -3277,6 +3328,7 @@
 				E01C97B81EE96A7B00927574 /* RNChatViewController.swift in Sources */,
 				8D36D2EC1F06234A0091EB1F /* AsyncUdpSocket.m in Sources */,
 				E0745AAD1EE94ED200CB39CC /* UdeskAgentHttpData.m in Sources */,
+				689F75A12011844800849FB5 /* ThreeWaterSettingVc.swift in Sources */,
 				E0745AD71EE94ED200CB39CC /* UdeskLanguageTool.m in Sources */,
 				E0745AE31EE94ED200CB39CC /* UdeskDateFormatter.m in Sources */,
 				8D0D69541DDD9D040097038E /* NSDate+Category.swift in Sources */,
@@ -3492,7 +3544,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = UZZG6NM74T;
 				ENABLE_BITCODE = NO;

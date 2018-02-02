@@ -105,10 +105,10 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        if indexPath.row == ProductInfo.products.count - 2 {
+        if indexPath.row == ProductInfo.products.count - 3 {
             
             let vc = WaterGPRSScanVc()
-            vc.scanTypeIndex = ProductInfo.products.count - 2
+            vc.scanTypeIndex = indexPath.row
             vc.scanString = "RoWater"
             self.navigationController?.pushViewController(vc, animated: true)
             return
@@ -121,8 +121,14 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
             self.navigationController?.pushViewController(vc, animated: true)
         case OZDeviceClass.CenterWater.rawValue:
             let vc = WaterGPRSScanVc()
-            vc.scanTypeIndex = ProductInfo.products.count - 1
+            vc.scanTypeIndex = indexPath.row
             vc.scanString = "Test_CentralPurifier"
+            self.navigationController?.pushViewController(vc, animated: true)
+        case OZDeviceClass.ThreeOutWater.rawValue:
+            
+            let vc = WaterGPRSScanVc()
+            vc.scanTypeIndex = indexPath.row
+            vc.scanString = "ThreeOutWater"
             self.navigationController?.pushViewController(vc, animated: true)
             
         default:

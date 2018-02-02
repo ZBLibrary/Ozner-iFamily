@@ -131,6 +131,8 @@ class OznerDataManager: NSObject {
         case .CenterWater:
             tmpdev = CenterWater(deviceinfo: deviceInfo, Settings: setting)
 
+        case .ThreeOutWater:
+            tmpdev = ThreeOutWater(deviceinfo: deviceInfo, Settings: setting)
         }
         return tmpdev
     }

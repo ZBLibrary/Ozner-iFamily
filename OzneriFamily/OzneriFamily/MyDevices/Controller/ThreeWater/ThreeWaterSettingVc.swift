@@ -1,0 +1,330 @@
+//
+//  ThreeWaterSettingVc.swift
+//  OzneriFamily
+//
+//  Created by ZGY on 2018/1/19.
+//Copyright © 2018年 net.ozner. All rights reserved.
+//
+//  Author:        Airfight
+//  My GitHub:     https://github.com/airfight
+//  My Blog:       http://airfight.github.io/
+//  My Jane book:  http://www.jianshu.com/users/17d6a01e3361
+//  Current Time:  2018/1/19  上午9:41
+//  GiantForJade:  Efforts to do my best
+//  Real developers ship.
+
+import UIKit
+
+import UIKit
+
+fileprivate struct gy_associatedKeys{
+    
+    static var imageKey = "imageKey"
+    
+}
+
+
+extension ThreeWaterSettingVc: UITableViewDataSource,UITableViewDelegate{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0,1:
+            return 0
+        default:
+            return sectionNum
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GYCenterWaterCellD") as! GYCenterWaterCell
+        let model = dataArr[indexPath.row]
+        cell.reloadUI(model,index:indexPath.row)
+        
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if !isCanEdit {
+            self.noticeOnlyText("请选择自定义模式进行设置")
+            return
+        }
+        
+        var model = dataArr[indexPath.row]
+        
+        switch indexPath.row {
+        case 0...7:
+            let alert = SCLAlertView()
+            let txt = alert.addTextField("设置范围"+model.rang)
+            
+            alert.addButton("确定") {
+                
+                print("Text value: \(String(describing: txt.text))")
+                if txt.text?.count == 0 || txt.text == nil {
+                    
+                    return
+                }
+                var arr = model.rang.components(separatedBy: "-")
+                
+                if Int(txt.text!)! < Int(arr[0])! {
+                    self.noticeOnlyText("请设置大于\(arr[0])的数字")
+                    return
+                }
+                
+                if Int(txt.text!)! > Int(arr[1])! {
+                    self.noticeOnlyText("请设置小于\(arr[1])的数字")
+                    return
+                }
+                
+                model.setTime = txt.text!
+                self.dataArr[indexPath.row] = model
+                self.tableView.reloadData()
+            }
+            alert.addButton("取消") {
+                
+            }
+            alert.showEdit("温馨提示", subTitle: "请设置"+model.name)
+            break
+            //        case 7:
+            //            pickDateView=Bundle.main.loadNibNamed("TapDatePickerView", owner: nil, options: nil)?.last as? TapDatePickerView
+            //            pickDateView?.datePicker.minimumDate = Date.init()
+            //            pickDateView?.datePicker.datePickerMode = .time
+            //
+            //            pickDateView?.datePicker.maximumDate = Date.init(timeIntervalSinceNow: 24 * 60 * 60)
+            //            pickDateView?.datePicker.datePickerMode = .dateAndTime
+            //            pickDateView?.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen - 64)
+            //            pickDateView?.cancelButton.addTarget(self, action: #selector(pickerCancle), for: .touchUpInside)
+            //            pickDateView?.OKButton.addTarget(self, action: #selector(pickerOK), for: .touchUpInside)
+            //            view.addSubview(pickDateView!)
+        //            break
+        default:
+            break
+        }
+        
+    }
+    
+    
+    func pickerOK()  {
+        let date = pickDateView!.datePicker.date as NSDate
+        print(date.formattedDate(withFormat: "HH:mm"))
+        DispatchQueue.main.async {
+            
+            var model = self.dataArr[7]
+            model.setTime = date.formattedDate(withFormat: "HH:mm")
+            self.dataArr[7] = model
+            self.pickDateView?.removeFromSuperview()
+            
+            self.tableView.reloadRows(at: [IndexPath(item: 7, section: 1)], with: UITableViewRowAnimation.none)
+        }
+    }
+    
+    func pickerCancle() {
+        pickDateView?.removeFromSuperview()
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CenterWaterSettingVc.tapFloderAction(_:)))
+        
+        tap.isEnabled = true
+        
+//        if section == 1 {
+//            let headView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "CenterHeadViewID") as! CenterHeadView
+//            headView.isUserInteractionEnabled = true
+//            headView.addGestureRecognizer(tap)
+//            headView.block = { (index) -> Void in
+//
+//                self.sectionNum = 8
+//                self.isCanEdit = index == 555 ? false :true
+//
+//                if !self.isCanEdit {
+//                    self.dataArr.removeAll()
+//                    self.initData()
+//                }
+//
+//                self.tableView.reloadData()
+//
+//            }
+//
+//            objc_setAssociatedObject(self, &gy_associatedKeys.imageKey, headView.rightImage, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+//
+//            return headView
+//        }
+        
+        let headView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableHeadViewID") as! TableHeadView
+        headView.actionBtn.tag = section + 666
+        if section == 0 {
+            headView.nameLb.text = self.getNameAndAttr()
+        } else {
+            headView.deviceLb.text = "说明书&操作指南"
+            headView.nameLb.text = "我的饮水机"
+        }
+        headView.actionBtn.addTarget(self, action: #selector(CenterWaterSettingVc.actionBtn(_:)), for: UIControlEvents.touchUpInside)
+        return headView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 50
+    }
+    
+    func actionBtn(_ sender:UIButton) {
+        
+        switch sender.tag {
+        case 666:
+            self.performSegue(withIdentifier: "threeWaterName", sender: nil)
+            break
+        case 667:
+            self.performSegue(withIdentifier: "AboutThreeWater", sender: nil)
+            break
+        default:
+            break
+        }
+        
+    }
+    
+    func tapFloderAction(_ tap:UITapGestureRecognizer) {
+        
+        let imageView = objc_getAssociatedObject(self, &gy_associatedKeys.imageKey) as! UIImageView
+        
+        sectionNum = sectionNum == 8 ? 0 : 8
+        if sectionNum == 0 {
+            
+            UIView.animate(withDuration: 1) {
+                
+                imageView.transform =  .identity
+            }
+        } else {
+            UIView.animate(withDuration: 1) {
+                
+                imageView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
+                
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    fileprivate func initData() {
+        
+        dataArr = []
+        
+    }
+    
+}
+
+class ThreeWaterSettingVc: DeviceSettingController {
+    
+    var tableView:UITableView!
+    var sectionNum:Int = 0
+    
+    var isCanEdit:Bool = true
+    
+    var pickDateView:TapDatePickerView?
+    
+    var dataArr:[CenterWaterModel] = []
+    
+    @IBAction func saveAction(_ sender: Any) {
+
+        self.saveDevice()
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.white
+        self.title = "设置"
+        
+        
+        dataArr = []
+        
+        tableView = UITableView(frame: view.frame, style: UITableViewStyle.plain)
+        tableView.backgroundColor = UIColor.white
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        view.addSubview(tableView)
+        
+        tableView.separatorStyle = .none
+        tableView.register(UINib.init(nibName: "TableHeadView", bundle: nil), forHeaderFooterViewReuseIdentifier: "TableHeadViewID")
+        tableView.register(UINib.init(nibName: "CenterHeadView", bundle: nil), forHeaderFooterViewReuseIdentifier: "CenterHeadViewID")
+        tableView.register(UINib.init(nibName: "GYCenterWaterCell", bundle: nil), forCellReuseIdentifier: "GYCenterWaterCellD")
+        
+        let footView = UIView(frame: CGRect(x: 0, y: 0, width: width_screen, height: 280))
+        footView.addSubview(deleBtn)
+        
+        //        let btn1 = UIButton.createButtonWithText("咨询", target: self, action:#selector(CenterWaterSettingVc.consultAction) , frame: CGRect(x: 60, y: 15, width: 80, height: 40))
+        //        btn1.setTitleColor(UIColor.black, for: UIControlState.normal)
+        //        footView.addSubview(btn1)
+        //
+        //        let btn2 = UIButton.createButtonWithText("更多商品", target: self, action:#selector(CenterWaterSettingVc.BuyAction) , frame: CGRect(x: width_screen - 140, y: 15, width: 80, height: 40))
+        //        btn2.setTitleColor(UIColor.black, for: UIControlState.normal)
+        //        footView.addSubview(btn2)
+        
+        deleBtn.addTarget(self, action: #selector(CenterWaterSettingVc.deleteAction), for: UIControlEvents.touchUpInside)
+        tableView.tableFooterView = footView
+        
+    }
+    
+    func consultAction() {
+        
+        LoginManager.instance.setTabbarSelected(index: 2)
+    }
+    
+    func BuyAction() {
+        LoginManager.instance.setTabbarSelected(index: 1)
+    }
+    
+    func deleteAction() {
+        
+        super.deleteDevice()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        LoginManager.instance.mainTabBarController?.setTabBarHidden(false, animated: false)
+        tableView.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    lazy var deleBtn: UIButton = {
+        
+        let btn = UIButton(frame: CGRect(x: 80, y: 100, width: width_screen - 160, height: 50))
+        btn.layer.cornerRadius = 25
+        btn.layer.masksToBounds = true
+        btn.setTitle("删除此设备", for: UIControlState.normal)
+        btn.backgroundColor = UIColor(red: 245.0 / 255.0, green: 71.0 / 255.0, blue: 80.0 / 255.0, alpha: 1.0)
+        
+        return btn
+    }()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier=="AboutThreeWater" {
+            let VC=segue.destination as!  AboutDeviceController
+            VC.setLoadContent(content: (NetworkManager.defaultManager?.URL?["AboutCeterWater"]?.stringValue)!, Type: 0)
+        }
+    }
+    
+}
