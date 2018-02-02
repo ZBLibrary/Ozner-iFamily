@@ -7,84 +7,82 @@
 //
 
 import UIKit
+import PGDatePicker
 
 class NewAirSetTimeController: BaseViewController {
     
     var appointTime:(onState:Bool,onWeekDay:Int,onTimeM:Int,onTimeH:Int,offState:Bool,offWeekDay:Int,offTimeM:Int,offTimeH:Int)=(false,0,0,0,false,0,0,0){
         didSet{
-            if segmentButton.selectedSegmentIndex==0 {//单次
-                containerHeight.constant=0
-                //let value = appointTime.offOnce
-//                PowerOffDatePicker.setDate(NSDate.init(string: "\(value/60):\(value%60)", formatString: "hh:mm", timeZone: TimeZone.current) as Date, animated: true)
-//                //let isSet=appointTime.onOffType%2>0
-//                PowerOffButton.setTitleColor(isSet ? UIColor.gray:UIColor.blue, for: .normal)
-//                PowerOffDatePicker.isEnabled=isSet
-            }else{//每天
-//                containerHeight.constant=150
-//                //let offValue = appointTime.offEveryDay
-//                PowerOffDatePicker.setDate(NSDate.init(string: "\(offValue/60):\(offValue%60)", formatString: "hh:mm", timeZone: TimeZone.current) as Date, animated: true)
-//                //let onValue = appointTime.onEveryDay
-//                PowerOnDatePicker.setDate(NSDate.init(string: "\(onValue/60):\(onValue%60)", formatString: "hh:mm", timeZone: TimeZone.current) as Date, animated: true)
-                
-                
-                //let onIsSet = appointTime.onOffType/2%2>0//每天开机
-                //let offIsSet = appointTime.onOffType/4%2>0//每天关机
-//                PowerOffButton.setTitleColor(offIsSet ? UIColor.gray:UIColor.blue, for: .normal)
-//                PowerOffDatePicker.isEnabled=offIsSet
-//                PowerOnButton.setTitleColor(onIsSet ? UIColor.gray:UIColor.blue, for: .normal)
-//                PowerOnDatePicker.isEnabled=onIsSet
+            powerOnSwitch.isOn = appointTime.onState
+            viewOnContainHeight.constant = powerOnSwitch.isOn ? 80:0
+            powerOffSwitch.isOn = appointTime.offState
+            viewOffContainHeight.constant = powerOffSwitch.isOn ? 80:0
+            
+            timeOnText.text="\(appointTime.onTimeH):\(appointTime.onTimeM)"
+            timeOffText.text="\(appointTime.offTimeH):\(appointTime.offTimeM)"
+            var onWeekStr = ""
+            var offWeekStr = ""
+            for i in 0...6 {
+                if Int(UInt8(appointTime.onWeekDay)>>i)%2 == 1{
+                    onWeekStr = onWeekStr+["日  ","一  ","二  ","三  ","四  ","五  ","六  "][i]
+                }
+                if Int(UInt8(appointTime.offWeekDay)>>i)%2 == 1{
+                    offWeekStr=offWeekStr+["日  ","一  ","二  ","三  ","四  ","五  ","六  "][i]
+                }
             }
+            weakOnText.text=onWeekStr
+            weakOffText.text=offWeekStr
         }
     }
+    @IBOutlet var powerOnSwitch: UISwitch!
+    @IBOutlet var timeOnText: UILabel!
+    @IBOutlet var weakOnText: UILabel!
+    @IBAction func powerOnSwitchChange(_ sender: Any) {
+        appointTime.onState=powerOnSwitch.isOn
+    }
+    @IBAction func powerOnTimeClick(_ sender: Any) {
+        datePickerIsOn=true
+        presentDatePicker()
+    }
+    @IBAction func poweronWeakClick(_ sender: Any) {
+        weekCallBack = { value in
+            print("开机设置时间\(value)")
+             self.appointTime.onWeekDay=value
+        }
+        self.performSegue(withIdentifier: "showWeekVC", sender: ["call":weekCallBack,"week":appointTime.onWeekDay])
+    }
+    @IBOutlet var viewOnContainHeight: NSLayoutConstraint!
+    
+    
+    
+    @IBOutlet var powerOffSwitch: UISwitch!
+    @IBOutlet var timeOffText: UILabel!
+    @IBOutlet var weakOffText: UILabel!
+    @IBAction func powerOffSwitchChange(_ sender: UISwitch) {
+        appointTime.offState=powerOffSwitch.isOn
+    }
+    @IBAction func powerOffTimeClick(_ sender: Any) {
+        datePickerIsOn=false
+        presentDatePicker()
+    }
+    var weekCallBack:((Int)->Void)!
+    @IBAction func poweroffWeakClick(_ sender: Any) {
+        weekCallBack = { value in
+            print("关机设置时间\(value)")
+            self.appointTime.offWeekDay=value
+        }
+        self.performSegue(withIdentifier: "showWeekVC", sender: ["call":weekCallBack,"week":appointTime.offWeekDay])
+    }
+    @IBOutlet var viewOffContainHeight: NSLayoutConstraint!
     
 
-    @IBOutlet var segmentButton: UISegmentedControl!
-    @IBAction func segmentClick(_ sender: UISegmentedControl) {
-        let tmpvalue = appointTime
-        appointTime=tmpvalue
-        
-    }
-    //PowerOff
-    @IBOutlet var containerHeight: NSLayoutConstraint!
-    @IBOutlet var PowerOffButton: UIButton!
-    @IBAction func PowerOffClick(_ sender: UIButton) {
-//        var tmpValue=appointTime.onOffType
-//        if segmentButton.selectedSegmentIndex==0 {
-//            tmpValue = (tmpValue%2>0 ? -1:1)
-//        }else{
-//            tmpValue=(tmpValue/4%2>0 ? -4:4)
-//        }
-//        appointTime.onOffType=appointTime.onOffType+tmpValue
-    }
-    @IBOutlet var PowerOffDatePicker: UIDatePicker!
-    @IBAction func PowerOffDateClick(_ sender: UIDatePicker) {
-//        let tmpDate = sender.date as NSDate
-//        let tmpValue = tmpDate.hour()*60+tmpDate.minute()
-//        if segmentButton.selectedSegmentIndex==0 {
-//            appointTime.offOnce=tmpValue
-//        }else{
-//            appointTime.offEveryDay=tmpValue
-//        }
-        
-    }
+   
     @IBAction func SaveClick(_ sender: Any) {
         (OznerManager.instance.currentDevice as! NewTrendAir_Wifi).setAppoint(onState: appointTime.onState, onWeekDay: appointTime.onWeekDay, onTimeM: appointTime.onTimeM, onTimeH: appointTime.onTimeH, offState: appointTime.offState, offWeekDay: appointTime.offWeekDay, offTimeM: appointTime.offTimeM, offTimeH: appointTime.offTimeH) { (error) in
             showMSG(msg: (error! as NSError).domain)
         }
     }
-    //PowerOn
-    @IBOutlet var PowerOnButton: UIButton!
-    @IBAction func PowerOnClick(_ sender: UIButton) {
-//        var tmpValue=appointTime.onOffType
-//        tmpValue=(tmpValue/2%2>0 ? -2:2)
-//        appointTime.onOffType=appointTime.onOffType+tmpValue
-    }
     
-    @IBOutlet var PowerOnDatePicker: UIDatePicker!
-    @IBAction func PowerOnDateClick(_ sender: UIDatePicker) {
-//        let tmpDate = sender.date as NSDate
-//        appointTime.onEveryDay=tmpDate.hour()*60+tmpDate.minute()
-    }
     
     
     
@@ -107,14 +105,49 @@ class NewAirSetTimeController: BaseViewController {
         let alertView=SCLAlertView()
         _=alertView.showTitle("", subTitle: msg, duration: 2.0, completeText: "ok", style: SCLAlertViewStyle.notice)
     }
-    /*
+    var datePickerIsOn:Bool=true//true是开机 DatePicker，false 是关机
+    func presentDatePicker() {
+        let datePickerManager = PGDatePickManager()
+        let datePicker = datePickerManager.datePicker!
+        datePicker.delegate = self
+        datePicker.datePickerMode = .time
+        self.present(datePickerManager, animated: false, completion: nil)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier=="showWeekVC" {
+            let vc = segue.destination as! SetNewWeekViewController
+            vc.callblock=(sender as! [String:Any])["call"] as! ((Int)->Void)
+            vc.weekValue=(sender as! [String:Any])["week"] as! Int
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
+}
+extension NewAirSetTimeController: PGDatePickerDelegate {
+    func datePicker(_ datePicker: PGDatePicker!, didSelectDate dateComponents: DateComponents!) {
+        print("dateComponents = ", dateComponents)
+        
+        if let timeH=dateComponents.hour{
+            if let timeM=dateComponents.minute{
+                var tmpAppoint = appointTime
+                if datePickerIsOn {
+                    tmpAppoint.onTimeM=timeM
+                    tmpAppoint.onTimeH=timeH
+                    
+                }else{
+                    tmpAppoint.offTimeM=timeM
+                    tmpAppoint.offTimeH=timeH
+                }
+                appointTime=tmpAppoint
+            }
+        }
+        
+        
+    }
 }

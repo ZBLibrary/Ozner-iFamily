@@ -86,15 +86,17 @@ class NewTrendAir_Wifi: OznerBaseDevice {
                 data.append(UInt8(value.hashValue))
             
             case 1:
+                data.append(UInt8(status.NewAndSpeed))
                 let value = !Bool.init(NSNumber.init(value: status.AirAndSpeed))
                 data.append(UInt8(value.hashValue))
-                data.append(UInt8(status.NewAndSpeed))
+                
                 data.append(UInt8(status.hotPower.hashValue))
                 data.append(UInt8(status.O3Power.hashValue))
             case 2:
                 let value = !Bool.init(NSNumber.init(value: status.NewAndSpeed))
-                data.append(UInt8(status.AirAndSpeed))
                 data.append(UInt8(value.hashValue))
+                
+                data.append(UInt8(status.AirAndSpeed))
                 data.append(UInt8(status.hotPower.hashValue))
                 data.append(UInt8(status.O3Power.hashValue))
             case 3:
@@ -135,12 +137,13 @@ class NewTrendAir_Wifi: OznerBaseDevice {
             var data=Data()
             if key == 0{
                 currValue=min(3, currValue)
-                data.append(UInt8(currValue))
                 data.append(UInt8(status.NewAndSpeed))
+                data.append(UInt8(currValue))
+                
             }else{
                 currValue=min(2, currValue)
-                data.append(UInt8(status.AirAndSpeed))
                 data.append(UInt8(currValue))
+                data.append(UInt8(status.AirAndSpeed))
             }
             data.append(UInt8(status.hotPower.hashValue))
             data.append(UInt8(status.O3Power.hashValue))

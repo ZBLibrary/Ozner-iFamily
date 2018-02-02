@@ -228,6 +228,7 @@
 		8D36D2FF1F06234A0091EB1F /* OznerTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2C71F06234A0091EB1F /* OznerTools.swift */; };
 		8D3C7E241F67B13C0024747D /* WashAppointTime.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D3C7E231F67B13C0024747D /* WashAppointTime.xib */; };
 		8D3C7E261F67B1500024747D /* WashAppointTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3C7E251F67B1500024747D /* WashAppointTime.swift */; };
+		8D420DA52021A5C700DD302A /* SetNewWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D420DA42021A5C700DD302A /* SetNewWeekViewController.swift */; };
 		8D429A031DC9E9160083011C /* DeviceSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A021DC9E9160083011C /* DeviceSettingController.swift */; };
 		8D429A071DCA0D6E0083011C /* TapLvXinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A061DCA0D6E0083011C /* TapLvXinController.swift */; };
 		8D429A091DCA0D840083011C /* AirLvXinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D429A081DCA0D840083011C /* AirLvXinController.swift */; };
@@ -700,6 +701,7 @@
 		8D36D2C71F06234A0091EB1F /* OznerTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerTools.swift; sourceTree = "<group>"; };
 		8D3C7E231F67B13C0024747D /* WashAppointTime.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WashAppointTime.xib; sourceTree = "<group>"; };
 		8D3C7E251F67B1500024747D /* WashAppointTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WashAppointTime.swift; sourceTree = "<group>"; };
+		8D420DA42021A5C700DD302A /* SetNewWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNewWeekViewController.swift; sourceTree = "<group>"; };
 		8D429A021DC9E9160083011C /* DeviceSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSettingController.swift; sourceTree = "<group>"; };
 		8D429A061DCA0D6E0083011C /* TapLvXinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapLvXinController.swift; sourceTree = "<group>"; };
 		8D429A081DCA0D840083011C /* AirLvXinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirLvXinController.swift; sourceTree = "<group>"; };
@@ -2064,6 +2066,7 @@
 			children = (
 				8D00347F1F78AB8E001A5B49 /* NewAirSettingController.swift */,
 				8D0034811F78C31D001A5B49 /* NewAirSetTimeController.swift */,
+				8D420DA42021A5C700DD302A /* SetNewWeekViewController.swift */,
 			);
 			path = NewTrendAir;
 			sourceTree = "<group>";
@@ -2909,7 +2912,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A2BA87CED2A9DDCC1938133B /* [CP] Check Pods Manifest.lock */ = {
@@ -3215,6 +3218,7 @@
 				B7753A921E10F16000F39427 /* GYNavViewController.swift in Sources */,
 				8DC02EA81DB5D100007F57DB /* SCLExtensions.swift in Sources */,
 				8DEDB0491F6FAA5D00AAF4DA /* ProductInfo.swift in Sources */,
+				8D420DA52021A5C700DD302A /* SetNewWeekViewController.swift in Sources */,
 				8D36D2CA1F06234A0091EB1F /* AirPurifier_Blue.swift in Sources */,
 				E0745AC11EE94ED200CB39CC /* UdeskVoiceRecordHelper.m in Sources */,
 				E0745AAF1EE94ED200CB39CC /* UdeskAgentSurvey.m in Sources */,

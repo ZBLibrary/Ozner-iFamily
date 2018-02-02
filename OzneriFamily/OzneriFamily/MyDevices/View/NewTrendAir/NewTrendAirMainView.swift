@@ -89,15 +89,27 @@ class NewTrendAirMainView: OznerDeviceView {
     //数据回掉处理
     override func SensorUpdate(identifier: String) {
         let deviceSensor = (self.currentDevice as! NewTrendAir_Wifi).sensor
-        CO2ValueLabel.text = deviceSensor.CO2==0 ? "-":"\(deviceSensor.CO2)"
+        
         HimitValueLabel.text = deviceSensor.Humidity==0 ? "-%":"\(deviceSensor.Humidity)%"
         TeampValueLabel.text = deviceSensor.Temperature==0 ? "- ℃":"\(deviceSensor.Temperature) ℃"
         PM25Label_Out.text = deviceSensor.PM25_Out==0 ? "-":"\(deviceSensor.PM25_Out)"
         PM25Label_In.text = deviceSensor.PM25_In==0 ? "-":"\(deviceSensor.PM25_In)"
-        if deviceSensor.TVOC<3&&deviceSensor.TVOC>=0 {
-            TVOCValueLabel.text=["优","良","差"][deviceSensor.TVOC]
-        }else{
-            TVOCValueLabel.text="-"
+        
+        switch true {
+        case deviceSensor.CO2<600:
+            CO2ValueLabel.text="优"
+        case deviceSensor.CO2>1200:
+            CO2ValueLabel.text="差"
+        default:
+            CO2ValueLabel.text="良"
+        }
+        switch true {
+        case deviceSensor.TVOC<160:
+            TVOCValueLabel.text="优"
+        case deviceSensor.TVOC>300:
+            TVOCValueLabel.text="差"
+        default:
+            TVOCValueLabel.text="良"
         }
         
     }

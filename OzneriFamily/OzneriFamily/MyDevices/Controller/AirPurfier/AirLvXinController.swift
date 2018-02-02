@@ -96,13 +96,19 @@ class AirLvXinController: BaseViewController {
             
             vocWidthConstraint.constant = 0
             totalPurificatContainerView.isHidden=false
-            pm25ValueLabel.text="\((device as! AirPurifier_Wifi).sensor.PM25)"
-            var vocValue = (device as! AirPurifier_Wifi).sensor.VOC
-            vocValue = vocValue<0||vocValue>3 ? 4:vocValue
-            vocValueLabel.text=[loadLanguage("优"),loadLanguage("良"),loadLanguage("一般"),loadLanguage("差"),"-"][Int(vocValue)]
-            totalValueLabel.text="\((device as! AirPurifier_Wifi).sensor.TotalClean)"
-            print((device as! AirPurifier_Wifi).sensor.TotalClean)
-            SetLvXin(workTime: (device as! AirPurifier_Wifi).filterStatus.workTime, maxUseMM: 129600)
+            pm25ValueLabel.text="\((device as! NewTrendAir_Wifi).sensor.PM25_In)"
+            let vocValue = (device as! NewTrendAir_Wifi).sensor.TVOC
+            if vocValue<160
+            {
+                vocValueLabel.text=loadLanguage("优")
+            }else if vocValue>300{
+                vocValueLabel.text=loadLanguage("良")
+            }else{
+                vocValueLabel.text=loadLanguage("良")
+            }
+            totalValueLabel.text="\((device as! NewTrendAir_Wifi).sensor.TotalClean)"
+           
+            SetLvXin(workTime: (device as! NewTrendAir_Wifi).filterStatus.workTime, maxUseMM: 129600)
         default:
             break
         }
