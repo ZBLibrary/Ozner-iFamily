@@ -297,4 +297,6 @@ extension MyDevicesController : DeviceViewContainerDelegate{
 }
 //侧滑控制器代理方法
 extension MyDevicesController : SlideMenuControllerDelegate {
+    
+    
 }

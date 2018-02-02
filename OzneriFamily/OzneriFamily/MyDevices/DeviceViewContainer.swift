@@ -273,6 +273,8 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
                 self.delegate.DeviceConnectStateChange!(stateDes:loadLanguage("设备已断开"))
             case OznerConnectStatus.Connected:
                 self.delegate.DeviceConnectStateChange!(stateDes: loadLanguage("设备已连接"))
+            case OznerConnectStatus.DisconnectOfPhoneBLE:
+                self.delegate.DeviceConnectStateChange!(stateDes: loadLanguage("请打开手机蓝牙"))
             default://已连接
                 self.delegate.DeviceConnectStateChange!(stateDes: "")
             }
