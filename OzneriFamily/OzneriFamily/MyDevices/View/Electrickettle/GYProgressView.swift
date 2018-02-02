@@ -68,7 +68,7 @@ class GYProgressView: UIView {
 //    }
     
     func startAnimation() {
-        
+    
 //        let transition = CATransition()
 //        transition.repeatCount = 3
 //        transition.duration = 5
