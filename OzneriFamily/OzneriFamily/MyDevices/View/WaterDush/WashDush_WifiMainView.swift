@@ -15,7 +15,7 @@
 
 import UIKit
 import SVProgressHUD
- var remind1H:CGFloat!
+ var remind1H:CGFloat = 0
 class WashDush_WifiMainView: OznerDeviceView {
     
     
@@ -180,9 +180,9 @@ class WashDush_WifiMainView: OznerDeviceView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         // Drawing code
-        if (height_screen-rect.size.height) == 64 {
+//        if (height_screen-rect.size.height) == 64 {
             remind1H = remindTimeView1.bounds.width/2
-        }
+//        }
         
         cicleR = remind1H*125/205*86/108
         temperatView.layer.cornerRadius=remind1H*125/205
