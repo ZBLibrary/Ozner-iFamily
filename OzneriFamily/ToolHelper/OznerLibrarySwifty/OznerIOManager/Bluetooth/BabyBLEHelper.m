@@ -108,6 +108,7 @@ NSString* deviceName=nil;
         BytePtr bytes=(BytePtr)[macData2 bytes];
         MAC=[NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X",
              bytes[5],bytes[4],bytes[3],bytes[2],bytes[1],bytes[0]];
+        sleep(1);
     }
     //台式空净OAP、0x20
     //水杯、
