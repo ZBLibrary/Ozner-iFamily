@@ -105,6 +105,12 @@ class MyDevicesController: UIViewController {
         deviceViewContainer.delegate=self
 
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleBottomMargin]
+        
+//        User.AddDevice(mac: "eb6e879a-8948-11e7-9baf-00163e120d98", type: "e137b6e0-2668-11e7-9d95-00163e103941", setting: "{\"name\":\"空灵\",\"usingSite\":\"办公室\"}",weight: 2, success: {
+//            print("设备上传到服务器成功！")
+//        }, failure: { (error) in
+//            print("设备上传到服务器失败！")
+//        })
         // Do any additional setup after loading the view.
         
 //        let device=OznerManager.instance.createDevice(scanDeviceInfo: deviceArr[0], setting: nil)

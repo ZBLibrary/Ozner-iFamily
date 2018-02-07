@@ -149,7 +149,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 
             })
             
-            _ = alertView.addButton(loadLanguage("取消"), action: {})
+            _ = alertView.addButton(loadLanguage("取消"), action: {
+                 self.present(LoginManager.instance.mainTabBarController!, animated: true, completion: nil)
+            })
             _ = alertView.showInfo(loadLanguage("温馨提示"), subTitle: loadLanguage("是否从网络获取设备列表"))
             
         } else {

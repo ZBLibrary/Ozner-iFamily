@@ -43,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
             window?.rootViewController = LoginManager.instance.loginViewController
 
         }
+        
+    
 
         window!.makeKeyAndVisible()
         //开启IQKEyBoard
@@ -444,36 +446,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
         
         let session = URLSession.shared
         
-        let request = NSMutableURLRequest(url: URL(string: "https://api.github.com/repos/ozner-app-ios-org/updateApi/contents/iFamily/iFamily.json")!)
+        let request = NSMutableURLRequest(url: URL(string: "https://aitfight.herokuapp.com/api/V1/currentVersionInfo")!)
         
         request.httpMethod = "GET"
         request.timeoutInterval = 10
         
         let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, resopnse, error) in
-            
             guard let _ = data else{
                 return
             }
             
             do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
                 
-                let str = ((json as! [String:AnyObject])["content"] as? String)?.replacingOccurrences(of: "\n", with: "")
-                
-                guard let s = str else{
-                    return
-                }
-                
-                //解码
-                let edcodeData = Data(base64Encoded: s, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
-                let decodedString = String(data: edcodeData!, encoding: String.Encoding.utf8)
-                
-                let data2 = decodedString?.data(using: String.Encoding.utf8)
-                guard let _ = data2 else{
-                    return
-                }
-                
-                let dic = JSON(data: data2!)
+                let dic = JSON(data: data!)
+//                guard let dic = dic else {
+//                    return
+//                }
                 let versionsInAppStore = dic["result"]["version"].stringValue
                 let desc = dic["result"]["updateDesc"].stringValue
                 let updateType = dic["result"]["updateType"].stringValue
@@ -483,7 +471,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                     return
                 }
                 // 相同也算升序
-                if versionsInAppStore.compare(currentVersion!) != ComparisonResult.orderedAscending {
+                if versionsInAppStore.compare(currentVersion!) == ComparisonResult.orderedDescending {
                     
                     if updateType == "optional"{
                         
@@ -516,7 +504,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
                     
                     
                 }
-                
                 
             }
             catch let error1 as NSError{
