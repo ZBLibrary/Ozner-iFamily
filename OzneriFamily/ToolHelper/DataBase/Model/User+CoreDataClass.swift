@@ -799,7 +799,13 @@ public class User: BaseDataObject {
                         continue
                     }
                     
-                    let info =  OznerDeviceInfo(deviceID: item["Mac"].stringValue, deviceMac: item["Mac"].stringValue, deviceType: item["DeviceType"].stringValue, productID: item["DeviceType"].stringValue, wifiVersion: item["Weight"].intValue)
+                    let deviceInfoArr = item["Mac"].stringValue.components(separatedBy: "zgy")
+                    
+                    if deviceInfoArr.count != 2 {
+                        continue
+                    }
+                    
+                    let info =  OznerDeviceInfo(deviceID: deviceInfoArr[1], deviceMac: deviceInfoArr[0], deviceType: item["DeviceType"].stringValue, productID: item["DeviceType"].stringValue, wifiVersion: item["Weight"].intValue)
 //                    let device = OznerBaseDevice.init(deviceinfo: info, Settings: item["Settings"].stringValue)
 //                let device=OznerBaseDevice(item["Mac"].stringValue, type: item["DeviceType"].stringValue, settings: item["Settings"].stringValue)
                  let device = OznerManager.instance.createDevice(scanDeviceInfo: info, setting: item["Settings"].stringValue)

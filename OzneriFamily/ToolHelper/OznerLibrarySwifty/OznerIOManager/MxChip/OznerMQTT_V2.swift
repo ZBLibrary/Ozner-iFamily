@@ -67,6 +67,9 @@ class OznerMQTT_V2: NSObject {
             }
         }
         
+        //        }
+
+        
     }
     func subscribeTopic(topic:String,messageHandler:(dataCallBack:((Data)->Void),statusCallBack:((OznerConnectStatus)->Void))) {
     
