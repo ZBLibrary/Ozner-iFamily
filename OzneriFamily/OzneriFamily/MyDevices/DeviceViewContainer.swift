@@ -124,13 +124,13 @@ class DeviceViewContainer: UIView {
                 if currentDeviceView.isKind(of: WaterPurifierMainView.classForCoder()) {
                     delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:160*k_height)
                     //设置滤芯及功能
-                    SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac())
+                    SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac(), deviceType: (device?.deviceInfo.deviceType)!)
                     (currentDeviceView as! WaterPurifierMainView).kitChenView.isHidden = true
                 }else if currentDeviceView.isKind(of: WaterPur_A8CSFFSF.classForCoder()){
                     delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:160*k_height)
                 }else if currentDeviceView.isKind(of: WaterPur_A8DRF.classForCoder()){
                     delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:230*k_height)
-                    //SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac())
+                    SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac(), deviceType: (device?.deviceInfo.deviceType)!)
                 }
                 
            
@@ -302,7 +302,7 @@ extension DeviceViewContainer:OznerBaseDeviceDelegate{
 extension DeviceViewContainer{
 
     //设置净水器滤芯、型号、链接地址、是否提醒
-    func SetWaterPurifer(devID:String){
+    func SetWaterPurifer(devID:String,deviceType:String){
         weak var weakSelf=self
         User.GetMachineType(deviceID: devID, success: { (scanEnable, coolEnable, hotEnable, machineType, buyURL, alertDays) in
             let url = buyURL=="" ? NetworkManager.defaultManager?.URL?["goodsDetail9"]?.stringValue:buyURL
@@ -313,8 +313,13 @@ extension DeviceViewContainer{
                 guard (weakSelf?.currentDeviceView?.isKind(of: WaterPurifierMainView.self))! else {
                     return
                 }
+                if deviceType=="2821b472-5263-11e7-9baf-00163e120d98"
+                {
+                    (weakSelf?.currentDeviceView as! WaterPur_A8DRF).setLvXinAndEnable(scan: scanEnable, cool: coolEnable, hot: hotEnable, buyLvXinUrl: url!, lvXinStopDate: stopDate as NSDate, lvXinUsedDays: Int(useValue))
+                }else{
+                   (weakSelf?.currentDeviceView as! WaterPurifierMainView).setLvXinAndEnable(scan: scanEnable, cool: coolEnable, hot: hotEnable, buyLvXinUrl: url!, lvXinStopDate: stopDate as NSDate, lvXinUsedDays: Int(useValue))
+                }
                 
-                 (weakSelf?.currentDeviceView as! WaterPurifierMainView).setLvXinAndEnable(scan: scanEnable, cool: coolEnable, hot: hotEnable, buyLvXinUrl: url!, lvXinStopDate: stopDate as NSDate, lvXinUsedDays: Int(useValue))
                 self.LvXinValue=Int(useValue)
                 if useValue<10//小于10%提醒及时更换滤芯
                 {

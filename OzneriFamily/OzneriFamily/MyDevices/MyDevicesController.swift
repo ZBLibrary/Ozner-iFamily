@@ -34,7 +34,10 @@ class MyDevicesController: UIViewController {
         case .Tap:
            self.performSegue(withIdentifier: "toTapLvXin", sender: nil)
         case .WaterPurifier_Wifi:
-            
+//            if filterValueLabel.text=="-"
+//            {
+//                return
+//            }
             if (OznerManager.instance.currentDevice as? WaterPurifier_Wifi)?.deviceInfo.wifiVersion == 3 {
                 let vc = RoWaterPuefierLvXinController()
                 vc.typeBLE = false
@@ -46,6 +49,15 @@ class MyDevicesController: UIViewController {
                 let vc = RoWaterPuefierLvXinController()
                 vc.typeBLE = false
                 self.navigationController?.pushViewController(vc, animated: true)
+                return
+            }
+            if (OznerManager.instance.currentDevice as? WaterPurifier_Wifi)?.deviceInfo.productID == "2821b472-5263-11e7-9baf-00163e120d98" {
+                let tmpDeviceView = deviceViewContainer.currentDeviceView as! WaterPur_A8DRF
+                let senderData=["buyLvXinUrl":tmpDeviceView.buyLvXinUrl,
+                                "scanEnable":tmpDeviceView.scanEnable,
+                                "lvXinStopDate":tmpDeviceView.lvXinStopDate,
+                                "lvXinUsedDays":tmpDeviceView.lvXinUsedDays] as [String : Any]
+                self.performSegue(withIdentifier: "toTapLvXin", sender: senderData)
                 return
             }
             

@@ -107,8 +107,7 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
 //        }
 //        else{
             activateDevice(configDict: configDict)
-        //}
-        
+        //}        
     }
     var oznerBonjourDetail:OznerBonjourDetail!
     func activateDevice(configDict: [AnyHashable : Any]!) {
@@ -118,7 +117,6 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
         oznerBonjourDetail=nil
         sleep(5)
         let weakself = self
-        
         oznerBonjourDetail=OznerBonjourDetail.init(IPAddress, block: { (deviceid) in
             if (deviceid?.contains("/"))! {
                 let strArr = deviceid!.components(separatedBy: "/")
@@ -135,7 +133,6 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
                 weakself.pairSuccessed()
             }
         })
-        
     }
     //EasyLinkFTCDelegate 代理方法
     func onFound(_ client: NSNumber!, withName name: String!, mataData mataDataDict: [AnyHashable : Any]!) {
@@ -144,18 +141,13 @@ class OznerEasyLink_V1: NSObject,EasyLinkFTCDelegate {
         {
             self.pairSuccessed(configDict: mataDataDict)
         }
-        
-        
     }
     func onFound(byFTC client: NSNumber!, withConfiguration configDict: [AnyHashable : Any]!) {
         print(configDict)
         if (configDict["FW"] as? String) != nil
         {
-
-                self.pairSuccessed(configDict: configDict)
-            
+            self.pairSuccessed(configDict: configDict)
         }
-        
     }
     func onDisconnect(fromFTC client: NSNumber!, withError err: Bool) {
         print("=====onDisconnect fromFTC=====")

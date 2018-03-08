@@ -60,6 +60,7 @@ class OznerMQTT_V1: NSObject {
             if let callback = self.SubscribeTopics[mess?.topic ?? "none"] {
                 if let tmpdata=mess?.payload {
                     if tmpdata.count>0 {
+                        print(tmpdata)
                         callback.dataCallBack(tmpdata)
                     }
                     
