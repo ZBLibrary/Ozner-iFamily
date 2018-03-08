@@ -596,7 +596,7 @@ public class User: BaseDataObject {
             let endDate=NSDate(string: endStr, formatString: "yyyy/MM/dd HH:mm:ss")
             let nowDate=NSDate(string: nowStr, formatString: "yyyy/MM/dd HH:mm:ss")
             let tmpUseDays=365-((endDate?.timeIntervalSince1970)!-(nowDate?.timeIntervalSince1970)!)/(24*3600.0)
-            success(min(365, Int(tmpUseDays)), endDate as! Date)
+            success(min(365, Int(tmpUseDays)), endDate! as Date)
             }, failure: failure)
         
     }
