@@ -21,6 +21,8 @@ class MySetViewController: BaseViewController {
         
         LoginManager.instance.LoginOut()
         OznerManager.instance.currentDevice = nil
+        UserDefaults.standard.setValue(nil, forKey: downDeviceInderifer)
+        UserDefaults.standard.synchronize()
     }
     
     override func viewDidLoad() {

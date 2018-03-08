@@ -137,7 +137,7 @@ class PairSuccessController: UIViewController {
         let  deviceClass = ProductInfo.getDeviceClassFromProductID(productID: device.deviceInfo.productID)
         if ioType != .Blue || (deviceClass == .Tap){
             var mac:String = ""
-            mac = (deviceClass == .Tap) ? device.deviceInfo.deviceMac : device.deviceInfo.deviceID
+            mac = (deviceClass == .Tap) ? device.deviceInfo.deviceMac : (device.deviceInfo.deviceMac + "zgy" + device.deviceInfo.deviceID)
             User.AddDevice(mac: mac, type: device.deviceInfo.deviceType, setting: device.settings.toJsonString(),weight: device.deviceInfo.wifiVersion, success: {
                 print("设备上传到服务器成功！")
                 SVProgressHUD.dismiss()
