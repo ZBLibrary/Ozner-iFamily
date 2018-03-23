@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class OznerEasyLink_V2: NSObject,ZBBonjourServiceDelegate,GCDAsyncSocketDelegate {
+class OznerEasyLink_V2: NSObject,ZBBonjourServiceDelegate,GCDAsyncSocketDelegate,GCDAsyncUdpSocketDelegate {
     
     var deviceInfo:OznerDeviceInfo!
     private static var _instance: OznerEasyLink_V2! = nil
@@ -52,9 +52,61 @@ class OznerEasyLink_V2: NSObject,ZBBonjourServiceDelegate,GCDAsyncSocketDelegate
         ZBBonjourService.sharedInstance().stopSearchDevice()
         ZBBonjourService.sharedInstance().delegate=self
         ZBBonjourService.sharedInstance().startSearchDevice()
+        setUDP()
+        
+
     }
-    
+    var udpSocket: GCDAsyncUdpSocket?
+    func setUDP() {
+        udpSocket = GCDAsyncUdpSocket(delegate: self, delegateQueue: DispatchQueue.global())
+        do {
+            try udpSocket?.enableBroadcast(true)
+            try udpSocket?.bind(toPort: 8000)
+            try udpSocket?.beginReceiving()
+        } catch let err as NSError {
+            print(">>> Error while initializing socket: \(err.localizedDescription)")
+            udpSocket?.close()
+        }
+    }
+    deinit {
+        udpSocket = nil
+    }
+    func udpSocket(_ sock: GCDAsyncUdpSocket!, didReceive data: Data!, fromAddress address: Data!, withFilterContext filterContext: Any!) {
+        guard let stringData = String(data: data, encoding: String.Encoding.utf8) else {
+            return
+        }
+        print("Data received: \(stringData)")
+        var tmpDeviceInfo=OznerDeviceInfo.init()
+        tmpDeviceInfo.wifiVersion=2
+        if stringData.contains("Product_id") {
+            let tmpArr=stringData.components(separatedBy: ";")
+            for item in tmpArr{
+                let tmpItemArr = item.components(separatedBy: ":")
+                switch tmpItemArr[0]
+                {
+                case "MAC":
+                    tmpDeviceInfo.deviceMac=tmpItemArr[1]
+                    
+                case "Product_id":
+                    tmpDeviceInfo.productID=tmpItemArr[1]
+                    tmpDeviceInfo.deviceType=tmpItemArr[1]
+                case "Device_id":
+                    tmpDeviceInfo.deviceID=tmpItemArr[1]
+                default:
+                    break
+                }
+            }
+            if DeviceClass.pairID.contains(tmpDeviceInfo.productID) {
+                if !OznerMxChipManager.instance.foundDeviceIsExist(mac: tmpDeviceInfo.deviceMac){
+                    canclePair()
+                    SuccessBlock(tmpDeviceInfo)
+                }
+            }
+        }
+    }
     func canclePair() {//取消配对
+        udpSocket?.close()
+        udpSocket = nil
         ZBBonjourService.sharedInstance().stopSearchDevice()
     }
     @objc private func pairFailed() {

@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
  
-        
         window?.backgroundColor = UIColor.white
         
         User.loginWithLocalUserInfo(success: { (user) in
@@ -43,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
             window?.rootViewController = LoginManager.instance.loginViewController
 
         }
-        
+
     
 
         window!.makeKeyAndVisible()
@@ -58,22 +57,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
    
         let setting = UIUserNotificationSettings(types: [UIUserNotificationType.alert,UIUserNotificationType.sound,UIUserNotificationType.badge], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(setting)
-        
+
         UIApplication.shared.registerForRemoteNotifications()
-        
+
         locateManage = CLLocationManager()
-        
+
         locateManage?.delegate = self
         currentCoordinate = CLLocationCoordinate2D()
         
         if ((locateManage?.requestWhenInUseAuthorization()) == nil) {
             locateManage?.requestWhenInUseAuthorization()
         }
-        
+
         locateManage?.desiredAccuracy = kCLLocationAccuracyBest
         locateManage?.distanceFilter = 1000
         locateManage?.startUpdatingLocation()
-       
+
 //        let userSetting = UIUserNotificationSettings(types:myTypes, categories:nil)
 //        UIApplication.shared.registerUserNotificationSettings(userSetting)
         BPush.disableLbs()//禁用地理位置
@@ -82,16 +81,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,UNUserNotifi
 //        BPush.debugDescription()
         //注册微信//
         WXApi.registerApp("wx45a8cc642a2295b5", withDescription: "haoze")
-        
+
         // 初始化 Udesk
         UdeskManager.initWithAppKey("4ddf84becfd2320bca9f183136574c0f", appId: "f633b561471be762", domain: "ozner.udesk.cn")
         updateversion()
         Bugly.start(withAppId: "900019591")
+
+
         
-//        if #available(iOS 11.0, *) {
-//            UIScrollView.appearance().
-//        }
-//        Thread.sleep(forTimeInterval: 0.5)
         return true
     }
     //微信 delegate---->

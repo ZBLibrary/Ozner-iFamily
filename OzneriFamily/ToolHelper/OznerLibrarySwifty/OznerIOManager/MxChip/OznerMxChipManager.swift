@@ -115,7 +115,7 @@ class OznerMxChipManager: NSObject {
     func foundDeviceIsExist(mac:String) -> Bool {//判断设备是否已存在
         var isExist = false
         for (_,value) in IODics {
-            if value.deviceInfo.deviceMac==mac {
+            if value.deviceInfo.deviceMac.replacingOccurrences(of: ":", with: "").lowercased()==mac.replacingOccurrences(of: ":", with: "").lowercased() {
                 isExist=true
                 break
             }

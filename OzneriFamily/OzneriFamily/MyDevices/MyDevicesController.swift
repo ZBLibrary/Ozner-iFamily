@@ -114,6 +114,8 @@ class MyDevicesController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //let _ = ViewController.init("")
+        
         deviceViewContainer.delegate=self
 
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleBottomMargin]

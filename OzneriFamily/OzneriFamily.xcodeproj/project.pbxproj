@@ -211,7 +211,6 @@
 		8D36D2E71F06234A0091EB1F /* OZBluetoothIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2981F06234A0091EB1F /* OZBluetoothIO.swift */; };
 		8D36D2E81F06234A0091EB1F /* OznerBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2991F06234A0091EB1F /* OznerBluetoothManager.swift */; };
 		8D36D2E91F06234A0091EB1F /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D29F1F06234A0091EB1F /* GCDAsyncSocket.m */; };
-		8D36D2EA1F06234A0091EB1F /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2A11F06234A0091EB1F /* GCDAsyncUdpSocket.m */; };
 		8D36D2EB1F06234A0091EB1F /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2A41F06234A0091EB1F /* AsyncSocket.m */; };
 		8D36D2EC1F06234A0091EB1F /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D36D2A61F06234A0091EB1F /* AsyncUdpSocket.m */; };
 		8D36D2ED1F06234A0091EB1F /* libEasyLink.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D36D2A91F06234A0091EB1F /* libEasyLink.a */; };
@@ -270,6 +269,7 @@
 		8D7837121DE2CC2300A3D9E3 /* ShareImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D7837111DE2CC2300A3D9E3 /* ShareImageView.xib */; };
 		8D7837141DE2CEB600A3D9E3 /* ShareImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7837131DE2CEB600A3D9E3 /* ShareImageView.swift */; };
 		8D8064C11F6B6553008BAC80 /* WashReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8064C01F6B6553008BAC80 /* WashReportController.swift */; };
+		8D881D15206165EF00722255 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D881D13206165EF00722255 /* GCDAsyncUdpSocket.m */; };
 		8D92F6501D94F6850068A40A /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F64F1D94F6850068A40A /* LanguageHelper.swift */; };
 		8D92F6581D94FAB00068A40A /* MyDevicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D92F6571D94FAB00068A40A /* MyDevicesController.swift */; };
 		8D92F65A1D94FAC70068A40A /* MyDevices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D92F6591D94FAC70068A40A /* MyDevices.storyboard */; };
@@ -679,8 +679,6 @@
 		8D36D2991F06234A0091EB1F /* OznerBluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OznerBluetoothManager.swift; sourceTree = "<group>"; };
 		8D36D29E1F06234A0091EB1F /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		8D36D29F1F06234A0091EB1F /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		8D36D2A01F06234A0091EB1F /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
-		8D36D2A11F06234A0091EB1F /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		8D36D2A31F06234A0091EB1F /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		8D36D2A41F06234A0091EB1F /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
 		8D36D2A51F06234A0091EB1F /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -755,6 +753,8 @@
 		8D7837111DE2CC2300A3D9E3 /* ShareImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareImageView.xib; sourceTree = "<group>"; };
 		8D7837131DE2CEB600A3D9E3 /* ShareImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareImageView.swift; sourceTree = "<group>"; };
 		8D8064C01F6B6553008BAC80 /* WashReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WashReportController.swift; sourceTree = "<group>"; };
+		8D881D13206165EF00722255 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		8D881D14206165EF00722255 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
 		8D92F64F1D94F6850068A40A /* LanguageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
 		8D92F6571D94FAB00068A40A /* MyDevicesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDevicesController.swift; sourceTree = "<group>"; };
 		8D92F6591D94FAC70068A40A /* MyDevices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyDevices.storyboard; sourceTree = "<group>"; };
@@ -1694,10 +1694,10 @@
 		8D36D29D1F06234A0091EB1F /* GCD */ = {
 			isa = PBXGroup;
 			children = (
+				8D881D14206165EF00722255 /* GCDAsyncUdpSocket.h */,
+				8D881D13206165EF00722255 /* GCDAsyncUdpSocket.m */,
 				8D36D29E1F06234A0091EB1F /* GCDAsyncSocket.h */,
 				8D36D29F1F06234A0091EB1F /* GCDAsyncSocket.m */,
-				8D36D2A01F06234A0091EB1F /* GCDAsyncUdpSocket.h */,
-				8D36D2A11F06234A0091EB1F /* GCDAsyncUdpSocket.m */,
 			);
 			path = GCD;
 			sourceTree = "<group>";
@@ -2753,7 +2753,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = UZZG6NM74T;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3135,6 +3135,7 @@
 				8D36D2FE1F06234A0091EB1F /* Helper.m in Sources */,
 				8D184E891DED717D0008047E /* RoWaterPuefierLvXinController.swift in Sources */,
 				8D0D693B1DDD99A10097038E /* FriendZeroBgView.swift in Sources */,
+				8D881D15206165EF00722255 /* GCDAsyncUdpSocket.m in Sources */,
 				8D36D2FC1F06234A0091EB1F /* OznerIOManager.swift in Sources */,
 				E0745AE01EE94ED200CB39CC /* UdeskConfigurationHelper.m in Sources */,
 				E0745ADD1EE94ED200CB39CC /* UdeskCustomNavigation.m in Sources */,
@@ -3250,7 +3251,6 @@
 				8DC02E741DB5CE91007F57DB /* Air_BlueMainView.swift in Sources */,
 				683D3EE91F1708DC0010E708 /* GYValueSlider.swift in Sources */,
 				6876B55D1F5D3A7000E20ECE /* GYCirclePoint.swift in Sources */,
-				8D36D2EA1F06234A0091EB1F /* GCDAsyncUdpSocket.m in Sources */,
 				8D36D2E71F06234A0091EB1F /* OZBluetoothIO.swift in Sources */,
 				68C36F171FB03A9500458707 /* CenterWaterView.swift in Sources */,
 				8D12AAC71DAB7386003A09E6 /* PairSuccessController.swift in Sources */,
@@ -3546,11 +3546,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = UZZG6NM74T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3586,8 +3586,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2fd3c7fd-afef-4fe1-bc28-0568c37f08bd";
-				PROVISIONING_PROFILE_SPECIFIER = Distri_OzneriFamily;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -3603,11 +3603,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OzneriFamily/OzneriFamily.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = UZZG6NM74T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3643,8 +3643,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ozner.cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2fd3c7fd-afef-4fe1-bc28-0568c37f08bd";
-				PROVISIONING_PROFILE_SPECIFIER = Distri_OzneriFamily;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OzneriFamily-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
