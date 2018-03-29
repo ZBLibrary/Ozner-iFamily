@@ -23,7 +23,7 @@ class WashDush_WifiMainView: OznerDeviceView {
     @IBAction func warnClick(_ sender: Any) {//警告单机
         let device=self.currentDevice as! WashDush_Wifi
         print(device.sensor.ErrorState)
-        let errorMsg=["","请联系维修人员，电话请拨：400 920 9667","检查水龙头是否打开或水流量压力是否正常","检测门是否被异物卡住，如无异物请联系维修人员，电话请拨：400 920 9667","更换相对应图标闪烁的耗材","请联系维修人员，电话请拨：400 920 9667","请检查过滤网是否堵塞，如未堵塞请联系维修人员，电话请拨：400 920 9667","请联系维修人员，电话请拨：400 920 9667","请联系维修人员，电话请拨：400 920 9667","请使用正品洗碗机耗材，如未恢复正常请联系维修人员，电话请拨：400 920 9667"][device.sensor.ErrorState%256]
+        let errorMsg=["","请联系维修人员，电话请拨：4008202667","检查水龙头是否打开或水流量压力是否正常","检测门是否被异物卡住，如无异物请联系维修人员，电话请拨：4008202667","更换相对应图标闪烁的耗材","请联系维修人员，电话请拨：4008202667","请检查过滤网是否堵塞，如未堵塞请联系维修人员，电话请拨：4008202667","请联系维修人员，电话请拨：4008202667","请联系维修人员，电话请拨：4008202667","请使用正品洗碗机耗材，如未恢复正常请联系维修人员，电话请拨：4008202667"][device.sensor.ErrorState%256]
         let alertView = SCLAlertView()
         _ = alertView.addButton("我知道了", action: {})
         _ = alertView.showNotice("", subTitle: errorMsg)

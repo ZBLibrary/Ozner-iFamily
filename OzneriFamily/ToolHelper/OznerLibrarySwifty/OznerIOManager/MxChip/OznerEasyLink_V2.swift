@@ -80,6 +80,8 @@ class OznerEasyLink_V2: NSObject,ZBBonjourServiceDelegate,GCDAsyncSocketDelegate
         tmpDeviceInfo.wifiVersion=2
         if stringData.contains("Product_id") {
             let tmpArr=stringData.components(separatedBy: ";")
+            var Wifi版本号=""
+            
             for item in tmpArr{
                 let tmpItemArr = item.components(separatedBy: ":")
                 switch tmpItemArr[0]
@@ -90,15 +92,22 @@ class OznerEasyLink_V2: NSObject,ZBBonjourServiceDelegate,GCDAsyncSocketDelegate
                 case "Product_id":
                     tmpDeviceInfo.productID=tmpItemArr[1]
                     tmpDeviceInfo.deviceType=tmpItemArr[1]
+                    if tmpDeviceInfo.productID=="e137b6e0-2668-11e7-9d95-00163e103941"{
+                        print(tmpDeviceInfo.productID)
+                    }
                 case "Device_id":
                     tmpDeviceInfo.deviceID=tmpItemArr[1]
+                case "Wifi_Version":
+                    Wifi版本号 = tmpItemArr[1].components(separatedBy: "@")[1]
                 default:
                     break
                 }
             }
+            UserDefaults.standard.set(Wifi版本号, forKey: tmpDeviceInfo.deviceMac.replacingOccurrences(of: ":", with: "").lowercased())
             if DeviceClass.pairID.contains(tmpDeviceInfo.productID) {
                 if !OznerMxChipManager.instance.foundDeviceIsExist(mac: tmpDeviceInfo.deviceMac){
                     canclePair()
+                    
                     SuccessBlock(tmpDeviceInfo)
                 }
             }
@@ -128,6 +137,10 @@ class OznerEasyLink_V2: NSObject,ZBBonjourServiceDelegate,GCDAsyncSocketDelegate
                         continue
                     }
                     let macAdress = (RecordData as AnyObject).object(forKey: "MAC") as! String
+                    var wifi版本号 = ((RecordData as AnyObject).object(forKey: "Firmware Rev") as! String)
+                    wifi版本号=wifi版本号.components(separatedBy: "@")[1]
+                    UserDefaults.standard.set(wifi版本号, forKey: macAdress.replacingOccurrences(of: ":", with: "").lowercased())
+                    
                     if !OznerMxChipManager.instance.foundDeviceIsExist(mac: macAdress) {
                         deviceInfo.deviceMac = macAdress
                         if let tmpHostIP=(RecordData as AnyObject).object(forKey: "IP")  {

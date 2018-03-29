@@ -28,7 +28,7 @@ class OznerMxChipManager: NSObject {
     //开始配对
    
     private var pairTimer:Timer?
-    private let pairOutTime=60//配网超时时间
+    private let pairOutTime=120//配网超时时间
     var PairDelegate:OznerPairDelegate!
     var haveSuccessed = false
     func starPair(deviceClass:OZDeviceClass,pairDelegate:OznerPairDelegate?,ssid:String?,password:String?) {
