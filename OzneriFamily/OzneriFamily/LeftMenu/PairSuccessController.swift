@@ -83,13 +83,18 @@ class PairSuccessController: UIViewController {
             (mainMatchView as! WaterRefeishView).sucessAction.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             (mainMatchView as! WaterRefeishView).placeName.delegate=self
             
-        
-        default:
+        case .AirPurifier_Wifi,.WashDush_Wifi,.NewTrendAir_Wifi,.WaterPurifier_Wifi:
             mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
             (mainMatchView as! SmallAriClearView).placeLb.text = loadLanguage("办公室")
             let mac地址=deviceArr[0].deviceMac.replacingOccurrences(of: ":", with: "").lowercased()
             let wifi版本号 = UserDefaults.standard.object(forKey: mac地址) as? NSString
             (mainMatchView as! SmallAriClearView).nameLb.text=mac地址+"@"+(wifi版本号! as String)
+            (mainMatchView as! SmallAriClearView).nameLb.placeholder = loadLanguage(productInfo["Name"].stringValue+"名称")
+            (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
+            (mainMatchView as! SmallAriClearView).nameLb.delegate=self
+        default:
+            mainMatchView = UINib.init(nibName: "SmallAriClearView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SmallAriClearView
+            (mainMatchView as! SmallAriClearView).placeLb.text = loadLanguage("办公室")
             (mainMatchView as! SmallAriClearView).nameLb.placeholder = loadLanguage(productInfo["Name"].stringValue+"名称")
             (mainMatchView as! SmallAriClearView).successbtn.addTarget(self, action: #selector(PairSuccessController.sucessAction), for: UIControlEvents.touchUpInside)
             (mainMatchView as! SmallAriClearView).nameLb.delegate=self

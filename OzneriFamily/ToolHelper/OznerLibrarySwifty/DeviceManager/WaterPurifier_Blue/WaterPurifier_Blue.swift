@@ -203,13 +203,13 @@ class WaterPurifier_Blue: OznerBaseDevice {
         var stopDate=WaterSettingInfo.waterDate as NSDate
         
         let model = WaterSettingInfo.waterModel
-        if model==Int(0x1688) {
-            stopDate=NSDate() as NSDate
-        }else if model==Int(0x8816){
-            if stopDate.timeIntervalSince1970==0 {
-                return
-            }
-        }
+//        if model==Int(0x1688) {
+//            stopDate=NSDate() as NSDate
+//        }else if model==Int(0x8816){
+//            if stopDate.timeIntervalSince1970==0 {
+//                return
+//            }
+//        }
         let dataBytes:[UInt8] = [
             0x40,
             UInt8(NSDate().year()-2000),
@@ -229,8 +229,9 @@ class WaterPurifier_Blue: OznerBaseDevice {
             UInt8(stopDate.second())]
         var data = Data.init(bytes: dataBytes)
         //if model==Int(0x8816) {
+        data.append(0x88)
             data.append(0x16)
-            data.append(0x88)
+        
 //        }else{
 //            data.append(0x88)
 //            data.append(0x16)
