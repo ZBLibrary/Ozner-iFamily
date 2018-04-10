@@ -142,6 +142,7 @@ class WaterPurfierTDSController: BaseViewController {
         }, failure: { (error) in
             self.TDSchartView.weakData=[WaterReplenishDataStuct.init(date: NSDate(), oil: Double(TDS_BF), water: Double(TDS_AF))]
             self.TDSchartView.monthData=[WaterReplenishDataStuct.init(date: NSDate(), oil: Double(TDS_BF), water: Double(TDS_AF))]
+            self.TDSchartView.updateView(isWeak: true)
         })
     }
 
