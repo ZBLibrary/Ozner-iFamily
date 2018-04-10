@@ -366,13 +366,7 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
         if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue {
             let currentDevice=OznerManager.instance.currentDevice as! WaterPurifier_Blue
             valueSlider.isEnabled = currentDevice.connectStatus == .Connected
-            
-            //实时显示数据
-//            if currentDevice.connectStatus == .Connected && currentDevice.deviceInfo.deviceType == "RO Comml" {
-//                valueSlider.value = Float(currentDevice.TwoInfo.hottempSet)
-//                valueSlider.previewView?.valueLb.text = String.init(format: "%.0f", Float(currentDevice.TwoInfo.hottempSet)) + "℃"
-//            }
-            
+        
             tdsContainerView.isHidden=false
             offLineLabel.isHidden=true
             tds=(currentDevice.WaterInfo.TDS1,currentDevice.WaterInfo.TDS2)
@@ -452,16 +446,14 @@ class WaterPurifierMainView: OznerDeviceView,GYValueSliderDelegate {
     override func StatusUpdate(identifier: String, status: OznerConnectStatus) {
         //更新连接状态视图
         if ProductInfo.getCurrDeviceClass() == .WaterPurifier_Blue {
-            tdsContainerView.isHidden=false
             
+            tdsContainerView.isHidden=false
             offLineLabel.isHidden=true
             tds=(Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS1),Int((currentDevice as! WaterPurifier_Blue).WaterInfo.TDS2))
             
         }else{
             let device = currentDevice as! WaterPurifier_Wifi
-            
             if device.deviceInfo.wifiVersion == 3 {
-                
                 if device.connectStatus != OznerConnectStatus.Connected
                 {
                     tdsContainerView.isHidden=true

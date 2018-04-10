@@ -10,19 +10,7 @@ import UIKit
 
 class WaterPur_A8DRF: OznerDeviceView {
 
-    var scanEnable = true
-   
-    var buyLvXinUrl = ""
-    var lvXinStopDate = NSDate()
-    var lvXinUsedDays = 0
-    //var isBlueDevice = false
     
-    func setLvXinAndEnable(scan:Bool,cool:Bool,hot:Bool,buyLvXinUrl:String,lvXinStopDate:NSDate,lvXinUsedDays:Int){
-        self.scanEnable=scan
-        self.buyLvXinUrl=buyLvXinUrl
-        self.lvXinStopDate=lvXinStopDate
-        self.lvXinUsedDays=lvXinUsedDays
-    }
     @IBOutlet var circleView: WaterPurifierHeadCircleView!
     
     //header
@@ -32,6 +20,8 @@ class WaterPur_A8DRF: OznerDeviceView {
     @IBOutlet var tdsValueLabel_AF: UILabel!
     @IBOutlet var offLineLabel: UILabel!//断网提示Label
     @IBOutlet var tdsContainerView: UIView!
+    @IBOutlet var remindDays: UILabel!
+    @IBOutlet var remindLabel: UILabel!
     @IBAction func toTDSDetailClick(_ sender: UITapGestureRecognizer) {
             if (self.currentDevice as! WaterPurifier_Wifi).connectStatus != OznerConnectStatus.Connected{//断网状态
                 weak var weakself=self
@@ -82,17 +72,30 @@ class WaterPur_A8DRF: OznerDeviceView {
     }
     
     
-   
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+
     var offLineSuggestView:OffLineSuggest!
     override func draw(_ rect: CGRect) {
         offLineSuggestView=Bundle.main.loadNibNamed("OffLineSuggest", owner: nil, options: nil)?.first as! OffLineSuggest
         offLineSuggestView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         offLineSuggestView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
+        setFilter()
     }
     
-    //                (currentDeviceView as! WaterPurifierMainView).circleView.updateCircleView(angleBefore: 0.7, angleAfter: 0.5)
+    func setFilter() {
+        let mac = self.currentDevice?.deviceInfo.deviceMac
+        
+        User.GetMachineLifeOutTime(deviceID: mac!, success: { (usedDays, stopDate) in
+            self.remindDays.text="剩余安心服务\(365-usedDays)天"
+            
+            self.remindLabel.isHidden = (365-usedDays)>10
+            
+            
+            
+        }, failure: { (error) in
+            self.remindDays.text="剩余安心服务--天"
+            self.remindLabel.isHidden=true
+        })
+    }
     var tds:(tds1:Int,tds2:Int,temperature:Float)=(0,-1,-1){
         didSet{
             if tds==oldValue {
@@ -104,10 +107,10 @@ class WaterPur_A8DRF: OznerDeviceView {
             let tdsBF=max(tmptdsBF, tmptdsAF)
             let tdsAF=min(tmptdsBF, tmptdsAF)
             
-            tdsValueLabel_BF.text = tdsBF==0 ? loadLanguage("暂无"):"\(tdsBF)"
-            tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:52)*width_screen/375)
-            tdsValueLabel_AF.text = tdsAF==0 ? loadLanguage("暂无"):"\(tdsAF)"
-            tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:46)*width_screen/375)
+            tdsValueLabel_BF.text = tdsBF==0 ? "---":"\(tdsBF)"
+            //tdsValueLabel_BF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsBF==0 ? 32:52)*width_screen/375)
+            tdsValueLabel_AF.text = tdsAF==0 ? "---":"\(tdsAF)"
+            //tdsValueLabel_AF.font = UIFont(name: ".SFUIDisplay-Thin", size: (tdsAF==0 ? 32:46)*width_screen/375)
             
             var angleBF = CGFloat(0)
             switch true {

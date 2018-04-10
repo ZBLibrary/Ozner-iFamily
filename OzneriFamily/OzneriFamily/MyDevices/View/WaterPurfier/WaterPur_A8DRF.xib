@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +21,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="462.66666666666669"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbc-kP-Jm3" customClass="WaterPurifierHeadCircleView" customModule="OzneriFamily" customModuleProvider="target">
-                            <rect key="frame" x="36.666666666666657" y="140.66666666666669" width="342" height="181.00000000000006"/>
+                            <rect key="frame" x="36.666666666666657" y="140.66666666666666" width="342" height="180.99999999999997"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备云已断开" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhf-7U-Qlf">
                                     <rect key="frame" x="94.333333333333343" y="136.00000000000003" width="152" height="30"/>
@@ -33,7 +33,7 @@
                                     <rect key="frame" x="61" y="122.00000000000003" width="220" height="59"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zax-Xv-gcJ">
-                                            <rect key="frame" x="139" y="0.0" width="81.000000000000028" height="38"/>
+                                            <rect key="frame" x="139" y="0.0" width="81" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="zax-Xv-gcJ" secondAttribute="height" multiplier="75:35" id="Tvs-WC-tRN"/>
                                             </constraints>
@@ -60,7 +60,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="172" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byb-ZA-dhf">
-                                            <rect key="frame" x="0.0" y="0.0" width="81.999999999999986" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="82" height="43"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="byb-ZA-dhf" secondAttribute="height" multiplier="75:35" constant="-10.714285714285708" id="sfC-Mv-VeI"/>
                                             </constraints>
@@ -101,10 +101,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1X-iH-rL7">
-                                    <rect key="frame" x="103.99999999999999" y="52.333333333333343" width="133" height="42"/>
+                                    <rect key="frame" x="104" y="52.333333333333343" width="133" height="42"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水质纯净值TDS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-S5-XPr" customClass="GYLabel" customModule="OzneriFamily" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="133.00000000000003" height="19.666666666666657"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="133" height="18.666666666666668"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                             <color key="textColor" red="0.22552007439999999" green="0.44347250459999998" blue="0.86721867320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -168,14 +168,49 @@
                             <color key="textColor" red="0.2312418520450592" green="0.5431370735168457" blue="0.95001107454299927" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGF-hf-vEV">
+                            <rect key="frame" x="146.66666666666666" y="418" width="120.99999999999997" height="44"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余安心服务--天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpD-VT-r9N">
+                                    <rect key="frame" x="0.0" y="0.0" width="121" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="W67-eJ-u96"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请及时更换滤芯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97Q-eF-EG5">
+                                    <rect key="frame" x="0.0" y="23" width="121" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="BHd-x7-iSx"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                    <color key="textColor" red="0.99961632489999996" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="97Q-eF-EG5" secondAttribute="bottom" id="KRc-lb-QZQ"/>
+                                <constraint firstItem="QpD-VT-r9N" firstAttribute="top" secondItem="OGF-hf-vEV" secondAttribute="top" id="SI6-hB-tfd"/>
+                                <constraint firstItem="QpD-VT-r9N" firstAttribute="leading" secondItem="OGF-hf-vEV" secondAttribute="leading" id="gbM-9A-itj"/>
+                                <constraint firstAttribute="trailing" secondItem="97Q-eF-EG5" secondAttribute="trailing" id="irL-mx-NsI"/>
+                                <constraint firstItem="97Q-eF-EG5" firstAttribute="leading" secondItem="OGF-hf-vEV" secondAttribute="leading" id="odB-Hb-0JI"/>
+                                <constraint firstAttribute="trailing" secondItem="QpD-VT-r9N" secondAttribute="trailing" id="wnk-Zw-VOJ"/>
+                                <constraint firstAttribute="height" constant="44" id="xhC-iA-WTy"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="l7r-pB-6LP" firstAttribute="centerX" secondItem="Y0s-Zx-CTz" secondAttribute="centerX" id="3xB-nn-jKJ"/>
                         <constraint firstItem="zbc-kP-Jm3" firstAttribute="width" secondItem="Y0s-Zx-CTz" secondAttribute="width" multiplier="310:375" id="BUi-89-Hms"/>
+                        <constraint firstAttribute="bottom" secondItem="OGF-hf-vEV" secondAttribute="bottom" id="SYT-km-YIM"/>
                         <constraint firstItem="zbc-kP-Jm3" firstAttribute="centerY" secondItem="Y0s-Zx-CTz" secondAttribute="centerY" id="ZmE-E1-jo8"/>
                         <constraint firstItem="l7r-pB-6LP" firstAttribute="top" secondItem="zbc-kP-Jm3" secondAttribute="bottom" constant="15" id="jHi-D9-mw8"/>
                         <constraint firstItem="zbc-kP-Jm3" firstAttribute="centerX" secondItem="Y0s-Zx-CTz" secondAttribute="centerX" id="rh4-Ul-e3G"/>
+                        <constraint firstItem="OGF-hf-vEV" firstAttribute="centerX" secondItem="Y0s-Zx-CTz" secondAttribute="centerX" id="yTp-53-RdY"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSG-4S-hcX">
@@ -290,25 +325,25 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加热水温" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccN-wm-rUa">
-                            <rect key="frame" x="150.66666666666663" y="76.999999999999943" width="73.333333333333343" height="21.333333333333371"/>
+                            <rect key="frame" x="150.66666666666666" y="76.999999999999943" width="73.333333333333343" height="21.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                             <color key="textColor" red="0.67443490028381348" green="0.67455285787582397" blue="0.67442744970321655" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efJ-yE-1Ui">
-                            <rect key="frame" x="234.00000000000003" y="64.999999999999943" width="46.666666666666714" height="45.333333333333371"/>
+                            <rect key="frame" x="233.99999999999997" y="64.999999999999943" width="46.666666666666657" height="45.333333333333343"/>
                             <fontDescription key="fontDescription" type="system" pointSize="38"/>
                             <color key="textColor" red="0.96561998128890991" green="0.39251333475112915" blue="0.77348685264587402" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZR-ZY-qcj">
-                            <rect key="frame" x="280.66666666666669" y="69.333333333333314" width="20" height="21.666666666666629"/>
+                            <rect key="frame" x="280.66666666666669" y="69.333333333333314" width="21" height="21.666666666666671"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="textColor" red="0.96561998130000004" green="0.3925133348" blue="0.77348685260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="WaterPur温度" translatesAutoresizingMaskIntoConstraints="NO" id="NzX-E3-nta">
-                            <rect key="frame" x="114.66666666666666" y="72.999999999999943" width="15.999999999999972" height="30"/>
+                            <rect key="frame" x="114.66666666666667" y="72.999999999999943" width="16.000000000000014" height="30"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -348,6 +383,8 @@
                 <outlet property="offLineLabel" destination="dhf-7U-Qlf" id="Ws3-dN-n1I"/>
                 <outlet property="powerButton" destination="fhe-WG-Za3" id="d8D-wB-NjM"/>
                 <outlet property="powerLabel" destination="zJv-F8-ZAx" id="u3b-Fj-PBB"/>
+                <outlet property="remindDays" destination="QpD-VT-r9N" id="kkh-ea-YB8"/>
+                <outlet property="remindLabel" destination="97Q-eF-EG5" id="i1c-co-XTO"/>
                 <outlet property="tdsContainerView" destination="jfq-gS-Sqz" id="p6W-vv-0OS"/>
                 <outlet property="tdsImg" destination="idb-9n-xnR" id="Sky-pj-Rot"/>
                 <outlet property="tdsStateLabel" destination="Qir-sV-5Cw" id="sFZ-9E-UgS"/>
@@ -355,7 +392,7 @@
                 <outlet property="tdsValueLabel_BF" destination="byb-ZA-dhf" id="dd2-TZ-2e1"/>
                 <outlet property="temperatureLabel" destination="efJ-yE-1Ui" id="dLU-3c-NvY"/>
             </connections>
-            <point key="canvasLocation" x="-112.5" y="23.5"/>
+            <point key="canvasLocation" x="-113" y="23"/>
         </view>
         <tapGestureRecognizer id="pM0-yD-T7h" userLabel="水质纯净值Tap">
             <connections>

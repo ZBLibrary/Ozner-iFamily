@@ -85,7 +85,6 @@ class WaterPurfierTDSController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         hideBtn1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
         hideView1.isHidden = !(LoginManager.instance.currentLoginType == OznerLoginType.ByPhoneNumber)
         
@@ -129,11 +128,20 @@ class WaterPurfierTDSController: BaseViewController {
             self.rankLabel.text="-"
         }
         User.GetDeviceTdsFenBu(mac: device.deviceInfo.deviceMac, success: { (WeakData, MonthData) in
-            self.TDSchartView.weakData=WeakData
-            self.TDSchartView.monthData=MonthData
+            if WeakData.count==0{
+                self.TDSchartView.weakData=[WaterReplenishDataStuct.init(date: NSDate(), oil: Double(TDS_BF), water: Double(TDS_AF))]
+            }else{
+                self.TDSchartView.weakData=WeakData
+            }
+            if MonthData.count==0{
+                self.TDSchartView.monthData=[WaterReplenishDataStuct.init(date: NSDate(), oil: Double(TDS_BF), water: Double(TDS_AF))]
+            }else{
+                self.TDSchartView.monthData=MonthData
+            }
             self.TDSchartView.updateView(isWeak: true)
-            }, failure: { (error) in
-            
+        }, failure: { (error) in
+            self.TDSchartView.weakData=[WaterReplenishDataStuct.init(date: NSDate(), oil: Double(TDS_BF), water: Double(TDS_AF))]
+            self.TDSchartView.monthData=[WaterReplenishDataStuct.init(date: NSDate(), oil: Double(TDS_BF), water: Double(TDS_AF))]
         })
     }
 

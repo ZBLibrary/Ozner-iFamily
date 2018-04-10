@@ -52,12 +52,6 @@ class MyDevicesController: UIViewController {
                 return
             }
             if (OznerManager.instance.currentDevice as? WaterPurifier_Wifi)?.deviceInfo.productID == "2821b472-5263-11e7-9baf-00163e120d98" {
-                let tmpDeviceView = deviceViewContainer.currentDeviceView as! WaterPur_A8DRF
-                let senderData=["buyLvXinUrl":tmpDeviceView.buyLvXinUrl,
-                                "scanEnable":tmpDeviceView.scanEnable,
-                                "lvXinStopDate":tmpDeviceView.lvXinStopDate,
-                                "lvXinUsedDays":tmpDeviceView.lvXinUsedDays] as [String : Any]
-                self.performSegue(withIdentifier: "toTapLvXin", sender: senderData)
                 return
             }
             

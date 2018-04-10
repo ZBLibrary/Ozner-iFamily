@@ -129,8 +129,8 @@ class DeviceViewContainer: UIView {
                 }else if currentDeviceView.isKind(of: WaterPur_A8CSFFSF.classForCoder()){
                     delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:160*k_height)
                 }else if currentDeviceView.isKind(of: WaterPur_A8DRF.classForCoder()){
-                    delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: false,BottomValue:230*k_height)
-                    SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac(), deviceType: (device?.deviceInfo.deviceType)!)
+                    delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:230*k_height)
+                    //SetWaterPurifer(devID: ProductInfo.getCurrDeviceMac(), deviceType: (device?.deviceInfo.deviceType)!)
                 }
                 
            
@@ -313,12 +313,9 @@ extension DeviceViewContainer{
                 guard (weakSelf?.currentDeviceView?.isKind(of: WaterPurifierMainView.self))! else {
                     return
                 }
-                if deviceType=="2821b472-5263-11e7-9baf-00163e120d98"
-                {
-                    (weakSelf?.currentDeviceView as! WaterPur_A8DRF).setLvXinAndEnable(scan: scanEnable, cool: coolEnable, hot: hotEnable, buyLvXinUrl: url!, lvXinStopDate: stopDate as NSDate, lvXinUsedDays: Int(useValue))
-                }else{
-                   (weakSelf?.currentDeviceView as! WaterPurifierMainView).setLvXinAndEnable(scan: scanEnable, cool: coolEnable, hot: hotEnable, buyLvXinUrl: url!, lvXinStopDate: stopDate as NSDate, lvXinUsedDays: Int(useValue))
-                }
+                
+                (weakSelf?.currentDeviceView as! WaterPurifierMainView).setLvXinAndEnable(scan: scanEnable, cool: coolEnable, hot: hotEnable, buyLvXinUrl: url!, lvXinStopDate: stopDate as NSDate, lvXinUsedDays: Int(useValue))
+                
                 
                 self.LvXinValue=Int(useValue)
                 if useValue<10//小于10%提醒及时更换滤芯
@@ -342,5 +339,6 @@ extension DeviceViewContainer{
                 self.LvXinValue = -2
         }
     }
+
 
 }
