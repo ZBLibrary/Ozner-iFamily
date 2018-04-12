@@ -133,6 +133,8 @@ class OznerDataManager: NSObject {
 
         case .ThreeOutWater:
             tmpdev = ThreeOutWater(deviceinfo: deviceInfo, Settings: setting)
+        case .TuHaoJin_GPRS:
+            tmpdev = TuHaoJin_GPRS(deviceinfo: deviceInfo, Settings: setting)
         }
         return tmpdev
     }

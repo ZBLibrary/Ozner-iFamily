@@ -48,14 +48,15 @@ enum OZDeviceClass:String{
     case TwoCup="TwoCup"
     case CenterWater="CenterWater"
     case ThreeOutWater="ThreeOutWater"
+    case TuHaoJin_GPRS="TuHaoJin_GPRS"
     static func getFromString(str:String)->OZDeviceClass{
-        return ["WaterPurifier_Blue":.WaterPurifier_Blue,"Cup":.Cup,"Tap":.Tap,"TDSPan":.TDSPan,"WaterPurifier_Wifi":.WaterPurifier_Wifi,"AirPurifier_Blue":.AirPurifier_Blue,"AirPurifier_Wifi":.AirPurifier_Wifi,"WaterReplenish":.WaterReplenish,"Electrickettle_Blue":.Electrickettle_Blue,"WashDush_Wifi":.WashDush_Wifi,"NewTrendAir_Wifi":.NewTrendAir_Wifi,"TwoCup":.TwoCup,"CenterWater":CenterWater,"ThreeOutWater":ThreeOutWater][str]!
+        return ["WaterPurifier_Blue":.WaterPurifier_Blue,"Cup":.Cup,"Tap":.Tap,"TDSPan":.TDSPan,"WaterPurifier_Wifi":.WaterPurifier_Wifi,"AirPurifier_Blue":.AirPurifier_Blue,"AirPurifier_Wifi":.AirPurifier_Wifi,"WaterReplenish":.WaterReplenish,"Electrickettle_Blue":.Electrickettle_Blue,"WashDush_Wifi":.WashDush_Wifi,"NewTrendAir_Wifi":.NewTrendAir_Wifi,"TwoCup":.TwoCup,"CenterWater":CenterWater,"ThreeOutWater":ThreeOutWater,"TuHaoJin_GPRS":TuHaoJin_GPRS][str]!
     }
     public var ioType:OZIOType {
         switch self {
         case .WaterPurifier_Blue,.Cup,.Tap,.TDSPan,.AirPurifier_Blue,.WaterReplenish,.Electrickettle_Blue,.TwoCup:
             return OZIOType.Blue
-        case .WaterPurifier_Wifi,.AirPurifier_Wifi,.WashDush_Wifi,.NewTrendAir_Wifi,.CenterWater,.ThreeOutWater:
+        case .WaterPurifier_Wifi,.AirPurifier_Wifi,.WashDush_Wifi,.NewTrendAir_Wifi,.CenterWater,.ThreeOutWater,.TuHaoJin_GPRS:
             return OZIOType.MxChip
 //        default:
 //            return OZIOType.Blue
@@ -174,8 +175,8 @@ class ProductInfo: NSObject {
         return OZDeviceClass.Cup
     }
     class func getProductInfoFromProductID(productID:String)->JSON! {
-        var tmpinfo:JSON!
         
+        var tmpinfo:JSON!
         for product in products.values {
             if tmpinfo != nil {
                 break

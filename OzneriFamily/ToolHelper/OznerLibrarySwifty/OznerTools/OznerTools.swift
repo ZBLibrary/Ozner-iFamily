@@ -111,6 +111,16 @@ class OznerTools: NSObject {
         }
         
     }
+    class func getYQdeviceInfo(deviceCode:String,_ deviceInfo : inout OznerDeviceInfo){
+//        let payloadStr=OznerTools.hexStringFromData(data: payload)
+//        let params = ["username" : "bing.zhao@cftcn.com","password" : "l5201314","deviceid" : deviceid,"payload" : payloadStr]//设置参数
+//        //print("2.0发送指令："+payloadStr)
+//        Helper.post("http://58.250.17.20:22009/ozner/getDeviceInfo", requestParams: params) { (response, data, error) in
+//            print(error ?? "")
+//            
+//        }
+        
+    }
     
 }
 extension Data{

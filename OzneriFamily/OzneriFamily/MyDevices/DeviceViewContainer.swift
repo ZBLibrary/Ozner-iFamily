@@ -66,7 +66,8 @@ class DeviceViewContainer: UIView {
         .WashDush_Wifi:"WashDush_WifiMainView",
         .NewTrendAir_Wifi:"NewTrendAirMainView",
         .CenterWater:"CenterWaterView",
-        .ThreeOutWater:"ThreeOutWaterMainView"
+        .ThreeOutWater:"ThreeOutWaterMainView",
+        .TuHaoJin_GPRS:"TuHaoJin_GPRSMainView"
     ]
     private func SelectWitchView(device:OznerBaseDevice?)  {
         
@@ -178,6 +179,9 @@ class DeviceViewContainer: UIView {
             case .ThreeOutWater:
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:225*k_height)
                 LvXinValue = 110000
+            case .TuHaoJin_GPRS:
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:250*k_height)
+                
             }
             currentDeviceView.currentDevice=OznerManager.instance.currentDevice
             OznerDeviceSensorUpdate(identifier: (OznerManager.instance.currentDevice?.deviceInfo.deviceID)!)//初始化设备状态

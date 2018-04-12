@@ -164,6 +164,7 @@
 		8D14A93C1DD9907000920AE9 /* HSVZB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14A9371DD9907000920AE9 /* HSVZB.m */; };
 		8D14A93E1DD9B9B900920AE9 /* CupTDSChartContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D14A93D1DD9B9B900920AE9 /* CupTDSChartContainerView.swift */; };
 		8D14A9401DD9B9E000920AE9 /* CupDrinkingChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D14A93F1DD9B9E000920AE9 /* CupDrinkingChartView.swift */; };
+		8D168F76207F4E7C00466E71 /* TuHaoJin_GPRS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D168F75207F4E7C00466E71 /* TuHaoJin_GPRS.swift */; };
 		8D16BC4D1DB8718600CA3A49 /* SetDeviceNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D16BC4C1DB8718600CA3A49 /* SetDeviceNameController.swift */; };
 		8D16BC4F1DB8719F00CA3A49 /* AboutDeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D16BC4E1DB8719F00CA3A49 /* AboutDeviceController.swift */; };
 		8D1761E31DC83387004A6B90 /* WaterPurfierSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1761E21DC83387004A6B90 /* WaterPurfierSettingController.swift */; };
@@ -254,6 +255,9 @@
 		8D5ABB241D9E4A1C008524A7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB231D9E4A1C008524A7 /* SystemConfiguration.framework */; };
 		8D5ABB261D9E4A23008524A7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB251D9E4A23008524A7 /* CoreLocation.framework */; };
 		8D5ABB281D9E4A48008524A7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5ABB271D9E4A48008524A7 /* AdSupport.framework */; };
+		8D61ACC0207EF44D007CEE30 /* YQPairingScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D61ACBF207EF44C007CEE30 /* YQPairingScanViewController.swift */; };
+		8D61ACC3207EFFB6007CEE30 /* TuHaoJin_GPRSMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D61ACC2207EFFB6007CEE30 /* TuHaoJin_GPRSMainView.swift */; };
+		8D61ACC5207F097F007CEE30 /* TuHaoJin_GPRSMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D61ACC4207F097F007CEE30 /* TuHaoJin_GPRSMainView.xib */; };
 		8D6BFDBD1ED9626E00AC849C /* WaterPur_A8DRF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6BFDB91ED9626E00AC849C /* WaterPur_A8DRF.swift */; };
 		8D6BFDBE1ED9626E00AC849C /* WaterPur_A8DRF.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBA1ED9626E00AC849C /* WaterPur_A8DRF.xib */; };
 		8D6BFDBF1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBB1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift */; };
@@ -615,6 +619,7 @@
 		8D14A9371DD9907000920AE9 /* HSVZB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSVZB.m; sourceTree = "<group>"; };
 		8D14A93D1DD9B9B900920AE9 /* CupTDSChartContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupTDSChartContainerView.swift; sourceTree = "<group>"; };
 		8D14A93F1DD9B9E000920AE9 /* CupDrinkingChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupDrinkingChartView.swift; sourceTree = "<group>"; };
+		8D168F75207F4E7C00466E71 /* TuHaoJin_GPRS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuHaoJin_GPRS.swift; sourceTree = "<group>"; };
 		8D16BC4C1DB8718600CA3A49 /* SetDeviceNameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDeviceNameController.swift; sourceTree = "<group>"; };
 		8D16BC4E1DB8719F00CA3A49 /* AboutDeviceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutDeviceController.swift; sourceTree = "<group>"; };
 		8D1761E21DC83387004A6B90 /* WaterPurfierSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPurfierSettingController.swift; sourceTree = "<group>"; };
@@ -736,6 +741,9 @@
 		8D5ABB251D9E4A23008524A7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8D5ABB271D9E4A48008524A7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8D5ABB291D9E632E008524A7 /* OzneriFamily.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OzneriFamily.entitlements; sourceTree = "<group>"; };
+		8D61ACBF207EF44C007CEE30 /* YQPairingScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQPairingScanViewController.swift; sourceTree = "<group>"; };
+		8D61ACC2207EFFB6007CEE30 /* TuHaoJin_GPRSMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuHaoJin_GPRSMainView.swift; sourceTree = "<group>"; };
+		8D61ACC4207F097F007CEE30 /* TuHaoJin_GPRSMainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TuHaoJin_GPRSMainView.xib; sourceTree = "<group>"; };
 		8D6BFDB91ED9626E00AC849C /* WaterPur_A8DRF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPur_A8DRF.swift; sourceTree = "<group>"; };
 		8D6BFDBA1ED9626E00AC849C /* WaterPur_A8DRF.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterPur_A8DRF.xib; sourceTree = "<group>"; };
 		8D6BFDBB1ED9626E00AC849C /* WaterPur_A8CSFFSF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPur_A8CSFFSF.swift; sourceTree = "<group>"; };
@@ -1324,6 +1332,7 @@
 		8D129A181DD4B5080022F7EA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				8D61ACBF207EF44C007CEE30 /* YQPairingScanViewController.swift */,
 				8DC866581F6EA3670057C1D8 /* LVXinScanViewController.swift */,
 				8DC866591F6EA3670057C1D8 /* PairingScanViewController.swift */,
 				8D129A191DD4B5080022F7EA /* LBXPermissions.swift */,
@@ -1351,6 +1360,14 @@
 				8D14A9371DD9907000920AE9 /* HSVZB.m */,
 			);
 			path = CupColorExtral;
+			sourceTree = "<group>";
+		};
+		8D168F74207F4E5700466E71 /* TuHaoJin_GPRS */ = {
+			isa = PBXGroup;
+			children = (
+				8D168F75207F4E7C00466E71 /* TuHaoJin_GPRS.swift */,
+			);
+			path = TuHaoJin_GPRS;
 			sourceTree = "<group>";
 		};
 		8D1761E81DC833DD004A6B90 /* TDSPan */ = {
@@ -1485,6 +1502,7 @@
 		8D36D25F1F06234A0091EB1F /* DeviceManager */ = {
 			isa = PBXGroup;
 			children = (
+				8D168F74207F4E5700466E71 /* TuHaoJin_GPRS */,
 				686EC64120104551005C1279 /* ThreeOutWater */,
 				8D36D26D1F06234A0091EB1F /* OznerDeviceManager.swift */,
 				68986DB41FAFED1800B280C4 /* CenterWater */,
@@ -1772,6 +1790,15 @@
 			path = BaiDuPush;
 			sourceTree = "<group>";
 		};
+		8D61ACC1207EFF5E007CEE30 /* TuHaoJin_GPRS */ = {
+			isa = PBXGroup;
+			children = (
+				8D61ACC2207EFFB6007CEE30 /* TuHaoJin_GPRSMainView.swift */,
+				8D61ACC4207F097F007CEE30 /* TuHaoJin_GPRSMainView.xib */,
+			);
+			path = TuHaoJin_GPRS;
+			sourceTree = "<group>";
+		};
 		8D7836FD1DE28B4600A3D9E3 /* WeChatSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1872,6 +1899,7 @@
 		8D9951361DACE2E80050FB19 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8D61ACC1207EFF5E007CEE30 /* TuHaoJin_GPRS */,
 				68C40DDC200D945200BA1E52 /* ThreeOutWater */,
 				684BA1041FAAA8740048CFC3 /* CenterWater */,
 				8DC866521F6E9EA20057C1D8 /* NewTrendAir */,
@@ -2848,6 +2876,7 @@
 				8DC02E941DB5CEFE007F57DB /* WaterReplenishMainView.xib in Resources */,
 				B79803E11DB5C42E001EC5AA /* WaterRefeishView.xib in Resources */,
 				8DC02E7F1DB5CE91007F57DB /* TapMainView.xib in Resources */,
+				8D61ACC5207F097F007CEE30 /* TuHaoJin_GPRSMainView.xib in Resources */,
 				682B8A901F3ADF3F00CBE821 /* WashDush_WifiMainView.xib in Resources */,
 				682C70641F1EFEDB00B0A6E6 /* ElectrickettleMainView.xib in Resources */,
 				8D0D683F1DDD8A3B0097038E /* RNEmailRegisterViewController.xib in Resources */,
@@ -3274,8 +3303,10 @@
 				8D420DA52021A5C700DD302A /* SetNewWeekViewController.swift in Sources */,
 				8D36D2CA1F06234A0091EB1F /* AirPurifier_Blue.swift in Sources */,
 				E0745AC11EE94ED200CB39CC /* UdeskVoiceRecordHelper.m in Sources */,
+				8D61ACC0207EF44D007CEE30 /* YQPairingScanViewController.swift in Sources */,
 				E0745AAF1EE94ED200CB39CC /* UdeskAgentSurvey.m in Sources */,
 				8D14A93E1DD9B9B900920AE9 /* CupTDSChartContainerView.swift in Sources */,
+				8D61ACC3207EFFB6007CEE30 /* TuHaoJin_GPRSMainView.swift in Sources */,
 				8D36D2FB1F06234A0091EB1F /* OznerBaseIO.swift in Sources */,
 				8D36D2D41F06234A0091EB1F /* WaterPurifier_Blue.swift in Sources */,
 				E0745AF11EE94ED200CB39CC /* UdeskOneScrollView.m in Sources */,
@@ -3319,6 +3350,7 @@
 				E0745ABE1EE94ED200CB39CC /* UdeskInputBar.m in Sources */,
 				8D0D692E1DDD99A00097038E /* VerfyViewController.swift in Sources */,
 				8D0D692D1DDD99A00097038E /* SetMeterViewController.swift in Sources */,
+				8D168F76207F4E7C00466E71 /* TuHaoJin_GPRS.swift in Sources */,
 				8D1761EA1DC833F6004A6B90 /* TDSPanSettingController.swift in Sources */,
 				8D4A5E1E1DE419D4008A6960 /* ShareMoneyToWeChat.swift in Sources */,
 				8D0D693F1DDD99A10097038E /* MyFriendCell.swift in Sources */,
