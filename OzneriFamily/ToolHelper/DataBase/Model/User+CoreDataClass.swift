@@ -595,8 +595,9 @@ public class User: BaseDataObject {
             }
             let endDate=NSDate(string: endStr, formatString: "yyyy/MM/dd HH:mm:ss")
             let nowDate=NSDate(string: nowStr, formatString: "yyyy/MM/dd HH:mm:ss")
-            let tmpUseDays=365-((endDate?.timeIntervalSince1970)!-(nowDate?.timeIntervalSince1970)!)/(24*3600.0)
-            success(min(365, Int(tmpUseDays)), endDate! as Date)
+            let tmpUseDays=((endDate?.timeIntervalSince1970)!-(nowDate?.timeIntervalSince1970)!)/(24*3600.0)
+            
+            success(min(365, 365-Int(floor(tmpUseDays))), endDate! as Date)
             }, failure: failure)
         
     }
@@ -607,7 +608,7 @@ public class User: BaseDataObject {
             }, failure: failure)
         
     }
-    ////上传TDS获取排名
+    //上传TDS获取排名
     class func TDSSensor(deviceID:String,type:String,tds:Int,beforetds:Int,success: @escaping ((_ rank:Int,_ total:Int) -> Void), failure: @escaping ((Error) -> Void)){
         self.fetchData(key: "TDSSensor", parameters: ["mac":deviceID,"type":type,"tds":tds,"beforetds":beforetds], success: { (json) in
             success(json["rank"].int!,json["total"].int!)
@@ -636,7 +637,7 @@ public class User: BaseDataObject {
                 {
                     let dateStr=dateStampToString(item["updatetime"].stringValue, format: "yyyy-MM-dd")
                     let date=dateFromString(dateStr, format: "yyyy-MM-dd")
-                    let tmpData1=WaterReplenishDataStuct(date: date as NSDate!, oil: item["ynumber"].double!, water: item["snumber"].double!)
+                    let tmpData1=WaterReplenishDataStuct(date: date as NSDate?, oil: item["ynumber"].double!, water: item["snumber"].double!)
                     tmpweakData.append(tmpData1)
                 }
                 WeakData[i]=tmpweakData

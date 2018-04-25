@@ -30,9 +30,13 @@ class WashReportController: BaseViewController {
             var textStr="\(Int(lastData[0])+2000).\(Int(lastData[1])).\(Int(lastData[2])) "
             textStr+=" \(Int(lastData[3])):\(Int(lastData[4])):\(Int(lastData[5]))"
             valueLabel1.text=Int(report[4])==0 ? "--/--/-- --:--:--":textStr
+            let tmpL = Int(report[0])<10 ? ".0\(Int(report[0]))":".\(Int(report[0]))"
+            valueLabel2.text=(Int(report[4])==0 ? "-.- L":("\(Int(report[1]))"+tmpL+" L"))
             
-            valueLabel2.text=(Int(report[4])==0 ? "-.- L":("\(Int(report[1]))"+".\(Int(report[0])) L"))
-            valueLabel3.text=(Int(report[4])==0 ? "-.- KWH":("\(Int(report[3]))"+".\(Int(report[2])) KWH"))
+            let kWH = Int(report[2])<10 ? ".0\(Int(report[2]))":".\(Int(report[2]))"
+            
+            valueLabel3.text=(Int(report[4])==0 ? "-.- KWH":("\(Int(report[3]))"+kWH+" KWH"))
+            
             valueLabel4.text=(Int(report[4])==0 ? "-":"\(Int(report[4]))")+" min"
             valueLabel5.text=(Int(report[5])==0 ? "-":"\(Int(report[5]))")+" min"
             valueLabel6.text=(Int(report[6])==0 ? "-":"\(Int(report[6]))")+" ℃"

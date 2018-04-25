@@ -131,8 +131,10 @@ class SelectDeviceTableController: UITableViewController ,UIGestureRecognizerDel
             vc.scanString = "ThreeOutWater"
             self.navigationController?.pushViewController(vc, animated: true)
         case OZDeviceClass.TuHaoJin_GPRS.rawValue://扫码配网,OZDeviceClass.WashDush_Wifi.rawValue
-            let vc = YQPairingScanViewController()
-            vc.pairID="JZY-A2B3"
+//            let vc = YQPairingScanViewController()
+//            vc.pairID="JZY-A2B3"
+            let vc = YQLeftViewController()
+            
             self.navigationController?.pushViewController(vc, animated: true)
         default:
             self.performSegue(withIdentifier: "pushPairID", sender: indexPath.row)

@@ -183,7 +183,7 @@ class WashDush_WifiMainView: OznerDeviceView {
 //        if (height_screen-rect.size.height) == 64 {
             remind1H = remindTimeView1.bounds.width/2
 //        }
-        
+        remind1H = (remind1H==82 ? 72.25:remind1H)
         cicleR = remind1H*125/205*86/108
         temperatView.layer.cornerRadius=remind1H*125/205
         remindTimeView1.layer.cornerRadius=remind1H

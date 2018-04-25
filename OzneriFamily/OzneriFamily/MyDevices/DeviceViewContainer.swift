@@ -180,7 +180,7 @@ class DeviceViewContainer: UIView {
                 delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:225*k_height)
                 LvXinValue = 110000
             case .TuHaoJin_GPRS:
-                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:250*k_height)
+                delegate.WhitchCenterViewIsHiden!(SettingIsHiden: false, BateryIsHiden: true, FilterIsHiden: true,BottomValue:210*k_height)
                 
             }
             currentDeviceView.currentDevice=OznerManager.instance.currentDevice

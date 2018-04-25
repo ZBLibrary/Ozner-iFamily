@@ -320,6 +320,8 @@
 		8DC8665A1F6EA3670057C1D8 /* LVXinScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC866581F6EA3670057C1D8 /* LVXinScanViewController.swift */; };
 		8DC8665B1F6EA3670057C1D8 /* PairingScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC866591F6EA3670057C1D8 /* PairingScanViewController.swift */; };
 		8DDDDF891F6B7D8F00555242 /* WashHaoCaiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDDDF881F6B7D8F00555242 /* WashHaoCaiController.swift */; };
+		8DE3440520870F7800ECB914 /* YQLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3440320870F7800ECB914 /* YQLeftViewController.swift */; };
+		8DE3440620870F7800ECB914 /* YQLeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE3440420870F7800ECB914 /* YQLeftViewController.xib */; };
 		8DEB84AD1DA897930088794A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEB84AC1DA897930088794A /* libsqlite3.0.tbd */; };
 		8DEB84AF1DA897A00088794A /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEB84AE1DA897A00088794A /* libxml2.tbd */; };
 		8DEDB0481F6FAA5D00AAF4DA /* ProductInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DEDB0461F6FAA5D00AAF4DA /* ProductInfo.plist */; };
@@ -813,6 +815,8 @@
 		8DC866581F6EA3670057C1D8 /* LVXinScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LVXinScanViewController.swift; sourceTree = "<group>"; };
 		8DC866591F6EA3670057C1D8 /* PairingScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairingScanViewController.swift; sourceTree = "<group>"; };
 		8DDDDF881F6B7D8F00555242 /* WashHaoCaiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WashHaoCaiController.swift; sourceTree = "<group>"; };
+		8DE3440320870F7800ECB914 /* YQLeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQLeftViewController.swift; sourceTree = "<group>"; };
+		8DE3440420870F7800ECB914 /* YQLeftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YQLeftViewController.xib; sourceTree = "<group>"; };
 		8DEB83B11DA896700088794A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DEB84AC1DA897930088794A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8DEB84AE1DA897A00088794A /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -1502,9 +1506,9 @@
 		8D36D25F1F06234A0091EB1F /* DeviceManager */ = {
 			isa = PBXGroup;
 			children = (
+				8D36D26D1F06234A0091EB1F /* OznerDeviceManager.swift */,
 				8D168F74207F4E5700466E71 /* TuHaoJin_GPRS */,
 				686EC64120104551005C1279 /* ThreeOutWater */,
-				8D36D26D1F06234A0091EB1F /* OznerDeviceManager.swift */,
 				68986DB41FAFED1800B280C4 /* CenterWater */,
 				8DC8664F1F6E9BDA0057C1D8 /* NewTrendAir_Wifi */,
 				682B8A891F3ADBD100CBE821 /* WashDush */,
@@ -1873,6 +1877,8 @@
 				8D12AAC61DAB7386003A09E6 /* PairSuccessController.swift */,
 				8D12AAC81DAB739F003A09E6 /* PairFailedController.swift */,
 				8D12AACA1DAB9A89003A09E6 /* WifiPairingController.swift */,
+				8DE3440320870F7800ECB914 /* YQLeftViewController.swift */,
+				8DE3440420870F7800ECB914 /* YQLeftViewController.xib */,
 			);
 			path = LeftMenu;
 			sourceTree = "<group>";
@@ -2844,6 +2850,7 @@
 				8D0D69461DDD99A10097038E /* MyInfoHeadView.xib in Resources */,
 				8D3C7E241F67B13C0024747D /* WashAppointTime.xib in Resources */,
 				8DAE80871D9B915A00A9946F /* NetworkConfig.plist in Resources */,
+				8DE3440620870F7800ECB914 /* YQLeftViewController.xib in Resources */,
 				8D129A281DD4B6830022F7EA /* CodeScan.bundle in Resources */,
 				8D1397311DDC7819006FB239 /* CupTDSChartContainerView.xib in Resources */,
 				8D0D69341DDD99A10097038E /* EquidsCollectionViewCell.xib in Resources */,
@@ -3118,6 +3125,7 @@
 				6847B8511F99A2EE00D0F018 /* WaterGPRSScanVc.swift in Sources */,
 				8D36D2CE1F06234A0091EB1F /* Cup.swift in Sources */,
 				B7753A941E10F45E00F39427 /* BaseViewController.swift in Sources */,
+				8DE3440520870F7800ECB914 /* YQLeftViewController.swift in Sources */,
 				E0745ABB1EE94ED200CB39CC /* UdeskTipsCell.m in Sources */,
 				E01C97B91EE96A7B00927574 /* RNMessageViewController.swift in Sources */,
 				68179E451F6A1B19001D5E80 /* SwiftNotice.swift in Sources */,
