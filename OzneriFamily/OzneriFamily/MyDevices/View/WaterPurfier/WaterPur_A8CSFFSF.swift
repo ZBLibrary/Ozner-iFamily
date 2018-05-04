@@ -73,8 +73,26 @@ class WaterPur_A8CSFFSF: OznerDeviceView {
         offLineSuggestView.frame=CGRect(x: 0, y: 0, width: width_screen, height: height_screen)
         offLineSuggestView.backgroundColor=UIColor.black.withAlphaComponent(0.5)
         TemperatLabel.text="-"
+        setFilter()
     }
+    @IBOutlet var remindDays: UILabel!
+    @IBOutlet var remindLabel: UILabel!
     
+    func setFilter() {
+        let mac = self.currentDevice?.deviceInfo.deviceMac
+        
+        User.GetMachineLifeOutTime(deviceID: mac!, success: { (usedDays, stopDate) in
+            self.remindDays.text="剩余安心服务\(365-usedDays)天"
+            
+            self.remindLabel.isHidden = (365-usedDays)>10
+            
+            
+            
+        }, failure: { (error) in
+            self.remindDays.text="剩余安心服务--天"
+            self.remindLabel.isHidden=true
+        })
+    }
     //                (currentDeviceView as! WaterPurifierMainView).circleView.updateCircleView(angleBefore: 0.7, angleAfter: 0.5)
     let color_normol=UIColor(red: 177.0/255.0, green: 178.0/255.0, blue: 179.0/255.0, alpha: 1)
     let color_select=UIColor(red: 63.0/255.0, green: 135.0/255.0, blue: 237.0/255.0, alpha: 1)

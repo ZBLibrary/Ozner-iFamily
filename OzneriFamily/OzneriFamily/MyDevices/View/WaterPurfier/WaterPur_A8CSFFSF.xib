@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,14 +38,49 @@
                             <color key="textColor" red="0.96561998130000004" green="0.3925133348" blue="0.77348685260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVI-Uf-h9E">
+                            <rect key="frame" x="127" y="446" width="121" height="44"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余安心服务--天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXL-Ef-9Mk">
+                                    <rect key="frame" x="0.0" y="0.0" width="121" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="vdv-6a-odJ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请及时更换滤芯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHj-37-Z77">
+                                    <rect key="frame" x="0.0" y="23" width="121" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="lyK-ca-IPA"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                    <color key="textColor" red="0.99961632489999996" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="HHj-37-Z77" secondAttribute="bottom" id="2PA-p7-dQ2"/>
+                                <constraint firstItem="YXL-Ef-9Mk" firstAttribute="leading" secondItem="yVI-Uf-h9E" secondAttribute="leading" id="74g-Ms-khS"/>
+                                <constraint firstItem="YXL-Ef-9Mk" firstAttribute="top" secondItem="yVI-Uf-h9E" secondAttribute="top" id="8G6-ul-I07"/>
+                                <constraint firstItem="HHj-37-Z77" firstAttribute="leading" secondItem="yVI-Uf-h9E" secondAttribute="leading" id="Xfj-Zc-XQg"/>
+                                <constraint firstAttribute="height" constant="44" id="bqr-x1-qMU"/>
+                                <constraint firstAttribute="trailing" secondItem="YXL-Ef-9Mk" secondAttribute="trailing" id="jQ3-AL-gOC"/>
+                                <constraint firstAttribute="trailing" secondItem="HHj-37-Z77" secondAttribute="trailing" id="loO-0n-1y9"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="zgj-aM-J7t" firstAttribute="centerX" secondItem="Y0s-Zx-CTz" secondAttribute="centerX" id="2TG-YV-xT8"/>
+                        <constraint firstItem="yVI-Uf-h9E" firstAttribute="centerX" secondItem="Y0s-Zx-CTz" secondAttribute="centerX" id="CDc-1u-jQd"/>
                         <constraint firstItem="GxB-FH-VDr" firstAttribute="centerX" secondItem="Y0s-Zx-CTz" secondAttribute="centerX" id="KNQ-pY-xmL"/>
                         <constraint firstItem="GxB-FH-VDr" firstAttribute="centerY" secondItem="Y0s-Zx-CTz" secondAttribute="centerY" id="ObI-A6-bCX"/>
                         <constraint firstItem="zgj-aM-J7t" firstAttribute="top" secondItem="GxB-FH-VDr" secondAttribute="bottom" id="Wmi-5Z-uJT"/>
                         <constraint firstItem="hvI-Ht-dRb" firstAttribute="leading" secondItem="GxB-FH-VDr" secondAttribute="trailing" id="Xid-vA-AzK"/>
+                        <constraint firstAttribute="bottom" secondItem="yVI-Uf-h9E" secondAttribute="bottom" id="dvA-UI-D6M"/>
                         <constraint firstItem="hvI-Ht-dRb" firstAttribute="centerY" secondItem="GxB-FH-VDr" secondAttribute="centerY" constant="-15" id="jGL-Cv-hSj"/>
                     </constraints>
                 </view>
@@ -188,6 +224,8 @@
                 <outlet property="hotLabel" destination="FXw-rO-8n6" id="pEj-tO-vuO"/>
                 <outlet property="powerButton" destination="fhe-WG-Za3" id="d8D-wB-NjM"/>
                 <outlet property="powerLabel" destination="zJv-F8-ZAx" id="u3b-Fj-PBB"/>
+                <outlet property="remindDays" destination="YXL-Ef-9Mk" id="cbQ-SD-SpP"/>
+                <outlet property="remindLabel" destination="HHj-37-Z77" id="JGT-pX-WBj"/>
             </connections>
             <point key="canvasLocation" x="-112.5" y="23.5"/>
         </view>
